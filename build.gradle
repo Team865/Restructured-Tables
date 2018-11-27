@@ -1,0 +1,19 @@
+plugins {
+    id "java"
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.5'
+}
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base']
+}
+
+dependencies {
+    compile 'org.controlsfx:controlsfx:8.0.5'
+}
+
+mainClassName = "ca.warp7.tables.MAIN"
