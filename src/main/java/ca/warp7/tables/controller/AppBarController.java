@@ -4,6 +4,8 @@ import ca.warp7.tables.view.WebCamWindow;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class AppBarController {
 
@@ -20,6 +22,13 @@ public class AppBarController {
     @FXML
     void onScanNowAction(){
         webCamWindow.start();
+    }
+
+    @FXML
+    void onImportDataAction(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.showOpenDialog(null);
     }
 
     @FXML

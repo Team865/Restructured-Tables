@@ -16,7 +16,7 @@
 
     <Separator/>
 
-    <Button text="Import Data"/>
+    <Button text="Import Data" onAction="#onImportDataAction"/>
 
     <Separator/>
 
