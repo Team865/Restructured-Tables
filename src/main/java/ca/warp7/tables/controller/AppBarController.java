@@ -14,7 +14,7 @@ import java.io.IOException;
 public class AppBarController {
 
     @FXML
-    void onEventSettingsAction() {
+    void onEventConfigureAction() {
         try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
@@ -31,7 +31,7 @@ public class AppBarController {
     private WebCamWindow webCamWindow = new WebCamWindow();
 
     @FXML
-    void onScanNowAction() {
+    void onScannerAction() {
         webCamWindow.start();
     }
 

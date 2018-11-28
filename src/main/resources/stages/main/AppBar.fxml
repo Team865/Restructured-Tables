@@ -7,32 +7,34 @@
          prefWidth="220"
          HBox.hgrow="ALWAYS" fx:controller="ca.warp7.tables.controller.AppBarController">
 
-    <Label text="Event:"/>
-    <Label text="IRI 2018" style="-fx-font-weight:bold"/>
+    <Button text="System State"/>
 
-    <Button text="Settings" onAction="#onEventSettingsAction"/>
-
-    <Button text="Boards"/>
+    <Button text="Import Data" onAction="#onImportDataAction"/>
 
     <Separator/>
 
-    <Button text="Import Data" onAction="#onImportDataAction"/>
+    <Label text="Event:"/>
+    <Label text="Indiana Robotics Invitational 2018" style="-fx-font-weight:bold"/>
+
+    <Button text="Configure" onAction="#onEventConfigureAction"/>
+
+    <Button text="Boards"/>
 
     <Separator/>
 
     <Label text=" Matches:"/>
     <Label text="36/105" style="-fx-font-weight:bold; -fx-text-fill: #3c5c94"/>
 
-    <Button text="Scan Now" onAction="#onScanNowAction"/>
+    <Button text="Scanner" onAction="#onScannerAction"/>
 
-    <Button text="Match Schedule"/>
+    <Button text="Schedule"/>
 
     <Separator/>
 
     <Label text="Analysis:"/>
-    <Label text="Outdated" style="-fx-font-weight:bold; -fx-text-fill: #f08000"/>
-
-    <Button text="Analyze Now"/>
+    <!--<Label text="Outdated" style="-fx-font-weight:bold; -fx-text-fill: #f08000"/>
+-->
+    <Button text="Start"/>
 
     <Button text="Configure"/>
 
@@ -44,7 +46,5 @@
     <Label text=" Verified:"/>
     <Label text="0/216" style="-fx-font-weight:bold; -fx-text-fill: #008000"/>
 
-    <Button text="Verify Data"/>
-
-    <Separator/>
+    <Button text="Verify"/>
 </ToolBar>
