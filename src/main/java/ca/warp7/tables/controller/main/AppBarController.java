@@ -1,4 +1,4 @@
-package ca.warp7.tables.controller;
+package ca.warp7.tables.controller.main;
 
 import ca.warp7.tables.view.WebCamWindow;
 import javafx.fxml.FXML;
@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class AppBarController {
 
-    void openWindow(String resFile, String windowTitle){
+    private void openWindow(String resFile, String windowTitle){
         try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
