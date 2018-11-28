@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.*?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import java.lang.*?>
-<TableView xmlns="http://javafx.com/javafx"
+<VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml" prefWidth="220" HBox.hgrow="ALWAYS">
+    <TableView VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn text="Team">
             </TableColumn>
@@ -31,4 +33,5 @@
                 <String fx:value="Event"/>
             </FXCollections>
         </items>
-</TableView>
+    </TableView>
+</VBox>

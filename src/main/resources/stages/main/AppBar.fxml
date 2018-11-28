@@ -7,7 +7,7 @@
          prefWidth="220"
          HBox.hgrow="ALWAYS" fx:controller="ca.warp7.tables.controller.AppBarController">
 
-    <Button text="System State"/>
+    <Button text="System State" onAction="#onSystemStateAction"/>
 
     <Button text="Import Data" onAction="#onImportDataAction"/>
 
