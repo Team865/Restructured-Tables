@@ -8,10 +8,42 @@
     <style>
         -fx-padding: 10 10 10 10;
     </style>
-    <HBox spacing="10">
-        <Label text="hi"/>
-    </HBox>
+    <VBox VBox.vgrow="ALWAYS">
+        <HBox spacing="10">
+            <Label text="Event:"/>
+            <Label text="Indiana Robotics Invitational 2018" style="-fx-font-weight:bold; -fx-text-fill: #000000"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Scouted Matches:"/>
+            <Label text="36/105" style="-fx-font-weight:bold; -fx-text-fill: #3c5c94"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Total Teams:"/>
+            <Label text="70" style="-fx-font-weight:bold; -fx-text-fill: #3c5c94"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Wrong Data:"/>
+            <Label text="100/216" style="-fx-font-weight:bold; -fx-text-fill: #ff0000"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Verified Data:"/>
+            <Label text="0/216" style="-fx-font-weight:bold; -fx-text-fill: #008000"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Backup Status:"/>
+            <Label text="100% Done" style="-fx-font-weight:bold; -fx-text-fill: #000000"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Python Status:"/>
+            <Label text="Using Python 3.7.1" style="-fx-font-weight:bold; -fx-text-fill: #000000"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Analysis Status:"/>
+            <Label text="Exited with no errors" style="-fx-font-weight:bold; -fx-text-fill: #008000"/>
+        </HBox>
+    </VBox>
     <HBox alignment="CENTER_RIGHT" spacing="10">
+        <Button text="Show Logs"/>
         <Button text="Ok"/>
     </HBox>
 </VBox>

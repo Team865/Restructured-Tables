@@ -22,7 +22,7 @@
 
     <Separator/>
 
-    <Label text=" Matches:"/>
+    <Label text="Matches:"/>
     <Label text="36/105" style="-fx-font-weight:bold; -fx-text-fill: #3c5c94"/>
 
     <Button text="Scanner" onAction="#onScannerAction"/>
@@ -43,7 +43,7 @@
     <Label text="Wrong:"/>
     <Label text="100/216" style="-fx-font-weight:bold; -fx-text-fill: #ff0000"/>
 
-    <Label text=" Verified:"/>
+    <Label text="Verified:"/>
     <Label text="0/216" style="-fx-font-weight:bold; -fx-text-fill: #008000"/>
 
     <Button text="Verify"/>
