@@ -1,11 +1,10 @@
-package ca.warp7.tables.launcher;
+package ca.warp7.tables.view;
 
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamResolution;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -36,7 +35,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * @author Rakesh Bhatt (rakeshbhatt10)
  */
 @SuppressWarnings("Duplicates")
-public class WebCamAppLauncher2 extends Application {
+public class WebCamWindow {
 
     private FlowPane bottomCameraControlPane;
     private ImageView imgWebCamCapturedImage;
@@ -47,10 +46,10 @@ public class WebCamAppLauncher2 extends Application {
     private Button btnCameraStop;
     private Button btnCameraStart;
 
-    @Override
-    public void start(Stage primaryStage) {
+    public void start() {
+        Stage stage = new Stage();
 
-        primaryStage.setTitle("Connecting Camera Device Using Webcam Capture API");
+        stage.setTitle("Connecting Camera Device Using Webcam Capture API");
 
         BorderPane root = new BorderPane();
 
@@ -123,11 +122,11 @@ public class WebCamAppLauncher2 extends Application {
 
         root.setBottom(bottomCameraControlPane);
 
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setHeight(800);
-        primaryStage.setWidth(1000);
-        primaryStage.centerOnScreen();
-        primaryStage.show();
+        stage.setScene(new Scene(root));
+        stage.setHeight(800);
+        stage.setWidth(1000);
+        stage.centerOnScreen();
+        stage.show();
 
         Platform.runLater(this::setImageViewSize);
     }
@@ -211,10 +210,32 @@ public class WebCamAppLauncher2 extends Application {
         th.setDaemon(true);
         th.start();
         imgWebCamCapturedImage.imageProperty().bind(imageProperty);
-
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    static class WebCamInfo {
+
+        private String webCamName;
+        private int webCamIndex;
+
+        String getWebCamName() {
+            return webCamName;
+        }
+
+        void setWebCamName(String webCamName) {
+            this.webCamName = webCamName;
+        }
+
+        int getWebCamIndex() {
+            return webCamIndex;
+        }
+
+        void setWebCamIndex(int webCamIndex) {
+            this.webCamIndex = webCamIndex;
+        }
+
+        @Override
+        public String toString() {
+            return webCamName;
+        }
     }
 }

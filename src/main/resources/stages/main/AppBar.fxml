@@ -23,7 +23,7 @@
     <Label text=" Matches:"/>
     <Label text="36/105" style="-fx-font-weight:bold; -fx-text-fill: #3c5c94"/>
 
-    <Button text="Scan Now"/>
+    <Button text="Scan Now" onAction="#onScanNowAction"/>
 
     <Button text="Match Schedule"/>
 
