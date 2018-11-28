@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      minWidth="720" minHeight="360"
-      prefWidth="1600" prefHeight="900">
-    <fx:include source="TopBar.fxml"/>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <fx:include source="AppBar.fxml"/>
     <HBox VBox.vgrow="ALWAYS">
         <fx:include source="Views.fxml"/>
         <VBox HBox.hgrow="ALWAYS">
@@ -13,7 +11,7 @@
                 <fx:include source="Table.fxml"/>
                 <fx:include source="Metrics.fxml"/>
             </HBox>
-            <fx:include source="BottomBar.fxml"/>
+            <fx:include source="ViewBar.fxml"/>
         </VBox>
     </HBox>
 </VBox>

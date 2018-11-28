@@ -15,11 +15,11 @@ dependencies {
 
 jar {
     manifest {
-        attributes'Main-Class': "ca.warp7.tables.Main"
+        attributes'Main-Class': "ca.warp7.tables.main.Main"
     }
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
-mainClassName = "ca.warp7.tables.Main"
+mainClassName = "ca.warp7.tables.main.Main"
