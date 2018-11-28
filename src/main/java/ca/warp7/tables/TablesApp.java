@@ -21,12 +21,16 @@ public class TablesApp extends Application {
 
         try {
             Parent hBox = loader.load();
-            var scene = new Scene(hBox);
+            Scene scene = new Scene(hBox);
             primaryStage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         primaryStage.show();
+    }
+
+    static void launch0() {
+        launch();
     }
 }

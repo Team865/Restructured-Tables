@@ -8,8 +8,8 @@
       xmlns:fx="http://javafx.com/fxml"
       minWidth="720"
       minHeight="360"
-      prefWidth="1280"
-      prefHeight="720">
+      prefWidth="1600"
+      prefHeight="900">
     <ToolBar>
         <Label text="Event:"/>
         <Label text="IRI 2018" style="-fx-font-weight:bold"/>
@@ -24,7 +24,7 @@
         <Button text="Match Schedule"/>
         <Separator/>
         <Label text="Analysis:"/>
-        <Label text="Done" style="-fx-font-weight:bold; -fx-text-fill: #008000"/>
+        <Label text="Not Updated" style="-fx-font-weight:bold; -fx-text-fill: #f08000"/>
         <Button text="Analyze Now"/>
         <Button text="Configure"/>
         <Separator/>
@@ -36,18 +36,18 @@
         <Separator/>
     </ToolBar>
     <HBox VBox.vgrow="ALWAYS">
-        <VBox prefWidth="200" minWidth="200" maxWidth="200">
+        <VBox prefWidth="220" >
             <style>
                 -fx-border-color: gray;
             </style>
-            <Label text="Data Views" prefWidth="200" alignment="CENTER">
+            <Label text="Data Views" prefWidth="220" alignment="CENTER">
                 <style>
                     -fx-text-fill: #3c5c94;
                     -fx-font-weight: bold;
                     -fx-padding: 5 0 5 0;
                 </style>
             </Label>
-            <ToolBar prefWidth="200">
+            <ToolBar prefWidth="100">
                 <Button text="New View"/>
                 <Button text="Up"/>
                 <Button text="Down"/>
@@ -94,11 +94,11 @@
                         </FXCollections>
                     </items>
                 </TableView>
-                <VBox prefWidth="200" minWidth="200" maxWidth="200">
+                <VBox prefWidth="220">
                     <style>
                         -fx-border-color: gray;
                     </style>
-                    <Label text="Metric Selector" prefWidth="200" alignment="CENTER">
+                    <Label text="Metric Selector" prefWidth="220" alignment="CENTER">
                         <style>
                             -fx-text-fill: #3c5c94;
                             -fx-font-weight: bold;
@@ -107,7 +107,7 @@
                     </Label>
                     <ToolBar>
                         <Label text="Order:"/>
-                        <TextField focusTraversable="false" promptText="0, 1, 2"/>
+                        <TextField focusTraversable="false" promptText="0, 1, 2" prefWidth="150"/>
                     </ToolBar>
                     <TextField focusTraversable="false" prefWidth="100" promptText="Search Metrics" alignment="CENTER"/>
                     <ListView VBox.vgrow="ALWAYS">
