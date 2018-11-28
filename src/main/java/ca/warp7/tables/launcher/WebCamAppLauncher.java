@@ -36,6 +36,7 @@ import java.util.concurrent.atomic.AtomicReference;
  *
  * @author Rakesh Bhatt (rakeshbhatt10)
  */
+@SuppressWarnings("Duplicates")
 public class WebCamAppLauncher extends Application {
 
     private FlowPane bottomCameraControlPane;

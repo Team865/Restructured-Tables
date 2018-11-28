@@ -19,8 +19,8 @@ public class TablesApp extends Application {
         loader.setLocation(getClass().getResource("/fxml/Main.fxml"));
 
         try {
-            Parent hBox = loader.load();
-            Scene scene = new Scene(hBox);
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
             primaryStage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
