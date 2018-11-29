@@ -5,13 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        if (!System.getProperty("os.name").toLowerCase().startsWith("win")){
+        if (!System.getProperty("os.name").toLowerCase().startsWith("win")) {
             throw new UnsupportedOperationException("Only Windows is supported");
         }
 

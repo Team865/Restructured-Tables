@@ -12,6 +12,8 @@ dependencies {
     implementation "com.github.sarxos:webcam-capture:0.3.12"
     implementation 'com.google.zxing:core:3.3.3'
     implementation 'com.google.zxing:javase:3.3.3'
+    compile 'org.kordamp.ikonli:ikonli-javafx:2.4.0'
+    compile 'org.kordamp.ikonli:ikonli-fontawesome5-pack:2.4.0'
 }
 
 mainClassName = "ca.warp7.tables.main.Main"

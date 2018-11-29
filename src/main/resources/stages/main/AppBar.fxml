@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.HBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 <ToolBar xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
          prefWidth="220"
@@ -9,9 +10,17 @@
 
     <Button text="System State" onAction="#onSystemStateAction"/>
 
-    <Button text="Load" onAction="#onLoadAction"/>
+    <Button text="Load" onAction="#onLoadAction">
+        <graphic>
+            <FontIcon iconLiteral="fas-folder-open:20:gray"/>
+        </graphic>
+    </Button>
 
-    <Button text="Save As" onAction="#onLoadAction"/>
+    <Button text="Save As" onAction="#onLoadAction">
+        <graphic>
+            <FontIcon iconLiteral="fas-save:20:gray"/>
+        </graphic>
+    </Button>
 
     <Separator/>
 
@@ -21,25 +30,37 @@
 
     <Button text="Change" onAction="#onEventSelectAction"/>
 
-    <Button text="Edit Boards"/>
+    <Button text="Edit Boards">
+        <graphic>
+            <FontIcon iconLiteral="fas-clipboard:20:gray"/>
+        </graphic>
+    </Button>
 
     <Separator/>
 
     <Label text="Matches Scouted:"/>
     <Label text="36/105" style="-fx-font-weight:bold; -fx-text-fill: #3c5c94"/>
 
-    <Button text="Scan from App" onAction="#onScannerAction"/>
+    <Button text="Scan from App" onAction="#onScannerAction">
+        <graphic>
+            <FontIcon iconLiteral="fas-camera:20:gray"/>
+        </graphic>
+    </Button>
 
     <Separator/>
 
-    <Button text="Python Analysis" onAction="#onSystemStateAction"/>
+    <Button text="Python Analysis" onAction="#onSystemStateAction">
+        <graphic>
+            <FontIcon iconLiteral="fab-python:20:gray"/>
+        </graphic>
+    </Button>
 
     <Separator/>
 
-    <Label text="Wrong Entries:"/>
+    <Label text="Wrong:"/>
     <Label text="100/216" style="-fx-font-weight:bold; -fx-text-fill: #ff0000"/>
 
-    <Label text="Verified Entries:"/>
+    <Label text="Verified:"/>
     <Label text="0/216" style="-fx-font-weight:bold; -fx-text-fill: #008000"/>
 
     <Button text="Show All"/>
