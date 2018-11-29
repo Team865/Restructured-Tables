@@ -128,6 +128,8 @@ public class WebCamWindow {
         stage.centerOnScreen();
         stage.show();
 
+        stage.setOnCloseRequest(event -> disposeWebCamCamera());
+
         Platform.runLater(this::setImageViewSize);
     }
 
