@@ -6,7 +6,7 @@
 <?import java.lang.String?>
 <ToolBar xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml" prefWidth="220" HBox.hgrow="ALWAYS">
-    <TextField focusTraversable="false" promptText="View Name"/>
+    <TextField focusTraversable="false" promptText="View Name" prefWidth="205"/>
     <Separator/>
     <Label text="Type:"/>
     <ChoiceBox value="Entry">
@@ -27,7 +27,7 @@
     <Separator/>
     <Button text="Format Rules"/>
     <Separator/>
-    <Button text="Create Plot"/>
+    <Button text="Plot"/>
     <Separator/>
     <Label text="Pivot:"/>
     <ChoiceBox value="None" prefWidth="150">
@@ -46,7 +46,7 @@
     </ChoiceBox>
     <Separator/>
     <Label text="Find:"/>
-    <TextField focusTraversable="false" prefWidth="240"/>
+    <TextField focusTraversable="false" prefWidth="295"/>
     <Separator/>
     <Button text="Export"/>
     <Button text="Duplicate"/>
