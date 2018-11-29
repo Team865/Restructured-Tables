@@ -135,9 +135,11 @@ public class WebCamWindow {
 
     private void disposeWebCamCamera() {
         stopCamera = true;
-        webCam.close();
-        btnCameraStart.setDisable(true);
-        btnCameraStop.setDisable(true);
+        if (webCam != null) {
+            webCam.close();
+            btnCameraStart.setDisable(true);
+            btnCameraStop.setDisable(true);
+        }
     }
 
     private void startWebCamCamera() {
