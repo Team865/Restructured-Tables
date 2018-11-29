@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
@@ -30,6 +31,11 @@ public class TableController {
         TableColumn<Person, String> firstNameCol = new TableColumn<>("First Name");
         firstNameCol.setMinWidth(100);
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        firstNameCol.setCellFactory(param -> {
+            TableCell<Person, String> cell = TextFieldTableCell.<Person>forTableColumn().call(param);
+            cell.setEditable(true);
+            return cell;
+        });
 
         TableColumn<Person, String> lastNameCol = new TableColumn<>("Last Name");
         lastNameCol.setMinWidth(100);
@@ -45,11 +51,11 @@ public class TableController {
         btnCol.setComparator(Comparator.comparing(Person::getLikes));
 
         tableView.setItems(FXCollections.observableArrayList(
-                new Person("Jacob", "Smith", "jacob.smith@example.com","The Button"),
-                new Person("Isabella", "Johnson", "isabella.johnson@example.com","The Button"),
-                new Person("Ethan", "Williams", "ethan.williams@example.com","The Button"),
-                new Person("Emma", "Jones", "emma.jones@example.com","The Button"),
-                new Person("Michael", "Brown", "michael.brown@example.com","The Button")
+                new Person("Jacob", "Smith", "jacob.smith@example.com", "The Button"),
+                new Person("Isabella", "Johnson", "isabella.johnson@example.com", "The Button"),
+                new Person("Ethan", "Williams", "ethan.williams@example.com", "The Button"),
+                new Person("Emma", "Jones", "emma.jones@example.com", "The Button"),
+                new Person("Michael", "Brown", "michael.brown@example.com", "The Button")
 
         ));
         tableView.setEditable(true);
@@ -57,7 +63,8 @@ public class TableController {
         tableView.getColumns().add(firstNameCol);
         tableView.getColumns().add(lastNameCol);
         tableView.getColumns().add(emailCol);
-        tableView.getColumns().add(btnCol);
+
+        tableView.setOnKeyPressed(event -> tableView.getSortOrder().clear());
 
         btnCol.setCellFactory(new Callback<TableColumn<Person, Person>, TableCell<Person, Person>>() {
 
