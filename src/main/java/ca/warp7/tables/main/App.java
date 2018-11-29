@@ -9,6 +9,11 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
+
+        if (!System.getProperty("os.name").toLowerCase().startsWith("win")){
+            throw new UnsupportedOperationException("Only Windows is supported");
+        }
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/stages/main/App.fxml"));
 
