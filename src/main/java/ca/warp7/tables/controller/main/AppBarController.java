@@ -27,8 +27,8 @@ public class AppBarController {
     }
 
     @FXML
-    void onEventConfigureAction() {
-        openWindow("/stages/event_config/Main.fxml", "Configure Event");
+    void onEventSelectAction() {
+        openWindow("/stages/event_select/Main.fxml", "Select Event");
     }
 
     @FXML

@@ -5,11 +5,11 @@
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
     <fx:include source="AppBar.fxml"/>
     <HBox VBox.vgrow="ALWAYS">
-        <fx:include source="Views.fxml"/>
+        <fx:include source="ViewList.fxml"/>
         <VBox HBox.hgrow="ALWAYS">
             <HBox VBox.vgrow="ALWAYS">
                 <fx:include source="Table.fxml"/>
-                <fx:include source="Metrics.fxml"/>
+                <fx:include source="Columns.fxml"/>
             </HBox>
             <fx:include source="ViewBar.fxml"/>
         </VBox>
