@@ -45,7 +45,7 @@ public class AppBarController {
     }
 
     @FXML
-    void onImportDataAction() {
+    void onLoadAction() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.showOpenDialog(null);

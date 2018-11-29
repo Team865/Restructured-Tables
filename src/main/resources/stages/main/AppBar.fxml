@@ -9,12 +9,15 @@
 
     <Button text="System State" onAction="#onSystemStateAction"/>
 
-    <Button text="Import Data" onAction="#onImportDataAction"/>
+    <Button text="Load" onAction="#onLoadAction"/>
+
+    <Button text="Save As" onAction="#onLoadAction"/>
 
     <Separator/>
 
     <Label text="Event:"/>
-    <Label text="Indiana Robotics Invitational 2018" style="-fx-font-weight:bold"/>
+
+    <Label text="2018iri" style="-fx-font-weight:bold"/>
 
     <Button text="Configure" onAction="#onEventConfigureAction"/>
 
@@ -34,7 +37,7 @@
     <Label text="Analysis:"/>
     <!--<Label text="Outdated" style="-fx-font-weight:bold; -fx-text-fill: #f08000"/>
 -->
-    <Button text="Start"/>
+    <Button text="Open" onAction="#onSystemStateAction"/>
 
     <Button text="Configure"/>
 
