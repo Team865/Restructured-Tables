@@ -27,11 +27,27 @@
     <Separator/>
     <Button text="Format Rules"/>
     <Separator/>
+    <Button text="Create Plot"/>
+    <Separator/>
+    <Label text="Pivot:"/>
+    <ChoiceBox value="None" prefWidth="150">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="None"/>
+                <String fx:value="Team"/>
+                <String fx:value="Match"/>
+                <String fx:value="Alliance"/>
+                <String fx:value="Auto Line"/>
+                <String fx:value="Scale"/>
+                <String fx:value="Switch"/>
+                <String fx:value="Climb"/>
+            </FXCollections>
+        </items>
+    </ChoiceBox>
+    <Separator/>
     <Label text="Find:"/>
     <TextField focusTraversable="false" prefWidth="240"/>
     <Separator/>
-    <Label text="Action:"/>
     <Button text="Export"/>
     <Button text="Duplicate"/>
-    <Button text="Delete"/>
 </ToolBar>

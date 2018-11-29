@@ -6,12 +6,8 @@
     <fx:include source="AppBar.fxml"/>
     <HBox VBox.vgrow="ALWAYS">
         <fx:include source="ViewList.fxml"/>
-        <VBox HBox.hgrow="ALWAYS">
-            <HBox VBox.vgrow="ALWAYS">
-                <fx:include source="Table.fxml"/>
-                <fx:include source="Columns.fxml"/>
-            </HBox>
-            <fx:include source="ViewBar.fxml"/>
-        </VBox>
+        <fx:include source="Table.fxml"/>
+        <fx:include source="Columns.fxml"/>
     </HBox>
+    <fx:include source="ViewBar.fxml"/>
 </VBox>

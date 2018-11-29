@@ -31,22 +31,5 @@
             </FXCollections>
         </items>
     </ListView>
-    <ToolBar>
-        <Label text="Pivot:"/>
-        <ChoiceBox value="None" prefWidth="150">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="None"/>
-                    <String fx:value="Team"/>
-                    <String fx:value="Match"/>
-                    <String fx:value="Alliance"/>
-                    <String fx:value="Auto Line"/>
-                    <String fx:value="Scale"/>
-                    <String fx:value="Switch"/>
-                    <String fx:value="Climb"/>
-                </FXCollections>
-            </items>
-        </ChoiceBox>
-    </ToolBar>
 </VBox>
 
