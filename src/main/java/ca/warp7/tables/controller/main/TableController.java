@@ -4,7 +4,9 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
@@ -41,9 +43,35 @@ public class TableController {
         lastNameCol.setMinWidth(100);
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
+        lastNameCol.setCellFactory(new Callback<TableColumn<Person, String>, TableCell<Person, String>>() {
+            @Override
+            public TableCell<Person, String> call(TableColumn<Person, String> param) {
+                return new TableCell<Person, String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        setText(item);
+                        if (!empty) {
+                            String c = Integer.toHexString((int) (Math.random() * 255));
+                            setStyle(String.format("-fx-background-color: #ff%s%s", c, c));
+                        }
+                    }
+                };
+            }
+        });
+
         TableColumn<Person, String> emailCol = new TableColumn<>("Email");
         emailCol.setMinWidth(200);
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        emailCol.setCellFactory(param -> new CheckBoxTableCell<Person, String>(){
+            @Override
+            public void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(item);
+                setAlignment(Pos.CENTER_LEFT);
+            }
+        });
 
         TableColumn<Person, Person> btnCol = new TableColumn<>("Gifts");
         btnCol.setMinWidth(150);
@@ -59,6 +87,8 @@ public class TableController {
 
         ));
         tableView.setEditable(true);
+
+        tableView.getSelectionModel().setCellSelectionEnabled(true);
 
         tableView.getColumns().add(firstNameCol);
         tableView.getColumns().add(lastNameCol);
