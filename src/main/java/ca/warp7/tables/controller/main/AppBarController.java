@@ -1,39 +1,20 @@
 package ca.warp7.tables.controller.main;
 
+import ca.warp7.tables.controller.Misc;
 import ca.warp7.tables.view.WebCamWindow;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class AppBarController {
 
-    private void openWindow(String resFile, String windowTitle){
-        try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(resFile));
-            stage.setTitle(windowTitle);
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/app-icon.png")));
-            stage.setScene(new Scene(loader.load()));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     void onEventSelectAction() {
-        openWindow("/stages/event_select/Main.fxml", "Select Event");
+        Misc.openWindow("/stages/event_select.fxml", "Select Event", getClass());
     }
 
     @FXML
     void onSystemStateAction() {
-        openWindow("/stages/system_state/Main.fxml", "System State");
+        Misc.openWindow("/stages/system_state.fxml", "System State", getClass());
     }
 
 

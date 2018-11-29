@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import java.lang.*?>
 <VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml" prefWidth="220">
+      xmlns:fx="http://javafx.com/fxml" prefWidth="220" fx:controller="ca.warp7.tables.controller.main.ViewsController">
     <Label text="Views" prefWidth="220" alignment="CENTER">
         <style>
             -fx-text-fill: #3c5c94;
@@ -14,7 +14,7 @@
         </style>
     </Label>
     <ToolBar>
-        <Button text="New View" prefWidth="200"/>
+        <Button text="New View" prefWidth="200" onAction="#onNewViewAction"/>
     </ToolBar>
     <TextField focusTraversable="false" prefWidth="100" promptText="Search Data Views" alignment="CENTER"/>
     <ListView VBox.vgrow="ALWAYS">
