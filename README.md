@@ -19,28 +19,36 @@ This repository will provide an implementation to the following data model and p
 6. A *Table Type* is the representation type of a Table's row headers
 7. *Event*, *Match*, *Team*, *Entry*, *Scout* are specific Table Types used for FRC Scouting Data
 8. A *Table Set* is a set of Tables with unique Table Types
-9. The *Data* is a record of a Table Set in the Working Directory used by an Instance for information analysis
-10. *Configurations* represent any state of the Working Directory that is not the Data and that represent some arrangements affecting the state of the Instance
-11. A *Version* represents the difference in Data and Configurations of an Instance in a certain period of time, that is attributed to an User
-12. A *View* is a Configuration that structures and displays the Data in a specific way without modifying it
+9. A *Data*set is a Table Set in the Working Directory used by an Instance for information analysis
+10. *Configurations* represent any state of the Working Directory that is not a Dataset and that represent some arrangements affecting the state of the Instance
+11. A *Version* represents the difference in Datasets and Configurations of an Instance in a certain period of time, attributed to a User
+12. A *View* is a Configuration that structures and displays a Dataset in a specific way without modifying it
 13. A *Script* is a Configuration written in a programming language that aids the Instance in data analysis
 
 #####  C. Working Directory Configuration
 
 ```
 {ApplicationExecutabe}
-{ScriptingExecutables...}/
+{ScriptingExecutables}/
 {WorkingDirectory}/
 	Backup/
-	
+	Output/
+	Scripts/
+	Datasets/
+	Versions/
+	{UserConfiguration}
+	{DatasetConfiguration}
 ```
 
 1. The above structure specifies the basic Configuration of the Working Directory
-2. For the purposes of attributing changes and actions to the user who made them, all such changes and actions should have the ability to record their user.
-3. All data meant to communicate between instances of the model must contain its source user
+2. The Executables should be in the same parent directory as the working directory in a distribution, but it is not necessary during development
+3. The `ApplicationExecutable` is responsible for starting the Application
+4. The `ScriptingExecutables` directory contains the software to run Scripts
 
 ##### D. Decentralization and Versioning
 
 1. An Instance has the ability to update its Data and Configurations when given the Working Directory from another Instance. This means Data and Configurations can be transferred between devices
 2. An Instance has the ability to merge Versions when updating from another Working Directory
+3. For the purposes of attributing changes and actions to the user who made them, all such changes and actions should have the ability to record their user.
+4. All data meant to communicate between instances of the model must contain its source use
 
