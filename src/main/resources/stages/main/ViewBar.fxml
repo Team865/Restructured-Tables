@@ -12,7 +12,7 @@
 
     <Button text="View Info">
         <graphic>
-            <FontIcon iconLiteral="fas-eye:20:gray"/>
+            <FontIcon iconLiteral="fas-eye:18:gray"/>
         </graphic>
     </Button>
 
@@ -38,7 +38,7 @@
 
     <Button text="Filter">
         <graphic>
-            <FontIcon iconLiteral="fas-filter:20:gray"/>
+            <FontIcon iconLiteral="fas-filter:18:gray"/>
         </graphic>
     </Button>
 
@@ -46,7 +46,7 @@
 
     <Button text="Format">
         <graphic>
-            <FontIcon iconLiteral="fas-paint-brush:20:gray"/>
+            <FontIcon iconLiteral="fas-paint-brush:18:gray"/>
         </graphic>
     </Button>
 
@@ -54,7 +54,7 @@
 
     <Button text="Plot">
         <graphic>
-            <FontIcon iconLiteral="fas-chart-bar:20:gray"/>
+            <FontIcon iconLiteral="fas-chart-bar:18:gray"/>
         </graphic>
     </Button>
 
@@ -62,13 +62,13 @@
 
     <Button text="Pivot">
         <graphic>
-            <FontIcon iconLiteral="fas-table:20:gray"/>
+            <FontIcon iconLiteral="fas-table:18:gray"/>
         </graphic>
     </Button>
 
     <Separator/>
 
-    <FontIcon iconLiteral="fas-search:20:gray"/>
+    <FontIcon iconLiteral="fas-search:18:gray"/>
     <Label text="Find:"/>
     <TextField focusTraversable="false" prefWidth="300"/>
 
@@ -76,13 +76,13 @@
 
     <Button text="Export">
         <graphic>
-            <FontIcon iconLiteral="fas-share:20:gray"/>
+            <FontIcon iconLiteral="fas-share:18:gray"/>
         </graphic>
     </Button>
 
     <Button text="Clone">
         <graphic>
-            <FontIcon iconLiteral="fas-clone:20:gray"/>
+            <FontIcon iconLiteral="fas-clone:18:gray"/>
         </graphic>
     </Button>
 

@@ -10,19 +10,19 @@
 
     <Button text="Load" onAction="#onLoadAction">
         <graphic>
-            <FontIcon iconLiteral="fas-folder-open:20:gray"/>
+            <FontIcon iconLiteral="fas-folder-open:18:gray"/>
         </graphic>
     </Button>
 
     <Button text="Save As" onAction="#onLoadAction">
         <graphic>
-            <FontIcon iconLiteral="fas-save:20:gray"/>
+            <FontIcon iconLiteral="fas-save:18:gray"/>
         </graphic>
     </Button>
 
     <Button text="New View" onAction="#onNewViewAction">
         <graphic>
-            <FontIcon iconLiteral="fas-plus:20:gray"/>
+            <FontIcon iconLiteral="fas-plus:18:gray"/>
         </graphic>
     </Button>
 
@@ -34,13 +34,13 @@
 
     <Button text="Events" onAction="#onEventSelectAction">
         <graphic>
-            <FontIcon iconLiteral="fas-trophy:20:gray"/>
+            <FontIcon iconLiteral="fas-trophy:18:gray"/>
         </graphic>
     </Button>
 
     <Button text="Boards">
         <graphic>
-            <FontIcon iconLiteral="fas-clipboard:20:gray"/>
+            <FontIcon iconLiteral="fas-clipboard:18:gray"/>
         </graphic>
     </Button>
 
@@ -51,7 +51,7 @@
 
     <Button text="Scanner" onAction="#onScannerAction">
         <graphic>
-            <FontIcon iconLiteral="fas-camera:20:gray"/>
+            <FontIcon iconLiteral="fas-camera:18:gray"/>
         </graphic>
     </Button>
 
@@ -59,7 +59,7 @@
 
     <Button text="Python Analysis" onAction="#onSystemStateAction">
         <graphic>
-            <FontIcon iconLiteral="fab-python:20:gray"/>
+            <FontIcon iconLiteral="fab-python:18:gray"/>
         </graphic>
     </Button>
 
@@ -67,7 +67,7 @@
 
     <Button text="Wrong Data">
         <graphic>
-            <FontIcon iconLiteral="fas-times:20:gray"/>
+            <FontIcon iconLiteral="fas-times:18:gray"/>
         </graphic>
     </Button>
 
@@ -78,13 +78,13 @@
 
     <Button text="System" onAction="#onSystemStateAction">
         <graphic>
-            <FontIcon iconLiteral="fas-info-circle:20:gray"/>
+            <FontIcon iconLiteral="fas-info-circle:18:gray"/>
         </graphic>
     </Button>
 
     <Button text="Versions">
         <graphic>
-            <FontIcon iconLiteral="fas-history:20:gray"/>
+            <FontIcon iconLiteral="fas-history:18:gray"/>
         </graphic>
     </Button>
 </ToolBar>
