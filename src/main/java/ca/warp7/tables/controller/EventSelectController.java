@@ -1,4 +1,4 @@
-package ca.warp7.tables.controller.event_select;
+package ca.warp7.tables.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

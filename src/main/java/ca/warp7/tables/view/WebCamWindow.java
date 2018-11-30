@@ -34,7 +34,6 @@ import java.util.concurrent.atomic.AtomicReference;
  *
  * @author Rakesh Bhatt (rakeshbhatt10)
  */
-@SuppressWarnings("Duplicates")
 public class WebCamWindow {
 
     private FlowPane bottomCameraControlPane;
@@ -61,7 +60,6 @@ public class WebCamWindow {
         root.setTop(topPane);
 
         webCamPane = new BorderPane();
-        webCamPane.setStyle("-fx-background-color: #ccc;");
         imgWebCamCapturedImage = new ImageView();
         webCamPane.setCenter(imgWebCamCapturedImage);
         root.setCenter(webCamPane);

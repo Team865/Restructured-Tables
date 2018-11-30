@@ -49,6 +49,8 @@
     <Label text="Match:"/>
     <Label text="36/105" style="-fx-font-weight:bold; -fx-text-fill: #3c5c94"/>
 
+    <Button text="Old" onAction="#onOldScannerAction"/>
+
     <Button text="Scanner" onAction="#onScannerAction">
         <graphic>
             <FontIcon iconLiteral="fas-camera:20:gray"/>
