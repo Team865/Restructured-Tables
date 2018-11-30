@@ -32,6 +32,12 @@ public class AppBarController {
         fileChooser.showOpenDialog(null);
     }
 
+
+    @FXML
+    void onNewViewAction() {
+        Misc.openWindow("/stages/new_view.fxml", "New View", getClass());
+    }
+
     @FXML
     void initialize() {
     }

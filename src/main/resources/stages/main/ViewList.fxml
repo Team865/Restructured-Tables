@@ -14,13 +14,6 @@
             -fx-padding: 5 0 5 0;
         </style>
     </Label>
-    <ToolBar>
-        <Button text="New View" prefWidth="200" onAction="#onNewViewAction">
-            <graphic>
-                <FontIcon iconLiteral="fas-plus:20:gray"/>
-            </graphic>
-        </Button>
-    </ToolBar>
     <TextField focusTraversable="false" prefWidth="100" promptText="Search Data Views" alignment="CENTER"/>
     <ListView VBox.vgrow="ALWAYS">
         <items>
