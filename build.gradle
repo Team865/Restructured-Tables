@@ -14,6 +14,7 @@ dependencies {
     implementation 'com.google.zxing:javase:3.3.3'
     compile 'org.kordamp.ikonli:ikonli-javafx:2.4.0'
     compile 'org.kordamp.ikonli:ikonli-fontawesome5-pack:2.4.0'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.6'
 }
 
 mainClassName = "ca.warp7.tables.main.Main"
