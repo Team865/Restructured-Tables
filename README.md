@@ -18,3 +18,4 @@ This repository will provide an implementation to the following data model and p
 ##### C. Model Instance Configuration
 
 1. Each instance of the model should record one user of that instance.
+
