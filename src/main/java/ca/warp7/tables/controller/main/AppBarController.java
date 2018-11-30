@@ -1,34 +1,25 @@
 package ca.warp7.tables.controller.main;
 
-import ca.warp7.tables.view.WebCamWindow;
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
 
-import static ca.warp7.tables.controller.utils.StageUtils.openWindow;
+import static ca.warp7.tables.controller.utils.StageUtils.stage;
 
 public class AppBarController {
 
     @FXML
     void onEventSelectAction() {
-        openWindow("/stages/event_select.fxml", "Select Event", getClass());
+        stage("/stages/event_select.fxml", "Select Event", getClass());
     }
 
     @FXML
     void onSystemStateAction() {
-        openWindow("/stages/system_state.fxml", "System State", getClass());
-    }
-
-
-    private WebCamWindow webCamWindow = new WebCamWindow();
-
-    @FXML
-    void onOldScannerAction() {
-        webCamWindow.start();
+        stage("/stages/system_state.fxml", "System State", getClass());
     }
 
     @FXML
     void onScannerAction() {
-        openWindow("/stages/scanner.fxml", "Scanner", getClass());
+        stage("/stages/scanner.fxml", "Scanner", getClass());
     }
 
     @FXML
@@ -41,7 +32,7 @@ public class AppBarController {
 
     @FXML
     void onNewViewAction() {
-        openWindow("/stages/new_view.fxml", "New View", getClass());
+        stage("/stages/new_view.fxml", "New View", getClass());
     }
 
     @FXML

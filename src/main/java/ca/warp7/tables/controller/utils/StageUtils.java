@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class StageUtils {
-    public static void openWindow(String resFile, String windowTitle, Class caller) {
+    public static void stage(String resFile, String windowTitle, Class caller) {
         try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
