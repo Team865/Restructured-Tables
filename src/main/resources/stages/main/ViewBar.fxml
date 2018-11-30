@@ -7,12 +7,15 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <ToolBar xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml" prefWidth="220" HBox.hgrow="ALWAYS">
+
     <Button text="View Info">
         <graphic>
             <FontIcon iconLiteral="fas-eye:20:gray"/>
         </graphic>
     </Button>
-    <Label text="Type:"/>
+
+    <Label text="Row Type:"/>
+
     <ChoiceBox value="Entry">
         <items>
             <FXCollections fx:factory="observableArrayList">
@@ -24,46 +27,63 @@
             </FXCollections>
         </items>
     </ChoiceBox>
+
     <Separator/>
+
+    <CheckBox text="Transpose"/>
+
+    <Separator/>
+
     <Button text="Filter">
         <graphic>
             <FontIcon iconLiteral="fas-filter:20:gray"/>
         </graphic>
     </Button>
+
     <Separator/>
-    <CheckBox text="Transpose"/>
-    <Separator/>
+
     <Button text="Format">
         <graphic>
             <FontIcon iconLiteral="fas-paint-brush:20:gray"/>
         </graphic>
     </Button>
+
     <Separator/>
+
     <Button text="Plot">
         <graphic>
             <FontIcon iconLiteral="fas-chart-bar:20:gray"/>
         </graphic>
     </Button>
+
     <Separator/>
+
     <Button text="Pivot">
         <graphic>
             <FontIcon iconLiteral="fas-table:20:gray"/>
         </graphic>
     </Button>
+
     <Separator/>
+
     <Label text="Find:"/>
-    <TextField focusTraversable="false" prefWidth="295"/>
+    <TextField focusTraversable="false" prefWidth="300"/>
+
     <Separator/>
+
     <Button text="Export">
         <graphic>
             <FontIcon iconLiteral="fas-share:20:gray"/>
         </graphic>
     </Button>
+
     <Button text="Clone">
         <graphic>
             <FontIcon iconLiteral="fas-clone:20:gray"/>
         </graphic>
     </Button>
+
     <Separator/>
     <Label text="RowName : ColumnName"/>
+
 </ToolBar>
