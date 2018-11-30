@@ -55,21 +55,6 @@ public class ScannerController implements StageController {
                         try{
                             Result result = new MultiFormatReader().decode(new BinaryBitmap(
                                     new HybridBinarizer(new BufferedImageLuminanceSource(image))));
-                            Graphics graphics = image.getGraphics();
-                            ResultPoint[] resultPoints = result.getResultPoints();
-                            graphics.setColor(Color.BLUE);
-                            double px = resultPoints[0].getX();
-                            double py = resultPoints[0].getY();
-                            double ox = px;
-                            double oy = py;
-                            for (int i = 1; i < resultPoints.length; i++) {
-                                double nx = resultPoints[i].getX();
-                                double ny = resultPoints[i].getY();
-                                px = nx;
-                                py = ny;
-                                graphics.drawLine((int) px, (int) py, (int) nx, (int) ny);
-                            }
-                            graphics.drawLine((int) px, (int) py, (int) ox, (int) oy);
                             Platform.runLater(() -> resultProperty.set(result.getText()));
                         } catch (NotFoundException ignored){
                         }
@@ -80,6 +65,11 @@ public class ScannerController implements StageController {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                }
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
             webcam.close();
