@@ -7,8 +7,11 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <ToolBar xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml" prefWidth="220" HBox.hgrow="ALWAYS">
-    <TextField focusTraversable="false" promptText="View Name" prefWidth="205"/>
-    <Separator/>
+    <Button text="View Info">
+        <graphic>
+            <FontIcon iconLiteral="fas-eye:20:gray"/>
+        </graphic>
+    </Button>
     <Label text="Type:"/>
     <ChoiceBox value="Entry">
         <items>
@@ -30,7 +33,7 @@
     <Separator/>
     <CheckBox text="Transpose"/>
     <Separator/>
-    <Button text="Format Rules">
+    <Button text="Format">
         <graphic>
             <FontIcon iconLiteral="fas-paint-brush:20:gray"/>
         </graphic>
@@ -61,4 +64,6 @@
             <FontIcon iconLiteral="fas-clone:20:gray"/>
         </graphic>
     </Button>
+    <Separator/>
+    <Label text="RowName : ColumnName"/>
 </ToolBar>
