@@ -4,7 +4,7 @@ import ca.warp7.tables.view.WebCamWindow;
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
 
-import static ca.warp7.tables.controller.Misc.openWindow;
+import static ca.warp7.tables.controller.utils.StageUtils.openWindow;
 
 public class AppBarController {
 
@@ -28,6 +28,7 @@ public class AppBarController {
 
     @FXML
     void onScannerAction() {
+        openWindow("/stages/scanner.fxml", "Scanner", getClass());
     }
 
     @FXML
