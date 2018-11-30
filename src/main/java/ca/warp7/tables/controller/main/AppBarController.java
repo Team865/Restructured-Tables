@@ -9,17 +9,17 @@ public class AppBarController {
 
     @FXML
     void onEventSelectAction() {
-        stage("/stages/event_select.fxml", "Select Event", getClass());
+        stage("/stages/EventSelect.fxml", "Select Event", getClass());
     }
 
     @FXML
     void onSystemStateAction() {
-        stage("/stages/system_state.fxml", "System State", getClass());
+        stage("/stages/SystemState.fxml", "System State", getClass());
     }
 
     @FXML
     void onScannerAction() {
-        stage("/stages/scanner.fxml", "Scanner", getClass());
+        stage("/stages/Scanner.fxml", "Scanner", getClass());
     }
 
     @FXML
@@ -32,7 +32,7 @@ public class AppBarController {
 
     @FXML
     void onNewViewAction() {
-        stage("/stages/new_view.fxml", "New View", getClass());
+        stage("/stages/NewView.fxml", "New View", getClass());
     }
 
     @FXML

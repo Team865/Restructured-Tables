@@ -9,8 +9,10 @@ import com.google.zxing.common.HybridBinarizer;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.StringProperty;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -28,6 +30,9 @@ public class ScannerController implements StageController {
     private Webcam webcam;
     private boolean isStreaming;
     private ObjectProperty<Image> imageProperty = new SimpleObjectProperty<>();
+    @FXML
+    Label result;
+    private StringProperty resultProperty;
 
     private void onStageClose(WindowEvent event) {
         isStreaming = false;
@@ -35,6 +40,7 @@ public class ScannerController implements StageController {
 
     @FXML
     void initialize() {
+        resultProperty = result.textProperty();
         webcam = Webcam.getDefault();
         webcam.setCustomViewSizes(WebcamResolution.VGA.getSize(), WebcamResolution.HD.getSize());
         webcam.open();
@@ -64,6 +70,7 @@ public class ScannerController implements StageController {
                                 graphics.drawLine((int) px, (int) py, (int) nx, (int) ny);
                             }
                             graphics.drawLine((int) px, (int) py, (int) ox, (int) oy);
+                            Platform.runLater(() -> resultProperty.set(result.getText()));
                         } catch (NotFoundException ignored){
                         }
 
