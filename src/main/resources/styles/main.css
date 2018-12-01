@@ -12,3 +12,21 @@
 .highlight-blue:hover {
     -fx-background-color: #ccc;
 }
+
+.team-blue {
+    -fx-font-weight: bold;
+    -fx-text-fill: blue;
+}
+
+.team-red {
+    -fx-font-weight: bold;
+    -fx-text-fill: red;
+}
+
+.info-blue {
+    -fx-text-fill: blue;
+}
+
+.info-red {
+    -fx-text-fill: red;
+}

@@ -17,6 +17,8 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -31,18 +33,25 @@ public class ScannerController implements StageController {
 
     @FXML
     ImageView streamImageView;
+
+    @FXML
+    Label resultLabel;
+
+    @FXML
+    TextArea comments;
+
+    @FXML
+    ListView scanList;
+
+    private StringProperty resultProperty;
+    private Stage stage;
     private Webcam webcam;
     private boolean isStreaming;
     private ObjectProperty<Image> imageProperty = new SimpleObjectProperty<>();
-    @FXML
-    Label result;
-    @FXML
-    private StringProperty resultProperty;
-    private Stage stage;
 
     @FXML
     void initialize() {
-        resultProperty = result.textProperty();
+        resultProperty = resultLabel.textProperty();
         webcam = Webcam.getDefault();
         webcam.setCustomViewSizes(WebcamResolution.VGA.getSize());
         webcam.setViewSize(WebcamResolution.VGA.getSize());

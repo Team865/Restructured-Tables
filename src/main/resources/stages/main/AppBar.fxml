@@ -81,9 +81,17 @@
         </graphic>
     </Button>
 
+    <Separator/>
+
     <Button text="System Check" onAction="#onSystemStateAction">
         <graphic>
             <FontIcon iconLiteral="fas-info-circle:18:gray"/>
+        </graphic>
+    </Button>
+
+    <Button text="Refresh" onAction="#onSystemStateAction">
+        <graphic>
+            <FontIcon iconLiteral="fas-sync:18:gray"/>
         </graphic>
     </Button>
 </ToolBar>
