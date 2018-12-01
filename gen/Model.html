@@ -29,18 +29,54 @@
 <li>A <em>Script</em> is a Configuration written in a programming language that aids the Instance in data analysis</li>
 
 </ol>
-<h5>C. Working Directory Configuration</h5>
-<pre><code>{ApplicationExecutabe}
-{ScriptingExecutables}/
+<h5>C. File System Configuration</h5>
+<p>From this point on, specific implementation details will be presented instead of generic terms listed above. The following is the structure in terms of the file system:</p>
+<pre><code class='language-text' lang='text'>{ApplicationExecutable}
+python-embed/
+	{PythonEmbedExecutable}/
+{ExternalMedia}/
+	photos/
+		{TeamPhotos...}
+	videos/
+		{MatchVideos...}
 {WorkingDirectory}/
-	Output/
-	Scripts/
-	Datasets/
+	output/
+		html/
+			{HTMLOutput...}
+		csv/
+			{CSVOutput...}
+		{ExcelOutput...}
+	scripts/
+		{PythonScripts...}
+	boards/
+		{BoardFiles...}
+	datasets/
+		{DatasetIndexConfiguration}
+		{InactiveZippedDataset...}
+		{ActiveDataset...}/
+			intermediate/
+				{IntermediateFiles...}
+			raw/
+				{RawData...}
+			scripts/
+				{PythonScripts...}
+			tba-cache/
+				{TheBlueAllianceCachedData...}
+			tables/
+				{TableData...}
+			verified/
+				{VerifiedData...}
+			views/
+				{ViewConfiguration...}
+			{BoardsConfiguration}
+			{DatasetConfiguration}
+			{TablesConfiguration}
+			{WrongDataConfiguration}
+	{ScriptConfiguration}
 	{UserConfiguration}
-	{DatasetConfiguration}
+	{CurrentDatasetConfiguration}
 </code></pre>
 <ol start='' >
-<li>The above structure specifies the basic Configuration of the Working Directory</li>
 <li>The Executables should be in the same parent directory as the working directory in a distribution, but it is not necessary during development</li>
 <li>The <code>ApplicationExecutable</code> is responsible for starting the Application</li>
 <li>The <code>ScriptingExecutables</code> directory contains the software to run Scripts</li>

@@ -29,7 +29,7 @@ This repository will provide an implementation to the following data model and p
 
 From this point on, specific implementation details will be presented instead of generic terms listed above. The following is the structure in terms of the file system:
 
-```
+```text
 {ApplicationExecutable}
 python-embed/
 	{PythonEmbedExecutable}/
