@@ -80,7 +80,7 @@ public class ScannerController implements StageController {
     private boolean isStreaming;
     private ObjectProperty<Image> imageProperty = new SimpleObjectProperty<>();
     private ObservableList<ScannerEntry> scannerEntries = FXCollections.observableArrayList(
-            new ScannerEntry(true, "88", "4", "4")
+            new ScannerEntry(true, "865", "R1 : Scout 1")
     );
 
     @FXML
@@ -88,39 +88,7 @@ public class ScannerController implements StageController {
         resultProperty = resultLabel.textProperty();
         startCameraStream();
         scanList.setItems(scannerEntries);
-        scanList.setCellFactory(listView -> new ListCell<ScannerEntry>() {
-
-            @Override
-            protected void updateItem(ScannerEntry item, boolean empty) {
-                super.updateItem(item, empty);
-                setPrefHeight(50);
-                if (empty || item == null) return;
-
-                HBox hBox = new HBox();
-                hBox.setSpacing(10);
-                hBox.setAlignment(Pos.CENTER_LEFT);
-
-                CheckBox checkBox = new CheckBox();
-//                checkBox.setSelected(true);
-                checkBox.selectedProperty().bindBidirectional(item.commitProperty);
-
-                Label label = new Label();
-//                label.setText("hi");
-                label.textProperty().bindBidirectional(item.teamProperty);
-                label.getStyleClass().add("team-red");
-
-                Label label1 = new Label();
-//                label1.setText("Scout");
-                label.textProperty().bindBidirectional(item.scoutProperty);
-                label.getStyleClass().add("info-red");
-
-                hBox.getChildren().add(checkBox);
-                hBox.getChildren().add(label);
-                hBox.getChildren().add(label1);
-
-                setGraphic(hBox);
-            }
-        });
+        initializeListFactory();
     }
 
     @Override
@@ -141,6 +109,46 @@ public class ScannerController implements StageController {
         stage.close();
     }
 
+    private void initializeListFactory() {
+        scanList.setCellFactory(listView -> new ListCell<ScannerEntry>() {
+
+            @Override
+            protected void updateItem(ScannerEntry item, boolean empty) {
+                super.updateItem(item, empty);
+                setPrefHeight(50);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                    return;
+                }
+
+                HBox hBox = new HBox();
+                hBox.setSpacing(10);
+                hBox.setAlignment(Pos.CENTER_LEFT);
+
+                CheckBox checkBox = new CheckBox();
+                checkBox.selectedProperty().bindBidirectional(item.commitProperty);
+
+                Label team = new Label();
+                team.textProperty().bindBidirectional(item.teamProperty);
+                team.getStyleClass().add("team-red");
+                team.setPrefWidth(50);
+
+                Label scout = new Label();
+                scout.textProperty().bindBidirectional(item.boardScoutProperty);
+                scout.setPrefWidth(150);
+
+                hBox.getChildren().add(checkBox);
+                hBox.getChildren().add(team);
+                hBox.getChildren().add(scout);
+                hBox.getChildren().add(new Hyperlink("Details"));
+
+                setGraphic(hBox);
+            }
+        });
+    }
+
     private void startCameraStream() {
         webcam = Webcam.getDefault();
         webcam.setCustomViewSizes(WebcamResolution.VGA.getSize());
@@ -150,6 +158,7 @@ public class ScannerController implements StageController {
         Thread thread = new Thread(() -> {
             final AtomicReference<WritableImage> imgRef = new AtomicReference<>();
             BufferedImage image;
+            int notFoundCount = 0;
             while (isStreaming) {
                 image = webcam.getImage();
                 if (image != null) {
@@ -157,8 +166,14 @@ public class ScannerController implements StageController {
                         try {
                             Result result = new MultiFormatReader().decode(new BinaryBitmap(
                                     new HybridBinarizer(new BufferedImageLuminanceSource(image))));
+                            notFoundCount = 0;
                             Platform.runLater(() -> resultProperty.set(result.getText()));
                         } catch (NotFoundException ignored) {
+                            notFoundCount++;
+                            if (notFoundCount > 15) {
+                                Platform.runLater(() -> resultProperty.set("No QR code found"));
+                                notFoundCount = 0;
+                            }
                         }
 
                         imgRef.set(SwingFXUtils.toFXImage(image, imgRef.get()));
@@ -175,5 +190,4 @@ public class ScannerController implements StageController {
         thread.start();
         streamImageView.imageProperty().bind(imageProperty);
     }
-
 }

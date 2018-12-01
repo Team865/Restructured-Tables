@@ -39,7 +39,7 @@
             </Button>
         </HBox>
 
-        <Label fx:id="resultLabel" text="No Results yet" prefHeight="200" prefWidth="400" wrapText="true"
+        <Label fx:id="resultLabel" text="No QR code found" prefHeight="200" prefWidth="400" wrapText="true"
                alignment="TOP_LEFT" textAlignment="JUSTIFY">
             <style>
                 -fx-border-color: gray;

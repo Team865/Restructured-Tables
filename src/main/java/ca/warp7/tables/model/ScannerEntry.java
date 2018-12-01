@@ -8,13 +8,11 @@ import javafx.beans.property.StringProperty;
 public class ScannerEntry {
     public BooleanProperty commitProperty = new SimpleBooleanProperty();
     public StringProperty teamProperty = new SimpleStringProperty();
-    public StringProperty boardProperty = new SimpleStringProperty();
-    public StringProperty scoutProperty = new SimpleStringProperty();
+    public StringProperty boardScoutProperty = new SimpleStringProperty();
 
-    public ScannerEntry(boolean commit, String team, String board, String scout) {
+    public ScannerEntry(boolean commit, String team, String boardScout) {
         commitProperty.setValue(commit);
         teamProperty.setValue(team);
-        boardProperty.setValue(board);
-        scoutProperty.setValue(scout);
+        boardScoutProperty.setValue(boardScout);
     }
 }
