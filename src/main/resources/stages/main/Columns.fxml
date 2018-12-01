@@ -9,7 +9,7 @@
         <style>
             -fx-text-fill: #3c5c94;
             -fx-font-weight: bold;
-            -fx-padding: 5 0 5 0;
+            -fx-padding: 3 0 3 0;
         </style>
     </Label>
     <TextField focusTraversable="false" prefWidth="100" promptText="Search Columns" alignment="CENTER"/>

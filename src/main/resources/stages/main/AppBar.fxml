@@ -28,7 +28,7 @@
 
     <Separator/>
 
-    <Label text="Current Dataset:"/>
+    <Label text="Dataset:"/>
 
     <Label text="2018iri" styleClass="highlight-blue" />
 
@@ -75,15 +75,15 @@
     <Label text="User:"/>
     <Label text="Yu Liu" styleClass="highlight-blue"/>
 
-    <Button text="System" onAction="#onSystemStateAction">
+    <Button text="Settings">
         <graphic>
-            <FontIcon iconLiteral="fas-info-circle:18:gray"/>
+            <FontIcon iconLiteral="fas-cog:18:gray"/>
         </graphic>
     </Button>
 
-    <Button text="Versions">
+    <Button text="System" onAction="#onSystemStateAction">
         <graphic>
-            <FontIcon iconLiteral="fas-history:18:gray"/>
+            <FontIcon iconLiteral="fas-info-circle:18:gray"/>
         </graphic>
     </Button>
 </ToolBar>
