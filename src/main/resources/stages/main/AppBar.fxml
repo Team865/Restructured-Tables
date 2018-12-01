@@ -28,15 +28,11 @@
 
     <Separator/>
 
+    <FontIcon iconLiteral="fas-database:18:gray"/>
+
     <Label text="Dataset:"/>
 
-    <Label text="2018iri" styleClass="highlight-blue" />
-
-    <Button text="Datasets" onAction="#onEventSelectAction">
-        <graphic>
-            <FontIcon iconLiteral="fas-database:18:gray"/>
-        </graphic>
-    </Button>
+    <Label text="2018iri" styleClass="highlight-blue" onMouseClicked="#onEventSelectAction"/>
 
     <Separator/>
 
@@ -72,8 +68,12 @@
 
     <Separator/>
 
+    <FontIcon iconLiteral="fas-user:18:gray"/>
+
     <Label text="User:"/>
     <Label text="Yu Liu" styleClass="highlight-blue"/>
+
+    <Separator/>
 
     <Button text="Settings">
         <graphic>
@@ -81,7 +81,7 @@
         </graphic>
     </Button>
 
-    <Button text="System" onAction="#onSystemStateAction">
+    <Button text="System Check" onAction="#onSystemStateAction">
         <graphic>
             <FontIcon iconLiteral="fas-info-circle:18:gray"/>
         </graphic>
