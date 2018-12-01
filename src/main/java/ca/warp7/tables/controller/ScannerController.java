@@ -13,16 +13,18 @@ import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -41,44 +43,33 @@ public class ScannerController implements StageController {
     TextArea comments;
 
     @FXML
-    ListView scanList;
+    ListView<ScannerEntry> scanList;
 
     @FXML
     Label red1Team;
-
     @FXML
     Label red2Team;
-
     @FXML
     Label red3Team;
-
     @FXML
     Label blue1Team;
-
     @FXML
     Label blue2Team;
-
     @FXML
     Label blue3Team;
 
     @FXML
     Label red1Scout;
-
     @FXML
     Label red2Scout;
-
     @FXML
     Label red3Scout;
-
     @FXML
     Label blue1Scout;
-
     @FXML
     Label blue2Scout;
-
     @FXML
     Label blue3Scout;
-
     @FXML
     Label currentMatch;
 
@@ -87,10 +78,69 @@ public class ScannerController implements StageController {
     private Webcam webcam;
     private boolean isStreaming;
     private ObjectProperty<Image> imageProperty = new SimpleObjectProperty<>();
+    private ObservableList<ScannerEntry> scannerEntries = FXCollections.observableArrayList(
+            new ScannerEntry(true, "88", "4", "4")
+    );
 
     @FXML
     void initialize() {
         resultProperty = resultLabel.textProperty();
+        startCameraStream();
+        scanList.setItems(scannerEntries);
+        scanList.setCellFactory(listView -> new ListCell<ScannerEntry>() {
+
+            @Override
+            protected void updateItem(ScannerEntry item, boolean empty) {
+                super.updateItem(item, empty);
+                setPrefHeight(50);
+                if (empty || item == null) return;
+
+                HBox hBox = new HBox();
+                hBox.setSpacing(10);
+                hBox.setAlignment(Pos.CENTER_LEFT);
+
+                CheckBox checkBox = new CheckBox();
+//                checkBox.setSelected(true);
+                checkBox.selectedProperty().bindBidirectional(item.commitProperty);
+
+                Label label = new Label();
+//                label.setText("hi");
+                label.textProperty().bindBidirectional(item.teamProperty);
+                label.getStyleClass().add("team-red");
+
+                Label label1 = new Label();
+//                label1.setText("Scout");
+                label.textProperty().bindBidirectional(item.scoutProperty);
+                label.getStyleClass().add("info-red");
+
+                hBox.getChildren().add(checkBox);
+                hBox.getChildren().add(label);
+                hBox.getChildren().add(label1);
+
+                setGraphic(hBox);
+            }
+        });
+    }
+
+    @Override
+    public void setStage(Stage stage) {
+        this.stage = stage;
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setOnCloseRequest(Event::consume);
+        stage.getScene().setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                onDiscard();
+            }
+        });
+    }
+
+    @FXML
+    void onDiscard() {
+        isStreaming = false;
+        stage.close();
+    }
+
+    private void startCameraStream() {
         webcam = Webcam.getDefault();
         webcam.setCustomViewSizes(WebcamResolution.VGA.getSize());
         webcam.setViewSize(WebcamResolution.VGA.getSize());
@@ -117,11 +167,6 @@ public class ScannerController implements StageController {
                         e.printStackTrace();
                     }
                 }
-//                try {
-//                    Thread.sleep(20);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
             }
             webcam.close();
         });
@@ -130,21 +175,4 @@ public class ScannerController implements StageController {
         streamImageView.imageProperty().bind(imageProperty);
     }
 
-    @Override
-    public void setStage(Stage stage) {
-        this.stage = stage;
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setOnCloseRequest(Event::consume);
-        stage.getScene().setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ESCAPE) {
-                onDiscard();
-            }
-        });
-    }
-
-    @FXML
-    void onDiscard() {
-        isStreaming = false;
-        stage.close();
-    }
 }

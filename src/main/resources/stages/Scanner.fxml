@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 <?import java.net.URL?>
+<?import ca.warp7.tables.controller.ScannerEntry?>
 <HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       spacing="10"
       alignment="CENTER_LEFT" fx:controller="ca.warp7.tables.controller.ScannerController" prefWidth="1600"
@@ -86,18 +87,18 @@
         </HBox>
 
         <ListView fx:id="scanList" VBox.vgrow="ALWAYS">
-            <HBox alignment="CENTER_LEFT" spacing="10">
-                <CheckBox selected="true"/>
-                <Label text="2771" styleClass="team-red" prefWidth="40"/>
-                <Label text="R1: Scout 1" styleClass="info-red" prefWidth="150"/>
-                <Hyperlink text="Details"/>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" spacing="10">
-                <CheckBox selected="true"/>
-                <Label text="195" styleClass="team-blue" prefWidth="40"/>
-                <Label text="R1: Scout 4" styleClass="info-blue" prefWidth="150"/>
-                <Hyperlink text="Details"/>
-            </HBox>
+            <!--<HBox alignment="CENTER_LEFT" spacing="10">-->
+            <!--<CheckBox selected="true"/>-->
+            <!--<Label text="2771" styleClass="team-red" prefWidth="40"/>-->
+            <!--<Label text="R1: Scout 1" styleClass="info-red" prefWidth="150"/>-->
+            <!--<Hyperlink text="Details"/>-->
+            <!--</HBox>-->
+            <!--<HBox alignment="CENTER_LEFT" spacing="10">-->
+            <!--<CheckBox selected="true"/>-->
+            <!--<Label text="195" styleClass="team-blue" prefWidth="40"/>-->
+            <!--<Label text="R1: Scout 4" styleClass="info-blue" prefWidth="150"/>-->
+            <!--<Hyperlink text="Details"/>-->
+            <!--</HBox>-->
         </ListView>
 
         <TextArea fx:id="comments" promptText="Add Comments" prefHeight="200"/>
