@@ -3,7 +3,10 @@ package ca.warp7.tables.controller;
 import ca.warp7.tables.controller.utils.StageController;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamResolution;
-import com.google.zxing.*;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import javafx.application.Platform;
@@ -11,15 +14,15 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.StringProperty;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+import javafx.stage.StageStyle;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -32,17 +35,16 @@ public class ScannerController implements StageController {
     private ObjectProperty<Image> imageProperty = new SimpleObjectProperty<>();
     @FXML
     Label result;
+    @FXML
     private StringProperty resultProperty;
-
-    private void onStageClose(WindowEvent event) {
-        isStreaming = false;
-    }
+    private Stage stage;
 
     @FXML
     void initialize() {
         resultProperty = result.textProperty();
         webcam = Webcam.getDefault();
-        webcam.setCustomViewSizes(WebcamResolution.VGA.getSize(), WebcamResolution.HD.getSize());
+        webcam.setCustomViewSizes(WebcamResolution.VGA.getSize());
+        webcam.setViewSize(WebcamResolution.VGA.getSize());
         webcam.open();
         isStreaming = true;
         Thread thread = new Thread(() -> {
@@ -52,11 +54,11 @@ public class ScannerController implements StageController {
                 image = webcam.getImage();
                 if (image != null) {
                     try {
-                        try{
+                        try {
                             Result result = new MultiFormatReader().decode(new BinaryBitmap(
                                     new HybridBinarizer(new BufferedImageLuminanceSource(image))));
                             Platform.runLater(() -> resultProperty.set(result.getText()));
-                        } catch (NotFoundException ignored){
+                        } catch (NotFoundException ignored) {
                         }
 
                         imgRef.set(SwingFXUtils.toFXImage(image, imgRef.get()));
@@ -66,11 +68,11 @@ public class ScannerController implements StageController {
                         e.printStackTrace();
                     }
                 }
-                try {
-                    Thread.sleep(20);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    Thread.sleep(20);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
             }
             webcam.close();
         });
@@ -81,6 +83,14 @@ public class ScannerController implements StageController {
 
     @Override
     public void setStage(Stage stage) {
-        stage.setOnCloseRequest(this::onStageClose);
+        this.stage = stage;
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setOnCloseRequest(Event::consume);
+    }
+
+    @FXML
+    void onDiscard() {
+        isStreaming = false;
+        stage.close();
     }
 }
