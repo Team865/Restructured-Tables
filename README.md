@@ -25,25 +25,60 @@ This repository will provide an implementation to the following data model and p
 12. A *View* is a Configuration that structures and displays a Dataset in a specific way without modifying it
 13. A *Script* is a Configuration written in a programming language that aids the Instance in data analysis
 
-#####  C. Working Directory Configuration
+#####  C. File System Configuration
+
+From this point on, specific implementation details will be presented instead of generic terms listed above. The following is the structure in terms of the file system:
 
 ```
-{ApplicationExecutabe}
-{ScriptingExecutables}/
+{ApplicationExecutable}
+python-embed/
+	{PythonEmbedExecutable}/
+{ExternalMedia}/
+	photos/
+		{TeamPhotos...}
+	videos/
+		{MatchVideos...}
 {WorkingDirectory}/
-	Backup/
-	Output/
-	Scripts/
-	Datasets/
-	Versions/
+	output/
+		html/
+			{HTMLOutput...}
+		csv/
+			{CSVOutput...}
+		{ExcelOutput...}
+	scripts/
+		{PythonScripts...}
+	boards/
+		{BoardFiles...}
+	datasets/
+		{DatasetIndexConfiguration}
+		{InactiveZippedDataset...}
+		{ActiveDataset...}/
+			intermediate/
+				{IntermediateFiles...}
+			raw/
+				{RawData...}
+			scripts/
+				{PythonScripts...}
+			tba-cache/
+				{TheBlueAllianceCachedData...}
+			tables/
+				{TableData...}
+			verified/
+				{VerifiedData...}
+			views/
+				{ViewConfiguration...}
+			{BoardsConfiguration}
+			{DatasetConfiguration}
+			{TablesConfiguration}
+			{WrongDataConfiguration}
+	{ScriptConfiguration}
 	{UserConfiguration}
-	{DatasetConfiguration}
+	{CurrentDatasetConfiguration}
 ```
 
-1. The above structure specifies the basic Configuration of the Working Directory
-2. The Executables should be in the same parent directory as the working directory in a distribution, but it is not necessary during development
-3. The `ApplicationExecutable` is responsible for starting the Application
-4. The `ScriptingExecutables` directory contains the software to run Scripts
+1. The Executables should be in the same parent directory as the working directory in a distribution, but it is not necessary during development
+2. The `ApplicationExecutable` is responsible for starting the Application
+3. The `ScriptingExecutables` directory contains the software to run Scripts
 
 ##### D. Decentralization and Versioning
 
