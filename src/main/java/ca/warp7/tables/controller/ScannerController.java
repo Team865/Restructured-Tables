@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -86,6 +87,11 @@ public class ScannerController implements StageController {
         this.stage = stage;
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setOnCloseRequest(Event::consume);
+        stage.getScene().setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                onDiscard();
+            }
+        });
     }
 
     @FXML

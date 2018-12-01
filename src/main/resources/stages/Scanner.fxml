@@ -19,7 +19,7 @@
         <Image url="/app-icon.png"/>
     </ImageView>
 
-    <VBox HBox.hgrow="ALWAYS" style="-fx-padding: 10 10 10 0" spacing="10">
+    <VBox HBox.hgrow="ALWAYS" style="-fx-padding: 10 10 10 0" spacing="10" alignment="TOP_CENTER">
 
         <HBox alignment="CENTER_RIGHT" spacing="10">
             <Button text="Commit">
@@ -39,7 +39,7 @@
             </Button>
         </HBox>
 
-        <Label fx:id="result" text="No Results yet" prefHeight="150" prefWidth="400" wrapText="true"
+        <Label fx:id="result" text="No Results yet" prefHeight="200" prefWidth="400" wrapText="true"
                alignment="TOP_LEFT" textAlignment="JUSTIFY">
             <style>
                 -fx-border-color: gray;
@@ -55,6 +55,45 @@
             <FontIcon iconLiteral="fas-chevron-right:18:gray"/>
         </HBox>
 
-        <ListView VBox.vgrow="ALWAYS"/>
+        <HBox spacing="10" alignment="CENTER">
+            <Label text="2771" style="-fx-text-fill: #ff0000; -fx-font-weight: bold"/>
+            <Label text="494" style="-fx-text-fill: #ff0000; -fx-font-weight: bold"/>
+            <Label text="4265" style="-fx-text-fill: #ff0000; -fx-font-weight: bold"/>
+            <Label text="195" style="-fx-text-fill: #0000ff; -fx-font-weight: bold"/>
+            <Label text="245" style="-fx-text-fill: #0000ff; -fx-font-weight: bold"/>
+            <Label text="2680" style="-fx-text-fill: #0000ff; -fx-font-weight: bold"/>
+        </HBox>
+
+        <Separator/>
+        <Label text="Expected Scouts:"/>
+        <HBox spacing="10" alignment="CENTER">
+            <VBox alignment="CENTER_RIGHT">
+                <Label text="R1: Scout 1" style="-fx-text-fill: #ff0000"/>
+                <Label text="R2: Scout 2" style="-fx-text-fill: #ff0000"/>
+                <Label text="R3: Scout 3" style="-fx-text-fill: #ff0000"/>
+            </VBox>
+            <VBox alignment="CENTER_LEFT">
+                <Label text="B1: Scout 4" style="-fx-text-fill: #0000ff"/>
+                <Label text="B2: Scout 5" style="-fx-text-fill: #0000ff"/>
+                <Label text="B3: Scout 6" style="-fx-text-fill: #0000ff"/>
+            </VBox>
+        </HBox>
+
+        <ListView VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <CheckBox selected="true"/>
+                <Label text="2771" style="-fx-text-fill: #ff0000; -fx-font-weight: bold" prefWidth="40"/>
+                <Label text="R1: Scout 1" style="-fx-text-fill: #ff0000" prefWidth="150"/>
+                <Hyperlink text="Details"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <CheckBox selected="true"/>
+                <Label text="195" style="-fx-text-fill: #0000ff; -fx-font-weight: bold" prefWidth="40"/>
+                <Label text="R1: Scout 4" style="-fx-text-fill: #0000ff" prefWidth="150"/>
+                <Hyperlink text="Details"/>
+            </HBox>
+        </ListView>
+
+        <TextArea promptText="Add Comments" prefHeight="200"/>
     </VBox>
 </HBox>
