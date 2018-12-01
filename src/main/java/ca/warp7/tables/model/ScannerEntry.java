@@ -1,0 +1,20 @@
+package ca.warp7.tables.model;
+
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class ScannerEntry {
+    public BooleanProperty commitProperty = new SimpleBooleanProperty();
+    public StringProperty teamProperty = new SimpleStringProperty();
+    public StringProperty boardProperty = new SimpleStringProperty();
+    public StringProperty scoutProperty = new SimpleStringProperty();
+
+    public ScannerEntry(boolean commit, String team, String board, String scout) {
+        commitProperty.setValue(commit);
+        teamProperty.setValue(team);
+        boardProperty.setValue(board);
+        scoutProperty.setValue(scout);
+    }
+}

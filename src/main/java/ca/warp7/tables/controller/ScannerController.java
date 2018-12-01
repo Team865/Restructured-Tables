@@ -1,6 +1,7 @@
 package ca.warp7.tables.controller;
 
 import ca.warp7.tables.controller.utils.StageController;
+import ca.warp7.tables.model.ScannerEntry;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamResolution;
 import com.google.zxing.BinaryBitmap;

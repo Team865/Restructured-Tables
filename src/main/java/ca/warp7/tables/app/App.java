@@ -1,4 +1,4 @@
-package ca.warp7.tables.main;
+package ca.warp7.tables.app;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
