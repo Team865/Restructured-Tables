@@ -2,7 +2,11 @@
 
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<?import java.net.URL?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" >
+    <stylesheets>
+        <URL value="@/styles/main.css"/>
+    </stylesheets>
     <fx:include source="AppBar.fxml"/>
     <HBox VBox.vgrow="ALWAYS">
         <fx:include source="ViewList.fxml"/>
