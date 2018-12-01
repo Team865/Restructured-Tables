@@ -43,6 +43,45 @@ public class ScannerController implements StageController {
     @FXML
     ListView scanList;
 
+    @FXML
+    Label red1Team;
+
+    @FXML
+    Label red2Team;
+
+    @FXML
+    Label red3Team;
+
+    @FXML
+    Label blue1Team;
+
+    @FXML
+    Label blue2Team;
+
+    @FXML
+    Label blue3Team;
+
+    @FXML
+    Label red1Scout;
+
+    @FXML
+    Label red2Scout;
+
+    @FXML
+    Label red3Scout;
+
+    @FXML
+    Label blue1Scout;
+
+    @FXML
+    Label blue2Scout;
+
+    @FXML
+    Label blue3Scout;
+
+    @FXML
+    Label currentMatch;
+
     private StringProperty resultProperty;
     private Stage stage;
     private Webcam webcam;

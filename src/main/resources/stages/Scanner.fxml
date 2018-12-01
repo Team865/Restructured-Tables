@@ -50,32 +50,38 @@
 
         <HBox spacing="10" alignment="CENTER">
             <FontIcon iconLiteral="fas-chevron-left:18:gray"/>
-            <Label text="2018iri_qm36" HBox.hgrow="ALWAYS" focusTraversable="true" minWidth="200"
-                   styleClass="highlight-blue" onMouseClicked="#onDiscard" alignment="CENTER"/>
+            <Label text="2018iri_qm36"
+                   fx:id="currentMatch"
+                   HBox.hgrow="ALWAYS"
+                   focusTraversable="true"
+                   minWidth="200"
+                   styleClass="highlight-blue"
+                   onMouseClicked="#onDiscard"
+                   alignment="CENTER"/>
             <FontIcon iconLiteral="fas-chevron-right:18:gray"/>
         </HBox>
 
         <HBox spacing="10" alignment="CENTER">
-            <Label text="2771" styleClass="team-red"/>
-            <Label text="494" styleClass="team-red"/>
-            <Label text="4265" styleClass="team-red"/>
-            <Label text="195" styleClass="team-blue"/>
-            <Label text="245" styleClass="team-blue"/>
-            <Label text="2680" styleClass="team-blue"/>
+            <Label fx:id="red1Team" text="2771" styleClass="team-red"/>
+            <Label fx:id="red2Team" text="494" styleClass="team-red"/>
+            <Label fx:id="red3Team" text="4265" styleClass="team-red"/>
+            <Label fx:id="blue1Team" text="195" styleClass="team-blue"/>
+            <Label fx:id="blue2Team" text="245" styleClass="team-blue"/>
+            <Label fx:id="blue3Team" text="2680" styleClass="team-blue"/>
         </HBox>
 
         <Separator/>
         <Label text="Expected Scouts:"/>
         <HBox spacing="10" alignment="CENTER">
             <VBox alignment="CENTER_RIGHT">
-                <Label text="R1: Scout 1" styleClass="info-red"/>
-                <Label text="R2: Scout 2" styleClass="info-red"/>
-                <Label text="R3: Scout 3" styleClass="info-red"/>
+                <Label fx:id="red1Scout" text="R1: Scout 1" styleClass="info-red"/>
+                <Label fx:id="red2Scout" text="R2: Scout 2" styleClass="info-red"/>
+                <Label fx:id="red3Scout" text="R3: Scout 3" styleClass="info-red"/>
             </VBox>
             <VBox alignment="CENTER_LEFT">
-                <Label text="B1: Scout 4" styleClass="info-blue"/>
-                <Label text="B2: Scout 5" styleClass="info-blue"/>
-                <Label text="B3: Scout 6" styleClass="info-blue"/>
+                <Label fx:id="blue1Scout" text="B1: Scout 4" styleClass="info-blue"/>
+                <Label fx:id="blue2Scout" text="B2: Scout 5" styleClass="info-blue"/>
+                <Label fx:id="blue3Scout" text="B3: Scout 6" styleClass="info-blue"/>
             </VBox>
         </HBox>
 
