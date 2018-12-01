@@ -36,16 +36,12 @@ public class ScannerController implements StageController {
 
     @FXML
     ImageView streamImageView;
-
     @FXML
     Label resultLabel;
-
     @FXML
     TextArea comments;
-
     @FXML
     ListView<ScannerEntry> scanList;
-
     @FXML
     Label red1Team;
     @FXML
@@ -58,7 +54,6 @@ public class ScannerController implements StageController {
     Label blue2Team;
     @FXML
     Label blue3Team;
-
     @FXML
     Label red1Scout;
     @FXML
@@ -80,7 +75,7 @@ public class ScannerController implements StageController {
     private boolean isStreaming;
     private ObjectProperty<Image> imageProperty = new SimpleObjectProperty<>();
     private ObservableList<ScannerEntry> scannerEntries = FXCollections.observableArrayList(
-            new ScannerEntry(true, "865", "R1 : Scout 1")
+//            new ScannerEntry(true, "865", "R1 : Scout 1")
     );
 
     @FXML
@@ -159,6 +154,7 @@ public class ScannerController implements StageController {
             final AtomicReference<WritableImage> imgRef = new AtomicReference<>();
             BufferedImage image;
             int notFoundCount = 0;
+            String previousResultText = "";
             while (isStreaming) {
                 image = webcam.getImage();
                 if (image != null) {
@@ -167,7 +163,11 @@ public class ScannerController implements StageController {
                             Result result = new MultiFormatReader().decode(new BinaryBitmap(
                                     new HybridBinarizer(new BufferedImageLuminanceSource(image))));
                             notFoundCount = 0;
-                            Platform.runLater(() -> resultProperty.set(result.getText()));
+                            String resultText = result.getText();
+                            if (!previousResultText.equals(resultText)) {
+                                previousResultText = resultText;
+                                Platform.runLater(() -> onQRCodeResult(resultText));
+                            }
                         } catch (NotFoundException ignored) {
                             notFoundCount++;
                             if (notFoundCount > 15) {
@@ -189,5 +189,17 @@ public class ScannerController implements StageController {
         thread.setDaemon(true);
         thread.start();
         streamImageView.imageProperty().bind(imageProperty);
+    }
+
+    private void onQRCodeResult(String result) {
+        resultProperty.set(result);
+        String[] split = result.split("_");
+        if (split.length > 5) {
+            String team = split[1];
+            String scout = split[2];
+            String board = split[4];
+            String boardScout = board + ": " + scout;
+            scannerEntries.add(new ScannerEntry(true, team, boardScout));
+        }
     }
 }
