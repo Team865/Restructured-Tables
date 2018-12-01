@@ -9,10 +9,12 @@ public class ScannerEntry {
     public BooleanProperty commitProperty = new SimpleBooleanProperty();
     public StringProperty teamProperty = new SimpleStringProperty();
     public StringProperty boardScoutProperty = new SimpleStringProperty();
+    public StringProperty timestampProperty = new SimpleStringProperty();
 
-    public ScannerEntry(boolean commit, String team, String boardScout) {
+    public ScannerEntry(boolean commit, String team, String boardScout, String timestamp) {
         commitProperty.setValue(commit);
         teamProperty.setValue(team);
         boardScoutProperty.setValue(boardScout);
+        timestampProperty.set(timestamp);
     }
 }

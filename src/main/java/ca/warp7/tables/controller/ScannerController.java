@@ -30,6 +30,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.awt.image.BufferedImage;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class ScannerController implements StageController {
@@ -74,9 +76,7 @@ public class ScannerController implements StageController {
     private Webcam webcam;
     private boolean isStreaming;
     private ObjectProperty<Image> imageProperty = new SimpleObjectProperty<>();
-    private ObservableList<ScannerEntry> scannerEntries = FXCollections.observableArrayList(
-//            new ScannerEntry(true, "865", "R1 : Scout 1")
-    );
+    private ObservableList<ScannerEntry> scannerEntries = FXCollections.observableArrayList();
 
     @FXML
     void initialize() {
@@ -126,18 +126,21 @@ public class ScannerController implements StageController {
                 checkBox.selectedProperty().bindBidirectional(item.commitProperty);
 
                 Label team = new Label();
-                team.textProperty().bindBidirectional(item.teamProperty);
+                team.textProperty().bind(item.teamProperty);
                 team.getStyleClass().add("team-red");
                 team.setPrefWidth(50);
 
                 Label scout = new Label();
-                scout.textProperty().bindBidirectional(item.boardScoutProperty);
+                scout.textProperty().bind(item.boardScoutProperty);
                 scout.setPrefWidth(150);
 
+                Label timestamp = new Label();
+                timestamp.textProperty().bind(item.timestampProperty);
+
                 hBox.getChildren().add(checkBox);
+                hBox.getChildren().add(timestamp);
                 hBox.getChildren().add(team);
                 hBox.getChildren().add(scout);
-                hBox.getChildren().add(new Hyperlink("Details"));
 
                 setGraphic(hBox);
             }
@@ -195,11 +198,11 @@ public class ScannerController implements StageController {
         resultProperty.set(result);
         String[] split = result.split("_");
         if (split.length > 5) {
-            String team = split[1];
-            String scout = split[2];
-            String board = split[4];
-            String boardScout = board + ": " + scout;
-            scannerEntries.add(new ScannerEntry(true, team, boardScout));
+            SimpleDateFormat sdfDate = new SimpleDateFormat("HH:mm:ss");
+            Date now = new Date();
+            String timestamp = sdfDate.format(now);
+            scannerEntries.add(new ScannerEntry(true, split[1],
+                    split[4] + ":" + split[2], timestamp));
         }
     }
 }
