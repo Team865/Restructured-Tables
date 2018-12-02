@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import java.net.URL?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      prefWidth="1600" prefHeight="850" fx:controller="ca.warp7.tables.controller.PythonScriptsController">
+    <stylesheets>
+        <URL value="@/ca/warp7/tables/styles/main.css"/>
+    </stylesheets>
+    <ToolBar>
+        <Button text="New Script">
+            <graphic>
+                <FontIcon iconLiteral="fas-plus:18:gray"/>
+            </graphic>
+        </Button>
+        <Separator/>
+        <Label styleClass="highlight-blue" text="1 in 3 functions finished with 2 errors"/>
+
+        <Separator/>
+        <Button text="Run all scripts">
+            <graphic>
+                <FontIcon iconLiteral="fas-play-circle:18:gray"/>
+            </graphic>
+        </Button>
+        <Button text="Run current script">
+            <graphic>
+                <FontIcon iconLiteral="far-play-circle:18:gray"/>
+            </graphic>
+        </Button>
+        <Button text="Show Logs">
+            <graphic>
+                <FontIcon iconLiteral="fas-bug:18:gray"/>
+            </graphic>
+        </Button>
+
+        <Separator/>
+        <Button text="Refresh TBA Data" >
+            <graphic>
+                <FontIcon iconLiteral="fas-sync:18:gray"/>
+            </graphic>
+        </Button>
+
+        <Separator/>
+        <Button fx:id="themeChange" text="Switch Theme">
+            <graphic>
+                <FontIcon iconLiteral="fas-paint-brush:18:gray"/>
+            </graphic>
+        </Button>
+    </ToolBar>
+    <HBox VBox.vgrow="ALWAYS">
+        <VBox prefWidth="300">
+
+        </VBox>
+        <BorderPane fx:id="codeRoot" HBox.hgrow="ALWAYS">
+        </BorderPane>
+    </HBox>
+</VBox>

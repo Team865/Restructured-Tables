@@ -36,8 +36,8 @@ public class AppBarController {
     }
 
     @FXML
-    void onPythonAnalysis() {
-        stage("/ca/warp7/tables/stages/CodeEditor.fxml", "Python", getClass());
+    void onPythonScripts() {
+        stage("/ca/warp7/tables/stages/PythonScripts.fxml", "Python Scripts", getClass());
     }
 
     @FXML

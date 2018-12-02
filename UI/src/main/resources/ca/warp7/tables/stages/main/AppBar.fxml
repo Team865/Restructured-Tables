@@ -52,7 +52,7 @@
 
     <Separator/>
 
-    <Button text="Python Analysis" onAction="#onPythonAnalysis">
+    <Button text="Python Scripts" onAction="#onPythonScripts">
         <graphic>
             <FontIcon iconLiteral="fab-python:18:gray"/>
         </graphic>
