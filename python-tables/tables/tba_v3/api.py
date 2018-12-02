@@ -5,9 +5,8 @@ class _TBAQueryWrapper:
 
     @classmethod
     def query_wrapper(cls, query_url_function):
-        def fetch_query(self: "TBARawAPI", *_, **kwargs) -> "dict":
-            url = self._session.query_args.create_url(query_url_function(self), **kwargs)
-            return getattr(self._session, url)
+        def fetch_query(self, *_, **kw):
+            return getattr(self._session, self._session.query_args.create_url(query_url_function(self), **kw))
 
         return fetch_query
 

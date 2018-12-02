@@ -16,10 +16,10 @@ This repository will provide an implementation to the following data model and p
 3. An *Instance* of the Model is an Application using a specific Working Directory
 4. An *User* is a person using an Instance
 5. A *Table* is a two dimensional data structure with unique row and column headers, and will always have the same data structure in each column
-6. A *Table Type* is the representation type of a Table's row headers
+6. A *Table Type* is the description type of a Table's row headers
 7. *Event*, *Match*, *Team*, *Entry*, *Scout* are specific Table Types used for FRC Scouting Data
 8. A *Table Set* is a set of Tables with unique Table Types
-9. A *Data*set is a Table Set in the Working Directory used by an Instance for information analysis
+9. A *Dataset* is a Table Set in the Working Directory used by an Instance for information analysis
 10. *Configurations* represent any state of the Working Directory that is not a Dataset and that represent some arrangements affecting the state of the Instance
 11. A *Version* represents the difference in Datasets and Configurations of an Instance in a certain period of time, attributed to a User
 12. A *View* is a Configuration that structures and displays a Dataset in a specific way without modifying it
