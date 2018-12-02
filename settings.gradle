@@ -1,1 +1,2 @@
-include ":RestructuredTables"
+include ":UI"
+include ":CodeEditor"
