@@ -15,7 +15,7 @@ public class App extends Application {
         }
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/stages/main/App.fxml"));
+        loader.setLocation(getClass().getResource("/ca/warp7/tables/stages/main/App.fxml"));
 
         stage.setTitle("Restructured Tables");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/app-icon.png")));

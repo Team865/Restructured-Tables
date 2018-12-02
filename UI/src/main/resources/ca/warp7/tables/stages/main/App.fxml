@@ -5,7 +5,7 @@
 <?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" >
     <stylesheets>
-        <URL value="@/styles/main.css"/>
+        <URL value="@/ca/warp7/tables/styles/main.css"/>
     </stylesheets>
     <fx:include source="AppBar.fxml"/>
     <HBox VBox.vgrow="ALWAYS">
