@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            prefWidth="1600" prefHeight="900" fx:controller="ca.warp7.tables.controller.EditorController"
+            fx:id="root">
+</BorderPane>

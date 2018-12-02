@@ -1,0 +1,31 @@
+plugins {
+    id "java"
+    id 'application'
+    id 'com.github.johnrengelman.shadow'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.github.sarxos:webcam-capture:0.3.12"
+    implementation 'com.google.zxing:core:3.3.3'
+    implementation 'com.google.zxing:javase:3.3.3'
+    implementation 'org.kordamp.ikonli:ikonli-javafx:2.4.0'
+    implementation 'org.kordamp.ikonli:ikonli-fontawesome5-pack:2.4.0'
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.6'
+}
+
+mainClassName = "ca.warp7.tables.app.Main"
+
+jar {
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

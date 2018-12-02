@@ -36,6 +36,11 @@ public class AppBarController {
     }
 
     @FXML
+    void onPythonAnalysis() {
+        stage("/stages/Editor.fxml", "Python", getClass());
+    }
+
+    @FXML
     void initialize() {
     }
 }
