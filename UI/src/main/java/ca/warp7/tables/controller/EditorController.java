@@ -20,7 +20,7 @@ public class EditorController {
     void initialize() {
         darkTheme = false;
         themeChanger = themeChange.textProperty();
-        themeChanger.set("Monokai");
+        themeChanger.set("Switch to Monokai");
         themeChange.setOnAction(event -> {
             if (codeMirrorEditor.isEditorInitialized()) {
                 darkTheme = !darkTheme;
@@ -33,13 +33,13 @@ public class EditorController {
                 () -> {
                     codeMirrorEditor.setMode("python");
                     codeMirrorEditor.setTheme("idea");
-                    String builder =
-                            "from tables import table\n" +
-                                    "\n\n@table(\"entry\", level=1)\n" +
+                    String builder = "from tables import table" +
+                                    "\n\n\n" +
+                                    "@table(\"entry\", level=1)\n" +
                                     "def some_table_name(src, entry):\n" +
-                                    "\treturn {\n" +
-                                    "\t\t\"column_name\": \"column_data\"\n" +
-                                    "\t}\n";
+                                    "    return {\n" +
+                                    "        \"column_name\": \"column_data\"\n" +
+                                    "    }\n";
                     codeMirrorEditor.setContent(builder, true);
                 }
         );

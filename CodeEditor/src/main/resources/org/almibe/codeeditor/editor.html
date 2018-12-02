@@ -44,6 +44,9 @@ function init() {
   codeMirror.setOption("dragDrop", false);
   codeMirror.setOption("fullScreen", true);
   codeMirror.setOption("styleActiveLine", true);
+
+  codeMirror.options.indentUnit = 4;
+
   CodeMirror.modeURL = "mode/%N/%N.js";  
   codeMirror.setOption("extraKeys", {"Ctrl-Space": "autocomplete"});
 }

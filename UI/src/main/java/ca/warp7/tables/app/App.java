@@ -1,5 +1,6 @@
 package ca.warp7.tables.app;
 
+import ca.warp7.tables.controller.utils.StageUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,17 +15,7 @@ public class App extends Application {
             throw new UnsupportedOperationException("Only Windows is supported");
         }
 
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/ca/warp7/tables/stages/main/App.fxml"));
-
-        stage.setTitle("Restructured Tables");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/app-icon.png")));
-        stage.setScene(new Scene(loader.load()));
-        stage.setMinWidth(800);
-        stage.setMinHeight(450);
-        stage.setWidth(1600);
-        stage.setHeight(900);
-        stage.show();
+        StageUtils.stage("/ca/warp7/tables/stages/main/App.fxml", "RestructuredTables", getClass());
     }
 
     static void launch0() {
