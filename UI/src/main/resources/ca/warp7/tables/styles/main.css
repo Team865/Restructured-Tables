@@ -5,6 +5,7 @@
     -fx-text-fill: white;
     -fx-background-color: #3c5c94;
     -fx-padding: 4 16 4 16;
+    -fx-alignment: CENTER;
     -fx-background-radius: 16;
 }
 

@@ -4,9 +4,11 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 <VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml" prefWidth="220"
+      xmlns:fx="http://javafx.com/fxml" prefWidth="240"
       fx:controller="ca.warp7.tables.controller.main.ViewListController">
     <ListView VBox.vgrow="ALWAYS">
+
+        <Separator/>
 
         <HBox spacing="10">
             <HBox prefWidth="24" alignment="CENTER">
@@ -38,15 +40,21 @@
         </HBox>
         <HBox spacing="10">
             <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-camera:18:gray"/>
+            </HBox>
+            <Label text="QR Scanner"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
                 <FontIcon iconLiteral="fas-times:18:gray"/>
             </HBox>
             <Label text="Wrong Data"/>
         </HBox>
         <HBox spacing="10">
             <HBox prefWidth="24" alignment="CENTER">
-                <FontIcon iconLiteral="fas-camera:18:gray"/>
+                <FontIcon iconLiteral="fas-check:18:gray"/>
             </HBox>
-            <Label text="QR Scanner"/>
+            <Label text="Verification Center"/>
         </HBox>
         <HBox spacing="10">
             <HBox prefWidth="24" alignment="CENTER">
@@ -92,19 +100,19 @@
             <HBox prefWidth="24" alignment="CENTER">
                 <FontIcon iconLiteral="fab-python:20:gray"/>
             </HBox>
-            <Label text="raw_data.py"/>
+            <Label text="[1] raw_data.py"/>
         </HBox>
         <HBox spacing="10">
             <HBox prefWidth="24" alignment="CENTER">
                 <FontIcon iconLiteral="fab-python:20:gray"/>
             </HBox>
-            <Label text="auto_list.py"/>
+            <Label text="[1] auto_list.py "/>
         </HBox>
         <HBox spacing="10">
             <HBox prefWidth="24" alignment="CENTER">
                 <FontIcon iconLiteral="fab-python:20:gray"/>
             </HBox>
-            <Label text="cycle_matrix.py"/>
+            <Label text="[2] cycle_matrix.py"/>
         </HBox>
     </ListView>
 </VBox>

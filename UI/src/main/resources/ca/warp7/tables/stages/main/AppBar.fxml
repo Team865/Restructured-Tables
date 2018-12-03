@@ -32,7 +32,8 @@
 
     <Label text="Dataset:"/>
 
-    <Label text="2018iri" styleClass="highlight-blue" onMouseClicked="#onEventSelectAction"/>
+    <Label text="2018iri &lt;&lt; 865" styleClass="highlight-blue" onMouseClicked="#onEventSelectAction" minWidth="240"
+    />
 
     <Separator/>
 
