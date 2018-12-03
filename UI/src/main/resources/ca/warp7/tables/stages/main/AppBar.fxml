@@ -8,6 +8,15 @@
          prefWidth="220"
          HBox.hgrow="ALWAYS" fx:controller="ca.warp7.tables.controller.main.AppBarController">
 
+
+    <Label text="2018iri &lt;&lt; 865" styleClass="highlight-blue" onMouseClicked="#onEventSelectAction" minWidth="220">
+        <graphic>
+            <FontIcon iconLiteral="fas-database:18:white"/>
+        </graphic>
+    </Label>
+
+    <Separator/>
+
     <Button text="Import" onAction="#onLoadAction">
         <graphic>
             <FontIcon iconLiteral="fas-folder-open:18:gray"/>
@@ -37,15 +46,6 @@
             </MenuItem>
         </items>
     </MenuButton>
-
-    <Separator/>
-
-    <FontIcon iconLiteral="fas-database:18:gray"/>
-
-    <Label text="Dataset:"/>
-
-    <Label text="2018iri &lt;&lt; 865" styleClass="highlight-blue" onMouseClicked="#onEventSelectAction" minWidth="240"
-    />
 
     <Separator/>
 
