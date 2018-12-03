@@ -1,31 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.VBox?>
-<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml" prefWidth="220"
       fx:controller="ca.warp7.tables.controller.main.ViewListController">
-    <Label text="Views" prefWidth="220" alignment="CENTER">
-        <style>
-            -fx-text-fill: #3c5c94;
-            -fx-font-weight: bold;
-            -fx-padding: 3 0 3 0;
-        </style>
-    </Label>
-    <TextField focusTraversable="false" prefWidth="100" promptText="Search Data Views" alignment="CENTER"/>
     <ListView VBox.vgrow="ALWAYS">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Raw Data"/>
-                <String fx:value="Auto List"/>
-                <String fx:value="Cycle Matrix"/>
-                <String fx:value="Endgame"/>
-                <String fx:value="Team Averages"/>
-            </FXCollections>
-        </items>
+
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-cog:18:gray"/>
+            </HBox>
+            <Label text="Settings"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-code-branch:18:gray"/>
+            </HBox>
+            <Label text="Merge Helper"/>
+        </HBox>
+
+        <Separator/>
+
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-calendar-alt:18:gray"/>
+            </HBox>
+            <Label text="Match Schedule"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-clipboard:18:gray"/>
+            </HBox>
+            <Label text="Scouting Boards"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-times:18:gray"/>
+            </HBox>
+            <Label text="Wrong Data"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-camera:18:gray"/>
+            </HBox>
+            <Label text="QR Scanner"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-balance-scale:18:gray"/>
+            </HBox>
+            <Label text="Match Predictor ??"/>
+        </HBox>
+
+        <Separator/>
+
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-eye:18:gray"/>
+            </HBox>
+            <Label text="Raw Data"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-eye:18:gray"/>
+            </HBox>
+            <Label text="Auto List"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-eye:18:gray"/>
+            </HBox>
+            <Label text="Cycle Matrix"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-eye:18:gray"/>
+            </HBox>
+            <Label text="Endgame"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-eye:18:gray"/>
+            </HBox>
+            <Label text="Team Averages"/>
+        </HBox>
+        <Separator/>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fab-python:20:gray"/>
+            </HBox>
+            <Label text="raw_data.py"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fab-python:20:gray"/>
+            </HBox>
+            <Label text="auto_list.py"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fab-python:20:gray"/>
+            </HBox>
+            <Label text="cycle_matrix.py"/>
+        </HBox>
     </ListView>
 </VBox>

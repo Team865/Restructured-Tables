@@ -5,14 +5,6 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml" prefWidth="220">
-    <Label text="Columns" prefWidth="220" alignment="CENTER">
-        <style>
-            -fx-text-fill: #3c5c94;
-            -fx-font-weight: bold;
-            -fx-padding: 3 0 3 0;
-        </style>
-    </Label>
-    <TextField focusTraversable="false" prefWidth="100" promptText="Search Columns" alignment="CENTER"/>
     <ListView VBox.vgrow="ALWAYS">
         <items>
             <FXCollections fx:factory="observableArrayList">

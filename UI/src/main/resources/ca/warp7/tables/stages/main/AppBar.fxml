@@ -20,7 +20,7 @@
         </graphic>
     </Button>
 
-    <Button text="New View" onAction="#onNewViewAction">
+    <Button text="New" onAction="#onNewViewAction">
         <graphic>
             <FontIcon iconLiteral="fas-plus:18:gray"/>
         </graphic>
@@ -44,25 +44,9 @@
 
     <Separator/>
 
-    <Button text="Boards">
-        <graphic>
-            <FontIcon iconLiteral="fas-clipboard:18:gray"/>
-        </graphic>
-    </Button>
-
-    <Separator/>
-
     <Button text="Python Scripts" onAction="#onPythonScripts">
         <graphic>
             <FontIcon iconLiteral="fab-python:18:gray"/>
-        </graphic>
-    </Button>
-
-    <Separator/>
-
-    <Button text="Wrong Data">
-        <graphic>
-            <FontIcon iconLiteral="fas-times:18:gray"/>
         </graphic>
     </Button>
 
@@ -72,14 +56,6 @@
 
     <Label text="User:"/>
     <Label text="Yu Liu" styleClass="highlight-blue"/>
-
-    <Separator/>
-
-    <Button text="Settings">
-        <graphic>
-            <FontIcon iconLiteral="fas-cog:18:gray"/>
-        </graphic>
-    </Button>
 
     <Separator/>
 
