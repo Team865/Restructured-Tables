@@ -20,11 +20,23 @@
         </graphic>
     </Button>
 
-    <Button text="New" onAction="#onNewViewAction">
+    <MenuButton text="New">
         <graphic>
             <FontIcon iconLiteral="fas-plus:18:gray"/>
         </graphic>
-    </Button>
+        <items>
+            <MenuItem text="Python Script">
+                <graphic>
+                    <FontIcon iconLiteral="fab-python:20:gray"/>
+                </graphic>
+            </MenuItem>
+            <MenuItem text="View">
+                <graphic>
+                    <FontIcon iconLiteral="fas-eye:18:gray"/>
+                </graphic>
+            </MenuItem>
+        </items>
+    </MenuButton>
 
     <Separator/>
 

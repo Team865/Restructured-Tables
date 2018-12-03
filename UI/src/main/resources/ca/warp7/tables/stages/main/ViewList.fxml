@@ -24,7 +24,7 @@
             <Label text="Merge Helper"/>
         </HBox>
 
-        <Separator/>
+        <Separator prefHeight="10"/>
 
         <HBox spacing="10">
             <HBox prefWidth="24" alignment="CENTER">
@@ -60,7 +60,29 @@
             <HBox prefWidth="24" alignment="CENTER">
                 <FontIcon iconLiteral="fas-balance-scale:18:gray"/>
             </HBox>
-            <Label text="Match Predictor ??"/>
+            <Label text="Match Predictor"/>
+        </HBox>
+
+
+        <Separator/>
+
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fab-python:20:gray"/>
+            </HBox>
+            <Label text="[1] raw_data.py"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fab-python:20:gray"/>
+            </HBox>
+            <Label text="[1] auto_list.py "/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fab-python:20:gray"/>
+            </HBox>
+            <Label text="[2] cycle_matrix.py"/>
         </HBox>
 
         <Separator/>
@@ -95,24 +117,24 @@
             </HBox>
             <Label text="Team Averages"/>
         </HBox>
+
         <Separator/>
+
         <HBox spacing="10">
             <HBox prefWidth="24" alignment="CENTER">
-                <FontIcon iconLiteral="fab-python:20:gray"/>
+                <FontIcon iconLiteral="fas-table:18:gray"/>
             </HBox>
-            <Label text="[1] raw_data.py"/>
+            <Label text="Pivot of Raw Data"/>
         </HBox>
+
+        <Separator/>
+
         <HBox spacing="10">
             <HBox prefWidth="24" alignment="CENTER">
-                <FontIcon iconLiteral="fab-python:20:gray"/>
+                <FontIcon iconLiteral="fas-chart-bar:18:gray"/>
             </HBox>
-            <Label text="[1] auto_list.py "/>
+            <Label text="Team Outtakes"/>
         </HBox>
-        <HBox spacing="10">
-            <HBox prefWidth="24" alignment="CENTER">
-                <FontIcon iconLiteral="fab-python:20:gray"/>
-            </HBox>
-            <Label text="[2] cycle_matrix.py"/>
-        </HBox>
+
     </ListView>
 </VBox>
