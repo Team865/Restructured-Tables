@@ -1,16 +1,15 @@
 .highlight-blue {
     -fx-font-weight: bold;
-    -fx-text-fill: #3c5c94;
-    -fx-background-color: #ddd;
-    -fx-padding: 3 12 3 12;
-    -fx-background-radius: 12;
-    -fx-border-color: gray;
-    -fx-border-width: 1;
-    -fx-border-radius: 12;
+    /*-fx-text-fill: #3c5c94;*/
+    /*-fx-background-color: #ddd;*/
+    -fx-text-fill: white;
+    -fx-background-color: #3c5c94;
+    -fx-padding: 4 16 4 16;
+    -fx-background-radius: 16;
 }
 
 .highlight-blue:hover {
-    -fx-background-color: #ccc;
+    -fx-background-color: #1e2e4a;
 }
 
 .team-blue {
@@ -29,4 +28,40 @@
 
 .info-red {
     -fx-text-fill: red;
+}
+
+.text {
+    -fx-font-family: "Roboto", "Arial", sans-serif;
+    -fx-font-smoothing-type: gray;
+}
+
+.list-cell {
+    -fx-background-color: white;
+}
+
+.list-cell:selected {
+    -fx-background-color: #3c5c94;
+}
+
+.list-view:focused {
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: #dddddd;
+    -fx-border-width: 0 1 1 1;
+    -fx-border-color: #eeeeee;
+    -fx-pref-height: 28;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #3c5c94;
+    -fx-font-weight: bold;
+}
+
+
+.cell :selected {
+    -fx-background-color: #3c5c94;
 }

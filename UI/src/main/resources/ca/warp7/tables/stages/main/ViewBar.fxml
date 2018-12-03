@@ -16,20 +16,6 @@
 
     <Separator/>
 
-    <ChoiceBox value="Entry">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Entry"/>
-                <String fx:value="Team"/>
-                <String fx:value="Match"/>
-                <String fx:value="Scout"/>
-                <String fx:value="Event"/>
-            </FXCollections>
-        </items>
-    </ChoiceBox>
-
-    <Separator/>
-
     <CheckBox text="Transpose"/>
 
     <Separator/>

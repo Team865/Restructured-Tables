@@ -64,14 +64,6 @@ public class TableController {
         TableColumn<Person, String> emailCol = new TableColumn<>("Email");
         emailCol.setMinWidth(200);
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        emailCol.setCellFactory(param -> new CheckBoxTableCell<Person, String>() {
-            @Override
-            public void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(item);
-                setAlignment(Pos.CENTER_LEFT);
-            }
-        });
 
         TableColumn<Person, Person> btnCol = new TableColumn<>("Gifts");
         btnCol.setMinWidth(150);
