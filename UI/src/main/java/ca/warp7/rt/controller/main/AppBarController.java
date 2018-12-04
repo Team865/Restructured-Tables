@@ -9,17 +9,17 @@ public class AppBarController {
 
     @FXML
     void onEventSelectAction() {
-        stage("/ca/warp7/tables/stages/EventSelect.fxml", "Select Event", getClass());
+        stage("/ca/warp7/rt/stages/EventSelect.fxml", "Select Event", getClass());
     }
 
     @FXML
     void onSystemStateAction() {
-        stage("/ca/warp7/tables/stages/SystemState.fxml", "System State", getClass());
+        stage("/ca/warp7/rt/stages/SystemState.fxml", "System State", getClass());
     }
 
     @FXML
     void onScannerAction() {
-        stage("/ca/warp7/tables/stages/Scanner.fxml", "Scanner", getClass());
+        stage("/ca/warp7/rt/stages/Scanner.fxml", "Scanner", getClass());
     }
 
     @FXML
@@ -32,12 +32,12 @@ public class AppBarController {
 
     @FXML
     void onNewViewAction() {
-        stage("/ca/warp7/tables/stages/NewView.fxml", "New View", getClass());
+        stage("/ca/warp7/rt/stages/NewView.fxml", "New View", getClass());
     }
 
     @FXML
     void onPythonScripts() {
-        stage("/ca/warp7/tables/stages/PythonScripts.fxml", "Python Scripts", getClass());
+        stage("/ca/warp7/rt/stages/PythonScripts.fxml", "Python Scripts", getClass());
     }
 
     @FXML

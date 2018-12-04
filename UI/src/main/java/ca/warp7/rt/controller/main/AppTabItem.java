@@ -1,4 +1,5 @@
 package ca.warp7.rt.controller.main;
 
-public class ViewListController {
+public class AppTabItem {
+
 }

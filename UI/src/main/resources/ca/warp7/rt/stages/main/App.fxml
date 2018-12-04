@@ -6,11 +6,11 @@
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
 prefWidth="1600" prefHeight="850" minWidth="800" minHeight="450">
     <stylesheets>
-        <URL value="@/ca/warp7/tables/styles/main.css"/>
+        <URL value="@/ca/warp7/rt/styles/main.css"/>
     </stylesheets>
     <fx:include source="AppBar.fxml"/>
     <HBox VBox.vgrow="ALWAYS">
-        <fx:include source="ViewList.fxml"/>
+        <fx:include source="AppTabs.fxml"/>
         <VBox HBox.hgrow="ALWAYS">
             <HBox VBox.vgrow="ALWAYS">
                 <fx:include source="Table.fxml"/>
