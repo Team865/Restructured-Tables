@@ -13,8 +13,6 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import org.kordamp.ikonli.javafx.FontIcon;
 
-import java.util.List;
-
 import static ca.warp7.rt.java.app.Features.*;
 
 public class AppTabsController {
@@ -103,8 +101,18 @@ public class AppTabsController {
     @FXML
     void initialize() {
         initTabs();
+        appTabItems.add(new AppTabItem());
         baseFeatures.forEach(AppFeature::onFeatureInit);
         extendFeatures.forEach(AppFeature::onFeatureInit);
+        appTabItems.add(new AppTabItem());
+        extendFeatures.forEach(feature -> appTabItems.add(fromFeature(feature)));
         documentFeatures.forEach(AppFeature::onFeatureInit);
+        appTabItems.add(new AppTabItem());
+        documentFeatures.forEach(documentBased -> appTabItems.addAll(documentBased.getTabs()));
+        appTabItems.add(new AppTabItem());
+    }
+
+    private static AppTabItem fromFeature(AppFeature feature){
+        return new AppTabItem(feature.getFeatureName(), feature.getIconLiteral());
     }
 }
