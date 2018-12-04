@@ -5,7 +5,7 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      prefWidth="1600" prefHeight="850" fx:controller="ca.warp7.rt.java.controller.PythonScriptsController">
+      prefWidth="1600" prefHeight="850" fx:controller="ca.warp7.rt.java.python.PythonScriptsController">
     <stylesheets>
         <URL value="@/ca/warp7/rt/styles/main.css"/>
     </stylesheets>
