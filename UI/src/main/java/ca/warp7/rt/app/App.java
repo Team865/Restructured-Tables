@@ -1,12 +1,12 @@
 package ca.warp7.rt.app;
 
-import ca.warp7.rt.controller.utils.StageUtils;
+import ca.warp7.rt.base.StageUtils;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class App extends Application {
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
 
         if (!System.getProperty("os.name").toLowerCase().startsWith("win")) {
             throw new UnsupportedOperationException("Only Windows is supported");

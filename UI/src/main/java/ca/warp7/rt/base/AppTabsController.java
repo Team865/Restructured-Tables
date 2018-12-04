@@ -1,4 +1,4 @@
-package ca.warp7.rt.controller.main;
+package ca.warp7.rt.base;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

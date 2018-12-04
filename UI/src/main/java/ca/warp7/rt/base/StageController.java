@@ -1,4 +1,4 @@
-package ca.warp7.rt.controller.utils;
+package ca.warp7.rt.base;
 
 import javafx.stage.Stage;
 
