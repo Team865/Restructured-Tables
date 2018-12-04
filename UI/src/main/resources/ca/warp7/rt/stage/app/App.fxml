@@ -11,12 +11,5 @@ prefWidth="1600" prefHeight="850" minWidth="800" minHeight="450">
     <fx:include source="AppBar.fxml"/>
     <HBox VBox.vgrow="ALWAYS">
         <fx:include source="AppTabs.fxml"/>
-        <VBox HBox.hgrow="ALWAYS">
-            <HBox VBox.vgrow="ALWAYS">
-                <fx:include source="../view/Table.fxml"/>
-                <fx:include source="../view/Columns.fxml"/>
-            </HBox>
-            <fx:include source="../view/ViewBar.fxml"/>
-        </VBox>
     </HBox>
 </VBox>
