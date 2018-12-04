@@ -1,10 +1,7 @@
-package ca.warp7.tables.app;
+package ca.warp7.rt.app;
 
-import ca.warp7.tables.controller.utils.StageUtils;
+import ca.warp7.rt.controller.utils.StageUtils;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class App extends Application {

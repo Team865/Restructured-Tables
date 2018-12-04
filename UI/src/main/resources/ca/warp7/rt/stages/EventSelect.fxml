@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.lang.*?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" spacing="10" prefWidth="300"
-      alignment="CENTER" fx:controller="ca.warp7.tables.controller.EventSelectController">
+      alignment="CENTER" fx:controller="ca.warp7.rt.controller.EventSelectController">
     <style>
         -fx-padding: 10 10 10 10;
     </style>

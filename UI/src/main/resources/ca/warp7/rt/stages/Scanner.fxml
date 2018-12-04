@@ -8,7 +8,7 @@
 <?import java.net.URL?>
 <HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       spacing="10"
-      alignment="CENTER_LEFT" fx:controller="ca.warp7.tables.controller.ScannerController" prefWidth="1600"
+      alignment="CENTER_LEFT" fx:controller="ca.warp7.rt.controller.ScannerController" prefWidth="1600"
       prefHeight="900">
 
     <stylesheets>

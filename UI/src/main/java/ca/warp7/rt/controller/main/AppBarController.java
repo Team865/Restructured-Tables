@@ -1,9 +1,9 @@
-package ca.warp7.tables.controller.main;
+package ca.warp7.rt.controller.main;
 
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
 
-import static ca.warp7.tables.controller.utils.StageUtils.stage;
+import static ca.warp7.rt.controller.utils.StageUtils.stage;
 
 public class AppBarController {
 

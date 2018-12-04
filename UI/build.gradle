@@ -18,7 +18,7 @@ dependencies {
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.6'
 }
 
-mainClassName = "ca.warp7.tables.app.Main"
+mainClassName = "ca.warp7.rt.app.Main"
 
 jar {
     manifest {

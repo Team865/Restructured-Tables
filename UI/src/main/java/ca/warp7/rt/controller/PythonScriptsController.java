@@ -1,4 +1,4 @@
-package ca.warp7.tables.controller;
+package ca.warp7.rt.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
