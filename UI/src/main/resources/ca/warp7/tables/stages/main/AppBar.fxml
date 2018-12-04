@@ -8,26 +8,13 @@
          prefWidth="220"
          HBox.hgrow="ALWAYS" fx:controller="ca.warp7.tables.controller.main.AppBarController">
 
-
-    <Label text="2018iri &lt;&lt; 865" styleClass="highlight-blue" onMouseClicked="#onEventSelectAction" minWidth="220">
+    <Label text="2018iri &lt;&lt; 865" styleClass="highlight-blue" minWidth="225">
         <graphic>
             <FontIcon iconLiteral="fas-database:18:white"/>
         </graphic>
     </Label>
 
-    <Separator/>
-
-    <Button text="Import" onAction="#onLoadAction">
-        <graphic>
-            <FontIcon iconLiteral="fas-folder-open:18:gray"/>
-        </graphic>
-    </Button>
-
-    <Button text="Save As" onAction="#onLoadAction">
-        <graphic>
-            <FontIcon iconLiteral="fas-save:18:gray"/>
-        </graphic>
-    </Button>
+    <Separator />
 
     <MenuButton text="New">
         <graphic>
@@ -49,26 +36,21 @@
 
     <Separator/>
 
-    <Button text="Scanner" onAction="#onScannerAction">
+    <Button text="Sync with TBA" >
         <graphic>
-            <FontIcon iconLiteral="fas-camera:18:gray"/>
+            <FontIcon iconLiteral="fas-sync:18:gray"/>
         </graphic>
     </Button>
 
+
     <Separator/>
 
-    <Button text="Python Scripts" onAction="#onPythonScripts">
+
+    <Label text="Yu Liu" styleClass="highlight-blue">
         <graphic>
-            <FontIcon iconLiteral="fab-python:18:gray"/>
+            <FontIcon iconLiteral="fas-user:16:white"/>
         </graphic>
-    </Button>
-
-    <Separator/>
-
-    <FontIcon iconLiteral="fas-user:18:gray"/>
-
-    <Label text="User:"/>
-    <Label text="Yu Liu" styleClass="highlight-blue"/>
+    </Label>
 
     <Separator/>
 
@@ -78,9 +60,19 @@
         </graphic>
     </Button>
 
-    <Button text="Refresh" onAction="#onSystemStateAction">
+    <Separator/>
+
+    <Button onAction="#onScannerAction">
         <graphic>
-            <FontIcon iconLiteral="fas-sync:18:gray"/>
+            <FontIcon iconLiteral="fas-camera:18:gray"/>
+        </graphic>
+    </Button>
+
+    <Separator/>
+
+    <Button onAction="#onPythonScripts">
+        <graphic>
+            <FontIcon iconLiteral="fab-python:18:gray"/>
         </graphic>
     </Button>
 </ToolBar>

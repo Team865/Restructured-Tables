@@ -5,7 +5,8 @@
 <?import org.kordamp.ikonli.javafx.*?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml" prefWidth="240"
-      fx:controller="ca.warp7.tables.controller.main.ViewListController">
+      fx:controller="ca.warp7.tables.controller.main.ViewListController" alignment="TOP_CENTER">
+
     <ListView VBox.vgrow="ALWAYS">
 
         <Separator/>
@@ -14,7 +15,14 @@
             <HBox prefWidth="24" alignment="CENTER">
                 <FontIcon iconLiteral="fas-cog:18:gray"/>
             </HBox>
-            <Label text="Settings"/>
+            <Label text="Dataset Options"/>
+        </HBox>
+
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-link:18:gray"/>
+            </HBox>
+            <Label text="External Media"/>
         </HBox>
 
         <HBox spacing="10">
@@ -30,7 +38,7 @@
             <HBox prefWidth="24" alignment="CENTER">
                 <FontIcon iconLiteral="fas-calendar-alt:18:gray"/>
             </HBox>
-            <Label text="Match Schedule"/>
+            <Label text="Event Overview"/>
         </HBox>
         <HBox spacing="10">
             <HBox prefWidth="24" alignment="CENTER">
@@ -76,6 +84,12 @@
             <HBox prefWidth="24" alignment="CENTER">
                 <FontIcon iconLiteral="fab-python:20:gray"/>
             </HBox>
+            <Label text="[1] averages.py"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fab-python:20:gray"/>
+            </HBox>
             <Label text="[1] auto_list.py "/>
         </HBox>
         <HBox spacing="10">
@@ -83,6 +97,12 @@
                 <FontIcon iconLiteral="fab-python:20:gray"/>
             </HBox>
             <Label text="[2] cycle_matrix.py"/>
+        </HBox>
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fab-python:20:gray"/>
+            </HBox>
+            <Label text="[2] endgame.py"/>
         </HBox>
 
         <Separator/>
@@ -135,6 +155,17 @@
             </HBox>
             <Label text="Team Outtakes"/>
         </HBox>
+
+        <Separator/>
+
+        <HBox spacing="10">
+            <HBox prefWidth="24" alignment="CENTER">
+                <FontIcon iconLiteral="fas-video:18:gray"/>
+            </HBox>
+            <Label text="2018iri_qm36"/>
+        </HBox>
+
+        <Separator/>
 
     </ListView>
 </VBox>
