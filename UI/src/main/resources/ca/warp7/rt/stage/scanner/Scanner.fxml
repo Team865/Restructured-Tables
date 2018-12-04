@@ -12,7 +12,7 @@
       prefHeight="900">
 
     <stylesheets>
-        <URL value="@/ca/warp7/rt/styles/main.css"/>
+        <URL value="@/ca/warp7/rt/style/main.css"/>
     </stylesheets>
 
     <ImageView fx:id="streamImageView" VBox.vgrow="ALWAYS" fitWidth="1200" fitHeight="900">

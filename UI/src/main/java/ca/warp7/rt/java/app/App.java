@@ -12,7 +12,7 @@ public class App extends Application {
             throw new UnsupportedOperationException("Only Windows is supported");
         }
 
-        StageUtils.stage("/ca/warp7/rt/stages/main/App.fxml", "RestructuredTables", getClass());
+        StageUtils.stage("/ca/warp7/rt/stage/app/App.fxml", "RestructuredTables", getClass());
     }
 
     static void launch0() {

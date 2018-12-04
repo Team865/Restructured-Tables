@@ -17,7 +17,7 @@ public class ScannerFeature implements AppFeature {
 
     @Override
     public Parent getViewNodeParent() {
-        return StageUtils.node("/ca/warp7/rt/stages/Scanner.fxml", getClass());
+        return StageUtils.node("/ca/warp7/rt/stage/scanner/Scanner.fxml", getClass());
     }
 
     @Override

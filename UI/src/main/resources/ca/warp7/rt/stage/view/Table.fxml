@@ -9,7 +9,7 @@
       fx:controller="ca.warp7.rt.java.views.TableController">
     <TableView VBox.vgrow="ALWAYS" fx:id="tableView">
         <stylesheets>
-            <URL value="@/ca/warp7/rt/styles/main.css"/>
+            <URL value="@/ca/warp7/rt/style/main.css"/>
         </stylesheets>
     </TableView>
 </VBox>
