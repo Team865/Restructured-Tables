@@ -9,7 +9,7 @@ public interface AppFeature {
 
     String getFeatureName();
 
-    Parent getViewNodeParent();
+    Parent getViewParent();
 
     void onRequestTabChange(Runnable tabChangCallback);
 
