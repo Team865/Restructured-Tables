@@ -1,4 +1,4 @@
-package ca.warp7.rt.java.base;
+package ca.warp7.rt.java.app;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

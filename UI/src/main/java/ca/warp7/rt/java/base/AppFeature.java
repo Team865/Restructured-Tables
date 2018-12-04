@@ -1,7 +1,7 @@
 package ca.warp7.rt.java.base;
 
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
+import javafx.scene.Parent;
 
 public interface AppFeature {
 
@@ -9,7 +9,7 @@ public interface AppFeature {
 
     String getFeatureName();
 
-    Node getViewNode();
+    Parent getViewNodeParent();
 
     void onRequestTabChange(Runnable tabChangCallback);
 

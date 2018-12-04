@@ -1,17 +1,17 @@
 package ca.warp7.rt.java.base;
 
-class AppTabItem {
-    String title;
-    String iconLiteral;
-    boolean isSeparator;
+public class AppTabItem {
+    public String title;
+    public String iconLiteral;
+    public boolean isSeparator;
 
-    AppTabItem(String title, String iconLiteral) {
+    public AppTabItem(String title, String iconLiteral) {
         this.title = title;
         this.iconLiteral = iconLiteral;
         this.isSeparator = false;
     }
 
-    AppTabItem(){
+    public AppTabItem(){
         this.isSeparator = true;
         title = "";
         iconLiteral = "";

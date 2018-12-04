@@ -1,5 +1,6 @@
-package ca.warp7.rt.java.base;
+package ca.warp7.rt.java.app;
 
+import ca.warp7.rt.java.base.AppTabItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

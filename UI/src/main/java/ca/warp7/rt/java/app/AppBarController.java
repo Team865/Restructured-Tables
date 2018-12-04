@@ -1,4 +1,4 @@
-package ca.warp7.rt.java.base;
+package ca.warp7.rt.java.app;
 
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
@@ -27,12 +27,6 @@ public class AppBarController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.showOpenDialog(null);
-    }
-
-
-    @FXML
-    void onNewViewAction() {
-        stage("/ca/warp7/rt/stages/NewView.fxml", "New View", getClass());
     }
 
     @FXML
