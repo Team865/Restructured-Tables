@@ -15,12 +15,6 @@ public interface AppFeature {
 
     void onFeatureInit();
 
-    interface SingleBase extends AppFeature {
-    }
-
-    interface SingleExtension extends AppFeature {
-    }
-
     interface DocumentBased extends AppFeature {
         ObservableList<AppTabItem> getTabs();
 

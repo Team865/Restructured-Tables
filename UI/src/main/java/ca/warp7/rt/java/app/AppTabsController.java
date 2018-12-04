@@ -1,5 +1,6 @@
 package ca.warp7.rt.java.app;
 
+import ca.warp7.rt.java.base.AppFeature;
 import ca.warp7.rt.java.base.AppTabItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +13,12 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import org.kordamp.ikonli.javafx.FontIcon;
 
+import java.util.List;
+
+import static ca.warp7.rt.java.app.Features.*;
+
 public class AppTabsController {
+
     @FXML
     private ListView<AppTabItem> appTabs;
 
@@ -64,8 +70,7 @@ public class AppTabsController {
             new AppTabItem()
     );
 
-    @FXML
-    void initialize() {
+    void initTabs(){
         appTabs.setItems(appTabItems);
         appTabs.setCellFactory(listView -> new ListCell<AppTabItem>() {
             @Override
@@ -93,5 +98,13 @@ public class AppTabsController {
                 }
             }
         });
+    }
+
+    @FXML
+    void initialize() {
+        initTabs();
+        baseFeatures.forEach(AppFeature::onFeatureInit);
+        extendFeatures.forEach(AppFeature::onFeatureInit);
+        documentFeatures.forEach(AppFeature::onFeatureInit);
     }
 }

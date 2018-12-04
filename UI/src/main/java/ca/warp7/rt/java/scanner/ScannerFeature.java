@@ -4,7 +4,7 @@ import ca.warp7.rt.java.base.AppFeature;
 import ca.warp7.rt.java.base.StageUtils;
 import javafx.scene.Parent;
 
-public class ScannerFeature implements AppFeature.SingleExtension {
+public class ScannerFeature implements AppFeature {
     @Override
     public String getIconLiteral() {
         return "fas-camera:18:gray";
