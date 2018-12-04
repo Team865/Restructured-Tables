@@ -1,7 +1,7 @@
-package ca.warp7.rt.controller;
+package ca.warp7.rt.java.controller;
 
-import ca.warp7.rt.base.StageController;
-import ca.warp7.rt.model.ScannerEntry;
+import ca.warp7.rt.java.base.StageController;
+import ca.warp7.rt.java.model.ScannerEntry;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamResolution;
 import com.google.zxing.BinaryBitmap;

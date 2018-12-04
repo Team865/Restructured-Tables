@@ -1,4 +1,4 @@
-package ca.warp7.rt.base;
+package ca.warp7.rt.java.base;
 
 import javafx.collections.ObservableList;
 import javafx.scene.Node;

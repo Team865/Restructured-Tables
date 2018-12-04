@@ -1,4 +1,4 @@
-package ca.warp7.rt.controller.main;
+package ca.warp7.rt.java.controller.main;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;

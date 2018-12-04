@@ -1,4 +1,4 @@
-package ca.warp7.rt.controller;
+package ca.warp7.rt.java.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

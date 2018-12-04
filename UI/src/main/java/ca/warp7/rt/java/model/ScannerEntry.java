@@ -1,4 +1,4 @@
-package ca.warp7.rt.model;
+package ca.warp7.rt.java.model;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
