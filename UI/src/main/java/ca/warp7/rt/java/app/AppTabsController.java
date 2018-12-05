@@ -36,6 +36,7 @@ public class AppTabsController {
             new AppTabItem("Wrong Data", "fas-times:18:gray"),
             new AppTabItem("Verification Center", "fas-check:18:gray"),
             new AppTabItem("Match Predictor", "fas-balance-scale:18:gray"),
+            new AppTabItem("Alliance Selection", "fas-list-alt:18:gray"),
 
             new AppTabItem(),
 
@@ -68,7 +69,7 @@ public class AppTabsController {
             new AppTabItem()
     );
 
-    void initTabs(){
+    private void initTabs(){
         appTabs.setItems(appTabItems);
         appTabs.setCellFactory(listView -> new ListCell<AppTabItem>() {
             @Override
