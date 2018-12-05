@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
@@ -9,16 +8,14 @@
 <HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       alignment="CENTER" prefWidth="1360"
       prefHeight="700"
-fx:controller="ca.warp7.rt.java.scanner.ScannerController">
+      fx:controller="ca.warp7.rt.java.scanner.ScannerController">
 
     <stylesheets>
         <URL value="@/ca/warp7/rt/style/main.css"/>
     </stylesheets>
 
     <VBox HBox.hgrow="ALWAYS">
-            <ImageView fx:id="streamImageView" fitWidth="800" fitHeight="600" HBox.hgrow="ALWAYS">
-                <Image url="/app-icon.png"/>
-            </ImageView>
+        <ImageView fx:id="streamImageView" fitWidth="800" fitHeight="600" HBox.hgrow="ALWAYS"/>
     </VBox>
 
     <VBox spacing="10" alignment="TOP_CENTER">
@@ -87,7 +84,7 @@ fx:controller="ca.warp7.rt.java.scanner.ScannerController">
                     <FontIcon iconLiteral="fas-save:18:gray"/>
                 </graphic>
             </Button>
-            <Button text="Pause" onMouseClicked="#onChangeCameraState">
+            <Button text="Pause" fx:id="cameraStateChanger" onAction="#onCameraStateChange">
                 <graphic>
                     <FontIcon iconLiteral="fas-times:18:gray"/>
                 </graphic>

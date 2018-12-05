@@ -31,14 +31,6 @@ import java.util.concurrent.atomic.AtomicReference;
 public class ScannerController {
 
     @FXML
-    ImageView streamImageView;
-    @FXML
-    Label resultLabel;
-    @FXML
-    TextArea comments;
-    @FXML
-    ListView<ScannerEntry> scanList;
-    @FXML
     Label red1Team;
     @FXML
     Label red2Team;
@@ -65,6 +57,17 @@ public class ScannerController {
     @FXML
     Label currentMatch;
 
+    @FXML
+    ImageView streamImageView;
+    @FXML
+    Label resultLabel;
+    @FXML
+    TextArea comments;
+    @FXML
+    ListView<ScannerEntry> scanList;
+    @FXML
+    Button cameraStateChanger;
+
     private StringProperty resultProperty;
     private Webcam webcam;
     private boolean isStreaming;
@@ -80,8 +83,14 @@ public class ScannerController {
     }
 
     @FXML
-    void onChangeCameraState() {
-        isStreaming = false;
+    void onCameraStateChange() {
+        if (isStreaming){
+            isStreaming = false;
+            cameraStateChanger.setText("Start");
+        } else {
+            startCameraStream();
+            cameraStateChanger.setText("Pause");
+        }
     }
 
     private void initializeListFactory() {
