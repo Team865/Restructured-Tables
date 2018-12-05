@@ -13,6 +13,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 
+import java.util.List;
+
 import static ca.warp7.rt.java.app.Features.*;
 
 public class AppTabsController {
@@ -101,15 +103,27 @@ public class AppTabsController {
     void initialize() {
         initTabsItemsAndFactory();
         appTabItems.clear();
+        if (baseFeatures.size() > 0){
+            appTabItems.add(new AppTabItem());
+            baseFeatures.forEach(AppFeature::onFeatureInit);
+            baseFeatures.forEach(feature -> appTabItems.add(fromFeature(feature)));
+        }
+        if (singleTabFeatures.size() > 0){
+            singleTabFeatures.forEach(AppFeature::onFeatureInit);
+            appTabItems.add(new AppTabItem());
+            singleTabFeatures.forEach(feature -> appTabItems.add(fromFeature(feature)));
+        }
+
+        multiTabFeatures.forEach(this::addMultiTab);
         appTabItems.add(new AppTabItem());
-        baseFeatures.forEach(AppFeature::onFeatureInit);
-        singleTabFeatures.forEach(AppFeature::onFeatureInit);
-        appTabItems.add(new AppTabItem());
-        singleTabFeatures.forEach(feature -> appTabItems.add(fromFeature(feature)));
-        multiTabFeatures.forEach(AppFeature::onFeatureInit);
-        appTabItems.add(new AppTabItem());
-        multiTabFeatures.forEach(documentBased -> appTabItems.addAll(documentBased.getTabs()));
-        appTabItems.add(new AppTabItem());
+    }
+
+    private void  addMultiTab(AppFeature.MultiTab multiTab){
+        List<AppTabItem> tabs = multiTab.getTabs();
+        if (tabs.size() > 0){
+            appTabItems.add(new AppTabItem());
+            appTabItems.addAll(tabs);
+        }
     }
 
     private static AppTabItem fromFeature(AppFeature feature) {
