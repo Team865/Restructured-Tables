@@ -77,6 +77,12 @@ public class AppController implements StageController {
     @FXML
     MenuButton newButton;
 
+    @FXML
+    Label dataset;
+
+    @FXML
+    Label user;
+
     @Override
     public void setStage(Stage stage) {
         stage.getScene().setOnKeyPressed(event -> {
@@ -109,6 +115,8 @@ public class AppController implements StageController {
 
     @FXML
     void initialize() {
+        dataset.setText("2018iri << 865");
+        user.setText("Yu Liu");
         initTabsItemsAndFactory();
         addTabs();
         Features.multiTabFeatures.forEach(multiTab -> {

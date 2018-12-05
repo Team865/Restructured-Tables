@@ -15,7 +15,7 @@
     <ToolBar prefWidth="220"
              HBox.hgrow="ALWAYS">
 
-        <Label text="2018iri &lt;&lt; 865" styleClass="highlight-blue" minWidth="225"
+        <Label fx:id="dataset" styleClass="highlight-blue" minWidth="225"
                onMouseClicked="#onEventSelectAction">
             <graphic>
                 <FontIcon iconLiteral="fas-database:18:white"/>
@@ -32,16 +32,8 @@
 
         <Separator/>
 
-        <Button text="Sync with TBA">
-            <graphic>
-                <FontIcon iconLiteral="fas-sync:18:gray"/>
-            </graphic>
-        </Button>
 
-        <Separator/>
-
-
-        <Label text="Yu Liu" styleClass="highlight-blue">
+        <Label fx:id="user" styleClass="highlight-blue">
             <graphic>
                 <FontIcon iconLiteral="fas-user:16:white"/>
             </graphic>
