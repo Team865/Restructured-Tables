@@ -8,8 +8,8 @@
 <?import java.net.URL?>
 <HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       spacing="10"
-      alignment="CENTER_LEFT" fx:controller="ca.warp7.rt.java.scanner.ScannerController" prefWidth="1600"
-      prefHeight="900">
+      alignment="CENTER_LEFT" fx:controller="ca.warp7.rt.java.scanner.ScannerController" prefWidth="1360"
+      prefHeight="700">
 
     <stylesheets>
         <URL value="@/ca/warp7/rt/style/main.css"/>

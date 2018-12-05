@@ -33,7 +33,7 @@ public class PythonScriptsController {
                             "\nimport pandas as pd" +
                             "\n\n\n" +
                             "@table(\"entry\", level=1)\n" +
-                            "def some_table_name(src, entry):\n" +
+                            "def table_name(data, entry):\n" +
                             "    return {\n" +
                             "        \"column_name\": \"column_data\"\n" +
                             "    }\n";
