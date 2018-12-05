@@ -107,37 +107,14 @@ public class ScannerController {
                     return;
                 }
 
-                HBox hBox = new HBox();
-                hBox.setSpacing(10);
-                hBox.setAlignment(Pos.CENTER_LEFT);
-
-                CheckBox checkBox = new CheckBox();
-                checkBox.selectedProperty().bindBidirectional(item.commitProperty);
-
-                Label team = new Label();
-                team.textProperty().bind(item.teamProperty);
-                team.getStyleClass().add("team-red");
-                team.setPrefWidth(50);
-
-                Label scout = new Label();
-                scout.textProperty().bind(item.boardScoutProperty);
-                scout.setPrefWidth(150);
-
-                Label timestamp = new Label();
-                timestamp.textProperty().bind(item.timestampProperty);
-
-                hBox.getChildren().add(checkBox);
-                hBox.getChildren().add(timestamp);
-                hBox.getChildren().add(team);
-                hBox.getChildren().add(scout);
-
-                setGraphic(hBox);
+                setGraphic(ScannerUI.cellFromEntry(item));
             }
         });
     }
 
     private void startCameraStream() {
         webcam = Webcam.getDefault();
+        if (webcam.isOpen()) webcam.close();
         webcam.setCustomViewSizes(WebcamResolution.VGA.getSize());
         webcam.setViewSize(WebcamResolution.VGA.getSize());
         webcam.open();
