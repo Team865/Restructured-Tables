@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
 public class TabCreator {
-    static HBox getTab(AppTabItem item) {
+    static HBox tabUIFromItem(AppTabItem item) {
         HBox outer = new HBox();
 
         HBox inner = new HBox();

@@ -7,7 +7,6 @@ import ca.warp7.rt.java.base.StageUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -93,8 +92,8 @@ public class AppController implements StageController {
                 if (item.isSeparator) {
                     setGraphic(new Separator());
                 } else {
-                    HBox hBox = TabCreator.getTab(item);
-                    hBox.setOnMouseClicked(event -> tabContent.setCenter(new Label(item.title)));
+                    HBox hBox = TabCreator.tabUIFromItem(item);
+                    hBox.setOnMouseClicked(event -> tabContent.setCenter(item.getAppFeature().getViewParent()));
                     setGraphic(hBox);
                 }
             }
@@ -122,11 +121,16 @@ public class AppController implements StageController {
         List<AppTabItem> tabs = multiTab.getTabs();
         if (tabs.size() > 0) {
             appTabItems.add(new AppTabItem());
-            appTabItems.addAll(tabs);
+            tabs.forEach(item -> {
+                item.setAppFeature(multiTab);
+                appTabItems.add(item);
+            });
         }
     }
 
     private static AppTabItem fromFeature(AppFeature feature) {
-        return new AppTabItem(feature.getFeatureName(), feature.getIconLiteral());
+        AppTabItem item = new AppTabItem(feature.getFeatureName(), feature.getIconLiteral());
+        item.setAppFeature(feature);
+        return item;
     }
 }
