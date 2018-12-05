@@ -68,6 +68,7 @@
         <VBox prefWidth="240" alignment="TOP_CENTER">
             <ListView VBox.vgrow="ALWAYS" fx:id="appTabs"/>
         </VBox>
+        <BorderPane fx:id="tabContent"/>
     </HBox>
 
 </VBox>
