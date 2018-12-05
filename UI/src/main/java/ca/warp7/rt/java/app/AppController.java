@@ -59,11 +59,6 @@ public class AppController implements StageController {
     }
 
     @FXML
-    void onScannerAction() {
-        stage("/ca/warp7/rt/stage/scanner/Scanner.fxml", "Scanner", getClass());
-    }
-
-    @FXML
     void onPythonScripts() {
         stage("/ca/warp7/rt/stage/python/PythonScripts.fxml", "Python Scripts", getClass());
     }

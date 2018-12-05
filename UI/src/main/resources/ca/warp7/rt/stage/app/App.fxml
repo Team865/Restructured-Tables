@@ -49,14 +49,6 @@
 
         <Separator/>
 
-        <Button onAction="#onScannerAction">
-            <graphic>
-                <FontIcon iconLiteral="fas-camera:18:gray"/>
-            </graphic>
-        </Button>
-
-        <Separator/>
-
         <Button onAction="#onPythonScripts">
             <graphic>
                 <FontIcon iconLiteral="fab-python:18:gray"/>

@@ -1,6 +1,5 @@
 package ca.warp7.rt.java.scanner;
 
-import ca.warp7.rt.java.base.StageController;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamResolution;
 import com.google.zxing.BinaryBitmap;
@@ -16,24 +15,20 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.awt.image.BufferedImage;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class ScannerController implements StageController {
+public class ScannerController {
 
     @FXML
     ImageView streamImageView;
@@ -71,7 +66,6 @@ public class ScannerController implements StageController {
     Label currentMatch;
 
     private StringProperty resultProperty;
-    private Stage stage;
     private Webcam webcam;
     private boolean isStreaming;
     private ObjectProperty<Image> imageProperty = new SimpleObjectProperty<>();
@@ -85,22 +79,9 @@ public class ScannerController implements StageController {
         initializeListFactory();
     }
 
-    @Override
-    public void setStage(Stage stage) {
-        this.stage = stage;
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setOnCloseRequest(Event::consume);
-        stage.getScene().setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ESCAPE) {
-                onDiscard();
-            }
-        });
-    }
-
     @FXML
-    void onDiscard() {
+    void onChangeCameraState() {
         isStreaming = false;
-        stage.close();
     }
 
     private void initializeListFactory() {

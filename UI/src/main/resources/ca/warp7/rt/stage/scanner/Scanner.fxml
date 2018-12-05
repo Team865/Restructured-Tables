@@ -8,7 +8,8 @@
 <?import java.net.URL?>
 <HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       alignment="CENTER" prefWidth="1360"
-      prefHeight="700">
+      prefHeight="700"
+fx:controller="ca.warp7.rt.java.scanner.ScannerController">
 
     <stylesheets>
         <URL value="@/ca/warp7/rt/style/main.css"/>
@@ -86,7 +87,7 @@
                     <FontIcon iconLiteral="fas-save:18:gray"/>
                 </graphic>
             </Button>
-            <Button text="Pause">
+            <Button text="Pause" onMouseClicked="#onChangeCameraState">
                 <graphic>
                     <FontIcon iconLiteral="fas-times:18:gray"/>
                 </graphic>
