@@ -62,12 +62,6 @@
     -fx-font-weight: bold;
 }
 
-
-.cell :selected {
-    -fx-background-color: #3c5c94;
-    -fx-text-fill: white;
-}
-
 .scroll-bar .increment-button {
     -fx-opacity: 0;
     -fx-pref-height: 0;

@@ -14,8 +14,8 @@
         <URL value="@/ca/warp7/rt/style/main.css"/>
     </stylesheets>
 
-    <VBox HBox.hgrow="ALWAYS">
-        <ImageView fx:id="streamImageView" fitWidth="800" fitHeight="600" HBox.hgrow="ALWAYS"/>
+    <VBox HBox.hgrow="ALWAYS" alignment="CENTER" fx:id="imageContainer" >
+        <ImageView fx:id="streamImageView" preserveRatio="true"/>
     </VBox>
 
     <VBox spacing="10" alignment="TOP_CENTER">

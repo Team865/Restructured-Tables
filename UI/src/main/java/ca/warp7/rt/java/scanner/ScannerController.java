@@ -16,12 +16,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.awt.image.BufferedImage;
 import java.text.SimpleDateFormat;
@@ -60,6 +59,8 @@ public class ScannerController {
     @FXML
     ImageView streamImageView;
     @FXML
+    VBox imageContainer;
+    @FXML
     Label resultLabel;
     @FXML
     TextArea comments;
@@ -80,11 +81,13 @@ public class ScannerController {
         startCameraStream();
         scanList.setItems(scannerEntries);
         initializeListFactory();
+        streamImageView.fitWidthProperty().bind(imageContainer.widthProperty());
+        streamImageView.fitHeightProperty().bind(imageContainer.heightProperty());
     }
 
     @FXML
     void onCameraStateChange() {
-        if (isStreaming){
+        if (isStreaming) {
             isStreaming = false;
             cameraStateChanger.setText("Start");
         } else {
@@ -115,7 +118,6 @@ public class ScannerController {
     private void startCameraStream() {
         webcam = Webcam.getDefault();
         if (webcam.isOpen()) webcam.close();
-        webcam.setCustomViewSizes(WebcamResolution.VGA.getSize());
         webcam.setViewSize(WebcamResolution.VGA.getSize());
         webcam.open();
         isStreaming = true;
