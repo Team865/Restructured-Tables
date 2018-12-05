@@ -4,7 +4,7 @@
 
 <?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-prefWidth="1600" prefHeight="850" minWidth="800" minHeight="450">
+prefWidth="1600" prefHeight="850" minWidth="800" minHeight="450" fx:controller="ca.warp7.rt.java.app.AppController">
     <stylesheets>
         <URL value="@/ca/warp7/rt/style/main.css"/>
     </stylesheets>

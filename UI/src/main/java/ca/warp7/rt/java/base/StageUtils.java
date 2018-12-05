@@ -14,14 +14,17 @@ public class StageUtils {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(caller.getResource(resFile));
-
         stage.setTitle(windowTitle);
         stage.getIcons().add(new Image(caller.getResourceAsStream("/app-icon.png")));
-        stage.setScene(new Scene(node(resFile, caller)));
 
-        Object controller = loader.getController();
-        if (controller instanceof StageController) {
-            ((StageController) controller).setStage(stage);
+        try {
+            stage.setScene(new Scene(loader.load()));
+            Object controller = loader.getController();
+            if (controller instanceof StageController) {
+                ((StageController) controller).setStage(stage);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         stage.show();
