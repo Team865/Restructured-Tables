@@ -105,6 +105,8 @@ public class AppController implements StageController {
                     outer.getChildren().add(inner);
                     outer.getChildren().add(new Label(item.title));
 
+                    outer.setOnMouseClicked(event -> tabContent.setCenter(new Label(item.title)));
+
                     setGraphic(outer);
                 }
             }
