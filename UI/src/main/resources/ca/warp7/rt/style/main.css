@@ -1,7 +1,5 @@
 .highlight-blue {
     -fx-font-weight: bold;
-    /*-fx-text-fill: #3c5c94;*/
-    /*-fx-background-color: #ddd;*/
     -fx-text-fill: white;
     -fx-background-color: #3c5c94;
     -fx-padding: 4 16 4 16;

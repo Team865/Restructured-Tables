@@ -23,20 +23,20 @@ public class AppController implements StageController {
 
     @FXML
     private ListView<AppTabItem> appTabs;
-
-    private ObservableList<AppTabItem> appTabItems = FXCollections.observableArrayList(TabConstant.tabItems);
-
     @FXML
     MenuButton newButton;
-
     @FXML
     Label dataset;
-
     @FXML
     Label user;
-
     @FXML
     BorderPane tabContent;
+    @FXML
+    HBox tabsAndContent;
+    @FXML
+    CheckBox hideSidebarCheckbox;
+
+    private ObservableList<AppTabItem> appTabItems = FXCollections.observableArrayList(TabConstant.tabItems);
 
     @Override
     public void setStage(Stage stage) {
@@ -44,6 +44,8 @@ public class AppController implements StageController {
             if (event.getCode() == KeyCode.F11) {
                 stage.setFullScreen(true);
                 stage.setFullScreenExitKeyCombination(new KeyCodeCombination(KeyCode.ESCAPE));
+            } else if (event.getCode() == KeyCode.F9){
+                hideSidebarCheckbox.setSelected(!hideSidebarCheckbox.isSelected());
             }
         });
     }
@@ -59,16 +61,15 @@ public class AppController implements StageController {
     }
 
     @FXML
-    void onPythonScripts() {
-        stage("/ca/warp7/rt/stage/python/PythonScripts.fxml", "Python Scripts", getClass());
-    }
-
-    @FXML
     void initialize() {
         dataset.setText("2018iri << 865");
         user.setText("Yu Liu");
         initTabsItemsAndFactory();
         addTabs();
+        hideSidebarCheckbox.selectedProperty().addListener((observable, oldValue, selected) -> {
+            if (selected) tabsAndContent.getChildren().remove(0);
+            else tabsAndContent.getChildren().add(0, appTabs);
+        });
         Features.multiTabFeatures.forEach(multiTab -> {
             MenuItem item = new MenuItem();
             item.setText(multiTab.getFeatureName());
