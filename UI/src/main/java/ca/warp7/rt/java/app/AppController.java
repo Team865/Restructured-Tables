@@ -87,7 +87,7 @@ public class AppController implements StageController {
                 if (item.isSeparator) {
                     setGraphic(new Separator());
                 } else {
-                    HBox hBox = TabCreator.tabUIFromItem(item);
+                    HBox hBox = AppUI.tabUIFromItem(item);
                     hBox.setOnMouseClicked(event -> tabContent.setCenter(item.getAppFeature().getViewParent()));
                     setGraphic(hBox);
                 }

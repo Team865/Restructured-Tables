@@ -6,7 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
-public class TabCreator {
+public class AppUI {
     static HBox tabUIFromItem(AppTabItem item) {
         HBox outer = new HBox();
 
