@@ -1,10 +1,17 @@
 package ca.warp7.rt.java.app;
 
+import ca.warp7.rt.java.base.StageUtils;
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import static ca.warp7.rt.java.base.StageUtils.stage;
 
 public class AppBarController {
+
+    @FXML
+    MenuButton newButton;
 
     @FXML
     void onEventSelectAction() {
@@ -28,5 +35,11 @@ public class AppBarController {
 
     @FXML
     void initialize() {
+        Features.multiTabFeatures.forEach(multiTab -> {
+            MenuItem item = new MenuItem();
+            item.setText(multiTab.getFeatureName());
+            item.setGraphic(StageUtils.icon(multiTab.getIconLiteral()));
+            newButton.getItems().add(item);
+        });
     }
 }

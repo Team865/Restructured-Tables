@@ -16,22 +16,10 @@
 
     <Separator />
 
-    <MenuButton text="New">
+    <MenuButton text="New" fx:id="newButton">
         <graphic>
             <FontIcon iconLiteral="fas-plus:18:gray"/>
         </graphic>
-        <items>
-            <MenuItem text="Python Script">
-                <graphic>
-                    <FontIcon iconLiteral="fab-python:20:gray"/>
-                </graphic>
-            </MenuItem>
-            <MenuItem text="View">
-                <graphic>
-                    <FontIcon iconLiteral="fas-eye:18:gray"/>
-                </graphic>
-            </MenuItem>
-        </items>
     </MenuButton>
 
     <Separator/>

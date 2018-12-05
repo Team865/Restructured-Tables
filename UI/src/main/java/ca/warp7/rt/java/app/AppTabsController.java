@@ -2,6 +2,7 @@ package ca.warp7.rt.java.app;
 
 import ca.warp7.rt.java.base.AppFeature;
 import ca.warp7.rt.java.base.AppTabItem;
+import ca.warp7.rt.java.base.StageUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,7 +12,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
-import org.kordamp.ikonli.javafx.FontIcon;
 
 import static ca.warp7.rt.java.app.Features.*;
 
@@ -69,7 +69,7 @@ public class AppTabsController {
             new AppTabItem()
     );
 
-    private void initTabs(){
+    private void initTabsItemsAndFactory() {
         appTabs.setItems(appTabItems);
         appTabs.setCellFactory(listView -> new ListCell<AppTabItem>() {
             @Override
@@ -85,9 +85,7 @@ public class AppTabsController {
                     inner.setPrefWidth(24);
                     inner.setAlignment(Pos.CENTER);
 
-                    FontIcon icon = new FontIcon();
-                    icon.setIconLiteral(item.iconLiteral);
-                    inner.getChildren().add(icon);
+                    inner.getChildren().add(StageUtils.icon(item.iconLiteral));
 
                     outer.setSpacing(10);
                     outer.getChildren().add(inner);
@@ -101,7 +99,8 @@ public class AppTabsController {
 
     @FXML
     void initialize() {
-        initTabs();
+        initTabsItemsAndFactory();
+        appTabItems.clear();
         appTabItems.add(new AppTabItem());
         baseFeatures.forEach(AppFeature::onFeatureInit);
         singleTabFeatures.forEach(AppFeature::onFeatureInit);
@@ -113,7 +112,7 @@ public class AppTabsController {
         appTabItems.add(new AppTabItem());
     }
 
-    private static AppTabItem fromFeature(AppFeature feature){
+    private static AppTabItem fromFeature(AppFeature feature) {
         return new AppTabItem(feature.getFeatureName(), feature.getIconLiteral());
     }
 }

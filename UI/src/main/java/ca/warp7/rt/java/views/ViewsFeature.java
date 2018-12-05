@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 public class ViewsFeature implements AppFeature.MultiTab {
     @Override
     public String getIconLiteral() {
-        return "fab-eye:18:gray";
+        return "fas-eye:18:gray";
     }
 
     @Override
