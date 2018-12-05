@@ -104,12 +104,12 @@ public class AppTabsController {
         initTabs();
         appTabItems.add(new AppTabItem());
         baseFeatures.forEach(AppFeature::onFeatureInit);
-        extendFeatures.forEach(AppFeature::onFeatureInit);
+        singleTabFeatures.forEach(AppFeature::onFeatureInit);
         appTabItems.add(new AppTabItem());
-        extendFeatures.forEach(feature -> appTabItems.add(fromFeature(feature)));
-        documentFeatures.forEach(AppFeature::onFeatureInit);
+        singleTabFeatures.forEach(feature -> appTabItems.add(fromFeature(feature)));
+        multiTabFeatures.forEach(AppFeature::onFeatureInit);
         appTabItems.add(new AppTabItem());
-        documentFeatures.forEach(documentBased -> appTabItems.addAll(documentBased.getTabs()));
+        multiTabFeatures.forEach(documentBased -> appTabItems.addAll(documentBased.getTabs()));
         appTabItems.add(new AppTabItem());
     }
 

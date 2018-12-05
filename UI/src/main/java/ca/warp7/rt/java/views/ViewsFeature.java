@@ -1,4 +1,4 @@
-package ca.warp7.rt.java.python;
+package ca.warp7.rt.java.views;
 
 import ca.warp7.rt.java.base.AppFeature;
 import ca.warp7.rt.java.base.AppTabItem;
@@ -7,20 +7,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
-public class PythonFeature implements AppFeature.MultiTab {
+public class ViewsFeature implements AppFeature.MultiTab {
     @Override
     public String getIconLiteral() {
-        return "fab-python:20:gray";
+        return "fab-eye:18:gray";
     }
 
     @Override
     public String getFeatureName() {
-        return "Python Script";
+        return "Data View";
     }
 
     @Override
     public Parent getViewParent() {
-        return StageUtils.node("/ca/warp7/rt/stage/python/PythonScripts.fxml", getClass());
+        return StageUtils.node("/ca/warp7/rt/stage/views/View.fxml", getClass());
     }
 
     @Override
@@ -35,11 +35,11 @@ public class PythonFeature implements AppFeature.MultiTab {
     @Override
     public ObservableList<AppTabItem> getTabs() {
         return FXCollections.observableArrayList(
-                new AppTabItem("[1] raw_data.py", "fab-python:20:gray"),
-                new AppTabItem("[1] averages.py", "fab-python:20:gray"),
-                new AppTabItem("[1] auto_list.py", "fab-python:20:gray"),
-                new AppTabItem("[2] cycle_matrix.py", "fab-python:20:gray"),
-                new AppTabItem("[2] endgame.py", "fab-python:20:gray")
+                new AppTabItem("Raw Data", "fas-eye:18:gray"),
+                new AppTabItem("Auto List", "fas-eye:18:gray"),
+                new AppTabItem("Cycle Matrix", "fas-eye:18:gray"),
+                new AppTabItem("Endgame", "fas-eye:18:gray"),
+                new AppTabItem("Team Averages", "fas-eye:18:gray")
         );
     }
 

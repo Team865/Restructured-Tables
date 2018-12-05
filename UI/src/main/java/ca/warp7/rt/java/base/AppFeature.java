@@ -15,7 +15,7 @@ public interface AppFeature {
 
     void onFeatureInit();
 
-    interface DocumentBased extends AppFeature {
+    interface MultiTab extends AppFeature {
         ObservableList<AppTabItem> getTabs();
 
         void selectTab(AppTabItem item);
