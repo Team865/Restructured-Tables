@@ -14,7 +14,7 @@ public class ViewsFeature implements Feature {
     private Factory factory = new Factory("fas-eye:18:gray", getFeatureId(), LinkGroup.SingleTab);
 
     @Override
-    public void onFeatureInit() {
+    public void init() {
     }
 
     @Override

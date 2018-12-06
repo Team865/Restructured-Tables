@@ -14,7 +14,7 @@ public class ScannerFeature implements Feature {
     private Factory factory = new Factory("fas-camera:18:gray", getFeatureId(), LinkGroup.SingleTab);
 
     @Override
-    public void onFeatureInit() {
+    public void init() {
     }
 
     @Override

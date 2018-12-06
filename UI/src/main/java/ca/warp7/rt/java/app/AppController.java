@@ -2,6 +2,7 @@ package ca.warp7.rt.java.app;
 
 import ca.warp7.rt.java.core.feature.FeatureAction;
 import ca.warp7.rt.java.core.feature.FeatureStage;
+import ca.warp7.rt.java.core.feature.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -54,6 +55,22 @@ public class AppController implements FeatureStage {
         dataset.setText("2018iri << 865");
         user.setText("Yu Liu");
         initTabsItemsAndFactory();
+        AppFeatures.features.forEach(feature -> {
+            feature.init();
+            ObservableList<FeatureAction> actionList = feature.getActionList();
+            for (FeatureAction action : actionList) {
+                switch (action.getType()) {
+                    case New:
+                        MenuItem item = new MenuItem();
+                        item.setText(action.getActionTitle());
+                        item.setGraphic(FeatureUtils.getIcon(action.getIconLiteral()));
+                        newButton.getItems().add(item);
+                        break;
+                    case Open:
+                        break;
+                }
+            }
+        });
         hideSidebarCheckbox.selectedProperty().addListener((observable, oldValue, selected) -> {
             if (selected) tabsAndContent.getChildren().remove(0);
             else tabsAndContent.getChildren().add(0, appTabs);

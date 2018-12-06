@@ -5,7 +5,7 @@ import javafx.scene.Parent;
 
 public interface Feature {
 
-    void onFeatureInit();
+    void init();
 
     ObservableList<FeatureAction> getActionList();
 
@@ -14,7 +14,4 @@ public interface Feature {
     Parent onAction(FeatureAction.Type type, String params);
 
     boolean onCloseRequest();
-
-    default void setController(Object o) {
-    }
 }

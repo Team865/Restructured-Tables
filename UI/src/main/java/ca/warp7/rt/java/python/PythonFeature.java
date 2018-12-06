@@ -14,7 +14,7 @@ public class PythonFeature implements Feature {
     private Factory factory = new Factory("fab-python:20:gray", getFeatureId(), LinkGroup.SingleTab);
 
     @Override
-    public void onFeatureInit() {
+    public void init() {
     }
 
     @Override
