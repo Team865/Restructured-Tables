@@ -1,5 +1,6 @@
 package ca.warp7.rt.java.core.feature;
 
+
 public class FeatureTabItem {
     public String title;
     public String iconLiteral;

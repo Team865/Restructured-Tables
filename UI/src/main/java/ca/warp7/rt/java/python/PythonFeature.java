@@ -7,7 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
-public class PythonFeature implements Feature.MultiTab {
+public class PythonFeature implements Feature {
     @Override
     public String getIconLiteral() {
         return "fab-python:20:gray";

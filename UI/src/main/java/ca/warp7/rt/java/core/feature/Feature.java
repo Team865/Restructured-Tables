@@ -5,19 +5,13 @@ import javafx.scene.Parent;
 
 public interface Feature {
 
-    String getIconLiteral();
-
-    String getFeatureName();
-
-    Parent getViewParent();
-
-    void onRequestTabChange(Runnable tabChangCallback);
-
     void onFeatureInit();
 
-    interface MultiTab extends Feature {
-        ObservableList<FeatureTabItem> getTabs();
+    ObservableList<FeatureAction> getActionList();
 
-        void selectTab(FeatureTabItem item);
-    }
+    String getFeatureId();
+
+    Parent onAction(FeatureAction.Type type, String params);
+
+    boolean onCloseRequest();
 }
