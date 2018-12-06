@@ -1,6 +1,6 @@
 package ca.warp7.rt.java.app;
 
-import ca.warp7.rt.java.core.feature.FeatureTabItem;
+import ca.warp7.rt.java.core.ft.FeatureTabItem;
 
 import java.util.Arrays;
 import java.util.List;

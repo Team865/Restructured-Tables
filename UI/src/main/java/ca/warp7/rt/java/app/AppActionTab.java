@@ -1,6 +1,6 @@
 package ca.warp7.rt.java.app;
 
-import ca.warp7.rt.java.core.feature.FeatureAction;
+import ca.warp7.rt.java.core.ft.FeatureAction;
 
 class AppActionTab {
 

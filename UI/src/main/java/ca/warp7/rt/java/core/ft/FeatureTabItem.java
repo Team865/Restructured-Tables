@@ -1,6 +1,6 @@
-package ca.warp7.rt.java.core.feature;
+package ca.warp7.rt.java.core.ft;
 
-
+@Deprecated
 public class FeatureTabItem {
     public String title;
     public String iconLiteral;

@@ -1,4 +1,4 @@
-package ca.warp7.rt.java.core.feature;
+package ca.warp7.rt.java.core.ft;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class FeatureAction {

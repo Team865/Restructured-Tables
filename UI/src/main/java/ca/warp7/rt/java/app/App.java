@@ -1,6 +1,6 @@
 package ca.warp7.rt.java.app;
 
-import ca.warp7.rt.java.core.feature.FeatureUtils;
+import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

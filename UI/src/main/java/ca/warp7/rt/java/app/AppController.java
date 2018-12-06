@@ -1,11 +1,13 @@
 package ca.warp7.rt.java.app;
 
-import ca.warp7.rt.java.core.feature.FeatureAction;
-import ca.warp7.rt.java.core.feature.FeatureStage;
-import ca.warp7.rt.java.core.feature.FeatureUtils;
+import ca.warp7.rt.java.core.ft.Feature;
+import ca.warp7.rt.java.core.ft.FeatureAction;
+import ca.warp7.rt.java.core.ft.FeatureStage;
+import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -17,7 +19,9 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static ca.warp7.rt.java.core.feature.FeatureUtils.showStage;
+import static ca.warp7.rt.java.app.AppFeatures.featureMap;
+import static ca.warp7.rt.java.app.AppFeatures.features;
+import static ca.warp7.rt.java.core.ft.FeatureUtils.showStage;
 
 public class AppController implements FeatureStage {
 
@@ -60,7 +64,7 @@ public class AppController implements FeatureStage {
         user.setText("Yu Liu");
         initTabsItemsAndFactory();
         Map<String, ArrayList<FeatureAction>> tabGroups = new LinkedHashMap<>();
-        AppFeatures.features.forEach(feature -> {
+        features.forEach(feature -> {
             feature.init();
             feature.getActionList().forEach(action -> {
                 switch (action.getType()) {
@@ -121,5 +125,11 @@ public class AppController implements FeatureStage {
 
     @SuppressWarnings("unused")
     private void handleFeatureAction(FeatureAction action) {
+        String id = action.getFeatureId();
+        if (featureMap.containsKey(id)) {
+            Feature feature = featureMap.get(id);
+            Parent parent = feature.onAction(action.getType(), action.getParamString());
+            tabContent.setCenter(parent);
+        }
     }
 }

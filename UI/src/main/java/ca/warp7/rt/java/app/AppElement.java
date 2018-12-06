@@ -1,7 +1,7 @@
 package ca.warp7.rt.java.app;
 
-import ca.warp7.rt.java.core.feature.FeatureAction;
-import ca.warp7.rt.java.core.feature.FeatureUtils;
+import ca.warp7.rt.java.core.ft.FeatureAction;
+import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;

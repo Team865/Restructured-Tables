@@ -1,4 +1,4 @@
-package ca.warp7.rt.java.core.feature;
+package ca.warp7.rt.java.core.ft;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,7 +31,7 @@ public class FeatureUtils {
         stage.show();
     }
 
-    public static Parent getNode(String resFile, Class caller) {
+    public static Parent loadParent(String resFile, Class caller) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(caller.getResource(resFile));
