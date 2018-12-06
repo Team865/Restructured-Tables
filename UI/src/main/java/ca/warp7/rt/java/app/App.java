@@ -1,21 +1,18 @@
 package ca.warp7.rt.java.app;
 
-import ca.warp7.rt.java.base.StageUtils;
+import ca.warp7.rt.java.core.feature.FeatureUtils;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class App extends Application {
     @Override
     public void start(Stage stage) {
-
-        if (!System.getProperty("os.name").toLowerCase().startsWith("win")) {
-            throw new UnsupportedOperationException("Only Windows is supported");
-        }
-
-        StageUtils.stage("/ca/warp7/rt/stage/app/App.fxml", "RestructuredTables", getClass());
+        String os = System.getProperty("os.name").toLowerCase();
+        if (!os.startsWith("win")) throw new RuntimeException("Only Windows is supported");
+        FeatureUtils.showStage("/ca/warp7/rt/stage/app/App.fxml", "Restructured Tables", getClass());
     }
 
-    static void launch0() {
+    public static void launch0() {
         launch();
     }
 }

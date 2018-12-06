@@ -1,20 +1,20 @@
 package ca.warp7.rt.java.app;
 
-import ca.warp7.rt.java.base.AppTabItem;
-import ca.warp7.rt.java.base.StageUtils;
+import ca.warp7.rt.java.core.feature.FeatureTabItem;
+import ca.warp7.rt.java.core.feature.FeatureUtils;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
-public class AppUI {
-    static HBox tabUIFromItem(AppTabItem item) {
+class AppElement {
+    static HBox tabUIFromItem(FeatureTabItem item) {
         HBox outer = new HBox();
 
         HBox inner = new HBox();
         inner.setPrefWidth(24);
         inner.setAlignment(Pos.CENTER);
 
-        inner.getChildren().add(StageUtils.icon(item.iconLiteral));
+        inner.getChildren().add(FeatureUtils.getIcon(item.iconLiteral));
 
         outer.setSpacing(10);
         outer.getChildren().add(inner);

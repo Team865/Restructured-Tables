@@ -1,4 +1,4 @@
-package ca.warp7.rt.java.base;
+package ca.warp7.rt.java.core.feature;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,8 +10,8 @@ import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
 
-public class StageUtils {
-    public static void stage(String resFile, String windowTitle, Class caller) {
+public class FeatureUtils {
+    public static void showStage(String resFile, String windowTitle, Class caller) {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(caller.getResource(resFile));
@@ -21,8 +21,8 @@ public class StageUtils {
         try {
             stage.setScene(new Scene(loader.load()));
             Object controller = loader.getController();
-            if (controller instanceof StageController) {
-                ((StageController) controller).setStage(stage);
+            if (controller instanceof FeatureStage) {
+                ((FeatureStage) controller).setStage(stage);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -31,7 +31,7 @@ public class StageUtils {
         stage.show();
     }
 
-    public static Parent node(String resFile, Class caller) {
+    public static Parent getNode(String resFile, Class caller) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(caller.getResource(resFile));
@@ -42,7 +42,7 @@ public class StageUtils {
         }
     }
 
-    public static FontIcon icon(String literal) {
+    public static FontIcon getIcon(String literal) {
         FontIcon icon = new FontIcon();
         icon.setIconLiteral(literal);
         return icon;

@@ -1,9 +1,9 @@
 package ca.warp7.rt.java.app;
 
-import ca.warp7.rt.java.base.AppFeature;
-import ca.warp7.rt.java.base.AppTabItem;
-import ca.warp7.rt.java.base.StageController;
-import ca.warp7.rt.java.base.StageUtils;
+import ca.warp7.rt.java.core.feature.Feature;
+import ca.warp7.rt.java.core.feature.FeatureStage;
+import ca.warp7.rt.java.core.feature.FeatureTabItem;
+import ca.warp7.rt.java.core.feature.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,13 +16,11 @@ import javafx.stage.Stage;
 
 import java.util.List;
 
-import static ca.warp7.rt.java.app.Features.*;
-import static ca.warp7.rt.java.base.StageUtils.stage;
+import static ca.warp7.rt.java.app.AppFeatures.*;
+import static ca.warp7.rt.java.core.feature.FeatureUtils.showStage;
 
-public class AppController implements StageController {
+public class AppController implements FeatureStage {
 
-    @FXML
-    private ListView<AppTabItem> appTabs;
     @FXML
     MenuButton newButton;
     @FXML
@@ -35,8 +33,15 @@ public class AppController implements StageController {
     HBox tabsAndContent;
     @FXML
     CheckBox hideSidebarCheckbox;
+    @FXML
+    private ListView<FeatureTabItem> appTabs;
+    private ObservableList<FeatureTabItem> featureTabItems = FXCollections.observableArrayList(AppTabConstant.tabItems);
 
-    private ObservableList<AppTabItem> appTabItems = FXCollections.observableArrayList(TabConstant.tabItems);
+    private static FeatureTabItem fromFeature(Feature feature) {
+        FeatureTabItem item = new FeatureTabItem(feature.getFeatureName(), feature.getIconLiteral());
+        item.setFeature(feature);
+        return item;
+    }
 
     @Override
     public void setStage(Stage stage) {
@@ -44,20 +49,15 @@ public class AppController implements StageController {
             if (event.getCode() == KeyCode.F11) {
                 stage.setFullScreen(true);
                 stage.setFullScreenExitKeyCombination(new KeyCodeCombination(KeyCode.ESCAPE));
-            } else if (event.getCode() == KeyCode.F9){
+            } else if (event.getCode() == KeyCode.F9) {
                 hideSidebarCheckbox.setSelected(!hideSidebarCheckbox.isSelected());
             }
         });
     }
 
     @FXML
-    void onEventSelectAction() {
-        stage("/ca/warp7/rt/stage/app/EventSelect.fxml", "Select Event", getClass());
-    }
-
-    @FXML
     void onSystemStateAction() {
-        stage("/ca/warp7/rt/stage/app/SystemState.fxml", "System State", getClass());
+        showStage("/ca/warp7/rt/stage/app/SystemState.fxml", "System State", getClass());
     }
 
     @FXML
@@ -70,26 +70,26 @@ public class AppController implements StageController {
             if (selected) tabsAndContent.getChildren().remove(0);
             else tabsAndContent.getChildren().add(0, appTabs);
         });
-        Features.multiTabFeatures.forEach(multiTab -> {
+        multiTabFeatures.forEach(multiTab -> {
             MenuItem item = new MenuItem();
             item.setText(multiTab.getFeatureName());
-            item.setGraphic(StageUtils.icon(multiTab.getIconLiteral()));
+            item.setGraphic(FeatureUtils.getIcon(multiTab.getIconLiteral()));
             newButton.getItems().add(item);
         });
     }
 
     private void initTabsItemsAndFactory() {
-        appTabs.setItems(appTabItems);
-        appTabs.setCellFactory(listView -> new ListCell<AppTabItem>() {
+        appTabs.setItems(featureTabItems);
+        appTabs.setCellFactory(listView -> new ListCell<FeatureTabItem>() {
             @Override
-            protected void updateItem(AppTabItem item, boolean empty) {
+            protected void updateItem(FeatureTabItem item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) return;
                 if (item.isSeparator) {
                     setGraphic(new Separator());
                 } else {
-                    HBox hBox = AppUI.tabUIFromItem(item);
-                    hBox.setOnMouseClicked(event -> tabContent.setCenter(item.getAppFeature().getViewParent()));
+                    HBox hBox = AppElement.tabUIFromItem(item);
+                    hBox.setOnMouseClicked(event -> tabContent.setCenter(item.getFeature().getViewParent()));
                     setGraphic(hBox);
                 }
             }
@@ -97,36 +97,27 @@ public class AppController implements StageController {
     }
 
     private void addTabs() {
-        appTabItems.clear();
-        if (baseFeatures.size() > 0) {
-            appTabItems.add(new AppTabItem());
-            baseFeatures.forEach(AppFeature::onFeatureInit);
-            baseFeatures.forEach(feature -> appTabItems.add(fromFeature(feature)));
-        }
-        if (singleTabFeatures.size() > 0) {
-            singleTabFeatures.forEach(AppFeature::onFeatureInit);
-            appTabItems.add(new AppTabItem());
-            singleTabFeatures.forEach(feature -> appTabItems.add(fromFeature(feature)));
-        }
-
+        featureTabItems.clear();
+        if (baseFeatures.size() > 0) addTabsForFeatures(baseFeatures);
+        if (singleTabFeatures.size() > 0) addTabsForFeatures(singleTabFeatures);
         multiTabFeatures.forEach(this::addMultiTab);
-        appTabItems.add(new AppTabItem());
+        featureTabItems.add(new FeatureTabItem());
     }
 
-    private void addMultiTab(AppFeature.MultiTab multiTab) {
-        List<AppTabItem> tabs = multiTab.getTabs();
+    private void addTabsForFeatures(Iterable<Feature> appFeatures) {
+        featureTabItems.add(new FeatureTabItem());
+        appFeatures.forEach(Feature::onFeatureInit);
+        appFeatures.forEach(feature -> featureTabItems.add(fromFeature(feature)));
+    }
+
+    private void addMultiTab(Feature.MultiTab multiTab) {
+        List<FeatureTabItem> tabs = multiTab.getTabs();
         if (tabs.size() > 0) {
-            appTabItems.add(new AppTabItem());
+            featureTabItems.add(new FeatureTabItem());
             tabs.forEach(item -> {
-                item.setAppFeature(multiTab);
-                appTabItems.add(item);
+                item.setFeature(multiTab);
+                featureTabItems.add(item);
             });
         }
-    }
-
-    private static AppTabItem fromFeature(AppFeature feature) {
-        AppTabItem item = new AppTabItem(feature.getFeatureName(), feature.getIconLiteral());
-        item.setAppFeature(feature);
-        return item;
     }
 }

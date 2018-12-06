@@ -119,6 +119,7 @@ public class ScannerController {
         webcam = Webcam.getDefault();
         if (webcam.isOpen()) webcam.close();
         webcam.setViewSize(WebcamResolution.VGA.getSize());
+        webcam.setCustomViewSizes(WebcamResolution.VGA.getSize());
         webcam.open();
         isStreaming = true;
         Thread thread = new Thread(() -> {

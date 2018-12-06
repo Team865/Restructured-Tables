@@ -1,10 +1,10 @@
 package ca.warp7.rt.java.scanner;
 
-import ca.warp7.rt.java.base.AppFeature;
-import ca.warp7.rt.java.base.StageUtils;
+import ca.warp7.rt.java.core.feature.Feature;
+import ca.warp7.rt.java.core.feature.FeatureUtils;
 import javafx.scene.Parent;
 
-public class ScannerFeature implements AppFeature {
+public class ScannerFeature implements Feature {
     @Override
     public String getIconLiteral() {
         return "fas-camera:18:gray";
@@ -17,7 +17,7 @@ public class ScannerFeature implements AppFeature {
 
     @Override
     public Parent getViewParent() {
-        return StageUtils.node("/ca/warp7/rt/stage/scanner/Scanner.fxml", getClass());
+        return FeatureUtils.getNode("/ca/warp7/rt/stage/scanner/Scanner.fxml", getClass());
     }
 
     @Override

@@ -1,9 +1,9 @@
-package ca.warp7.rt.java.base;
+package ca.warp7.rt.java.core.feature;
 
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
-public interface AppFeature {
+public interface Feature {
 
     String getIconLiteral();
 
@@ -15,9 +15,9 @@ public interface AppFeature {
 
     void onFeatureInit();
 
-    interface MultiTab extends AppFeature {
-        ObservableList<AppTabItem> getTabs();
+    interface MultiTab extends Feature {
+        ObservableList<FeatureTabItem> getTabs();
 
-        void selectTab(AppTabItem item);
+        void selectTab(FeatureTabItem item);
     }
 }
