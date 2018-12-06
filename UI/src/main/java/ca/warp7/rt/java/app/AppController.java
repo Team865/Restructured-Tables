@@ -40,6 +40,7 @@ public class AppController implements FeatureStage {
     @FXML
     private ListView<AppActionTab> appActionListView;
     private ObservableList<AppActionTab> appActions = FXCollections.observableArrayList();
+    private Feature currentFeature;
 
     @Override
     public void setStage(Stage stage) {
@@ -62,7 +63,7 @@ public class AppController implements FeatureStage {
     void initialize() {
         dataset.setText("2018iri << 865");
         user.setText("Yu Liu");
-        initTabsItemsAndFactory();
+        initTabFactory();
         Map<String, ArrayList<FeatureAction>> tabGroups = new LinkedHashMap<>();
         features.forEach(feature -> {
             feature.init();
@@ -72,6 +73,7 @@ public class AppController implements FeatureStage {
                         MenuItem item = new MenuItem();
                         item.setText(action.getActionTitle());
                         item.setGraphic(FeatureUtils.getIcon(action.getIconLiteral()));
+                        item.setOnAction(event -> handleFeatureAction(action));
                         newButton.getItems().add(item);
                         break;
                     case TabItem:
@@ -105,7 +107,7 @@ public class AppController implements FeatureStage {
         });
     }
 
-    private void initTabsItemsAndFactory() {
+    private void initTabFactory() {
         appActionListView.setItems(appActions);
         appActionListView.setCellFactory(listView -> new ListCell<AppActionTab>() {
             @Override
@@ -126,8 +128,13 @@ public class AppController implements FeatureStage {
         String id = action.getFeatureId();
         if (featureMap.containsKey(id)) {
             Feature feature = featureMap.get(id);
-            Parent parent = feature.onAction(action.getType(), action.getParamString());
-            tabContent.setCenter(parent);
+            if (currentFeature == feature) {
+                currentFeature.onAction(action.getType(), action.getParamString());
+            } else if (currentFeature == null || currentFeature.onCloseRequest()) {
+                currentFeature = feature;
+                Parent parent = currentFeature.onAction(action.getType(), action.getParamString());
+                tabContent.setCenter(parent);
+            }
         }
     }
 }
