@@ -5,11 +5,21 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import org.almibe.codeeditor.CodeMirrorEditor;
 
-public class PythonScriptsController {
+public class PythonController {
     @FXML
     BorderPane codeRoot;
     @FXML
     Button themeChange;
+
+    private static final String template = "from tables import table" +
+            "\nimport numpy as np" +
+            "\nimport pandas as pd" +
+            "\n\n#%s\n\n" +
+            "@table(\"entry\", level=1)\n" +
+            "def table_name(data, entry):\n" +
+            "    return {\n" +
+            "        \"column_name\": \"column_data\"\n" +
+            "    }\n";
 
     private boolean darkTheme;
     private CodeMirrorEditor codeMirrorEditor = new CodeMirrorEditor();
@@ -24,20 +34,16 @@ public class PythonScriptsController {
             }
         });
         codeRoot.setCenter(codeMirrorEditor.getWidget());
-        codeMirrorEditor.init(
+    }
+
+    void setTabItemParams(String itemParams) {
+        String t = String.format(template, itemParams);
+        if (codeMirrorEditor.isEditorInitialized()) codeMirrorEditor.setContent(t, true);
+        else codeMirrorEditor.init(
                 () -> {
                     codeMirrorEditor.setMode("python");
                     codeMirrorEditor.setTheme("monokai");
-                    String builder = "from tables import table" +
-                            "\nimport numpy as np" +
-                            "\nimport pandas as pd" +
-                            "\n\n\n" +
-                            "@table(\"entry\", level=1)\n" +
-                            "def table_name(data, entry):\n" +
-                            "    return {\n" +
-                            "        \"column_name\": \"column_data\"\n" +
-                            "    }\n";
-                    codeMirrorEditor.setContent(builder, true);
+                    codeMirrorEditor.setContent(t, true);
                 }
         );
     }

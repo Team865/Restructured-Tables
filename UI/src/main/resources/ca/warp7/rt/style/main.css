@@ -38,11 +38,17 @@
     -fx-background-color: white;
 }
 
-.list-cell:hover:filled {
-    -fx-background-color: #eee;
+
+.list-view:focused .list-cell:hover:filled {
+    -fx-background-color: #ddd;
 }
 
 .list-cell:selected:filled {
+    -fx-background-color: #ddd;
+    -fx-text-fill: black;
+}
+
+.list-view:focused .list-cell:filled:selected {
     -fx-background-color: #3c5c94;
     -fx-text-fill: white;
 }
