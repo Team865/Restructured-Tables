@@ -3,22 +3,6 @@ package ca.warp7.rt.java.core.ft;
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class FeatureAction {
 
-    public static class Factory {
-        private String iconLiteral;
-        private String featureId;
-        private LinkGroup linkGroup;
-
-        public Factory(String iconLiteral, String featureId, LinkGroup linkGroup) {
-            this.iconLiteral = iconLiteral;
-            this.featureId = featureId;
-            this.linkGroup = linkGroup;
-        }
-
-        public FeatureAction get(String actionTitle, Type type, String paramString) {
-            return new FeatureAction(actionTitle, iconLiteral, featureId, linkGroup, type, paramString);
-        }
-    }
-
     public enum Type {
         New, TabItem
     }

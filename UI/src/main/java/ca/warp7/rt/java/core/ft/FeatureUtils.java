@@ -11,13 +11,13 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import java.io.IOException;
 
 public class FeatureUtils {
-    public static void showStage(String resFile, String windowTitle, Class caller) {
+    public static void showStage(String resFile, String windowTitle) {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
+        Class caller = getCaller();
         loader.setLocation(caller.getResource(resFile));
         stage.setTitle(windowTitle);
         stage.getIcons().add(new Image(caller.getResourceAsStream("/app-icon.png")));
-
         try {
             stage.setScene(new Scene(loader.load()));
             Object controller = loader.getController();
@@ -46,5 +46,14 @@ public class FeatureUtils {
         FontIcon icon = new FontIcon();
         icon.setIconLiteral(literal);
         return icon;
+    }
+
+    private static Class getCaller() {
+        StackTraceElement caller = Thread.currentThread().getStackTrace()[3];
+        try {
+            return Class.forName(caller.getClassName());
+        } catch (ClassNotFoundException e) {
+            return FeatureUtils.class;
+        }
     }
 }

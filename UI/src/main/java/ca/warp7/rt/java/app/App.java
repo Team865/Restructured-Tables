@@ -9,7 +9,7 @@ public class App extends Application {
     public void start(Stage stage) {
         String os = System.getProperty("os.name").toLowerCase();
         if (!os.startsWith("win")) throw new RuntimeException("Only Windows is supported");
-        FeatureUtils.showStage("/ca/warp7/rt/stage/app/App.fxml", "Restructured Tables", getClass());
+        FeatureUtils.showStage("/ca/warp7/rt/stage/app/App.fxml", "Restructured Tables");
     }
 
     public static void launch0() {

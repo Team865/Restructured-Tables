@@ -56,7 +56,7 @@ public class AppController implements FeatureStage {
 
     @FXML
     void onSystemStateAction() {
-        showStage("/ca/warp7/rt/stage/app/SystemState.fxml", "System State", getClass());
+        showStage("/ca/warp7/rt/stage/app/SystemState.fxml", "System State");
     }
 
     @FXML

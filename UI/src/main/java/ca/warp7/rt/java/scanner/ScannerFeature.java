@@ -2,16 +2,18 @@ package ca.warp7.rt.java.scanner;
 
 import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureAction;
+import ca.warp7.rt.java.core.ft.FeatureActionFactory;
 import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
-import static ca.warp7.rt.java.core.ft.FeatureAction.*;
+import static ca.warp7.rt.java.core.ft.FeatureAction.LinkGroup;
+import static ca.warp7.rt.java.core.ft.FeatureAction.Type;
 
 public class ScannerFeature implements Feature {
 
-    private Factory factory = new Factory("fas-camera:18:gray", getFeatureId(), LinkGroup.WithFeature);
+    private FeatureActionFactory factory = new FeatureActionFactory("fas-camera:18:gray", getFeatureId(), LinkGroup.WithFeature);
 
     @Override
     public void init() {
