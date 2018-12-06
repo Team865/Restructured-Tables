@@ -34,6 +34,6 @@ public class ScannerFeature implements Feature {
 
     @Override
     public boolean onCloseRequest() {
-        return false;
+        return true;
     }
 }

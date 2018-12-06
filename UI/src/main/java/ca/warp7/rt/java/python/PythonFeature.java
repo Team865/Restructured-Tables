@@ -31,7 +31,7 @@ public class PythonFeature implements Feature {
 
     @Override
     public String getFeatureId() {
-        return null;
+        return "python";
     }
 
     @Override
@@ -41,7 +41,7 @@ public class PythonFeature implements Feature {
 
     @Override
     public boolean onCloseRequest() {
-        return false;
+        return true;
     }
 
 }

@@ -1,49 +1,47 @@
 package ca.warp7.rt.java.views;
 
 import ca.warp7.rt.java.core.feature.Feature;
-import ca.warp7.rt.java.core.feature.FeatureTabItem;
+import ca.warp7.rt.java.core.feature.FeatureAction;
 import ca.warp7.rt.java.core.feature.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
-public class ViewsFeature implements Feature.MultiTab {
-    @Override
-    public String getIconLiteral() {
-        return "fas-eye:18:gray";
-    }
+import static ca.warp7.rt.java.core.feature.FeatureAction.*;
 
-    @Override
-    public String getFeatureName() {
-        return "Data View";
-    }
+public class ViewsFeature implements Feature {
 
-    @Override
-    public Parent getViewParent() {
-        return FeatureUtils.getNode("/ca/warp7/rt/stage/views/View.fxml", getClass());
-    }
-
-    @Override
-    public void onRequestTabChange(Runnable tabChangCallback) {
-        tabChangCallback.run();
-    }
+    private Factory factory = new Factory("fas-eye:18:gray", getFeatureId(), LinkGroup.SingleTab);
 
     @Override
     public void onFeatureInit() {
     }
 
     @Override
-    public ObservableList<FeatureTabItem> getTabs() {
+    public ObservableList<FeatureAction> getActionList() {
         return FXCollections.observableArrayList(
-                new FeatureTabItem("Raw Data", "fas-eye:18:gray"),
-                new FeatureTabItem("Auto List", "fas-eye:18:gray"),
-                new FeatureTabItem("Cycle Matrix", "fas-eye:18:gray"),
-                new FeatureTabItem("Endgame", "fas-eye:18:gray"),
-                new FeatureTabItem("Team Averages", "fas-eye:18:gray")
+                factory.get("Data View", Type.New, ""),
+                factory.get("Raw Data", Type.Open, ""),
+                factory.get("Auto List", Type.Open, ""),
+                factory.get("Endgame", Type.Open, ""),
+                factory.get("Team Averages", Type.Open, ""),
+                factory.get("Cycle Matrix", Type.Open, "")
         );
     }
 
     @Override
-    public void selectTab(FeatureTabItem item) {
+    public String getFeatureId() {
+        return "views";
     }
+
+    @Override
+    public Parent onAction(Type type, String params) {
+        return FeatureUtils.getNode("/ca/warp7/rt/stage/views/View.fxml", getClass());
+    }
+
+    @Override
+    public boolean onCloseRequest() {
+        return false;
+    }
+
 }

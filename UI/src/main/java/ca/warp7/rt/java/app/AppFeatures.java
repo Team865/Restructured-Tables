@@ -6,18 +6,11 @@ import ca.warp7.rt.java.scanner.ScannerFeature;
 import ca.warp7.rt.java.views.ViewsFeature;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-@SuppressWarnings("ArraysAsListWithZeroOrOneArgument")
 class AppFeatures {
-    static final List<Feature> baseFeatures = Collections.emptyList();
-
-    static final List<Feature> singleTabFeatures = Arrays.asList(
-            new ScannerFeature()
-    );
-
-    static final List<Feature.MultiTab> multiTabFeatures = Arrays.asList(
+    static final List<Feature> features = Arrays.asList(
+            new ScannerFeature(),
             new PythonFeature(),
             new ViewsFeature()
     );
