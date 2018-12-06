@@ -39,7 +39,8 @@ public class AppController implements FeatureStage {
     @FXML
     private ListView<AppActionTab> appActionListView;
     private ObservableList<AppActionTab> appActions = FXCollections.observableArrayList();
-    private Feature currentFeature;
+    private Feature currentFeature = null;
+    private Map<String, ArrayList<FeatureAction>> tabGroups = new LinkedHashMap<>();
 
     @Override
     public void setStage(Stage stage) {
@@ -68,38 +69,7 @@ public class AppController implements FeatureStage {
         dataset.setText("2018iri << 865");
         user.setText("Yu Liu");
         initTabFactory();
-        Map<String, ArrayList<FeatureAction>> tabGroups = new LinkedHashMap<>();
-        features.forEach(feature -> {
-            feature.init();
-            feature.getActionList().forEach(action -> {
-                switch (action.getType()) {
-                    case New:
-                        MenuItem item = new MenuItem();
-                        item.setText(action.getActionTitle());
-                        item.setGraphic(FeatureUtils.getIcon(action.getIconLiteral()));
-                        item.setOnAction(event -> handleFeatureAction(action));
-                        newButton.getItems().add(item);
-                        break;
-                    case TabItem:
-                        String groupName;
-                        switch (action.getActionGroup()) {
-                            case Core:
-                                groupName = "core";
-                                break;
-                            case SingleTab:
-                                groupName = "single";
-                                break;
-                            case WithFeature:
-                                groupName = action.getFeatureId();
-                                break;
-                            default:
-                                groupName = "unknown";
-                        }
-                        if (!tabGroups.containsKey(groupName)) tabGroups.put(groupName, new ArrayList<>());
-                        tabGroups.get(groupName).add(action);
-                }
-            });
-        });
+        features.forEach(this::initFeature);
         tabGroups.forEach((s, featureActions) -> {
             appActions.add(AppActionTab.separator);
             featureActions.forEach(action -> appActions.add(new AppActionTab(action)));
@@ -108,6 +78,47 @@ public class AppController implements FeatureStage {
         hideSidebarCheckbox.selectedProperty().addListener((observable, oldValue, selected) -> {
             if (selected) tabsAndContent.getChildren().remove(0);
             else tabsAndContent.getChildren().add(0, appActionListView);
+        });
+        appActionListView.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                ObservableList<AppActionTab> selectedItems = appActionListView.getSelectionModel().getSelectedItems();
+                if (selectedItems.size() == 1) {
+                    AppActionTab tab = selectedItems.get(0);
+                    if (!tab.isSeparator()) handleFeatureAction(tab.getFeatureAction());
+                }
+            }
+        });
+    }
+
+    private void initFeature(Feature feature) {
+        feature.init();
+        feature.getActionList().forEach(action -> {
+            switch (action.getType()) {
+                case New:
+                    MenuItem item = new MenuItem();
+                    item.setText(action.getActionTitle());
+                    item.setGraphic(FeatureUtils.getIcon(action.getIconLiteral()));
+                    item.setOnAction(event -> handleFeatureAction(action));
+                    newButton.getItems().add(item);
+                    break;
+                case TabItem:
+                    String groupName;
+                    switch (action.getActionGroup()) {
+                        case Core:
+                            groupName = "core";
+                            break;
+                        case SingleTab:
+                            groupName = "single";
+                            break;
+                        case WithFeature:
+                            groupName = action.getFeatureId();
+                            break;
+                        default:
+                            groupName = "unknown";
+                    }
+                    if (!tabGroups.containsKey(groupName)) tabGroups.put(groupName, new ArrayList<>());
+                    tabGroups.get(groupName).add(action);
+            }
         });
     }
 
