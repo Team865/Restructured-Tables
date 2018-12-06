@@ -38,12 +38,12 @@ public class ViewsFeature implements Feature {
 
     @Override
     public Parent onAction(Type type, String paramString) {
-        return FeatureUtils.loadParent("/ca/warp7/rt/stage/views/View.fxml", getClass());
+        return FeatureUtils.loadParent("/ca/warp7/rt/stage/views/View.fxml");
     }
 
     @Override
     public boolean onCloseRequest() {
-        return false;
+        return true;
     }
 
 }

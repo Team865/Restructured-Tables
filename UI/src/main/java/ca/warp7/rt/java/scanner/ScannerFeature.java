@@ -15,6 +15,12 @@ public class ScannerFeature implements Feature {
 
     private FeatureActionFactory factory = new FeatureActionFactory("fas-camera:18:gray", getFeatureId(), LinkGroup.WithFeature);
 
+    private ScannerController controller;
+
+    private void setController(ScannerController controller) {
+        this.controller = controller;
+    }
+
     @Override
     public void init() {
     }
@@ -31,11 +37,12 @@ public class ScannerFeature implements Feature {
 
     @Override
     public Parent onAction(Type type, String paramString) {
-        return FeatureUtils.loadParent("/ca/warp7/rt/stage/scanner/Scanner.fxml", getClass());
+        return FeatureUtils.loadParent("/ca/warp7/rt/stage/scanner/Scanner.fxml", this::setController);
     }
 
     @Override
     public boolean onCloseRequest() {
+        controller.onCameraStateChange();
         return true;
     }
 }

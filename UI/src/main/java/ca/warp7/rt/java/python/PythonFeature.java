@@ -38,7 +38,7 @@ public class PythonFeature implements Feature {
 
     @Override
     public Parent onAction(Type type, String paramString) {
-        return FeatureUtils.loadParent("/ca/warp7/rt/stage/python/PythonScripts.fxml", getClass());
+        return FeatureUtils.loadParent("/ca/warp7/rt/stage/python/PythonScripts.fxml");
     }
 
     @Override

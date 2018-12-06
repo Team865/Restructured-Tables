@@ -78,7 +78,7 @@ public class ScannerController {
     @FXML
     void initialize() {
         resultProperty = resultLabel.textProperty();
-        startCameraStream();
+        onCameraStateChange();
         scanList.setItems(scannerEntries);
         initializeListFactory();
         streamImageView.fitWidthProperty().bind(imageContainer.widthProperty());

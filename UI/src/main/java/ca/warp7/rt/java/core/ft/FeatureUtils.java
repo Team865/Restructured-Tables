@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
+import java.util.function.Consumer;
 
 public class FeatureUtils {
     public static void showStage(String resFile, String windowTitle) {
@@ -31,11 +32,24 @@ public class FeatureUtils {
         stage.show();
     }
 
-    public static Parent loadParent(String resFile, Class caller) {
+    public static Parent loadParent(String resFile) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(caller.getResource(resFile));
+            loader.setLocation(getCaller().getResource(resFile));
             return loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new HBox();
+        }
+    }
+
+    public static <T> Parent loadParent(String resFile, Consumer<T> controllerCallback) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getCaller().getResource(resFile));
+            Parent parent = loader.load();
+            if (controllerCallback != null) controllerCallback.accept(loader.getController());
+            return parent;
         } catch (IOException e) {
             e.printStackTrace();
             return new HBox();
