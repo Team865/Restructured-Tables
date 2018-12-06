@@ -1,9 +1,7 @@
 package ca.warp7.rt.java.app;
 
-import ca.warp7.rt.java.core.feature.Feature;
+import ca.warp7.rt.java.core.feature.FeatureAction;
 import ca.warp7.rt.java.core.feature.FeatureStage;
-import ca.warp7.rt.java.core.feature.FeatureTabItem;
-import ca.warp7.rt.java.core.feature.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,9 +12,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import java.util.List;
-
-import static ca.warp7.rt.java.app.AppFeatures.*;
 import static ca.warp7.rt.java.core.feature.FeatureUtils.showStage;
 
 public class AppController implements FeatureStage {
@@ -34,14 +29,8 @@ public class AppController implements FeatureStage {
     @FXML
     CheckBox hideSidebarCheckbox;
     @FXML
-    private ListView<FeatureTabItem> appTabs;
-    private ObservableList<FeatureTabItem> featureTabItems = FXCollections.observableArrayList(AppTabConstant.tabItems);
-
-    private static FeatureTabItem fromFeature(Feature feature) {
-        FeatureTabItem item = new FeatureTabItem(feature.getFeatureName(), feature.getIconLiteral());
-        item.setFeature(feature);
-        return item;
-    }
+    private ListView<AppActionTab> appTabs;
+    private ObservableList<AppActionTab> featureActions = FXCollections.observableArrayList();
 
     @Override
     public void setStage(Stage stage) {
@@ -65,59 +54,30 @@ public class AppController implements FeatureStage {
         dataset.setText("2018iri << 865");
         user.setText("Yu Liu");
         initTabsItemsAndFactory();
-        addTabs();
         hideSidebarCheckbox.selectedProperty().addListener((observable, oldValue, selected) -> {
             if (selected) tabsAndContent.getChildren().remove(0);
             else tabsAndContent.getChildren().add(0, appTabs);
         });
-        multiTabFeatures.forEach(multiTab -> {
-            MenuItem item = new MenuItem();
-            item.setText(multiTab.getFeatureName());
-            item.setGraphic(FeatureUtils.getIcon(multiTab.getIconLiteral()));
-            newButton.getItems().add(item);
-        });
     }
 
     private void initTabsItemsAndFactory() {
-        appTabs.setItems(featureTabItems);
-        appTabs.setCellFactory(listView -> new ListCell<FeatureTabItem>() {
+        appTabs.setItems(featureActions);
+        appTabs.setCellFactory(listView -> new ListCell<AppActionTab>() {
             @Override
-            protected void updateItem(FeatureTabItem item, boolean empty) {
+            protected void updateItem(AppActionTab item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) return;
-                if (item.isSeparator) {
+                if (item.isSeparator()) {
                     setGraphic(new Separator());
                 } else {
-                    HBox hBox = AppElement.tabUIFromItem(item);
-                    hBox.setOnMouseClicked(event -> tabContent.setCenter(item.getFeature().getViewParent()));
+                    HBox hBox = AppElement.tabUIFromAction(item.getFeatureAction());
+                    hBox.setOnMouseClicked(event -> handleFeatureAction(item.getFeatureAction()));
                     setGraphic(hBox);
                 }
             }
         });
     }
 
-    private void addTabs() {
-        featureTabItems.clear();
-        if (baseFeatures.size() > 0) addTabsForFeatures(baseFeatures);
-        if (singleTabFeatures.size() > 0) addTabsForFeatures(singleTabFeatures);
-        multiTabFeatures.forEach(this::addMultiTab);
-        featureTabItems.add(new FeatureTabItem());
-    }
-
-    private void addTabsForFeatures(Iterable<Feature> appFeatures) {
-        featureTabItems.add(new FeatureTabItem());
-        appFeatures.forEach(Feature::onFeatureInit);
-        appFeatures.forEach(feature -> featureTabItems.add(fromFeature(feature)));
-    }
-
-    private void addMultiTab(Feature.MultiTab multiTab) {
-        List<FeatureTabItem> tabs = multiTab.getTabs();
-        if (tabs.size() > 0) {
-            featureTabItems.add(new FeatureTabItem());
-            tabs.forEach(item -> {
-                item.setFeature(multiTab);
-                featureTabItems.add(item);
-            });
-        }
+    private void handleFeatureAction(FeatureAction action) {
     }
 }
