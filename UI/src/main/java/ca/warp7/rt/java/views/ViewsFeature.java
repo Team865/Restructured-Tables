@@ -21,11 +21,11 @@ public class ViewsFeature implements Feature {
     public ObservableList<FeatureAction> getActionList() {
         return FXCollections.observableArrayList(
                 factory.get("Data View", Type.New, ""),
-                factory.get("Raw Data", Type.Open, ""),
-                factory.get("Auto List", Type.Open, ""),
-                factory.get("Endgame", Type.Open, ""),
-                factory.get("Team Averages", Type.Open, ""),
-                factory.get("Cycle Matrix", Type.Open, "")
+                factory.get("Raw Data", Type.TabItem, ""),
+                factory.get("Auto List", Type.TabItem, ""),
+                factory.get("Endgame", Type.TabItem, ""),
+                factory.get("Team Averages", Type.TabItem, ""),
+                factory.get("Cycle Matrix", Type.TabItem, "")
         );
     }
 

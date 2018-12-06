@@ -20,7 +20,7 @@ public class FeatureAction {
     }
 
     public enum Type {
-        New, Open
+        New, TabItem
     }
 
     public enum LinkGroup {
@@ -88,7 +88,7 @@ public class FeatureAction {
         this.paramString = paramString;
     }
 
-    public LinkGroup getLinkGroup() {
+    public LinkGroup getActionGroup() {
         return linkGroup;
     }
 

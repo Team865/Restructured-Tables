@@ -51,7 +51,7 @@
 
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContent">
         <VBox prefWidth="240" alignment="TOP_CENTER">
-            <ListView VBox.vgrow="ALWAYS" fx:id="appTabs"/>
+            <ListView VBox.vgrow="ALWAYS" fx:id="appActionListView"/>
         </VBox>
         <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>
     </HBox>

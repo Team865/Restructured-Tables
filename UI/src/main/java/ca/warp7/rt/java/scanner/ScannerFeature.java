@@ -11,7 +11,7 @@ import static ca.warp7.rt.java.core.feature.FeatureAction.*;
 
 public class ScannerFeature implements Feature {
 
-    private Factory factory = new Factory("fas-camera:18:gray", getFeatureId(), LinkGroup.SingleTab);
+    private Factory factory = new Factory("fas-camera:18:gray", getFeatureId(), LinkGroup.WithFeature);
 
     @Override
     public void init() {
@@ -19,7 +19,7 @@ public class ScannerFeature implements Feature {
 
     @Override
     public ObservableList<FeatureAction> getActionList() {
-        return FXCollections.singletonObservableList(factory.get("QR Scanner", Type.Open, ""));
+        return FXCollections.singletonObservableList(factory.get("QR Scanner", Type.TabItem, ""));
     }
 
     @Override

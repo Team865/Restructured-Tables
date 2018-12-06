@@ -13,6 +13,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import static ca.warp7.rt.java.core.feature.FeatureUtils.showStage;
 
 public class AppController implements FeatureStage {
@@ -30,8 +34,8 @@ public class AppController implements FeatureStage {
     @FXML
     CheckBox hideSidebarCheckbox;
     @FXML
-    private ListView<AppActionTab> appTabs;
-    private ObservableList<AppActionTab> featureActions = FXCollections.observableArrayList();
+    private ListView<AppActionTab> appActionListView;
+    private ObservableList<AppActionTab> appActions = FXCollections.observableArrayList();
 
     @Override
     public void setStage(Stage stage) {
@@ -55,10 +59,10 @@ public class AppController implements FeatureStage {
         dataset.setText("2018iri << 865");
         user.setText("Yu Liu");
         initTabsItemsAndFactory();
+        Map<String, ArrayList<FeatureAction>> tabGroups = new LinkedHashMap<>();
         AppFeatures.features.forEach(feature -> {
             feature.init();
-            ObservableList<FeatureAction> actionList = feature.getActionList();
-            for (FeatureAction action : actionList) {
+            feature.getActionList().forEach(action -> {
                 switch (action.getType()) {
                     case New:
                         MenuItem item = new MenuItem();
@@ -66,20 +70,40 @@ public class AppController implements FeatureStage {
                         item.setGraphic(FeatureUtils.getIcon(action.getIconLiteral()));
                         newButton.getItems().add(item);
                         break;
-                    case Open:
-                        break;
+                    case TabItem:
+                        String groupName;
+                        switch (action.getActionGroup()) {
+                            case Core:
+                                groupName = "core";
+                                break;
+                            case SingleTab:
+                                groupName = "single";
+                                break;
+                            case WithFeature:
+                                groupName = action.getFeatureId();
+                                break;
+                            default:
+                                groupName = "unknown";
+                        }
+                        if (!tabGroups.containsKey(groupName)) tabGroups.put(groupName, new ArrayList<>());
+                        tabGroups.get(groupName).add(action);
                 }
-            }
+            });
         });
+        tabGroups.forEach((s, featureActions) -> {
+            appActions.add(AppActionTab.separator);
+            featureActions.forEach(action -> appActions.add(new AppActionTab(action)));
+        });
+        appActions.add(AppActionTab.separator);
         hideSidebarCheckbox.selectedProperty().addListener((observable, oldValue, selected) -> {
             if (selected) tabsAndContent.getChildren().remove(0);
-            else tabsAndContent.getChildren().add(0, appTabs);
+            else tabsAndContent.getChildren().add(0, appActionListView);
         });
     }
 
     private void initTabsItemsAndFactory() {
-        appTabs.setItems(featureActions);
-        appTabs.setCellFactory(listView -> new ListCell<AppActionTab>() {
+        appActionListView.setItems(appActions);
+        appActionListView.setCellFactory(listView -> new ListCell<AppActionTab>() {
             @Override
             protected void updateItem(AppActionTab item, boolean empty) {
                 super.updateItem(item, empty);
@@ -95,6 +119,7 @@ public class AppController implements FeatureStage {
         });
     }
 
+    @SuppressWarnings("unused")
     private void handleFeatureAction(FeatureAction action) {
     }
 }
