@@ -38,14 +38,15 @@
     -fx-background-color: white;
 }
 
-.list-cell:selected {
-    -fx-background-color: #3c5c94;
+.list-cell:hover:filled {
+    -fx-background-color: #eee;
 }
 
-.list-view:focused {
-    -fx-border-width: 0;
-    -fx-border-color: transparent;
+.list-cell:selected:filled {
+    -fx-background-color: #3c5c94;
+    -fx-text-fill: white;
 }
+
 
 .table-view .column-header,
 .table-view .column-header-background .filler {

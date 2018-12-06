@@ -21,7 +21,6 @@ import java.util.Map;
 
 import static ca.warp7.rt.java.app.AppFeatures.featureMap;
 import static ca.warp7.rt.java.app.AppFeatures.features;
-import static ca.warp7.rt.java.core.ft.FeatureUtils.showStage;
 
 public class AppController implements FeatureStage {
 
@@ -52,11 +51,16 @@ public class AppController implements FeatureStage {
                 hideSidebarCheckbox.setSelected(!hideSidebarCheckbox.isSelected());
             }
         });
+        stage.setOnCloseRequest(event -> {
+            if (currentFeature != null && !currentFeature.onCloseRequest()) {
+                event.consume();
+            }
+        });
     }
 
     @FXML
     void onSystemStateAction() {
-        showStage("/ca/warp7/rt/stage/app/SystemState.fxml", "System State");
+        FeatureUtils.showStage("/ca/warp7/rt/stage/app/SystemState.fxml", "System State");
     }
 
     @FXML
@@ -118,6 +122,9 @@ public class AppController implements FeatureStage {
                     HBox hBox = AppElement.tabUIFromAction(item.getFeatureAction());
                     hBox.setOnMouseClicked(event -> handleFeatureAction(item.getFeatureAction()));
                     setGraphic(hBox);
+                } else {
+                    setMouseTransparent(true);
+                    setFocusTraversable(false);
                 }
             }
         });
