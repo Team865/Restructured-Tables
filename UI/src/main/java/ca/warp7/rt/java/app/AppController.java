@@ -112,9 +112,7 @@ public class AppController implements FeatureStage {
             protected void updateItem(AppActionTab item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) return;
-                if (item.isSeparator()) {
-                    setGraphic(new Separator());
-                } else {
+                if (!item.isSeparator()) {
                     HBox hBox = AppElement.tabUIFromAction(item.getFeatureAction());
                     hBox.setOnMouseClicked(event -> handleFeatureAction(item.getFeatureAction()));
                     setGraphic(hBox);

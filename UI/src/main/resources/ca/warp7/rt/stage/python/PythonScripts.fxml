@@ -23,12 +23,7 @@
         <Label styleClass="highlight-blue" text="1 in 3 functions finished with 2 errors"/>
 
         <Separator/>
-        <Button text="Run all scripts">
-            <graphic>
-                <FontIcon iconLiteral="fas-play-circle:18:gray"/>
-            </graphic>
-        </Button>
-        <Button text="Run current script">
+        <Button text="Run script">
             <graphic>
                 <FontIcon iconLiteral="far-play-circle:18:gray"/>
             </graphic>
@@ -36,13 +31,6 @@
         <Button text="Show Logs">
             <graphic>
                 <FontIcon iconLiteral="fas-bug:18:gray"/>
-            </graphic>
-        </Button>
-
-        <Separator/>
-        <Button text="Refresh TBA Data" >
-            <graphic>
-                <FontIcon iconLiteral="fas-sync:18:gray"/>
             </graphic>
         </Button>
 
