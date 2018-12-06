@@ -7,7 +7,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
+import static ca.warp7.rt.java.core.feature.FeatureAction.*;
+
 public class ScannerFeature implements Feature {
+
+    private Factory factory = new Factory("fas-camera:18:gray", getFeatureId(), LinkGroup.SingleTab);
 
     @Override
     public void onFeatureInit() {
@@ -15,7 +19,7 @@ public class ScannerFeature implements Feature {
 
     @Override
     public ObservableList<FeatureAction> getActionList() {
-        return FXCollections.singletonObservableList();
+        return FXCollections.singletonObservableList(factory.get("QR Scanner", Type.Open, ""));
     }
 
     @Override
@@ -24,7 +28,7 @@ public class ScannerFeature implements Feature {
     }
 
     @Override
-    public Parent onAction(FeatureAction.Type type, String params) {
+    public Parent onAction(Type type, String params) {
         return FeatureUtils.getNode("/ca/warp7/rt/stage/scanner/Scanner.fxml", getClass());
     }
 

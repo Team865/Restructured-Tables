@@ -3,41 +3,57 @@ package ca.warp7.rt.java.core.feature;
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class FeatureAction {
 
+    public static class Factory {
+        private String iconLiteral;
+        private String featureId;
+        private LinkGroup linkGroup;
+
+        public Factory(String iconLiteral, String featureId, LinkGroup linkGroup) {
+            this.iconLiteral = iconLiteral;
+            this.featureId = featureId;
+            this.linkGroup = linkGroup;
+        }
+
+        public FeatureAction get(String actionTitle, Type type, String paramString) {
+            return new FeatureAction(actionTitle, iconLiteral, featureId, linkGroup, type, paramString);
+        }
+    }
+
     public enum Type {
-        New, View
+        New, Open
     }
 
     public enum LinkGroup {
         Core, SingleTab, WithFeature
     }
 
-    public String linkTitle;
-    public String iconLiteral;
-    public String featureId;
-    public Type type;
-    public String paramString;
-    public LinkGroup linkGroup;
+    private String actionTitle;
+    private String iconLiteral;
+    private String featureId;
+    private LinkGroup linkGroup;
+    private Type type;
+    private String paramString;
 
-    public FeatureAction(String linkTitle,
+    public FeatureAction(String actionTitle,
                          String iconLiteral,
                          String featureId,
+                         LinkGroup linkGroup,
                          Type type,
-                         String paramString,
-                         LinkGroup linkGroup) {
-        this.linkTitle = linkTitle;
+                         String paramString) {
+        this.actionTitle = actionTitle;
         this.iconLiteral = iconLiteral;
         this.featureId = featureId;
+        this.linkGroup = linkGroup;
         this.type = type;
         this.paramString = paramString;
-        this.linkGroup = linkGroup;
     }
 
-    public String getLinkTitle() {
-        return linkTitle;
+    public String getActionTitle() {
+        return actionTitle;
     }
 
-    public void setLinkTitle(String linkTitle) {
-        this.linkTitle = linkTitle;
+    public void setActionTitle(String actionTitle) {
+        this.actionTitle = actionTitle;
     }
 
     public String getIconLiteral() {
