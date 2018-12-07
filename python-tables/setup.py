@@ -5,9 +5,9 @@ if __name__ == "__main__":
         long_description = fh.read()
 
     setuptools.setup(
-        name="tables",
+        name="w7py",
         version="0.0.1",
-        description="tables",
+        description="w7py",
         author="author",
         author_email="author@example.com",
         long_description=long_description,
@@ -24,6 +24,6 @@ if __name__ == "__main__":
         ],
         python_requires=">=3.5",
         entry_points={
-            'console_scripts': ['w7=tables.cli:cli_main']
+            'console_scripts': ['w7=w7py.cli:cli_main']
         }
     )
