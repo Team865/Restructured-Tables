@@ -1,4 +1,4 @@
-package ca.warp7.rt.java.ast;
+package ca.warp7.rt.java.predictor;
 
 import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureAction;
@@ -6,7 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
-public class ASTFeature implements Feature {
+public class PredictorFeature implements Feature {
     @Override
     public void init() {
     }
@@ -14,14 +14,14 @@ public class ASTFeature implements Feature {
     @Override
     public ObservableList<FeatureAction> getActionList() {
         return FXCollections.singletonObservableList(new FeatureAction(
-                "Alliance Selection", "fas-list-alt:18:gray", getFeatureId(),
+                "Match Predictor", "fas-balance-scale:18:gray", getFeatureId(),
                 FeatureAction.LinkGroup.SingleTab, FeatureAction.Type.TabItem, ""
         ));
     }
 
     @Override
     public String getFeatureId() {
-        return "ast";
+        return "predictor";
     }
 
     @Override
