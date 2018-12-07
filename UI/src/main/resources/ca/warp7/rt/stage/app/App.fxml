@@ -9,7 +9,7 @@
       fx:controller="ca.warp7.rt.java.app.AppController">
 
     <stylesheets>
-        <URL value="@/ca/warp7/rt/style/main.css"/>
+        <URL value="@/ca/warp7/rt/stage/main.css"/>
     </stylesheets>
 
     <ToolBar prefWidth="220" HBox.hgrow="ALWAYS">

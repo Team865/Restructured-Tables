@@ -194,21 +194,81 @@ def table_name(data, row):
     )
 
     # match type:
-    print(
-        # [entry_id]
-        row.entries
-    )
+    print(row.entries)
 
     # team type:
-    print(
-        # [match]
-        row.matches
-    )
+    print(row.matches)
 
     # event type:
     print(
-        # [match]
+        row.teams,
         row.matches
     )
+
+    # using the data argument
+
+    # The data argument is used to retrieve data from other types of tables as well
+    # as hidden data (e.g. The Blue Alliance Data, entry series)
+
+    # data is a function, and retrieves data by providing an id argument, or a list of
+    # id arguments, or using the row argument
+    (
+        data(row),
+        data(row.Index),
+        data(row.matches),
+        data(row.match, row.match + 1),
+        data(row.entries)
+    )
+
+    # data can also access all data of a specific type
+    (
+        data.matches(),
+        data.entries(),
+        data.teams(),
+        data.scouts(),
+    )
+
+    # a call to one of the above gives an object sharing the exact behaviour of row,
+    # with the following additions:
+
+    # 1. A group reference returns an iterable array of values
+    data(row.entries).teams = (..., ...)
+
+    # 2. Values are writable. values written this way are considered hidden data and
+    # will not be sent to the user interface directly. Columns that are returned
+    # by previous functions cannot be edited. Hidden data is stored using the
+    # pickle library and can therefore be python objects
+    data(row.team).luckiness_factor = 0.5
+
+    # 3. Hidden data already exists for use before the function is called
+    # Specific hidden data overview
+
+    # A. Entry action and time series (using the scouting app)
+    actions = data(row.Index).action_series
+    print(
+        # final value
+        actions["Auto"].fv,
+        # count of values
+        actions["Outtakes"].count,
+        # array of values
+        actions["Endgame"].array,
+    )
+
+    # B. The Blue Alliance data
+    print(
+        # TBA function, giving a list of recursive dictionary arguments and a default value
+        data(row.match).tba("score_breakdown", row.alliance.lower(), "tba_gameData", default="LLL")
+    )
+
+    # finally, return the newly generated row data that will get sent to the UI
+    return {
+        # column names must follow Python variable conventions with underscores
+        # so it can be accessed by other functions. The following will be displayed
+        # as 'Column Name' in the user interface
+
+        # The table only accepts numbers and strings as the format here
+        # If data need to be stored elsewhere, use the data argument
+        "column_name": 0
+    }
 ```
 
