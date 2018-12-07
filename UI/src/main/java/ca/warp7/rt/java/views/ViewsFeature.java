@@ -15,6 +15,8 @@ public class ViewsFeature implements Feature {
 
     private FeatureActionFactory factory = new FeatureActionFactory("fas-eye:18:gray", getFeatureId(), LinkGroup.SingleTab);
 
+    private Parent preLoaded;
+
     @Override
     public void init() {
     }
@@ -38,7 +40,10 @@ public class ViewsFeature implements Feature {
 
     @Override
     public Parent onAction(Type type, String paramString) {
-        return FeatureUtils.loadParent("/ca/warp7/rt/stage/views/View.fxml");
+        if (preLoaded == null) {
+            preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/stage/views/View.fxml");
+        }
+        return preLoaded;
     }
 
     @Override
