@@ -42,7 +42,7 @@ public class ScannerFeature implements Feature {
 
     @Override
     public boolean onCloseRequest() {
-        controller.onCameraStateChange();
+        controller.stopCameraStream();
         return true;
     }
 }

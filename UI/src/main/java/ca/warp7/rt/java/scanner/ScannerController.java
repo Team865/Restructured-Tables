@@ -78,22 +78,22 @@ public class ScannerController {
     @FXML
     void initialize() {
         resultProperty = resultLabel.textProperty();
-        onCameraStateChange();
+        startCameraStream();
         scanList.setItems(scannerEntries);
         initializeListFactory();
         streamImageView.fitWidthProperty().bind(imageContainer.widthProperty());
         streamImageView.fitHeightProperty().bind(imageContainer.heightProperty());
     }
 
+    void stopCameraStream() {
+        isStreaming = false;
+        cameraStateChanger.setText("Start");
+    }
+
     @FXML
     void onCameraStateChange() {
-        if (isStreaming) {
-            isStreaming = false;
-            cameraStateChanger.setText("Start");
-        } else {
-            startCameraStream();
-            cameraStateChanger.setText("Pause");
-        }
+        if (isStreaming) stopCameraStream();
+        else startCameraStream();
     }
 
     private void initializeListFactory() {
@@ -116,6 +116,7 @@ public class ScannerController {
     }
 
     private void startCameraStream() {
+        cameraStateChanger.setText("Pause");
         webcam = Webcam.getDefault();
         if (webcam.isOpen()) webcam.close();
         webcam.setViewSize(WebcamResolution.VGA.getSize());
@@ -147,7 +148,6 @@ public class ScannerController {
                                 notFoundCount = 0;
                             }
                         }
-
                         imgRef.set(SwingFXUtils.toFXImage(image, imgRef.get()));
                         image.flush();
                         Platform.runLater(() -> imageProperty.set(imgRef.get()));
