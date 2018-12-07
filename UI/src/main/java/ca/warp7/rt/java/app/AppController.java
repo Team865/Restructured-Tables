@@ -130,9 +130,8 @@ public class AppController implements FeatureStage {
                 super.updateItem(item, empty);
                 if (empty || item == null) return;
                 if (!item.isSeparator()) {
-                    HBox hBox = AppElement.tabUIFromAction(item.getFeatureAction());
-                    hBox.setOnMouseClicked(event -> handleFeatureAction(item.getFeatureAction()));
-                    setGraphic(hBox);
+                    setGraphic(AppElement.tabUIFromAction(item.getFeatureAction()));
+                    setOnMouseClicked(event -> handleFeatureAction(item.getFeatureAction()));
                 } else {
                     setMouseTransparent(true);
                     setFocusTraversable(false);

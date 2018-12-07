@@ -1,5 +1,6 @@
 package ca.warp7.rt.java.app;
 
+import ca.warp7.rt.java.ast.ASTFeature;
 import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.python.PythonFeature;
 import ca.warp7.rt.java.scanner.ScannerFeature;
@@ -13,6 +14,7 @@ import java.util.Map;
 class AppFeatures {
     static final List<Feature> features = Arrays.asList(
             new ScannerFeature(),
+            new ASTFeature(),
             new PythonFeature(),
             new ViewsFeature()
     );

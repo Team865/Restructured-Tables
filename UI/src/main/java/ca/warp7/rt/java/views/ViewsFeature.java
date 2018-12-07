@@ -13,7 +13,7 @@ import static ca.warp7.rt.java.core.ft.FeatureAction.Type;
 
 public class ViewsFeature implements Feature {
 
-    private FeatureActionFactory factory = new FeatureActionFactory("fas-eye:18:gray", getFeatureId(), LinkGroup.SingleTab);
+    private FeatureActionFactory factory = new FeatureActionFactory("fas-eye:18:gray", getFeatureId(), LinkGroup.WithFeature);
 
     private Parent preLoaded;
 
