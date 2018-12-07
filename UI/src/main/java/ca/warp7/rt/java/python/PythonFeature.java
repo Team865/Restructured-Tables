@@ -48,7 +48,7 @@ public class PythonFeature implements Feature {
     @Override
     public Parent onAction(Type type, String paramString) {
         if (preLoaded == null) {
-            preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/stage/python/PythonScripts.fxml", this::setController);
+            preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/stage/python/Python.fxml", this::setController);
         }
         controller.setTabItemParams(paramString);
         return preLoaded;

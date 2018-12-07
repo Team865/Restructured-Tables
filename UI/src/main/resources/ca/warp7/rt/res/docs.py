@@ -2,6 +2,7 @@ from tables import table
 import numpy as np
 import pandas as pd
 
+# %s
 
 # Documentation for table writing with syntax examples
 

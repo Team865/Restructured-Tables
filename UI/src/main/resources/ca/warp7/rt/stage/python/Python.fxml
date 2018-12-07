@@ -14,15 +14,6 @@
         </BorderPane>
     </HBox>
     <ToolBar>
-        <Button text="New Script">
-            <graphic>
-                <FontIcon iconLiteral="fas-plus:18:gray"/>
-            </graphic>
-        </Button>
-        <Separator/>
-        <Label styleClass="highlight-blue" text="1 in 3 functions finished with 2 errors"/>
-
-        <Separator/>
         <Button text="Run script">
             <graphic>
                 <FontIcon iconLiteral="far-play-circle:18:gray"/>
@@ -33,7 +24,6 @@
                 <FontIcon iconLiteral="fas-bug:18:gray"/>
             </graphic>
         </Button>
-
         <Separator/>
         <Button fx:id="themeChange" text="Switch Theme">
             <graphic>

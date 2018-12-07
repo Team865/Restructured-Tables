@@ -4,6 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import org.almibe.codeeditor.CodeMirrorEditor;
+import org.apache.commons.io.IOUtils;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.nio.charset.Charset;
 
 public class PythonController {
     @FXML
@@ -11,15 +17,18 @@ public class PythonController {
     @FXML
     Button themeChange;
 
-    private static final String template = "from tables import table" +
-            "\nimport numpy as np" +
-            "\nimport pandas as pd" +
-            "\n\n#%s\n\n" +
-            "@table(\"entry\", level=1)\n" +
-            "def table_name(data, entry):\n" +
-            "    return {\n" +
-            "        \"column_name\": \"column_data\"\n" +
-            "    }\n";
+    private String template;
+
+    public PythonController() {
+        InputStream inputStream = getClass().getResourceAsStream("/ca/warp7/rt/res/docs.py");
+        StringWriter writer = new StringWriter();
+        try {
+            IOUtils.copy(inputStream, writer, (Charset) null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        template = writer.toString();
+    }
 
     private boolean darkTheme;
     private CodeMirrorEditor codeMirrorEditor = new CodeMirrorEditor();
