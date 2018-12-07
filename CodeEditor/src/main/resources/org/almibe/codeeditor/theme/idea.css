@@ -31,7 +31,7 @@
 .cm-s-idea .CodeMirror-matchingbracket { outline:1px solid grey; color:black !important; }
 
 .CodeMirror-hints.idea {
-    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+    /*font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;*/
     color: #616569;
     background-color: #ebf3fd !important;
 }

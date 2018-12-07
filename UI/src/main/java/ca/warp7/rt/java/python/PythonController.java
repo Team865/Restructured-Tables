@@ -30,16 +30,21 @@ public class PythonController {
         template = writer.toString();
     }
 
-    private boolean darkTheme;
+    private int themeIndex;
+    private static final String[] themes = new String[]{
+            "idea",
+            "darcula",
+            "monokai",
+            "material"
+    };
     private CodeMirrorEditor codeMirrorEditor = new CodeMirrorEditor();
 
     @FXML
     void initialize() {
-        darkTheme = true;
         themeChange.setOnAction(event -> {
             if (codeMirrorEditor.isEditorInitialized()) {
-                darkTheme = !darkTheme;
-                codeMirrorEditor.setTheme(darkTheme ? "monokai" : "idea");
+                themeIndex = (themeIndex + 1) % themes.length;
+                codeMirrorEditor.setTheme(themes[themeIndex]);
             }
         });
         codeRoot.setCenter(codeMirrorEditor.getWidget());
@@ -51,7 +56,8 @@ public class PythonController {
         else codeMirrorEditor.init(
                 () -> {
                     codeMirrorEditor.setMode("python");
-                    codeMirrorEditor.setTheme("monokai");
+                    themeIndex = 0;
+                    codeMirrorEditor.setTheme(themes[0]);
                     codeMirrorEditor.setContent(t, true);
                 }
         );
