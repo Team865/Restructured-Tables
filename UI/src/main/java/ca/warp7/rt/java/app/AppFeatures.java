@@ -36,8 +36,6 @@ class AppFeatures {
     static final Map<String, Feature> featureMap = new HashMap<>();
 
     static {
-        for (Feature feature : features) {
-            featureMap.put(feature.getFeatureId(), feature);
-        }
+        features.forEach(feature -> featureMap.put(feature.getFeatureId(), feature));
     }
 }

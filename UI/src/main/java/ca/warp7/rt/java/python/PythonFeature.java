@@ -18,6 +18,15 @@ public class PythonFeature implements Feature {
 
     private Parent preLoaded;
 
+    private ObservableList<FeatureAction> actions = FXCollections.observableArrayList(
+            factory.get("Python Script", Type.New, ""),
+            factory.get("[1] raw_data.py", Type.TabItem, "raw_data.py"),
+            factory.get("[1] averages.py", Type.TabItem, "averages.py"),
+            factory.get("[1] auto_list.py", Type.TabItem, "auto_list.py"),
+            factory.get("[2] cycle_matrix.py", Type.TabItem, "cycle_matrix.py"),
+            factory.get("[2] endgame.py", Type.TabItem, "endgame.py")
+    );
+
     private PythonController controller;
 
     private void setController(PythonController controller) {
@@ -30,14 +39,7 @@ public class PythonFeature implements Feature {
 
     @Override
     public ObservableList<FeatureAction> getActionList() {
-        return FXCollections.observableArrayList(
-                factory.get("Python Script", Type.New, ""),
-                factory.get("[1] raw_data.py", Type.TabItem, "raw_data.py"),
-                factory.get("[1] averages.py", Type.TabItem, "averages.py"),
-                factory.get("[1] auto_list.py", Type.TabItem, "auto_list.py"),
-                factory.get("[2] cycle_matrix.py", Type.TabItem, "cycle_matrix.py"),
-                factory.get("[2] endgame.py", Type.TabItem, "endgame.py")
-        );
+        return actions;
     }
 
     @Override

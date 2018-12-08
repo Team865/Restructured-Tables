@@ -34,10 +34,12 @@ launch4j {
 }
 
 jar {
+    //noinspection GroovyAssignabilityCheck
     manifest {
         attributes "Main-Class": "$mainClassName0"
     }
 
+    //noinspection GroovyAssignabilityCheck
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }

@@ -25,6 +25,9 @@ import static ca.warp7.rt.java.app.AppFeatures.features;
 
 public class AppController implements FeatureStage {
 
+    private static final Paint gray = Paint.valueOf("gray");
+    private static final Paint white = Paint.valueOf("white");
+
     @FXML
     MenuButton newButton;
     @FXML
@@ -37,13 +40,11 @@ public class AppController implements FeatureStage {
     CheckBox hideSidebarCheckbox;
     @FXML
     private ListView<AppActionTab> appActionListView;
+
     private ObservableList<AppActionTab> appActions = FXCollections.observableArrayList();
     private Feature currentFeature = null;
     private Map<String, ArrayList<FeatureAction>> tabGroups = new LinkedHashMap<>();
     private Stage appStage;
-
-    private static final Paint gray = Paint.valueOf("gray");
-    private static final Paint white = Paint.valueOf("white");
 
     public void toggleFullScreen() {
         appStage.setFullScreen(!appStage.isFullScreen());
@@ -67,7 +68,22 @@ public class AppController implements FeatureStage {
     @FXML
     void initialize() {
         dataset.setText("2018iri << 865");
-        initTabFactory();
+
+        appActionListView.setItems(appActions);
+        appActionListView.setCellFactory(listView -> new ListCell<AppActionTab>() {
+            @Override
+            protected void updateItem(AppActionTab item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) return;
+                if (item.isSeparator()) {
+                    setMouseTransparent(true);
+                    setFocusTraversable(false);
+                } else {
+                    setGraphic(AppElement.tabUIFromAction(item));
+                    setOnMouseClicked(event -> handleFeatureAction(item.getFeatureAction()));
+                }
+            }
+        });
         features.forEach(this::initFeature);
         tabGroups.forEach((s, featureActions) -> {
             appActions.add(AppActionTab.separator);
@@ -100,7 +116,8 @@ public class AppController implements FeatureStage {
 
     private void initFeature(Feature feature) {
         feature.init();
-        feature.getActionList().forEach(action -> {
+        ObservableList<FeatureAction> actions = feature.getActionList();
+        actions.forEach(action -> {
             switch (action.getType()) {
                 case New:
                     MenuItem item = new MenuItem();
@@ -130,25 +147,6 @@ public class AppController implements FeatureStage {
         });
     }
 
-    private void initTabFactory() {
-        appActionListView.setItems(appActions);
-        appActionListView.setCellFactory(listView -> new ListCell<AppActionTab>() {
-            @Override
-            protected void updateItem(AppActionTab item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) return;
-                if (item.isSeparator()) {
-                    setMouseTransparent(true);
-                    setFocusTraversable(false);
-                } else {
-                    setGraphic(AppElement.tabUIFromAction(item));
-                    setOnMouseClicked(event -> handleFeatureAction(item.getFeatureAction()));
-                }
-            }
-        });
-    }
-
-    @SuppressWarnings("unused")
     private void handleFeatureAction(FeatureAction action) {
         String id = action.getFeatureId();
         if (featureMap.containsKey(id)) {

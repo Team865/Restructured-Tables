@@ -17,20 +17,22 @@ public class ViewsFeature implements Feature {
 
     private Parent preLoaded;
 
+    private ObservableList<FeatureAction> actions = FXCollections.observableArrayList(
+            factory.get("Data View", Type.New, ""),
+            factory.get("Raw Data", Type.TabItem, ""),
+            factory.get("Auto List", Type.TabItem, ""),
+            factory.get("Endgame", Type.TabItem, ""),
+            factory.get("Team Averages", Type.TabItem, ""),
+            factory.get("Cycle Matrix", Type.TabItem, "")
+    );
+
     @Override
     public void init() {
     }
 
     @Override
     public ObservableList<FeatureAction> getActionList() {
-        return FXCollections.observableArrayList(
-                factory.get("Data View", Type.New, ""),
-                factory.get("Raw Data", Type.TabItem, ""),
-                factory.get("Auto List", Type.TabItem, ""),
-                factory.get("Endgame", Type.TabItem, ""),
-                factory.get("Team Averages", Type.TabItem, ""),
-                factory.get("Cycle Matrix", Type.TabItem, "")
-        );
+        return actions;
     }
 
     @Override
