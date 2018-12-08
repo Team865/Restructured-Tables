@@ -61,6 +61,7 @@ public class AppController implements FeatureStage {
             }
         });
         appStage = stage;
+        appStage.setMaximized(true);
     }
 
     @FXML

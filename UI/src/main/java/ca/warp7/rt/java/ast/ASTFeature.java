@@ -2,6 +2,7 @@ package ca.warp7.rt.java.ast;
 
 import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureAction;
+import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
@@ -26,7 +27,7 @@ public class ASTFeature implements Feature {
 
     @Override
     public Parent onAction(FeatureAction.Type type, String paramString) {
-        return null;
+        return FeatureUtils.loadParent("/ca/warp7/rt/stage/ast/AST.fxml");
     }
 
     @Override

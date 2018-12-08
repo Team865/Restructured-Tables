@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      alignment="CENTER">
+    <HBox VBox.vgrow="ALWAYS"/>
+    <TableView prefHeight="400">
+        <VBox>
+
+        </VBox>
+    </TableView>
+</VBox>
