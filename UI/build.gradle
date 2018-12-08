@@ -6,6 +6,7 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -17,6 +18,8 @@ dependencies {
     implementation 'org.kordamp.ikonli:ikonli-javafx:2.4.0'
     implementation 'org.kordamp.ikonli:ikonli-fontawesome5-pack:2.4.0'
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.6'
+    implementation 'com.google.code.gson:gson:2.8.5'
+//    implementation 'com.github.wdavies973:tba-api-v3:1.0.4'
 }
 
 mainClassName = "ca.warp7.rt.java.Main"
