@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Paint;
@@ -31,8 +30,6 @@ public class AppController implements FeatureStage {
     @FXML
     Label dataset;
     @FXML
-    Label user;
-    @FXML
     BorderPane tabContent;
     @FXML
     HBox tabsAndContent;
@@ -43,33 +40,32 @@ public class AppController implements FeatureStage {
     private ObservableList<AppActionTab> appActions = FXCollections.observableArrayList();
     private Feature currentFeature = null;
     private Map<String, ArrayList<FeatureAction>> tabGroups = new LinkedHashMap<>();
+    private Stage appStage;
+
+    private static final Paint gray = Paint.valueOf("gray");
+    private static final Paint white = Paint.valueOf("white");
+
+    public void toggleFullScreen() {
+        appStage.setFullScreen(!appStage.isFullScreen());
+    }
 
     @Override
     public void setStage(Stage stage) {
         stage.getScene().setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.F11) {
-                stage.setFullScreen(true);
-                stage.setFullScreenExitKeyCombination(new KeyCodeCombination(KeyCode.ESCAPE));
-            } else if (event.getCode() == KeyCode.F9) {
-                hideSidebarCheckbox.setSelected(!hideSidebarCheckbox.isSelected());
-            }
+            if (event.getCode() == KeyCode.F11) stage.setFullScreen(true);
+            else if (event.getCode() == KeyCode.F9) hideSidebarCheckbox.setSelected(!hideSidebarCheckbox.isSelected());
         });
         stage.setOnCloseRequest(event -> {
             if (currentFeature != null && !currentFeature.onCloseRequest()) {
                 event.consume();
             }
         });
-    }
-
-    @FXML
-    void onSystemStateAction() {
-        FeatureUtils.showStage("/ca/warp7/rt/stage/app/SystemState.fxml", "System State");
+        appStage = stage;
     }
 
     @FXML
     void initialize() {
         dataset.setText("2018iri << 865");
-        user.setText("Yu Liu");
         initTabFactory();
         features.forEach(this::initFeature);
         tabGroups.forEach((s, featureActions) -> {
@@ -93,10 +89,10 @@ public class AppController implements FeatureStage {
         appActionListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<AppActionTab>) c -> {
             c.next();
             c.getRemoved().forEach(o -> {
-                if (o.getIcon() != null) o.getIcon().setIconColor(Paint.valueOf("gray"));
+                if (o.getIcon() != null) o.getIcon().setIconColor(gray);
             });
             c.getAddedSubList().forEach(o -> {
-                if (o.getIcon() != null) o.getIcon().setIconColor(Paint.valueOf("white"));
+                if (o.getIcon() != null) o.getIcon().setIconColor(white);
             });
         });
     }
@@ -156,9 +152,8 @@ public class AppController implements FeatureStage {
         String id = action.getFeatureId();
         if (featureMap.containsKey(id)) {
             Feature feature = featureMap.get(id);
-            if (currentFeature == feature) {
-                currentFeature.onAction(action.getType(), action.getParamString());
-            } else if (currentFeature == null || currentFeature.onCloseRequest()) {
+            if (currentFeature == feature) currentFeature.onAction(action.getType(), action.getParamString());
+            else if (currentFeature == null || currentFeature.onCloseRequest()) {
                 currentFeature = feature;
                 Parent parent = currentFeature.onAction(action.getType(), action.getParamString());
                 tabContent.setCenter(parent);

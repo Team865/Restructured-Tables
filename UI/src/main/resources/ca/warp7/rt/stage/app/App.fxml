@@ -22,7 +22,7 @@
 
         <Separator/>
 
-        <MenuButton text="New" fx:id="newButton">
+        <MenuButton text="New Tab" fx:id="newButton">
             <graphic>
                 <FontIcon iconLiteral="fas-plus:18:gray"/>
             </graphic>
@@ -30,23 +30,16 @@
 
         <Separator/>
 
-        <CheckBox text="Hide Sidebar" fx:id="hideSidebarCheckbox"/>
-
-        <Separator/>
-
-        <Button text="System Check" onAction="#onSystemStateAction">
+        <Button text="Toggle Full Screen" onAction="#toggleFullScreen">
             <graphic>
-                <FontIcon iconLiteral="fas-info-circle:18:gray"/>
+                <FontIcon iconLiteral="fas-expand:18:gray"/>
             </graphic>
         </Button>
 
         <Separator/>
 
-        <Label fx:id="user" styleClass="highlight-blue">
-            <graphic>
-                <FontIcon iconLiteral="fas-user:16:white"/>
-            </graphic>
-        </Label>
+        <CheckBox text="Hide Sidebar" fx:id="hideSidebarCheckbox"/>
+
     </ToolBar>
 
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContent">
