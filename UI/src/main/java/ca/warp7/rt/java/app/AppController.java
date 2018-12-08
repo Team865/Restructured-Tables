@@ -5,6 +5,7 @@ import ca.warp7.rt.java.core.ft.FeatureAction;
 import ca.warp7.rt.java.core.ft.FeatureStage;
 import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -80,13 +82,22 @@ public class AppController implements FeatureStage {
             else tabsAndContent.getChildren().add(0, appActionListView);
         });
         appActionListView.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
+            if (event.getCode() == KeyCode.ENTER || event.getCode() == KeyCode.SPACE) {
                 ObservableList<AppActionTab> selectedItems = appActionListView.getSelectionModel().getSelectedItems();
                 if (selectedItems.size() == 1) {
                     AppActionTab tab = selectedItems.get(0);
                     if (!tab.isSeparator()) handleFeatureAction(tab.getFeatureAction());
                 }
             }
+        });
+        appActionListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<AppActionTab>) c -> {
+            c.next();
+            c.getRemoved().forEach(o -> {
+                if (o.getIcon() != null) o.getIcon().setIconColor(Paint.valueOf("gray"));
+            });
+            c.getAddedSubList().forEach(o -> {
+                if (o.getIcon() != null) o.getIcon().setIconColor(Paint.valueOf("white"));
+            });
         });
     }
 
@@ -129,12 +140,12 @@ public class AppController implements FeatureStage {
             protected void updateItem(AppActionTab item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) return;
-                if (!item.isSeparator()) {
-                    setGraphic(AppElement.tabUIFromAction(item.getFeatureAction()));
-                    setOnMouseClicked(event -> handleFeatureAction(item.getFeatureAction()));
-                } else {
+                if (item.isSeparator()) {
                     setMouseTransparent(true);
                     setFocusTraversable(false);
+                } else {
+                    setGraphic(AppElement.tabUIFromAction(item));
+                    setOnMouseClicked(event -> handleFeatureAction(item.getFeatureAction()));
                 }
             }
         });

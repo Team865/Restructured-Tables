@@ -5,17 +5,24 @@ import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 class AppElement {
 
-    static HBox tabUIFromAction(FeatureAction action) {
+    static HBox tabUIFromAction(AppActionTab tab) {
+
+        FeatureAction action = tab.getFeatureAction();
+
         HBox outer = new HBox();
 
         HBox inner = new HBox();
         inner.setPrefWidth(24);
         inner.setAlignment(Pos.CENTER);
 
-        inner.getChildren().add(FeatureUtils.getIcon(action.getIconLiteral()));
+        FontIcon icon = FeatureUtils.getIcon(action.getIconLiteral());
+
+        inner.getChildren().add(icon);
+        tab.setIcon(icon);
 
         outer.setSpacing(10);
         outer.getChildren().add(inner);
