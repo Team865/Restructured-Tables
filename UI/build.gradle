@@ -2,6 +2,7 @@ plugins {
     id "java"
     id 'application'
     id 'com.github.johnrengelman.shadow'
+    id 'edu.sc.seis.launch4j'
 }
 
 repositories {
@@ -22,11 +23,19 @@ dependencies {
 //    implementation 'com.github.wdavies973:tba-api-v3:1.0.4'
 }
 
-mainClassName = "ca.warp7.rt.java.Main"
+def mainClassName0 = "ca.warp7.rt.java.Main"
+
+mainClassName = mainClassName0
+
+launch4j {
+    mainClassName = "$mainClassName0"
+    icon = "${projectDir}/src/main/resources/app-icon.ico"
+    jar = "${buildDir}/libs/UI-all.jar"
+}
 
 jar {
     manifest {
-        attributes "Main-Class": "$mainClassName"
+        attributes "Main-Class": "$mainClassName0"
     }
 
     from {
