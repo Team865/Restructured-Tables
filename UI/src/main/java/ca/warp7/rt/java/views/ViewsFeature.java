@@ -43,7 +43,7 @@ public class ViewsFeature implements Feature {
     @Override
     public Parent onAction(Type type, String paramString) {
         if (preLoaded == null) {
-            preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/stage/views/View.fxml");
+            preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/stage/views/Views.fxml");
         }
         return preLoaded;
     }

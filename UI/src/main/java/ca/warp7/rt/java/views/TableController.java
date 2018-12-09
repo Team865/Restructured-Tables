@@ -9,6 +9,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 
@@ -17,10 +19,18 @@ import java.util.Comparator;
 public class TableController {
 
     @FXML
-    TableView<Person> tableView;
+    VBox tableContainer;
+
+    private TableView<Person> tableView;
 
     @FXML
     void initialize() {
+
+        tableView = new TableView<>();
+
+        VBox.setVgrow(tableView, Priority.ALWAYS);
+
+        tableContainer.getChildren().add(tableView);
 
         final Label label = new Label("Address Book");
         label.setFont(new Font("Arial", 20));
