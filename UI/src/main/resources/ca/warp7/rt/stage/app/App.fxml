@@ -40,6 +40,10 @@
 
         <CheckBox text="Hide Sidebar" fx:id="hideSidebarCheckbox"/>
 
+        <Separator/>
+
+        <Button text="Memory" onAction="#showMemory"/>
+
     </ToolBar>
 
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContent">
