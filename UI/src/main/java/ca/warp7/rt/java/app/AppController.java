@@ -2,8 +2,8 @@ package ca.warp7.rt.java.app;
 
 import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureAction;
+import ca.warp7.rt.java.core.ft.FeatureIcon;
 import ca.warp7.rt.java.core.ft.FeatureStage;
-import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -122,7 +122,7 @@ public class AppController implements FeatureStage {
                 case New:
                     MenuItem item = new MenuItem();
                     item.setText(action.getActionTitle());
-                    item.setGraphic(FeatureUtils.getIcon(action.getIconLiteral()));
+                    item.setGraphic(new FeatureIcon(action.getIconLiteral()));
                     item.setOnAction(event -> handleFeatureAction(action));
                     newButton.getItems().add(item);
                     break;

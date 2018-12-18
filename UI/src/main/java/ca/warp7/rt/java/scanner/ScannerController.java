@@ -158,7 +158,7 @@ public class ScannerController {
             }
             webcam.close();
         });
-        thread.setDaemon(true);
+        thread.setDaemon(false);
         thread.start();
         streamImageView.imageProperty().bind(imageProperty);
     }

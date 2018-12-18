@@ -1,7 +1,7 @@
 package ca.warp7.rt.java.app;
 
 import ca.warp7.rt.java.core.ft.FeatureAction;
-import ca.warp7.rt.java.core.ft.FeatureUtils;
+import ca.warp7.rt.java.core.ft.FeatureIcon;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -19,7 +19,7 @@ class AppElement {
         inner.setPrefWidth(24);
         inner.setAlignment(Pos.CENTER);
 
-        FontIcon icon = FeatureUtils.getIcon(action.getIconLiteral());
+        FontIcon icon = new FeatureIcon(action.getIconLiteral());
 
         inner.getChildren().add(icon);
         tab.setIcon(icon);

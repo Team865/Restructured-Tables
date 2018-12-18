@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.IOException;
 import java.util.function.Consumer;
@@ -54,12 +53,6 @@ public class FeatureUtils {
             e.printStackTrace();
             return new HBox();
         }
-    }
-
-    public static FontIcon getIcon(String literal) {
-        FontIcon icon = new FontIcon();
-        icon.setIconLiteral(literal);
-        return icon;
     }
 
     private static Class getCaller() {
