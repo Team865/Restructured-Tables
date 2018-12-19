@@ -11,7 +11,7 @@ public class EventFeature implements Feature {
     public ObservableList<FeatureItemTab> getTabObservable() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Event Overview", "fas-trophy:16:gray", getFeatureId(),
-                FeatureItemTab.LinkGroup.SingleTab, ""
+                FeatureItemTab.Group.SingleTab, ""
         ));
     }
 

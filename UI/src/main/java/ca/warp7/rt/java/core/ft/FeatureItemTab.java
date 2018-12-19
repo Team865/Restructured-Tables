@@ -3,25 +3,25 @@ package ca.warp7.rt.java.core.ft;
 @SuppressWarnings({"unused"})
 public class FeatureItemTab {
 
-    public enum LinkGroup {
-        Core, SingleTab, WithFeature
+    public enum Group {
+        SingleTab, WithFeature
     }
 
     private String actionTitle;
     private String iconLiteral;
     private String featureId;
-    private LinkGroup linkGroup;
+    private Group tabGroup;
     private String paramString;
 
     public FeatureItemTab(String actionTitle,
                           String iconLiteral,
                           String featureId,
-                          LinkGroup linkGroup,
+                          Group tabGroup,
                           String paramString) {
         this.actionTitle = actionTitle;
         this.iconLiteral = iconLiteral;
         this.featureId = featureId;
-        this.linkGroup = linkGroup;
+        this.tabGroup = tabGroup;
         this.paramString = paramString;
     }
 
@@ -57,11 +57,11 @@ public class FeatureItemTab {
         this.paramString = paramString;
     }
 
-    public LinkGroup getActionGroup() {
-        return linkGroup;
+    public Group getTabGroup() {
+        return tabGroup;
     }
 
-    public void setLinkGroup(LinkGroup linkGroup) {
-        this.linkGroup = linkGroup;
+    public void setTabGroup(Group tabGroup) {
+        this.tabGroup = tabGroup;
     }
 }

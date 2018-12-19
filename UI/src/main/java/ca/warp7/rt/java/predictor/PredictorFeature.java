@@ -10,7 +10,7 @@ public class PredictorFeature implements Feature {
     public ObservableList<FeatureItemTab> getTabObservable() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Match Predictor", "fas-balance-scale:16:gray", getFeatureId(),
-                FeatureItemTab.LinkGroup.SingleTab, ""
+                FeatureItemTab.Group.SingleTab, ""
         ));
     }
 

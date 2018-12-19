@@ -8,11 +8,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
-import static ca.warp7.rt.java.core.ft.FeatureItemTab.LinkGroup;
+import static ca.warp7.rt.java.core.ft.FeatureItemTab.Group;
 
 public class ScannerFeature implements Feature {
 
-    private FeatureActionFactory factory = new FeatureActionFactory("fas-camera:16:gray", getFeatureId(), LinkGroup.SingleTab);
+    private FeatureActionFactory factory = new FeatureActionFactory("fas-camera:16:gray", getFeatureId(), Group.SingleTab);
 
     private ScannerController controller;
 

@@ -10,7 +10,7 @@ public class DatasetFeature implements Feature {
     public ObservableList<FeatureItemTab> getTabObservable() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Dataset Options", "fas-database:16:gray", getFeatureId(),
-                FeatureItemTab.LinkGroup.Core, ""
+                FeatureItemTab.Group.SingleTab, ""
         ));
     }
 

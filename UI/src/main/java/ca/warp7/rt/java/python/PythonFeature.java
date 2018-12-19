@@ -8,12 +8,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
-import static ca.warp7.rt.java.core.ft.FeatureItemTab.LinkGroup;
+import static ca.warp7.rt.java.core.ft.FeatureItemTab.Group;
 
 public class PythonFeature implements Feature {
 
     private FeatureActionFactory factory = new FeatureActionFactory("fab-python:18:gray",
-            getFeatureId(), LinkGroup.WithFeature);
+            getFeatureId(), Group.WithFeature);
 
     private Parent preLoaded;
 

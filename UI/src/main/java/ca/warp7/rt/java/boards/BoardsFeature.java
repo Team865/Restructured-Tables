@@ -12,7 +12,7 @@ public class BoardsFeature implements Feature {
     public ObservableList<FeatureItemTab> getTabObservable() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Scouting Boards", "fas-clipboard:18:gray", getFeatureId(),
-                FeatureItemTab.LinkGroup.SingleTab, ""
+                FeatureItemTab.Group.SingleTab, ""
         ));
     }
 

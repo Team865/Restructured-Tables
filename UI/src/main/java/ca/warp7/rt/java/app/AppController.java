@@ -2,6 +2,7 @@ package ca.warp7.rt.java.app;
 
 import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureItemTab;
+import ca.warp7.rt.java.core.ft.FeatureItemTab.Group;
 import ca.warp7.rt.java.core.ft.FeatureStage;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -10,8 +11,6 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
@@ -91,23 +90,33 @@ public class AppController implements FeatureStage {
                 }
             }
         });
-        features.forEach(this::initFeature);
+        features.forEach(feature -> {
+            feature.init();
+            ObservableList<FeatureItemTab> tabs = feature.getTabObservable();
+            tabs.forEach(tab -> {
+                String groupName;
+                Group group = tab.getTabGroup();
+                if (group == Group.SingleTab) groupName = "single";
+                else if (group == Group.WithFeature) groupName = tab.getFeatureId();
+                else groupName = "unknown";
+                if (!tabGroups.containsKey(groupName)) tabGroups.put(groupName, new ArrayList<>());
+                tabGroups.get(groupName).add(tab);
+            });
+        });
         tabGroups.forEach((s, featureActions) -> {
             appActions.add(AppActionTab.separator);
             featureActions.forEach(action -> appActions.add(new AppActionTab(action)));
         });
-        appActions.add(AppActionTab.separator);
         hideSidebar.addListener((observable, oldValue, selected) -> {
             if (selected) tabsAndContent.getChildren().remove(0);
             else tabsAndContent.getChildren().add(0, listViewContainer);
         });
         appActionListView.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER || event.getCode() == KeyCode.SPACE) {
-                ObservableList<AppActionTab> selectedItems = appActionListView.getSelectionModel().getSelectedItems();
-                if (selectedItems.size() == 1) {
-                    AppActionTab tab = selectedItems.get(0);
-                    if (!tab.isSeparator()) handleFeatureAction(tab.getFeatureItemTab());
-                }
+            ObservableList<AppActionTab> selectedItems = appActionListView.getSelectionModel().getSelectedItems();
+            if (selectedItems.size() == 1) {
+                AppActionTab tab = selectedItems.get(0);
+                if (!tab.isSeparator() && event.getCode() == KeyCode.ENTER)
+                    handleFeatureAction(tab.getFeatureItemTab());
             }
         });
         appActionListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<AppActionTab>) c -> {
@@ -121,36 +130,9 @@ public class AppController implements FeatureStage {
         });
     }
 
-    private void initFeature(Feature feature) {
-        feature.init();
-        ObservableList<FeatureItemTab> actions = feature.getTabObservable();
-        actions.forEach(action -> {
-            String groupName;
-            switch (action.getActionGroup()) {
-                case Core:
-                    groupName = "core";
-                    break;
-                case SingleTab:
-                    groupName = "single";
-                    break;
-                case WithFeature:
-                    groupName = action.getFeatureId();
-                    break;
-                default:
-                    groupName = "unknown";
-            }
-            if (!tabGroups.containsKey(groupName)) tabGroups.put(groupName, new ArrayList<>());
-            tabGroups.get(groupName).add(action);
-        });
-    }
-
     @FXML
     void showMemory() {
-        String mem = String.format("Memory: %.2f MB", (Runtime.getRuntime().totalMemory()
-                - Runtime.getRuntime().freeMemory()) / 1000000.0);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, mem, ButtonType.OK);
-        new Thread(() -> Runtime.getRuntime().gc()).start();
-        alert.showAndWait();
+        AppElement.showMemoryAlert();
     }
 
     private void handleFeatureAction(FeatureItemTab tab) {

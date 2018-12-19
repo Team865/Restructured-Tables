@@ -13,7 +13,7 @@ public class ASTFeature implements Feature {
     public ObservableList<FeatureItemTab> getTabObservable() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Alliance Selection", "fas-list-alt:18:gray", getFeatureId(),
-                FeatureItemTab.LinkGroup.SingleTab, ""
+                FeatureItemTab.Group.SingleTab, ""
         ));
     }
 

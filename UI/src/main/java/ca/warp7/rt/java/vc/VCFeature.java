@@ -11,7 +11,7 @@ public class VCFeature implements Feature {
     public ObservableList<FeatureItemTab> getTabObservable() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Verification Center", "fas-check:16:gray", getFeatureId(),
-                FeatureItemTab.LinkGroup.SingleTab, ""
+                FeatureItemTab.Group.SingleTab, ""
         ));
     }
 
