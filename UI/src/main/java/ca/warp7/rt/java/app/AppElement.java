@@ -50,7 +50,7 @@ class AppElement {
         teamLogo.setPreserveRatio(true);
         teamLogo.setFitHeight(height);
         HBox hBox = new HBox();
-        hBox.setAlignment(Pos.CENTER);
+        hBox.setAlignment(Pos.TOP_CENTER);
         hBox.getChildren().add(teamLogo);
         return new AppActionTab(hBox, height);
     }

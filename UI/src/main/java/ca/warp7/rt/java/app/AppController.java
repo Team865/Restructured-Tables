@@ -54,23 +54,7 @@ public class AppController implements FeatureStage {
     @FXML
     void initialize() {
         AppInterface.instance = this;
-        appTabListView.setItems(appTabs);
-        appTabListView.setCellFactory(listView -> new ListCell<AppActionTab>() {
-            @Override
-            protected void updateItem(AppActionTab item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) return;
-                if (item.isDecorativeNode()) {
-                    setMouseTransparent(true);
-                    setFocusTraversable(false);
-                    setGraphic(item.getDecorativeNode());
-                    setPrefHeight(item.getDecorativeHeight());
-                } else {
-                    setGraphic(AppElement.tabUIFromAction(item));
-                    setOnMouseClicked(event -> handleFeatureAction(item.getFeatureItemTab()));
-                }
-            }
-        });
+        setupAppTabListView();
         features.forEach(feature -> {
             final List<FeatureItemTab> tabs = feature.getInitialTabList();
             tabs.forEach(tab -> {
@@ -89,24 +73,6 @@ public class AppController implements FeatureStage {
         hideSidebar.addListener((observable, oldValue, selected) -> {
             if (selected) tabsAndContent.getChildren().remove(0);
             else tabsAndContent.getChildren().add(0, listViewContainer);
-        });
-        appTabListView.setOnKeyPressed(event -> {
-            ObservableList<AppActionTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
-            if (selectedItems.size() == 1) {
-                AppActionTab tab = selectedItems.get(0);
-                if (!tab.isDecorativeNode() && event.getCode() == KeyCode.ENTER)
-                    handleFeatureAction(tab.getFeatureItemTab());
-            }
-        });
-        appTabListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<AppActionTab>) c -> {
-            while (c.next()) {
-                c.getRemoved().forEach(o -> {
-                    if (o.getIcon() != null) o.getIcon().setIconColor(gray);
-                });
-                c.getAddedSubList().forEach(o -> {
-                    if (o.getIcon() != null) o.getIcon().setIconColor(white);
-                });
-            }
         });
     }
 
@@ -166,5 +132,54 @@ public class AppController implements FeatureStage {
         }
         AppInterface.setStatusMessage("Opened tab '" + title + "'");
         appStage.setTitle(title);
+    }
+
+    private void setupAppTabListView() {
+        // Cell factory: either the tab or another referenced UI element
+        appTabListView.setCellFactory(listView -> new ListCell<AppActionTab>() {
+            @Override
+            protected void updateItem(AppActionTab item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) return;
+                if (item.isDecorativeNode()) {
+                    setMouseTransparent(true);
+                    setFocusTraversable(false);
+                    setGraphic(item.getDecorativeNode());
+                    setPrefHeight(item.getDecorativeHeight());
+                } else {
+                    setGraphic(AppElement.tabUIFromAction(item));
+                    setOnMouseClicked(event -> handleFeatureAction(item.getFeatureItemTab()));
+                }
+            }
+        });
+        // Key press: switch to tab on enter
+        appTabListView.setOnKeyPressed(event -> {
+            ObservableList<AppActionTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
+            if (selectedItems.size() == 1) {
+                AppActionTab tab = selectedItems.get(0);
+                if (!tab.isDecorativeNode() && event.getCode() == KeyCode.ENTER)
+                    handleFeatureAction(tab.getFeatureItemTab());
+            }
+        });
+        // Selection change: change icon colour
+        appTabListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<AppActionTab>) c -> {
+            while (c.next()) {
+                c.getRemoved().forEach(o -> {
+                    if (o.getIcon() != null) o.getIcon().setIconColor(gray);
+                });
+                c.getAddedSubList().forEach(o -> {
+                    if (o.getIcon() != null) o.getIcon().setIconColor(white);
+                });
+            }
+        });
+        // Focus change: change icon color
+        appTabListView.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                appTabListView.getSelectionModel().getSelectedItems().forEach(tab -> {
+                    if (tab.getIcon() != null) tab.getIcon().setIconColor(gray);
+                });
+            }
+        });
+        appTabListView.setItems(appTabs);
     }
 }
