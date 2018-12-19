@@ -30,7 +30,7 @@ class AppElement {
 
         outer.setSpacing(10);
         outer.getChildren().add(inner);
-        outer.getChildren().add(new Label(action.getActionTitle()));
+        outer.getChildren().add(new Label(action.getTitle()));
 
         return outer;
     }

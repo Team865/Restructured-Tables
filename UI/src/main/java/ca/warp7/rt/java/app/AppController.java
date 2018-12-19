@@ -140,12 +140,26 @@ public class AppController implements FeatureStage {
         String id = tab.getFeatureId();
         if (featureMap.containsKey(id)) {
             Feature feature = featureMap.get(id);
-            if (currentFeature == feature) currentFeature.onOpenTab(tab);
-            else if (currentFeature == null || currentFeature.onCloseRequest()) {
+            if (currentFeature == feature) {
+                updateTitle(tab);
+                currentFeature.onOpenTab(tab);
+            } else if (currentFeature == null || currentFeature.onCloseRequest()) {
+                updateTitle(tab);
                 currentFeature = feature;
                 Parent parent = currentFeature.onOpenTab(tab);
                 tabContent.setCenter(parent);
             }
         }
+    }
+
+    private void updateTitle(FeatureItemTab tab) {
+        String title;
+        if (tab.getTabGroup() == Group.SingleTab) title = String.format("%s - Restructured Tables", tab.getTitle());
+        else {
+            String id = tab.getFeatureId();
+            String capId = id.substring(0, 1).toUpperCase() + id.substring(1);
+            title = String.format("%s - %s - Restructured Tables", tab.getTitle(), capId);
+        }
+        appStage.setTitle(title);
     }
 }

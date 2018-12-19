@@ -25,7 +25,7 @@ public class FeatureItemTab {
         this.paramString = paramString;
     }
 
-    public String getActionTitle() {
+    public String getTitle() {
         return actionTitle;
     }
 
