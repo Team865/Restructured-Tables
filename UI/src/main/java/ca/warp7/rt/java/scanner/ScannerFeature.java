@@ -13,7 +13,7 @@ import static ca.warp7.rt.java.core.ft.FeatureAction.Type;
 
 public class ScannerFeature implements Feature {
 
-    private FeatureActionFactory factory = new FeatureActionFactory("fas-camera:18:gray", getFeatureId(), LinkGroup.SingleTab);
+    private FeatureActionFactory factory = new FeatureActionFactory("fas-camera:16:gray", getFeatureId(), LinkGroup.SingleTab);
 
     private ScannerController controller;
 

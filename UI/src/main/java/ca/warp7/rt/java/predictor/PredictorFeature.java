@@ -14,7 +14,7 @@ public class PredictorFeature implements Feature {
     @Override
     public ObservableList<FeatureAction> getActionList() {
         return FXCollections.singletonObservableList(new FeatureAction(
-                "Match Predictor", "fas-balance-scale:18:gray", getFeatureId(),
+                "Match Predictor", "fas-balance-scale:16:gray", getFeatureId(),
                 FeatureAction.LinkGroup.SingleTab, FeatureAction.Type.TabItem, ""
         ));
     }

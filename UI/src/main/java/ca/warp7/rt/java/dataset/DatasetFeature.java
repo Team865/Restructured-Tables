@@ -14,7 +14,7 @@ public class DatasetFeature implements Feature {
     @Override
     public ObservableList<FeatureAction> getActionList() {
         return FXCollections.singletonObservableList(new FeatureAction(
-                "Dataset Options", "fas-database:18:gray", getFeatureId(),
+                "Dataset Options", "fas-database:16:gray", getFeatureId(),
                 FeatureAction.LinkGroup.Core, FeatureAction.Type.TabItem, ""
         ));
     }

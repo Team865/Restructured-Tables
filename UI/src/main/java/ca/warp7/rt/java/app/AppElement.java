@@ -16,7 +16,7 @@ class AppElement {
         HBox outer = new HBox();
 
         HBox inner = new HBox();
-        inner.setPrefWidth(24);
+        inner.setPrefWidth(20);
         inner.setAlignment(Pos.CENTER);
 
         FontIcon icon = new FeatureIcon(action.getIconLiteral());

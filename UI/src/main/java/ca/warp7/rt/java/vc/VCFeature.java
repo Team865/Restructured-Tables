@@ -14,7 +14,7 @@ public class VCFeature implements Feature {
     @Override
     public ObservableList<FeatureAction> getActionList() {
         return FXCollections.singletonObservableList(new FeatureAction(
-                "Verification Center", "fas-check:18:gray", getFeatureId(),
+                "Verification Center", "fas-check:16:gray", getFeatureId(),
                 FeatureAction.LinkGroup.SingleTab, FeatureAction.Type.TabItem, ""
         ));
     }

@@ -13,7 +13,7 @@ import static ca.warp7.rt.java.core.ft.FeatureAction.Type;
 
 public class PythonFeature implements Feature {
 
-    private FeatureActionFactory factory = new FeatureActionFactory("fab-python:20:gray",
+    private FeatureActionFactory factory = new FeatureActionFactory("fab-python:18:gray",
             getFeatureId(), LinkGroup.WithFeature);
 
     private Parent preLoaded;

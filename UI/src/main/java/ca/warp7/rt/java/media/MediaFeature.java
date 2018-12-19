@@ -14,7 +14,7 @@ public class MediaFeature implements Feature {
     @Override
     public ObservableList<FeatureAction> getActionList() {
         return FXCollections.singletonObservableList(new FeatureAction(
-                "External Media", "fas-link:18:gray", getFeatureId(),
+                "External Media", "fas-link:16:gray", getFeatureId(),
                 FeatureAction.LinkGroup.SingleTab, FeatureAction.Type.TabItem, ""
         ));
     }

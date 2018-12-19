@@ -14,7 +14,7 @@ public class EventFeature implements Feature {
     @Override
     public ObservableList<FeatureAction> getActionList() {
         return FXCollections.singletonObservableList(new FeatureAction(
-                "Event Overview", "fas-trophy:18:gray", getFeatureId(),
+                "Event Overview", "fas-trophy:16:gray", getFeatureId(),
                 FeatureAction.LinkGroup.SingleTab, FeatureAction.Type.TabItem, ""
         ));
     }
