@@ -3,15 +3,15 @@ package ca.warp7.rt.java.core.ft;
 public class FeatureActionFactory {
     private String iconLiteral;
     private String featureId;
-    private FeatureAction.LinkGroup linkGroup;
+    private FeatureItemTab.LinkGroup linkGroup;
 
-    public FeatureActionFactory(String iconLiteral, String featureId, FeatureAction.LinkGroup linkGroup) {
+    public FeatureActionFactory(String iconLiteral, String featureId, FeatureItemTab.LinkGroup linkGroup) {
         this.iconLiteral = iconLiteral;
         this.featureId = featureId;
         this.linkGroup = linkGroup;
     }
 
-    public FeatureAction get(String actionTitle, FeatureAction.Type type, String paramString) {
-        return new FeatureAction(actionTitle, iconLiteral, featureId, linkGroup, type, paramString);
+    public FeatureItemTab get(String actionTitle, String paramString) {
+        return new FeatureItemTab(actionTitle, iconLiteral, featureId, linkGroup, paramString);
     }
 }

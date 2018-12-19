@@ -1,27 +1,27 @@
 package ca.warp7.rt.java.app;
 
-import ca.warp7.rt.java.core.ft.FeatureAction;
+import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 class AppActionTab {
 
     static final AppActionTab separator = new AppActionTab(null, true);
 
-    private FeatureAction featureAction;
+    private FeatureItemTab featureItemTab;
     private boolean isSeparator;
     private FontIcon icon;
 
-    private AppActionTab(FeatureAction featureAction, boolean isSeparator) {
-        this.featureAction = featureAction;
+    private AppActionTab(FeatureItemTab featureItemTab, boolean isSeparator) {
+        this.featureItemTab = featureItemTab;
         this.isSeparator = isSeparator;
     }
 
-    AppActionTab(FeatureAction featureAction) {
-        this(featureAction, false);
+    AppActionTab(FeatureItemTab featureItemTab) {
+        this(featureItemTab, false);
     }
 
-    FeatureAction getFeatureAction() {
-        return featureAction;
+    FeatureItemTab getFeatureItemTab() {
+        return featureItemTab;
     }
 
     boolean isSeparator() {

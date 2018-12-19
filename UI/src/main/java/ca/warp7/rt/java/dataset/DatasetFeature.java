@@ -1,7 +1,7 @@
 package ca.warp7.rt.java.dataset;
 
 import ca.warp7.rt.java.core.ft.Feature;
-import ca.warp7.rt.java.core.ft.FeatureAction;
+import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
@@ -12,10 +12,10 @@ public class DatasetFeature implements Feature {
     }
 
     @Override
-    public ObservableList<FeatureAction> getActionList() {
-        return FXCollections.singletonObservableList(new FeatureAction(
+    public ObservableList<FeatureItemTab> getTabObservable() {
+        return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Dataset Options", "fas-database:16:gray", getFeatureId(),
-                FeatureAction.LinkGroup.Core, FeatureAction.Type.TabItem, ""
+                FeatureItemTab.LinkGroup.Core, ""
         ));
     }
 
@@ -25,7 +25,7 @@ public class DatasetFeature implements Feature {
     }
 
     @Override
-    public Parent onAction(FeatureAction.Type type, String paramString) {
+    public Parent onOpenTab(FeatureItemTab tab) {
         return null;
     }
 

@@ -1,7 +1,7 @@
 package ca.warp7.rt.java.app;
 
-import ca.warp7.rt.java.core.ft.FeatureAction;
 import ca.warp7.rt.java.core.ft.FeatureIcon;
+import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -11,7 +11,7 @@ class AppElement {
 
     static HBox tabUIFromAction(AppActionTab tab) {
 
-        FeatureAction action = tab.getFeatureAction();
+        FeatureItemTab action = tab.getFeatureItemTab();
 
         HBox outer = new HBox();
 

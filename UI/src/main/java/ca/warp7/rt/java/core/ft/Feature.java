@@ -7,11 +7,11 @@ public interface Feature {
 
     void init();
 
-    ObservableList<FeatureAction> getActionList();
+    ObservableList<FeatureItemTab> getTabObservable();
 
     String getFeatureId();
 
-    Parent onAction(FeatureAction.Type type, String paramString);
+    Parent onOpenTab(FeatureItemTab tab);
 
     boolean onCloseRequest();
 }

@@ -1,7 +1,7 @@
 package ca.warp7.rt.java.predictor;
 
 import ca.warp7.rt.java.core.ft.Feature;
-import ca.warp7.rt.java.core.ft.FeatureAction;
+import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
@@ -12,10 +12,10 @@ public class PredictorFeature implements Feature {
     }
 
     @Override
-    public ObservableList<FeatureAction> getActionList() {
-        return FXCollections.singletonObservableList(new FeatureAction(
+    public ObservableList<FeatureItemTab> getTabObservable() {
+        return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Match Predictor", "fas-balance-scale:16:gray", getFeatureId(),
-                FeatureAction.LinkGroup.SingleTab, FeatureAction.Type.TabItem, ""
+                FeatureItemTab.LinkGroup.SingleTab, ""
         ));
     }
 
@@ -25,7 +25,7 @@ public class PredictorFeature implements Feature {
     }
 
     @Override
-    public Parent onAction(FeatureAction.Type type, String paramString) {
+    public Parent onOpenTab(FeatureItemTab tab) {
         return null;
     }
 

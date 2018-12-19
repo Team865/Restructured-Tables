@@ -1,7 +1,7 @@
 package ca.warp7.rt.java.app;
 
 import ca.warp7.rt.java.core.ft.Feature;
-import ca.warp7.rt.java.core.ft.FeatureAction;
+import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import ca.warp7.rt.java.core.ft.FeatureStage;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -44,7 +44,7 @@ public class AppController implements FeatureStage {
 
     private ObservableList<AppActionTab> appActions = FXCollections.observableArrayList();
     private Feature currentFeature = null;
-    private Map<String, ArrayList<FeatureAction>> tabGroups = new LinkedHashMap<>();
+    private Map<String, ArrayList<FeatureItemTab>> tabGroups = new LinkedHashMap<>();
     private Stage appStage;
     private BooleanProperty hideSidebar = new SimpleBooleanProperty();
 
@@ -87,7 +87,7 @@ public class AppController implements FeatureStage {
                     setPrefHeight(15);
                 } else {
                     setGraphic(AppElement.tabUIFromAction(item));
-                    setOnMouseClicked(event -> handleFeatureAction(item.getFeatureAction()));
+                    setOnMouseClicked(event -> handleFeatureAction(item.getFeatureItemTab()));
                 }
             }
         });
@@ -106,7 +106,7 @@ public class AppController implements FeatureStage {
                 ObservableList<AppActionTab> selectedItems = appActionListView.getSelectionModel().getSelectedItems();
                 if (selectedItems.size() == 1) {
                     AppActionTab tab = selectedItems.get(0);
-                    if (!tab.isSeparator()) handleFeatureAction(tab.getFeatureAction());
+                    if (!tab.isSeparator()) handleFeatureAction(tab.getFeatureItemTab());
                 }
             }
         });
@@ -123,26 +123,24 @@ public class AppController implements FeatureStage {
 
     private void initFeature(Feature feature) {
         feature.init();
-        ObservableList<FeatureAction> actions = feature.getActionList();
+        ObservableList<FeatureItemTab> actions = feature.getTabObservable();
         actions.forEach(action -> {
-            if (action.getType() == FeatureAction.Type.TabItem) {
-                String groupName;
-                switch (action.getActionGroup()) {
-                    case Core:
-                        groupName = "core";
-                        break;
-                    case SingleTab:
-                        groupName = "single";
-                        break;
-                    case WithFeature:
-                        groupName = action.getFeatureId();
-                        break;
-                    default:
-                        groupName = "unknown";
-                }
-                if (!tabGroups.containsKey(groupName)) tabGroups.put(groupName, new ArrayList<>());
-                tabGroups.get(groupName).add(action);
+            String groupName;
+            switch (action.getActionGroup()) {
+                case Core:
+                    groupName = "core";
+                    break;
+                case SingleTab:
+                    groupName = "single";
+                    break;
+                case WithFeature:
+                    groupName = action.getFeatureId();
+                    break;
+                default:
+                    groupName = "unknown";
             }
+            if (!tabGroups.containsKey(groupName)) tabGroups.put(groupName, new ArrayList<>());
+            tabGroups.get(groupName).add(action);
         });
     }
 
@@ -155,14 +153,14 @@ public class AppController implements FeatureStage {
         alert.showAndWait();
     }
 
-    private void handleFeatureAction(FeatureAction action) {
-        String id = action.getFeatureId();
+    private void handleFeatureAction(FeatureItemTab tab) {
+        String id = tab.getFeatureId();
         if (featureMap.containsKey(id)) {
             Feature feature = featureMap.get(id);
-            if (currentFeature == feature) currentFeature.onAction(action.getType(), action.getParamString());
+            if (currentFeature == feature) currentFeature.onOpenTab(tab);
             else if (currentFeature == null || currentFeature.onCloseRequest()) {
                 currentFeature = feature;
-                Parent parent = currentFeature.onAction(action.getType(), action.getParamString());
+                Parent parent = currentFeature.onOpenTab(tab);
                 tabContent.setCenter(parent);
             }
         }

@@ -1,29 +1,28 @@
 package ca.warp7.rt.java.views;
 
 import ca.warp7.rt.java.core.ft.Feature;
-import ca.warp7.rt.java.core.ft.FeatureAction;
 import ca.warp7.rt.java.core.ft.FeatureActionFactory;
+import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
-import static ca.warp7.rt.java.core.ft.FeatureAction.LinkGroup;
-import static ca.warp7.rt.java.core.ft.FeatureAction.Type;
+import static ca.warp7.rt.java.core.ft.FeatureItemTab.LinkGroup;
 
 public class ViewsFeature implements Feature {
 
-    private FeatureActionFactory factory = new FeatureActionFactory("fas-eye:16:gray", getFeatureId(), LinkGroup.WithFeature);
+    private FeatureActionFactory factory = new FeatureActionFactory("fas-eye:16:gray",
+            getFeatureId(), LinkGroup.WithFeature);
 
     private Parent preLoaded;
 
-    private ObservableList<FeatureAction> actions = FXCollections.observableArrayList(
-            factory.get("Data View", Type.New, ""),
-            factory.get("Raw Data", Type.TabItem, ""),
-            factory.get("Auto List", Type.TabItem, ""),
-            factory.get("Endgame", Type.TabItem, ""),
-            factory.get("Team Averages", Type.TabItem, ""),
-            factory.get("Cycle Matrix", Type.TabItem, "")
+    private ObservableList<FeatureItemTab> actions = FXCollections.observableArrayList(
+            factory.get("Raw Data", ""),
+            factory.get("Auto List", ""),
+            factory.get("Endgame", ""),
+            factory.get("Team Averages", ""),
+            factory.get("Cycle Matrix", "")
     );
 
     @Override
@@ -31,7 +30,7 @@ public class ViewsFeature implements Feature {
     }
 
     @Override
-    public ObservableList<FeatureAction> getActionList() {
+    public ObservableList<FeatureItemTab> getTabObservable() {
         return actions;
     }
 
@@ -41,7 +40,7 @@ public class ViewsFeature implements Feature {
     }
 
     @Override
-    public Parent onAction(Type type, String paramString) {
+    public Parent onOpenTab(FeatureItemTab tab) {
         if (preLoaded == null) {
             preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/stage/views/Views.fxml");
         }

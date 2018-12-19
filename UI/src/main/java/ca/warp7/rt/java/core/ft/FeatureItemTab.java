@@ -1,11 +1,7 @@
 package ca.warp7.rt.java.core.ft;
 
 @SuppressWarnings({"unused"})
-public class FeatureAction {
-
-    public enum Type {
-        New, TabItem, Delete, Rename
-    }
+public class FeatureItemTab {
 
     public enum LinkGroup {
         Core, SingleTab, WithFeature
@@ -15,20 +11,17 @@ public class FeatureAction {
     private String iconLiteral;
     private String featureId;
     private LinkGroup linkGroup;
-    private Type type;
     private String paramString;
 
-    public FeatureAction(String actionTitle,
-                         String iconLiteral,
-                         String featureId,
-                         LinkGroup linkGroup,
-                         Type type,
-                         String paramString) {
+    public FeatureItemTab(String actionTitle,
+                          String iconLiteral,
+                          String featureId,
+                          LinkGroup linkGroup,
+                          String paramString) {
         this.actionTitle = actionTitle;
         this.iconLiteral = iconLiteral;
         this.featureId = featureId;
         this.linkGroup = linkGroup;
-        this.type = type;
         this.paramString = paramString;
     }
 
@@ -54,14 +47,6 @@ public class FeatureAction {
 
     public void setFeatureId(String featureId) {
         this.featureId = featureId;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
     }
 
     public String getParamString() {

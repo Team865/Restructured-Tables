@@ -1,7 +1,7 @@
 package ca.warp7.rt.java.ast;
 
 import ca.warp7.rt.java.core.ft.Feature;
-import ca.warp7.rt.java.core.ft.FeatureAction;
+import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,10 +13,10 @@ public class ASTFeature implements Feature {
     }
 
     @Override
-    public ObservableList<FeatureAction> getActionList() {
-        return FXCollections.singletonObservableList(new FeatureAction(
+    public ObservableList<FeatureItemTab> getTabObservable() {
+        return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Alliance Selection", "fas-list-alt:18:gray", getFeatureId(),
-                FeatureAction.LinkGroup.SingleTab, FeatureAction.Type.TabItem, ""
+                FeatureItemTab.LinkGroup.SingleTab, ""
         ));
     }
 
@@ -26,7 +26,7 @@ public class ASTFeature implements Feature {
     }
 
     @Override
-    public Parent onAction(FeatureAction.Type type, String paramString) {
+    public Parent onOpenTab(FeatureItemTab tab) {
         return FeatureUtils.loadParent("/ca/warp7/rt/stage/ast/AST.fxml");
     }
 
