@@ -4,12 +4,8 @@ import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Parent;
 
 public class VCFeature implements Feature {
-    @Override
-    public void init() {
-    }
 
     @Override
     public ObservableList<FeatureItemTab> getTabObservable() {
@@ -22,15 +18,5 @@ public class VCFeature implements Feature {
     @Override
     public String getFeatureId() {
         return "vc";
-    }
-
-    @Override
-    public Parent onOpenTab(FeatureItemTab tab) {
-        return null;
-    }
-
-    @Override
-    public boolean onCloseRequest() {
-        return true;
     }
 }

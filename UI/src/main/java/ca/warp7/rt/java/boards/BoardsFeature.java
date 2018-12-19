@@ -7,9 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
 public class BoardsFeature implements Feature {
-    @Override
-    public void init() {
-    }
 
     @Override
     public ObservableList<FeatureItemTab> getTabObservable() {

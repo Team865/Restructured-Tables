@@ -8,9 +8,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
 public class ASTFeature implements Feature {
-    @Override
-    public void init() {
-    }
 
     @Override
     public ObservableList<FeatureItemTab> getTabObservable() {
@@ -28,10 +25,5 @@ public class ASTFeature implements Feature {
     @Override
     public Parent onOpenTab(FeatureItemTab tab) {
         return FeatureUtils.loadParent("/ca/warp7/rt/stage/ast/AST.fxml");
-    }
-
-    @Override
-    public boolean onCloseRequest() {
-        return true;
     }
 }

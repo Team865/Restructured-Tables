@@ -5,13 +5,18 @@ import javafx.scene.Parent;
 
 public interface Feature {
 
-    void init();
+    default void init() {
+    }
 
     ObservableList<FeatureItemTab> getTabObservable();
 
     String getFeatureId();
 
-    Parent onOpenTab(FeatureItemTab tab);
+    default Parent onOpenTab(FeatureItemTab tab) {
+        return null;
+    }
 
-    boolean onCloseRequest();
+    default boolean onCloseRequest() {
+        return true;
+    }
 }

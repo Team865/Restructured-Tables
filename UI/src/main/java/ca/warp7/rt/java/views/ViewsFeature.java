@@ -26,10 +26,6 @@ public class ViewsFeature implements Feature {
     );
 
     @Override
-    public void init() {
-    }
-
-    @Override
     public ObservableList<FeatureItemTab> getTabObservable() {
         return actions;
     }
@@ -46,10 +42,4 @@ public class ViewsFeature implements Feature {
         }
         return preLoaded;
     }
-
-    @Override
-    public boolean onCloseRequest() {
-        return true;
-    }
-
 }

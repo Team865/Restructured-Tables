@@ -21,10 +21,6 @@ public class ScannerFeature implements Feature {
     }
 
     @Override
-    public void init() {
-    }
-
-    @Override
     public ObservableList<FeatureItemTab> getTabObservable() {
         return FXCollections.singletonObservableList(factory.get("QR Scanner", ""));
     }

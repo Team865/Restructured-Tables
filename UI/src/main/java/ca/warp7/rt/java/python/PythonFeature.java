@@ -32,10 +32,6 @@ public class PythonFeature implements Feature {
     }
 
     @Override
-    public void init() {
-    }
-
-    @Override
     public ObservableList<FeatureItemTab> getTabObservable() {
         return actions;
     }
@@ -53,10 +49,4 @@ public class PythonFeature implements Feature {
         controller.setTabItemParams(tab.getParamString());
         return preLoaded;
     }
-
-    @Override
-    public boolean onCloseRequest() {
-        return true;
-    }
-
 }
