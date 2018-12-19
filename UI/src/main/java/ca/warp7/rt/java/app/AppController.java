@@ -152,9 +152,7 @@ public class AppController implements FeatureStage {
         String mem = String.format("Memory: %.2f MB", (Runtime.getRuntime().totalMemory()
                 - Runtime.getRuntime().freeMemory()) / 1000000.0);
         Alert alert = new Alert(Alert.AlertType.INFORMATION, mem, ButtonType.OK);
-        new Thread(() -> {
-            Runtime.getRuntime().gc();
-        }).start();
+        new Thread(() -> Runtime.getRuntime().gc()).start();
         alert.showAndWait();
     }
 

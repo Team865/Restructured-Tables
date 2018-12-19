@@ -38,7 +38,6 @@
     -fx-background-color: white;
 }
 
-
 .list-view:focused .list-cell:hover:filled {
     -fx-background-color: #ddd;
 }
@@ -75,21 +74,22 @@
 .scroll-bar .decrement-button {
     -fx-opacity: 0;
     -fx-pref-height: 0;
+    -fx-pref-width: 0;
 }
 
-.scroll-bar:vertical {
+.scroll-bar {
     -fx-pref-width: 10;
     -fx-background-color: transparent;
 }
 
-.scroll-bar:vertical .track-background {
+.scroll-bar .track-background {
     visibility: hidden;
 }
 
-.scroll-bar:vertical .track {
+.scroll-bar .track {
     visibility: hidden;
 }
 
-.scroll-bar:vertical .thumb {
+.scroll-bar .thumb {
     -fx-background-color: #ccc;
 }

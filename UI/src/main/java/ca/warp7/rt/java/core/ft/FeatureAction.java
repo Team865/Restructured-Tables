@@ -1,10 +1,10 @@
 package ca.warp7.rt.java.core.ft;
 
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings({"unused"})
 public class FeatureAction {
 
     public enum Type {
-        New, TabItem
+        New, TabItem, Delete, Rename
     }
 
     public enum LinkGroup {

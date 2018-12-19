@@ -5,7 +5,7 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      prefWidth="1920" prefHeight="1080" minWidth="800" minHeight="450"
+      prefWidth="1600" prefHeight="900" minWidth="800" minHeight="450"
       fx:controller="ca.warp7.rt.java.app.AppController">
 
     <stylesheets>
@@ -47,7 +47,7 @@
     </ToolBar>
 
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContent">
-        <VBox prefWidth="240" alignment="TOP_CENTER">
+        <VBox prefWidth="240" alignment="TOP_CENTER" minWidth="240" maxWidth="240">
             <ListView VBox.vgrow="ALWAYS" fx:id="appActionListView"/>
         </VBox>
         <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>
