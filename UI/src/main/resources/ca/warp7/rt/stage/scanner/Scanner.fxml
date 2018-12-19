@@ -18,11 +18,25 @@
         <ImageView fx:id="streamImageView" preserveRatio="true"/>
     </VBox>
 
-    <VBox spacing="10" alignment="TOP_CENTER">
+    <VBox spacing="10" alignment="TOP_CENTER" style="-fx-padding: 10">
 
-        <style>
-            -fx-padding:10;
-        </style>
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="Commit">
+                <graphic>
+                    <FontIcon iconLiteral="fas-check:18:gray"/>
+                </graphic>
+            </Button>
+            <Button text="Save as CSV">
+                <graphic>
+                    <FontIcon iconLiteral="fas-save:18:gray"/>
+                </graphic>
+            </Button>
+            <Button text="Pause" fx:id="cameraStateChanger" onAction="#onCameraStateChange">
+                <graphic>
+                    <FontIcon iconLiteral="fas-times:18:gray"/>
+                </graphic>
+            </Button>
+        </HBox>
 
         <Label fx:id="resultLabel" text="No QR code found" prefHeight="200" prefWidth="360" wrapText="true"
                alignment="TOP_LEFT" textAlignment="JUSTIFY">
@@ -72,23 +86,5 @@
         <ListView fx:id="scanList" VBox.vgrow="ALWAYS"/>
 
         <TextArea fx:id="comments" promptText="Add Comments" prefHeight="200" prefWidth="360"/>
-
-        <HBox spacing="10" alignment="CENTER">
-            <Button text="Commit">
-                <graphic>
-                    <FontIcon iconLiteral="fas-check:18:gray"/>
-                </graphic>
-            </Button>
-            <Button text="Save as CSV">
-                <graphic>
-                    <FontIcon iconLiteral="fas-save:18:gray"/>
-                </graphic>
-            </Button>
-            <Button text="Pause" fx:id="cameraStateChanger" onAction="#onCameraStateChange">
-                <graphic>
-                    <FontIcon iconLiteral="fas-times:18:gray"/>
-                </graphic>
-            </Button>
-        </HBox>
     </VBox>
 </HBox>

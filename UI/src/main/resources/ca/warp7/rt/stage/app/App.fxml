@@ -14,15 +14,13 @@
 
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContent">
         <VBox prefWidth="240" alignment="TOP_CENTER" minWidth="240" maxWidth="240" fx:id="listViewContainer">
-
-            <ToolBar HBox.hgrow="ALWAYS" style="-fx-background-color: white">
-                <MenuButton text="New" fx:id="newButton" prefWidth="220">
+            <ToolBar HBox.hgrow="ALWAYS" style="-fx-background-color: #ddd">
+                <MenuButton text="New Tab" fx:id="newButton" prefWidth="220">
                     <graphic>
                         <FontIcon iconLiteral="fas-plus:18:gray"/>
                     </graphic>
                 </MenuButton>
             </ToolBar>
-
             <ListView VBox.vgrow="ALWAYS" fx:id="appActionListView"/>
         </VBox>
         <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>

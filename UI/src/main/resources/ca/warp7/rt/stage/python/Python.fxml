@@ -9,10 +9,6 @@
     <stylesheets>
         <URL value="@/ca/warp7/rt/stage/main.css"/>
     </stylesheets>
-    <HBox VBox.vgrow="ALWAYS">
-        <BorderPane fx:id="codeRoot" HBox.hgrow="ALWAYS">
-        </BorderPane>
-    </HBox>
     <ToolBar>
         <Button text="Run script">
             <graphic>
@@ -31,4 +27,8 @@
             </graphic>
         </Button>
     </ToolBar>
+    <HBox VBox.vgrow="ALWAYS">
+        <BorderPane fx:id="codeRoot" HBox.hgrow="ALWAYS">
+        </BorderPane>
+    </HBox>
 </VBox>
