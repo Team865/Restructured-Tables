@@ -6,6 +6,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import org.kordamp.ikonli.javafx.FontIcon;
 
@@ -39,5 +41,17 @@ class AppElement {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, mem, ButtonType.OK);
         new Thread(() -> Runtime.getRuntime().gc()).start();
         alert.showAndWait();
+    }
+
+    static AppActionTab getTeamLogo() {
+        int height = 64;
+        ImageView teamLogo = new ImageView();
+        teamLogo.setImage(new Image("/warp7.png"));
+        teamLogo.setPreserveRatio(true);
+        teamLogo.setFitHeight(height);
+        HBox hBox = new HBox();
+        hBox.setAlignment(Pos.CENTER);
+        hBox.getChildren().add(teamLogo);
+        return new AppActionTab(hBox, height);
     }
 }

@@ -23,17 +23,17 @@
         <HBox spacing="10" alignment="CENTER">
             <Button text="Commit">
                 <graphic>
-                    <FontIcon iconLiteral="fas-check:14:gray"/>
+                    <FontIcon iconLiteral="fas-check:16:gray"/>
                 </graphic>
             </Button>
             <Button text="Save as CSV">
                 <graphic>
-                    <FontIcon iconLiteral="fas-save:14:gray"/>
+                    <FontIcon iconLiteral="fas-save:16:gray"/>
                 </graphic>
             </Button>
             <Button text="Pause" fx:id="cameraStateChanger" onAction="#onCameraStateChange">
                 <graphic>
-                    <FontIcon iconLiteral="fas-times:14:gray"/>
+                    <FontIcon iconLiteral="fas-times:16:gray"/>
                 </graphic>
             </Button>
         </HBox>
@@ -48,7 +48,7 @@
         </Label>
 
         <HBox spacing="10" alignment="CENTER">
-            <FontIcon iconLiteral="fas-chevron-left:14:gray"/>
+            <FontIcon iconLiteral="fas-chevron-left:16:gray"/>
             <Label text="2018iri_qm36"
                    fx:id="currentMatch"
                    HBox.hgrow="ALWAYS"
@@ -56,7 +56,7 @@
                    minWidth="200"
                    styleClass="highlight-blue"
                    alignment="CENTER"/>
-            <FontIcon iconLiteral="fas-chevron-right:14:gray"/>
+            <FontIcon iconLiteral="fas-chevron-right:16:gray"/>
         </HBox>
 
         <HBox spacing="10" alignment="CENTER">

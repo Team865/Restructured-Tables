@@ -8,37 +8,37 @@
 
     <MenuButton text="Options">
         <graphic>
-            <FontIcon iconLiteral="fas-eye:14:gray"/>
+            <FontIcon iconLiteral="fas-eye:16:gray"/>
         </graphic>
         <items>
             <MenuItem text="New View">
                 <graphic>
-                    <FontIcon iconLiteral="fas-plus:14:gray"/>
+                    <FontIcon iconLiteral="fas-plus:16:gray"/>
                 </graphic>
             </MenuItem>
             <MenuItem text="Configure View">
                 <graphic>
-                    <FontIcon iconLiteral="fas-edit:14:gray"/>
+                    <FontIcon iconLiteral="fas-edit:16:gray"/>
                 </graphic>
             </MenuItem>
             <MenuItem text="Create Pivot Table">
                 <graphic>
-                    <FontIcon iconLiteral="fas-table:14:gray"/>
+                    <FontIcon iconLiteral="fas-table:16:gray"/>
                 </graphic>
             </MenuItem>
             <MenuItem text="Create Plot">
                 <graphic>
-                    <FontIcon iconLiteral="fas-chart-bar:14:gray"/>
+                    <FontIcon iconLiteral="fas-chart-bar:16:gray"/>
                 </graphic>
             </MenuItem>
             <MenuItem text="Clone View">
                 <graphic>
-                    <FontIcon iconLiteral="fas-clone:14:gray"/>
+                    <FontIcon iconLiteral="fas-clone:16:gray"/>
                 </graphic>
             </MenuItem>
             <MenuItem text="Delete View">
                 <graphic>
-                    <FontIcon iconLiteral="fas-trash:14:gray"/>
+                    <FontIcon iconLiteral="fas-trash:16:gray"/>
                 </graphic>
             </MenuItem>
         </items>
@@ -52,7 +52,7 @@
 
     <Button text="Filter">
         <graphic>
-            <FontIcon iconLiteral="fas-filter:14:gray"/>
+            <FontIcon iconLiteral="fas-filter:16:gray"/>
         </graphic>
     </Button>
 
@@ -60,13 +60,13 @@
 
     <Button text="Format">
         <graphic>
-            <FontIcon iconLiteral="fas-paint-brush:14:gray"/>
+            <FontIcon iconLiteral="fas-paint-brush:16:gray"/>
         </graphic>
     </Button>
 
     <Separator/>
 
-    <FontIcon iconLiteral="fas-search:14:gray"/>
+    <FontIcon iconLiteral="fas-search:16:gray"/>
     <Label text="Find:"/>
     <TextField focusTraversable="false" prefWidth="220"/>
 

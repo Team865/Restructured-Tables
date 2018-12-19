@@ -13,18 +13,20 @@
     </stylesheets>
 
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContent">
-        <VBox prefWidth="200" alignment="TOP_CENTER" minWidth="200" maxWidth="240" fx:id="listViewContainer">
+        <VBox prefWidth="200" alignment="TOP_CENTER" minWidth="200" maxWidth="200" fx:id="listViewContainer">
             <ListView VBox.vgrow="ALWAYS" fx:id="appTabListView"/>
         </VBox>
         <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>
     </HBox>
 
     <HBox styleClass="status-bar" alignment="CENTER_LEFT">
-        <HBox style="-fx-padding: 4 12 4 12" alignment="CENTER_LEFT" spacing="6">
+        <HBox style="-fx-padding: 4 12 4 12" alignment="CENTER_LEFT" spacing="6" HBox.hgrow="ALWAYS">
             <FontIcon iconLiteral="fas-paperclip:14:gray"/>
             <Label text="Status Message"/>
         </HBox>
-        <VBox HBox.hgrow="ALWAYS"/>
+        <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#showMemory">
+            <FontIcon iconLiteral="fas-sync:14:gray"/>
+        </HBox>
         <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#showMemory">
             <FontIcon iconLiteral="fas-search-plus:14:gray"/>
         </HBox>

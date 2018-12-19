@@ -1,31 +1,35 @@
 package ca.warp7.rt.java.app;
 
 import ca.warp7.rt.java.core.ft.FeatureItemTab;
+import javafx.scene.Node;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 class AppActionTab {
 
-    static final AppActionTab separator = new AppActionTab(null, true);
-
     private FeatureItemTab featureItemTab;
-    private boolean isSeparator;
     private FontIcon icon;
+    private Node decorativeNode;
+    private int decorativeHeight;
 
-    private AppActionTab(FeatureItemTab featureItemTab, boolean isSeparator) {
-        this.featureItemTab = featureItemTab;
-        this.isSeparator = isSeparator;
+    AppActionTab(Node decorativeNode, int decorativeHeight) {
+        this.decorativeNode = decorativeNode;
+        this.decorativeHeight = decorativeHeight;
     }
 
     AppActionTab(FeatureItemTab featureItemTab) {
-        this(featureItemTab, false);
+        this.featureItemTab = featureItemTab;
     }
 
     FeatureItemTab getFeatureItemTab() {
         return featureItemTab;
     }
 
-    boolean isSeparator() {
-        return isSeparator;
+    boolean isDecorativeNode() {
+        return decorativeNode != null;
+    }
+
+    Node getDecorativeNode() {
+        return decorativeNode;
     }
 
     FontIcon getIcon() {
@@ -34,5 +38,9 @@ class AppActionTab {
 
     void setIcon(FontIcon icon) {
         this.icon = icon;
+    }
+
+    public int getDecorativeHeight() {
+        return decorativeHeight;
     }
 }

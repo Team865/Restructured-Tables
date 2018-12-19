@@ -56,10 +56,11 @@ public class AppController implements FeatureStage {
             protected void updateItem(AppActionTab item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) return;
-                if (item.isSeparator()) {
+                if (item.isDecorativeNode()) {
                     setMouseTransparent(true);
                     setFocusTraversable(false);
-                    setPrefHeight(15);
+                    setGraphic(item.getDecorativeNode());
+                    setPrefHeight(item.getDecorativeHeight());
                 } else {
                     setGraphic(AppElement.tabUIFromAction(item));
                     setOnMouseClicked(event -> handleFeatureAction(item.getFeatureItemTab()));
@@ -78,7 +79,9 @@ public class AppController implements FeatureStage {
                 tabGroups.get(groupName).add(tab);
             });
         });
-        updateTabs();
+        appTabs.clear();
+        appTabs.add(AppElement.getTeamLogo());
+        tabGroups.forEach((s, featureActions) -> featureActions.forEach(tab -> appTabs.add(new AppActionTab(tab))));
         hideSidebar.addListener((observable, oldValue, selected) -> {
             if (selected) tabsAndContent.getChildren().remove(0);
             else tabsAndContent.getChildren().add(0, listViewContainer);
@@ -87,7 +90,7 @@ public class AppController implements FeatureStage {
             ObservableList<AppActionTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
             if (selectedItems.size() == 1) {
                 AppActionTab tab = selectedItems.get(0);
-                if (!tab.isSeparator() && event.getCode() == KeyCode.ENTER)
+                if (!tab.isDecorativeNode() && event.getCode() == KeyCode.ENTER)
                     handleFeatureAction(tab.getFeatureItemTab());
             }
         });
@@ -101,11 +104,6 @@ public class AppController implements FeatureStage {
                 });
             }
         });
-    }
-
-    private void updateTabs() {
-        appTabs.clear();
-        tabGroups.forEach((s, featureActions) -> featureActions.forEach(tab -> appTabs.add(new AppActionTab(tab))));
     }
 
     public void toggleFullScreen() {

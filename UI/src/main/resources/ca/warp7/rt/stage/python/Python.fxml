@@ -12,24 +12,24 @@
     <ToolBar>
         <Button text="New script">
             <graphic>
-                <FontIcon iconLiteral="fas-plus:14:gray"/>
+                <FontIcon iconLiteral="fas-plus:16:gray"/>
             </graphic>
         </Button>
         <Separator/>
         <Button text="Run script">
             <graphic>
-                <FontIcon iconLiteral="far-play-circle:14:gray"/>
+                <FontIcon iconLiteral="far-play-circle:16:gray"/>
             </graphic>
         </Button>
         <Button text="Show Logs">
             <graphic>
-                <FontIcon iconLiteral="fas-bug:14:gray"/>
+                <FontIcon iconLiteral="fas-bug:16:gray"/>
             </graphic>
         </Button>
         <Separator/>
         <Button fx:id="themeChange" text="Switch Theme">
             <graphic>
-                <FontIcon iconLiteral="fas-paint-brush:14:gray"/>
+                <FontIcon iconLiteral="fas-paint-brush:16:gray"/>
             </graphic>
         </Button>
     </ToolBar>
