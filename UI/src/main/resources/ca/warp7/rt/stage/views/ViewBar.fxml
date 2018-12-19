@@ -65,19 +65,4 @@
     <Label text="Find:"/>
     <TextField focusTraversable="false" prefWidth="220"/>
 
-    <Separator/>
-
-    <HBox alignment="CENTER" spacing="10">
-        <Label text="Row" styleClass="highlight-blue">
-            <graphic>
-                <FontIcon iconLiteral="fas-arrows-alt-v:18:white"/>
-            </graphic>
-        </Label>
-        <Label text="Column" styleClass="highlight-blue">
-            <graphic>
-                <FontIcon iconLiteral="fas-arrows-alt-h:18:white"/>
-            </graphic>
-        </Label>
-    </HBox>
-
 </ToolBar>

@@ -33,6 +33,14 @@
         </HBox>
         <VBox HBox.hgrow="ALWAYS"/>
         <HBox styleClass="status-item" alignment="CENTER_LEFT">
+            <FontIcon iconLiteral="fas-arrows-alt-h:14:gray"/>
+            <Label text="None"/>
+        </HBox>
+        <HBox styleClass="status-item" alignment="CENTER_LEFT">
+            <FontIcon iconLiteral="fas-arrows-alt-v:14:gray"/>
+            <Label text="None"/>
+        </HBox>
+        <HBox styleClass="status-item" alignment="CENTER_LEFT">
             <FontIcon iconLiteral="fas-database:14:gray"/>
             <Label text="2018iri-frc865"/>
         </HBox>
@@ -50,7 +58,7 @@
         <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#toggleFullScreen">
             <FontIcon iconLiteral="fas-expand:14:gray"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT">
+        <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#toggleSidebar">
             <FontIcon iconLiteral="fas-eye-slash:14:gray"/>
         </HBox>
         <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#showMemory">

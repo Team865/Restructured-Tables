@@ -52,11 +52,15 @@ public class AppController implements FeatureStage {
         appStage.setFullScreen(!appStage.isFullScreen());
     }
 
+    public void toggleSidebar() {
+        hideSidebar.setValue(!hideSidebar.get());
+    }
+
     @Override
     public void setStage(Stage stage) {
         stage.getScene().setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.F11) stage.setFullScreen(true);
-            else if (event.getCode() == KeyCode.F9) hideSidebar.setValue(!hideSidebar.get());
+            else if (event.getCode() == KeyCode.F9) toggleSidebar();
         });
         stage.setOnCloseRequest(event -> {
             if (currentFeature != null && !currentFeature.onCloseRequest()) {
