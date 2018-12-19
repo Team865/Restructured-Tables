@@ -12,42 +12,17 @@
         <URL value="@/ca/warp7/rt/stage/main.css"/>
     </stylesheets>
 
-    <ToolBar prefWidth="220" HBox.hgrow="ALWAYS">
-
-        <Label fx:id="dataset" styleClass="highlight-blue" minWidth="225">
-            <graphic>
-                <FontIcon iconLiteral="fas-database:18:white"/>
-            </graphic>
-        </Label>
-
-        <Separator/>
-
-        <MenuButton text="New Tab" fx:id="newButton">
-            <graphic>
-                <FontIcon iconLiteral="fas-plus:18:gray"/>
-            </graphic>
-        </MenuButton>
-
-        <Separator/>
-
-        <Button text="Toggle Full Screen" onAction="#toggleFullScreen">
-            <graphic>
-                <FontIcon iconLiteral="fas-expand:18:gray"/>
-            </graphic>
-        </Button>
-
-        <Separator/>
-
-        <CheckBox text="Hide Sidebar" fx:id="hideSidebarCheckbox"/>
-
-        <Separator/>
-
-        <Button text="Memory" onAction="#showMemory"/>
-
-    </ToolBar>
-
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContent">
-        <VBox prefWidth="240" alignment="TOP_CENTER" minWidth="240" maxWidth="240">
+        <VBox prefWidth="240" alignment="TOP_CENTER" minWidth="240" maxWidth="240" fx:id="listViewContainer">
+
+            <ToolBar HBox.hgrow="ALWAYS" style="-fx-background-color: white">
+                <MenuButton text="New" fx:id="newButton" prefWidth="220">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-plus:18:gray"/>
+                    </graphic>
+                </MenuButton>
+            </ToolBar>
+
             <ListView VBox.vgrow="ALWAYS" fx:id="appActionListView"/>
         </VBox>
         <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>
@@ -74,13 +49,13 @@
         <HBox styleClass="status-item" alignment="CENTER_LEFT">
             <FontIcon iconLiteral="fas-plus:14:gray"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT">
+        <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#toggleFullScreen">
             <FontIcon iconLiteral="fas-expand:14:gray"/>
         </HBox>
         <HBox styleClass="status-item" alignment="CENTER_LEFT">
             <FontIcon iconLiteral="fas-eye-slash:14:gray"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT">
+        <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#showMemory">
             <FontIcon iconLiteral="fas-bolt:14:gray"/>
         </HBox>
     </HBox>

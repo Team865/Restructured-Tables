@@ -4,6 +4,8 @@ import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureAction;
 import ca.warp7.rt.java.core.ft.FeatureIcon;
 import ca.warp7.rt.java.core.ft.FeatureStage;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -13,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
@@ -31,20 +34,19 @@ public class AppController implements FeatureStage {
     @FXML
     MenuButton newButton;
     @FXML
-    Label dataset;
-    @FXML
     BorderPane tabContent;
     @FXML
     HBox tabsAndContent;
     @FXML
-    CheckBox hideSidebarCheckbox;
+    ListView<AppActionTab> appActionListView;
     @FXML
-    private ListView<AppActionTab> appActionListView;
+    VBox listViewContainer;
 
     private ObservableList<AppActionTab> appActions = FXCollections.observableArrayList();
     private Feature currentFeature = null;
     private Map<String, ArrayList<FeatureAction>> tabGroups = new LinkedHashMap<>();
     private Stage appStage;
+    private BooleanProperty hideSidebar = new SimpleBooleanProperty();
 
     public void toggleFullScreen() {
         appStage.setFullScreen(!appStage.isFullScreen());
@@ -54,7 +56,7 @@ public class AppController implements FeatureStage {
     public void setStage(Stage stage) {
         stage.getScene().setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.F11) stage.setFullScreen(true);
-            else if (event.getCode() == KeyCode.F9) hideSidebarCheckbox.setSelected(!hideSidebarCheckbox.isSelected());
+            else if (event.getCode() == KeyCode.F9) hideSidebar.setValue(!hideSidebar.get());
         });
         stage.setOnCloseRequest(event -> {
             if (currentFeature != null && !currentFeature.onCloseRequest()) {
@@ -69,8 +71,6 @@ public class AppController implements FeatureStage {
 
     @FXML
     void initialize() {
-        dataset.setText("2018iri << 865");
-
         appActionListView.setItems(appActions);
         appActionListView.setCellFactory(listView -> new ListCell<AppActionTab>() {
             @Override
@@ -92,9 +92,9 @@ public class AppController implements FeatureStage {
             featureActions.forEach(action -> appActions.add(new AppActionTab(action)));
         });
         appActions.add(AppActionTab.separator);
-        hideSidebarCheckbox.selectedProperty().addListener((observable, oldValue, selected) -> {
+        hideSidebar.addListener((observable, oldValue, selected) -> {
             if (selected) tabsAndContent.getChildren().remove(0);
-            else tabsAndContent.getChildren().add(0, appActionListView);
+            else tabsAndContent.getChildren().add(0, listViewContainer);
         });
         appActionListView.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER || event.getCode() == KeyCode.SPACE) {
