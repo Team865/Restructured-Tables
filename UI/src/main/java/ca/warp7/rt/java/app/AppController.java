@@ -62,6 +62,8 @@ public class AppController implements FeatureStage {
             }
         });
         appStage = stage;
+        appStage.setMinWidth(800);
+        appStage.setMinHeight(450);
         appStage.setMaximized(true);
     }
 

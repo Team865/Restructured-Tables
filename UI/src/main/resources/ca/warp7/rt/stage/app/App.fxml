@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import org.kordamp.ikonli.javafx.*?>
 <?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       prefWidth="1600" prefHeight="900" minWidth="800" minHeight="450"
@@ -51,6 +51,38 @@
             <ListView VBox.vgrow="ALWAYS" fx:id="appActionListView"/>
         </VBox>
         <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <HBox styleClass="status-bar" alignment="CENTER_LEFT">
+        <HBox style="-fx-padding: 4 12 4 12" alignment="CENTER_LEFT" spacing="6">
+            <FontIcon iconLiteral="fas-paperclip:14:gray"/>
+            <Label text="Status Message"/>
+        </HBox>
+        <VBox HBox.hgrow="ALWAYS"/>
+        <HBox styleClass="status-item" alignment="CENTER_LEFT">
+            <FontIcon iconLiteral="fas-database:14:gray"/>
+            <Label text="2018iri-frc865"/>
+        </HBox>
+        <HBox styleClass="status-item" alignment="CENTER_LEFT">
+            <FontIcon iconLiteral="fas-user:14:gray"/>
+            <Label text="Yu Liu"/>
+        </HBox>
+        <HBox styleClass="status-item" alignment="CENTER_LEFT">
+            <FontIcon iconLiteral="fas-laptop:13:gray"/>
+            <Label text="Yu's PC"/>
+        </HBox>
+        <HBox styleClass="status-item" alignment="CENTER_LEFT">
+            <FontIcon iconLiteral="fas-plus:14:gray"/>
+        </HBox>
+        <HBox styleClass="status-item" alignment="CENTER_LEFT">
+            <FontIcon iconLiteral="fas-expand:14:gray"/>
+        </HBox>
+        <HBox styleClass="status-item" alignment="CENTER_LEFT">
+            <FontIcon iconLiteral="fas-eye-slash:14:gray"/>
+        </HBox>
+        <HBox styleClass="status-item" alignment="CENTER_LEFT">
+            <FontIcon iconLiteral="fas-bolt:14:gray"/>
+        </HBox>
     </HBox>
 
 </VBox>
