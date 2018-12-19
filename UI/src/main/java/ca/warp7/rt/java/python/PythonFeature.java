@@ -1,5 +1,6 @@
 package ca.warp7.rt.java.python;
 
+import ca.warp7.rt.java.app.AppInterface;
 import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureActionFactory;
 import ca.warp7.rt.java.core.ft.FeatureItemTab;
@@ -49,6 +50,7 @@ public class PythonFeature implements Feature {
             preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/stage/python/Python.fxml", this::setController);
         }
         controller.setTabItemParams(tab.getParamString());
+        AppInterface.setStatusMessage("Editing python script " + tab.getParamString());
         return preLoaded;
     }
 }

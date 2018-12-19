@@ -20,46 +20,46 @@
     </HBox>
 
     <HBox styleClass="status-bar" alignment="CENTER_LEFT">
-        <HBox style="-fx-padding: 4 12 4 12" alignment="CENTER_LEFT" spacing="6" HBox.hgrow="ALWAYS">
-            <FontIcon iconLiteral="fas-paperclip:14:gray"/>
-            <Label text="Status Message"/>
+        <HBox styleClass="status-item" HBox.hgrow="ALWAYS">
+            <FontIcon iconLiteral="fas-paperclip:16:gray"/>
+            <Label text="Status Message" fx:id="statusMessageLabel"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#showMemory">
-            <FontIcon iconLiteral="fas-sync:14:gray"/>
+        <HBox styleClass="status-item" onMouseClicked="#showMemory">
+            <FontIcon iconLiteral="fas-sync:16:gray"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#showMemory">
-            <FontIcon iconLiteral="fas-search-plus:14:gray"/>
+        <HBox styleClass="status-item" onMouseClicked="#showMemory">
+            <FontIcon iconLiteral="fas-search-plus:16:gray"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#showMemory">
-            <FontIcon iconLiteral="fas-search-minus:14:gray"/>
+        <HBox styleClass="status-item" onMouseClicked="#showMemory">
+            <FontIcon iconLiteral="fas-search-minus:16:gray"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#toggleFullScreen">
-            <FontIcon iconLiteral="fas-expand:14:gray"/>
+        <HBox styleClass="status-item" onMouseClicked="#toggleFullScreen">
+            <FontIcon iconLiteral="fas-expand:16:gray"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#toggleSidebar">
-            <FontIcon iconLiteral="fas-eye-slash:14:gray"/>
+        <HBox styleClass="status-item" onMouseClicked="#toggleSidebar">
+            <FontIcon iconLiteral="fas-eye-slash:16:gray"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#showMemory">
-            <FontIcon iconLiteral="fas-bolt:14:gray"/>
+        <HBox styleClass="status-item" onMouseClicked="#showMemory">
+            <FontIcon iconLiteral="fas-bolt:16:gray"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT">
-            <FontIcon iconLiteral="fas-arrows-alt-h:14:gray"/>
+        <HBox styleClass="status-item">
+            <FontIcon iconLiteral="fas-arrows-alt-h:16:gray"/>
             <Label text="None"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT">
-            <FontIcon iconLiteral="fas-arrows-alt-v:14:gray"/>
+        <HBox styleClass="status-item">
+            <FontIcon iconLiteral="fas-arrows-alt-v:16:gray"/>
             <Label text="None"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT">
-            <FontIcon iconLiteral="fas-database:14:gray"/>
+        <HBox styleClass="status-item">
+            <FontIcon iconLiteral="fas-database:16:gray"/>
             <Label text="2018iri-frc865"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT">
-            <FontIcon iconLiteral="fas-user:14:gray"/>
+        <HBox styleClass="status-item">
+            <FontIcon iconLiteral="fas-user:16:gray"/>
             <Label text="Yu Liu"/>
         </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT">
-            <FontIcon iconLiteral="fas-laptop:13:gray"/>
+        <HBox styleClass="status-item">
+            <FontIcon iconLiteral="fas-laptop:16:gray"/>
             <Label text="Yu's PC"/>
         </HBox>
     </HBox>

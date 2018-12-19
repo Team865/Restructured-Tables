@@ -11,6 +11,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
@@ -41,6 +42,8 @@ public class AppController implements FeatureStage {
     ListView<AppActionTab> appTabListView;
     @FXML
     VBox listViewContainer;
+    @FXML
+    Label statusMessageLabel;
 
     private ObservableList<AppActionTab> appTabs = FXCollections.observableArrayList();
     private Feature currentFeature = null;
@@ -50,6 +53,7 @@ public class AppController implements FeatureStage {
 
     @FXML
     void initialize() {
+        AppInterface.instance = this;
         appTabListView.setItems(appTabs);
         appTabListView.setCellFactory(listView -> new ListCell<AppActionTab>() {
             @Override
@@ -154,12 +158,13 @@ public class AppController implements FeatureStage {
 
     private void updateTitle(FeatureItemTab tab) {
         String title;
-        if (tab.getTabGroup() == Group.SingleTab) title = String.format("%s - Restructured Tables", tab.getTitle());
+        if (tab.getTabGroup() == Group.SingleTab) title = String.format("%s", tab.getTitle());
         else {
             String id = tab.getFeatureId();
             String capId = id.substring(0, 1).toUpperCase() + id.substring(1);
-            title = String.format("%s - %s - Restructured Tables", tab.getTitle(), capId);
+            title = String.format("%s - %s", tab.getTitle(), capId);
         }
+        AppInterface.setStatusMessage("Opened tab '" + title + "'");
         appStage.setTitle(title);
     }
 }

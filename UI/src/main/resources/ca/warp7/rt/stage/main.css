@@ -99,8 +99,9 @@
 }
 
 .status-item {
-    -fx-padding: 0 12 0 12;
+    -fx-padding: 4 12 4 12;
     -fx-spacing: 6;
+    -fx-alignment: CENTER-LEFT;
 }
 
 .status-item:hover {
