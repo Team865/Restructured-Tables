@@ -1,14 +1,12 @@
 package ca.warp7.rt.java.core.ft;
 
-import javafx.collections.ObservableList;
 import javafx.scene.Parent;
+
+import java.util.List;
 
 public interface Feature {
 
-    default void init() {
-    }
-
-    ObservableList<FeatureItemTab> getTabObservable();
+    List<FeatureItemTab> getInitialTabList();
 
     String getFeatureId();
 

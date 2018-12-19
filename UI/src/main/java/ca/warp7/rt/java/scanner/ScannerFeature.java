@@ -5,8 +5,9 @@ import ca.warp7.rt.java.core.ft.FeatureActionFactory;
 import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.Parent;
+
+import java.util.List;
 
 import static ca.warp7.rt.java.core.ft.FeatureItemTab.Group;
 
@@ -21,7 +22,7 @@ public class ScannerFeature implements Feature {
     }
 
     @Override
-    public ObservableList<FeatureItemTab> getTabObservable() {
+    public List<FeatureItemTab> getInitialTabList() {
         return FXCollections.singletonObservableList(factory.get("QR Scanner", ""));
     }
 

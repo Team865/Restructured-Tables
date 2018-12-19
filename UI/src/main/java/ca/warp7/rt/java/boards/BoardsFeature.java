@@ -3,13 +3,14 @@ package ca.warp7.rt.java.boards;
 import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.Parent;
+
+import java.util.List;
 
 public class BoardsFeature implements Feature {
 
     @Override
-    public ObservableList<FeatureItemTab> getTabObservable() {
+    public List<FeatureItemTab> getInitialTabList() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Scouting Boards", "fas-clipboard:18:gray", getFeatureId(),
                 FeatureItemTab.Group.SingleTab, ""

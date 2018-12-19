@@ -4,13 +4,14 @@ import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.Parent;
+
+import java.util.List;
 
 public class ASTFeature implements Feature {
 
     @Override
-    public ObservableList<FeatureItemTab> getTabObservable() {
+    public List<FeatureItemTab> getInitialTabList() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Alliance Selection", "fas-list-alt:18:gray", getFeatureId(),
                 FeatureItemTab.Group.SingleTab, ""

@@ -8,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
+import java.util.List;
+
 import static ca.warp7.rt.java.core.ft.FeatureItemTab.Group;
 
 public class ViewsFeature implements Feature {
@@ -26,7 +28,7 @@ public class ViewsFeature implements Feature {
     );
 
     @Override
-    public ObservableList<FeatureItemTab> getTabObservable() {
+    public List<FeatureItemTab> getInitialTabList() {
         return actions;
     }
 
