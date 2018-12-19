@@ -21,11 +21,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import static ca.warp7.rt.java.app.AppFeatures.featureMap;
 import static ca.warp7.rt.java.app.AppFeatures.features;
 
@@ -47,29 +42,15 @@ public class AppController implements FeatureStage {
 
     private ObservableList<AppActionTab> appTabs = FXCollections.observableArrayList();
     private Feature currentFeature = null;
-    private Map<String, ArrayList<FeatureItemTab>> tabGroups = new LinkedHashMap<>();
     private Stage appStage;
     private BooleanProperty hideSidebar = new SimpleBooleanProperty();
 
     @FXML
     void initialize() {
         AppInterface.instance = this;
-        setupAppTabListView();
-        features.forEach(feature -> {
-            final List<FeatureItemTab> tabs = feature.getInitialTabList();
-            tabs.forEach(tab -> {
-                String groupName;
-                Group group = tab.getTabGroup();
-                if (group == Group.SingleTab) groupName = "single";
-                else if (group == Group.WithFeature) groupName = tab.getFeatureId();
-                else groupName = "unknown";
-                if (!tabGroups.containsKey(groupName)) tabGroups.put(groupName, new ArrayList<>());
-                tabGroups.get(groupName).add(tab);
-            });
-        });
-        appTabs.clear();
         appTabs.add(AppElement.getTeamLogo());
-        tabGroups.forEach((s, featureActions) -> featureActions.forEach(tab -> appTabs.add(new AppActionTab(tab))));
+        features.forEach(feature -> feature.getInitialTabList().forEach(tab -> appTabs.add(new AppActionTab(tab))));
+        setupAppTabListView();
         hideSidebar.addListener((observable, oldValue, selected) -> {
             if (selected) tabsAndContent.getChildren().remove(0);
             else tabsAndContent.getChildren().add(0, listViewContainer);
