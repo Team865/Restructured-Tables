@@ -14,13 +14,6 @@
 
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContent">
         <VBox prefWidth="240" alignment="TOP_CENTER" minWidth="240" maxWidth="240" fx:id="listViewContainer">
-            <ToolBar HBox.hgrow="ALWAYS" style="-fx-background-color: #ddd">
-                <MenuButton text="New Tab" fx:id="newButton" prefWidth="220">
-                    <graphic>
-                        <FontIcon iconLiteral="fas-plus:18:gray"/>
-                    </graphic>
-                </MenuButton>
-            </ToolBar>
             <ListView VBox.vgrow="ALWAYS" fx:id="appActionListView"/>
         </VBox>
         <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>
@@ -51,9 +44,6 @@
         <HBox styleClass="status-item" alignment="CENTER_LEFT">
             <FontIcon iconLiteral="fas-laptop:13:gray"/>
             <Label text="Yu's PC"/>
-        </HBox>
-        <HBox styleClass="status-item" alignment="CENTER_LEFT">
-            <FontIcon iconLiteral="fas-plus:14:gray"/>
         </HBox>
         <HBox styleClass="status-item" alignment="CENTER_LEFT" onMouseClicked="#toggleFullScreen">
             <FontIcon iconLiteral="fas-expand:14:gray"/>

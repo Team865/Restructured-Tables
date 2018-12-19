@@ -2,7 +2,6 @@ package ca.warp7.rt.java.app;
 
 import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureAction;
-import ca.warp7.rt.java.core.ft.FeatureIcon;
 import ca.warp7.rt.java.core.ft.FeatureStage;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -11,7 +10,10 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -31,8 +33,6 @@ public class AppController implements FeatureStage {
     private static final Paint gray = Paint.valueOf("gray");
     private static final Paint white = Paint.valueOf("white");
 
-    @FXML
-    MenuButton newButton;
     @FXML
     BorderPane tabContent;
     @FXML
@@ -124,31 +124,23 @@ public class AppController implements FeatureStage {
         feature.init();
         ObservableList<FeatureAction> actions = feature.getActionList();
         actions.forEach(action -> {
-            switch (action.getType()) {
-                case New:
-                    MenuItem item = new MenuItem();
-                    item.setText(action.getActionTitle());
-                    item.setGraphic(new FeatureIcon(action.getIconLiteral()));
-                    item.setOnAction(event -> handleFeatureAction(action));
-                    newButton.getItems().add(item);
-                    break;
-                case TabItem:
-                    String groupName;
-                    switch (action.getActionGroup()) {
-                        case Core:
-                            groupName = "core";
-                            break;
-                        case SingleTab:
-                            groupName = "single";
-                            break;
-                        case WithFeature:
-                            groupName = action.getFeatureId();
-                            break;
-                        default:
-                            groupName = "unknown";
-                    }
-                    if (!tabGroups.containsKey(groupName)) tabGroups.put(groupName, new ArrayList<>());
-                    tabGroups.get(groupName).add(action);
+            if (action.getType() == FeatureAction.Type.TabItem) {
+                String groupName;
+                switch (action.getActionGroup()) {
+                    case Core:
+                        groupName = "core";
+                        break;
+                    case SingleTab:
+                        groupName = "single";
+                        break;
+                    case WithFeature:
+                        groupName = action.getFeatureId();
+                        break;
+                    default:
+                        groupName = "unknown";
+                }
+                if (!tabGroups.containsKey(groupName)) tabGroups.put(groupName, new ArrayList<>());
+                tabGroups.get(groupName).add(action);
             }
         });
     }
