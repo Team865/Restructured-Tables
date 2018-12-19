@@ -11,6 +11,11 @@
             <FontIcon iconLiteral="fas-eye:18:gray"/>
         </graphic>
         <items>
+            <MenuItem text="New View">
+                <graphic>
+                    <FontIcon iconLiteral="fas-plus:18:gray"/>
+                </graphic>
+            </MenuItem>
             <MenuItem text="Configure View">
                 <graphic>
                     <FontIcon iconLiteral="fas-edit:18:gray"/>

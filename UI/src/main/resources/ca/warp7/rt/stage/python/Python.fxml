@@ -10,6 +10,11 @@
         <URL value="@/ca/warp7/rt/stage/main.css"/>
     </stylesheets>
     <ToolBar>
+        <Button text="New script">
+            <graphic>
+                <FontIcon iconLiteral="fas-plus:18:gray"/>
+            </graphic>
+        </Button>
         <Button text="Run script">
             <graphic>
                 <FontIcon iconLiteral="far-play-circle:18:gray"/>

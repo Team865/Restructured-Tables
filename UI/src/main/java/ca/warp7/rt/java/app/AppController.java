@@ -84,6 +84,7 @@ public class AppController implements FeatureStage {
                 if (item.isSeparator()) {
                     setMouseTransparent(true);
                     setFocusTraversable(false);
+                    setPrefHeight(15);
                 } else {
                     setGraphic(AppElement.tabUIFromAction(item));
                     setOnMouseClicked(event -> handleFeatureAction(item.getFeatureAction()));
