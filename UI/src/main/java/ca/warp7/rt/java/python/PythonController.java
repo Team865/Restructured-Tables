@@ -1,6 +1,5 @@
 package ca.warp7.rt.java.python;
 
-import ca.warp7.rt.java.app.AppUtils;
 import ca.warp7.rt.java.core.ft.FeatureStage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,6 +18,8 @@ public class PythonController implements FeatureStage {
     BorderPane codeRoot;
     @FXML
     Button themeChange;
+
+    PythonFeature feature;
 
     private String template;
 
@@ -42,8 +43,7 @@ public class PythonController implements FeatureStage {
     };
     private CodeMirrorEditor codeMirrorEditor = new CodeMirrorEditor();
 
-    @FXML
-    void initialize() {
+    public void initialize() {
         themeChange.setOnAction(event -> {
             if (codeMirrorEditor.isEditorInitialized()) {
                 themeIndex = (themeIndex + 1) % themes.length;
@@ -66,10 +66,8 @@ public class PythonController implements FeatureStage {
         );
     }
 
-    @FXML
-    void newScript() {
-        AppUtils.setStatusMessage(AppUtils.getString(
-                "New Python Script", "Script Name:", "", null));
+    public void newScript() {
+        feature.newScript();
     }
 
     @Override

@@ -18,7 +18,7 @@ public class AppUtils {
     static AppController controller;
 
     public static void setStatusMessage(String statusMessage) {
-        if (controller != null) controller.statusMessageLabel.setText(statusMessage);
+        controller.statusMessageLabel.setText(statusMessage);
     }
 
     public static void insertTab(FeatureItemTab tab) {
@@ -61,8 +61,11 @@ public class AppUtils {
         TextField field = new TextField();
         field.setText(defVal.trim());
 
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
         if (validator != null) {
             Node okButton = dialog.getDialogPane().lookupButton(ButtonType.OK);
+            okButton.setDisable(true);
             field.textProperty().addListener((observable, oldValue, newValue)
                     -> okButton.setDisable(!validator.apply(newValue.trim())));
         }
@@ -74,7 +77,6 @@ public class AppUtils {
 
         Platform.runLater(field::requestFocus);
 
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
         dialog.setResultConverter(buttonType -> {
             if (buttonType == ButtonType.OK) return field.getText();
             return null;

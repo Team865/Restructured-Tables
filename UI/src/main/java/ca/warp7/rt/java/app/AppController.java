@@ -90,14 +90,18 @@ public class AppController implements FeatureStage {
         appStage.setMaximized(true);
     }
 
-    void insertTab(FeatureItemTab itemTab) {
+    void insertTab(FeatureItemTab newItemTab) {
         ObservableList<AppTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
         if (selectedItems.size() == 1) {
             AppTab tab = selectedItems.get(0);
             int index = appTabs.indexOf(tab);
-            if (index >= 0) appTabs.add(index, new AppTab(itemTab));
-            else insertLastTab(itemTab);
-        } else insertLastTab(itemTab);
+            if (index >= 0) {
+                AppTab newTab = new AppTab(newItemTab);
+                appTabs.add(index + 1, newTab);
+                handleFeatureAction(newItemTab);
+                appTabListView.getSelectionModel().select(newTab);
+            } else insertLastTab(newItemTab);
+        } else insertLastTab(newItemTab);
     }
 
     boolean removeCurrentTab() {

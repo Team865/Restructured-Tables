@@ -32,6 +32,7 @@ public class PythonFeature implements Feature {
 
     private void setController(PythonController controller) {
         this.controller = controller;
+        controller.feature = this;
     }
 
     @Override
@@ -52,5 +53,11 @@ public class PythonFeature implements Feature {
         controller.setTabItemParams(tab.getParamString());
         AppUtils.setStatusMessage("Editing python script " + tab.getParamString());
         return preLoaded;
+    }
+
+    void newScript() {
+        String name = AppUtils.getString(
+                "New Python Script", "Script Name:", "", s -> s.matches("^[\\w]+$"));
+        AppUtils.insertTab(factory.get(name, name + ".py"));
     }
 }
