@@ -1,10 +1,10 @@
 package ca.warp7.rt.java.python;
 
-import ca.warp7.rt.java.core.ft.FeatureStage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+import javafx.scene.layout.VBox;
 import org.almibe.codeeditor.CodeMirrorEditor;
 import org.apache.commons.io.IOUtils;
 
@@ -13,11 +13,15 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 
-public class PythonController implements FeatureStage {
+public class PythonController {
     @FXML
     BorderPane codeRoot;
     @FXML
     Button themeChange;
+    @FXML
+    VBox container;
+    @FXML
+    ToolBar toolbar;
 
     PythonFeature feature;
 
@@ -70,7 +74,8 @@ public class PythonController implements FeatureStage {
         feature.newScript();
     }
 
-    @Override
-    public void setStage(Stage stage) {
+    void setFocused(boolean focused) {
+        if (focused) container.getChildren().remove(toolbar);
+        else container.getChildren().add(0, toolbar);
     }
 }

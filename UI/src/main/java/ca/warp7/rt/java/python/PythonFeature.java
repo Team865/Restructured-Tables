@@ -59,4 +59,9 @@ public class PythonFeature implements Feature {
                 "New Python Script", "Script Name:", "", s -> s.matches("^[\\w]+$"));
         AppUtils.insertTab(factory.get(name, name + ".py"));
     }
+
+    @Override
+    public void setFocused(boolean focused) {
+        controller.setFocused(focused);
+    }
 }

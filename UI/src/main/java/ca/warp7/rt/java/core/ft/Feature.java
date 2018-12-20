@@ -17,4 +17,7 @@ public interface Feature {
     default boolean onCloseRequest() {
         return true;
     }
+
+    default void setFocused(boolean focused) {
+    }
 }

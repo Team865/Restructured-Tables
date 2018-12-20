@@ -5,11 +5,11 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" HBox.hgrow="ALWAYS"
-      fx:controller="ca.warp7.rt.java.python.PythonController">
+      fx:controller="ca.warp7.rt.java.python.PythonController" fx:id="container">
     <stylesheets>
         <URL value="@/ca/warp7/rt/stage/main.css"/>
     </stylesheets>
-    <ToolBar>
+    <ToolBar fx:id="toolbar">
         <Button text="New script" onAction="#newScript">
             <graphic>
                 <FontIcon iconLiteral="fas-plus:16:gray"/>

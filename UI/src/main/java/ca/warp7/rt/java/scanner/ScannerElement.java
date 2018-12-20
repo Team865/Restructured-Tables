@@ -5,7 +5,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
-class ScannerUI {
+class ScannerElement {
     static HBox cellFromEntry(ScannerEntry item) {
         HBox hBox = new HBox();
         hBox.setSpacing(10);

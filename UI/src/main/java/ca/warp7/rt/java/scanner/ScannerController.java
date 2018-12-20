@@ -110,7 +110,7 @@ public class ScannerController {
                     return;
                 }
 
-                setGraphic(ScannerUI.cellFromEntry(item));
+                setGraphic(ScannerElement.cellFromEntry(item));
             }
         });
     }

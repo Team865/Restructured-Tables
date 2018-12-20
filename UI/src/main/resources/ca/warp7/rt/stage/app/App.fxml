@@ -36,8 +36,8 @@
         <HBox styleClass="status-item" onMouseClicked="#toggleFullScreen">
             <FontIcon iconLiteral="fas-expand:16:gray"/>
         </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#toggleSidebar">
-            <FontIcon iconLiteral="fas-eye-slash:16:gray"/>
+        <HBox styleClass="status-item" onMouseClicked="#toggleFocused">
+            <FontIcon iconLiteral="fas-eye-slash:16:gray" fx:id="focusIcon"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#showMemory">
             <FontIcon iconLiteral="fas-bolt:16:gray"/>

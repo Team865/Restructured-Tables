@@ -21,6 +21,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import static ca.warp7.rt.java.app.AppFeatures.featureMap;
 import static ca.warp7.rt.java.app.AppFeatures.features;
@@ -44,12 +46,14 @@ public class AppController implements FeatureStage {
     Label rowLabel;
     @FXML
     Label columnLabel;
+    @FXML
+    FontIcon focusIcon;
 
     Stage appStage;
     private ObservableList<AppTab> appTabs = FXCollections.observableArrayList();
     private Feature currentFeature = null;
     private FeatureItemTab currentTab = null;
-    private BooleanProperty hideSidebar = new SimpleBooleanProperty();
+    private BooleanProperty focusedMode = new SimpleBooleanProperty();
 
     public void initialize() {
         // Defer this initialization so the UI is not blocked
@@ -60,8 +64,8 @@ public class AppController implements FeatureStage {
         appStage.setFullScreen(!appStage.isFullScreen());
     }
 
-    public void toggleSidebar() {
-        hideSidebar.setValue(!hideSidebar.get());
+    public void toggleFocused() {
+        focusedMode.setValue(!focusedMode.get());
     }
 
     public void reloadTabModel() {
@@ -72,7 +76,6 @@ public class AppController implements FeatureStage {
             appTabs.clear();
             appTabs.add(AppElement.getTeamLogo());
             features.forEach(feature -> feature.getLoadedTabs().forEach(tab -> appTabs.add(new AppTab(tab))));
-            ;
         }
     }
 
@@ -84,7 +87,7 @@ public class AppController implements FeatureStage {
     public void setStage(Stage stage) {
         stage.getScene().setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.F11) stage.setFullScreen(true);
-            else if (event.getCode() == KeyCode.F9) toggleSidebar();
+            else if (event.getCode() == KeyCode.F9) toggleFocused();
         });
         stage.setOnCloseRequest(event -> {
             if (currentFeature != null && !currentFeature.onCloseRequest()) {
@@ -212,9 +215,15 @@ public class AppController implements FeatureStage {
         AppUtils.controller = this;
         reloadTabModel();
         setupAppTabListView();
-        hideSidebar.addListener((observable, oldValue, selected) -> {
-            if (selected) tabsAndContent.getChildren().remove(0);
-            else tabsAndContent.getChildren().add(0, listViewContainer);
+        focusedMode.addListener((observable, oldValue, focused) -> {
+            if (focused) {
+                tabsAndContent.getChildren().remove(0);
+                focusIcon.setIconCode(FontAwesomeSolid.EYE);
+            } else {
+                tabsAndContent.getChildren().add(0, listViewContainer);
+                focusIcon.setIconCode(FontAwesomeSolid.EYE_SLASH);
+            }
+            if (currentFeature != null) currentFeature.setFocused(focused);
         });
         rowLabel.setText("None");
         columnLabel.setText("None");
