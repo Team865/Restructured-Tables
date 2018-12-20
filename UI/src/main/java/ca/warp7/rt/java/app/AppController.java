@@ -163,4 +163,8 @@ public class AppController implements FeatureStage {
         });
         appTabListView.setItems(appTabs);
     }
+
+    Stage getAppStage() {
+        return appStage;
+    }
 }

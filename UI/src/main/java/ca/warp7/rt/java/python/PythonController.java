@@ -1,7 +1,6 @@
 package ca.warp7.rt.java.python;
 
 import ca.warp7.rt.java.app.AppUtils;
-import ca.warp7.rt.java.core.Alerts;
 import ca.warp7.rt.java.core.ft.FeatureStage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -69,7 +68,8 @@ public class PythonController implements FeatureStage {
 
     @FXML
     void newScript() {
-        AppUtils.setStatusMessage(Alerts.getString("hi", "ho", "h"));
+        AppUtils.setStatusMessage(AppUtils.getString(
+                "New Python Script", "Script Name:", "", null));
     }
 
     @Override

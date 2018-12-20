@@ -1,11 +1,11 @@
 package ca.warp7.rt.java.core.ft;
 
-public class FeatureActionFactory {
+public class FeatureTabFactory {
     private String iconLiteral;
     private String featureId;
     private FeatureItemTab.Group group;
 
-    public FeatureActionFactory(String iconLiteral, String featureId, FeatureItemTab.Group group) {
+    public FeatureTabFactory(String iconLiteral, String featureId, FeatureItemTab.Group group) {
         this.iconLiteral = iconLiteral;
         this.featureId = featureId;
         this.group = group;

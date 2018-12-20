@@ -1,8 +1,8 @@
 package ca.warp7.rt.java.scanner;
 
 import ca.warp7.rt.java.core.ft.Feature;
-import ca.warp7.rt.java.core.ft.FeatureActionFactory;
 import ca.warp7.rt.java.core.ft.FeatureItemTab;
+import ca.warp7.rt.java.core.ft.FeatureTabFactory;
 import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.scene.Parent;
@@ -13,7 +13,7 @@ import static ca.warp7.rt.java.core.ft.FeatureItemTab.Group;
 
 public class ScannerFeature implements Feature {
 
-    private FeatureActionFactory factory = new FeatureActionFactory("fas-camera:16:gray", getFeatureId(), Group.SingleTab);
+    private FeatureTabFactory factory = new FeatureTabFactory("fas-camera:16:gray", getFeatureId(), Group.SingleTab);
 
     private ScannerController controller;
 

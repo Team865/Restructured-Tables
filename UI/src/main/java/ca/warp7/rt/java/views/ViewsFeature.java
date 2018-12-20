@@ -1,8 +1,8 @@
 package ca.warp7.rt.java.views;
 
 import ca.warp7.rt.java.core.ft.Feature;
-import ca.warp7.rt.java.core.ft.FeatureActionFactory;
 import ca.warp7.rt.java.core.ft.FeatureItemTab;
+import ca.warp7.rt.java.core.ft.FeatureTabFactory;
 import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +14,7 @@ import static ca.warp7.rt.java.core.ft.FeatureItemTab.Group;
 
 public class ViewsFeature implements Feature {
 
-    private FeatureActionFactory factory = new FeatureActionFactory("fas-eye:16:gray",
+    private FeatureTabFactory factory = new FeatureTabFactory("fas-eye:16:gray",
             getFeatureId(), Group.WithFeature);
 
     private Parent preLoaded;
