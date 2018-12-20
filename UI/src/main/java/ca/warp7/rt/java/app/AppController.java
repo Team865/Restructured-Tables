@@ -48,6 +48,7 @@ public class AppController implements FeatureStage {
     Stage appStage;
     private ObservableList<AppTab> appTabs = FXCollections.observableArrayList();
     private Feature currentFeature = null;
+    private FeatureItemTab currentTab = null;
     private BooleanProperty hideSidebar = new SimpleBooleanProperty();
 
     public void initialize() {
@@ -111,21 +112,25 @@ public class AppController implements FeatureStage {
             appTabs.remove(tab);
             tabContent.setCenter(null);
             currentFeature = null;
+            currentTab = null;
             return true;
         }
         return false;
     }
 
     private void handleFeatureAction(FeatureItemTab tab) {
+        if (tab == currentTab) return;
         String id = tab.getFeatureId();
         if (featureMap.containsKey(id)) {
             Feature feature = featureMap.get(id);
             if (currentFeature == feature) {
+                currentTab = tab;
                 updateTitle(tab);
                 currentFeature.onOpenTab(tab);
             } else if (currentFeature == null || currentFeature.onCloseRequest()) {
                 updateTitle(tab);
                 currentFeature = feature;
+                currentTab = tab;
                 Parent parent = currentFeature.onOpenTab(tab);
                 tabContent.setCenter(parent);
                 rowLabel.setText("None");

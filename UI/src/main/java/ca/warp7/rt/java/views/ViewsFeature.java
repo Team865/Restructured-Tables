@@ -4,10 +4,9 @@ import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import ca.warp7.rt.java.core.ft.FeatureTabFactory;
 import ca.warp7.rt.java.core.ft.FeatureUtils;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static ca.warp7.rt.java.core.ft.FeatureItemTab.Group;
@@ -19,17 +18,15 @@ public class ViewsFeature implements Feature {
 
     private Parent preLoaded;
 
-    private ObservableList<FeatureItemTab> actions = FXCollections.observableArrayList(
-            factory.get("Raw Data", ""),
-            factory.get("Auto List", ""),
-            factory.get("Endgame", ""),
-            factory.get("Team Averages", ""),
-            factory.get("Cycle Matrix", "")
-    );
-
     @Override
     public List<FeatureItemTab> getLoadedTabs() {
-        return actions;
+        return Arrays.asList(
+                factory.get("Raw Data", ""),
+                factory.get("Auto List", ""),
+                factory.get("Endgame", ""),
+                factory.get("Team Averages", ""),
+                factory.get("Cycle Matrix", "")
+        );
     }
 
     @Override
