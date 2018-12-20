@@ -50,24 +50,9 @@ public class AppController implements FeatureStage {
     private Feature currentFeature = null;
     private BooleanProperty hideSidebar = new SimpleBooleanProperty();
 
-    @FXML
-    void initialize() {
+    public void initialize() {
         // Defer this initialization so the UI is not blocked
         Platform.runLater(this::initialize0);
-    }
-
-    private void initialize0() {
-        AppUtils.instance = this;
-        appTabs.add(AppElement.getTeamLogo());
-        features.forEach(feature -> feature.getLoadedTabs().forEach(tab -> appTabs.add(new AppTab(tab))));
-        setupAppTabListView();
-        hideSidebar.addListener((observable, oldValue, selected) -> {
-            if (selected) tabsAndContent.getChildren().remove(0);
-            else tabsAndContent.getChildren().add(0, listViewContainer);
-        });
-        rowLabel.setText("None");
-        columnLabel.setText("None");
-        statusMessageLabel.setText("Finished loading app");
     }
 
     public void toggleFullScreen() {
@@ -76,6 +61,16 @@ public class AppController implements FeatureStage {
 
     public void toggleSidebar() {
         hideSidebar.setValue(!hideSidebar.get());
+    }
+
+    public void reloadTabModel() {
+        appTabs.clear();
+        appTabs.add(AppElement.getTeamLogo());
+        features.forEach(feature -> feature.getLoadedTabs().forEach(tab -> appTabs.add(new AppTab(tab))));
+    }
+
+    public void showMemory() {
+        AppElement.showMemoryAlert();
     }
 
     @Override
@@ -95,9 +90,26 @@ public class AppController implements FeatureStage {
         appStage.setMaximized(true);
     }
 
-    @FXML
-    void showMemory() {
-        AppElement.showMemoryAlert();
+    void insertTab(FeatureItemTab itemTab) {
+        ObservableList<AppTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
+        if (selectedItems.size() == 1) {
+            AppTab tab = selectedItems.get(0);
+            int index = appTabs.indexOf(tab);
+            if (index >= 0) appTabs.add(index, new AppTab(itemTab));
+            else insertLastTab(itemTab);
+        } else insertLastTab(itemTab);
+    }
+
+    boolean removeCurrentTab() {
+        ObservableList<AppTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
+        if (selectedItems.size() == 1 && (currentFeature == null || currentFeature.onCloseRequest())) {
+            AppTab tab = selectedItems.get(0);
+            appTabs.remove(tab);
+            tabContent.setCenter(null);
+            currentFeature = null;
+            return true;
+        }
+        return false;
     }
 
     private void handleFeatureAction(FeatureItemTab tab) {
@@ -124,30 +136,8 @@ public class AppController implements FeatureStage {
         appStage.setTitle(title);
     }
 
-    void insertTab(FeatureItemTab itemTab) {
-        ObservableList<AppTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
-        if (selectedItems.size() == 1) {
-            AppTab tab = selectedItems.get(0);
-            int index = appTabs.indexOf(tab);
-            if (index >= 0) appTabs.add(index, new AppTab(itemTab));
-            else insertLastTab(itemTab);
-        } else insertLastTab(itemTab);
-    }
-
     private void insertLastTab(FeatureItemTab tab) {
         appTabs.add(new AppTab(tab));
-    }
-
-    boolean removeCurrentTab() {
-        ObservableList<AppTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
-        if (selectedItems.size() == 1 && (currentFeature == null || currentFeature.onCloseRequest())) {
-            AppTab tab = selectedItems.get(0);
-            appTabs.remove(tab);
-            tabContent.setCenter(null);
-            currentFeature = null;
-            return true;
-        }
-        return false;
     }
 
     private void setupAppTabListView() {
@@ -198,5 +188,18 @@ public class AppController implements FeatureStage {
         });
         appTabListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         appTabListView.setItems(appTabs);
+    }
+
+    private void initialize0() {
+        AppUtils.controller = this;
+        reloadTabModel();
+        setupAppTabListView();
+        hideSidebar.addListener((observable, oldValue, selected) -> {
+            if (selected) tabsAndContent.getChildren().remove(0);
+            else tabsAndContent.getChildren().add(0, listViewContainer);
+        });
+        rowLabel.setText("None");
+        columnLabel.setText("None");
+        statusMessageLabel.setText("Finished loading app");
     }
 }

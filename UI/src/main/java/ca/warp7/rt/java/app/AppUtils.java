@@ -15,39 +15,40 @@ import java.util.function.Function;
 
 @SuppressWarnings("unused")
 public class AppUtils {
-    static AppController instance;
+    static AppController controller;
 
     public static void setStatusMessage(String statusMessage) {
-        if (instance != null) instance.statusMessageLabel.setText(statusMessage);
+        if (controller != null) controller.statusMessageLabel.setText(statusMessage);
     }
 
     public static void insertTab(FeatureItemTab tab) {
-        instance.insertTab(tab);
+        controller.insertTab(tab);
     }
 
     public static boolean removeCurrentTab() {
-        return instance.removeCurrentTab();
+        return controller.removeCurrentTab();
     }
 
     public static void repaintTabs() {
-        instance.appTabListView.refresh();
+        controller.appTabListView.refresh();
     }
 
-    public static void reloadTabs() {
+    public static void reloadTabModel() {
+        controller.reloadTabModel();
     }
 
     public static void setColumn(String column) {
-        instance.columnLabel.setText(column);
+        controller.columnLabel.setText(column);
     }
 
     public static void setRow(String row) {
-        instance.rowLabel.setText(row);
+        controller.rowLabel.setText(row);
     }
 
     public static String getString(String title, String prompt, String defVal, Function<String, Boolean> validator) {
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle(title);
-        dialog.initOwner(instance.appStage);
+        dialog.initOwner(controller.appStage);
 
         VBox vBox = new VBox();
         vBox.setSpacing(10);

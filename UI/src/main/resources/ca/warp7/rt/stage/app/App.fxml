@@ -24,7 +24,7 @@
             <FontIcon iconLiteral="fas-paperclip:16:gray"/>
             <Label text="Loading" fx:id="statusMessageLabel"/>
         </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#showMemory">
+        <HBox styleClass="status-item" onMouseClicked="#reloadTabModel">
             <FontIcon iconLiteral="fas-sync:16:gray"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#showMemory">
