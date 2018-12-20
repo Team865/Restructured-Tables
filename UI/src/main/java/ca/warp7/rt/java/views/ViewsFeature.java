@@ -28,7 +28,7 @@ public class ViewsFeature implements Feature {
     );
 
     @Override
-    public List<FeatureItemTab> getInitialTabList() {
+    public List<FeatureItemTab> getLoadedTabs() {
         return actions;
     }
 

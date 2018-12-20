@@ -13,7 +13,7 @@ import org.kordamp.ikonli.javafx.FontIcon;
 
 class AppElement {
 
-    static HBox tabUIFromAction(AppActionTab tab) {
+    static HBox tabUIFromAction(AppTab tab) {
 
         FeatureItemTab action = tab.getFeatureItemTab();
 
@@ -43,7 +43,7 @@ class AppElement {
         alert.showAndWait();
     }
 
-    static AppActionTab getTeamLogo() {
+    static AppTab getTeamLogo() {
         int height = 64;
         ImageView teamLogo = new ImageView();
         teamLogo.setImage(new Image("/warp7.png"));
@@ -52,6 +52,17 @@ class AppElement {
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.TOP_CENTER);
         hBox.getChildren().add(teamLogo);
-        return new AppActionTab(hBox, height);
+        return new AppTab(hBox, height);
+    }
+
+    static String getTitle(FeatureItemTab tab) {
+        String title;
+        if (tab.getTabGroup() == FeatureItemTab.Group.SingleTab) title = String.format("%s", tab.getTitle());
+        else {
+            String id = tab.getFeatureId();
+            String capId = id.substring(0, 1).toUpperCase() + id.substring(1);
+            title = String.format("%s - %s", tab.getTitle(), capId);
+        }
+        return title;
     }
 }

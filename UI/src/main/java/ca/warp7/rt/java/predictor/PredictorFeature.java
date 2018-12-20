@@ -8,7 +8,7 @@ import java.util.List;
 
 public class PredictorFeature implements Feature {
     @Override
-    public List<FeatureItemTab> getInitialTabList() {
+    public List<FeatureItemTab> getLoadedTabs() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Match Predictor", "fas-balance-scale:16:gray", getFeatureId(),
                 FeatureItemTab.Group.SingleTab, ""

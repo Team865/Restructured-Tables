@@ -35,7 +35,7 @@ public class PythonFeature implements Feature {
     }
 
     @Override
-    public List<FeatureItemTab> getInitialTabList() {
+    public List<FeatureItemTab> getLoadedTabs() {
         return actions;
     }
 

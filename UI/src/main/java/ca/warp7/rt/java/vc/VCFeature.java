@@ -9,7 +9,7 @@ import java.util.List;
 public class VCFeature implements Feature {
 
     @Override
-    public List<FeatureItemTab> getInitialTabList() {
+    public List<FeatureItemTab> getLoadedTabs() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Verification Center", "fas-check:16:gray", getFeatureId(),
                 FeatureItemTab.Group.SingleTab, ""

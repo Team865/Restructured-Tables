@@ -9,7 +9,7 @@ import java.util.List;
 public class MediaFeature implements Feature {
 
     @Override
-    public List<FeatureItemTab> getInitialTabList() {
+    public List<FeatureItemTab> getLoadedTabs() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "External Media", "fas-link:16:gray", getFeatureId(),
                 FeatureItemTab.Group.SingleTab, ""

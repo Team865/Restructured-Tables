@@ -44,11 +44,11 @@
         </HBox>
         <HBox styleClass="status-item">
             <FontIcon iconLiteral="fas-arrows-alt-h:16:gray"/>
-            <Label text="None"/>
+            <Label fx:id="rowLabel"/>
         </HBox>
         <HBox styleClass="status-item">
             <FontIcon iconLiteral="fas-arrows-alt-v:16:gray"/>
-            <Label text="None"/>
+            <Label fx:id="columnLabel"/>
         </HBox>
         <HBox styleClass="status-item">
             <FontIcon iconLiteral="fas-database:16:gray"/>

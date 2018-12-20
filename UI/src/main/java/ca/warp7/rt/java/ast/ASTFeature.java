@@ -11,7 +11,7 @@ import java.util.List;
 public class ASTFeature implements Feature {
 
     @Override
-    public List<FeatureItemTab> getInitialTabList() {
+    public List<FeatureItemTab> getLoadedTabs() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Alliance Selection", "fas-list-alt:18:gray", getFeatureId(),
                 FeatureItemTab.Group.SingleTab, ""

@@ -2,7 +2,6 @@ package ca.warp7.rt.java.app;
 
 import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureItemTab;
-import ca.warp7.rt.java.core.ft.FeatureItemTab.Group;
 import ca.warp7.rt.java.core.ft.FeatureStage;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -34,27 +33,33 @@ public class AppController implements FeatureStage {
     @FXML
     HBox tabsAndContent;
     @FXML
-    ListView<AppActionTab> appTabListView;
+    ListView<AppTab> appTabListView;
     @FXML
     VBox listViewContainer;
     @FXML
     Label statusMessageLabel;
+    @FXML
+    Label rowLabel;
+    @FXML
+    Label columnLabel;
 
-    private ObservableList<AppActionTab> appTabs = FXCollections.observableArrayList();
+    Stage appStage;
+    private ObservableList<AppTab> appTabs = FXCollections.observableArrayList();
     private Feature currentFeature = null;
-    private Stage appStage;
     private BooleanProperty hideSidebar = new SimpleBooleanProperty();
 
     @FXML
     void initialize() {
         AppUtils.instance = this;
         appTabs.add(AppElement.getTeamLogo());
-        features.forEach(feature -> feature.getInitialTabList().forEach(tab -> appTabs.add(new AppActionTab(tab))));
+        features.forEach(feature -> feature.getLoadedTabs().forEach(tab -> appTabs.add(new AppTab(tab))));
         setupAppTabListView();
         hideSidebar.addListener((observable, oldValue, selected) -> {
             if (selected) tabsAndContent.getChildren().remove(0);
             else tabsAndContent.getChildren().add(0, listViewContainer);
         });
+        rowLabel.setText("None");
+        columnLabel.setText("None");
     }
 
     public void toggleFullScreen() {
@@ -99,27 +104,23 @@ public class AppController implements FeatureStage {
                 currentFeature = feature;
                 Parent parent = currentFeature.onOpenTab(tab);
                 tabContent.setCenter(parent);
+                rowLabel.setText("None");
+                columnLabel.setText("None");
             }
         }
     }
 
     private void updateTitle(FeatureItemTab tab) {
-        String title;
-        if (tab.getTabGroup() == Group.SingleTab) title = String.format("%s", tab.getTitle());
-        else {
-            String id = tab.getFeatureId();
-            String capId = id.substring(0, 1).toUpperCase() + id.substring(1);
-            title = String.format("%s - %s", tab.getTitle(), capId);
-        }
+        String title = AppElement.getTitle(tab);
         AppUtils.setStatusMessage("Opened tab '" + title + "'");
         appStage.setTitle(title);
     }
 
     private void setupAppTabListView() {
         // Cell factory: either the tab or another referenced UI element
-        appTabListView.setCellFactory(listView -> new ListCell<AppActionTab>() {
+        appTabListView.setCellFactory(listView -> new ListCell<AppTab>() {
             @Override
-            protected void updateItem(AppActionTab item, boolean empty) {
+            protected void updateItem(AppTab item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) return;
                 if (item.isDecorativeNode()) {
@@ -135,15 +136,15 @@ public class AppController implements FeatureStage {
         });
         // Key press: switch to tab on enter
         appTabListView.setOnKeyPressed(event -> {
-            ObservableList<AppActionTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
+            ObservableList<AppTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
             if (selectedItems.size() == 1) {
-                AppActionTab tab = selectedItems.get(0);
+                AppTab tab = selectedItems.get(0);
                 if (!tab.isDecorativeNode() && event.getCode() == KeyCode.ENTER)
                     handleFeatureAction(tab.getFeatureItemTab());
             }
         });
         // Selection change: change icon colour
-        appTabListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<AppActionTab>) c -> {
+        appTabListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<AppTab>) c -> {
             while (c.next()) {
                 c.getRemoved().forEach(o -> {
                     if (o.getIcon() != null) o.getIcon().setIconColor(gray);
@@ -162,9 +163,5 @@ public class AppController implements FeatureStage {
             }
         });
         appTabListView.setItems(appTabs);
-    }
-
-    Stage getAppStage() {
-        return appStage;
     }
 }

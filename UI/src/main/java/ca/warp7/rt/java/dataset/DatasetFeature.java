@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DatasetFeature implements Feature {
     @Override
-    public List<FeatureItemTab> getInitialTabList() {
+    public List<FeatureItemTab> getLoadedTabs() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Dataset Options", "fas-database:16:gray", getFeatureId(),
                 FeatureItemTab.Group.SingleTab, ""

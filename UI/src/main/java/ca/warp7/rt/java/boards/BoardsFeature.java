@@ -10,7 +10,7 @@ import java.util.List;
 public class BoardsFeature implements Feature {
 
     @Override
-    public List<FeatureItemTab> getInitialTabList() {
+    public List<FeatureItemTab> getLoadedTabs() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Scouting Boards", "fas-clipboard:18:gray", getFeatureId(),
                 FeatureItemTab.Group.SingleTab, ""

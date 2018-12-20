@@ -4,7 +4,7 @@ import ca.warp7.rt.java.core.ft.FeatureUtils;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class App extends Application {
+public class RestructuredTables extends Application {
     @Override
     public void start(Stage stage) {
         String os = System.getProperty("os.name").toLowerCase();

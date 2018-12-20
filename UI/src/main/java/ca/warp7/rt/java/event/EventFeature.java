@@ -9,7 +9,7 @@ import java.util.List;
 public class EventFeature implements Feature {
 
     @Override
-    public List<FeatureItemTab> getInitialTabList() {
+    public List<FeatureItemTab> getLoadedTabs() {
         return FXCollections.singletonObservableList(new FeatureItemTab(
                 "Event Overview", "fas-trophy:16:gray", getFeatureId(),
                 FeatureItemTab.Group.SingleTab, ""

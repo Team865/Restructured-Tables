@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface Feature {
 
-    List<FeatureItemTab> getInitialTabList();
+    List<FeatureItemTab> getLoadedTabs();
 
     String getFeatureId();
 

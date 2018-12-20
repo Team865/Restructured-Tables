@@ -1,9 +1,9 @@
 package ca.warp7.rt.java;
 
-import ca.warp7.rt.java.app.App;
+import ca.warp7.rt.java.app.RestructuredTables;
 
 public class Main {
     public static void main(String[] args) {
-        App.launch0();
+        RestructuredTables.launch0();
     }
 }

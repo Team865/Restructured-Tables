@@ -4,19 +4,19 @@ import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import javafx.scene.Node;
 import org.kordamp.ikonli.javafx.FontIcon;
 
-class AppActionTab {
+class AppTab {
 
     private FeatureItemTab featureItemTab;
     private FontIcon icon;
     private Node decorativeNode;
     private int decorativeHeight;
 
-    AppActionTab(Node decorativeNode, int decorativeHeight) {
+    AppTab(Node decorativeNode, int decorativeHeight) {
         this.decorativeNode = decorativeNode;
         this.decorativeHeight = decorativeHeight;
     }
 
-    AppActionTab(FeatureItemTab featureItemTab) {
+    AppTab(FeatureItemTab featureItemTab) {
         this.featureItemTab = featureItemTab;
     }
 
