@@ -3,6 +3,7 @@ package ca.warp7.rt.java.app;
 import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.core.ft.FeatureItemTab;
 import ca.warp7.rt.java.core.ft.FeatureStage;
+import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -50,6 +52,11 @@ public class AppController implements FeatureStage {
 
     @FXML
     void initialize() {
+        // Defer this initialization so the UI is not blocked
+        Platform.runLater(this::initialize0);
+    }
+
+    private void initialize0() {
         AppUtils.instance = this;
         appTabs.add(AppElement.getTeamLogo());
         features.forEach(feature -> feature.getLoadedTabs().forEach(tab -> appTabs.add(new AppTab(tab))));
@@ -60,6 +67,7 @@ public class AppController implements FeatureStage {
         });
         rowLabel.setText("None");
         columnLabel.setText("None");
+        statusMessageLabel.setText("Finished loading app");
     }
 
     public void toggleFullScreen() {
@@ -116,6 +124,32 @@ public class AppController implements FeatureStage {
         appStage.setTitle(title);
     }
 
+    void insertTab(FeatureItemTab itemTab) {
+        ObservableList<AppTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
+        if (selectedItems.size() == 1) {
+            AppTab tab = selectedItems.get(0);
+            int index = appTabs.indexOf(tab);
+            if (index >= 0) appTabs.add(index, new AppTab(itemTab));
+            else insertLastTab(itemTab);
+        } else insertLastTab(itemTab);
+    }
+
+    private void insertLastTab(FeatureItemTab tab) {
+        appTabs.add(new AppTab(tab));
+    }
+
+    boolean removeCurrentTab() {
+        ObservableList<AppTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
+        if (selectedItems.size() == 1 && (currentFeature == null || currentFeature.onCloseRequest())) {
+            AppTab tab = selectedItems.get(0);
+            appTabs.remove(tab);
+            tabContent.setCenter(null);
+            currentFeature = null;
+            return true;
+        }
+        return false;
+    }
+
     private void setupAppTabListView() {
         // Cell factory: either the tab or another referenced UI element
         appTabListView.setCellFactory(listView -> new ListCell<AppTab>() {
@@ -162,6 +196,7 @@ public class AppController implements FeatureStage {
                 });
             }
         });
+        appTabListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         appTabListView.setItems(appTabs);
     }
 }

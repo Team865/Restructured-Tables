@@ -22,9 +22,11 @@ public class AppUtils {
     }
 
     public static void insertTab(FeatureItemTab tab) {
+        instance.insertTab(tab);
     }
 
-    public static void removeCurrentTab() {
+    public static boolean removeCurrentTab() {
+        return instance.removeCurrentTab();
     }
 
     public static void repaintTabs() {

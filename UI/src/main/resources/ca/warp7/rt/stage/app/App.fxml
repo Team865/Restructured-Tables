@@ -22,7 +22,7 @@
     <HBox styleClass="status-bar" alignment="CENTER_LEFT">
         <HBox styleClass="status-item" HBox.hgrow="ALWAYS">
             <FontIcon iconLiteral="fas-paperclip:16:gray"/>
-            <Label text="Status Message" fx:id="statusMessageLabel"/>
+            <Label text="Loading" fx:id="statusMessageLabel"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#showMemory">
             <FontIcon iconLiteral="fas-sync:16:gray"/>
