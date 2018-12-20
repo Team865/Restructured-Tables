@@ -65,9 +65,15 @@ public class AppController implements FeatureStage {
     }
 
     public void reloadTabModel() {
-        appTabs.clear();
-        appTabs.add(AppElement.getTeamLogo());
-        features.forEach(feature -> feature.getLoadedTabs().forEach(tab -> appTabs.add(new AppTab(tab))));
+        if (currentFeature == null || currentFeature.onCloseRequest()) {
+            tabContent.setCenter(null);
+            currentFeature = null;
+            currentTab = null;
+            appTabs.clear();
+            appTabs.add(AppElement.getTeamLogo());
+            features.forEach(feature -> feature.getLoadedTabs().forEach(tab -> appTabs.add(new AppTab(tab))));
+            ;
+        }
     }
 
     public void showMemory() {
@@ -155,7 +161,10 @@ public class AppController implements FeatureStage {
             @Override
             protected void updateItem(AppTab item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty || item == null) return;
+                if (empty || item == null) {
+                    setGraphic(null);
+                    return;
+                }
                 if (item.isDecorativeNode()) {
                     setMouseTransparent(true);
                     setFocusTraversable(false);
