@@ -1,8 +1,12 @@
 package ca.warp7.rt.java.python;
 
+import ca.warp7.rt.java.app.AppUtils;
+import ca.warp7.rt.java.core.Alerts;
+import ca.warp7.rt.java.core.ft.FeatureStage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import org.almibe.codeeditor.CodeMirrorEditor;
 import org.apache.commons.io.IOUtils;
 
@@ -11,7 +15,7 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 
-public class PythonController {
+public class PythonController implements FeatureStage {
     @FXML
     BorderPane codeRoot;
     @FXML
@@ -61,5 +65,14 @@ public class PythonController {
                     codeMirrorEditor.setContent(t, true);
                 }
         );
+    }
+
+    @FXML
+    void newScript() {
+        AppUtils.setStatusMessage(Alerts.getString("hi", "ho", "h"));
+    }
+
+    @Override
+    public void setStage(Stage stage) {
     }
 }

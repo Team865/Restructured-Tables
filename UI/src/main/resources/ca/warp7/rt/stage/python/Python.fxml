@@ -9,8 +9,8 @@
     <stylesheets>
         <URL value="@/ca/warp7/rt/stage/main.css"/>
     </stylesheets>
-    <ToolBar style="-fx-background-color: #eee">
-        <Button text="New script">
+    <ToolBar>
+        <Button text="New script" onAction="#newScript">
             <graphic>
                 <FontIcon iconLiteral="fas-plus:16:gray"/>
             </graphic>

@@ -107,3 +107,9 @@
 .status-item:hover {
     -fx-background-color: #ccc;
 }
+
+.tool-bar {
+    -fx-background-color: #eee;
+    -fx-border-width: 1 0 1 0;
+    -fx-border-color: #ccc;
+}

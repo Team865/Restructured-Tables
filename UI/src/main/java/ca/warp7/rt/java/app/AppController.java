@@ -47,7 +47,7 @@ public class AppController implements FeatureStage {
 
     @FXML
     void initialize() {
-        AppInterface.instance = this;
+        AppUtils.instance = this;
         appTabs.add(AppElement.getTeamLogo());
         features.forEach(feature -> feature.getInitialTabList().forEach(tab -> appTabs.add(new AppActionTab(tab))));
         setupAppTabListView();
@@ -111,7 +111,7 @@ public class AppController implements FeatureStage {
             String capId = id.substring(0, 1).toUpperCase() + id.substring(1);
             title = String.format("%s - %s", tab.getTitle(), capId);
         }
-        AppInterface.setStatusMessage("Opened tab '" + title + "'");
+        AppUtils.setStatusMessage("Opened tab '" + title + "'");
         appStage.setTitle(title);
     }
 

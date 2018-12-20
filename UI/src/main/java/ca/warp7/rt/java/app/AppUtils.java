@@ -1,6 +1,6 @@
 package ca.warp7.rt.java.app;
 
-public class AppInterface {
+public class AppUtils {
     static AppController instance;
 
     public static void setStatusMessage(String statusMessage) {
