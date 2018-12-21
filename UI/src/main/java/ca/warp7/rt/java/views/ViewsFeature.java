@@ -37,7 +37,7 @@ public class ViewsFeature implements Feature {
     @Override
     public Parent onOpenTab(FeatureItemTab tab) {
         if (preLoaded == null) {
-            preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/stage/views/Views.fxml");
+            preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/java/views/Views.fxml");
         }
         return preLoaded;
     }

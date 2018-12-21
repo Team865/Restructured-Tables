@@ -47,7 +47,7 @@ public class PythonFeature implements Feature {
     @Override
     public Parent onOpenTab(FeatureItemTab tab) {
         if (preLoaded == null) {
-            preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/stage/python/Python.fxml", this::setController);
+            preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/java/python/Python.fxml", this::setController);
         }
         controller.setTabItemParams(tab.getParamString());
         AppUtils.setStatusMessage("Editing python script " + tab.getParamString());

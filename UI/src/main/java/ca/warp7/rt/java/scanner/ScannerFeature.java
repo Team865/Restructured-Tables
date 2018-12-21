@@ -33,7 +33,7 @@ public class ScannerFeature implements Feature {
 
     @Override
     public Parent onOpenTab(FeatureItemTab tab) {
-        return FeatureUtils.loadParent("/ca/warp7/rt/stage/scanner/Scanner.fxml", this::setController);
+        return FeatureUtils.loadParent("/ca/warp7/rt/java/scanner/Scanner.fxml", this::setController);
     }
 
     @Override

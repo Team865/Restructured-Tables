@@ -9,7 +9,7 @@
       fx:controller="ca.warp7.rt.java.app.AppController">
 
     <stylesheets>
-        <URL value="@/ca/warp7/rt/stage/main.css"/>
+        <URL value="@/ca/warp7/rt/res/style.css"/>
     </stylesheets>
 
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContent">

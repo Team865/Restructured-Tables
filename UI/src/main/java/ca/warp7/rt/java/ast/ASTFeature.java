@@ -25,6 +25,6 @@ public class ASTFeature implements Feature {
 
     @Override
     public Parent onOpenTab(FeatureItemTab tab) {
-        return FeatureUtils.loadParent("/ca/warp7/rt/stage/ast/AST.fxml");
+        return FeatureUtils.loadParent("/ca/warp7/rt/java/ast/AST.fxml");
     }
 }

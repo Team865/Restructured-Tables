@@ -17,7 +17,7 @@ public class FeatureUtils {
         Class caller = getCaller();
         loader.setLocation(caller.getResource(resFile));
         stage.setTitle(windowTitle);
-        stage.getIcons().add(new Image(caller.getResourceAsStream("/app-icon.png")));
+        stage.getIcons().add(new Image(caller.getResourceAsStream("/ca/warp7/rt/res/app-icon.png")));
         try {
             stage.setScene(new Scene(loader.load()));
             Object controller = loader.getController();

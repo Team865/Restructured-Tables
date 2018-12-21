@@ -11,7 +11,7 @@
       fx:controller="ca.warp7.rt.java.scanner.ScannerController">
 
     <stylesheets>
-        <URL value="@/ca/warp7/rt/stage/main.css"/>
+        <URL value="@/ca/warp7/rt/res/style.css"/>
     </stylesheets>
 
     <VBox HBox.hgrow="ALWAYS" alignment="CENTER" fx:id="imageContainer" >

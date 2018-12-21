@@ -46,7 +46,7 @@ class AppElement {
     static AppTab getTeamLogo() {
         int height = 64;
         ImageView teamLogo = new ImageView();
-        teamLogo.setImage(new Image("/warp7.png"));
+        teamLogo.setImage(new Image("/ca/warp7/rt/res/warp7.png"));
         teamLogo.setPreserveRatio(true);
         teamLogo.setFitHeight(height);
         HBox hBox = new HBox();
