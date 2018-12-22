@@ -38,7 +38,7 @@ dependencies {
     implementation(group = "com.beust", name = "klaxon", version = "3.0.1")
 }
 
-val mainClassName0 = "ca.warp7.rt.java.Main"
+val mainClassName0 = "ca.warp7.rt.core.Main"
 application.mainClassName = mainClassName0
 
 launch4j {
