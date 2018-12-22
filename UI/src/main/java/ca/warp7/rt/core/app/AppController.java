@@ -71,12 +71,28 @@ public class AppController implements FeatureStage {
         }
     }
 
-    public void showMemory() {
-        String mem = String.format("Memory: %.2f MB", (Runtime.getRuntime().totalMemory()
+    public void showStatus() {
+        String mem = String.format("Memory: %.3f MB", (Runtime.getRuntime().totalMemory()
                 - Runtime.getRuntime().freeMemory()) / 1000000.0);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, mem, ButtonType.OK);
-        new Thread(System::gc).start();
-        alert.showAndWait();
+        String msg = statusMessageLabel.getText() + "\n\n" + mem;
+
+        Dialog<String> dialog = new Dialog<>();
+        dialog.setTitle("App Status");
+        dialog.initOwner(appStage);
+        dialog.setContentText(msg);
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK);
+        dialog.showAndWait();
+    }
+
+    public void closeCurrentTab() {
+        if (currentFeature == null || currentFeature.onCloseRequest()) {
+            tabContent.setCenter(null);
+            currentFeature = null;
+            if (currentTab != null) {
+                statusMessageLabel.setText("Closed tab " + AppElement.getTitle(currentTab));
+            }
+            currentTab = null;
+        }
     }
 
     @Override

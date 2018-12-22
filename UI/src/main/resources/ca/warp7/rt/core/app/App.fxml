@@ -20,17 +20,19 @@
     </HBox>
 
     <HBox styleClass="status-bar" alignment="CENTER_LEFT" fx:id="statusBarContainer" visible="false">
-        <HBox styleClass="status-item" HBox.hgrow="ALWAYS">
-            <FontIcon iconLiteral="fas-paperclip:16:gray"/>
+        <HBox styleClass="status-item" HBox.hgrow="ALWAYS" onMouseClicked="#showStatus">
             <Label text="Loading" fx:id="statusMessageLabel"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#reloadTabModel">
             <FontIcon iconLiteral="fas-sync:16:gray"/>
         </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#showMemory">
+        <HBox styleClass="status-item" onMouseClicked="#closeCurrentTab">
+            <FontIcon iconLiteral="fas-times:16:gray"/>
+        </HBox>
+        <HBox styleClass="status-item" onMouseClicked="#showStatus">
             <FontIcon iconLiteral="fas-search-plus:16:gray"/>
         </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#showMemory">
+        <HBox styleClass="status-item" onMouseClicked="#showStatus">
             <FontIcon iconLiteral="fas-search-minus:16:gray"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#toggleFullScreen">
@@ -38,9 +40,6 @@
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#toggleFocused">
             <FontIcon iconLiteral="fas-eye-slash:16:gray" fx:id="focusIcon"/>
-        </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#showMemory">
-            <FontIcon iconLiteral="fas-bolt:16:gray"/>
         </HBox>
         <HBox styleClass="status-item">
             <FontIcon iconLiteral="fas-arrows-alt-h:16:gray"/>
