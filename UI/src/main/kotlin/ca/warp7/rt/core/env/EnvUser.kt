@@ -24,19 +24,23 @@ object EnvUser {
         } else JsonObject()
     }
 
-    fun get(name: String, defaultValue: String): String {
+    operator fun get(name: String, defaultValue: String): String {
         return config.string(name) ?: defaultValue
     }
 
-    fun get(name: String, defaultValue: Int): Int {
+    operator fun get(name: String, defaultValue: Int): Int {
         return config.int(name) ?: defaultValue
     }
 
-    fun get(name: String, defaultValue: Double): Double {
+    operator fun get(name: String, defaultValue: Double): Double {
         return config.double(name) ?: defaultValue
     }
 
-    fun set(name: String, value: Any) {
+    operator fun get(name: String): Boolean {
+        return config.containsKey(name)
+    }
+
+    operator fun set(name: String, value: Any) {
         config[name] = value
     }
 

@@ -1,5 +1,7 @@
 package ca.warp7.rt.core.app
 
+import ca.warp7.rt.core.env.EnvUser
+import ca.warp7.rt.core.env.EnvUtils
 import ca.warp7.rt.core.feature.FeatureIcon
 import ca.warp7.rt.core.feature.FeatureItemTab
 import javafx.geometry.Pos
@@ -51,5 +53,34 @@ internal object AppElement {
             title = String.format("%s - %s", tab.title, capId)
         }
         return title
+    }
+
+    @JvmStatic
+    fun getUserExplicitName(): String {
+        val name = AppUtils.getString("Setup", "Enter name (First Last):",
+                EnvUtils.user, null) ?: EnvUtils.user
+        EnvUser["app.userName"] = name
+        return name
+    }
+
+    @JvmStatic
+    fun getUserExplicitDevice(): String {
+        val name = AppUtils.getString("Setup", "Enter device:",
+                EnvUtils.computerName, null) ?: EnvUtils.computerName
+        EnvUser["app.deviceName"] = name
+        return name
+    }
+
+    @JvmStatic
+    fun updateUserAndDevice(userName: Label, deviceName: Label) {
+        userName.text = when {
+            !EnvUser["app.userName"] -> getUserExplicitName()
+            else -> EnvUser["app.userName", "Unknown User"]
+        }
+        deviceName.text = when {
+            !EnvUser["app.deviceName"] -> getUserExplicitDevice()
+            else -> EnvUser["app.deviceName", "Unknown Device"]
+        }
+        EnvUser.save()
     }
 }

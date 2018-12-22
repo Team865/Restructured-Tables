@@ -1,7 +1,5 @@
 package ca.warp7.rt.core.app;
 
-import ca.warp7.rt.core.env.EnvUser;
-import ca.warp7.rt.core.env.EnvUtils;
 import ca.warp7.rt.core.feature.Feature;
 import ca.warp7.rt.core.feature.FeatureItemTab;
 import ca.warp7.rt.core.feature.FeatureStage;
@@ -49,7 +47,6 @@ public class AppController implements FeatureStage {
     private BooleanProperty focusedMode = new SimpleBooleanProperty();
 
     public void initialize() {
-        // Defer this initialization so the UI is not blocked
         Platform.runLater(this::initialize0);
     }
 
@@ -224,10 +221,7 @@ public class AppController implements FeatureStage {
         appTabListView.setItems(appTabs);
     }
 
-    private void initialize0() {
-        AppUtils.controller = this;
-        reloadTabModel();
-        setupAppTabListView();
+    private void setupFocusedMode() {
         focusedMode.addListener((observable, oldValue, focused) -> {
             if (focused) {
                 tabsAndContentContainer.getChildren().remove(0);
@@ -238,22 +232,18 @@ public class AppController implements FeatureStage {
             }
             if (currentFeature != null) currentFeature.setFocused(focused);
         });
+    }
+
+    private void initialize0() {
+        AppUtils.controller = this;
+        reloadTabModel();
+        setupAppTabListView();
+        setupFocusedMode();
         rowLabel.setText("None");
         columnLabel.setText("None");
-        updateUserAndDevice();
+        AppElement.updateUserAndDevice(userName, deviceName);
         statusBarContainer.setVisible(true);
         tabsAndContentContainer.setVisible(true);
         statusMessageLabel.setText("Finished loading app");
-    }
-
-    private void updateUserAndDevice() {
-        EnvUser user = EnvUser.INSTANCE;
-        String userName0 = user.get("app.userName", EnvUtils.getUser());
-        String deviceName0 = user.get("app.deviceName", EnvUtils.getComputerName());
-        userName.setText(userName0);
-        deviceName.setText(deviceName0);
-        user.set("app.userName", userName0);
-        user.set("app.deviceName", deviceName0);
-        user.save();
     }
 }
