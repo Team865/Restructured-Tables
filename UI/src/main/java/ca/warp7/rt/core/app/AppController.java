@@ -11,10 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -75,7 +72,11 @@ public class AppController implements FeatureStage {
     }
 
     public void showMemory() {
-        AppElement.showMemoryAlert();
+        String mem = String.format("Memory: %.2f MB", (Runtime.getRuntime().totalMemory()
+                - Runtime.getRuntime().freeMemory()) / 1000000.0);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, mem, ButtonType.OK);
+        new Thread(System::gc).start();
+        alert.showAndWait();
     }
 
     @Override
