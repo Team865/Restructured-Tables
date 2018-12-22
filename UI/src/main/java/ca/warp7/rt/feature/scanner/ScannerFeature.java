@@ -1,15 +1,15 @@
 package ca.warp7.rt.feature.scanner;
 
-import ca.warp7.rt.core.ft.Feature;
-import ca.warp7.rt.core.ft.FeatureItemTab;
-import ca.warp7.rt.core.ft.FeatureTabFactory;
-import ca.warp7.rt.core.ft.FeatureUtils;
+import ca.warp7.rt.core.feature.Feature;
+import ca.warp7.rt.core.feature.FeatureItemTab;
+import ca.warp7.rt.core.feature.FeatureTabFactory;
+import ca.warp7.rt.core.feature.FeatureUtils;
 import javafx.collections.FXCollections;
 import javafx.scene.Parent;
 
 import java.util.List;
 
-import static ca.warp7.rt.core.ft.FeatureItemTab.Group;
+import static ca.warp7.rt.core.feature.FeatureItemTab.Group;
 
 public class ScannerFeature implements Feature {
 

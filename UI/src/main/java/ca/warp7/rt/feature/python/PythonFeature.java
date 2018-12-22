@@ -1,16 +1,16 @@
 package ca.warp7.rt.feature.python;
 
 import ca.warp7.rt.core.app.AppUtils;
-import ca.warp7.rt.core.ft.Feature;
-import ca.warp7.rt.core.ft.FeatureItemTab;
-import ca.warp7.rt.core.ft.FeatureTabFactory;
-import ca.warp7.rt.core.ft.FeatureUtils;
+import ca.warp7.rt.core.feature.Feature;
+import ca.warp7.rt.core.feature.FeatureItemTab;
+import ca.warp7.rt.core.feature.FeatureTabFactory;
+import ca.warp7.rt.core.feature.FeatureUtils;
 import javafx.scene.Parent;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static ca.warp7.rt.core.ft.FeatureItemTab.Group;
+import static ca.warp7.rt.core.feature.FeatureItemTab.Group;
 
 public class PythonFeature implements Feature {
 
@@ -57,7 +57,8 @@ public class PythonFeature implements Feature {
     void newScript() {
         String name = AppUtils.getString(
                 "New Python Script", "Script Name:", "", s -> s.matches("^[\\w]+$"));
-        AppUtils.insertTab(factory.get(name, name + ".py"));
+
+        if (name != null) AppUtils.insertTab(factory.get(name, name + ".py"));
     }
 
     @Override

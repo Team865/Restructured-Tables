@@ -1,7 +1,7 @@
 package ca.warp7.rt.feature.media;
 
-import ca.warp7.rt.core.ft.Feature;
-import ca.warp7.rt.core.ft.FeatureItemTab;
+import ca.warp7.rt.core.feature.Feature;
+import ca.warp7.rt.core.feature.FeatureItemTab;
 
 import java.util.Collections;
 import java.util.List;

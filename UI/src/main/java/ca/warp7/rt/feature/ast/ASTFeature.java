@@ -1,8 +1,8 @@
 package ca.warp7.rt.feature.ast;
 
-import ca.warp7.rt.core.ft.Feature;
-import ca.warp7.rt.core.ft.FeatureItemTab;
-import ca.warp7.rt.core.ft.FeatureUtils;
+import ca.warp7.rt.core.feature.Feature;
+import ca.warp7.rt.core.feature.FeatureItemTab;
+import ca.warp7.rt.core.feature.FeatureUtils;
 import javafx.scene.Parent;
 
 import java.util.Collections;

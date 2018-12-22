@@ -1,6 +1,6 @@
 package ca.warp7.rt.core.app;
 
-import ca.warp7.rt.core.ft.Feature;
+import ca.warp7.rt.core.feature.Feature;
 import ca.warp7.rt.feature.ast.ASTFeature;
 import ca.warp7.rt.feature.boards.BoardsFeature;
 import ca.warp7.rt.feature.dataset.DatasetFeature;

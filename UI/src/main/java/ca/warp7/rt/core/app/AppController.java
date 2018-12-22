@@ -1,15 +1,15 @@
 package ca.warp7.rt.core.app;
 
-import ca.warp7.rt.core.ft.Feature;
-import ca.warp7.rt.core.ft.FeatureItemTab;
-import ca.warp7.rt.core.ft.FeatureStage;
+import ca.warp7.rt.core.env.EnvUtils;
+import ca.warp7.rt.core.feature.Feature;
+import ca.warp7.rt.core.feature.FeatureItemTab;
+import ca.warp7.rt.core.feature.FeatureStage;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -32,22 +32,17 @@ public class AppController implements FeatureStage {
     private static final Paint gray = Paint.valueOf("gray");
     private static final Paint white = Paint.valueOf("white");
 
-    @FXML
-    BorderPane tabContent;
-    @FXML
-    HBox tabsAndContent;
-    @FXML
-    ListView<AppTab> appTabListView;
-    @FXML
-    VBox listViewContainer;
-    @FXML
-    Label statusMessageLabel;
-    @FXML
-    Label rowLabel;
-    @FXML
-    Label columnLabel;
-    @FXML
-    FontIcon focusIcon;
+    public BorderPane tabContent;
+    public HBox tabsAndContentContainer;
+    public ListView<AppTab> appTabListView;
+    public VBox listViewContainer;
+    public Label statusMessageLabel;
+    public Label rowLabel;
+    public Label columnLabel;
+    public FontIcon focusIcon;
+    public Label userName;
+    public Label deviceName;
+    public HBox statusBarContainer;
 
     Stage appStage;
     private ObservableList<AppTab> appTabs = FXCollections.observableArrayList();
@@ -217,16 +212,20 @@ public class AppController implements FeatureStage {
         setupAppTabListView();
         focusedMode.addListener((observable, oldValue, focused) -> {
             if (focused) {
-                tabsAndContent.getChildren().remove(0);
+                tabsAndContentContainer.getChildren().remove(0);
                 focusIcon.setIconCode(FontAwesomeSolid.EYE);
             } else {
-                tabsAndContent.getChildren().add(0, listViewContainer);
+                tabsAndContentContainer.getChildren().add(0, listViewContainer);
                 focusIcon.setIconCode(FontAwesomeSolid.EYE_SLASH);
             }
             if (currentFeature != null) currentFeature.setFocused(focused);
         });
         rowLabel.setText("None");
         columnLabel.setText("None");
+        userName.setText(EnvUtils.getUser());
+        deviceName.setText(EnvUtils.getComputerName());
+        statusBarContainer.setVisible(true);
+        tabsAndContentContainer.setVisible(true);
         statusMessageLabel.setText("Finished loading app");
     }
 }

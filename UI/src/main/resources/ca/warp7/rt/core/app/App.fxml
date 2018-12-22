@@ -12,14 +12,14 @@
         <URL value="@/ca/warp7/rt/res/style.css"/>
     </stylesheets>
 
-    <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContent">
+    <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContentContainer" visible="false">
         <VBox prefWidth="200" alignment="TOP_CENTER" minWidth="200" maxWidth="200" fx:id="listViewContainer">
             <ListView VBox.vgrow="ALWAYS" fx:id="appTabListView"/>
         </VBox>
         <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>
     </HBox>
 
-    <HBox styleClass="status-bar" alignment="CENTER_LEFT">
+    <HBox styleClass="status-bar" alignment="CENTER_LEFT" fx:id="statusBarContainer" visible="false">
         <HBox styleClass="status-item" HBox.hgrow="ALWAYS">
             <FontIcon iconLiteral="fas-paperclip:16:gray"/>
             <Label text="Loading" fx:id="statusMessageLabel"/>
@@ -56,11 +56,11 @@
         </HBox>
         <HBox styleClass="status-item">
             <FontIcon iconLiteral="fas-user:16:gray"/>
-            <Label text="Yu Liu"/>
+            <Label text="Yu Liu" fx:id="userName"/>
         </HBox>
         <HBox styleClass="status-item">
             <FontIcon iconLiteral="fas-laptop:16:gray"/>
-            <Label text="Yu's PC"/>
+            <Label text="Yu's PC" fx:id="deviceName"/>
         </HBox>
     </HBox>
 

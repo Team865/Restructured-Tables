@@ -1,4 +1,4 @@
-package ca.warp7.rt.core.ft;
+package ca.warp7.rt.core.feature;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

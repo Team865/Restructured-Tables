@@ -1,6 +1,6 @@
 package ca.warp7.rt.core.app;
 
-import ca.warp7.rt.core.ft.FeatureItemTab;
+import ca.warp7.rt.core.feature.FeatureItemTab;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Node;

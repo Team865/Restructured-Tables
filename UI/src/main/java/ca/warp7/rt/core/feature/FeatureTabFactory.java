@@ -1,4 +1,4 @@
-package ca.warp7.rt.core.ft;
+package ca.warp7.rt.core.feature;
 
 public class FeatureTabFactory {
     private String iconLiteral;

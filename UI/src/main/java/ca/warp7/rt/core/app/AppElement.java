@@ -1,7 +1,7 @@
 package ca.warp7.rt.core.app;
 
-import ca.warp7.rt.core.ft.FeatureIcon;
-import ca.warp7.rt.core.ft.FeatureItemTab;
+import ca.warp7.rt.core.feature.FeatureIcon;
+import ca.warp7.rt.core.feature.FeatureItemTab;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -44,7 +44,7 @@ class AppElement {
     }
 
     static AppTab getTeamLogo() {
-        int height = 64;
+        int height = 72;
         ImageView teamLogo = new ImageView();
         teamLogo.setImage(new Image("/ca/warp7/rt/res/warp7.png"));
         teamLogo.setPreserveRatio(true);

@@ -1,4 +1,4 @@
-package ca.warp7.rt.core.ft;
+package ca.warp7.rt.core.feature;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 
