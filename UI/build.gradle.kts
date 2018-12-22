@@ -7,7 +7,7 @@ plugins {
     id("application")
     id("com.github.johnrengelman.shadow")
     id("edu.sc.seis.launch4j")
-    kotlin(module = "jvm") version "1.3.10"
+    kotlin(module = "jvm") version "1.3.11"
 }
 
 repositories {
@@ -18,6 +18,8 @@ repositories {
 
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions.jvmTarget = "1.8"
+
+val kotlinVersion = "1.3.11"
 
 dependencies {
     implementation(dependencyNotation = project(":CodeEditor"))
@@ -32,10 +34,12 @@ dependencies {
     implementation(group = "org.slf4j", name = "slf4j-simple", version = "1.7.6")
 
     // Kotlin libraries
-    implementation(kotlin("stdlib", "1.3.10"))
+    implementation(kotlin("stdlib", kotlinVersion))
+    implementation(kotlin("reflect", kotlinVersion))
     implementation(group = "com.kyonifer", name = "koma-core-ejml", version = "0.12")
     implementation(group = "de.mpicbg.scicomp", name = "krangl", version = "0.10.3")
     implementation(group = "com.beust", name = "klaxon", version = "3.0.1")
+    testImplementation(kotlin("test", kotlinVersion))
 }
 
 val mainClassName0 = "ca.warp7.rt.core.Launcher"
