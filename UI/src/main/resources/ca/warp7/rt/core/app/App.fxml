@@ -13,7 +13,7 @@
     </stylesheets>
 
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContentContainer" visible="false">
-        <VBox prefWidth="200" alignment="TOP_CENTER" minWidth="200" maxWidth="200" fx:id="listViewContainer">
+        <VBox prefWidth="224" alignment="TOP_CENTER" minWidth="224" maxWidth="224" fx:id="listViewContainer">
             <ListView VBox.vgrow="ALWAYS" fx:id="appTabListView"/>
         </VBox>
         <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>
