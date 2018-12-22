@@ -20,7 +20,6 @@ import java.util.Map;
 class AppFeatures {
     static final List<Feature> features = Arrays.asList(
             new DatasetFeature(),
-
             new EventFeature(),
             new ASTFeature(),
             new PredictorFeature(),
@@ -28,7 +27,6 @@ class AppFeatures {
             new BoardsFeature(),
             new ScannerFeature(),
             new VCFeature(),
-
             new PythonFeature(),
             new ViewsFeature()
     );

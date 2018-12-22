@@ -1,5 +1,6 @@
 package ca.warp7.rt.core.app;
 
+import ca.warp7.rt.core.env.EnvUser;
 import ca.warp7.rt.core.env.EnvUtils;
 import ca.warp7.rt.core.feature.Feature;
 import ca.warp7.rt.core.feature.FeatureItemTab;
@@ -239,10 +240,20 @@ public class AppController implements FeatureStage {
         });
         rowLabel.setText("None");
         columnLabel.setText("None");
-        userName.setText(EnvUtils.getUser());
-        deviceName.setText(EnvUtils.getComputerName());
+        updateUserAndDevice();
         statusBarContainer.setVisible(true);
         tabsAndContentContainer.setVisible(true);
         statusMessageLabel.setText("Finished loading app");
+    }
+
+    private void updateUserAndDevice() {
+        EnvUser user = EnvUser.INSTANCE;
+        String userName0 = user.get("app.userName", EnvUtils.getUser());
+        String deviceName0 = user.get("app.deviceName", EnvUtils.getComputerName());
+        userName.setText(userName0);
+        deviceName.setText(deviceName0);
+        user.set("app.userName", userName0);
+        user.set("app.deviceName", deviceName0);
+        user.save();
     }
 }

@@ -2,6 +2,8 @@
 
 package ca.warp7.rt.core.env
 
+import java.io.File
+
 object EnvUtils {
 
     @JvmStatic
@@ -13,11 +15,19 @@ object EnvUtils {
         get() = System.getProperty("user.home")
 
     @JvmStatic
-    val computerName: String?
+    val appHome: File
+        get() {
+            val f = File("$userHome/.warp7")
+            if (!f.exists()) f.mkdir()
+            return f
+        }
+
+    @JvmStatic
+    val computerName: String
         get() {
             val env = System.getenv()
             return if (env.containsKey("COMPUTERNAME"))
-                env["COMPUTERNAME"]
+                env["COMPUTERNAME"] ?: "Unknown Computer"
             else
                 env.getOrDefault("HOSTNAME", "Unknown Computer")
         }

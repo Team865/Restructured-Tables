@@ -40,7 +40,7 @@ class AppTab {
         this.icon = icon;
     }
 
-    public int getDecorativeHeight() {
+    int getDecorativeHeight() {
         return decorativeHeight;
     }
 }
