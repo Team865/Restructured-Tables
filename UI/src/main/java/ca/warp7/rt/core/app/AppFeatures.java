@@ -1,8 +1,8 @@
-package ca.warp7.rt.java.app;
+package ca.warp7.rt.core.app;
 
+import ca.warp7.rt.core.ft.Feature;
 import ca.warp7.rt.java.ast.ASTFeature;
 import ca.warp7.rt.java.boards.BoardsFeature;
-import ca.warp7.rt.java.core.ft.Feature;
 import ca.warp7.rt.java.dataset.DatasetFeature;
 import ca.warp7.rt.java.event.EventFeature;
 import ca.warp7.rt.java.media.MediaFeature;

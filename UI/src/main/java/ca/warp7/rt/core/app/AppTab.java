@@ -1,6 +1,6 @@
-package ca.warp7.rt.java.app;
+package ca.warp7.rt.core.app;
 
-import ca.warp7.rt.java.core.ft.FeatureItemTab;
+import ca.warp7.rt.core.ft.FeatureItemTab;
 import javafx.scene.Node;
 import org.kordamp.ikonli.javafx.FontIcon;
 

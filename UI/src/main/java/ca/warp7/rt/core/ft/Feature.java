@@ -1,4 +1,4 @@
-package ca.warp7.rt.java.core.ft;
+package ca.warp7.rt.core.ft;
 
 import javafx.scene.Parent;
 

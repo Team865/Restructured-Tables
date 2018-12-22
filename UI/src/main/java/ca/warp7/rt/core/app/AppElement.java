@@ -1,7 +1,7 @@
-package ca.warp7.rt.java.app;
+package ca.warp7.rt.core.app;
 
-import ca.warp7.rt.java.core.ft.FeatureIcon;
-import ca.warp7.rt.java.core.ft.FeatureItemTab;
+import ca.warp7.rt.core.ft.FeatureIcon;
+import ca.warp7.rt.core.ft.FeatureItemTab;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

@@ -1,15 +1,15 @@
 package ca.warp7.rt.java.views;
 
-import ca.warp7.rt.java.core.ft.Feature;
-import ca.warp7.rt.java.core.ft.FeatureItemTab;
-import ca.warp7.rt.java.core.ft.FeatureTabFactory;
-import ca.warp7.rt.java.core.ft.FeatureUtils;
+import ca.warp7.rt.core.ft.Feature;
+import ca.warp7.rt.core.ft.FeatureItemTab;
+import ca.warp7.rt.core.ft.FeatureTabFactory;
+import ca.warp7.rt.core.ft.FeatureUtils;
 import javafx.scene.Parent;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static ca.warp7.rt.java.core.ft.FeatureItemTab.Group;
+import static ca.warp7.rt.core.ft.FeatureItemTab.Group;
 
 public class ViewsFeature implements Feature {
 

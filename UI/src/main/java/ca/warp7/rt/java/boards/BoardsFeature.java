@@ -1,7 +1,7 @@
 package ca.warp7.rt.java.boards;
 
-import ca.warp7.rt.java.core.ft.Feature;
-import ca.warp7.rt.java.core.ft.FeatureItemTab;
+import ca.warp7.rt.core.ft.Feature;
+import ca.warp7.rt.core.ft.FeatureItemTab;
 import javafx.scene.Parent;
 
 import java.util.Collections;

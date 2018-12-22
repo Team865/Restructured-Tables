@@ -1,7 +1,7 @@
 package ca.warp7.rt.java.vc;
 
-import ca.warp7.rt.java.core.ft.Feature;
-import ca.warp7.rt.java.core.ft.FeatureItemTab;
+import ca.warp7.rt.core.ft.Feature;
+import ca.warp7.rt.core.ft.FeatureItemTab;
 import javafx.collections.FXCollections;
 
 import java.util.List;

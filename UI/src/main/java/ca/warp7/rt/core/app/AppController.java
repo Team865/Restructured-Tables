@@ -1,8 +1,8 @@
-package ca.warp7.rt.java.app;
+package ca.warp7.rt.core.app;
 
-import ca.warp7.rt.java.core.ft.Feature;
-import ca.warp7.rt.java.core.ft.FeatureItemTab;
-import ca.warp7.rt.java.core.ft.FeatureStage;
+import ca.warp7.rt.core.ft.Feature;
+import ca.warp7.rt.core.ft.FeatureItemTab;
+import ca.warp7.rt.core.ft.FeatureStage;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -24,8 +24,8 @@ import javafx.stage.Stage;
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 import org.kordamp.ikonli.javafx.FontIcon;
 
-import static ca.warp7.rt.java.app.AppFeatures.featureMap;
-import static ca.warp7.rt.java.app.AppFeatures.features;
+import static ca.warp7.rt.core.app.AppFeatures.featureMap;
+import static ca.warp7.rt.core.app.AppFeatures.features;
 
 public class AppController implements FeatureStage {
 
