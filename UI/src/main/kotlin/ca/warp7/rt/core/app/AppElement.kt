@@ -57,16 +57,18 @@ internal object AppElement {
 
     @JvmStatic
     fun getUserExplicitName(): String {
+        val current = EnvUser["app.userName", EnvUtils.user]
         val name = AppUtils.getString("Setup", "Enter name (First Last):",
-                EnvUtils.user, null) ?: EnvUtils.user
+                current, String::isNotEmpty) ?: current
         EnvUser["app.userName"] = name
         return name
     }
 
     @JvmStatic
     fun getUserExplicitDevice(): String {
+        val current = EnvUser["app.deviceName", EnvUtils.computerName]
         val name = AppUtils.getString("Setup", "Enter device:",
-                EnvUtils.computerName, null) ?: EnvUtils.computerName
+                current, String::isNotEmpty) ?: current
         EnvUser["app.deviceName"] = name
         return name
     }

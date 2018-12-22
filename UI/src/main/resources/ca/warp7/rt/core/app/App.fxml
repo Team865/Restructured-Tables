@@ -53,13 +53,13 @@
             <FontIcon iconLiteral="fas-database:16:gray"/>
             <Label text="2018iri-frc865"/>
         </HBox>
-        <HBox styleClass="status-item">
+        <HBox styleClass="status-item" onMouseClicked="#setUserName">
             <FontIcon iconLiteral="fas-user:16:gray"/>
-            <Label text="Yu Liu" fx:id="userName"/>
+            <Label fx:id="userName"/>
         </HBox>
-        <HBox styleClass="status-item">
+        <HBox styleClass="status-item" onMouseClicked="#setUserDevice">
             <FontIcon iconLiteral="fas-laptop:16:gray"/>
-            <Label text="Yu's PC" fx:id="deviceName"/>
+            <Label fx:id="deviceName"/>
         </HBox>
     </HBox>
 

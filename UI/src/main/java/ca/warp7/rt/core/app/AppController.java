@@ -1,5 +1,6 @@
 package ca.warp7.rt.core.app;
 
+import ca.warp7.rt.core.env.EnvUser;
 import ca.warp7.rt.core.feature.Feature;
 import ca.warp7.rt.core.feature.FeatureItemTab;
 import ca.warp7.rt.core.feature.FeatureStage;
@@ -93,6 +94,14 @@ public class AppController implements FeatureStage {
         }
     }
 
+    public void setUserName() {
+        userName.setText(AppElement.getUserExplicitName());
+    }
+
+    public void setUserDevice() {
+        deviceName.setText(AppElement.getUserExplicitDevice());
+    }
+
     @Override
     public void setStage(Stage stage) {
         stage.getScene().setOnKeyPressed(event -> {
@@ -100,6 +109,7 @@ public class AppController implements FeatureStage {
             else if (event.getCode() == KeyCode.F9) toggleFocused();
         });
         stage.setOnCloseRequest(event -> {
+            EnvUser.INSTANCE.save();
             if (currentFeature != null && !currentFeature.onCloseRequest()) {
                 event.consume();
             }
