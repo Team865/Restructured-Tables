@@ -1,16 +1,16 @@
 package ca.warp7.rt.core.app;
 
 import ca.warp7.rt.core.feature.Feature;
-import ca.warp7.rt.feature.ast.ASTFeature;
-import ca.warp7.rt.feature.boards.BoardsFeature;
-import ca.warp7.rt.feature.dataset.DatasetFeature;
-import ca.warp7.rt.feature.event.EventFeature;
-import ca.warp7.rt.feature.media.MediaFeature;
-import ca.warp7.rt.feature.predictor.PredictorFeature;
-import ca.warp7.rt.feature.python.PythonFeature;
-import ca.warp7.rt.feature.scanner.ScannerFeature;
-import ca.warp7.rt.feature.vc.VCFeature;
-import ca.warp7.rt.feature.views.ViewsFeature;
+import ca.warp7.rt.ext.ast.ASTFeature;
+import ca.warp7.rt.ext.boards.BoardsFeature;
+import ca.warp7.rt.ext.dataset.DatasetFeature;
+import ca.warp7.rt.ext.event.EventFeature;
+import ca.warp7.rt.ext.media.MediaFeature;
+import ca.warp7.rt.ext.predictor.PredictorFeature;
+import ca.warp7.rt.ext.python.PythonFeature;
+import ca.warp7.rt.ext.scanner.ScannerFeature;
+import ca.warp7.rt.ext.vc.VCFeature;
+import ca.warp7.rt.ext.views.ViewsFeature;
 
 import java.util.Arrays;
 import java.util.HashMap;
