@@ -35,7 +35,6 @@ class TableController {
 
         val actionTaken = Label()
 
-
         val firstNameCol = TableColumn<Person, String>("First Name")
         firstNameCol.minWidth = 100.0
         firstNameCol.cellValueFactory = PropertyValueFactory("firstName")
