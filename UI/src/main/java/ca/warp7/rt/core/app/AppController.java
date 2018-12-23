@@ -251,9 +251,11 @@ public class AppController implements FeatureStage {
         setupFocusedMode();
         rowLabel.setText("None");
         columnLabel.setText("None");
-        AppElement.updateUserAndDevice(userName, deviceName);
         statusBarContainer.setVisible(true);
         tabsAndContentContainer.setVisible(true);
-        statusMessageLabel.setText("Finished loading app");
+        Platform.runLater(() -> {
+            AppElement.updateUserAndDevice(userName, deviceName);
+            statusMessageLabel.setText("Finished loading app");
+        });
     }
 }
