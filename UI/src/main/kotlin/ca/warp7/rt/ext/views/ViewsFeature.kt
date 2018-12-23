@@ -6,7 +6,6 @@ import ca.warp7.rt.core.feature.FeatureItemTab.Group
 import ca.warp7.rt.core.feature.FeatureTabFactory
 import ca.warp7.rt.core.feature.FeatureUtils
 import javafx.scene.Parent
-import java.util.*
 
 class ViewsFeature : Feature {
 
@@ -16,12 +15,12 @@ class ViewsFeature : Feature {
     private var preLoaded: Parent? = null
 
     override fun getLoadedTabs(): List<FeatureItemTab> {
-        return Arrays.asList(
-                factory.get("Raw Data", ""),
-                factory.get("Auto List", ""),
-                factory.get("Endgame", ""),
-                factory.get("Team Averages", ""),
-                factory.get("Cycle Matrix", "")
+        return listOf(
+                factory.get("Data Views", "")//,
+//                factory.get("Auto List", ""),
+//                factory.get("Endgame", ""),
+//                factory.get("Team Averages", ""),
+//                factory.get("Cycle Matrix", "")
         )
     }
 
@@ -31,7 +30,7 @@ class ViewsFeature : Feature {
 
     override fun onOpenTab(tab: FeatureItemTab): Parent? {
         if (preLoaded == null) {
-            preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/feature/views/Views.fxml")
+            preLoaded = FeatureUtils.loadParent("/ca/warp7/rt/ext/views/Views.fxml")
         }
         return preLoaded
     }

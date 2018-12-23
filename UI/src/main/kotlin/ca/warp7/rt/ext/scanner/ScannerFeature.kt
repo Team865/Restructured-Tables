@@ -27,7 +27,7 @@ class ScannerFeature : Feature {
     }
 
     override fun onOpenTab(tab: FeatureItemTab): Parent? {
-        return FeatureUtils.loadParent<ScannerController>("/ca/warp7/rt/feature/scanner/Scanner.fxml") {
+        return FeatureUtils.loadParent<ScannerController>("/ca/warp7/rt/ext/scanner/Scanner.fxml") {
             this.setController(it)
         }
     }

@@ -7,7 +7,6 @@ import ca.warp7.rt.core.feature.FeatureItemTab.Group
 import ca.warp7.rt.core.feature.FeatureTabFactory
 import ca.warp7.rt.core.feature.FeatureUtils
 import javafx.scene.Parent
-import java.util.*
 
 class PythonFeature : Feature {
 
@@ -16,12 +15,12 @@ class PythonFeature : Feature {
 
     private var preLoaded: Parent? = null
 
-    private val actions = Arrays.asList(
-            factory["raw_data", "raw_data.py"],
-            factory["averages", "averages.py"],
-            factory["auto_list", "auto_list.py"],
-            factory["cycle_matrix", "cycle_matrix.py"],
-            factory["endgame", "endgame.py"]
+    private val actions = listOf(
+            factory["Python Scripts", "raw_data.py"]//,
+//            factory["averages", "averages.py"],
+//            factory["auto_list", "auto_list.py"],
+//            factory["cycle_matrix", "cycle_matrix.py"],
+//            factory["endgame", "endgame.py"]
     )
 
     private lateinit var controller: PythonController
@@ -41,7 +40,7 @@ class PythonFeature : Feature {
 
     override fun onOpenTab(tab: FeatureItemTab): Parent? {
         if (preLoaded == null) {
-            preLoaded = FeatureUtils.loadParent<PythonController>("/ca/warp7/rt/feature/python/Python.fxml")
+            preLoaded = FeatureUtils.loadParent<PythonController>("/ca/warp7/rt/ext/python/Python.fxml")
             {
                 setController(it)
             }
