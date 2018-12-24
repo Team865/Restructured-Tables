@@ -1,11 +1,7 @@
 package ca.warp7.rt.ext.scanner
 
-import ca.warp7.rt.core.feature.Feature
-import ca.warp7.rt.core.feature.FeatureItemTab
+import ca.warp7.rt.core.feature.*
 import ca.warp7.rt.core.feature.FeatureItemTab.Group
-import ca.warp7.rt.core.feature.FeatureTabFactory
-import ca.warp7.rt.core.feature.FeatureUtils
-import javafx.collections.FXCollections
 import javafx.scene.Parent
 
 class ScannerFeature : Feature {
@@ -18,21 +14,20 @@ class ScannerFeature : Feature {
         this.controller = controller
     }
 
-    override fun getLoadedTabs(): List<FeatureItemTab> {
-        return FXCollections.singletonObservableList(factory.get("QR Scanner", ""))
-    }
-
-    override fun getFeatureId(): String {
-        return "scanner"
-    }
-
     override fun onOpenTab(tab: FeatureItemTab): Parent? {
         return FeatureUtils.loadParent<ScannerController>("/ca/warp7/rt/ext/scanner/Scanner.fxml") {
             this.setController(it)
         }
     }
 
-    override fun onCloseRequest(): Boolean {
+    override val link get() = FeatureLink("QR Scanner", "fas-camera", 16)
+
+    override val loadedTabs
+        get() = listOf(factory.get("QR Scanner", ""))
+
+    override val featureId get() = "scanner"
+
+    override fun onClose(): Boolean {
         controller!!.stopCameraStream()
         return true
     }

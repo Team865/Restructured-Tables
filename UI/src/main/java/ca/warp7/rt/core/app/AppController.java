@@ -57,7 +57,7 @@ public class AppController implements FeatureStage {
     }
 
     public void reloadTabModel() {
-        if (currentFeature == null || currentFeature.onCloseRequest()) {
+        if (currentFeature == null || currentFeature.onClose()) {
             tabContent.setCenter(null);
             currentFeature = null;
             currentTab = null;
@@ -80,7 +80,7 @@ public class AppController implements FeatureStage {
     }
 
     public void closeCurrentTab() {
-        if (currentFeature == null || currentFeature.onCloseRequest()) {
+        if (currentFeature == null || currentFeature.onClose()) {
             tabContent.setCenter(null);
             currentFeature = null;
             if (currentTab != null) {
@@ -106,7 +106,7 @@ public class AppController implements FeatureStage {
         });
         stage.setOnCloseRequest(event -> {
             EnvUser.INSTANCE.save();
-            if (currentFeature != null && !currentFeature.onCloseRequest()) {
+            if (currentFeature != null && !currentFeature.onClose()) {
                 event.consume();
             }
         });
@@ -132,7 +132,7 @@ public class AppController implements FeatureStage {
 
     boolean removeCurrentTab() {
         ObservableList<AppTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
-        if (selectedItems.size() == 1 && (currentFeature == null || currentFeature.onCloseRequest())) {
+        if (selectedItems.size() == 1 && (currentFeature == null || currentFeature.onClose())) {
             AppTab tab = selectedItems.get(0);
             appTabs.remove(tab);
             tabContent.setCenter(null);
@@ -152,7 +152,7 @@ public class AppController implements FeatureStage {
                 currentTab = tab;
                 updateTitle(tab);
                 currentFeature.onOpenTab(tab);
-            } else if (currentFeature == null || currentFeature.onCloseRequest()) {
+            } else if (currentFeature == null || currentFeature.onClose()) {
                 updateTitle(tab);
                 currentFeature = feature;
                 currentTab = tab;
