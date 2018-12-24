@@ -17,6 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 import org.kordamp.ikonli.javafx.FontIcon;
 
@@ -98,7 +99,7 @@ public class AppController implements FeatureStage {
     }
 
     @Override
-    public void setStage(Stage stage) {
+    public void setStage(@NotNull Stage stage) {
         stage.getScene().setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.F11) stage.setFullScreen(true);
             else if (event.getCode() == KeyCode.F9) toggleFocused();
@@ -249,12 +250,14 @@ public class AppController implements FeatureStage {
         columnLabel.setText("None");
         statusBarContainer.setVisible(true);
         tabsAndContentContainer.setVisible(true);
-        Platform.runLater(() -> {
-            AppElement.updateUserAndDevice(userName, deviceName);
-            statusMessageLabel.setText("Finished loading app");
-            double totalHeight = appTabs.size() * 36;
-            appTabListView.setMinHeight(totalHeight);
-            appTabListView.setMaxHeight(totalHeight);
-        });
+        Platform.runLater(this::initialize1);
+    }
+
+    private void initialize1() {
+        AppElement.updateUserAndDevice(userName, deviceName);
+        statusMessageLabel.setText("Finished loading app");
+        double totalHeight = appTabs.size() * 36;
+        appTabListView.setMinHeight(totalHeight);
+        appTabListView.setMaxHeight(totalHeight);
     }
 }
