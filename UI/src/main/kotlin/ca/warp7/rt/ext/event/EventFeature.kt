@@ -5,7 +5,7 @@ import ca.warp7.rt.core.feature.FeatureItemTab
 import ca.warp7.rt.core.feature.FeatureLink
 
 class EventFeature : Feature {
-    override val link get() = FeatureLink("Event Overview", "fas-trophy", 16)
+    override val link = FeatureLink("Event Overview", "fas-trophy", 16)
 
     override val loadedTabs
         get() = listOf(FeatureItemTab(

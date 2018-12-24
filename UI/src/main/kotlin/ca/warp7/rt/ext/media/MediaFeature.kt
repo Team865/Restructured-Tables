@@ -5,7 +5,7 @@ import ca.warp7.rt.core.feature.FeatureItemTab
 import ca.warp7.rt.core.feature.FeatureLink
 
 class MediaFeature : Feature {
-    override val link get() = FeatureLink("External Media", "fas-link", 16)
+    override val link = FeatureLink("External Media", "fas-link", 16)
 
     override val loadedTabs
         get() = listOf(FeatureItemTab(

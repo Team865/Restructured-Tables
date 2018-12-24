@@ -5,7 +5,7 @@ import ca.warp7.rt.core.feature.FeatureItemTab
 import ca.warp7.rt.core.feature.FeatureLink
 
 class BoardsFeature : Feature {
-    override val link get() = FeatureLink("Scouting Boards", "fas-clipboard", 18)
+    override val link = FeatureLink("Scouting Boards", "fas-clipboard", 18)
 
     override val loadedTabs
         get() = listOf(FeatureItemTab(

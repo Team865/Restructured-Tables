@@ -23,7 +23,7 @@ class PythonFeature : Feature {
         controller.feature = this
     }
 
-    override val link get() = FeatureLink("Python Scripts", "fab-python", 18)
+    override val link = FeatureLink("Python Scripts", "fab-python", 18)
     override val loadedTabs get() = actions
     override val featureId get() = "python"
 

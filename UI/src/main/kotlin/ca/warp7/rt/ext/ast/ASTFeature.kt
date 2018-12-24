@@ -7,7 +7,7 @@ import ca.warp7.rt.core.feature.FeatureUtils
 import javafx.scene.Parent
 
 class ASTFeature : Feature {
-    override val link get() = FeatureLink("Alliance Selection", "fas-list-alt", 18)
+    override val link = FeatureLink("Alliance Selection", "fas-list-alt", 18)
 
     override val loadedTabs
         get() = listOf(FeatureItemTab(

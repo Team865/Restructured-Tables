@@ -6,7 +6,7 @@ import ca.warp7.rt.core.feature.FeatureLink
 
 class DatasetFeature : Feature {
 
-    override val link get() = FeatureLink("Dataset Options", "fas-database", 16)
+    override val link = FeatureLink("Dataset Options", "fas-database", 16)
 
     override val loadedTabs
         get() = listOf(FeatureItemTab(

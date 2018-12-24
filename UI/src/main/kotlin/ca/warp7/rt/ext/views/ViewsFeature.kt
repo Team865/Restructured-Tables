@@ -18,7 +18,7 @@ class ViewsFeature : Feature {
         return preLoaded
     }
 
-    override val link get() = FeatureLink("Table Views", "fas-eye", 16)
+    override val link = FeatureLink("Table Views", "fas-eye", 16)
 
     override val loadedTabs
         get() = listOf(

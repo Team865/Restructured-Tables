@@ -5,7 +5,7 @@ import ca.warp7.rt.core.feature.FeatureItemTab
 import ca.warp7.rt.core.feature.FeatureLink
 
 class PredictorFeature : Feature {
-    override val link get() = FeatureLink("Match Predictor", "fas-link", 16)
+    override val link = FeatureLink("Match Predictor", "fas-link", 16)
 
     override val loadedTabs
         get() = listOf(FeatureItemTab(

@@ -20,7 +20,7 @@ class ScannerFeature : Feature {
         }
     }
 
-    override val link get() = FeatureLink("QR Scanner", "fas-camera", 16)
+    override val link = FeatureLink("QR Scanner", "fas-camera", 16)
 
     override val loadedTabs
         get() = listOf(factory.get("QR Scanner", ""))
@@ -31,4 +31,9 @@ class ScannerFeature : Feature {
         controller!!.stopCameraStream()
         return true
     }
+
+    override fun onOpen(): Pair<Parent?, Parent?> =
+            null to FeatureUtils.loadParent<ScannerController>("/ca/warp7/rt/ext/scanner/Scanner.fxml") {
+                this.setController(it)
+            }
 }
