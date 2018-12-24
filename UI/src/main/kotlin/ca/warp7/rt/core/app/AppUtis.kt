@@ -18,6 +18,7 @@ import javafx.scene.control.Label
 import javafx.scene.control.TextField
 import javafx.scene.layout.VBox
 
+
 internal val appFeatures = listOf(
         DatasetFeature(),
         EventFeature(),
@@ -57,7 +58,9 @@ fun userInputString(title: String, prompt: String, defVal: String,
     vBox.children.addAll(label, field)
     vBox.minWidth = 400.0
     dialog.dialogPane.content = vBox
-    Platform.runLater { field.requestFocus() }
+    Platform.runLater {
+        field.requestFocus()
+    }
     dialog.setResultConverter { buttonType ->
         if (buttonType == ButtonType.OK) field.text else null
     }

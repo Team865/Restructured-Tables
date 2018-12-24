@@ -1,6 +1,7 @@
 package ca.warp7.rt.core.app
 
-import ca.warp7.rt.core.env.EnvUser
+import ca.warp7.rt.core.env.UserConfig
+import ca.warp7.rt.core.env.UserEnv
 import ca.warp7.rt.core.feature.Feature
 import ca.warp7.rt.core.feature.FeatureStage
 import javafx.application.Platform
@@ -35,8 +36,8 @@ class AppController : FeatureStage {
     private var current: Feature? = null
 
     fun initialize() {
+        utilsController = this
         Platform.runLater {
-            utilsController = this
             setupAppTabListView()
             setupFocusedMode()
             appTabs.addAll(appFeatures)
@@ -45,7 +46,8 @@ class AppController : FeatureStage {
             statusBarContainer.isVisible = true
             tabsAndContentContainer.isVisible = true
             Platform.runLater {
-                AppElement.updateUserAndDevice(userName, deviceName)
+                userName.text = UserEnv[UserConfig.appUserName, "Unknown user"]
+                deviceName.text = UserEnv[UserConfig.appUserDevice, "Unknown device"]
                 statusMessageLabel.text = "Finished loading app"
                 val totalHeight = (appTabs.size * 36).toDouble()
                 appTabListView.minHeight = totalHeight
@@ -77,7 +79,7 @@ class AppController : FeatureStage {
             else if (event.code == KeyCode.F9) toggleFocused()
         }
         stage.setOnCloseRequest { event ->
-            EnvUser.save()
+            UserEnv.save()
             if (current != null && !current!!.onClose()) {
                 event.consume()
             }

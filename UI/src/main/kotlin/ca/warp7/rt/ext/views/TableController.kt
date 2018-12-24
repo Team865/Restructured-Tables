@@ -7,13 +7,12 @@ import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.control.cell.TextFieldTableCell
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
-import javafx.scene.layout.Priority
-import javafx.scene.layout.VBox
+import javafx.scene.layout.BorderPane
 import javafx.scene.text.Font
 
 class TableController {
 
-    lateinit var tableContainer: VBox
+    lateinit var tableContainer: BorderPane
     private val tableView = TableView<Person>()
 
     // icons for non-commercial use with attribution from: http://www.iconarchive.com/show/veggies-icons-by-iconicon/bananas-icon.html and http://www.iconarchive.com/show/collection-icons-by-archigraphs.html
@@ -25,10 +24,7 @@ class TableController {
     )
 
     fun initialize() {
-
-        VBox.setVgrow(tableView, Priority.ALWAYS)
-
-        tableContainer.children.add(tableView)
+        tableContainer.center = tableView
 
         val label = Label("Address Book")
         label.font = Font("Arial", 20.0)

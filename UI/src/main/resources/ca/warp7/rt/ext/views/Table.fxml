@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml" prefWidth="220" HBox.hgrow="ALWAYS"
-      fx:controller="ca.warp7.rt.ext.views.TableController" fx:id="tableContainer">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx" prefWidth="220" HBox.hgrow="ALWAYS"
+            fx:controller="ca.warp7.rt.ext.views.TableController" fx:id="tableContainer">
     <stylesheets>
         <URL value="@/ca/warp7/rt/res/style.css"/>
     </stylesheets>
-</VBox>
+</BorderPane>

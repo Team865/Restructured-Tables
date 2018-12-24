@@ -6,11 +6,11 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-object EnvUser {
+object UserEnv {
 
     private val userConfigFile: File
         get() {
-            val f = File(EnvUtils.appHome, "/user.json")
+            val f = File(EnvUtils.appHome, "/userEnv.json")
             f.createNewFile()
             return f
         }
@@ -36,7 +36,7 @@ object EnvUser {
         return config.double(name) ?: defaultValue
     }
 
-    operator fun get(name: String): Boolean {
+    operator fun contains(name: String): Boolean {
         return config.containsKey(name)
     }
 
