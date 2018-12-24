@@ -4,7 +4,7 @@ import ca.warp7.rt.core.app.setAppStatus
 import ca.warp7.rt.core.app.userInputString
 import ca.warp7.rt.core.feature.Feature
 import ca.warp7.rt.core.feature.FeatureLink
-import ca.warp7.rt.core.feature.FeatureUtils
+import ca.warp7.rt.core.feature.loadParent
 import javafx.scene.Parent
 
 class PythonFeature : Feature {
@@ -31,7 +31,7 @@ class PythonFeature : Feature {
 
     override fun onOpen(): Pair<Parent?, Parent?> {
         if (preLoaded == null) {
-            preLoaded = FeatureUtils.loadParent<PythonController>("/ca/warp7/rt/ext/python/Python.fxml")
+            preLoaded = loadParent<PythonController>("/ca/warp7/rt/ext/python/Python.fxml")
             {
                 setController(it)
             }

@@ -6,15 +6,12 @@ import java.io.File
 
 object EnvUtils {
 
-    @JvmStatic
     val user: String
         get() = System.getProperty("user.name")
 
-    @JvmStatic
-    val userHome: String
+    private val userHome: String
         get() = System.getProperty("user.home")
 
-    @JvmStatic
     val appHome: File
         get() {
             val f = File("$userHome/.warp7")
@@ -22,7 +19,6 @@ object EnvUtils {
             return f
         }
 
-    @JvmStatic
     val computerName: String
         get() {
             val env = System.getenv()
@@ -31,10 +27,9 @@ object EnvUtils {
             else
                 env.getOrDefault("HOSTNAME", "Unknown Computer")
         }
+}
 
-    @JvmStatic
-    fun ensureWindowsOS() {
-        if (!System.getProperty("os.name").toLowerCase().startsWith("win"))
-            throw RuntimeException("Only Windows is supported")
-    }
+fun ensureWindowsOS() {
+    if (!System.getProperty("os.name").toLowerCase().startsWith("win"))
+        throw RuntimeException("Only Windows is supported")
 }

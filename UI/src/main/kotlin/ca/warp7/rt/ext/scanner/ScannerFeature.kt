@@ -2,7 +2,7 @@ package ca.warp7.rt.ext.scanner
 
 import ca.warp7.rt.core.feature.Feature
 import ca.warp7.rt.core.feature.FeatureLink
-import ca.warp7.rt.core.feature.FeatureUtils
+import ca.warp7.rt.core.feature.loadParent
 import javafx.scene.Parent
 
 class ScannerFeature : Feature {
@@ -21,7 +21,7 @@ class ScannerFeature : Feature {
     }
 
     override fun onOpen(): Pair<Parent?, Parent?> =
-            null to FeatureUtils.loadParent<ScannerController>("/ca/warp7/rt/ext/scanner/Scanner.fxml") {
+            null to loadParent<ScannerController>("/ca/warp7/rt/ext/scanner/Scanner.fxml") {
                 this.setController(it)
             }
 }
