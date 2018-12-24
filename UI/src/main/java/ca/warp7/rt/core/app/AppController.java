@@ -21,6 +21,8 @@ import org.jetbrains.annotations.NotNull;
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 import org.kordamp.ikonli.javafx.FontIcon;
 
+import static ca.warp7.rt.core.app.UtisKt.setAppStatus;
+
 public class AppController implements FeatureStage {
 
     public BorderPane tabContent;
@@ -150,7 +152,7 @@ public class AppController implements FeatureStage {
 
     private void updateTitle(FeatureItemTab tab) {
         String title = AppElement.getTitle(tab);
-        AppUtils.setStatusMessage("Opened tab '" + title + "'");
+        setAppStatus("Opened tab '" + title + "'");
         appStage.setTitle(title);
     }
 
@@ -216,7 +218,6 @@ public class AppController implements FeatureStage {
     }
 
     private void initialize0() {
-        AppUtils.controller = this;
         reloadTabModel();
         setupAppTabListView();
         setupFocusedMode();

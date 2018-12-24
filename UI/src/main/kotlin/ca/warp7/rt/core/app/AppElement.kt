@@ -64,7 +64,7 @@ internal object AppElement {
     @JvmStatic
     fun getUserExplicitName(): String {
         val current = EnvUser["app.userName", EnvUtils.user]
-        val name = AppUtils.getString("Setup", "Enter name (First Last):",
+        val name = userInputString("Setup", "Enter name (First Last):",
                 current, String::isNotEmpty) ?: current
         EnvUser["app.userName"] = name
         return name
@@ -73,7 +73,7 @@ internal object AppElement {
     @JvmStatic
     fun getUserExplicitDevice(): String {
         val current = EnvUser["app.deviceName", EnvUtils.computerName]
-        val name = AppUtils.getString("Setup", "Enter device:",
+        val name = userInputString("Setup", "Enter device:",
                 current, String::isNotEmpty) ?: current
         EnvUser["app.deviceName"] = name
         return name

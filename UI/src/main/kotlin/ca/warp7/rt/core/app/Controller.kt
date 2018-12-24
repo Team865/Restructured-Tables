@@ -36,6 +36,7 @@ class Controller : FeatureStage {
 
     fun initialize() {
         Platform.runLater {
+            utilsController = this
             setupAppTabListView()
             setupFocusedMode()
             appTabs.addAll(AppFeatures.features)

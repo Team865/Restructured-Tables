@@ -1,6 +1,7 @@
 package ca.warp7.rt.ext.python
 
-import ca.warp7.rt.core.app.AppUtils
+import ca.warp7.rt.core.app.setAppStatus
+import ca.warp7.rt.core.app.userInputString
 import ca.warp7.rt.core.feature.*
 import ca.warp7.rt.core.feature.FeatureItemTab.Group
 import javafx.scene.Parent
@@ -35,15 +36,13 @@ class PythonFeature : Feature {
             }
         }
         controller.setTabItemParams(tab.paramString)
-        AppUtils.setStatusMessage("Editing python script " + tab.paramString)
+        setAppStatus("Editing python script " + tab.paramString)
         return preLoaded
     }
 
     fun newScript() {
-        val name = AppUtils.getString(
+        val name = userInputString(
                 "New Python Script", "Script Name:", "") { s -> s.matches("^[\\w]+$".toRegex()) }
-
-        if (name != null) AppUtils.insertTab(factory.get(name, "$name.py"))
     }
 
     override fun setFocused(focused: Boolean) {
