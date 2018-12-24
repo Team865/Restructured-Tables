@@ -1,0 +1,632 @@
+﻿Match,Team,Alliance,Scale Pos,Switch Pos,RR,Scout,Start Pos,Scale Relative,Switch Relative,Auto Line,Auto Switch,Auto Scale,Auto Type,Pile,Near Contested,Far Contested,Portal,Total Intake,Exchange,Near Switch,Scale,Far Switch,Total Outtake,Cube Dropped,Missed Cube Drop,Untracked Intake,Parked,Lifted,Climbed,Lifting,Double Climb,Yellow Flags,Red Flags,Comments
+1,2834,R,Left,Left,3,BigE,Right,Far,Far,1,0,0,"Right,Baseline",2,2,0,2,6,2,2,2,1,7,1,0,2,0,0,0,0,0,1,0,Very weak drivetrain
+1,2337,R,Left,Left,4,Laura,Left,Near,Near,1,0,0,"Left,Baseline",0,0,1,5,6,0,0,6,0,6,1,0,1,0,0,1,0,1,0,0,They put a cube in the far switch in auto.
+1,1218,R,Left,Left,1,Parker,Middle,Middle,Middle,1,0,0,"Middle,Baseline",4,1,0,0,5,2,0,3,0,5,2,0,2,0,0,1,0,1,5,0, 
+1,2013,B,Right,Right,2,Rhino,Middle,Middle,Middle,1,0,0,"Middle,Baseline",6,0,0,0,6,5,2,0,0,7,0,0,1,1,0,0,0,0,2,0,Auto failed. Very messed up match
+1,3707,B,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+1,1640,B,Right,Right,5,Other,Right,Near,Near,1,0,0,"Right,Baseline",0,6,0,0,6,1,0,6,0,7,3,0,4,0,0,0,0,0,2,0,Herding penalty in auto
+2,694,R,Left,Right,9,BigE,Right,Far,Near,1,1,0,"Right,Near Switch",9,2,0,4,15,9,2,4,0,15,2,0,2,0,0,0,0,0,0,0,"Good placement if they take their time, super fast exchange"
+2,1706,R,Left,Right,8,Laura,Left,Near,Far,1,0,3,"Left,Near Scale",0,0,3,5,8,0,1,0,7,8,1,0,1,0,0,1,0,1,0,0, 
+2,1619,R,Left,Right,6,Parker,Middle,Middle,Middle,1,2,0,"Middle,Switch",0,3,0,0,3,0,1,5,0,6,2,0,5,0,0,1,0,1,0,0,Can't get cube in tall configuration
+2,3940,B,Right,Left,7,Rhino,Middle,Middle,Middle,1,0,0,"Middle,Baseline",6,0,0,1,7,0,5,0,0,5,1,1,0,0,0,0,0,0,1,0,Auto failed
+2,384,B,Right,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+2,359,B,Right,Left,10,Other,Right,Near,Far,1,0,0,"Right,Baseline",2,3,0,0,5,1,1,3,0,5,3,0,3,0,0,1,0,0,0,0, 
+3,4587,R,Left,Left,15,BigE,Right,Far,Far,1,0,0,"Right,Baseline",1,2,1,0,4,0,0,4,0,4,3,0,3,0,0,1,0,1,3,0,"Missed switch auto, cannot pick up cubes sideways and is gimpy whil scoring, bad placement"
+3,4265,R,Left,Left,14,Laura,Left,Near,Near,1,1,0,"Left,Near Switch",0,1,0,2,3,0,0,3,0,3,1,0,1,0,1,0,0,0,0,0, 
+3,3452,R,Left,Left,12,Parker,Middle,Middle,Middle,1,1,0,"Middle,Switch",8,0,0,1,9,6,4,0,0,10,0,0,4,0,0,0,0,0,1,0,Generally good defence
+3,1024,B,Right,Right,13,Rhino,Right,Near,Near,1,0,0,"Right,Baseline",0,0,3,1,4,0,0,4,1,5,0,0,1,0,0,1,0,1,1,0,Auto went into opposing null zone
+3,2826,B,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,88,B,Right,Right,11,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",8,1,0,0,9,8,1,0,0,9,0,0,0,0,0,0,0,0,0,0,Defended 4265
+4,2791,R,Left,Left,21,BigE,Left,Near,Near,1,0,1,"Left,Near Scale",2,1,3,0,6,3,0,4,0,7,4,0,5,1,0,0,0,0,3,1,"Cannot score scale when losing, couldn't climb, fumbled a bunch"
+4,2590,R,Left,Left,19,Laura,Middle,Middle,Middle,0,0,0,"Middle,No Auto",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,Did not move at all the entire match.
+4,829,R,Left,Left,16,Parker,Right,Far,Far,1,0,0,"Right,Baseline",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,Lost coms after auto
+4,3478,B,Right,Right,17,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",3,0,3,0,6,1,0,4,0,5,1,0,0,1,0,0,0,0,0,0, 
+4,1102,B,Right,Right,18,Other,Left,Far,Far,1,0,0,"Left,Baseline",0,1,2,5,8,0,0,2,5,7,0,1,0,0,0,1,0,0,0,0, 
+4,1731,B,Right,Right,20,Other,Right,Near,Near,1,0,1,"Right,Near Scale",6,1,0,0,7,5,1,1,0,7,2,0,2,0,0,0,0,0,1,0, 
+5,4967,R,Right,Right,23,Other,Middle,Middle,Middle,0,2,0,"Middle,Switch",8,2,0,0,10,7,1,0,0,8,0,2,0,0,0,1,0,1,0,0,Played good defense
+5,1741,R,Right,Right,27,Laura,Right,Near,Near,1,0,0,"Right,Baseline",0,3,1,3,7,0,0,4,2,6,1,0,0,0,0,0,0,0,0,0, 
+5,865,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+5,319,B,Left,Left,25,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",8,0,0,0,8,6,1,0,0,7,0,1,0,0,0,1,1,0,0,0, 
+5,118,B,Left,Left,22,Other,Right,Far,Far,1,0,0,"Right,Baseline",1,5,1,0,7,0,0,5,0,5,3,0,1,0,1,1,0,0,0,0,Defended by 1747
+5,1747,B,Left,Left,24,Other,Left,Near,Near,1,0,0,"Left,Baseline",2,1,4,3,10,0,0,4,4,8,1,1,0,0,0,0,0,0,0,0, 
+6,1746,R,Right,Right,33,BigE,Right,Near,Near,1,0,1,"Right,Near Scale",6,2,0,0,8,7,1,0,0,8,1,0,1,1,0,0,0,0,1,0,"Can't pick up cubes sideways well, elevator is super slow"
+6,2771,R,Right,Right,31,Laura,Left,Far,Far,1,0,0,"Left,Baseline",0,4,0,0,4,0,0,4,0,4,0,0,0,0,0,1,0,1,0,0,Climb looked really solid and fast
+6,133,R,Right,Right,30,Other,Middle,Middle,Middle,0,3,0,"Middle,Switch",1,0,1,1,3,0,0,2,1,3,1,0,1,0,0,1,0,1,0,0,Appeared to momentarily lose connection partway through the match. (just for a couple seconds)
+6,868,B,Left,Left,29,Rhino,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,2,0,0,7,5,1,2,0,8,0,0,1,0,1,1,0,0,0,0, 
+6,2056,B,Left,Left,28,Adam,Left,Near,Near,1,0,0,"Left,Baseline",3,1,2,1,7,0,0,7,0,7,2,0,2,0,0,1,1,0,0,0,Have ing some issues but overcame them quickly and placed cubes well
+6,5406,B,Left,Left,32,Other,Right,Far,Far,1,0,2,"Right,Far Scale",0,0,3,0,3,0,0,3,0,3,1,0,1,0,0,0,0,0,0,1, 
+7,2614,R,Left,Left,39,BigE,Left,Near,Near,1,0,1,"Left,Near Scale",0,0,2,3,5,0,0,5,0,5,0,0,0,0,1,0,0,0,1,0,Didn't avoid congestion at all
+7,3357,R,Left,Left,38,Laura,Right,Far,Far,1,0,0,"Right,Baseline",8,2,0,0,10,6,0,5,0,11,0,0,1,0,0,0,0,0,0,0, 
+7,1533,R,Left,Left,37,Other,Right,Far,Far,1,0,0,"Right,Baseline",8,2,0,0,10,6,0,4,2,12,1,0,3,0,0,0,0,0,0,0,Good defensive play and was able to easily score on the scale.
+7,195,B,Right,Right,34,Rhino,Right,Near,Near,1,0,1,"Right,Near Scale",1,4,0,3,8,1,0,6,1,8,0,0,0,0,0,1,1,0,0,0, 
+7,3847,B,Right,Right,35,Adam,Middle,Middle,Middle,1,1,0,"Middle,Switch",0,0,1,1,2,0,0,0,2,2,0,0,0,0,1,0,0,0,1,0,"Not that great with cubes, drunken sailor, played some ok defense "
+7,2168,B,Right,Right,36,Other,Left,Far,Far,1,0,0,"Left,Baseline",8,3,3,3,17,4,4,3,0,11,1,5,0,1,0,0,0,0,0,0,Can't handle defence well
+8,2481,R,Right,Left,44,BigE,Left,Far,Near,1,1,0,"Left,Near Switch",3,1,3,2,9,3,0,6,0,9,1,0,1,0,0,0,0,0,1,0,"Super fast auton, also looks pretty cool. Shifting allows for surprising pushing power"
+8,2363,R,Right,Left,45,Laura,Right,Near,Far,1,0,0,"Right,Baseline",4,1,0,0,5,5,0,0,0,5,0,0,0,1,0,0,0,0,2,0,"No cubes scored in two cube scale auto. Driving seemed hesitant and slow, as if they might have new drivers?"
+8,234,R,Right,Left,41,Parker,Middle,Middle,Middle,1,3,0,"Middle,Switch",2,2,0,0,4,0,0,4,0,4,1,0,1,0,0,1,0,1,0,0,3 cube auto
+8,2655,B,Left,Right,42,Rhino,Middle,Middle,Middle,1,2,0,"Middle,Switch",3,0,0,4,7,2,1,0,5,8,0,0,1,0,0,0,0,0,0,0,"Really nice car switch, exchange, auto bot"
+8,624,B,Left,Right,43,Other,Right,Far,Near,1,0,0,"Right,Baseline",3,0,2,1,6,3,0,5,0,8,1,0,3,0,0,1,0,1,0,0, 
+8,4028,B,Left,Right,40,Other,Left,Near,Far,1,0,2,"Left,Near Scale",1,4,0,0,5,0,0,4,0,4,1,0,0,0,0,1,0,1,0,0, 
+9,469,R,Right,Left,49,BigE,Middle,Middle,Middle,1,1,0,"Middle,Switch",7,1,0,0,8,5,2,0,0,7,1,0,0,0,0,0,0,0,0,0,"Good opportunistic defense and methodical, but slow"
+9,33,R,Right,Left,46,Laura,Right,Near,Far,1,0,2,"Right,Near Scale",0,0,2,2,4,0,0,4,1,5,0,0,1,0,0,1,0,0,0,0,Seemed slower at the scale than usual.
+9,494,R,Right,Left,47,Parker,Left,Far,Near,1,0,0,"Left,Baseline",3,2,0,0,5,0,1,6,0,7,1,0,3,0,0,1,0,1,0,0, 
+9,1806,B,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+9,708,B,Left,Right,50,Other,Middle,Middle,Middle,0,1,0,"Middle,Switch",9,2,0,0,11,9,1,0,0,10,0,1,0,0,0,0,0,0,0,0,Defended 33
+9,2451,B,Left,Right,48,Ryan,Right,Far,Near,1,0,0,"Right,Baseline",0,0,3,3,6,0,0,4,3,7,1,0,2,0,0,1,0,1,1,0,"Never released auto scale cube, let an opponent steal a portal cube"
+10,1710,R,Right,Left,55,BigE,Middle,Middle,Middle,1,1,0,"Middle,Switch",10,0,0,5,15,9,1,0,5,15,1,0,1,0,0,0,0,0,0,0,Fast third bot
+10,3538,R,Right,Left,56,Laura,Left,Far,Near,1,0,2,"Left,Far Scale",0,1,2,2,5,0,0,5,0,5,2,0,2,0,0,0,0,0,0,0,Seemed a little hesitant placing cubes on the scale
+10,1720,R,Right,Left,53,Parker,Middle,Middle,Middle,1,1,0,"Middle,Switch",9,1,0,4,14,9,0,0,4,13,2,0,1,0,0,0,0,0,1,0,Loose claw
+10,6800,B,Left,Right,54,Rhino,Right,Far,Near,1,0,0,"Right,Baseline",0,3,0,0,3,0,0,3,0,3,0,0,0,0,0,0,0,0,0,0, 
+10,2468,B,Left,Right,51,Other,Middle,Middle,Middle,0,0,0,"Middle,No Auto",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Lost Comms
+10,217,B,Left,Right,52,Other,Left,Near,Far,1,0,1,"Left,Near Scale",0,1,1,0,2,0,0,1,0,1,0,1,0,0,0,0,0,0,0,1, 
+11,302,R,Left,Left,58,BigE,Left,Near,Near,1,0,2,"Left,Near Scale",2,5,1,0,8,0,0,8,0,8,1,0,1,0,0,1,0,0,0,0, 
+11,3641,R,Left,Left,62,Laura,Right,Far,Far,1,0,0,"Right,Baseline",0,0,2,6,8,0,0,2,7,9,1,0,2,1,0,0,0,0,1,0,Attempted to climb but didn't. Confident driving
+11,4499,R,Left,Left,60,Parker,Middle,Middle,Middle,1,1,0,"Middle,Switch",8,1,0,0,9,4,4,0,0,8,0,1,0,0,0,0,0,0,1,0,Stalled 225 with defence gear close switch
+11,225,B,Right,Right,59,Rhino,Right,Near,Near,1,0,0,"Right,Baseline",0,0,0,3,3,0,0,3,1,4,0,0,1,0,0,0,0,0,0,0, 
+11,20,B,Right,Right,57,Other,Middle,Middle,Middle,0,1,0,"Middle,Switch",4,2,0,0,6,0,1,5,0,6,1,0,1,0,0,1,0,1,0,0, 
+11,245,B,Right,Right,61,Other,Left,Far,Far,1,0,1,"Left,Far Scale",4,2,0,1,7,3,2,2,0,7,1,0,1,0,0,1,0,1,0,0, 
+12,1533,R,Left,Left,67,BigE,Middle,Middle,Middle,1,3,0,"Middle,Switch",4,0,0,3,7,3,0,0,3,6,2,0,1,0,1,0,0,0,0,0,Wastes time
+12,67,R,Left,Left,68,Laura,Right,Far,Far,1,0,0,"Right,Baseline",0,5,1,0,6,0,0,6,0,6,1,0,1,0,0,1,1,0,1,0,2337 ran straight into them in auto. During teleop they dropped a cube and it fell into the robot
+12,5254,R,Left,Left,64,Parker,Left,Near,Near,1,0,1,"Left,Near Scale",5,3,0,0,8,0,0,5,0,5,1,2,0,0,0,0,0,0,0,0, 
+12,2337,B,Right,Right,66,Rhino,Left,Far,Far,1,0,0,"Left,Baseline",0,0,0,6,6,0,0,4,2,6,0,0,0,0,0,1,0,1,0,0, 
+12,340,B,Right,Right,63,Other,Right,Near,Near,1,0,0,"Right,Baseline",2,3,0,0,5,0,0,7,0,7,1,0,3,0,0,1,1,0,0,0, 
+12,4944,B,Right,Right,65,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",8,0,1,1,10,7,2,2,2,13,2,0,5,0,0,0,0,0,0,0, 
+13,4967,R,Left,Right,73,BigE,Right,Far,Near,1,1,0,"Right,Near Switch",3,1,0,0,4,3,1,0,0,4,0,0,0,0,1,0,0,0,2,0,"Super slow, almost missed 195 forks twice"
+13,868,R,Left,Right,74,Laura,Middle,Middle,Middle,1,2,0,"Middle,Switch",4,1,1,4,10,4,0,2,3,9,1,0,0,0,0,0,0,0,0,0, 
+13,195,R,Left,Right,70,Parker,Left,Near,Far,1,0,2,"Left,Near Scale",3,3,0,0,6,0,0,7,0,7,1,0,2,0,0,1,1,0,0,0,Great climb mech
+13,1706,B,Right,Left,72,Rhino,Left,Far,Near,1,0,2,"Left,Far Scale",0,0,1,1,2,0,1,3,1,5,1,0,4,0,0,0,0,0,0,0,Cool intake
+13,1218,B,Right,Left,71,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",3,1,0,0,4,0,2,0,0,2,0,2,0,0,0,1,0,1,0,0, 
+13,384,B,Right,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+14,2451,R,Left,Left,80,BigE,Right,Far,Far,1,0,0,"Right,Baseline",1,0,5,1,7,2,0,1,5,8,1,0,2,1,0,0,0,0,2,0,"Pneumatics popped out, couldn't climb"
+14,4587,R,Left,Left,77,Laura,Left,Near,Near,1,0,2,"Left,Near Scale",2,2,0,0,4,1,0,3,0,4,2,0,2,1,0,0,0,0,1,0,Elevator jammed second half of the match 
+14,2771,R,Left,Left,76,Parker,Middle,Middle,Middle,1,3,0,"Middle,Switch",0,2,0,1,3,0,0,5,0,5,0,0,2,0,0,0,0,0,0,0,Swerve drive
+14,359,B,Right,Right,78,Rhino,Right,Near,Near,1,0,0,"Right,Baseline",5,0,0,0,5,2,3,0,0,5,1,0,1,0,0,0,0,0,0,0, 
+14,2590,B,Right,Right,75,Other,Middle,Middle,Middle,0,2,0,"Middle,Switch",1,1,0,5,7,0,0,5,1,6,2,0,1,0,0,0,0,0,0,0, 
+14,624,B,Right,Right,79,Other,Left,Far,Far,1,0,1,"Left,Far Scale",0,3,0,2,5,0,0,4,0,4,2,0,1,0,0,0,0,0,0,0,"Climbed, but was touching a robot that was touching the ground"
+15,4028,R,Left,Right,84,BigE,Right,Far,Near,1,1,0,"Right,Near Switch",6,4,0,0,10,3,0,7,0,10,1,0,1,0,0,0,0,0,0,0,"Methodical placements, shot one off with power of eject"
+15,319,R,Left,Right,85,Laura,Left,Near,Far,1,0,1,"Left,Near Scale",0,1,3,1,5,0,0,5,0,5,1,0,1,0,0,1,1,0,1,0,Missed second cube in scale auto.
+15,708,R,Left,Right,81,Parker,Middle,Middle,Middle,1,1,0,"Middle,Switch",4,0,0,0,4,4,2,0,0,6,0,0,2,0,1,0,0,0,1,0,Points where aimlessly driving on near side
+15,1640,B,Right,Left,82,Rhino,Middle,Middle,Middle,1,2,0,"Middle,Switch",0,2,0,0,2,0,0,3,0,3,1,0,2,0,0,0,0,0,0,0, 
+15,1746,B,Right,Left,83,Other,Left,Far,Near,1,0,0,"Left,Baseline",5,0,0,0,5,3,0,3,0,6,1,0,2,0,0,0,0,0,0,0,Got on ramp but 118's intake was stuck so no climb
+15,118,B,Right,Left,86,Other,Right,Near,Far,1,0,2,"Right,Near Scale",0,1,1,0,2,0,0,2,0,2,0,0,0,1,0,0,0,0,0,1,Cube stuck in intake and lift wouldn't lift meaning they couldn't climb
+16,1720,R,Left,Right,90,BigE,Left,Near,Far,1,0,0,"Left,Baseline",5,0,1,0,6,6,0,0,0,6,1,0,1,0,0,0,0,0,1,0,Really slow
+16,3452,R,Left,Right,89,Laura,Middle,Middle,Middle,1,2,0,"Middle,Switch",0,4,0,1,5,0,0,5,0,5,3,0,3,0,0,1,0,1,0,0,Knocked a lot of cubes off the scale which cost their alliance ownership of the scale
+16,245,R,Left,Right,87,Other,Right,Far,Near,1,0,0,"Right,Baseline",0,3,1,2,6,0,0,4,2,6,3,0,3,0,0,1,0,1,0,0,Repeatedly dropped cubes
+16,2834,B,Right,Left,91,Rhino,Right,Near,Far,1,0,0,"Right,Baseline",1,3,0,1,5,0,1,4,0,5,1,0,1,0,0,0,0,0,2,0,"Ran into scale multiple times, autofailure"
+16,469,B,Right,Left,88,Adam,Middle,Middle,Middle,0,0,0,"Middle,No Auto",9,0,0,0,9,6,3,1,0,10,0,0,1,0,0,1,0,1,1,0,Having some issues not very fast 
+16,2791,B,Right,Left,92,Other,Left,Far,Near,1,0,2,"Left,Far Scale",0,0,3,2,5,0,0,5,0,5,3,0,3,0,0,1,0,1,0,0, 
+17,217,R,Left,Left,95,BigE,Left,Near,Near,1,0,2,"Left,Near Scale",2,0,4,1,7,0,0,6,0,6,1,0,0,0,0,0,0,1,0,0,Worked well with far contested 
+17,2655,R,Left,Left,97,Laura,Middle,Middle,Middle,1,2,0,"Middle,Switch",4,0,1,4,9,4,0,0,4,8,1,0,0,0,0,0,0,0,0,0,Human player took 3 cubes out of Force and put them in Levitate
+17,2826,R,Left,Left,98,Other,Right,Far,Far,1,0,0,"Right,Baseline",2,2,0,0,4,0,0,4,0,4,2,0,2,0,0,1,0,1,1,0,Bumped into partners and dropped a couple of cubes auto lost comms
+17,67,B,Right,Right,96,Rhino,Right,Near,Near,1,0,1,"Right,Near Scale",2,1,0,0,3,1,2,0,0,3,1,0,1,0,0,1,1,0,0,0, 
+17,20,B,Right,Right,94,Adam,Middle,Middle,Middle,1,1,0,"Middle,Switch",0,2,3,3,8,0,0,7,0,7,2,0,1,0,1,0,0,0,0,0,Recently fast on scale but knocked a couple cubes off 
+17,1102,B,Right,Right,93,Other,Left,Far,Far,1,0,0,"Left,Baseline",3,4,2,0,9,0,3,4,0,7,6,0,4,0,0,0,0,0,1,0, 
+18,2614,R,Right,Right,103,BigE,Left,Far,Far,1,0,0,"Left,Baseline",7,1,0,0,8,4,0,5,0,9,1,0,2,0,0,0,0,0,1,0,"Cannot effective pickup/hold 11 in cubes. (i lost count of exchange cubes, were effective at it though)"
+18,5406,R,Right,Right,99,Other,Right,Near,Near,0,0,2,"Right,Near Scale",2,0,2,0,4,0,0,2,3,5,3,0,4,0,0,1,1,1,0,0,Good offensive play and helped teamates
+18,340,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+18,494,B,Left,Left,100,Rhino,Middle,Middle,Middle,0,0,0,"Middle,No Auto",4,1,0,0,5,2,3,1,0,6,0,0,1,0,0,1,0,1,0,0, 
+18,865,B,Left,Left,102,Adam,Left,Near,Near,0,0,0,"Left,No Auto",0,0,1,1,2,0,0,2,0,2,1,0,1,0,0,1,0,1,2,0,Looked like some thing was wrong did not do well against defense 
+18,302,B,Left,Left,104,Other,Right,Far,Far,1,0,1,"Right,Far Scale",4,3,0,2,9,4,0,6,0,10,1,0,2,0,0,0,0,0,0,0, 
+19,1619,R,Right,Left,107,BigE,Left,Far,Near,1,0,1,"Left,Far Scale",0,5,0,1,6,0,3,5,0,8,3,0,5,0,0,1,0,0,0,0,"Intake causes penalties, cube placement is somewhat difficult "
+19,2363,R,Right,Left,110,Laura,Middle,Middle,Middle,1,1,0,"Middle,Switch",5,0,0,0,5,2,2,0,0,4,0,1,0,0,0,0,0,0,1,0,Tried to climb and didnt
+19,1024,R,Right,Left,108,Other,Right,Near,Far,1,0,1,"Right,Near Scale",5,3,2,2,12,3,0,4,0,7,4,1,0,0,0,0,0,0,0,0,Good offensive play and was easily able to reach and place cubes on the scale
+19,694,B,Left,Right,109,Rhino,Right,Far,Near,1,0,1,"Right,Far Scale",1,0,1,1,3,0,0,4,0,4,1,0,2,0,0,1,0,1,0,0, 
+19,5254,B,Left,Right,105,Adam,Left,Near,Far,1,2,0,"Left,Far Switch",4,2,0,0,6,0,0,5,0,5,2,0,1,0,0,1,0,1,0,0,"Pretty good on scale, drivers knew what to do "
+19,2468,B,Left,Right,106,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",4,0,1,6,11,4,0,0,6,10,1,0,0,0,0,0,0,0,1,0, 
+20,4265,R,Left,Right,115,BigE,Right,Far,Near,1,0,0,"Right,Baseline",0,2,0,0,2,0,0,2,0,2,5,0,5,0,0,0,0,0,3,0,"Bad cube handling, 5 drops"
+20,3707,R,Left,Right,116,Laura,Middle,Middle,Middle,1,1,0,"Middle,Switch",9,0,0,0,9,8,1,0,0,9,0,0,0,0,0,1,0,1,1,0,Missed second cube in two cube switch auto. Drivetrain problems towards the end of the match but they were working again by endgame
+20,2168,R,Left,Right,111,Parker,Not Sure,Far,Near,1,0,3,"Not Sure,Far Scale",0,1,3,1,5,0,0,5,0,5,2,0,2,0,0,1,0,1,0,0,3 cube auto scale
+20,234,B,Right,Left,113,Rhino,Middle,Middle,Middle,1,2,0,"Middle,Switch",2,1,0,0,3,0,0,2,0,2,3,0,2,0,0,1,0,1,0,0,Knocked a bunch of cubes off
+20,3847,B,Right,Left,114,Adam,Right,Near,Far,1,1,0,"Right,Far Switch",0,0,3,2,5,0,0,0,3,3,2,0,0,1,0,0,0,0,6,0,"Knocked cubes off of scale, hit robots trying to score on same team, did not do almost anything but drive around "
+20,1747,B,Right,Left,112,Other,Left,Far,Near,1,0,2,"Left,Far Scale",7,1,0,1,9,3,0,5,0,8,0,1,0,0,0,0,0,0,0,0, 
+21,829,R,Right,Left,119,BigE,Left,Far,Near,1,1,0,"Left,Near Switch",0,1,0,0,1,0,0,1,0,1,2,0,2,0,0,0,0,0,0,1,Bad depth perception
+21,3940,R,Right,Left,121,Laura,Middle,Middle,Middle,1,0,0,"Middle,Baseline",0,2,0,0,2,0,0,2,0,2,1,0,1,0,0,0,0,0,1,1,"Just hovered around the scale with elevator up during auto, never scored. Nearly tipped over and then sat under scale plate for the rest of the match."
+21,4499,R,Right,Left,118,Parker,Middle,Middle,Middle,1,1,0,"Middle,Switch",2,1,0,0,3,0,2,0,0,2,0,1,0,0,0,0,0,0,0,0,Teamate bdied and continued to play defense
+21,88,B,Left,Right,117,Rhino,Right,Far,Near,1,0,0,"Right,Baseline",0,2,0,1,3,0,0,3,0,3,2,0,2,0,0,0,0,0,0,0,Didn't really do .much
+21,1710,B,Left,Right,120,Adam,Middle,Middle,Middle,1,1,0,"Middle,Switch",10,2,0,3,15,9,3,0,3,15,0,0,0,0,0,0,0,0,0,0,Best exchange bot I have seen so far 
+21,2481,B,Left,Right,122,Other,Left,Near,Far,0,0,2,"Left,Near Scale",0,1,2,2,5,0,0,4,0,4,2,0,1,1,0,0,0,0,0,0, 
+22,6800,R,Right,Left,128,BigE,Left,Far,Near,1,0,0,"Left,Baseline",2,1,0,0,3,2,0,2,0,4,0,0,1,0,0,0,0,0,0,0,Defense while behind slightly the whole game
+22,1731,R,Right,Left,127,Laura,Right,Near,Far,1,0,2,"Right,Near Scale",4,1,0,0,5,2,1,0,0,3,4,0,2,1,0,0,0,0,1,0,"Can't pick up cubes, they fall right out of the claw. Shot a cube into the middle of the switch"
+22,1741,R,Right,Left,125,Parker,Middle,Middle,Middle,1,1,0,"Middle,Switch",2,0,3,1,6,0,0,5,1,6,2,0,2,1,0,0,0,0,0,0,Cube dropped inside itself
+22,33,B,Left,Right,124,Rhino,Right,Far,Near,1,0,0,"Right,Baseline",0,2,1,2,5,0,0,4,0,4,1,0,0,0,0,1,0,1,0,0,New intake is cool
+22,133,B,Left,Right,123,Other,Left,Near,Far,1,0,0,"Left,Baseline",2,3,0,0,5,0,1,6,0,7,0,0,2,0,0,1,0,1,0,0, 
+22,4944,B,Left,Right,126,Other,Middle,Middle,Middle,0,0,0,"Middle,No Auto",6,0,2,5,13,6,3,0,5,14,1,0,2,0,0,0,0,0,0,0, 
+23,3641,R,Left,Left,133,BigE,Middle,Middle,Middle,1,1,0,"Middle,Switch",0,0,1,3,4,0,0,1,2,3,5,0,4,0,0,1,0,1,2,0, 
+23,2013,R,Left,Left,134,Laura,Left,Near,Near,1,0,1,"Left,Near Scale",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,"Small movements entire match, didn't move and was blocking the scale where it got stuck"
+23,3357,R,Left,Left,130,Parker,Right,Far,Far,1,0,0,"Right,Baseline",5,4,0,0,9,5,0,5,0,10,1,0,2,0,0,0,0,0,0,0, 
+23,3538,B,Right,Right,131,Rhino,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,2,0,0,7,4,0,3,0,7,0,0,0,0,0,0,0,0,0,0, 
+23,2056,B,Right,Right,129,Adam,Right,Near,Near,1,0,0,"Right,Baseline",1,2,3,1,7,0,2,5,1,8,0,0,1,0,0,1,1,0,0,0,OP
+23,1806,B,Right,Right,132,Other,Left,Far,Far,1,0,2,"Left,Far Scale",0,0,1,5,6,0,0,0,3,3,3,0,0,0,1,0,0,0,0,0,Tossed 1 cube in center of opp. Switch (not on plate)
+24,3478,R,Right,Left,139,BigE,Middle,Middle,Middle,1,1,0,"Middle,Switch",0,5,0,1,6,0,0,5,0,5,2,0,1,0,1,0,0,0,0,0, 
+24,1746,R,Right,Left,140,Laura,Left,Far,Near,1,1,0,"Left,Near Switch",9,0,0,0,9,8,0,1,0,9,1,0,1,0,0,0,0,0,0,0, 
+24,624,R,Right,Left,136,Parker,Right,Near,Far,1,0,1,"Right,Near Scale",0,0,3,2,5,0,0,4,0,4,1,0,0,0,0,1,1,0,1,0, 
+24,5254,B,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+24,2834,B,Left,Right,138,Adam,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,1,0,2,8,6,0,0,1,7,0,1,0,0,0,0,0,0,0,0,"Average with cubes, played some good defense alot of the match "
+24,225,B,Left,Right,137,Other,Right,Far,Near,0,0,0,"Right,No Auto",0,0,3,4,7,3,3,6,3,15,1,0,9,0,0,0,0,1,0,0, 
+25,1218,R,Left,Left,146,BigE,Right,Far,Far,1,0,1,"Right,Far Scale",0,1,2,4,7,0,0,3,5,8,2,0,3,1,0,0,0,0,1,0,Climber would not go up all the way
+25,708,R,Left,Left,144,Laura,Middle,Middle,Middle,0,0,0,"Middle,No Auto",4,3,0,0,7,5,2,0,0,7,0,0,0,0,0,1,0,0,1,1,Robot was very loud
+25,245,R,Left,Left,142,Parker,Left,Near,Near,1,0,2,"Left,Near Scale",0,1,0,0,1,0,0,2,0,2,0,0,1,0,0,0,0,0,0,1,Claw messed up by partner
+25,1024,B,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+25,217,B,Right,Right,145,Adam,Left,Far,Far,1,0,2,"Left,Far Scale",9,4,0,0,13,3,5,5,0,13,0,0,0,0,0,1,0,1,0,0,"Did really good every where and played defense, almost gods "
+25,3847,B,Right,Right,143,Other,Middle,Middle,Middle,0,1,0,"Middle,Switch",0,0,0,6,6,0,1,0,4,5,1,0,0,0,0,0,0,0,0,0, 
+26,20,R,Right,Right,151,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",0,1,1,4,6,0,0,6,0,6,1,0,1,0,0,1,0,0,1,0,"Elevator tore upon climbing, quick fix"
+26,829,R,Right,Right,150,Laura,Right,Near,Near,1,0,0,"Right,Baseline",7,1,0,0,8,7,0,0,0,7,0,1,0,0,0,0,0,0,1,0,Ran into scale during scale auto
+26,4265,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+26,340,B,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+26,2451,B,Left,Left,149,Adam,Middle,Middle,Middle,1,2,0,"Middle,Switch",6,1,2,1,10,6,0,0,0,6,4,0,0,0,0,1,0,1,1,0,Did not do much other than feeding partners
+26,694,B,Left,Left,148,Other,Right,Far,Far,1,0,3,"Right,Far Scale",0,2,3,1,6,0,0,4,0,4,1,1,0,0,0,1,0,1,0,0,"Defended
+"
+27,88,R,Right,Left,156,BigE,Right,Near,Far,1,0,0,"Right,Baseline",3,1,1,0,5,3,0,2,0,5,2,0,2,0,0,0,0,0,1,0,Played defense as well
+27,2363,R,Right,Left,154,Parker,Not Sure,Near,Far,1,0,0,"Not Sure,Baseline",0,1,0,1,2,0,0,1,1,2,1,0,1,0,0,1,0,1,0,0,Bad against dfemse just keeps trying to brute force
+27,302,R,Right,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+27,195,B,Left,Right,157,Rhino,Right,Far,Near,1,0,1,"Right,Far Scale",3,4,0,0,7,0,0,8,0,8,0,0,1,0,0,1,1,0,0,0,The most elegant robot at this competition
+27,1640,B,Left,Right,155,Adam,Middle,Middle,Middle,1,2,0,"Middle,Switch",4,1,0,3,8,4,1,4,0,9,0,0,1,0,0,0,0,0,2,0,"Really slow, human player almost didn't hit the leavitate button "
+27,4944,B,Left,Right,153,Other,Left,Near,Far,0,0,0,"Left,No Auto",1,1,0,0,2,0,2,0,0,2,0,0,0,0,1,1,0,0,0,0,Almost exclusively
+28,2655,R,Right,Left,163,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",3,1,3,3,10,3,3,0,4,10,2,0,2,0,0,0,0,0,0,0,Good opportune defense
+28,359,R,Right,Left,164,Laura,Left,Far,Near,1,1,0,"Left,Near Switch",2,3,0,0,5,0,0,5,0,5,0,0,0,0,0,1,0,1,1,0, 
+28,133,R,Right,Left,159,Parker,Right,Near,Far,1,0,1,"Right,Near Scale",0,0,2,3,5,0,0,5,0,5,0,0,0,0,0,1,0,1,1,0, 
+28,4499,B,Left,Right,161,Rhino,Right,Far,Near,1,0,0,"Right,Baseline",7,1,0,0,8,7,1,0,0,8,0,0,0,0,0,0,0,0,0,0,"Decent at vault, bad at everything else"
+28,2468,B,Left,Right,162,Adam,Middle,Middle,Middle,1,1,0,"Middle,Switch",1,0,1,4,6,0,1,0,4,5,0,1,0,0,0,0,0,0,2,0,Not that good at far switch and that is all they did 
+28,494,B,Left,Right,160,Other,Left,Near,Far,1,0,1,"Left,Near Scale",0,1,4,3,8,0,0,7,0,7,1,0,0,0,0,1,0,0,0,0, 
+29,1747,R,Left,Left,170,BigE,Left,Near,Near,1,0,2,"Left,Near Scale",4,1,2,1,8,0,2,6,0,8,0,0,0,0,0,1,0,1,0,0, 
+29,1710,R,Left,Left,169,Laura,Right,Far,Far,0,0,0,"Right,No Auto",1,0,2,3,6,0,2,0,4,6,1,0,1,0,0,0,0,0,0,0, 
+29,3478,R,Left,Left,166,Parker,Middle,Middle,Middle,1,1,0,"Middle,Switch",3,1,0,1,5,1,1,2,2,6,2,0,3,0,0,1,0,1,1,0, 
+29,2056,B,Right,Right,168,Rhino,Left,Far,Far,1,0,2,"Left,Far Scale",1,0,3,3,7,1,0,4,2,7,0,0,0,0,0,1,1,0,0,0, 
+29,2771,B,Right,Right,165,Other,Middle,Middle,Middle,0,1,0,"Middle,Switch",2,3,0,0,5,0,0,4,0,4,2,0,1,0,1,1,0,0,0,0, 
+29,3452,B,Right,Right,167,Other,Right,Near,Near,1,0,0,"Right,Baseline",5,0,0,0,5,4,2,0,0,6,0,0,1,0,0,0,0,0,0,1, 
+30,4967,R,Left,Left,171,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",7,1,0,0,8,5,3,0,0,8,0,0,0,0,0,0,0,0,0,0,Showing improvement
+30,3940,R,Left,Left,174,Laura,Left,Near,Near,1,1,0,"Left,Near Switch",0,0,1,5,6,0,0,2,4,6,0,0,0,0,0,0,0,0,0,0, 
+30,1720,R,Left,Left,176,Parker,Right,Far,Far,0,0,0,"Right,No Auto",2,0,0,0,2,0,0,1,0,1,2,0,1,0,0,0,0,0,5,0, 
+30,2337,B,Right,Right,173,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",1,1,0,5,7,0,1,1,5,7,0,0,0,1,0,0,0,0,1,0,They ran the switch auto. Partners failed to climb with them
+30,2168,B,Right,Right,175,Other,Left,Far,Far,1,0,2,"Left,Far Scale",6,0,5,0,11,6,0,3,1,10,1,0,0,0,0,1,0,1,0,0, 
+30,3641,B,Right,Right,172,Other,Right,Near,Near,1,0,0,"Right,Baseline",4,2,0,0,6,3,3,0,0,6,1,0,1,0,0,0,0,0,1,0, 
+31,2013,R,Right,Right,181,BigE,Left,Far,Far,1,0,0,"Left,Baseline",1,0,0,4,5,1,0,0,4,5,4,0,4,0,0,0,0,0,1,0,Incompetent driving
+31,6800,R,Right,Right,180,Laura,Middle,Middle,Middle,1,2,0,"Middle,Switch",4,1,0,0,5,4,2,0,0,6,0,0,1,0,1,0,0,0,0,0, 
+31,4587,R,Right,Right,178,Parker,Right,Near,Near,1,1,0,"Right,Near Switch",1,3,0,1,5,0,1,5,0,6,1,0,2,0,0,1,1,0,1,0, 
+31,1706,B,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+31,2614,B,Left,Left,179,Adam,Middle,Middle,Middle,1,1,0,"Middle,Switch",3,4,2,0,9,3,0,3,0,6,6,0,3,0,1,0,0,0,0,0,Knocked way too many cubes off of the scale tying to put cubes up
+31,319,B,Left,Left,177,Other,Right,Far,Far,1,0,0,"Right,Baseline",5,2,0,0,7,1,2,4,0,7,0,0,0,0,0,1,1,0,0,0, 
+32,33,R,Left,Left,187,BigE,Middle,Middle,Middle,1,0,0,"Middle,Baseline",1,1,2,2,6,0,0,6,0,6,1,0,1,0,0,1,0,1,0,0,"Slowerish, likely to speed up"
+32,2481,R,Left,Left,184,Laura,Left,Near,Near,1,0,2,"Left,Near Scale",4,3,0,3,10,2,4,0,3,9,0,1,0,0,0,0,0,0,1,0,Missed second cube in two cube scale auto
+32,384,R,Left,Left,183,Parker,Right,Far,Far,1,0,0,"Right,Baseline",2,0,0,2,4,2,0,3,0,5,0,0,1,0,0,1,0,1,0,0, 
+32,2791,B,Right,Right,185,Rhino,Middle,Middle,Middle,1,2,0,"Middle,Switch",0,0,1,2,3,0,0,2,0,2,1,0,0,0,0,0,0,0,0,0, 
+32,3357,B,Right,Right,186,Adam,Right,Near,Near,1,0,0,"Right,Baseline",6,4,0,0,10,3,2,5,0,10,0,0,0,0,0,0,0,0,0,0,"Good on scale when in our favor and early game, seemed to not know what to do when lost scale "
+32,3538,B,Right,Right,182,Other,Left,Far,Far,1,0,1,"Left,Far Scale",0,0,0,5,5,0,0,0,4,4,1,0,0,0,0,1,0,1,1,0, 
+33,865,R,Right,Left,193,BigE,Right,Near,Far,1,0,2,"Right,Near Scale",4,3,0,0,7,1,0,5,0,6,1,0,0,0,1,0,0,0,0,0, 
+33,1806,R,Right,Left,189,Laura,Left,Far,Near,1,0,2,"Left,Far Scale",4,4,0,0,8,5,3,0,0,8,0,0,0,0,0,0,0,0,0,0,"Pushed easily, doesn't play good defense"
+33,2590,R,Right,Left,190,Parker,Middle,Middle,Middle,1,2,0,"Middle,Switch",1,0,1,4,6,0,0,6,0,6,0,0,0,0,0,1,1,0,0,0, 
+33,2826,B,Left,Right,192,Rhino,Right,Far,Near,1,0,2,"Right,Far Scale",2,2,0,0,4,0,0,3,0,3,2,0,1,0,0,0,0,0,0,0, 
+33,4028,B,Left,Right,188,Adam,Left,Near,Far,1,1,0,"Left,Far Switch",0,2,0,2,4,0,0,4,0,4,0,0,0,0,0,1,0,1,2,0,Very slow very little cubes scored
+33,1741,B,Left,Right,191,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",7,1,0,0,8,6,0,2,0,8,1,0,1,0,0,1,0,1,0,0, 
+34,469,R,Left,Right,200,BigE,Middle,Middle,Middle,1,0,0,"Middle,Baseline",7,0,0,0,7,2,5,0,0,7,0,0,0,0,0,0,0,0,1,0,Great defense
+34,1102,R,Left,Right,199,Laura,Left,Near,Far,1,0,0,"Left,Baseline",3,1,0,0,4,1,1,3,0,5,1,0,2,0,0,1,0,1,0,0, 
+34,868,R,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+34,234,B,Right,Left,196,Rhino,Middle,Middle,Middle,1,3,0,"Middle,Switch",1,0,0,4,5,0,0,5,0,5,0,0,0,0,0,1,0,1,0,0,Nice job with portal to scale
+34,225,B,Right,Left,198,Adam,Left,Far,Near,1,0,3,"Left,Far Scale",0,0,6,3,9,2,0,2,6,10,0,0,1,0,0,0,0,0,1,0,Hit teams in opposing null zones pretty often
+34,1731,B,Right,Left,197,Other,Right,Near,Far,1,1,0,"Right,Far Switch",4,1,0,0,5,5,0,0,0,5,2,0,2,0,0,1,0,1,1,0, 
+35,67,R,Left,Left,206,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,1,0,2,8,6,0,2,0,8,1,0,1,0,0,1,1,0,0,0, 
+35,118,R,Left,Left,203,Laura,Right,Far,Far,1,0,0,"Right,Baseline",0,0,1,1,2,0,0,3,0,3,0,0,1,0,0,0,0,0,0,1,"A fork came down in the middle of the match, they were disabled"
+35,1619,R,Left,Left,202,Other,Left,Near,Near,1,0,3,"Left,Near Scale",0,3,0,0,3,0,1,4,0,5,2,0,4,0,1,0,0,0,0,0,Good auto
+35,3707,B,Right,Right,204,Rhino,Left,Far,Far,0,0,0,"Left,No Auto",0,0,2,1,3,0,0,3,0,3,0,0,0,0,0,1,0,1,0,0, 
+35,5406,B,Right,Right,205,Adam,Right,Near,Near,1,0,0,"Right,Baseline",1,5,0,0,6,0,0,5,0,5,0,1,0,0,0,0,0,0,1,0,"Really good defense, alright at scale, died with like 40 seconds left "
+35,1533,B,Right,Right,201,Other,Middle,Middle,Middle,1,3,0,"Middle,Switch",6,0,0,1,7,5,1,1,0,7,1,0,1,1,0,0,0,0,0,0, 
+36,2771,R,Right,Left,212,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",3,4,0,0,7,2,0,5,0,7,0,0,0,0,0,1,0,1,0,0,Quick climb lineup
+36,494,R,Right,Left,211,Laura,Right,Near,Far,1,0,1,"Right,Near Scale",2,0,1,1,4,1,0,3,0,4,1,0,1,0,0,1,0,1,0,0,Has some difficulty placing cubes on unfavorable scale
+36,4265,R,Right,Left,207,Parker,Left,Far,Near,0,0,2,"Left,Far Scale",3,1,0,0,4,1,0,2,0,3,0,1,0,0,0,0,0,0,1,0,3 auto scale
+36,195,B,Left,Right,208,Rhino,Right,Far,Near,1,0,3,"Right,Far Scale",4,2,0,0,6,2,0,6,0,8,0,0,2,0,0,1,1,0,0,0, 
+36,245,B,Left,Right,210,Adam,Middle,Middle,Middle,1,1,0,"Middle,Switch",1,2,0,5,8,1,0,5,0,6,4,0,2,0,0,0,0,0,1,0,Knocked off just as many cubes as they scored 
+36,6800,B,Left,Right,209,Other,Left,Near,Far,1,0,0,"Left,Baseline",5,2,0,0,7,5,2,0,0,7,0,0,0,0,1,1,0,0,0,0, 
+37,5254,R,Left,Right,215,BigE,Right,Far,Near,1,2,0,"Right,Near Switch",1,2,1,1,5,0,0,4,0,4,1,0,0,0,0,1,0,0,0,0, 
+37,319,R,Left,Right,218,Laura,Middle,Middle,Middle,1,2,0,"Middle,Switch",7,0,0,0,7,7,1,0,0,8,0,0,1,0,0,0,0,0,1,0,Broke claw on the rung when trying to climb and fell off the platform
+37,4587,R,Left,Right,213,Parker,Left,Near,Far,1,0,1,"Left,Near Scale",0,0,4,2,6,0,0,6,1,7,1,0,2,0,0,0,0,0,1,0, 
+37,384,B,Right,Left,214,Rhino,Left,Far,Near,1,0,1,"Left,Far Scale",0,0,2,0,2,0,0,2,0,2,1,0,1,0,0,1,0,0,0,0, 
+37,2655,B,Right,Left,216,Ryan,Middle,Middle,Middle,1,3,0,"Middle,Switch",4,0,1,2,7,3,1,0,3,7,0,0,0,0,0,0,0,0,0,0,"Decent portal defense, sniped a cube from opposing null zone"
+37,3641,B,Right,Left,217,Other,Right,Near,Far,1,1,0,"Right,Far Switch",0,4,0,2,6,0,0,4,0,4,2,0,0,1,0,0,0,0,1,0, 
+38,359,R,Left,Left,220,BigE,Middle,Middle,Middle,1,1,0,"Middle,Switch",6,0,0,0,6,4,2,0,0,6,1,0,1,1,0,0,0,0,1,0,"Fixed climber, now they're just bad at it"
+38,20,R,Left,Left,223,Laura,Left,Near,Near,1,0,0,"Left,Baseline",0,1,2,6,9,1,0,3,5,9,0,0,0,0,0,0,0,0,1,0,Missed both cubes in two cube scale auto
+38,3357,R,Left,Left,219,Parker,Right,Far,Far,1,0,0,"Right,Baseline",2,4,0,0,6,0,0,7,0,7,0,0,1,1,0,0,0,0,0,0, 
+38,865,B,Right,Right,222,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",5,3,0,1,9,1,3,2,0,6,0,3,0,0,0,0,0,0,0,0, 
+38,1024,B,Right,Right,221,Ryan,Right,Near,Near,1,0,0,"Right,Baseline",0,1,1,1,3,0,1,3,0,4,0,0,1,1,0,0,0,0,0,0,Did not do a whole lot the entire match 
+38,1720,B,Right,Right,224,Other,Left,Far,Far,1,0,0,"Left,Baseline",2,0,1,0,3,1,0,1,0,2,0,1,0,1,0,0,0,0,1,0, 
+39,868,R,Right,Left,228,BigE,Right,Near,Far,1,0,1,"Right,Near Scale",2,5,0,0,7,0,0,6,0,6,3,0,2,0,0,1,0,1,0,0, 
+39,3847,R,Right,Left,229,Laura,Middle,Middle,Middle,1,1,0,"Middle,Switch",5,1,0,0,6,5,2,0,0,7,1,0,2,0,0,0,0,0,0,0,Drove around instead of filling vault which was needed
+39,3538,R,Right,Left,225,Parker,Left,Far,Near,1,0,1,"Left,Far Scale",0,0,2,1,3,0,0,2,0,2,2,0,1,0,0,1,0,1,0,0, 
+39,2590,B,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+39,88,B,Left,Right,226,Adam,Middle,Middle,Middle,1,1,0,"Middle,Switch",0,1,1,1,3,0,0,2,0,2,3,0,2,0,0,0,0,0,0,0,Could not place cubes on the scale with out dropping it off the scale 
+39,469,B,Left,Right,227,Other,Left,Near,Far,1,0,0,"Left,Baseline",7,0,0,0,7,6,2,0,0,8,2,0,3,0,1,1,0,1,0,0,Good defensive play by scoring cubes through the exchange for powerups
+40,340,R,Right,Left,235,BigE,Right,Near,Far,1,0,1,"Right,Near Scale",2,2,0,0,4,2,0,3,0,5,3,0,4,1,0,0,0,0,1,0, 
+40,2168,R,Right,Left,230,Laura,Left,Far,Near,1,0,2,"Left,Far Scale",0,0,3,0,3,0,0,3,0,3,0,0,0,0,0,0,0,0,0,1,A part fell out of the robot and they lost comms for the rest of the match
+40,1218,R,Right,Left,231,Parker,Right,Near,Far,1,0,2,"Right,Near Scale",4,2,0,0,6,3,3,1,0,7,0,0,1,0,0,1,0,0,0,0, 
+40,118,B,Left,Right,232,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",0,0,3,1,4,0,0,3,2,5,1,0,2,0,0,0,0,0,0,0,Looked a little better than before
+40,1102,B,Left,Right,234,Adam,Left,Near,Far,1,0,0,"Left,Baseline",4,0,3,7,14,4,1,0,6,11,3,0,0,0,0,0,0,0,0,0,Could not decide what they wanted to do for most of the match 
+40,33,B,Left,Right,233,Other,Right,Far,Near,1,0,2,"Right,Far Scale",1,3,0,1,5,0,0,6,0,6,1,0,2,0,0,0,0,0,0,0,Easily scored on the scale and had an effective way of working and moving with the other robots
+41,3707,R,Left,Left,239,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",9,1,0,1,11,6,5,0,0,11,0,0,0,0,0,0,0,0,0,0, 
+41,624,R,Left,Left,240,Laura,Left,Near,Near,1,0,2,"Left,Near Scale",3,3,0,0,6,2,0,4,0,6,0,0,0,0,1,0,0,0,1,0, 
+41,2056,R,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+41,2468,B,Right,Right,236,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",5,0,0,4,9,0,4,0,4,8,1,0,0,0,0,0,0,0,0,0, 
+41,1731,B,Right,Right,238,Adam,Right,Near,Near,1,0,0,"Right,Baseline",3,1,0,0,4,3,0,0,0,3,3,0,2,1,0,0,0,0,0,0,Could not score any where but the exchange and could barley do that 
+41,1706,B,Right,Right,237,Other,Right,Near,Near,1,0,2,"Right,Near Scale",0,1,0,2,3,0,2,4,0,6,2,0,5,0,0,1,0,0,0,0,Fought with some of the opposing robots (not hard simply a few purposeful bumps)
+42,4028,R,Left,Left,243,BigE,Left,Near,Near,1,0,2,"Left,Near Scale",0,1,1,1,3,0,0,4,0,4,0,0,1,0,0,1,0,0,0,0, 
+42,1710,R,Left,Left,244,Laura,Middle,Middle,Middle,1,1,0,"Middle,Switch",6,0,0,3,9,5,1,0,3,9,1,0,1,0,0,0,0,0,0,0, 
+42,694,R,Left,Left,241,Parker,Right,Far,Far,1,2,0,"Right,Far Switch",0,2,0,3,5,4,0,2,0,6,0,0,1,0,0,0,0,0,0,0, 
+42,67,B,Right,Right,242,Rhino,Left,Far,Far,1,0,1,"Left,Far Scale",0,1,2,1,4,0,0,3,0,3,2,0,1,0,0,1,1,0,0,0, 
+42,133,B,Right,Right,246,Adam,Middle,Middle,Middle,1,3,0,"Middle,Switch",1,4,0,1,6,2,0,2,0,4,1,1,0,0,0,0,0,0,1,0,Could not handle defense and was really slow with cubes 
+42,2834,B,Right,Right,245,Other,Right,Near,Near,1,0,0,"Right,Baseline",6,1,0,1,8,4,2,0,2,8,0,0,0,0,1,0,0,1,1,0,Couldn't decide what to do during the match
+43,829,R,Right,Left,251,Other,Right,Near,Far,1,0,0,"Right,Baseline",1,0,0,3,4,0,0,4,0,4,0,0,0,0,0,1,0,0,1,0, 
+43,708,R,Right,Left,248,Laura,Middle,Middle,Middle,1,1,0,"Middle,Switch",9,0,2,0,11,4,5,0,2,11,0,0,0,0,0,0,0,0,0,0,"Still incredibly loud, also not very fast"
+43,2013,R,Right,Left,249,Parker,Right,Near,Far,1,0,0,"Right,Baseline",1,1,0,0,2,0,1,2,0,3,0,0,1,1,0,0,0,0,1,0, 
+43,4944,B,Left,Right,250,Ryan,Right,Far,Near,1,0,0,"Right,Baseline",0,0,3,3,6,0,0,0,7,7,0,0,1,0,0,0,0,0,0,0,Was hanging out in opponent platform zone in end game
+43,2791,B,Left,Right,252,Other,Left,Near,Far,1,0,1,"Left,Near Scale",0,2,2,3,7,1,0,7,0,8,1,0,2,0,0,0,0,0,0,1,They were able to efficiently move cubes to the scale and had overalls good offensive play however they did fall over
+43,4967,B,Left,Right,247,Other,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,3,0,0,8,5,2,0,0,7,0,1,0,0,0,1,0,0,0,0,Feeding. Partner fell
+44,1806,R,Right,Left,258,BigE,Right,Near,Far,0,1,0,"Right,Far Switch",2,1,0,0,3,2,1,0,0,3,0,0,0,1,0,0,0,0,0,0, 
+44,2826,R,Right,Left,255,Laura,Middle,Middle,Middle,1,1,0,"Middle,Switch",3,4,0,0,7,2,1,5,0,8,0,0,1,0,0,0,0,0,0,0,Lost comms during endgame
+44,225,R,Right,Left,253,Parker,Right,Near,Far,1,0,2,"Right,Near Scale",1,1,3,1,6,1,0,3,4,8,3,0,5,1,0,0,0,0,1,0,Need wall to intake berry tippy
+44,2363,B,Left,Right,257,Rhino,Left,Near,Far,1,0,0,"Left,Baseline",1,1,0,0,2,1,0,1,0,2,0,0,0,0,0,0,0,0,0,0, 
+44,1533,B,Left,Right,254,Other,Middle,Middle,Middle,1,2,0,"Middle,Switch",3,0,0,3,6,1,0,0,4,5,2,0,1,0,0,1,1,1,0,0,Let opponents just push them away front he switch and game cubes
+44,1640,B,Left,Right,256,Other,Right,Far,Near,1,0,1,"Right,Far Scale",0,2,2,3,7,0,0,5,0,5,1,1,0,0,1,1,0,0,2,0, 
+45,5406,R,Right,Right,263,BigE,Right,Near,Near,1,0,2,"Right,Near Scale",0,0,2,1,3,0,0,4,0,4,1,0,2,0,0,1,0,1,0,0, 
+45,234,R,Right,Right,261,Laura,Middle,Middle,Middle,1,2,0,"Middle,Switch",1,2,0,2,5,0,0,5,0,5,2,0,2,0,0,0,0,0,0,0, 
+45,2451,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+45,3452,B,Left,Left,260,Rhino,Right,Far,Far,1,0,0,"Right,Baseline",0,1,0,0,1,0,0,2,0,2,0,0,1,0,0,1,0,1,0,0,Really didn't do much
+45,1741,B,Left,Left,262,Adam,Middle,Middle,Middle,1,1,0,"Middle,Switch",8,2,0,0,10,5,2,2,0,9,2,0,1,0,0,0,0,0,2,0,Really slow with cubes 
+45,2337,B,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+46,302,R,Left,Right,269,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",2,1,1,1,5,0,0,6,0,6,0,0,1,0,0,1,0,1,0,0, 
+46,1747,R,Left,Right,270,Laura,Left,Near,Far,1,0,2,"Left,Near Scale",3,3,0,0,6,3,1,1,0,5,0,1,0,1,0,0,0,0,0,0, 
+46,1746,R,Left,Right,265,Parker,Right,Far,Near,1,1,0,"Right,Near Switch",0,1,1,2,4,0,0,3,0,3,1,0,0,0,0,0,0,0,1,0, 
+46,1619,B,Right,Left,267,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",2,2,0,0,4,0,0,7,0,7,1,0,4,0,0,1,1,0,0,0, 
+46,2481,B,Right,Left,268,Adam,Left,Far,Near,1,0,1,"Left,Far Scale",0,1,0,5,6,0,0,1,5,6,1,0,1,0,1,0,0,0,0,0,Reallyngod at far switch and can do some scale if needed 
+46,217,B,Right,Left,266,Other,Right,Near,Far,1,0,0,"Right,Baseline",8,0,1,1,10,8,0,3,0,11,2,0,3,0,0,0,0,0,1,0, 
+47,3478,R,Right,Right,276,BigE,Right,Near,Near,1,0,1,"Right,Near Scale",0,2,1,2,5,0,0,5,0,5,2,0,2,0,0,1,0,0,0,0, 
+47,469,R,Right,Right,275,Laura,Left,Far,Far,1,0,0,"Left,Baseline",5,4,0,0,9,3,2,5,0,10,0,0,1,0,0,0,0,0,0,0, 
+47,4499,R,Right,Right,271,Ryan,Middle,Middle,Middle,0,2,0,"Middle,Switch",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,"Intake appeared to not work, played fairly weak defense for the match"
+47,3940,B,Left,Left,272,Rhino,Middle,Middle,Middle,1,0,0,"Middle,Baseline",0,1,0,0,1,6,2,0,0,8,0,0,7,0,0,0,0,0,0,0, 
+47,2614,B,Left,Left,273,Adam,Left,Near,Near,1,0,0,"Left,Baseline",0,0,1,3,4,0,0,3,3,6,0,0,2,0,0,0,0,0,0,0,Does not do well with defense at all
+47,67,B,Left,Left,274,Other,Right,Far,Far,1,0,1,"Right,Far Scale",4,4,0,0,8,0,0,8,0,8,1,0,1,0,0,1,0,0,2,0, 
+48,1720,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+48,1731,R,Right,Right,282,Laura,Right,Near,Near,1,0,0,"Right,Baseline",5,1,0,0,6,6,0,0,0,6,1,0,1,0,0,0,0,0,1,0,Has to chase cubes a bit to grab them. Missed cube in single cube scale auto
+48,340,R,Right,Right,279,Ryan,Left,Far,Far,1,0,2,"Left,Far Scale",0,0,1,3,4,0,0,2,1,3,2,0,1,0,0,1,0,0,1,0,"Very indecisive driving, bad elevator control"
+48,2771,B,Left,Left,281,Rhino,Right,Far,Far,1,0,0,"Right,Baseline",4,2,0,0,6,2,0,3,0,5,0,1,0,0,0,0,0,0,0,0, 
+48,1218,B,Left,Left,280,Adam,Middle,Middle,Middle,1,1,0,"Middle,Switch",4,2,0,0,6,3,1,0,0,4,2,0,0,0,0,1,0,1,3,0,Tried to play defense but was bad 
+48,4028,B,Left,Left,278,Other,Left,Near,Near,1,0,1,"Left,Near Scale",1,0,3,0,4,0,0,4,0,4,2,0,2,0,0,1,0,1,1,0, 
+49,3847,R,Left,Left,284,BigE,Middle,Middle,Middle,1,1,0,"Middle,Switch",1,0,3,3,7,0,1,0,6,7,0,0,0,0,0,1,0,1,0,0, 
+49,865,R,Left,Left,283,Laura,Left,Near,Near,1,0,1,"Left,Near Scale",9,0,0,0,9,6,4,0,0,10,0,0,1,0,0,0,0,0,1,1,"Missed last cube in scale augi, tipped over right before end game"
+49,225,R,Left,Left,285,Ryan,Right,Far,Far,1,0,0,"Right,Baseline",0,2,1,0,3,1,0,3,0,4,0,0,1,0,0,1,0,1,0,0,Didn't score much because their weren't many cubes available after they took scale
+49,4967,B,Right,Right,286,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",3,2,0,0,5,3,3,0,0,6,0,0,1,1,0,0,0,0,1,0, 
+49,494,B,Right,Right,287,Adam,Left,Far,Far,1,0,0,"Left,Baseline",5,1,1,0,7,0,5,1,0,6,2,0,1,0,0,1,0,0,1,1,They were dead for a lot of the match but when they were working they were very efficient and fast
+49,1710,B,Right,Right,288,Other,Right,Near,Near,1,0,0,"Right,Baseline",0,0,1,2,3,0,0,1,3,4,1,0,2,0,0,0,0,0,0,0,Accidentally tipped another robot
+50,708,R,Right,Right,292,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,2,0,0,7,4,1,0,0,5,2,0,0,0,0,0,0,0,1,0, 
+50,359,R,Right,Right,289,Parker,Left,Far,Far,1,0,0,"Left,Baseline",1,3,0,0,4,0,0,5,0,5,1,0,2,0,0,1,0,0,1,0,Bad driving
+50,1640,R,Right,Right,291,Ryan,Right,Near,Near,1,0,1,"Right,Near Scale",2,2,3,2,9,3,0,5,7,15,1,0,7,0,0,0,0,0,1,0,"Missed first auto cube, good driving"
+50,3452,B,Left,Left,293,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",2,0,1,0,3,2,1,0,1,4,0,0,1,0,0,1,0,1,0,0, 
+50,3357,B,Left,Left,294,Adam,Right,Far,Far,1,0,1,"Right,Far Scale",5,4,1,0,10,4,0,4,0,8,3,0,1,0,0,0,0,0,2,0,Could not bring the scale back to their side because of this mechanical limitations and got a cube stuck in their lift 
+50,5254,B,Left,Left,290,Other,Left,Near,Near,1,0,1,"Left,Near Scale",0,0,1,2,3,0,0,3,0,3,1,0,1,0,0,1,0,1,0,0, 
+51,5406,R,Left,Left,299,BigE,Right,Far,Far,1,0,0,"Right,Baseline",1,2,1,1,5,0,0,5,1,6,1,0,2,0,0,1,1,0,0,0, 
+51,2834,R,Left,Left,296,Laura,Left,Near,Near,1,0,0,"Left,Baseline",0,0,3,0,3,0,0,3,0,3,1,0,1,0,0,0,0,0,1,0,Missed scale auto
+51,2655,R,Left,Left,295,Ryan,Middle,Middle,Middle,1,3,0,"Middle,Switch",8,2,0,0,10,10,0,0,0,10,0,0,0,0,1,0,0,0,0,0,"Good portal defense, sniped multiple portal cubes"
+51,1806,B,Right,Right,297,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",4,0,0,0,4,4,1,0,0,5,0,0,1,0,1,1,0,0,0,0, 
+51,829,B,Right,Right,298,Adam,Left,Far,Far,1,0,0,"Left,Baseline",0,1,0,1,2,0,0,2,0,2,1,0,1,0,0,0,0,0,5,0,"Drunken sailor, did almost nothing the whole match, bad against defense "
+51,195,B,Right,Right,300,Other,Right,Near,Near,1,0,3,"Right,Near Scale",4,1,2,0,7,0,0,7,0,7,0,0,0,0,0,1,1,0,0,0, 
+52,2590,R,Left,Right,301,BigE,Right,Far,Near,1,1,0,"Right,Near Switch",8,2,0,0,10,8,1,1,0,10,0,0,0,0,0,0,0,0,0,0, 
+52,217,R,Left,Right,304,Laura,Left,Near,Far,1,0,2,"Left,Near Scale",0,0,3,2,5,0,0,5,0,5,3,0,3,0,0,0,0,0,0,0, 
+52,20,R,Left,Right,302,Parker,Middle,Middle,Middle,1,2,0,"Middle,Switch",2,2,0,1,5,0,0,4,2,6,1,0,2,0,0,0,0,0,1,0,Tell from climb
+52,234,B,Right,Left,305,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",4,2,0,0,6,0,1,4,0,5,0,1,0,0,0,0,0,0,0,0, 
+52,2013,B,Right,Left,306,Adam,Left,Far,Near,1,0,1,"Left,Far Scale",3,0,0,0,3,3,0,0,0,3,0,0,0,1,0,0,0,0,6,0,Did nothing but push cubes into the exchange after getting stuck on scale in auto 
+52,3940,B,Right,Left,303,Other,Right,Near,Far,1,1,0,"Right,Far Switch",1,1,0,1,3,0,1,1,1,3,2,0,2,0,0,0,0,0,0,0, 
+53,245,R,Left,Left,307,BigE,Left,Near,Near,1,0,1,"Left,Near Scale",8,2,1,0,11,8,3,0,0,11,0,0,0,0,0,1,0,1,0,0, 
+53,694,R,Left,Left,312,Laura,Right,Far,Far,1,0,1,"Right,Far Scale",0,4,0,3,7,0,1,7,0,8,0,0,1,0,0,0,0,0,0,0,Very fast scoring on the scale
+53,3478,R,Left,Left,308,Parker,Right,Far,Far,1,0,1,"Right,Far Scale",0,3,0,3,6,1,0,7,0,8,2,0,4,0,0,0,0,0,0,0, 
+53,2168,B,Right,Right,310,Rhino,Left,Far,Far,1,0,2,"Left,Far Scale",1,1,3,2,7,1,0,5,0,6,2,0,1,0,0,0,0,0,0,0, 
+53,868,B,Right,Right,311,Adam,Right,Near,Near,1,0,0,"Right,Baseline",0,3,1,6,10,0,0,4,5,9,3,0,2,1,0,0,0,0,2,0,Don't really stand out
+53,624,B,Right,Right,309,Other,Right,Near,Near,0,1,0,"Right,Near Switch",9,0,0,0,9,6,3,1,0,10,1,0,2,0,0,1,1,1,0,0,Played good defense
+54,1024,R,Right,Right,316,BigE,Left,Far,Far,1,0,0,"Left,Baseline",2,0,3,1,6,3,0,3,1,7,1,0,2,0,0,0,0,0,0,0, 
+54,118,R,Right,Right,315,Laura,Right,Near,Near,1,0,2,"Right,Near Scale",4,3,0,0,7,0,0,6,0,6,1,0,0,0,0,1,1,0,1,0,Missed third cube in three cube scale auto
+54,6800,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+54,384,B,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+54,302,B,Left,Left,313,Adam,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,3,0,0,8,2,0,6,0,8,0,0,0,0,1,0,0,0,0,0,Pretty good 
+54,2056,B,Left,Left,314,Other,Right,Far,Far,1,0,3,"Right,Far Scale",0,0,2,2,4,0,0,3,0,3,4,0,3,0,0,1,1,1,0,0,This team worked well in both offense and defense
+55,2468,R,Right,Left,320,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",4,0,1,3,8,2,0,0,5,7,1,0,0,0,0,0,0,0,0,0, 
+55,2614,R,Right,Left,319,Laura,Right,Near,Far,1,0,1,"Right,Near Scale",2,4,0,0,6,1,0,5,0,6,0,0,0,0,0,1,0,1,0,0, 
+55,2337,R,Right,Left,317,Parker,Right,Near,Far,1,0,1,"Right,Near Scale",0,0,1,4,5,0,1,4,0,5,0,0,0,0,0,1,0,1,0,0, 
+55,2826,B,Left,Right,318,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",5,0,0,0,5,2,2,1,0,5,0,0,0,0,0,0,0,0,0,1,Died for last minute and a half of mstch
+55,1747,B,Left,Right,322,Adam,Right,Far,Near,1,0,0,"Right,Baseline",0,1,4,3,8,0,0,8,0,8,3,0,3,1,0,0,0,0,2,0,Kept knocking cubes off of the scale and was not plaing them in smart positions 
+55,2481,B,Left,Right,321,Other,Left,Near,Far,1,1,0,"Left,Far Switch",2,5,0,1,8,1,2,4,0,7,1,0,0,0,0,0,0,0,0,0,Tried to be pretty individual instead of working with team
+56,4944,R,Left,Left,326,BigE,Right,Far,Far,1,0,0,"Right,Baseline",7,0,0,0,7,5,3,0,0,8,1,0,2,0,0,0,0,0,0,0, 
+56,2451,R,Left,Left,325,Laura,Middle,Middle,Middle,1,0,0,"Middle,Baseline",3,0,0,0,3,2,0,0,0,2,0,1,0,0,1,0,0,0,1,0,Can hardly pick up cubes
+56,1619,R,Left,Left,323,Parker,Left,Near,Near,1,0,3,"Left,Near Scale",0,3,2,1,6,0,1,7,0,8,0,0,2,0,0,1,1,0,0,0, 
+56,1102,B,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+56,3538,B,Right,Right,327,Adam,Left,Far,Far,1,0,2,"Left,Far Scale",0,0,2,2,4,0,0,3,0,3,1,0,0,0,0,1,0,0,1,0,"Looked good, took a long time lining up to place cubes on the scale, got out of defense well but looked like it got in kimbers head a little bit, dead zones on kimbers joystick may need to be adjusted because it looked like he did not mean to back away from the scale and it was a dead zone issue "
+56,319,B,Right,Right,324,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",0,3,0,1,4,1,0,0,0,1,1,2,0,0,0,0,0,0,0,0,Worked well to put cubes on the scale
+57,4499,R,Right,Right,333,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",4,0,0,0,4,1,2,0,0,3,1,0,0,0,0,0,0,0,0,0, 
+57,2791,R,Right,Right,330,Laura,Right,Near,Near,1,0,1,"Right,Near Scale",2,0,3,1,6,0,0,6,0,6,1,0,1,0,0,1,0,1,0,0,Really good at stacking cubes
+57,3707,R,Right,Right,328,Parker,Right,Near,Near,1,1,1,"Right,Near Switch,Near Scale",3,4,0,0,7,3,1,3,0,7,2,0,2,0,0,1,0,1,0,0, 
+57,1533,B,Left,Left,329,Rhino,Middle,Middle,Middle,1,2,0,"Middle,Switch",4,1,0,0,5,1,0,3,0,4,1,0,0,0,1,1,0,0,0,0, 
+57,4587,B,Left,Left,331,Adam,Right,Far,Far,1,0,1,"Right,Far Scale",0,1,2,3,6,0,0,3,2,5,1,0,0,0,0,1,1,0,1,0,"Alright, had some issues with cubes and their intake as well as their drivetrain "
+57,1741,B,Left,Left,332,Other,Left,Near,Near,1,0,0,"Left,Baseline",5,0,0,1,6,5,1,0,0,6,1,0,1,0,0,0,0,0,0,0,Played very good defense by blocking the opposition as they tried to make their way to the other side of the field. Auto did not go well for this team
+58,1706,R,Right,Left,338,BigE,Left,Far,Near,1,0,0,"Left,Baseline",0,1,2,2,5,0,0,1,4,5,2,0,2,1,0,0,0,0,1,0, 
+58,33,R,Right,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+58,88,R,Right,Left,334,Ryan,Middle,Middle,Middle,1,1,0,"Middle,Switch",9,2,0,0,11,9,2,0,0,11,0,0,0,0,0,0,0,0,0,0,Took a long time at vault
+58,1746,B,Left,Right,337,Rhino,Not Sure,Far,Near,1,1,0,"Not Sure,Near Switch",1,2,0,1,4,0,0,3,0,3,1,0,0,0,0,0,0,0,0,0, 
+58,3641,B,Left,Right,335,Adam,Left,Near,Far,1,1,0,"Left,Far Switch",0,0,2,3,5,0,0,1,0,1,4,0,0,0,0,0,0,0,5,0,Dropped almost all the cubes they got 
+58,2363,B,Left,Right,336,Other,Right,Far,Near,1,0,1,"Right,Far Scale",2,1,0,0,3,1,2,0,0,3,0,0,0,0,0,1,0,0,0,0,Was able to effectively block the opposition from both scoring and from coming to their side
+59,133,R,Left,Right,339,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",0,1,3,3,7,0,0,7,0,7,0,0,0,0,0,1,0,1,0,0,Great placement
+59,384,R,Left,Right,340,Laura,Right,Far,Near,1,0,0,"Right,Baseline",7,0,0,0,7,7,0,0,0,7,1,0,1,0,0,1,0,1,1,0,Shot the cube the wrong way in switch auto
+59,1806,R,Left,Right,343,Ryan,Left,Near,Far,1,0,1,"Left,Near Scale",2,3,0,0,5,2,0,3,0,5,0,0,0,0,0,0,0,0,1,0,"Played good defense, driver had issues intaking"
+59,4265,B,Right,Left,344,Rhino,Left,Far,Near,1,0,0,"Left,Baseline",2,3,0,0,5,0,0,6,0,6,1,0,2,1,0,0,0,0,0,0, 
+59,1720,B,Right,Left,342,Adam,Right,Near,Far,1,1,0,"Right,Far Switch",6,0,0,0,6,4,0,1,0,5,1,0,0,0,0,0,0,0,3,0,Struggled with the exchange 
+59,3478,B,Right,Left,341,Other,Middle,Middle,Middle,1,2,0,"Middle,Switch",1,0,3,1,5,0,0,5,0,5,0,0,0,1,0,0,0,0,0,0, 
+60,1640,R,Right,Left,349,BigE,Left,Far,Near,1,0,1,"Left,Far Scale",0,0,3,3,6,0,0,5,0,5,2,0,1,0,0,1,0,1,1,0, 
+60,4028,R,Right,Left,350,Laura,Left,Far,Near,1,2,0,"Left,Near Switch",3,2,0,0,5,0,0,5,0,5,1,0,1,0,0,1,0,1,1,0, 
+60,2468,R,Right,Left,345,Ryan,Middle,Middle,Middle,1,1,0,"Middle,Switch",5,0,1,2,8,4,0,0,3,7,2,0,1,0,0,0,0,0,2,0,"Missed second auto cube, pushed into null zone easily"
+60,469,B,Left,Right,346,Rhino,Right,Far,Near,1,0,0,"Right,Baseline",1,2,0,0,3,0,0,3,0,3,1,0,1,0,0,1,0,1,0,0, 
+60,2168,B,Left,Right,347,Adam,Left,Near,Far,1,0,2,"Left,Near Scale",4,1,4,3,12,4,0,6,0,10,1,1,0,1,0,0,0,0,0,0,Drivers knew what needed to happen and they did that 
+60,2013,B,Left,Right,348,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",4,0,0,0,4,3,2,0,0,5,0,0,1,0,0,1,0,1,0,0,Able to effectively prevent the enemy from scoring on the switch (good defense)
+61,1731,R,Left,Left,355,BigE,Right,Far,Far,1,0,1,"Right,Far Scale",2,2,0,0,4,0,2,2,0,4,2,0,2,1,0,0,0,0,2,0,"Meandered in their pile for most of the match, climber is quite hard to line up"
+61,4944,R,Left,Left,353,Laura,Left,Near,Near,1,0,0,"Left,Baseline",4,2,2,2,10,3,6,0,2,11,2,0,3,0,0,0,0,0,0,0, 
+61,2655,R,Left,Left,352,Ryan,Middle,Middle,Middle,1,2,0,"Middle,Switch",0,0,1,5,6,0,0,0,4,4,2,0,0,1,0,0,0,0,0,0,Dropped cubes when hit
+61,3357,B,Right,Right,356,Rhino,Right,Near,Near,1,0,0,"Right,Baseline",3,2,0,2,7,3,1,4,0,8,0,0,1,0,0,1,0,1,0,0, 
+61,694,B,Right,Right,351,Adam,Middle,Middle,Middle,1,2,0,"Middle,Switch",6,0,0,1,7,5,2,0,0,7,0,0,0,0,0,1,0,1,0,0,Played some solid defense 
+61,1747,B,Right,Right,354,Other,Left,Far,Far,1,0,3,"Left,Far Scale",0,0,5,4,9,1,3,1,7,12,0,0,3,0,0,1,0,1,0,0,Worked well to pressure opponents
+62,2481,R,Left,Left,361,BigE,Left,Near,Near,1,0,1,"Left,Near Scale",2,0,2,5,9,3,0,1,5,9,2,0,2,0,0,0,0,0,0,0,Still loving that drive train
+62,340,R,Left,Left,362,Laura,Middle,Middle,Middle,1,2,0,"Middle,Switch",1,3,0,1,5,1,1,2,1,5,2,0,2,0,1,0,0,0,1,0, 
+62,195,R,Left,Left,358,Ryan,Right,Far,Far,1,0,2,"Right,Far Scale",4,5,0,0,9,1,0,8,0,9,1,0,1,0,0,1,1,0,0,0,"*approving grunts* good placement, good pile to scale cycles"
+62,4587,B,Right,Right,360,Rhino,Left,Far,Far,1,0,1,"Left,Far Scale",1,0,1,3,5,0,0,4,1,5,2,0,2,0,1,1,0,0,0,0, 
+62,4967,B,Right,Right,357,Adam,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,0,0,0,5,1,0,3,0,4,1,0,0,0,1,0,0,0,0,0,"Played defense but let the switch go, so bad "
+62,2590,B,Right,Right,359,Other,Right,Near,Near,1,0,0,"Right,Baseline",2,1,0,0,3,0,0,6,0,6,2,0,5,0,0,1,1,1,0,0,Worked very well with the team and was able to lift both teamatesb at the end
+63,3707,R,Right,Left,366,BigE,Right,Near,Far,1,0,0,"Right,Baseline",6,0,0,0,6,3,1,2,0,6,1,0,1,0,0,1,0,1,0,0,"Good defense, ran wrong auto"
+63,234,R,Right,Left,367,Laura,Middle,Middle,Middle,1,3,0,"Middle,Switch",1,3,0,0,4,0,0,4,0,4,3,0,3,0,0,1,0,1,0,0,Dropped many cubes
+63,3538,R,Right,Left,365,Ryan,Left,Far,Near,1,0,0,"Left,Baseline",0,1,1,2,4,0,0,3,0,3,2,0,1,0,0,0,0,0,1,0,"Hit another robot in auto so couldn't get it, slow placement, stolen portal cube"
+63,2614,B,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+63,5254,B,Left,Right,364,Adam,Left,Near,Far,1,0,1,"Left,Near Scale",2,5,0,0,7,0,0,7,0,7,0,0,0,1,0,0,0,0,2,0,Pretty slow and has trouble with scale above 2nd layer 
+63,1746,B,Left,Right,363,Other,Right,Far,Near,1,1,0,"Right,Near Switch",5,0,0,0,5,8,0,0,0,8,0,0,3,0,0,0,0,0,0,0, 
+64,3641,R,Right,Left,373,BigE,Left,Far,Near,1,0,0,"Left,Baseline",7,1,0,0,8,8,1,0,0,9,4,0,5,1,0,0,0,0,0,0, 
+64,1533,R,Right,Left,371,Laura,Middle,Middle,Middle,1,3,0,"Middle,Switch",1,3,0,0,4,0,0,5,0,5,2,0,3,0,0,1,1,0,0,0, 
+64,1024,R,Right,Left,368,Ryan,Right,Near,Far,1,0,1,"Right,Near Scale",0,0,3,3,6,0,0,7,0,7,1,0,2,0,1,0,0,0,0,0, 
+64,494,B,Left,Right,372,Rhino,Left,Near,Far,0,0,0,"Left,No Auto",2,0,2,0,4,0,0,4,0,4,2,0,2,0,0,0,0,0,0,0, 
+64,133,B,Left,Right,370,Adam,Middle,Middle,Middle,1,3,0,"Middle,Switch",1,1,4,1,7,0,0,5,0,5,2,0,0,0,0,1,0,1,2,0,Knocked some cubes off but was able to recover 
+64,1102,B,Left,Right,369,Other,Right,Far,Near,1,0,0,"Right,Baseline",4,1,1,1,7,3,0,2,0,5,1,1,0,0,0,1,0,1,0,0,Decent
+65,67,R,Left,Left,379,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",2,1,0,3,6,0,0,6,0,6,0,0,0,0,0,1,0,1,0,0, 
+65,225,R,Left,Left,374,Laura,Right,Far,Far,1,0,0,"Right,Baseline",7,0,0,0,7,9,0,1,0,10,0,0,3,0,0,0,0,0,0,0,Bad at defense
+65,1706,R,Left,Left,376,Ryan,Left,Near,Near,1,0,2,"Left,Near Scale",0,0,2,1,3,0,0,2,0,2,2,0,1,0,1,0,0,0,0,0,"Intake needs some serious lineup, spent 10-15 sec lining it up once, can't score second layer tipped well"
+65,20,B,Right,Right,377,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",1,1,2,1,5,0,0,4,1,5,1,0,1,0,0,0,0,0,0,0, 
+65,2791,B,Right,Right,375,Adam,Left,Far,Far,1,0,1,"Left,Far Scale",3,1,3,1,8,3,0,4,0,7,3,0,2,1,0,0,0,0,4,0,Knocked cubes off the scale and have generally bad placement 
+65,3452,B,Right,Right,378,Other,Right,Near,Near,1,0,0,"Right,Baseline",0,3,0,0,3,0,0,5,0,5,2,0,4,0,0,1,0,0,0,0,"At the beginning of the match, they couldn't decide what to do with the cubes. "
+66,33,R,Left,Left,384,BigE,Right,Far,Far,1,0,0,"Right,Baseline",0,1,6,1,8,0,0,7,0,7,3,0,2,0,0,1,0,0,0,0,Much quicker
+66,6800,R,Left,Left,385,Laura,Middle,Middle,Middle,1,1,0,"Middle,Switch",11,2,0,0,13,10,3,0,0,13,0,0,0,0,0,0,0,0,1,0,Missed second cube in two cube switch auto
+66,3847,R,Left,Left,382,Ryan,Left,Near,Near,1,0,0,"Left,Baseline",0,4,0,3,7,0,1,1,2,4,4,0,1,0,0,0,0,0,1,0,"Missed auto scale, can't accurately score on higher scale levels, wasn't thinking about climb in time"
+66,359,B,Right,Right,381,Rhino,Left,Far,Far,1,0,1,"Left,Far Scale",0,0,2,0,2,0,0,2,0,2,1,0,1,1,0,0,0,0,0,0, 
+66,829,B,Right,Right,380,Adam,Right,Near,Near,1,0,0,"Right,Baseline",9,0,0,0,9,7,2,1,0,10,0,0,1,0,0,0,0,0,0,0,Pretty slow for only doing the exchange and switch 
+66,2834,B,Right,Right,383,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",0,2,0,0,2,0,0,3,0,3,0,0,1,0,0,0,0,0,0,0,Worked very well with teamates to get one of their robots unstuck and to push one up on the parking space
+67,88,R,Left,Left,390,BigE,Right,Far,Far,1,0,0,"Right,Baseline",8,0,0,0,8,4,5,0,0,9,0,0,1,0,0,0,0,0,0,0, 
+67,2337,R,Left,Left,389,Laura,Left,Near,Near,1,0,2,"Left,Near Scale",0,1,2,2,5,0,0,5,0,5,2,0,2,0,0,1,0,1,0,0, 
+67,865,R,Left,Left,386,Ryan,Middle,Middle,Middle,1,1,0,"Middle,Switch",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Was easily defended and then played shitty defense
+67,245,B,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+67,1619,B,Right,Right,387,Adam,Left,Far,Far,1,0,2,"Left,Far Scale",2,0,4,1,7,2,0,3,1,6,2,0,1,0,0,0,0,0,2,0,Pretty good but cube placement sucks 
+67,2056,B,Right,Right,388,Other,Middle,Middle,Middle,0,3,0,"Middle,Switch",5,2,0,0,7,5,0,4,0,9,0,0,2,0,0,1,1,1,0,0,"Worked very well with team, on the offensive, and the devensive"
+68,1741,R,Left,Right,395,BigE,Middle,Middle,Middle,1,1,0,"Middle,Switch",4,2,0,0,6,0,0,6,0,6,1,0,1,0,0,1,0,0,0,0, 
+68,868,R,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+68,1710,R,Left,Right,394,Ryan,Left,Near,Far,1,0,0,"Left,Baseline",6,2,0,1,9,6,3,0,1,10,0,0,1,0,0,0,0,0,0,0,"Played bad defense, didn't help on scale when they were losing it and one of the main scale robots died"
+68,4265,B,Right,Left,396,Rhino,Left,Far,Near,1,0,0,"Left,Baseline",0,0,2,0,2,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0, 
+68,302,B,Right,Left,393,Adam,Right,Near,Far,1,0,1,"Right,Near Scale",3,4,0,0,7,1,0,7,0,8,0,0,1,0,0,0,0,0,1,0,Good with cubes
+68,708,B,Right,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+69,624,R,Right,Left,402,BigE,Left,Far,Near,1,0,0,"Left,Baseline",0,4,0,1,5,0,0,6,0,6,2,0,3,0,0,1,1,0,0,0, 
+69,1218,R,Right,Left,401,Laura,Middle,Middle,Middle,1,0,1,"Middle,Scale",0,0,1,3,4,0,0,5,0,5,1,0,2,0,1,0,0,0,0,0,Inconsistent scoring on the scale
+69,2826,R,Right,Left,398,Ryan,Right,Near,Far,1,0,0,"Right,Baseline",7,1,0,0,8,7,1,0,0,8,0,0,0,0,0,0,0,0,1,0,"Scored in wrong switch then crossed null zone, fairly weak defense"
+69,3940,B,Left,Right,397,Rhino,Left,Near,Far,1,1,0,"Left,Far Switch",4,1,0,0,5,3,1,0,0,4,0,1,0,0,0,0,0,0,0,0, 
+69,5406,B,Left,Right,399,Adam,Right,Far,Near,1,0,2,"Right,Far Scale",0,0,5,5,10,0,0,7,0,7,1,2,0,0,1,0,0,0,2,0, 
+69,319,B,Left,Right,400,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",4,2,0,0,6,0,0,6,0,6,1,0,1,0,0,1,1,1,0,0,Did a great offensive job and was a good teamate
+70,118,R,Right,Left,408,BigE,Right,Near,Far,1,0,1,"Right,Near Scale",2,2,0,3,7,0,0,4,2,6,2,0,1,1,0,0,0,0,0,0,"One fork didn't drop for a while, dropped 217"
+70,217,R,Right,Left,407,Laura,Left,Far,Near,1,1,0,"Left,Near Switch",4,1,3,0,8,3,1,4,0,8,0,0,0,0,0,0,0,0,0,0,Fell off of Robonauts forks
+70,2771,R,Right,Left,404,Ryan,Middle,Middle,Middle,1,2,0,"Middle,Switch",1,0,0,2,3,1,1,0,0,2,1,0,0,0,0,0,0,0,0,0,"Well defended, fumbled with a cube at the portal, dropped cube hitting wall, "
+70,2363,B,Left,Right,406,Rhino,Left,Near,Far,1,1,0,"Left,Far Switch",6,2,0,0,8,3,2,2,0,7,0,1,0,0,0,1,0,1,0,0, 
+70,4499,B,Left,Right,403,Adam,Middle,Middle,Middle,1,1,0,"Middle,Switch",5,0,0,0,5,3,1,0,0,4,0,1,0,0,0,0,0,0,0,0,Played some really good defense on 2770
+70,2451,B,Left,Right,405,Other,Right,Far,Near,1,0,0,"Right,Baseline",0,0,2,6,8,0,0,3,5,8,0,0,0,0,0,1,0,1,0,0, 
+71,1731,R,Right,Left,413,BigE,Right,Near,Far,1,0,2,"Right,Near Scale",0,2,0,0,2,0,0,1,0,1,3,0,2,0,0,1,0,1,1,0,"Slow elevator, really not great intake"
+71,2013,R,Right,Left,412,Laura,Left,Far,Near,1,1,0,"Left,Near Switch",5,1,0,0,6,3,1,1,0,5,1,0,0,0,0,1,0,0,0,0,Very slow
+71,3847,R,Right,Left,410,Ryan,Middle,Middle,Middle,1,1,0,"Middle,Switch",0,0,4,0,4,0,0,0,2,2,2,0,0,0,0,0,0,0,1,0,Dead for 50 ish seconds
+71,384,B,Left,Right,411,Rhino,Left,Near,Far,1,0,0,"Left,Baseline",6,1,0,0,7,5,2,0,0,7,0,0,0,0,0,1,0,1,0,0, 
+71,3452,B,Left,Right,409,Adam,Middle,Middle,Middle,1,1,0,"Middle,Switch",4,3,0,0,7,1,0,5,0,6,0,1,0,0,0,0,0,0,5,0,"Slow, fought with team mates "
+71,1746,B,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+72,1102,R,Right,Left,415,BigE,Right,Near,Far,1,0,1,"Right,Near Scale",0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,"Hit their auto, dropped a cube, and died"
+72,4967,R,Right,Left,419,Laura,Middle,Middle,Middle,1,2,0,"Middle,Switch",6,2,0,0,8,6,2,0,0,8,1,0,1,1,0,0,0,0,0,0,Ran out of time to climb
+72,88,R,Right,Left,420,Ryan,Left,Far,Near,1,0,0,"Left,Baseline",1,0,2,1,4,0,0,5,0,5,0,0,1,0,0,0,0,0,0,0,Changed cycles seemingly for no reason
+72,6800,B,Left,Right,417,Rhino,Right,Far,Near,1,0,0,"Right,Baseline",6,1,0,0,7,6,2,0,0,8,0,0,1,0,0,0,0,0,0,0, 
+72,4028,B,Left,Right,416,Adam,Left,Near,Far,1,0,2,"Left,Near Scale",2,3,0,0,5,0,0,4,0,4,1,0,0,0,0,0,0,0,4,0,Indecisive and slow 
+72,3707,B,Left,Right,418,Other,Middle,Middle,Middle,1,2,0,"Middle,Switch",1,0,1,5,7,0,0,2,4,6,1,0,0,0,0,1,0,1,0,0,Decent
+73,494,R,Right,Right,425,BigE,Left,Far,Far,1,0,0,"Left,Baseline",2,3,0,0,5,0,0,6,0,6,2,0,3,0,0,0,0,0,0,0,"Resourceful, but not incredibly fluid. Good organization"
+73,1720,R,Right,Right,426,Laura,Middle,Middle,Middle,1,0,0,"Middle,Baseline",3,1,0,0,4,2,2,0,0,4,0,0,0,0,0,0,0,0,1,0,Put a cube in the wrong side of the switch
+73,4587,R,Right,Right,424,Parker,Right,Near,Near,1,0,1,"Right,Near Scale",0,0,3,2,5,0,0,6,0,6,1,0,2,1,0,0,0,0,2,0,Shutdown by defense
+73,1747,B,Left,Left,423,Rhino,Left,Near,Near,1,0,1,"Left,Near Scale",0,1,1,5,7,0,0,4,3,7,0,0,0,0,0,0,0,0,0,0, 
+73,1640,B,Left,Left,422,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",6,0,0,0,6,7,0,0,0,7,0,0,1,0,0,1,0,1,0,0,Defended 4587
+73,868,B,Left,Left,421,Other,Right,Far,Far,1,0,1,"Right,Far Scale",3,3,0,0,6,0,0,5,0,5,2,0,1,0,0,1,0,1,0,0, 
+74,1218,R,Left,Left,430,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,2,0,0,7,4,3,1,0,8,1,0,2,0,0,1,0,1,0,0, 
+74,5254,R,Left,Left,431,Laura,Left,Near,Near,1,0,1,"Left,Near Scale",2,1,0,1,4,0,0,4,1,5,2,0,3,0,0,1,0,1,0,0, 
+74,2791,R,Left,Left,427,Parker,Right,Far,Far,1,0,1,"Right,Far Scale",0,1,3,4,8,0,0,6,0,6,2,0,0,0,0,0,0,0,0,0, 
+74,133,B,Right,Right,428,Rhino,Middle,Middle,Middle,1,2,0,"Middle,Switch",0,0,2,1,3,0,0,3,0,3,0,0,0,0,0,1,0,1,0,0, 
+74,4265,B,Right,Right,432,Other,Left,Far,Far,1,0,2,"Left,Far Scale",1,4,0,0,5,0,0,5,0,5,2,0,2,0,0,1,0,1,0,0, 
+74,865,B,Right,Right,429,Other,Right,Near,Near,1,0,0,"Right,Baseline",5,0,0,5,10,5,0,1,5,11,0,0,1,0,0,0,0,0,0,0, 
+75,2826,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+75,1619,R,Right,Right,437,Laura,Left,Far,Far,1,0,1,"Left,Far Scale",0,0,1,3,4,0,0,2,1,3,2,0,1,0,0,1,1,0,1,0,Missed first cube in two cube scale auto
+75,469,R,Right,Right,434,Parker,Right,Near,Near,1,0,0,"Right,Baseline",2,0,1,0,3,2,1,0,0,3,1,0,1,0,0,0,0,0,1,0, 
+75,3641,B,Left,Left,436,Rhino,Right,Far,Far,1,0,0,"Right,Baseline",0,0,3,6,9,0,0,2,5,7,2,0,0,0,0,0,0,0,0,0,Nice job with the portal
+75,195,B,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+75,1710,B,Left,Left,435,Other,Middle,Middle,Middle,1,0,0,"Middle,Baseline",1,0,0,0,1,0,0,0,0,0,0,1,0,0,1,1,0,0,1,0, 
+76,4944,R,Right,Left,442,BigE,Middle,Middle,Middle,1,1,0,"Middle,Switch",6,0,3,3,12,4,2,0,6,12,3,0,3,0,0,0,0,0,0,0,Lots of dropped cubes from rushing themselves
+76,2590,R,Right,Left,443,Laura,Right,Near,Far,1,0,2,"Right,Near Scale",0,0,1,3,4,0,0,4,0,4,0,0,0,0,0,1,1,0,0,0, 
+76,1024,R,Right,Left,438,Parker,Left,Far,Near,1,1,0,"Left,Near Switch",2,3,0,1,6,0,0,6,0,6,0,0,0,0,1,0,0,0,0,0, 
+76,624,B,Left,Right,441,Rhino,Left,Near,Far,1,0,0,"Left,Baseline",2,2,0,0,4,1,0,3,0,4,4,0,4,0,0,1,1,0,1,0,Appeared to have problems with intake
+76,4499,B,Left,Right,439,Other,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,1,0,0,6,1,5,0,0,6,0,0,0,0,0,0,0,0,0,0, 
+76,2614,B,Left,Right,440,Other,Right,Far,Near,1,0,1,"Right,Far Scale",0,0,2,4,6,0,0,6,0,6,3,0,3,0,1,1,0,0,0,0, 
+77,2363,R,Right,Left,449,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,"Very good defense, shut 1-2 robots down the whole match"
+77,67,R,Right,Left,448,Laura,Right,Near,Far,1,0,1,"Right,Near Scale",5,1,0,0,6,2,4,0,0,6,0,0,0,0,0,1,1,0,0,0, 
+77,2056,R,Right,Left,445,Parker,Left,Far,Near,1,0,2,"Left,Far Scale",2,1,2,3,8,2,0,6,2,10,0,0,2,0,0,0,0,0,1,1, 
+77,2168,B,Left,Right,447,Rhino,Left,Near,Far,1,0,2,"Left,Near Scale",5,1,1,2,9,5,0,3,0,8,2,0,1,1,0,0,0,0,0,0, 
+77,2451,B,Left,Right,444,Other,Right,Far,Near,1,0,0,"Right,Baseline",0,0,1,5,6,0,0,0,6,6,0,0,0,0,0,1,0,1,0,0, 
+77,829,B,Left,Right,446,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",5,0,0,0,5,2,3,0,0,5,0,0,0,0,0,1,0,1,1,0, 
+78,217,R,Left,Left,455,BigE,Middle,Middle,Middle,1,1,0,"Middle,Switch",3,0,1,1,5,0,1,4,0,5,3,0,3,0,0,1,0,1,1,0, 
+78,2337,R,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+78,5406,R,Left,Left,452,Parker,Right,Far,Far,1,0,0,"Right,Baseline",0,0,0,0,0,0,0,6,0,6,1,0,7,0,0,0,0,0,0,0, 
+78,225,B,Right,Right,453,Rhino,Left,Far,Far,1,0,2,"Left,Far Scale",2,0,2,0,4,1,0,2,0,3,2,0,1,0,0,1,0,0,0,0, 
+78,694,B,Right,Right,454,Other,Middle,Middle,Middle,1,2,0,"Middle,Switch",7,0,0,0,7,0,5,2,0,7,1,0,1,0,0,0,0,0,0,0, 
+78,33,B,Right,Right,451,Other,Right,Near,Near,1,0,0,"Right,Baseline",0,3,0,2,5,0,0,4,0,4,4,0,3,0,0,0,0,0,0,1, 
+79,319,R,Right,Left,459,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,2,0,0,7,1,3,3,0,7,1,0,1,0,0,1,1,0,0,0,Partner climb was a bit sketchy
+79,245,R,Right,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+79,2481,R,Right,Left,458,Parker,Left,Far,Near,1,0,2,"Left,Far Scale",0,1,1,3,5,0,0,2,2,4,1,0,0,0,1,0,0,0,0,0, 
+79,340,B,Left,Right,460,Rhino,Middle,Middle,Middle,1,2,0,"Middle,Switch",9,1,0,1,11,7,4,0,0,11,0,0,0,0,0,0,0,0,0,0, 
+79,1806,B,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+79,359,B,Left,Right,457,Other,Right,Far,Near,1,0,0,"Right,Baseline",0,2,1,1,4,0,0,3,2,5,0,0,1,0,0,0,0,0,1,0, 
+80,234,R,Right,Left,467,BigE,Middle,Middle,Middle,1,3,0,"Middle,Switch",4,2,0,1,7,4,0,3,0,7,0,0,0,0,0,1,0,1,0,0,"Smooth, just needs to use time better"
+80,2468,R,Right,Left,462,Laura,Right,Near,Far,1,0,0,"Right,Baseline",0,0,0,5,5,0,0,0,5,5,0,0,0,0,0,0,0,0,0,1,Radio fell out halfway through the match
+80,20,R,Right,Left,464,Parker,Left,Far,Near,1,0,1,"Left,Far Scale",1,2,1,1,5,0,0,5,0,5,2,0,2,0,0,1,0,1,0,0, 
+80,708,B,Left,Right,463,Rhino,Left,Near,Far,1,1,0,"Left,Far Switch",6,0,0,0,6,4,2,0,0,6,0,0,0,0,1,1,0,0,0,0, 
+80,1533,B,Left,Right,466,Other,Right,Far,Near,0,1,0,"Right,Near Switch",0,0,2,2,4,0,0,4,1,5,1,0,2,0,0,1,1,0,0,0, 
+80,2771,B,Left,Right,465,Other,Right,Far,Near,1,0,0,"Right,Baseline",2,5,0,0,7,0,2,5,0,7,2,0,2,0,0,0,0,0,1,0, 
+81,118,R,Left,Right,472,BigE,Right,Far,Near,1,0,1,"Right,Far Scale",1,1,1,1,4,0,0,4,0,4,1,0,1,1,0,0,0,0,2,0, 
+81,3478,R,Left,Right,473,Laura,Middle,Middle,Middle,0,0,2,"Middle,Scale",6,0,0,1,7,3,3,0,0,6,0,1,0,0,0,0,0,0,0,0, 
+81,302,R,Left,Right,468,Parker,Left,Near,Far,1,0,1,"Left,Near Scale",0,0,2,1,3,0,0,2,0,2,1,0,0,0,0,0,0,0,0,0, 
+81,3538,B,Right,Left,471,Rhino,Left,Far,Near,1,0,2,"Left,Far Scale",0,3,0,1,4,0,0,4,0,4,0,0,0,0,0,1,0,0,0,0, 
+81,2655,B,Right,Left,469,Other,Right,Near,Far,0,0,0,"Right,No Auto",6,0,0,0,6,8,1,0,0,9,0,0,3,0,0,0,0,0,0,0,Defended 118
+81,1706,B,Right,Left,470,Other,Middle,Middle,Middle,1,1,1,"Middle,Switch,Scale",0,1,4,5,10,0,0,0,9,9,1,0,0,0,0,0,0,0,0,0, 
+82,1741,R,Right,Left,477,BigE,Left,Far,Near,1,0,0,"Left,Baseline",0,5,0,0,5,0,0,6,0,6,1,0,2,0,0,0,0,0,0,0, 
+82,2834,R,Right,Left,479,Laura,Middle,Middle,Middle,1,2,0,"Middle,Switch",1,1,1,1,4,0,0,1,0,1,4,0,1,0,0,1,0,0,0,0,They scored 1 cube this match
+82,2363,R,Right,Left,475,Parker,Right,Near,Far,1,0,0,"Right,Baseline",2,1,0,0,3,2,1,0,0,3,0,0,0,0,0,0,0,0,0,0, 
+82,3357,B,Left,Right,478,Rhino,Right,Far,Near,1,0,1,"Right,Far Scale",4,4,1,0,9,1,1,7,0,9,0,0,0,1,0,0,0,0,0,0, 
+82,3940,B,Left,Right,474,Other,Middle,Middle,Middle,0,0,0,"Middle,No Auto",0,1,0,1,2,2,2,0,0,4,1,0,3,0,0,0,0,0,0,0, 
+82,494,B,Left,Right,476,Other,Left,Near,Far,1,0,1,"Left,Near Scale",0,0,1,1,2,0,0,1,2,3,2,0,3,0,0,0,0,0,1,0, 
+83,2168,R,Right,Left,482,BigE,Left,Far,Near,1,0,2,"Left,Far Scale",0,0,2,2,4,0,0,4,0,4,2,0,2,0,0,0,0,0,0,0, 
+83,1640,R,Right,Left,485,Laura,Left,Far,Near,1,1,0,"Left,Near Switch",6,0,0,0,6,6,0,0,0,6,0,0,0,0,0,0,0,0,0,0,Tried to park but alliance partners wouldn't let them on the platform
+83,2791,R,Right,Left,483,Parker,Right,Near,Far,1,0,1,"Right,Near Scale",1,2,0,1,4,0,0,4,0,4,0,0,0,1,0,0,0,0,0,0, 
+83,1710,B,Left,Right,484,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",8,0,0,1,9,8,0,1,0,9,0,0,0,0,0,0,0,0,0,0, 
+83,1024,B,Left,Right,481,Other,Left,Near,Far,1,1,0,"Left,Far Switch",2,3,0,0,5,0,0,6,0,6,0,0,1,0,0,1,0,1,0,0, 
+83,5406,B,Left,Right,480,Other,Right,Far,Near,1,0,2,"Right,Far Scale",0,0,2,3,5,0,0,5,0,5,0,0,0,0,0,1,1,0,1,0, 
+84,829,R,Left,Right,487,BigE,Left,Near,Far,0,0,0,"Left,No Auto",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,Couldn't connect to the field
+84,3452,R,Left,Right,490,Laura,Middle,Middle,Middle,1,1,0,"Middle,Switch",1,7,0,0,8,0,2,6,0,8,0,0,0,0,0,1,0,0,0,0, 
+84,868,R,Left,Right,486,Parker,Right,Far,Near,1,0,0,"Right,Baseline",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, 
+84,4028,B,Right,Left,489,Rhino,Left,Far,Near,1,0,1,"Left,Far Scale",4,0,0,1,5,4,0,3,0,7,1,0,3,0,0,0,0,0,0,0, 
+84,1619,B,Right,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+84,2614,B,Right,Left,488,Other,Right,Near,Far,1,0,0,"Right,Baseline",5,0,0,0,5,1,0,5,0,6,0,0,1,0,1,1,0,0,0,0, 
+85,2056,R,Right,Right,496,BigE,Left,Far,Far,1,0,2,"Left,Far Scale",3,5,0,0,8,0,0,7,0,7,2,0,1,0,0,1,1,0,0,0, 
+85,1720,R,Right,Right,497,Laura,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,1,0,0,6,4,0,0,0,4,2,0,0,0,0,0,0,0,1,0,They got stuck in the exchange. Very very slow
+85,694,R,Right,Right,493,Parker,Right,Near,Near,1,0,1,"Right,Near Scale",0,0,3,4,7,0,0,2,4,6,1,0,0,0,1,0,0,0,0,0, 
+85,4499,B,Left,Left,495,Rhino,Right,Far,Far,1,1,0,"Right,Far Switch",4,2,0,0,6,5,1,0,0,6,0,0,0,0,0,0,0,0,0,0, 
+85,2826,B,Left,Left,492,Other,Left,Near,Near,1,0,0,"Left,Baseline",2,2,0,0,4,0,0,4,0,4,1,0,1,0,0,1,0,1,0,0, 
+85,234,B,Left,Left,494,Other,Middle,Middle,Middle,1,3,0,"Middle,Switch",1,0,3,1,5,0,0,4,1,5,0,0,0,0,0,1,0,0,1,0, 
+86,1731,R,Left,Right,502,BigE,Right,Far,Near,1,0,1,"Right,Far Scale",6,1,0,0,7,7,0,0,0,7,0,0,0,0,0,0,0,0,1,0, 
+86,359,R,Left,Right,503,Laura,Middle,Middle,Middle,1,1,0,"Middle,Switch",0,0,3,1,4,0,0,3,0,3,1,0,0,0,1,0,0,0,0,0, 
+86,67,R,Left,Right,499,Parker,Left,Near,Far,1,0,0,"Left,Baseline",1,3,0,1,5,0,0,5,0,5,0,0,0,0,0,1,1,0,0,0, 
+86,2013,B,Right,Left,501,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",4,0,0,0,4,3,1,0,0,4,0,0,0,1,0,0,0,0,0,0, 
+86,3538,B,Right,Left,498,Other,Left,Far,Near,1,0,2,"Left,Far Scale",5,3,0,0,8,3,0,5,0,8,0,0,0,0,0,0,0,0,0,0, 
+86,4265,B,Right,Left,500,Other,Right,Near,Far,1,0,0,"Right,Baseline",0,0,4,1,5,0,0,3,0,3,2,0,0,1,0,0,0,0,1,0, 
+87,3847,R,Right,Right,509,BigE,Right,Near,Near,1,1,0,"Right,Near Switch",0,0,0,5,5,0,0,0,5,5,1,0,1,1,0,0,0,0,1,0,Got defended a little but still has just a low cube count
+87,4944,R,Right,Right,507,Laura,Middle,Middle,Middle,1,2,0,"Middle,Switch",6,0,2,1,9,5,1,0,3,9,0,0,0,0,0,0,0,0,0,0,Pretty good at stealing cubes and playing defense
+87,3940,R,Right,Right,505,Parker,Left,Far,Far,1,0,1,"Left,Far Scale",6,2,0,0,8,3,2,3,0,8,0,0,0,0,0,1,0,0,0,0, 
+87,118,B,Left,Left,508,Rhino,Right,Far,Far,1,0,1,"Right,Far Scale",0,1,4,5,10,0,1,3,4,8,1,1,0,0,0,0,0,0,0,0, 
+87,4587,B,Left,Left,506,Other,Left,Near,Near,1,0,0,"Left,Baseline",2,3,0,0,5,3,4,1,0,8,4,0,7,0,0,1,0,0,0,0, 
+87,1806,B,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+88,2468,R,Left,Left,512,BigE,Middle,Middle,Middle,1,0,0,"Middle,Baseline",4,0,0,2,6,3,1,0,2,6,5,0,5,0,0,0,0,0,1,0,"Too many cube drops, scale is not a option"
+88,225,R,Left,Left,514,Laura,Right,Far,Far,1,0,1,"Right,Far Scale",2,3,4,1,10,1,4,4,1,10,0,0,0,1,0,0,0,0,1,0,Didn't line up for climb in time
+88,384,R,Left,Left,511,Parker,Left,Near,Near,1,0,1,"Left,Near Scale",2,3,0,0,5,0,2,3,0,5,1,0,1,0,0,1,0,0,0,0, 
+88,1741,B,Right,Right,515,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",8,1,0,0,9,4,4,0,0,8,1,0,0,1,0,0,0,0,0,0, 
+88,88,B,Right,Right,510,Other,Right,Near,Near,1,0,0,"Right,Baseline",0,1,0,1,2,1,0,2,0,3,1,0,2,0,0,0,0,0,0,0, 
+88,340,B,Right,Right,513,Other,Left,Far,Far,1,0,1,"Left,Far Scale",0,0,3,7,10,0,0,4,4,8,1,1,0,1,0,0,0,0,2,0, 
+89,2834,R,Right,Left,522,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",5,0,0,0,5,4,1,0,0,5,3,0,3,0,0,0,0,0,0,0, 
+89,865,R,Right,Left,521,Laura,Left,Far,Near,1,0,0,"Left,Baseline",1,5,0,0,6,1,0,5,0,6,1,0,1,0,0,1,0,1,0,0, 
+89,1102,R,Right,Left,518,Parker,Not Sure,Near,Far,1,0,0,"Not Sure,Baseline",0,1,2,4,7,2,2,7,2,13,1,0,7,0,0,0,0,0,2,0, 
+89,2771,B,Left,Right,520,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",3,1,0,0,4,0,0,4,0,4,1,0,1,1,0,0,0,0,0,0, 
+89,1706,B,Left,Right,516,Other,Right,Far,Near,0,0,0,"Right,No Auto",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
+89,2481,B,Left,Right,519,Other,Right,Far,Near,1,0,2,"Right,Far Scale",6,1,2,2,11,6,0,5,0,11,0,0,0,0,0,0,0,0,0,0, 
+90,2590,R,Left,Right,526,BigE,Right,Far,Near,1,1,0,"Right,Near Switch",4,3,0,0,7,0,0,7,0,7,2,0,2,0,0,1,1,0,0,0, 
+90,1747,R,Left,Right,525,Laura,Left,Near,Far,0,0,1,"Left,Near Scale",0,1,0,8,9,0,0,3,6,9,0,0,0,0,0,0,0,0,1,0,Missed first cube in two cube scale auto
+90,708,R,Left,Right,524,Parker,Middle,Middle,Middle,1,2,0,"Middle,Switch",2,2,0,0,4,5,0,0,0,5,0,0,1,0,1,0,0,0,0,0, 
+90,1218,B,Right,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+90,3641,B,Right,Left,523,Other,Left,Far,Near,1,1,0,"Left,Near Switch",1,1,0,3,5,0,0,4,0,4,1,0,0,0,0,1,0,1,0,0, 
+90,6800,B,Right,Left,527,Other,Middle,Middle,Middle,0,0,0,"Middle,No Auto",3,0,0,0,3,3,2,0,0,5,0,0,2,0,0,0,0,0,0,0, 
+91,319,R,Right,Right,532,BigE,Left,Far,Far,1,0,0,"Left,Baseline",0,0,2,3,5,0,0,6,0,6,2,0,3,0,1,0,0,0,0,0, 
+91,195,R,Right,Right,533,Laura,Right,Near,Near,1,0,3,"Right,Near Scale",3,4,0,0,7,0,0,7,0,7,0,0,0,0,0,1,1,0,0,0, 
+91,3707,R,Right,Right,528,Parker,Middle,Middle,Middle,1,1,1,"Middle,Switch,Scale",4,0,0,0,4,4,0,0,0,4,0,0,0,0,0,0,0,0,0,0, 
+91,217,B,Left,Left,531,Rhino,Left,Near,Near,1,0,0,"Left,Baseline",1,3,0,0,4,0,0,4,0,4,2,0,2,0,0,1,0,1,0,0, 
+91,3478,B,Left,Left,530,Other,Middle,Middle,Middle,1,2,0,"Middle,Switch",7,0,0,2,9,4,2,2,1,9,1,0,1,0,0,0,0,0,0,0, 
+91,33,B,Left,Left,529,Other,Right,Far,Far,1,0,1,"Right,Far Scale",0,1,1,2,4,0,0,3,0,3,1,0,0,1,0,1,0,1,0,0, 
+92,2655,R,Right,Right,536,BigE,Middle,Middle,Middle,1,3,0,"Middle,Switch",3,0,2,0,5,3,0,0,2,5,0,0,0,0,1,0,0,0,0,0,Nice defense
+92,2451,R,Right,Right,538,Laura,Left,Far,Far,1,0,0,"Left,Baseline",0,1,3,4,8,0,0,4,4,8,0,0,0,0,0,0,0,0,0,0, 
+92,1533,R,Right,Right,535,Parker,Right,Near,Near,1,0,0,"Right,Baseline",5,2,0,0,7,0,1,7,1,9,0,0,2,0,0,1,1,0,0,0, 
+92,245,B,Left,Left,537,Rhino,Left,Near,Near,1,0,0,"Left,Baseline",0,4,0,1,5,0,0,7,0,7,4,0,6,0,0,1,0,0,0,0,"Ton of dropped cubes, elevator can't reach second layer tipped"
+92,1746,B,Left,Left,539,Other,Left,Near,Near,1,0,1,"Left,Near Scale",3,0,3,1,7,2,0,4,0,6,0,1,0,0,0,0,0,0,0,0, 
+92,4967,B,Left,Left,540,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",4,1,0,0,5,1,4,0,0,5,1,0,1,1,0,0,0,0,0,0, 
+93,133,R,Left,Right,543,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",0,0,1,3,4,0,1,3,0,4,3,0,3,0,0,0,0,0,0,0, 
+93,624,R,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+93,3357,R,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+93,2337,B,Right,Left,542,Parker,Right,Near,Far,1,2,0,"Right,Far Switch",3,2,1,0,6,0,0,5,0,5,0,1,0,0,1,0,0,0,0,0, 
+93,302,B,Right,Left,544,Other,Middle,Middle,Middle,1,2,0,"Middle,Switch",3,5,0,0,8,1,0,7,0,8,0,0,0,0,0,1,0,1,0,0, 
+93,469,B,Right,Left,546,Other,Right,Near,Far,1,1,0,"Right,Far Switch",2,3,0,0,5,2,1,0,0,3,2,0,0,1,0,1,0,1,0,0, 
+94,5254,R,Left,Left,552,BigE,Left,Near,Near,1,0,1,"Left,Near Scale",4,3,0,0,7,3,0,4,0,7,1,0,1,0,0,1,0,1,0,0, 
+94,1806,R,Left,Left,548,Laura,Middle,Middle,Middle,1,2,0,"Middle,Switch",2,0,0,2,4,1,3,1,3,8,1,0,5,0,0,1,0,1,1,0,Nearly tipped. Can't shoot cubes very far.
+94,2168,R,Left,Left,547,Parker,Right,Far,Far,1,0,0,"Right,Baseline",0,0,5,7,12,0,0,9,1,10,0,2,0,0,0,0,0,0,0,0, 
+94,20,B,Right,Right,551,Rhino,Left,Far,Far,1,0,1,"Left,Far Scale",0,0,3,4,7,0,0,5,0,5,2,0,0,0,0,1,0,1,0,0, 
+94,88,B,Right,Right,550,Other,Middle,Middle,Middle,1,0,0,"Middle,Baseline",2,2,2,3,9,1,0,4,5,10,1,0,2,0,0,0,0,0,0,0, 
+94,1731,B,Right,Right,549,Other,Right,Near,Near,1,0,0,"Right,Baseline",7,2,2,2,13,6,2,0,0,8,1,4,0,1,0,1,0,1,0,0, 
+95,708,R,Right,Right,558,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",4,2,0,0,6,3,0,0,0,3,1,2,0,0,0,1,0,1,0,0,Defense was alright
+95,340,R,Right,Right,557,Laura,Left,Far,Far,1,0,0,"Left,Baseline",3,4,0,0,7,2,0,4,2,8,0,0,1,0,1,0,0,0,0,0, 
+95,2826,R,Right,Right,553,Parker,Right,Near,Near,1,0,2,"Right,Near Scale",3,0,3,5,11,3,0,3,5,11,0,0,0,0,0,0,0,0,0,0, 
+95,1619,B,Left,Left,555,Rhino,Left,Near,Near,1,0,0,"Left,Baseline",7,4,0,0,11,3,0,7,0,10,1,0,0,0,0,1,1,0,0,0, 
+95,4499,B,Left,Left,554,Other,Middle,Middle,Middle,1,2,0,"Middle,Switch",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Robot did not move in Tele op
+95,2834,B,Left,Left,556,Other,Right,Far,Far,1,0,1,"Right,Far Scale",0,0,1,4,5,0,0,3,1,4,1,0,0,1,1,1,0,1,0,0, 
+96,225,R,Left,Left,562,BigE,Left,Near,Near,1,0,3,"Left,Near Scale",0,0,3,4,7,0,0,2,5,7,0,0,0,0,0,1,0,1,0,0, 
+96,494,R,Left,Left,564,Laura,Middle,Middle,Middle,1,1,0,"Middle,Switch",5,0,0,1,6,3,0,0,1,4,6,0,4,0,0,1,0,1,0,0, 
+96,118,R,Left,Left,559,Parker,Right,Far,Far,1,0,0,"Right,Baseline",4,3,0,2,9,1,2,6,1,10,1,0,2,0,0,0,0,0,0,0, 
+96,1720,B,Right,Right,563,Rhino,Right,Near,Near,0,0,0,"Right,No Auto",0,0,1,1,2,1,0,2,0,3,0,0,1,1,0,0,0,0,0,0, 
+96,2481,B,Right,Right,560,Other,Left,Far,Far,1,0,0,"Left,Baseline",5,2,0,1,8,0,3,3,2,8,2,0,2,0,0,0,0,0,0,0, 
+96,2013,B,Right,Right,561,Other,Middle,Middle,Middle,1,0,0,"Middle,Baseline",3,0,0,0,3,1,2,0,0,3,0,0,0,0,0,0,0,0,0,0, 
+97,868,R,Left,Right,569,BigE,Middle,Middle,Middle,1,1,0,"Middle,Switch",1,0,1,4,6,0,0,0,6,6,0,0,0,0,0,0,0,0,2,0,Lost right side wheels in the end game
+97,6800,R,Left,Right,570,Laura,Left,Near,Far,1,0,0,"Left,Baseline",5,4,0,0,9,5,6,0,0,11,3,0,5,0,0,0,0,0,0,0,"Auto line cross was late, only crossed in the last two seconds"
+97,3940,R,Left,Right,567,Parker,Right,Far,Near,1,1,0,"Right,Near Switch",1,1,0,1,3,0,0,2,0,2,1,0,0,1,0,0,0,0,3,0, 
+97,865,B,Right,Left,566,Rhino,Left,Far,Near,1,0,2,"Left,Far Scale",2,3,0,0,5,0,1,4,0,5,0,0,0,0,0,1,0,1,0,0, 
+97,3707,B,Right,Left,565,Other,Right,Near,Far,1,1,0,"Right,Far Switch",1,1,4,2,8,0,0,1,6,7,1,0,0,0,0,1,0,1,0,0, 
+97,2655,B,Right,Left,568,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",8,0,0,1,9,4,5,0,0,9,0,0,0,0,0,0,0,0,0,0, 
+98,217,R,Left,Left,572,BigE,Middle,Middle,Middle,1,2,0,"Middle,Switch",3,0,0,3,6,3,0,2,0,5,4,0,3,0,0,1,0,1,0,0,Dropped as many cubes as they put up
+98,1706,R,Left,Left,573,Laura,Left,Near,Near,1,0,1,"Left,Near Scale",2,1,2,4,9,0,2,0,5,7,5,0,3,0,0,0,0,0,1,0,Dropped a lot of cubes because of clumsy driving
+98,4028,R,Left,Left,571,Parker,Right,Far,Far,1,0,0,"Right,Baseline",0,2,0,0,2,0,0,6,0,6,2,0,6,0,0,1,0,1,0,0, 
+98,3847,B,Right,Right,576,Rhino,Middle,Middle,Middle,1,1,0,"Middle,Switch",0,0,0,5,5,0,0,0,4,4,2,0,1,1,0,0,0,0,0,0, 
+98,4265,B,Right,Right,575,Ryan,Right,Near,Near,1,0,0,"Right,Baseline",3,2,0,0,5,0,3,2,0,5,2,0,2,0,0,1,0,0,2,0,"Went into opposing null zone and hit someone, died for 10 sec, cant score well on high levels"
+98,2337,B,Right,Right,574,Other,Left,Far,Far,1,0,1,"Left,Far Scale",3,0,3,2,8,3,0,3,1,7,1,0,0,0,0,0,0,0,0,0, 
+99,3452,R,Right,Left,582,BigE,Middle,Middle,Middle,1,1,0,"Middle,Switch",4,2,0,1,7,5,2,0,0,7,1,0,1,0,0,0,0,0,0,0,Always drives with defense in mind
+99,694,R,Right,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+99,1533,R,Right,Left,580,Parker,Right,Near,Far,1,0,2,"Right,Near Scale",0,3,0,3,6,0,0,7,0,7,1,0,2,0,0,1,1,0,0,0, 
+99,302,B,Left,Right,581,Rhino,Right,Far,Near,1,0,2,"Right,Far Scale",2,4,0,0,6,0,0,6,0,6,0,0,0,0,0,0,0,0,0,0, 
+99,319,B,Left,Right,578,Ryan,Left,Near,Far,1,1,0,"Left,Far Switch",0,1,0,3,4,0,0,4,0,4,0,0,0,0,1,0,0,0,0,0,"Great placement, heavily defended"
+99,2590,B,Left,Right,579,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",8,0,0,1,9,7,0,0,0,7,0,2,0,1,0,1,1,0,0,0, 
+100,1747,R,Left,Left,584,Adam,Left,Near,Near,1,0,1,"Left,Near Scale",1,0,5,4,10,0,3,2,5,10,0,0,0,0,0,0,0,0,0,0,Able to do everything very well 
+100,195,R,Left,Left,587,Laura,Right,Far,Far,1,0,2,"Right,Far Scale",8,2,0,1,11,4,4,4,0,12,0,0,1,0,0,1,1,0,0,0, 
+100,5254,R,Left,Left,583,Parker,Middle,Middle,Middle,1,2,0,"Middle,Switch",3,0,0,0,3,2,1,0,0,3,0,0,0,0,1,0,0,0,0,0,Good defense
+100,2451,B,Right,Right,586,Rhino,Left,Far,Far,1,0,1,"Left,Far Scale",0,0,0,6,6,0,0,0,6,6,1,0,1,0,0,1,0,1,0,0, 
+100,2791,B,Right,Right,585,Ryan,Right,Near,Near,1,0,0,"Right,Baseline",2,2,3,2,9,0,2,4,2,8,2,0,1,0,0,0,0,0,0,0,Looked lost at some points
+100,133,B,Right,Right,588,Other,Middle,Middle,Middle,1,1,0,"Middle,Switch",6,1,0,0,7,3,2,2,0,7,2,0,2,1,0,1,0,1,0,0, 
+101,1102,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+101,384,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+101,2614,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+101,1710,B,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+101,245,B,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+101,2363,B,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+102,1640,R,Right,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+102,2056,R,Right,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+102,20,R,Right,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+102,624,B,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+102,33,B,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+102,4967,B,Left,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+103,3357,R,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+103,1746,R,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+103,2468,R,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+103,4587,B,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+103,67,B,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+103,1218,B,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+104,5406,R,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+104,3478,R,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+104,3641,R,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+104,359,B,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+104,4944,B,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+104,234,B,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+105,3538,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+105,2771,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+105,469,R,Right,Right,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+105,1741,B,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+105,1024,B,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+105,829,B,Left,Left,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

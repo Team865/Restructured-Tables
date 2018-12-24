@@ -3,8 +3,12 @@ package ca.warp7.rt.ext.views
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.scene.layout.BorderPane
+import javafx.scene.text.Font
+import javafx.scene.text.FontWeight
+import javafx.scene.text.Text
 import krangl.DataFrame
-import krangl.dataFrameOf
+import krangl.readDelim
+import org.apache.commons.csv.CSVFormat
 import org.controlsfx.control.spreadsheet.GridBase
 import org.controlsfx.control.spreadsheet.SpreadsheetCell
 import org.controlsfx.control.spreadsheet.SpreadsheetCellType
@@ -19,14 +23,15 @@ class TableController {
 
     fun initialize() {
 
-        val df: DataFrame = dataFrameOf(
-                "first_name", "last_name", "age", "weight")(
-                "Max", "Doe", 23, 55,
-                "Franz", "Smith", 23, 88,
-                "Horst", "Keanes", 12, 82
-        )
+        val inputStream = javaClass.getResourceAsStream("/ca/warp7/rt/res/test.csv")
 
-        val grid = GridBase(3, 4)
+        val df: DataFrame = DataFrame.readDelim(
+                inStream = inputStream,
+                format = CSVFormat.DEFAULT.withHeader(),
+                isCompressed = false,
+                colTypes = mapOf())
+
+        val grid = GridBase(df.nrow, df.ncol)
         df.rows.forEachIndexed { i, row ->
             val rowList = getCreateCellList()
             row.values.forEachIndexed { j, value ->
@@ -45,10 +50,20 @@ class TableController {
         grid.columnHeaders.addAll(df.cols.map { it.name })
 
         val spreadsheetView = SpreadsheetView(grid)
-        spreadsheetView.columns.forEach { it.minWidth = 80.0 }
+        val text = Text()
+        text.font = Font.font("sans-serif", FontWeight.BOLD, 14.0)
+        val fixedMetrics = listOf("Team", "Match", "Entry", "Alliance", "Scout", "Event", "Year")
+        spreadsheetView.columns.forEachIndexed { index, column ->
+            val name = grid.columnHeaders[index].replace("[^A-Za-z0-9 ]".toRegex(), "")
+            println(name)
+            if (name in fixedMetrics) column.isFixed = true
+            text.text = name
+            val width = text.layoutBounds.width
+            column.minWidth = width + 20
+        }
         spreadsheetView.isShowColumnHeader = true
-        spreadsheetView.isShowRowHeader = false
-        spreadsheetView.isEditable = true
+        spreadsheetView.isShowRowHeader = true
+        spreadsheetView.isEditable = false
         tableContainer.center = spreadsheetView
     }
 }

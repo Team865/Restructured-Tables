@@ -49,7 +49,7 @@ class AppController : FeatureStage {
                 userName.text = UserEnv[UserConfig.appUserName, "Unknown user"]
                 deviceName.text = UserEnv[UserConfig.appUserDevice, "Unknown device"]
                 statusMessageLabel.text = "Finished loading app"
-                val totalHeight = (appTabs.size * 32).toDouble()
+                val totalHeight = (appTabs.size * 30).toDouble()
                 appTabListView.minHeight = totalHeight
                 appTabListView.setMaxHeight(totalHeight)
             }
@@ -116,7 +116,7 @@ class AppController : FeatureStage {
                         return
                     }
                     graphic = AppElement.tabUIFromLink(item.link)
-                    prefHeight = 32.0
+                    prefHeight = 30.0
                     setOnMouseClicked { handleFeatureLink(item) }
                 }
             }
