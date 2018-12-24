@@ -49,4 +49,15 @@ class PythonFeature : Feature {
     override fun setFocused(focused: Boolean) {
         controller.setFocused(focused)
     }
+
+    override fun onOpen(): Pair<Parent?, Parent?> {
+        if (preLoaded == null) {
+            preLoaded = FeatureUtils.loadParent<PythonController>("/ca/warp7/rt/ext/python/Python.fxml")
+            {
+                setController(it)
+            }
+        }
+        controller.setTabItemParams("documentation.py")
+        return null to preLoaded
+    }
 }

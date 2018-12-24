@@ -20,4 +20,8 @@ class ASTFeature : Feature {
     override fun onOpenTab(tab: FeatureItemTab): Parent? {
         return FeatureUtils.loadParent("/ca/warp7/rt/ext/ast/AST.fxml")
     }
+
+    override fun onOpen(): Pair<Parent?, Parent?> {
+        return null to FeatureUtils.loadParent("/ca/warp7/rt/ext/ast/AST.fxml")
+    }
 }
