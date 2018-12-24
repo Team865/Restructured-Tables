@@ -13,7 +13,6 @@ import javafx.scene.layout.VBox;
 import java.util.Optional;
 import java.util.function.Function;
 
-@SuppressWarnings("unused")
 public class AppUtils {
     static AppController controller;
 
@@ -23,26 +22,6 @@ public class AppUtils {
 
     public static void insertTab(FeatureItemTab tab) {
         controller.insertTab(tab);
-    }
-
-    public static boolean removeCurrentTab() {
-        return controller.removeCurrentTab();
-    }
-
-    public static void repaintTabs() {
-        controller.appTabListView.refresh();
-    }
-
-    public static void reloadTabModel() {
-        controller.reloadTabModel();
-    }
-
-    public static void setColumn(String column) {
-        controller.columnLabel.setText(column);
-    }
-
-    public static void setRow(String row) {
-        controller.rowLabel.setText(row);
     }
 
     public static String getString(String title, String prompt, String defVal, Function<String, Boolean> validator) {

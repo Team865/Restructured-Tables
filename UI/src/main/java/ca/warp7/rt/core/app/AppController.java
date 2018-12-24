@@ -21,9 +21,6 @@ import org.jetbrains.annotations.NotNull;
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 import org.kordamp.ikonli.javafx.FontIcon;
 
-import static ca.warp7.rt.core.app.AppFeatures.featureMap;
-import static ca.warp7.rt.core.app.AppFeatures.features;
-
 public class AppController implements FeatureStage {
 
     public BorderPane tabContent;
@@ -62,7 +59,7 @@ public class AppController implements FeatureStage {
             currentFeature = null;
             currentTab = null;
             appTabs.clear();
-            features.forEach(feature -> feature.getLoadedTabs().forEach(tab -> appTabs.add(new AppTab(tab))));
+            AppFeatures.INSTANCE.getFeatures().forEach(feature -> feature.getLoadedTabs().forEach(tab -> appTabs.add(new AppTab(tab))));
         }
     }
 
@@ -130,24 +127,11 @@ public class AppController implements FeatureStage {
         } else insertLastTab(newItemTab);
     }
 
-    boolean removeCurrentTab() {
-        ObservableList<AppTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
-        if (selectedItems.size() == 1 && (currentFeature == null || currentFeature.onClose())) {
-            AppTab tab = selectedItems.get(0);
-            appTabs.remove(tab);
-            tabContent.setCenter(null);
-            currentFeature = null;
-            currentTab = null;
-            return true;
-        }
-        return false;
-    }
-
     private void handleFeatureAction(FeatureItemTab tab) {
         if (tab == currentTab) return;
         String id = tab.getFeatureId();
-        if (featureMap.containsKey(id)) {
-            Feature feature = featureMap.get(id);
+        if (AppFeatures.INSTANCE.getFeatureMap().containsKey(id)) {
+            Feature feature = AppFeatures.INSTANCE.getFeatureMap().get(id);
             if (currentFeature == feature) {
                 currentTab = tab;
                 updateTitle(tab);
@@ -184,26 +168,16 @@ public class AppController implements FeatureStage {
                     setGraphic(null);
                     return;
                 }
-                if (item.isDecorativeNode()) {
-                    setMouseTransparent(true);
-                    setFocusTraversable(false);
-                    setGraphic(item.getDecorativeNode());
-                    setPrefHeight(item.getDecorativeHeight());
-                } else {
-                    setGraphic(AppElement.tabUIFromAction(item));
-                    setPrefHeight(36);
-                    setOnMouseClicked(event -> handleFeatureAction(item.getFeatureItemTab()));
-                }
+                setGraphic(AppElement.tabUIFromAction(item));
+                setPrefHeight(36);
+                setOnMouseClicked(event -> handleFeatureAction(item.getFeatureItemTab()));
             }
         });
         // Key press: switch to tab on enter
         appTabListView.setOnKeyPressed(event -> {
             ObservableList<AppTab> selectedItems = appTabListView.getSelectionModel().getSelectedItems();
-            if (selectedItems.size() == 1) {
-                AppTab tab = selectedItems.get(0);
-                if (!tab.isDecorativeNode() && event.getCode() == KeyCode.ENTER)
-                    handleFeatureAction(tab.getFeatureItemTab());
-            }
+            if (selectedItems.size() == 1 && event.getCode() == KeyCode.ENTER)
+                handleFeatureAction(selectedItems.get(0).getFeatureItemTab());
         });
         // Selection change: change icon colour
         appTabListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<AppTab>) c -> {

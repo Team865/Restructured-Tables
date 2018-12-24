@@ -16,7 +16,7 @@
 
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContentContainer" visible="false">
         <SplitPane VBox.vgrow="ALWAYS" orientation="VERTICAL" minWidth="240" prefWidth="240" fx:id="listViewContainer">
-            <ImageView fitWidth="180" preserveRatio="true">
+            <ImageView fitWidth="240" preserveRatio="true">
                 <Image url="@/ca/warp7/rt/res/warp7.png"/>
             </ImageView>
             <ListView fx:id="appTabListView"/>
