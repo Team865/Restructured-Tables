@@ -34,6 +34,11 @@
     -fx-font-smoothing-type: gray;
 }
 
+.list-view {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent
+}
+
 .list-cell {
     -fx-background-color: white;
 }
@@ -52,6 +57,9 @@
     -fx-text-fill: white;
 }
 
+.table-view {
+    -fx-background-color: transparent;
+}
 
 .table-view .column-header,
 .table-view .column-header-background .filler {
@@ -109,12 +117,44 @@
 }
 
 .tool-bar {
-    -fx-background-color: #eee;
+    -fx-background-color: transparent;
     -fx-border-width: 0;
-    -fx-padding: 6;
+    -fx-padding: 8;
     -fx-border-color: #ccc;
 }
 
 .split-pane-divider {
     -fx-padding: 0 0 0 1;
+}
+
+.no-border-pane {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+
+/* NORMAL CELL */
+.spreadsheet-cell:filled:selected,
+.spreadsheet-cell:filled:focused:selected,
+.spreadsheet-cell:filled:focused:selected:hover {
+    /*-fx-background-color: #8cb1ff;*/
+    -fx-background-color: #ddd;
+    -fx-border-color: #a9a9a9;
+    -fx-border-width: 1px;
+    -fx-text-fill: -fx-selection-bar-text;
+
+}
+
+.spreadsheet-cell:hover,
+.spreadsheet-cell:filled:focused {
+    /*-fx-background-color: #988490;*/
+    -fx-text-fill: -fx-text-inner-color;
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.spreadsheet-cell {
+    -fx-padding: 0 0 0 0.2em;
+    -fx-border-color: black;
+    -fx-border-width: 0.3px;
+    -fx-background-color: -fx-table-cell-border-color, white;
 }
