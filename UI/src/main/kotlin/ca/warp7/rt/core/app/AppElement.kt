@@ -4,6 +4,7 @@ import ca.warp7.rt.core.env.EnvUser
 import ca.warp7.rt.core.env.EnvUtils
 import ca.warp7.rt.core.feature.FeatureIcon
 import ca.warp7.rt.core.feature.FeatureItemTab
+import ca.warp7.rt.core.feature.FeatureLink
 import javafx.geometry.Pos
 import javafx.scene.control.Label
 import javafx.scene.layout.HBox
@@ -31,6 +32,21 @@ internal object AppElement {
         outer.children.add(Label(action.title))
         return outer
     }
+
+    fun tabUIFromLink(link: FeatureLink): HBox {
+        val outer = HBox()
+        val inner = HBox()
+        inner.prefWidth = 24.0
+        inner.alignment = Pos.CENTER
+        link.icon.iconColor = teamColor
+        inner.children.add(link.icon)
+        outer.alignment = Pos.CENTER_LEFT
+        outer.spacing = 10.0
+        outer.children.add(inner)
+        outer.children.add(Label(link.title))
+        return outer
+    }
+
 
     @JvmStatic
     fun getTitle(tab: FeatureItemTab): String {

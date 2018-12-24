@@ -8,7 +8,7 @@
 <?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       prefWidth="1600" prefHeight="900" minWidth="800" minHeight="450"
-      fx:controller="ca.warp7.rt.core.app.AppController">
+      fx:controller="ca.warp7.rt.core.app.Controller">
 
     <stylesheets>
         <URL value="@/ca/warp7/rt/res/style.css"/>
@@ -29,7 +29,7 @@
         <HBox styleClass="status-item" HBox.hgrow="ALWAYS" onMouseClicked="#showStatus">
             <Label text="Loading" fx:id="statusMessageLabel"/>
         </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#reloadTabModel">
+        <HBox styleClass="status-item">
             <FontIcon iconLiteral="fas-sync:16:1e2e4a"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#closeCurrentTab">
