@@ -16,7 +16,7 @@ import javafx.stage.Stage
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid
 import org.kordamp.ikonli.javafx.FontIcon
 
-class Controller : FeatureStage {
+class AppController : FeatureStage {
 
     lateinit var tabContent: BorderPane
     lateinit var tabsAndContentContainer: HBox
@@ -131,8 +131,8 @@ class Controller : FeatureStage {
             }
         })
         appTabListView.focusedProperty().addListener { _, _, newValue ->
-            if (!newValue) appTabListView.selectionModel.selectedItems.forEach {
-                it.link.icon.iconColor = AppElement.teamColor
+            appTabListView.selectionModel.selectedItems.forEach {
+                it.link.icon.iconColor = if (newValue) Color.WHITE else AppElement.teamColor
             }
 
         }

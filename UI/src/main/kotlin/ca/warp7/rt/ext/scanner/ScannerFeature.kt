@@ -7,7 +7,7 @@ import javafx.scene.Parent
 
 class ScannerFeature : Feature {
 
-    override val link = FeatureLink("QR Scanner", "fas-camera", 16)
+    override val link = FeatureLink("QR Scanner", "fas-camera", 18)
 
     private var controller: ScannerController? = null
 

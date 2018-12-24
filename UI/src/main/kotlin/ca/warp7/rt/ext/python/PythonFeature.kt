@@ -9,7 +9,7 @@ import javafx.scene.Parent
 
 class PythonFeature : Feature {
 
-    override val link = FeatureLink("Python Scripts", "fab-python", 18)
+    override val link = FeatureLink("Python Scripts", "fab-python", 20)
 
     private var preLoaded: Parent? = null
     private lateinit var controller: PythonController

@@ -9,7 +9,7 @@ class ViewsFeature : Feature {
 
     private var preLoaded: Parent? = null
 
-    override val link = FeatureLink("Table Views", "fas-eye", 16)
+    override val link = FeatureLink("Table Views", "fas-eye", 18)
 
     override fun onOpen(): Pair<Parent?, Parent?> {
         if (preLoaded == null) {

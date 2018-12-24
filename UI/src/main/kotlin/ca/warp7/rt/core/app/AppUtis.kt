@@ -31,7 +31,7 @@ internal val appFeatures = listOf(
         ViewsFeature()
 )
 
-internal var utilsController: Controller? = null
+internal var utilsController: AppController? = null
 
 fun userInputString(title: String, prompt: String, defVal: String,
                     validator: ((value: String) -> Boolean)? = null): String? {
