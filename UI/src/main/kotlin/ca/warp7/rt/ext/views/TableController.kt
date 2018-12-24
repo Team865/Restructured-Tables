@@ -21,14 +21,14 @@ class TableController {
                 "Horst", "Keanes", 12, 82
         )
 
-        val grid = GridBase(30, 30)
+        val grid = GridBase(50, 30)
 //        df.cols.forEachIndexed { col, dataCol ->
 //            dataCol.values().forEachIndexed { row, any ->
 //                grid.setCellValue(row, col, any)
 //            }
 //        }
 
-        for (i in 0..30) {
+        for (i in 0..50) {
             grid.rows.add(FXCollections.observableArrayList())
             for (j in 0..df.ncol * 30) {
                 grid.rows[i].add(SpreadsheetCellType.DOUBLE.createCell(i, j, 1, 1,

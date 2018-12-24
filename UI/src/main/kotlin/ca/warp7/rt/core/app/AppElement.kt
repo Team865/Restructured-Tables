@@ -23,7 +23,9 @@ internal object AppElement {
         outer.alignment = Pos.CENTER_LEFT
         outer.spacing = 10.0
         outer.children.add(inner)
-        outer.children.add(Label(link.title))
+        val label = Label(link.title)
+        label.style = "-fx-font-size:16"
+        outer.children.add(label)
         return outer
     }
 

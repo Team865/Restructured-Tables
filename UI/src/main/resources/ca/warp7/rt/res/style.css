@@ -61,19 +61,6 @@
     -fx-background-color: transparent;
 }
 
-.table-view .column-header,
-.table-view .column-header-background .filler {
-    -fx-background-color: #dddddd;
-    -fx-border-width: 0 1 1 1;
-    -fx-border-color: #eeeeee;
-    -fx-pref-height: 28;
-}
-
-.table-view .column-header .label {
-    -fx-text-fill: #3c5c94;
-    -fx-font-weight: bold;
-}
-
 .scroll-bar .increment-button {
     -fx-opacity: 0;
     -fx-pref-height: 0;
@@ -130,6 +117,7 @@
 .no-border-pane {
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
+    -fx-padding: 0 0 0 5;
 }
 
 
