@@ -39,7 +39,7 @@ class Controller : FeatureStage {
             utilsController = this
             setupAppTabListView()
             setupFocusedMode()
-            appTabs.addAll(AppFeatures.features)
+            appTabs.addAll(appFeatures)
             rowLabel.text = "None"
             columnLabel.text = "None"
             statusBarContainer.isVisible = true

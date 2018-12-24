@@ -1,5 +1,15 @@
 package ca.warp7.rt.core.app
 
+import ca.warp7.rt.ext.ast.ASTFeature
+import ca.warp7.rt.ext.boards.BoardsFeature
+import ca.warp7.rt.ext.dataset.DatasetFeature
+import ca.warp7.rt.ext.event.EventFeature
+import ca.warp7.rt.ext.media.MediaFeature
+import ca.warp7.rt.ext.predictor.PredictorFeature
+import ca.warp7.rt.ext.python.PythonFeature
+import ca.warp7.rt.ext.scanner.ScannerFeature
+import ca.warp7.rt.ext.vc.VCFeature
+import ca.warp7.rt.ext.views.ViewsFeature
 import javafx.application.Platform
 import javafx.geometry.Pos
 import javafx.scene.control.ButtonType
@@ -7,6 +17,19 @@ import javafx.scene.control.Dialog
 import javafx.scene.control.Label
 import javafx.scene.control.TextField
 import javafx.scene.layout.VBox
+
+internal val appFeatures = listOf(
+        DatasetFeature(),
+        EventFeature(),
+        ASTFeature(),
+        PredictorFeature(),
+        MediaFeature(),
+        BoardsFeature(),
+        ScannerFeature(),
+        VCFeature(),
+        PythonFeature(),
+        ViewsFeature()
+)
 
 internal var utilsController: Controller? = null
 
