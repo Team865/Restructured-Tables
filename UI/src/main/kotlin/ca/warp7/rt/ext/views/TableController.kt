@@ -1,16 +1,21 @@
 package ca.warp7.rt.ext.views
 
 import javafx.collections.FXCollections
+import javafx.collections.ObservableList
 import javafx.scene.layout.BorderPane
 import krangl.DataFrame
 import krangl.dataFrameOf
 import org.controlsfx.control.spreadsheet.GridBase
+import org.controlsfx.control.spreadsheet.SpreadsheetCell
 import org.controlsfx.control.spreadsheet.SpreadsheetCellType
 import org.controlsfx.control.spreadsheet.SpreadsheetView
+import java.time.LocalDate
 
 class TableController {
 
     lateinit var tableContainer: BorderPane
+
+    private fun getCreateCellList(): ObservableList<SpreadsheetCell> = FXCollections.observableArrayList<SpreadsheetCell>()
 
     fun initialize() {
 
@@ -21,32 +26,29 @@ class TableController {
                 "Horst", "Keanes", 12, 82
         )
 
-        val grid = GridBase(50, 30)
-//        df.cols.forEachIndexed { col, dataCol ->
-//            dataCol.values().forEachIndexed { row, any ->
-//                grid.setCellValue(row, col, any)
-//            }
-//        }
-
-        for (i in 0..50) {
-            grid.rows.add(FXCollections.observableArrayList())
-            for (j in 0..df.ncol * 30) {
-                grid.rows[i].add(SpreadsheetCellType.DOUBLE.createCell(i, j, 1, 1,
-                        i.toDouble() * j))
+        val grid = GridBase(3, 4)
+        df.rows.forEachIndexed { i, row ->
+            val rowList = getCreateCellList()
+            row.values.forEachIndexed { j, value ->
+                rowList.add(when (value) {
+                    null -> null
+                    is Double -> SpreadsheetCellType.DOUBLE.createCell(i, j, 1, 1, value)
+                    is Int -> SpreadsheetCellType.INTEGER.createCell(i, j, 1, 1, value)
+                    is LocalDate -> SpreadsheetCellType.DATE.createCell(i, j, 1, 1, value)
+                    is String -> SpreadsheetCellType.STRING.createCell(i, j, 1, 1, value)
+                    else -> SpreadsheetCellType.STRING.createCell(i, j, 1, 1, value.toString())
+                })
             }
+            grid.rows.add(rowList)
         }
+
+        grid.columnHeaders.addAll(df.cols.map { it.name })
 
         val spreadsheetView = SpreadsheetView(grid)
         spreadsheetView.columns.forEach { it.minWidth = 80.0 }
-        spreadsheetView.grid.rowHeaders.apply {
-            clear()
-            add("hi")
-            add("ho")
-        }
-        spreadsheetView.grid.columnHeaders.apply {
-            add("Team")
-        }
-        spreadsheetView.isEditable = false
+        spreadsheetView.isShowColumnHeader = true
+        spreadsheetView.isShowRowHeader = false
+        spreadsheetView.isEditable = true
         tableContainer.center = spreadsheetView
     }
 }
