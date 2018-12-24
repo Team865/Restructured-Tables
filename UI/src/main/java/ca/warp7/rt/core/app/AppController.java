@@ -15,8 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -26,13 +25,10 @@ import static ca.warp7.rt.core.app.AppFeatures.features;
 
 public class AppController implements FeatureStage {
 
-    private static final Paint gray = Paint.valueOf("gray");
-    private static final Paint white = Paint.valueOf("white");
-
     public BorderPane tabContent;
     public HBox tabsAndContentContainer;
     public ListView<AppTab> appTabListView;
-    public VBox listViewContainer;
+    public SplitPane listViewContainer;
     public Label statusMessageLabel;
     public Label rowLabel;
     public Label columnLabel;
@@ -194,7 +190,7 @@ public class AppController implements FeatureStage {
                     setPrefHeight(item.getDecorativeHeight());
                 } else {
                     setGraphic(AppElement.tabUIFromAction(item));
-                    setPrefHeight(32);
+                    setPrefHeight(36);
                     setOnMouseClicked(event -> handleFeatureAction(item.getFeatureItemTab()));
                 }
             }
@@ -212,10 +208,10 @@ public class AppController implements FeatureStage {
         appTabListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener<AppTab>) c -> {
             while (c.next()) {
                 c.getRemoved().forEach(o -> {
-                    if (o.getIcon() != null) o.getIcon().setIconColor(gray);
+                    if (o.getIcon() != null) o.getIcon().setIconColor(AppElement.getTeamColor());
                 });
                 c.getAddedSubList().forEach(o -> {
-                    if (o.getIcon() != null) o.getIcon().setIconColor(white);
+                    if (o.getIcon() != null) o.getIcon().setIconColor(Color.WHITE);
                 });
             }
         });
@@ -223,7 +219,7 @@ public class AppController implements FeatureStage {
         appTabListView.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
                 appTabListView.getSelectionModel().getSelectedItems().forEach(tab -> {
-                    if (tab.getIcon() != null) tab.getIcon().setIconColor(gray);
+                    if (tab.getIcon() != null) tab.getIcon().setIconColor(AppElement.getTeamColor());
                 });
             }
         });
@@ -256,7 +252,7 @@ public class AppController implements FeatureStage {
         Platform.runLater(() -> {
             AppElement.updateUserAndDevice(userName, deviceName);
             statusMessageLabel.setText("Finished loading app");
-            double totalHeight = appTabs.size() * 32;
+            double totalHeight = appTabs.size() * 36;
             appTabListView.setMinHeight(totalHeight);
             appTabListView.setMaxHeight(totalHeight);
         });

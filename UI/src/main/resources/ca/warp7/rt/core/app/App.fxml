@@ -15,15 +15,13 @@
     </stylesheets>
 
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContentContainer" visible="false">
-        <VBox alignment="TOP_CENTER" minWidth="240" prefWidth="240" fx:id="listViewContainer">
-            <SplitPane VBox.vgrow="ALWAYS" orientation="VERTICAL">
-                <ImageView fitWidth="180" preserveRatio="true">
-                    <Image url="@/ca/warp7/rt/res/warp7.png"/>
-                </ImageView>
-                <ListView fx:id="appTabListView"/>
-                <ListView/>
-            </SplitPane>
-        </VBox>
+        <SplitPane VBox.vgrow="ALWAYS" orientation="VERTICAL" minWidth="240" prefWidth="240" fx:id="listViewContainer">
+            <ImageView fitWidth="180" preserveRatio="true">
+                <Image url="@/ca/warp7/rt/res/warp7.png"/>
+            </ImageView>
+            <ListView fx:id="appTabListView"/>
+            <ListView/>
+        </SplitPane>
         <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>
     </HBox>
 
@@ -32,41 +30,41 @@
             <Label text="Loading" fx:id="statusMessageLabel"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#reloadTabModel">
-            <FontIcon iconLiteral="fas-sync:16:gray"/>
+            <FontIcon iconLiteral="fas-sync:16:1e2e4a"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#closeCurrentTab">
-            <FontIcon iconLiteral="fas-times:16:gray"/>
+            <FontIcon iconLiteral="fas-times:16:1e2e4a"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#showStatus">
-            <FontIcon iconLiteral="fas-search-plus:16:gray"/>
+            <FontIcon iconLiteral="fas-search-plus:16:1e2e4a"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#showStatus">
-            <FontIcon iconLiteral="fas-search-minus:16:gray"/>
+            <FontIcon iconLiteral="fas-search-minus:16:1e2e4a"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#toggleFullScreen">
-            <FontIcon iconLiteral="fas-expand:16:gray"/>
+            <FontIcon iconLiteral="fas-expand:16:1e2e4a"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#toggleFocused">
-            <FontIcon iconLiteral="fas-eye-slash:16:gray" fx:id="focusIcon"/>
+            <FontIcon iconLiteral="fas-eye-slash:16:1e2e4a" fx:id="focusIcon"/>
         </HBox>
         <HBox styleClass="status-item">
-            <FontIcon iconLiteral="fas-arrows-alt-h:16:gray"/>
+            <FontIcon iconLiteral="fas-arrows-alt-h:16:1e2e4a"/>
             <Label fx:id="rowLabel"/>
         </HBox>
         <HBox styleClass="status-item">
-            <FontIcon iconLiteral="fas-arrows-alt-v:16:gray"/>
+            <FontIcon iconLiteral="fas-arrows-alt-v:16:1e2e4a"/>
             <Label fx:id="columnLabel"/>
         </HBox>
         <HBox styleClass="status-item">
-            <FontIcon iconLiteral="fas-database:16:gray"/>
+            <FontIcon iconLiteral="fas-database:16:1e2e4a"/>
             <Label text="2018iri-frc865"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#setUserName">
-            <FontIcon iconLiteral="fas-user:16:gray"/>
+            <FontIcon iconLiteral="fas-user:16:1e2e4a"/>
             <Label fx:id="userName"/>
         </HBox>
         <HBox styleClass="status-item" onMouseClicked="#setUserDevice">
-            <FontIcon iconLiteral="fas-laptop:16:gray"/>
+            <FontIcon iconLiteral="fas-laptop:16:1e2e4a"/>
             <Label fx:id="deviceName"/>
         </HBox>
     </HBox>

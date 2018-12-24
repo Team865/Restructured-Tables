@@ -7,17 +7,22 @@ import ca.warp7.rt.core.feature.FeatureItemTab
 import javafx.geometry.Pos
 import javafx.scene.control.Label
 import javafx.scene.layout.HBox
+import javafx.scene.paint.Color
 
 internal object AppElement {
+
+    @JvmStatic
+    val teamColor: Color = Color.valueOf("1e2e4a")
 
     @JvmStatic
     fun tabUIFromAction(tab: AppTab): HBox {
         val action = tab.featureItemTab
         val outer = HBox()
         val inner = HBox()
-        inner.prefWidth = 20.0
+        inner.prefWidth = 24.0
         inner.alignment = Pos.CENTER
         val icon = FeatureIcon(action.iconLiteral)
+        icon.iconColor = teamColor
         inner.children.add(icon)
         tab.icon = icon
         outer.alignment = Pos.CENTER_LEFT
