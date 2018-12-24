@@ -6,25 +6,9 @@ import ca.warp7.rt.core.feature.FeatureIcon
 import ca.warp7.rt.core.feature.FeatureItemTab
 import javafx.geometry.Pos
 import javafx.scene.control.Label
-import javafx.scene.image.Image
-import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 
 internal object AppElement {
-
-    @JvmStatic
-    val teamLogo: AppTab
-        get() {
-            val height = 72
-            val teamLogo = ImageView()
-            teamLogo.image = Image("/ca/warp7/rt/res/warp7.png")
-            teamLogo.isPreserveRatio = true
-            teamLogo.fitHeight = height.toDouble()
-            val hBox = HBox()
-            hBox.alignment = Pos.TOP_CENTER
-            hBox.children.add(teamLogo)
-            return AppTab(hBox, height)
-        }
 
     @JvmStatic
     fun tabUIFromAction(tab: AppTab): HBox {

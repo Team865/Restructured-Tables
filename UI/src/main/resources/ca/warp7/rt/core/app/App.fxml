@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 <?import java.net.URL?>
@@ -13,8 +15,14 @@
     </stylesheets>
 
     <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContentContainer" visible="false">
-        <VBox prefWidth="224" alignment="TOP_CENTER" minWidth="224" maxWidth="224" fx:id="listViewContainer">
-            <ListView VBox.vgrow="ALWAYS" fx:id="appTabListView"/>
+        <VBox alignment="TOP_CENTER" minWidth="240" prefWidth="240" fx:id="listViewContainer">
+            <SplitPane VBox.vgrow="ALWAYS" orientation="VERTICAL">
+                <ImageView fitWidth="180" preserveRatio="true">
+                    <Image url="@/ca/warp7/rt/res/warp7.png"/>
+                </ImageView>
+                <ListView fx:id="appTabListView"/>
+                <ListView/>
+            </SplitPane>
         </VBox>
         <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>
     </HBox>

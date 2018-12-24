@@ -113,3 +113,7 @@
     -fx-border-width: 1 0 1 0;
     -fx-border-color: #ccc;
 }
+
+.split-pane-divider {
+    -fx-padding: 0 0 0 1;
+}

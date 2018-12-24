@@ -65,7 +65,6 @@ public class AppController implements FeatureStage {
             currentFeature = null;
             currentTab = null;
             appTabs.clear();
-            appTabs.add(AppElement.getTeamLogo());
             features.forEach(feature -> feature.getLoadedTabs().forEach(tab -> appTabs.add(new AppTab(tab))));
         }
     }
@@ -256,6 +255,9 @@ public class AppController implements FeatureStage {
         Platform.runLater(() -> {
             AppElement.updateUserAndDevice(userName, deviceName);
             statusMessageLabel.setText("Finished loading app");
+            double totalHeight = appTabs.size() * 28;
+            appTabListView.setMinHeight(totalHeight);
+            appTabListView.setMaxHeight(totalHeight);
         });
     }
 }
