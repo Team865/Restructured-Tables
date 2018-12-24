@@ -194,6 +194,7 @@ public class AppController implements FeatureStage {
                     setPrefHeight(item.getDecorativeHeight());
                 } else {
                     setGraphic(AppElement.tabUIFromAction(item));
+                    setPrefHeight(32);
                     setOnMouseClicked(event -> handleFeatureAction(item.getFeatureItemTab()));
                 }
             }
@@ -255,7 +256,7 @@ public class AppController implements FeatureStage {
         Platform.runLater(() -> {
             AppElement.updateUserAndDevice(userName, deviceName);
             statusMessageLabel.setText("Finished loading app");
-            double totalHeight = appTabs.size() * 28;
+            double totalHeight = appTabs.size() * 32;
             appTabListView.setMinHeight(totalHeight);
             appTabListView.setMaxHeight(totalHeight);
         });

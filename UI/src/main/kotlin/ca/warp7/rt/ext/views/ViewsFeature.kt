@@ -16,7 +16,7 @@ class ViewsFeature : Feature {
 
     override fun getLoadedTabs(): List<FeatureItemTab> {
         return listOf(
-                factory.get("Data Views", "")//,
+                factory.get("Table Views", "")//,
 //                factory.get("Auto List", ""),
 //                factory.get("Endgame", ""),
 //                factory.get("Team Averages", ""),

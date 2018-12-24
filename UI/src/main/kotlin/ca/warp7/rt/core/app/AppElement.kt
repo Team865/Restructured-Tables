@@ -20,6 +20,7 @@ internal object AppElement {
         val icon = FeatureIcon(action.iconLiteral)
         inner.children.add(icon)
         tab.icon = icon
+        outer.alignment = Pos.CENTER_LEFT
         outer.spacing = 10.0
         outer.children.add(inner)
         outer.children.add(Label(action.title))
