@@ -1,5 +1,6 @@
 package ca.warp7.rt.ext.views
 
+import javafx.scene.control.ContextMenu
 import javafx.scene.input.Clipboard
 import javafx.scene.input.ClipboardContent
 import javafx.scene.input.DataFormat
@@ -14,6 +15,10 @@ import java.util.*
 class Spreadsheet(grid: Grid) : SpreadsheetView(grid) {
 
     private lateinit var dataFormat: DataFormat
+
+    override fun getSpreadsheetViewContextMenu(): ContextMenu {
+        return ContextMenu()
+    }
 
     override fun copyClipboard() {
         dataFormat = DataFormat.lookupMimeType("SpreadsheetView") ?: DataFormat("SpreadsheetView")

@@ -1,7 +1,14 @@
 package ca.warp7.rt.ext.views
 
+import ca.warp7.rt.core.feature.FeatureIcon
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
+import javafx.scene.control.Menu
+import javafx.scene.control.MenuItem
+import javafx.scene.control.SeparatorMenuItem
+import javafx.scene.input.KeyCode
+import javafx.scene.input.KeyCodeCombination
+import javafx.scene.input.KeyCombination
 import javafx.scene.layout.BorderPane
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
@@ -48,21 +55,72 @@ class TableController {
 
         grid.columnHeaders.addAll(df.cols.map { it.name })
 
-        val spreadsheet = Spreadsheet(grid)
+        val sheet = Spreadsheet(grid)
         val text = Text()
         text.font = Font.font("sans-serif", FontWeight.BOLD, 14.0)
         val fixedMetrics = listOf("Team", "Match", "Match Type", "Entry", "Alliance", "Scout", "Event", "Year")
-        spreadsheet.columns.forEachIndexed { index, column ->
-            val name = grid.columnHeaders[spreadsheet.getModelColumn(index)]
+        sheet.columns.forEachIndexed { index, column ->
+            val name = grid.columnHeaders[sheet.getModelColumn(index)]
                     .replace("[^A-Za-z0-9 ]".toRegex(), "")
             if (name in fixedMetrics) column.isFixed = true
             text.text = name
-            val width = text.layoutBounds.width
-            column.minWidth = width + 20
+            column.setResizable(true)
+            column.minWidth = text.layoutBounds.width + 20
+//            column.setPrefWidth(text.layoutBounds.width + 20)
         }
-        spreadsheet.isShowColumnHeader = true
-        spreadsheet.isShowRowHeader = true
-        spreadsheet.isEditable = false
-        tableContainer.center = spreadsheet
+        sheet.contextMenu.items.apply { clear() }.addAll(
+                MenuItem("Copy cells", FeatureIcon("fas-copy:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN)
+                },
+                MenuItem("Copy table", FeatureIcon("fas-table:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN)
+                },
+
+                SeparatorMenuItem(),
+                Menu("Sort Columns", FeatureIcon("fas-sort:16:1e2e4a")).apply {
+                    items.addAll(
+                            MenuItem("Set primary column 1-9, A-Z", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
+                            MenuItem("Set primary column 9-1, Z-A", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
+                            SeparatorMenuItem(),
+                            MenuItem("Add secondary column 1-9, A-Z", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
+                            MenuItem("Add secondary column 9-1, Z-A", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
+                            SeparatorMenuItem(),
+                            MenuItem("Clear all")
+                    )
+                },
+
+                Menu("Colour scale", FeatureIcon("fas-paint-brush:16:1e2e4a")).apply {
+                    items.addAll(
+                            MenuItem("Toggle Direction"),
+                            SeparatorMenuItem(),
+                            MenuItem("Red"),
+                            MenuItem("Green"),
+                            MenuItem("Red to Green"),
+                            MenuItem("None")
+                    )
+                },
+
+                Menu("Filter Rows", FeatureIcon("fas-filter:16:1e2e4a")).apply {
+                    items.addAll(
+                            MenuItem("Add values for each column"),
+                            MenuItem("Exclude values for each column"),
+                            MenuItem("Clear and apply"),
+                            MenuItem("Clear and exclude")
+                    )
+                },
+
+                Menu("Highlight", FeatureIcon("fas-adjust:16:1e2e4a")).apply {
+                    items.addAll(
+                            MenuItem("Selected cells"),
+                            MenuItem("Selected values"),
+                            MenuItem("Rows with selected values")
+                    )
+                }
+        )
+
+        sheet.isShowColumnHeader = true
+        sheet.isShowRowHeader = true
+        sheet.isEditable = false
+        tableContainer.center = sheet
     }
 }
