@@ -11,8 +11,7 @@ import krangl.readDelim
 import org.apache.commons.csv.CSVFormat
 import org.controlsfx.control.spreadsheet.GridBase
 import org.controlsfx.control.spreadsheet.SpreadsheetCell
-import org.controlsfx.control.spreadsheet.SpreadsheetCellType
-import org.controlsfx.control.spreadsheet.SpreadsheetView
+import org.controlsfx.control.spreadsheet.SpreadsheetCellType.*
 import java.time.LocalDate
 
 class TableController {
@@ -37,11 +36,11 @@ class TableController {
             row.values.forEachIndexed { j, value ->
                 rowList.add(when (value) {
                     null -> null
-                    is Double -> SpreadsheetCellType.DOUBLE.createCell(i, j, 1, 1, value)
-                    is Int -> SpreadsheetCellType.INTEGER.createCell(i, j, 1, 1, value)
-                    is LocalDate -> SpreadsheetCellType.DATE.createCell(i, j, 1, 1, value)
-                    is String -> SpreadsheetCellType.STRING.createCell(i, j, 1, 1, value)
-                    else -> SpreadsheetCellType.STRING.createCell(i, j, 1, 1, value.toString())
+                    is Double -> DOUBLE.createCell(i, j, 1, 1, value)
+                    is Int -> INTEGER.createCell(i, j, 1, 1, value)
+                    is LocalDate -> DATE.createCell(i, j, 1, 1, value)
+                    is String -> STRING.createCell(i, j, 1, 1, value)
+                    else -> STRING.createCell(i, j, 1, 1, value.toString())
                 })
             }
             grid.rows.add(rowList)
@@ -49,21 +48,21 @@ class TableController {
 
         grid.columnHeaders.addAll(df.cols.map { it.name })
 
-        val spreadsheetView = SpreadsheetView(grid)
+        val spreadsheet = Spreadsheet(grid)
         val text = Text()
         text.font = Font.font("sans-serif", FontWeight.BOLD, 14.0)
-        val fixedMetrics = listOf("Team", "Match", "Entry", "Alliance", "Scout", "Event", "Year")
-        spreadsheetView.columns.forEachIndexed { index, column ->
-            val name = grid.columnHeaders[index].replace("[^A-Za-z0-9 ]".toRegex(), "")
-            println(name)
+        val fixedMetrics = listOf("Team", "Match", "Match Type", "Entry", "Alliance", "Scout", "Event", "Year")
+        spreadsheet.columns.forEachIndexed { index, column ->
+            val name = grid.columnHeaders[spreadsheet.getModelColumn(index)]
+                    .replace("[^A-Za-z0-9 ]".toRegex(), "")
             if (name in fixedMetrics) column.isFixed = true
             text.text = name
             val width = text.layoutBounds.width
             column.minWidth = width + 20
         }
-        spreadsheetView.isShowColumnHeader = true
-        spreadsheetView.isShowRowHeader = true
-        spreadsheetView.isEditable = false
-        tableContainer.center = spreadsheetView
+        spreadsheet.isShowColumnHeader = true
+        spreadsheet.isShowRowHeader = true
+        spreadsheet.isEditable = false
+        tableContainer.center = spreadsheet
     }
 }
