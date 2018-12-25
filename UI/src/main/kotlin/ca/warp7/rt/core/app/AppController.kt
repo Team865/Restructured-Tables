@@ -7,12 +7,10 @@ import ca.warp7.rt.core.feature.FeatureStage
 import javafx.application.Platform
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.collections.FXCollections
-import javafx.collections.ListChangeListener
 import javafx.scene.control.*
 import javafx.scene.input.KeyCode
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
-import javafx.scene.paint.Color
 import javafx.stage.Stage
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid
 import org.kordamp.ikonli.javafx.FontIcon
@@ -124,19 +122,6 @@ class AppController : FeatureStage {
         appTabListView.setOnKeyPressed {
             val selectedItems = appTabListView.selectionModel.selectedItems
             if (selectedItems.size == 1 && it.code == KeyCode.ENTER) handleFeatureLink(selectedItems[0])
-        }
-        appTabListView.selectionModel.selectedItems.addListener(ListChangeListener<Feature>
-        { c ->
-            while (c.next()) {
-                c.removed.forEach { it.link.icon.iconColor = AppElement.teamColor }
-                c.addedSubList.forEach { it.link.icon.iconColor = Color.WHITE }
-            }
-        })
-        appTabListView.focusedProperty().addListener { _, _, newValue ->
-            appTabListView.selectionModel.selectedItems.forEach {
-                it.link.icon.iconColor = if (newValue) Color.WHITE else AppElement.teamColor
-            }
-
         }
         appTabListView.selectionModel.selectionMode = SelectionMode.SINGLE
         appTabListView.items = appTabs

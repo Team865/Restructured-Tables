@@ -57,6 +57,10 @@
     -fx-text-fill: white;
 }
 
+.list-view:focused .list-cell:filled:selected .ikonli-font-icon {
+    -fx-icon-color: white;
+}
+
 .table-view {
     -fx-background-color: transparent;
 }
@@ -141,7 +145,7 @@
 .spreadsheet-cell {
     -fx-padding: 0 0 0 0.2em;
     -fx-border-color: black;
-    -fx-border-width: 1px;
+    -fx-border-width: 0.3px;
     -fx-background-color: -fx-table-cell-border-color, white;
 }
 
@@ -150,7 +154,6 @@
 
 }
 
-/*noinspection SpellCheckingInspection*/
 .menu-item:focused .ikonli-font-icon {
     -fx-icon-color: white;
 }

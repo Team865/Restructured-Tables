@@ -89,6 +89,15 @@ class TableController {
                     )
                 },
 
+                Menu("Filter Rows", FeatureIcon("fas-filter:16:1e2e4a")).apply {
+                    items.addAll(
+                            MenuItem("Add values for each column"),
+                            MenuItem("Exclude values for each column"),
+                            MenuItem("Clear and apply"),
+                            MenuItem("Clear and exclude")
+                    )
+                },
+
                 Menu("Colour scale", FeatureIcon("fas-paint-brush:16:1e2e4a")).apply {
                     items.addAll(
                             MenuItem("Toggle Direction"),
@@ -100,15 +109,6 @@ class TableController {
                     )
                 },
 
-                Menu("Filter Rows", FeatureIcon("fas-filter:16:1e2e4a")).apply {
-                    items.addAll(
-                            MenuItem("Add values for each column"),
-                            MenuItem("Exclude values for each column"),
-                            MenuItem("Clear and apply"),
-                            MenuItem("Clear and exclude")
-                    )
-                },
-
                 Menu("Highlight", FeatureIcon("fas-adjust:16:1e2e4a")).apply {
                     items.addAll(
                             MenuItem("Selected cells"),
@@ -116,7 +116,7 @@ class TableController {
                             MenuItem("Rows with selected values")
                     )
                 },
-
+                SeparatorMenuItem(),
                 MenuItem("View script", FeatureIcon("fas-code:16:1e2e4a"))
         )
 
