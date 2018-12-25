@@ -115,7 +115,9 @@ class TableController {
                             MenuItem("Selected values"),
                             MenuItem("Rows with selected values")
                     )
-                }
+                },
+
+                MenuItem("View script", FeatureIcon("fas-code:16:1e2e4a"))
         )
 
         sheet.isShowColumnHeader = true

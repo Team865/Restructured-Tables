@@ -141,6 +141,16 @@
 .spreadsheet-cell {
     -fx-padding: 0 0 0 0.2em;
     -fx-border-color: black;
-    -fx-border-width: 0.3px;
+    -fx-border-width: 1px;
     -fx-background-color: -fx-table-cell-border-color, white;
+}
+
+.menu-item:focused {
+    -fx-background-color: #3c5c94;
+
+}
+
+/*noinspection SpellCheckingInspection*/
+.menu-item:focused .ikonli-font-icon {
+    -fx-icon-color: white;
 }
