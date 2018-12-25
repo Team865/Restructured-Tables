@@ -13,7 +13,7 @@ class ViewsFeature : Feature {
 
     override fun onOpen(): Pair<Parent?, Parent?> {
         if (preLoaded == null) {
-            preLoaded = loadParent("/ca/warp7/rt/ext/views/Views.fxml")
+            preLoaded = loadParent("/ca/warp7/rt/ext/views/Table.fxml")
         }
         return null to preLoaded
     }

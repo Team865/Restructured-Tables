@@ -2,8 +2,7 @@ package ca.warp7.rt.core.app
 
 import ca.warp7.rt.ext.ast.ASTFeature
 import ca.warp7.rt.ext.boards.BoardsFeature
-import ca.warp7.rt.ext.dataset.DatasetFeature
-import ca.warp7.rt.ext.event.EventFeature
+import ca.warp7.rt.ext.dash.ContextFeature
 import ca.warp7.rt.ext.media.MediaFeature
 import ca.warp7.rt.ext.predictor.PredictorFeature
 import ca.warp7.rt.ext.python.PythonFeature
@@ -20,8 +19,7 @@ import javafx.scene.layout.VBox
 
 
 internal val appFeatures = listOf(
-        DatasetFeature(),
-        EventFeature(),
+        ContextFeature(),
         ASTFeature(),
         PredictorFeature(),
         MediaFeature(),
