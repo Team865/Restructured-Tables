@@ -5,6 +5,7 @@ import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.scene.control.Menu
 import javafx.scene.control.MenuItem
+import javafx.scene.control.SelectionMode
 import javafx.scene.control.SeparatorMenuItem
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyCodeCombination
@@ -52,9 +53,7 @@ class TableController {
             }
             grid.rows.add(rowList)
         }
-
         grid.columnHeaders.addAll(df.cols.map { it.name })
-
         val sheet = Spreadsheet(grid)
         val text = Text()
         text.font = Font.font("sans-serif", FontWeight.BOLD, 14.0)
@@ -66,18 +65,38 @@ class TableController {
             text.text = name
             column.setResizable(true)
             column.minWidth = text.layoutBounds.width + 20
-//            column.setPrefWidth(text.layoutBounds.width + 20)
         }
+        sheet.selectionModel.selectionMode = SelectionMode.MULTIPLE
         sheet.contextMenu.items.apply { clear() }.addAll(
-                MenuItem("Copy cells", FeatureIcon("fas-copy:16:1e2e4a")).apply {
-                    accelerator = KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN)
-                },
-                MenuItem("Copy table", FeatureIcon("fas-table:16:1e2e4a")).apply {
-                    accelerator = KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN)
+                Menu("Copy", FeatureIcon("fas-copy:16:1e2e4a")).apply {
+                    items.addAll(
+                            MenuItem("Selected cells").apply {
+                                accelerator = KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN)
+                            },
+                            MenuItem("Selected cells with headers"),
+                            MenuItem("Selected rows"),
+                            MenuItem("Selected rows with headers"),
+                            MenuItem("Selected columns"),
+                            MenuItem("Selected columns with headers"),
+                            MenuItem("Entire table"),
+                            MenuItem("Entire table with headers")
+                    )
                 },
 
                 SeparatorMenuItem(),
                 Menu("Sort Columns", FeatureIcon("fas-sort:16:1e2e4a")).apply {
+                    items.addAll(
+                            MenuItem("Set primary column 1-9, A-Z", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
+                            MenuItem("Set primary column 9-1, Z-A", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
+                            SeparatorMenuItem(),
+                            MenuItem("Add secondary column 1-9, A-Z", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
+                            MenuItem("Add secondary column 9-1, Z-A", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
+                            SeparatorMenuItem(),
+                            MenuItem("Clear all")
+                    )
+                },
+
+                Menu("Create Plot", FeatureIcon("fas-chart-bar:16:1e2e4a")).apply {
                     items.addAll(
                             MenuItem("Set primary column 1-9, A-Z", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
                             MenuItem("Set primary column 9-1, Z-A", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
@@ -98,7 +117,7 @@ class TableController {
                     )
                 },
 
-                Menu("Colour scale", FeatureIcon("fas-paint-brush:16:1e2e4a")).apply {
+                Menu("Colour Scales", FeatureIcon("fas-paint-brush:16:1e2e4a")).apply {
                     items.addAll(
                             MenuItem("Toggle Direction"),
                             SeparatorMenuItem(),
@@ -109,7 +128,7 @@ class TableController {
                     )
                 },
 
-                Menu("Highlight", FeatureIcon("fas-adjust:16:1e2e4a")).apply {
+                Menu("Highlight Cells", FeatureIcon("fas-adjust:16:1e2e4a")).apply {
                     items.addAll(
                             MenuItem("Selected cells"),
                             MenuItem("Selected values"),
@@ -117,7 +136,7 @@ class TableController {
                     )
                 },
                 SeparatorMenuItem(),
-                MenuItem("View script", FeatureIcon("fas-code:16:1e2e4a"))
+                MenuItem("Configure View", FeatureIcon("fas-code:16:1e2e4a"))
         )
 
         sheet.isShowColumnHeader = true

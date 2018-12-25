@@ -6,6 +6,5 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       HBox.hgrow="ALWAYS">
-    <fx:include source="ViewBar.fxml"/>
     <fx:include source="Table.fxml" VBox.vgrow="ALWAYS"/>
 </VBox>

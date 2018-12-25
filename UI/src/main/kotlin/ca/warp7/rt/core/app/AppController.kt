@@ -22,8 +22,6 @@ class AppController : FeatureStage {
     lateinit var appTabListView: ListView<Feature>
     lateinit var listViewContainer: SplitPane
     lateinit var statusMessageLabel: Label
-    lateinit var rowLabel: Label
-    lateinit var columnLabel: Label
     lateinit var focusIcon: FontIcon
     lateinit var userName: Label
     lateinit var deviceName: Label
@@ -39,8 +37,6 @@ class AppController : FeatureStage {
             setupAppTabListView()
             setupFocusedMode()
             appTabs.addAll(appFeatures)
-            rowLabel.text = "None"
-            columnLabel.text = "None"
             statusBarContainer.isVisible = true
             tabsAndContentContainer.isVisible = true
             Platform.runLater {
@@ -136,8 +132,6 @@ class AppController : FeatureStage {
             current = ft
             val parent = current!!.onOpen()
             tabContent.center = parent.second
-            rowLabel.text = "None"
-            columnLabel.text = "None"
         }
     }
 

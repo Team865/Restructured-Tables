@@ -48,14 +48,6 @@
             <FontIcon iconLiteral="fas-eye-slash:16:1e2e4a" fx:id="focusIcon"/>
         </HBox>
         <HBox styleClass="status-item">
-            <FontIcon iconLiteral="fas-arrows-alt-h:16:1e2e4a"/>
-            <Label fx:id="rowLabel"/>
-        </HBox>
-        <HBox styleClass="status-item">
-            <FontIcon iconLiteral="fas-arrows-alt-v:16:1e2e4a"/>
-            <Label fx:id="columnLabel"/>
-        </HBox>
-        <HBox styleClass="status-item">
             <FontIcon iconLiteral="fas-database:16:1e2e4a"/>
             <Label text="2018iri-frc865"/>
         </HBox>
