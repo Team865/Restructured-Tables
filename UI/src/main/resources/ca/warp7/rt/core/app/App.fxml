@@ -35,12 +35,6 @@
         <HBox styleClass="status-item" onMouseClicked="#closeCurrentTab">
             <FontIcon iconLiteral="fas-times:16:1e2e4a"/>
         </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#showStatus">
-            <FontIcon iconLiteral="fas-search-plus:16:1e2e4a"/>
-        </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#showStatus">
-            <FontIcon iconLiteral="fas-search-minus:16:1e2e4a"/>
-        </HBox>
         <HBox styleClass="status-item" onMouseClicked="#toggleFullScreen">
             <FontIcon iconLiteral="fas-expand:16:1e2e4a"/>
         </HBox>

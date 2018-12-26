@@ -30,7 +30,7 @@
 }
 
 .text {
-    -fx-font-family: "Roboto", "Arial", sans-serif;
+    -fx-font-family: "Roboto", "Segoe UI", "Arial", sans-serif;
     -fx-font-smoothing-type: gray;
 }
 
@@ -158,6 +158,10 @@ HorizontalHeaderColumn > TableColumnHeader.column-header.table-column.selected,
 HorizontalHeaderColumn > TableColumnHeader.column-header.table-column.selected > Label {
     -fx-background-color: #3c5c94;
     -fx-text-fill: white;
+}
+
+.menu-item {
+    -fx-padding: 3 9 3 9;
 }
 
 .menu-item:focused {

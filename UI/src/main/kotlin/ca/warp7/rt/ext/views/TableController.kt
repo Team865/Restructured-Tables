@@ -86,54 +86,68 @@ class TableController {
                 },
 
                 SeparatorMenuItem(),
-                Menu("Sort Columns", FeatureIcon("fas-sort:16:1e2e4a")).apply {
-                    items.addAll(
-                            MenuItem("Set ascending", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
-                            MenuItem("Set descending", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
-                            SeparatorMenuItem(),
-                            MenuItem("Add ascending", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
-                            MenuItem("Add descending", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
-                            SeparatorMenuItem(),
-                            MenuItem("Clear selected"),
-                            MenuItem("Clear all")
-                    )
+
+                MenuItem("Zoom In", FeatureIcon("fas-search-plus:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.PLUS, SHORTCUT_DOWN)
+                },
+                MenuItem("Zoom Out", FeatureIcon("fas-search-plus:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.MINUS, SHORTCUT_DOWN)
+                },
+                MenuItem("Reset Zoom").apply {
+                    accelerator = KeyCodeCombination(KeyCode.DIGIT0, SHORTCUT_DOWN)
                 },
 
-                Menu("Filter Rows", FeatureIcon("fas-filter:16:1e2e4a")).apply {
-                    items.addAll(
-                            MenuItem("Add values for each column"),
-                            MenuItem("Exclude values for each column"),
-                            MenuItem("Clear and apply"),
-                            MenuItem("Clear and exclude")
-                    )
+                SeparatorMenuItem(),
+
+                MenuItem("Sort Ascending", FeatureIcon("fas-sort-amount-up:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.PLUS, ALT_DOWN)
+                },
+                MenuItem("Sort Descending", FeatureIcon("fas-sort-amount-down:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.MINUS, ALT_DOWN)
+                },
+                MenuItem("Clear sort").apply {
+                    accelerator = KeyCodeCombination(KeyCode.DIGIT0, ALT_DOWN)
                 },
 
-                Menu("Colour Scales", FeatureIcon("fas-paint-brush:16:1e2e4a")).apply {
-                    items.addAll(
-                            MenuItem("Toggle Direction"),
-                            SeparatorMenuItem(),
-                            MenuItem("Red"),
-                            MenuItem("Green"),
-                            MenuItem("Red to Green"),
-                            MenuItem("None")
-                    )
+                SeparatorMenuItem(),
+
+                MenuItem("Filter", FeatureIcon("fas-filter:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.I, SHORTCUT_DOWN)
                 },
 
-                Menu("Highlight Cells", FeatureIcon("fas-adjust:16:1e2e4a")).apply {
-                    items.addAll(
-                            MenuItem("Selected cells"),
-                            MenuItem("Selected values"),
-                            MenuItem("Rows with selected values")
-                    )
+                MenuItem("Filter Out").apply {
+                    accelerator = KeyCodeCombination(KeyCode.O, SHORTCUT_DOWN)
                 },
 
-
-                Menu("Plot", FeatureIcon("fas-chart-bar:16:1e2e4a")).apply {
-                    items.addAll(
-                            MenuItem("Histogram"),
-                            MenuItem("Scatter")
-                    )
+                MenuItem("Clear Filters").apply {
+                    accelerator = KeyCodeCombination(KeyCode.U, SHORTCUT_DOWN)
                 },
+
+                SeparatorMenuItem(),
+
+                MenuItem("Toggle Formatting", FeatureIcon("fas-toggle-on:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.SLASH, SHORTCUT_DOWN)
+                },
+
+                MenuItem("Colour Scale Up", FeatureIcon("fas-caret-up:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.PLUS, SHORTCUT_DOWN, ALT_DOWN)
+                },
+                MenuItem("Colour Scale Down", FeatureIcon("fas-caret-down:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.MINUS, SHORTCUT_DOWN, ALT_DOWN)
+                },
+                MenuItem("Clear Colour Scales").apply {
+                    accelerator = KeyCodeCombination(KeyCode.DIGIT0, SHORTCUT_DOWN, ALT_DOWN)
+                },
+
+                MenuItem("Highlight Cells", FeatureIcon("fas-adjust:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.H, ALT_DOWN)
+                },
+
+                MenuItem("Clear Highlighting").apply {
+                    accelerator = KeyCodeCombination(KeyCode.SLASH, ALT_DOWN)
+                },
+
+                SeparatorMenuItem(),
 
                 MenuItem("Data Summary", FeatureIcon("fas-calculator:16:1e2e4a")).apply {
                     accelerator = KeyCodeCombination(KeyCode.C, ALT_DOWN)
@@ -141,7 +155,7 @@ class TableController {
 
                 SeparatorMenuItem(),
 
-                Menu("Extract into View", FeatureIcon("fas-table:16:1e2e4a")).apply {
+                Menu("Extract new View", FeatureIcon("fas-table:16:1e2e4a")).apply {
                     items.addAll(
                             MenuItem("Selected Cells"),
                             MenuItem("Selected Rows"),
@@ -152,13 +166,8 @@ class TableController {
 
                 MenuItem("Configure", FeatureIcon("fas-code:16:1e2e4a")).apply {
                     accelerator = KeyCodeCombination(KeyCode.S, ALT_DOWN)
-                },
-
-                MenuItem("Undo", FeatureIcon("fas-undo:16:1e2e4a")).apply {
-                    accelerator = KeyCodeCombination(KeyCode.Z, SHORTCUT_DOWN)
                 }
         )
-
         sheet.isShowColumnHeader = true
         sheet.isShowRowHeader = true
         sheet.isEditable = false
