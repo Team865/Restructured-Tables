@@ -132,11 +132,11 @@ class AppController : FeatureStage {
     private fun handleFeatureLink(ft: Feature) {
         if (ft === current) return
         if (current == null || current!!.onClose()) {
-            val title = ft.link.title
-            //AppUtils.setStatusMessage("Opened tab '$title'")
-            appStage.title = title
+            tabContent.center = null
             current = ft
             val parent = current!!.onOpen()
+            val title = ft.link.title
+            appStage.title = title
             tabContent.center = parent.second
         }
     }

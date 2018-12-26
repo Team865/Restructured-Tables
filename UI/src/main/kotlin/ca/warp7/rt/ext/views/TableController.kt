@@ -1,5 +1,6 @@
 package ca.warp7.rt.ext.views
 
+import javafx.application.Platform
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.scene.control.SelectionMode
@@ -25,6 +26,11 @@ class TableController {
     private fun getCreateCellList(): ObservableList<SpreadsheetCell> = FXCollections.observableArrayList<SpreadsheetCell>()
 
     fun initialize() {
+        Platform.runLater { initialize0() }
+        tableContainer.requestLayout()
+    }
+
+    private fun initialize0() {
 
         val inputStream = javaClass.getResourceAsStream("/ca/warp7/rt/res/test.csv")
 

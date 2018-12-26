@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import java.net.URL?>
@@ -9,4 +10,7 @@
     <stylesheets>
         <URL value="@/ca/warp7/rt/res/style.css"/>
     </stylesheets>
+    <center>
+        <Label text="Loading Tables..." style="-fx-font-size: 48"/>
+    </center>
 </BorderPane>
