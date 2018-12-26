@@ -43,7 +43,7 @@ class AppController : FeatureStage {
                 userName.text = UserEnv[UserConfig.appUserName, "Unknown user"]
                 deviceName.text = UserEnv[UserConfig.appUserDevice, "Unknown device"]
                 statusMessageLabel.text = "Finished loading app"
-                val totalHeight = (appTabs.size * 30).toDouble()
+                val totalHeight = (appTabs.size * 28).toDouble()
                 appTabListView.minHeight = totalHeight
                 appTabListView.setMaxHeight(totalHeight)
             }
@@ -98,6 +98,12 @@ class AppController : FeatureStage {
     }
 
     fun closeCurrentTab() {
+        if (current == null) return
+        if (current!!.onClose()) {
+            current = null
+            appStage.title = "Restructured Tables "
+            tabContent.center = null
+        }
     }
 
     private fun setupAppTabListView() {
@@ -110,7 +116,7 @@ class AppController : FeatureStage {
                         return
                     }
                     graphic = AppElement.tabUIFromLink(item.link)
-                    prefHeight = 30.0
+                    prefHeight = 28.0
                     setOnMouseClicked { handleFeatureLink(item) }
                 }
             }

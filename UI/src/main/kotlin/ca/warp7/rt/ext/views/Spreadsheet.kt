@@ -1,9 +1,11 @@
 package ca.warp7.rt.ext.views
 
+import ca.warp7.rt.core.feature.FeatureIcon
 import javafx.scene.control.ContextMenu
-import javafx.scene.input.Clipboard
-import javafx.scene.input.ClipboardContent
-import javafx.scene.input.DataFormat
+import javafx.scene.control.Menu
+import javafx.scene.control.MenuItem
+import javafx.scene.control.SeparatorMenuItem
+import javafx.scene.input.*
 import org.controlsfx.control.spreadsheet.Grid
 import org.controlsfx.control.spreadsheet.GridChange
 import org.controlsfx.control.spreadsheet.SpreadsheetView
@@ -17,7 +19,40 @@ class Spreadsheet(grid: Grid) : SpreadsheetView(grid) {
     private lateinit var dataFormat: DataFormat
 
     override fun getSpreadsheetViewContextMenu(): ContextMenu {
-        return ContextMenu()
+        val contextMenu = ContextMenu()
+
+        contextMenu.items.addAll(
+                Menu("Copy", FeatureIcon("fas-copy:16:1e2e4a")).apply {
+                    items.addAll(
+                            MenuItem("Selected cells").apply {
+                                accelerator = KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN)
+                            },
+                            MenuItem("Selected cells with headers"),
+                            MenuItem("Selected rows"),
+                            MenuItem("Selected rows with headers"),
+                            MenuItem("Selected columns"),
+                            MenuItem("Selected columns with headers"),
+                            MenuItem("Entire table"),
+                            MenuItem("Entire table with headers")
+                    )
+                },
+
+                SeparatorMenuItem(),
+
+                MenuItem("Zoom In", FeatureIcon("fas-search-plus:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.PLUS, KeyCombination.SHORTCUT_DOWN)
+                },
+                MenuItem("Zoom Out", FeatureIcon("fas-search-plus:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.MINUS, KeyCombination.SHORTCUT_DOWN)
+                },
+                MenuItem("Reset Zoom").apply {
+                    accelerator = KeyCodeCombination(KeyCode.DIGIT0, KeyCombination.SHORTCUT_DOWN)
+                },
+
+                SeparatorMenuItem()
+        )
+
+        return contextMenu
     }
 
     override fun copyClipboard() {

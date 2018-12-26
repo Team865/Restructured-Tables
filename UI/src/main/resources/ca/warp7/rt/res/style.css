@@ -43,12 +43,16 @@
     -fx-background-color: white;
 }
 
-.list-view:focused .list-cell:hover:filled {
+.list-cell .label {
+    -fx-font-weight: lighter;
+}
+
+.list-cell:hover:filled {
     -fx-background-color: #ddd;
 }
 
 .list-cell:selected:filled {
-    -fx-background-color: #ddd;
+    -fx-background-color: #ccc;
     -fx-text-fill: black;
 }
 

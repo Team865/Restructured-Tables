@@ -70,35 +70,6 @@ class TableController {
         sheet.selectionModel.selectionMode = SelectionMode.MULTIPLE
         sheet.contextMenu.items.addAll(
 
-                Menu("Copy", FeatureIcon("fas-copy:16:1e2e4a")).apply {
-                    items.addAll(
-                            MenuItem("Selected cells").apply {
-                                accelerator = KeyCodeCombination(KeyCode.C, SHORTCUT_DOWN)
-                            },
-                            MenuItem("Selected cells with headers"),
-                            MenuItem("Selected rows"),
-                            MenuItem("Selected rows with headers"),
-                            MenuItem("Selected columns"),
-                            MenuItem("Selected columns with headers"),
-                            MenuItem("Entire table"),
-                            MenuItem("Entire table with headers")
-                    )
-                },
-
-                SeparatorMenuItem(),
-
-                MenuItem("Zoom In", FeatureIcon("fas-search-plus:16:1e2e4a")).apply {
-                    accelerator = KeyCodeCombination(KeyCode.PLUS, SHORTCUT_DOWN)
-                },
-                MenuItem("Zoom Out", FeatureIcon("fas-search-plus:16:1e2e4a")).apply {
-                    accelerator = KeyCodeCombination(KeyCode.MINUS, SHORTCUT_DOWN)
-                },
-                MenuItem("Reset Zoom").apply {
-                    accelerator = KeyCodeCombination(KeyCode.DIGIT0, SHORTCUT_DOWN)
-                },
-
-                SeparatorMenuItem(),
-
                 MenuItem("Sort Ascending", FeatureIcon("fas-sort-amount-up:16:1e2e4a")).apply {
                     accelerator = KeyCodeCombination(KeyCode.PLUS, ALT_DOWN)
                 },

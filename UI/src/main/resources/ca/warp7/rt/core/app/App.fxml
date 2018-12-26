@@ -20,7 +20,7 @@
                 <Image url="@/ca/warp7/rt/res/warp7.png"/>
             </ImageView>
             <ListView fx:id="appTabListView"/>
-            <ListView/>
+            <BorderPane style="-fx-background-color: white"/>
         </SplitPane>
         <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>
     </HBox>
