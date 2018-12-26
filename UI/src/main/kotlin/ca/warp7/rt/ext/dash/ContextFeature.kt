@@ -5,5 +5,5 @@ import ca.warp7.rt.core.feature.FeatureLink
 
 class ContextFeature : Feature {
 
-    override val link = FeatureLink("Context Dashboard", "fas-code-branch", 18)
+    override val link = FeatureLink("Context Dashboard", "fas-code-branch", 20)
 }

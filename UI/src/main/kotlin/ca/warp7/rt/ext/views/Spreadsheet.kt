@@ -28,22 +28,56 @@ class Spreadsheet(grid: Grid) : SpreadsheetView(grid) {
                     copyClipboard()
                 },
                 menuItem("Copy with _headers", null, Combo(KeyCode.C, SHORTCUT_DOWN, SHIFT_DOWN)) {
-                    copyClipboard()
+                    copyClipboardWithHeaders()
                 },
                 SeparatorMenuItem(),
-                menuItem("Zoom In", "fas-search-plus:16:1e2e4a", Combo(KeyCode.EQUALS, SHORTCUT_DOWN)) {
+                menuItem("Zoom _In", "fas-search-plus:16:1e2e4a", Combo(KeyCode.EQUALS, SHORTCUT_DOWN)) {
                     incrementZoom()
                 },
-                menuItem("Zoom Out", "fas-search-minus:16:1e2e4a", Combo(KeyCode.MINUS, SHORTCUT_DOWN)) {
+                menuItem("Zoom _Out", "fas-search-minus:16:1e2e4a", Combo(KeyCode.MINUS, SHORTCUT_DOWN)) {
                     decrementZoom()
                 },
-                menuItem("Reset Zoom", null, Combo(KeyCode.DIGIT0, SHORTCUT_DOWN)) {
+                menuItem("_Reset Zoom", null, Combo(KeyCode.DIGIT0, SHORTCUT_DOWN)) {
                     zoomFactor = 1.0
                 },
                 SeparatorMenuItem()
         )
 
         return contextMenu
+    }
+
+    private fun copyClipboardWithHeaders() {
+        val allRows = mutableSetOf<Int>()
+        val allCols = mutableSetOf<Int>()
+        for (p in selectionModel.selectedCells) {
+            val modelRow = getModelRow(p.row)
+            val modelCol = getModelColumn(p.column)
+            allRows.add(modelRow)
+            allCols.add(modelCol)
+        }
+        val builder = StringBuilder()
+        val minRow = allRows.min()
+        val maxRow = allRows.max()
+        val minCol = allCols.min()
+        val maxCol = allCols.max()
+        if (minRow != null && maxRow != null && minCol != null && maxCol != null) {
+            for (col in minCol..(maxCol - 1)) {
+                builder.append(grid.columnHeaders[col])
+                builder.append("\t")
+            }
+            builder.append("\n")
+            for (i in minRow..maxRow) {
+                for (j in minCol..(maxCol - 1)) {
+                    builder.append(grid.rows[i][j].item)
+                    builder.append("\t")
+                }
+                builder.append(grid.rows[i][maxCol].item)
+                builder.append("\n")
+            }
+        }
+        val content = ClipboardContent()
+        content.putString(builder.toString())
+        Clipboard.getSystemClipboard().setContent(content)
     }
 
     override fun copyClipboard() {

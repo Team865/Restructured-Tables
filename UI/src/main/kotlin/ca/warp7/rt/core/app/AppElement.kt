@@ -11,7 +11,7 @@ import javafx.scene.paint.Color
 
 internal object AppElement {
 
-    val teamColor: Color = Color.valueOf("1e2e4a")
+    private val teamColor: Color = Color.valueOf("1e2e4a")
 
     fun tabUIFromLink(link: FeatureLink): HBox {
         val outer = HBox()
@@ -19,6 +19,7 @@ internal object AppElement {
         inner.prefWidth = 24.0
         inner.alignment = Pos.CENTER
         link.icon.iconColor = teamColor
+        link.icon.iconSize -= 2
         inner.children.add(link.icon)
         outer.alignment = Pos.CENTER_LEFT
         outer.spacing = 10.0
