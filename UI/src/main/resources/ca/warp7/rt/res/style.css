@@ -144,14 +144,24 @@
 
 .spreadsheet-cell {
     -fx-padding: 0 0 0 0.2em;
-    -fx-border-color: black;
+    -fx-border-color: #3c5c94;
     -fx-border-width: 0.3px;
     -fx-background-color: -fx-table-cell-border-color, white;
 }
 
+VerticalHeader > Label.selected {
+    -fx-background-color: #3c5c94;
+    -fx-text-fill: white;
+}
+
+HorizontalHeaderColumn > TableColumnHeader.column-header.table-column.selected,
+HorizontalHeaderColumn > TableColumnHeader.column-header.table-column.selected > Label {
+    -fx-background-color: #3c5c94;
+    -fx-text-fill: white;
+}
+
 .menu-item:focused {
     -fx-background-color: #3c5c94;
-
 }
 
 .menu-item:focused .ikonli-font-icon {

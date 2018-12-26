@@ -9,7 +9,8 @@ import javafx.scene.control.SelectionMode
 import javafx.scene.control.SeparatorMenuItem
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyCodeCombination
-import javafx.scene.input.KeyCombination
+import javafx.scene.input.KeyCombination.ALT_DOWN
+import javafx.scene.input.KeyCombination.SHORTCUT_DOWN
 import javafx.scene.layout.BorderPane
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
@@ -59,19 +60,20 @@ class TableController {
         text.font = Font.font("sans-serif", FontWeight.BOLD, 14.0)
         val fixedMetrics = listOf("Team", "Match", "Match Type", "Entry", "Alliance", "Scout", "Event", "Year")
         sheet.columns.forEachIndexed { index, column ->
-            val name = grid.columnHeaders[sheet.getModelColumn(index)]
-                    .replace("[^A-Za-z0-9 ]".toRegex(), "")
+            val calIx = sheet.getModelColumn(index)
+            val name = grid.columnHeaders[calIx].replace("[^A-Za-z0-9 ]".toRegex(), "")
             if (name in fixedMetrics) column.isFixed = true
             text.text = name
             column.setResizable(true)
             column.minWidth = text.layoutBounds.width + 20
         }
         sheet.selectionModel.selectionMode = SelectionMode.MULTIPLE
-        sheet.contextMenu.items.apply { clear() }.addAll(
+        sheet.contextMenu.items.addAll(
+
                 Menu("Copy", FeatureIcon("fas-copy:16:1e2e4a")).apply {
                     items.addAll(
                             MenuItem("Selected cells").apply {
-                                accelerator = KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN)
+                                accelerator = KeyCodeCombination(KeyCode.C, SHORTCUT_DOWN)
                             },
                             MenuItem("Selected cells with headers"),
                             MenuItem("Selected rows"),
@@ -86,24 +88,13 @@ class TableController {
                 SeparatorMenuItem(),
                 Menu("Sort Columns", FeatureIcon("fas-sort:16:1e2e4a")).apply {
                     items.addAll(
-                            MenuItem("Set primary column 1-9, A-Z", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
-                            MenuItem("Set primary column 9-1, Z-A", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
+                            MenuItem("Set ascending", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
+                            MenuItem("Set descending", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
                             SeparatorMenuItem(),
-                            MenuItem("Add secondary column 1-9, A-Z", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
-                            MenuItem("Add secondary column 9-1, Z-A", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
+                            MenuItem("Add ascending", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
+                            MenuItem("Add descending", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
                             SeparatorMenuItem(),
-                            MenuItem("Clear all")
-                    )
-                },
-
-                Menu("Create Plot", FeatureIcon("fas-chart-bar:16:1e2e4a")).apply {
-                    items.addAll(
-                            MenuItem("Set primary column 1-9, A-Z", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
-                            MenuItem("Set primary column 9-1, Z-A", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
-                            SeparatorMenuItem(),
-                            MenuItem("Add secondary column 1-9, A-Z", FeatureIcon("fas-sort-amount-up:16:1e2e4a")),
-                            MenuItem("Add secondary column 9-1, Z-A", FeatureIcon("fas-sort-amount-down:16:1e2e4a")),
-                            SeparatorMenuItem(),
+                            MenuItem("Clear selected"),
                             MenuItem("Clear all")
                     )
                 },
@@ -135,8 +126,37 @@ class TableController {
                             MenuItem("Rows with selected values")
                     )
                 },
+
+
+                Menu("Plot", FeatureIcon("fas-chart-bar:16:1e2e4a")).apply {
+                    items.addAll(
+                            MenuItem("Histogram"),
+                            MenuItem("Scatter")
+                    )
+                },
+
+                MenuItem("Data Summary", FeatureIcon("fas-calculator:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.C, ALT_DOWN)
+                },
+
                 SeparatorMenuItem(),
-                MenuItem("Configure View", FeatureIcon("fas-code:16:1e2e4a"))
+
+                Menu("Extract into View", FeatureIcon("fas-table:16:1e2e4a")).apply {
+                    items.addAll(
+                            MenuItem("Selected Cells"),
+                            MenuItem("Selected Rows"),
+                            MenuItem("Selected Columns"),
+                            MenuItem("Pivot Table")
+                    )
+                },
+
+                MenuItem("Configure", FeatureIcon("fas-code:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.S, ALT_DOWN)
+                },
+
+                MenuItem("Undo", FeatureIcon("fas-undo:16:1e2e4a")).apply {
+                    accelerator = KeyCodeCombination(KeyCode.Z, SHORTCUT_DOWN)
+                }
         )
 
         sheet.isShowColumnHeader = true
