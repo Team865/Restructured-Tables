@@ -1,11 +1,13 @@
 package ca.warp7.rt.ext.views
 
-import ca.warp7.rt.core.feature.FeatureIcon
 import javafx.scene.control.ContextMenu
-import javafx.scene.control.Menu
-import javafx.scene.control.MenuItem
 import javafx.scene.control.SeparatorMenuItem
-import javafx.scene.input.*
+import javafx.scene.input.Clipboard
+import javafx.scene.input.ClipboardContent
+import javafx.scene.input.DataFormat
+import javafx.scene.input.KeyCode
+import javafx.scene.input.KeyCombination.SHIFT_DOWN
+import javafx.scene.input.KeyCombination.SHORTCUT_DOWN
 import org.controlsfx.control.spreadsheet.Grid
 import org.controlsfx.control.spreadsheet.GridChange
 import org.controlsfx.control.spreadsheet.SpreadsheetView
@@ -22,33 +24,22 @@ class Spreadsheet(grid: Grid) : SpreadsheetView(grid) {
         val contextMenu = ContextMenu()
 
         contextMenu.items.addAll(
-                Menu("Copy", FeatureIcon("fas-copy:16:1e2e4a")).apply {
-                    items.addAll(
-                            MenuItem("Selected cells").apply {
-                                accelerator = KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN)
-                            },
-                            MenuItem("Selected cells with headers"),
-                            MenuItem("Selected rows"),
-                            MenuItem("Selected rows with headers"),
-                            MenuItem("Selected columns"),
-                            MenuItem("Selected columns with headers"),
-                            MenuItem("Entire table"),
-                            MenuItem("Entire table with headers")
-                    )
+                menuItem("_Copy", "far-copy:16:1e2e4a", Combo(KeyCode.C, SHORTCUT_DOWN)) {
+                    copyClipboard()
                 },
-
+                menuItem("Copy with _headers", null, Combo(KeyCode.C, SHORTCUT_DOWN, SHIFT_DOWN)) {
+                    copyClipboard()
+                },
                 SeparatorMenuItem(),
-
-                MenuItem("Zoom In", FeatureIcon("fas-search-plus:16:1e2e4a")).apply {
-                    accelerator = KeyCodeCombination(KeyCode.PLUS, KeyCombination.SHORTCUT_DOWN)
+                menuItem("Zoom In", "fas-search-plus:16:1e2e4a", Combo(KeyCode.EQUALS, SHORTCUT_DOWN)) {
+                    incrementZoom()
                 },
-                MenuItem("Zoom Out", FeatureIcon("fas-search-plus:16:1e2e4a")).apply {
-                    accelerator = KeyCodeCombination(KeyCode.MINUS, KeyCombination.SHORTCUT_DOWN)
+                menuItem("Zoom Out", "fas-search-minus:16:1e2e4a", Combo(KeyCode.MINUS, SHORTCUT_DOWN)) {
+                    decrementZoom()
                 },
-                MenuItem("Reset Zoom").apply {
-                    accelerator = KeyCodeCombination(KeyCode.DIGIT0, KeyCombination.SHORTCUT_DOWN)
+                menuItem("Reset Zoom", null, Combo(KeyCode.DIGIT0, SHORTCUT_DOWN)) {
+                    zoomFactor = 1.0
                 },
-
                 SeparatorMenuItem()
         )
 

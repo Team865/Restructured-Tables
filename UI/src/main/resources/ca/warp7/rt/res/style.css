@@ -165,7 +165,7 @@ HorizontalHeaderColumn > TableColumnHeader.column-header.table-column.selected >
 }
 
 .menu-item {
-    -fx-padding: 3 9 3 9;
+    -fx-padding: 2 8 2 8;
 }
 
 .menu-item:focused {
