@@ -9,9 +9,8 @@ import javafx.scene.control.Label
 import javafx.scene.layout.HBox
 import javafx.scene.paint.Color
 
-internal object AppElement {
 
-    private val teamColor: Color = Color.valueOf("1e2e4a")
+private val teamColor: Color = Color.valueOf("1e2e4a")
 
     fun tabUIFromLink(link: FeatureLink): HBox {
         val outer = HBox()
@@ -44,4 +43,3 @@ internal object AppElement {
         UserEnv[UserConfig.appUserDevice] = name
         return name
     }
-}

@@ -16,7 +16,7 @@ import java.io.IOException
 import java.io.ObjectOutputStream
 import java.util.*
 
-class Spreadsheet(grid: Grid) : SpreadsheetView(grid) {
+open class CopyableSpreadsheet(grid: Grid?) : SpreadsheetView(grid) {
 
     private lateinit var dataFormat: DataFormat
 
@@ -39,8 +39,7 @@ class Spreadsheet(grid: Grid) : SpreadsheetView(grid) {
                 },
                 menuItem("_Reset Zoom", null, Combo(KeyCode.DIGIT0, SHORTCUT_DOWN)) {
                     zoomFactor = 1.0
-                },
-                SeparatorMenuItem()
+                }
         )
 
         return contextMenu

@@ -59,11 +59,11 @@ class AppController : FeatureStage {
     }
 
     fun setUserName() {
-        userName.text = AppElement.getUserExplicitName()
+        userName.text = getUserExplicitName()
     }
 
     fun setUserDevice() {
-        deviceName.text = AppElement.getUserExplicitDevice()
+        deviceName.text = getUserExplicitDevice()
     }
 
     override fun setStage(stage: Stage) {
@@ -115,7 +115,7 @@ class AppController : FeatureStage {
                         graphic = null
                         return
                     }
-                    graphic = AppElement.tabUIFromLink(item.link)
+                    graphic = tabUIFromLink(item.link)
                     prefHeight = 28.0
                     setOnMouseClicked { handleFeatureLink(item) }
                 }
