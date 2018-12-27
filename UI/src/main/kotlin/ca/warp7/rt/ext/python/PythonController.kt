@@ -45,17 +45,13 @@ class PythonController {
 
     fun setTabItemParams(itemParams: String) {
         val t = String.format(template, itemParams)
-        if (codeMirrorEditor.isEditorInitialized)
+        if (codeMirrorEditor.isEditorInitialized) codeMirrorEditor.setContent(t, true)
+        else codeMirrorEditor.init(Runnable {
+            codeMirrorEditor.mode = "python"
+            themeIndex = 0
+            codeMirrorEditor.setTheme(themes[0])
             codeMirrorEditor.setContent(t, true)
-        else
-            codeMirrorEditor.init(
-                    Runnable {
-                        codeMirrorEditor.mode = "python"
-                        themeIndex = 0
-                        codeMirrorEditor.setTheme(themes[0])
-                        codeMirrorEditor.setContent(t, true)
-                    }
-            )
+        })
     }
 
     fun newScript() {
@@ -63,9 +59,7 @@ class PythonController {
     }
 
     fun setFocused(focused: Boolean) {
-        if (focused)
-            container.children.remove(toolbar)
-        else
-            container.children.add(0, toolbar)
+        if (focused) container.children.remove(toolbar)
+        else container.children.add(0, toolbar)
     }
 }

@@ -64,6 +64,7 @@ open class CopyableSpreadsheet(grid: Grid?) : SpreadsheetView(grid) {
                 builder.append(grid.columnHeaders[col])
                 builder.append("\t")
             }
+            builder.append(grid.columnHeaders[maxCol])
             builder.append("\n")
             for (i in minRow..maxRow) {
                 for (j in minCol..(maxCol - 1)) {

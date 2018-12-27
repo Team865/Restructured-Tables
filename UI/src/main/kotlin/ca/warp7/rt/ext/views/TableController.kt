@@ -11,7 +11,7 @@ class TableController {
     lateinit var tableContainer: BorderPane
 
     fun initialize() {
-        Platform.runLater {
+        Thread {
             val inputStream = javaClass.getResourceAsStream("/ca/warp7/rt/res/test.csv")
             val df: DataFrame = DataFrame.readDelim(
                     inStream = inputStream,
@@ -19,9 +19,8 @@ class TableController {
                     isCompressed = false,
                     colTypes = mapOf())
             val sheet = DataFrameView(df)
-            tableContainer.center = sheet
-        }
-        tableContainer.requestLayout()
+            Platform.runLater { tableContainer.center = sheet }
+        }.start()
     }
 }
 
