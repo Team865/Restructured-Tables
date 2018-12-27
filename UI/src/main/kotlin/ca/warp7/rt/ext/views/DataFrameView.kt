@@ -1,6 +1,5 @@
 package ca.warp7.rt.ext.views
 
-import javafx.collections.FXCollections
 import javafx.scene.control.SelectionMode
 import javafx.scene.control.SeparatorMenuItem
 import javafx.scene.input.KeyCode
@@ -9,14 +8,10 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import javafx.scene.text.Text
 import krangl.DataFrame
-import org.controlsfx.control.spreadsheet.GridBase
-import org.controlsfx.control.spreadsheet.SpreadsheetCell
-import org.controlsfx.control.spreadsheet.SpreadsheetCellType
-import java.time.LocalDate
 
-class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(null) {
+class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(toGrid(frame)) {
 
-    var df: DataFrame = frame
+    private var df: DataFrame = frame
         set(value) {
             field = value
             updateNewData()
@@ -24,37 +19,6 @@ class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(null) {
 
     init {
         updateNewData()
-    }
-
-    private fun updateNewData() {
-        val grid0 = GridBase(df.nrow, df.ncol)
-        df.rows.forEachIndexed { i, row ->
-            val rowList = FXCollections.observableArrayList<SpreadsheetCell>()
-            row.values.forEachIndexed { j, value ->
-                rowList.add(when (value) {
-                    null -> null
-                    is Double -> SpreadsheetCellType.DOUBLE.createCell(i, j, 1, 1, value)
-                    is Int -> SpreadsheetCellType.INTEGER.createCell(i, j, 1, 1, value)
-                    is LocalDate -> SpreadsheetCellType.DATE.createCell(i, j, 1, 1, value)
-                    is String -> SpreadsheetCellType.STRING.createCell(i, j, 1, 1, value)
-                    else -> SpreadsheetCellType.STRING.createCell(i, j, 1, 1, value.toString())
-                })
-            }
-            grid0.rows.add(rowList)
-        }
-        grid0.columnHeaders.addAll(df.cols.map { it.name })
-        grid = grid0
-        val text = Text()
-        text.font = Font.font("sans-serif", FontWeight.BOLD, 14.0)
-        val fixedMetrics = listOf("Team", "Match", "Match Type", "Entry", "Alliance", "Scout", "Event", "Year")
-        columns.forEachIndexed { index, column ->
-            val modelCol = getModelColumn(index)
-            val name = grid.columnHeaders[modelCol].replace("[^A-Za-z0-9 ]".toRegex(), "")
-            if (name in fixedMetrics) column.isFixed = true
-            text.text = name
-            column.setResizable(true)
-            column.minWidth = text.layoutBounds.width + 20
-        }
         selectionModel.selectionMode = SelectionMode.MULTIPLE
         isShowColumnHeader = true
         isShowRowHeader = true
@@ -100,5 +64,20 @@ class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(null) {
                 menuItem("Make Pivot Table", null, Combo(KeyCode.B, SHORTCUT_DOWN, SHIFT_DOWN)) {
                 }
         )
+    }
+
+    private fun updateNewData() {
+        grid = toGrid(df)
+        val text = Text()
+        text.font = Font.font("sans-serif", FontWeight.BOLD, 14.0)
+        val fixedMetrics = listOf("Team", "Match", "Match Type", "Entry", "Alliance", "Scout", "Event", "Year")
+        columns.forEachIndexed { index, column ->
+            val modelCol = getModelColumn(index)
+            val name = grid.columnHeaders[modelCol].replace("[^A-Za-z0-9 ]".toRegex(), "")
+            if (name in fixedMetrics) column.isFixed = true
+            text.text = name
+            column.setResizable(true)
+            column.minWidth = text.layoutBounds.width + 20
+        }
     }
 }
