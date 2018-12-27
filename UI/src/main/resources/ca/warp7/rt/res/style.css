@@ -175,3 +175,9 @@ HorizontalHeaderColumn > TableColumnHeader.column-header.table-column.selected >
 .menu-item:focused .ikonli-font-icon {
     -fx-icon-color: white;
 }
+
+.selection-rectangle {
+    -fx-fill: transparent;
+    -fx-stroke: #3c5c94;
+    -fx-stroke-width: 2;
+}

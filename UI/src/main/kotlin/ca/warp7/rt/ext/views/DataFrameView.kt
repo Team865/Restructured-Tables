@@ -11,9 +11,11 @@ import krangl.DataFrame
 
 class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(toGrid(frame)) {
 
+    @Suppress("unused")
     private var df: DataFrame = frame
         set(value) {
             field = value
+            grid = toGrid(field)
             updateNewData()
         }
 
@@ -67,7 +69,6 @@ class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(toGrid(frame)) {
     }
 
     private fun updateNewData() {
-        grid = toGrid(df)
         val text = Text()
         text.font = Font.font("sans-serif", FontWeight.BOLD, 14.0)
         val fixedMetrics = listOf("Team", "Match", "Match Type", "Entry", "Alliance", "Scout", "Event", "Year")
@@ -76,8 +77,8 @@ class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(toGrid(frame)) {
             val name = grid.columnHeaders[modelCol].replace("[^A-Za-z0-9 ]".toRegex(), "")
             if (name in fixedMetrics) column.isFixed = true
             text.text = name
-            column.setResizable(true)
-            column.minWidth = text.layoutBounds.width + 20
+            val width = text.layoutBounds.width + 20
+            column.minWidth = width
         }
     }
 }

@@ -101,7 +101,6 @@ open class CopyableSpreadsheet(grid: Grid?) : SpreadsheetView(grid) {
                         list.add(GridChange(p.row + row, p.column + col,
                                 null, if (cell.item == null) null else cell.item.toString()))
                     }
-
                 }
             }
         }
