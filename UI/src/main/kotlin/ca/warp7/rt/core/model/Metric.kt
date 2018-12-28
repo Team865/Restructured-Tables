@@ -4,6 +4,9 @@ package ca.warp7.rt.core.model
 
 import java.time.LocalDate
 
+/**
+ * Specifies a defining quality of contexts and tables
+ */
 open class Metric<T>(val column: String, val validator: (T) -> Boolean) {
     operator fun invoke(of: T): Pair<Metric<T>, T> = this to of
     operator fun contains(value: T): Boolean = validator.invoke(value)
