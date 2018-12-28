@@ -145,7 +145,13 @@ fun main(args: Array<String>) {
     val deparsedDF = records.deparseRecords { mapOf("age" to it.age, "weight" to it.mean_weight) }
 
 
-    df0.groupBy("Red 1").addColumn("hi") { it["Red 2"] + 10000 }.print()
-    df0["e"].values()
+    //df0.groupBy("Red 1").addColumn("hi") { it["Red 2"] + 10000 }.print()
+    //df0["e"].values()
+
+
+//    listOf(1, 2, 3).asDataFrame()
+//    dataFrameOf(*listOf<DataCol>().asDF().cols.toTypedArray(), IntCol("", listOf(1)))
+
+    dataFrameOf(*df.cols.toTypedArray(), StringCol("hi", listOf("2", "3", "4"))).cols[0].asStrings()
 }
 

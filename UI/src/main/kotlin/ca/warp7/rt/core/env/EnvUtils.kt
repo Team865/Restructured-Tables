@@ -7,10 +7,10 @@ import java.io.File
 object EnvUtils {
 
     val user: String
-        get() = System.getProperty("user.name")
+        get() = System.getProperty("user_.name")
 
     private val userHome: String
-        get() = System.getProperty("user.home")
+        get() = System.getProperty("user_.home")
 
     val appHome: File
         get() {

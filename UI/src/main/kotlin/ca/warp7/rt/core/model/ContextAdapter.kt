@@ -8,5 +8,5 @@ package ca.warp7.rt.core.model
  * can be merged together
  */
 interface ContextAdapter {
-    fun update(source: Context, destination: Context)
+    fun update(pipeline: ContextPipeline)
 }
