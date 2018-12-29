@@ -7,18 +7,18 @@ import java.time.LocalDate
 /**
  * Specifies a defining quality of contexts and tables
  */
-open class Metric<T>(val column: String, val validator: (T) -> Boolean) {
-    operator fun invoke(of: T): Pair<Metric<T>, T> = this to of
+open class Metric<T>(val name: String, val validator: (T) -> Boolean, val value: T? = null) {
+    operator fun invoke(of: T): Metric<T> = Metric(name, validator, value)
     operator fun contains(value: T): Boolean = validator.invoke(value)
     operator fun div(that: Metric<*>): MutableSet<Metric<*>> = mutableSetOf(this, that)
 }
 
-typealias MetricValue = Pair<Metric<*>, *>
+typealias AnyMetric = Metric<*>
 
 operator fun MutableSet<Metric<*>>.div(that: Metric<*>): MutableSet<Metric<*>> = this.apply { add(that) }
 
-class IntMetric(column: String, validator: (Int) -> Boolean = { true }) : Metric<Int>(column, validator)
-class StringMetric(column: String, validator: (String) -> Boolean = { true }) : Metric<String>(column, validator)
+class IntMetric(name: String, validator: (Int) -> Boolean = { true }) : Metric<Int>(name, validator)
+class StringMetric(name: String, validator: (String) -> Boolean = { true }) : Metric<String>(name, validator)
 
 val teamNumber_ = IntMetric("Team") { it in 1..9999 }
 val matchNumber_ = IntMetric("Match") { it in 1..199 }
@@ -44,3 +44,6 @@ object Alliance {
     const val Red = "red"
     const val Blue = "blue"
 }
+
+infix fun String.to(that: (PipelineExpression) -> Any?) = Pair(this, that)
+val PipelineExpression.matchNumber get() = this.getMetric(matchNumber_)

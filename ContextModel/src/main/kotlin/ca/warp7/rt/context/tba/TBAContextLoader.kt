@@ -1,10 +1,11 @@
 package ca.warp7.rt.context.tba
 
+import ca.warp7.rt.context.Context
 import ca.warp7.rt.context.ContextLoader
-import krangl.dataFrameOf
+import ca.warp7.rt.context.Metric
 
 class TBAContextLoader : ContextLoader {
-    init {
-        dataFrameOf("f")().sortedBy()
+    override fun loadContext(vararg metric: Metric<*>): Context {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

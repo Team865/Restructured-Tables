@@ -26,18 +26,17 @@ interface Context {
     val inputPipeline: ContextPipeline
     val outputPipeline: ContextPipeline
     val loader: ContextLoader
-    fun hasTable(vararg metrics: Metric<*>): Boolean
-    fun tableOf(vararg metrics: Metric<*>): ContextTable?
+    fun hasTable(vararg metrics: AnyMetric): Boolean
+    fun tableOf(vararg metrics: AnyMetric): ContextTable?
     fun tableSet(): Set<ContextTable>
-    fun canUpCast(vararg metrics: Metric<*>): Boolean
+    fun canUpCast(vararg metrics: AnyMetric): Boolean
     fun getUpCast(adapter: ContextAdapter): Context
     fun canDownCast(vararg metrics: Metric<*>): Boolean
-    fun lookup(vararg metrics: Any): Map<String, Any?>
+    fun lookup(vararg metrics: AnyMetric): Map<String, Any?>
     fun metricsMap(): Map<String, String>
-    fun metricsList(): List<MetricValue>
+    fun metricsList(): List<AnyMetric>
     fun metricOf(metric: IntMetric): Int
     fun metricOf(metric: StringMetric): String
     fun matches(other: Context): Boolean
     fun hasData(): Boolean
-
 }

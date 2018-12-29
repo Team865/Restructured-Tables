@@ -14,4 +14,5 @@ package ca.warp7.rt.context
  * Be able to return a Pipeline based on the requested data
  */
 interface ContextLoader {
+    fun loadContext(vararg metric: AnyMetric): Context
 }
