@@ -8,13 +8,36 @@ package ca.warp7.rt.model
  * For example, they could be analyzing a district, an alliance, a set of scouts, etc. A Context
  * will always have a Data Source, a Version, and a delegated Adapter, which are the key to
  * integrating different sets of data
+ *
+ * A Context must:
+ * Provide a set of metrics with their contextual values
+ * Provide a comparison function with any other Context
+ * Provide the set of Tables with their respective metrics managed by this Context
+ * lookup an return a Table based on a set of arbitrary metrics
+ * Be able to determine if an up-cast/downcast operation is possible
+ * Create a Downcast Context based on table metrics
+ * Accept an Adapter to up-cast from other Contexts
+ * Retain and manage a set of Pipelines connected to this Context
+ * Provide an interface for Pipelines to cache their data
+ * Manage configurations for the Clients of this Context
+ * Manage a set of Context Loaders
  */
 interface Context {
+    val inputPipeline: ContextPipeline
+    val outputPipeline: ContextPipeline
+    val loader: ContextLoader
     fun hasTable(vararg metrics: Metric<*>): Boolean
     fun tableOf(vararg metrics: Metric<*>): ContextTable?
+    fun tableSet(): Set<ContextTable>
+    fun canUpCast(vararg metrics: Metric<*>): Boolean
+    fun getUpCast(adapter: ContextAdapter): Context
+    fun canDownCast(vararg metrics: Metric<*>): Boolean
     fun lookup(vararg metrics: Any): Map<String, Any?>
     fun metricsMap(): Map<String, String>
+    fun metricsList(): List<MetricValue>
     fun metricOf(metric: IntMetric): Int
     fun metricOf(metric: StringMetric): String
     fun matches(other: Context): Boolean
+    fun hasData(): Boolean
+
 }

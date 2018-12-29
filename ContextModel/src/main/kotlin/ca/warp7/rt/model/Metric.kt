@@ -13,6 +13,8 @@ open class Metric<T>(val column: String, val validator: (T) -> Boolean) {
     operator fun div(that: Metric<*>): MutableSet<Metric<*>> = mutableSetOf(this, that)
 }
 
+typealias MetricValue = Pair<Metric<*>, *>
+
 operator fun MutableSet<Metric<*>>.div(that: Metric<*>): MutableSet<Metric<*>> = this.apply { add(that) }
 
 class IntMetric(column: String, validator: (Int) -> Boolean = { true }) : Metric<Int>(column, validator)
