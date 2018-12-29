@@ -1,4 +1,4 @@
-package ca.warp7.rt.model
+package ca.warp7.rt.context
 
 /**
  * Tables are used to represent specific entities of data that are part of a Context.

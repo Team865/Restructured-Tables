@@ -10,7 +10,6 @@ plugins {
 repositories {
     mavenCentral()
     jcenter()
-    maven(url = "http://dl.bintray.com/kyonifer/maven")
 }
 
 val compileKotlin: KotlinCompile by tasks
@@ -19,6 +18,7 @@ compileKotlin.kotlinOptions.jvmTarget = "1.8"
 val kotlinVersion = "1.3.11"
 
 dependencies {
+    implementation(fileTree("${rootProject.projectDir}/libs"))
     // Kotlin libraries
     implementation(kotlin("stdlib", kotlinVersion))
     implementation(kotlin("reflect", kotlinVersion))

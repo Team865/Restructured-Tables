@@ -1,4 +1,4 @@
-package ca.warp7.rt.model
+package ca.warp7.rt.context
 
 /**
  * Context pipelines provide the ability to transfer data via some type of streaming.

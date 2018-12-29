@@ -1,4 +1,4 @@
-package ca.warp7.rt.model
+package ca.warp7.rt.context
 
 /**
  * The Context of a set of data is the scope and state in which the data is relevant for a
