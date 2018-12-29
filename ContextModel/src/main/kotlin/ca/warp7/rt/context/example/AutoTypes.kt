@@ -5,7 +5,8 @@ import ca.warp7.rt.context.*
 
 class AutoTypes : ContextAdapter {
 
-    private val metricsSet: Set<Metric<*>> = teamNumber_ / scout_ / driverStation_ /
+    private val metricsSet: MetricsSet = teamNumber_ /
+            scout_ / driverStation_ /
             matchNumber_ / compLevel_ /
             event_ / year_ / dataSource_
 
