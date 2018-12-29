@@ -4,7 +4,6 @@ package ca.warp7.rt.core.model
 class AutoTypes : ContextAdapter {
     override fun update(context: Context, pipeline: ContextPipeline) {
         pipeline.streamOf(Entry.metricsSet).mapCols(
-                "t" to { it -> it.matchNumber },
                 "start_position" to {
                     it.data["Start position"]
                 },
