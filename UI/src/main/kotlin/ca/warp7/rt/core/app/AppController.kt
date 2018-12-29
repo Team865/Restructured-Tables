@@ -40,7 +40,7 @@ class AppController : FeatureStage {
             statusBarContainer.isVisible = true
             tabsAndContentContainer.isVisible = true
             Platform.runLater {
-                userName.text = UserEnv[UserConfig.appUserName, "Unknown user"]
+                userName.text = UserEnv[UserConfig.appUserName, "Unknown user_"]
                 deviceName.text = UserEnv[UserConfig.appUserDevice, "Unknown device"]
                 statusMessageLabel.text = "Finished loading app"
                 val totalHeight = (appTabs.size * 28).toDouble()
