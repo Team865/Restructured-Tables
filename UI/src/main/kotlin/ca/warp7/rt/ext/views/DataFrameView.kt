@@ -27,10 +27,10 @@ class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(toGrid(frame)) {
         isEditable = false
         contextMenu.items.addAll(
                 SeparatorMenuItem(),
-                menuItem("Sort Ascending", "fas-sort-amount-up:16:1e2e4a", Combo(KeyCode.EQUALS, ALT_DOWN)) {
+                menuItem("Sort Ascending", "fas-sort-amount-up:16:1e2e4a", Combo(KeyCode.EQUALS, ALT_DOWN)){
+                    println(getSelectedColumns().joinToString())
                 },
-                menuItem("Sort Descending", "fas-sort-amount-down:16:1e2e4a", Combo(KeyCode.MINUS, ALT_DOWN)) {
-                },
+                menuItem("Sort Descending", "fas-sort-amount-down:16:1e2e4a", Combo(KeyCode.MINUS, ALT_DOWN)){},
                 menuItem("Clear sort", null, Combo(KeyCode.DIGIT0, ALT_DOWN)) {
                 },
                 SeparatorMenuItem(),
@@ -71,7 +71,7 @@ class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(toGrid(frame)) {
     private fun updateNewData() {
         val text = Text()
         text.font = Font.font("sans-serif", FontWeight.BOLD, 14.0)
-        val fixedMetrics = listOf("Team", "Match", "Match Type", "Entry", "Alliance", "Scout", "Event", "Year")
+        val fixedMetrics = listOf("Team", "Match", "Match Type", "Alliance", "Scout", "Event", "Year")
         columns.forEachIndexed { index, column ->
             val modelCol = getModelColumn(index)
             val name = grid.columnHeaders[modelCol].replace("[^A-Za-z0-9 ]".toRegex(), "")
@@ -80,5 +80,15 @@ class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(toGrid(frame)) {
             val width = text.layoutBounds.width + 20
             column.minWidth = width
         }
+    }
+
+    private fun getSelectedColumns(): List<Int> {
+        var columns= mutableListOf<Int>()
+        for (cell in selectionModel.selectedCells) {
+            if (cell.column !in columns) {
+                columns.add(cell.column)
+            }
+        }
+        return columns
     }
 }
