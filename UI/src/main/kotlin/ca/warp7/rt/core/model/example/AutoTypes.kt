@@ -1,9 +1,16 @@
-package ca.warp7.rt.core.model
+package ca.warp7.rt.core.model.example
+
+import ca.warp7.rt.core.model.*
 
 
 class AutoTypes : ContextAdapter {
+
+    private val metricsSet: Set<Metric<*>> = teamNumber_ / scout_ / driverStation_ /
+            matchNumber_ / compLevel_ /
+            event_ / year_ / dataSource_
+
     override fun update(context: Context, pipeline: ContextPipeline) {
-        pipeline.streamOf(Entry.metricsSet).mapCols(
+        pipeline.streamOf(metricsSet).mapCols(
                 "start_position" to {
                     it.data["Start position"]
                 },
