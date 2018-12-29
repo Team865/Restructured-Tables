@@ -4,9 +4,6 @@ package ca.warp7.rt.context
 
 import java.time.LocalDate
 
-/**
- * Specifies a defining quality of contexts and tables
- */
 open class Metric<T>(val name: String, val validator: (T) -> Boolean, val value: T? = null) {
     operator fun invoke(of: T): Metric<T> = Metric(name, validator, value)
     operator fun contains(value: T): Boolean = validator.invoke(value)
@@ -20,10 +17,12 @@ operator fun MutableSet<Metric<*>>.div(that: Metric<*>): MutableSet<Metric<*>> =
 class IntMetric(name: String, validator: (Int) -> Boolean = { true }) : Metric<Int>(name, validator)
 class StringMetric(name: String, validator: (String) -> Boolean = { true }) : Metric<String>(name, validator)
 
+private val currentYear = LocalDate.now().year
+
 val teamNumber_ = IntMetric("Team") { it in 1..9999 }
 val matchNumber_ = IntMetric("Match") { it in 1..199 }
 val compLevel_ = StringMetric("Comp Level") { it in CompLevels.set }
-val year_ = IntMetric("Year") { it in 1992..LocalDate.now().year }
+val year_ = IntMetric("Year") { it in 1992..currentYear }
 val driverStation_ = IntMetric("Driver Station") { it in 1..3 }
 val alliance_ = StringMetric("alliance_") { it == Alliance.Red || it == Alliance.Blue }
 val event_ = StringMetric("Event")
@@ -45,5 +44,14 @@ object Alliance {
     const val Blue = "blue"
 }
 
-infix fun String.to(that: (PipelineExpression) -> Any?) = Pair(this, that)
-val PipelineExpression.matchNumber get() = this.getMetric(matchNumber_)
+infix fun String.to(that: (PipelineVector) -> Any?) = Pair(this, that)
+val PipelineVector.teamNumber get() = this.getMetric(teamNumber_)
+val PipelineVector.matchNumber get() = this.getMetric(matchNumber_)
+val PipelineVector.compLevel get() = this.getMetric(compLevel_)
+val PipelineVector.year get() = this.getMetric(year_)
+val PipelineVector.driverStation get() = this.getMetric(driverStation_)
+val PipelineVector.alliance get() = this.getMetric(alliance_)
+val PipelineVector.event get() = this.getMetric(event_)
+val PipelineVector.scout get() = this.getMetric(scout_)
+val PipelineVector.dataSource get() = this.getMetric(dataSource_)
+val PipelineVector.user get() = this.getMetric(user_)
