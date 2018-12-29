@@ -9,16 +9,16 @@ class AutoTypes : ContextAdapter {
             matchNumber_ / compLevel_ /
             event_ / year_ / dataSource_
 
-    override fun update(context: Context, pipeline: ContextPipeline) {
+    override fun update(contextReference: ContextReference, pipeline: ContextPipeline) {
         pipeline.streamOf(metricsSet).mapCols(
                 "start_position" to {
                     it.data["Start position"]
                 },
                 "switch_plate" to {
-                    if (context.lookup(it.matchNumber).str("game_data")[0] == 'L') "Left" else "Right"
+                    if (contextReference.lookup(it.matchNumber).str("game_data")[0] == 'L') "Left" else "Right"
                 },
                 "scale_plate" to {
-                    if (context.lookup(it.matchNumber).str("game_data")[1] == 'L') "Left" else "Right"
+                    if (contextReference.lookup(it.matchNumber).str("game_data")[1] == 'L') "Left" else "Right"
                 },
                 "auto_scale" to { it.data.count("Auto scale success") },
                 "auto_switch" to { it.data.count("Auto switch success") },

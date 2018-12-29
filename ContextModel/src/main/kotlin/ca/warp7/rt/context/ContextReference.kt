@@ -22,7 +22,7 @@ package ca.warp7.rt.context
  * Manage configurations for the Clients of this Context
  * Manage a set of Context Loaders
  */
-interface Context {
+interface ContextReference {
     val inputPipeline: ContextPipeline
     val outputPipeline: ContextPipeline
     val loader: ContextLoader
@@ -30,13 +30,13 @@ interface Context {
     fun tableOf(vararg metrics: AnyMetric): ContextTable?
     fun tableSet(): Set<ContextTable>
     fun canUpCast(vararg metrics: AnyMetric): Boolean
-    fun getUpCast(adapter: ContextAdapter): Context
+    fun getUpCast(adapter: ContextAdapter): ContextReference
     fun canDownCast(vararg metrics: Metric<*>): Boolean
     fun lookup(vararg metrics: AnyMetric): Map<String, Any?>
     fun metricsMap(): Map<String, String>
     fun metricsList(): List<AnyMetric>
     fun metricOf(metric: IntMetric): Int
     fun metricOf(metric: StringMetric): String
-    fun matches(other: Context): Boolean
+    fun matches(other: ContextReference): Boolean
     fun hasData(): Boolean
 }
