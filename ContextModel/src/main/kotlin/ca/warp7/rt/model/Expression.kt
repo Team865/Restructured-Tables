@@ -1,4 +1,4 @@
-package ca.warp7.rt.core.model
+package ca.warp7.rt.model
 
 
 infix fun String.to(that: (PipelineExpression) -> Any?) = Pair(this, that)

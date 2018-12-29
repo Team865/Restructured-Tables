@@ -1,6 +1,6 @@
-package ca.warp7.rt.core.model.example
+package ca.warp7.rt.model.example
 
-import ca.warp7.rt.core.model.*
+import ca.warp7.rt.model.*
 
 
 class AutoTypes : ContextAdapter {

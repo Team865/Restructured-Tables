@@ -1,6 +1,6 @@
 @file:Suppress("unused", "MemberVisibilityCanBePrivate")
 
-package ca.warp7.rt.core.model
+package ca.warp7.rt.model
 
 import java.time.LocalDate
 

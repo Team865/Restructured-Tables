@@ -1,4 +1,4 @@
-package ca.warp7.rt.core.model
+package ca.warp7.rt.model
 
 /**
  * Adapters contribute to the actual values of the data using either existing values in

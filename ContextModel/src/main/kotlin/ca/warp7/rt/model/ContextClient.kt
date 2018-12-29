@@ -1,4 +1,4 @@
-package ca.warp7.rt.core.model
+package ca.warp7.rt.model
 
 /**
  * Clients are the accessors of the computed data that present it to the user in some way.

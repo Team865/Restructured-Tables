@@ -1,6 +1,6 @@
 @file:Suppress("unused", "MemberVisibilityCanBePrivate")
 
-package ca.warp7.rt.core.model
+package ca.warp7.rt.model
 
 fun Map<String, *>.int(s: String) = 0
 fun Map<String, *>.str(s: String) = ""
