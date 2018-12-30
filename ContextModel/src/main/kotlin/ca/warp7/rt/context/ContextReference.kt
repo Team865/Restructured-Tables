@@ -22,10 +22,9 @@ package ca.warp7.rt.context
  * Manage configurations for the Clients of this Context
  * Manage a set of Context Loaders
  */
-interface ContextReference {
-    val inputPipeline: ContextPipeline
-    val outputPipeline: ContextPipeline
-    val loader: ContextLoader
-    val metrics: MetricsSet
-    val clients: List<ContextClient>
-}
+data class ContextReference(
+        val inputPipeline: ContextPipeline,
+        val outputPipeline: ContextPipeline,
+        val loader: ContextLoader,
+        val metrics: MetricsSet
+)
