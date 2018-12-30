@@ -14,9 +14,6 @@ operator fun MutableMetrics.div(that: MetricsSet): MutableMetrics = this.apply {
 fun metricsOf(vararg metrics: AnyMetric): MetricsSet = metrics.toSet()
 infix fun String.to(that: PipelineMapScope.(PipelineVector) -> Any?) = Pair(this, that)
 fun PipelineScope.stream(vararg metrics: AnyMetric) = stream(metrics.toSet())
-operator fun MetricsSet.get(metric: IntMetric): Int = 0 // TODO
-operator fun MetricsSet.get(metric: StringMetric): String = "" // TODO
-fun MetricsSet.matches(other: MetricsSet) = true // TODO
 fun M.int(s: String, default: Int = 0) = this[s].let { if (it is Number) it.toInt() else default }
 fun M.double(s: String, default: Double = 0.0) = this[s].let { if (it is Number) it.toDouble() else default }
 fun M.str(s: String, default: String = "") = this[s] as? String ?: default
@@ -31,3 +28,16 @@ fun M.count(s: String) = this[s].let {
         else -> 0
     }
 }
+
+operator fun MetricsSet.get(metric: IntMetric, default: Int = 0): Int = this
+        .filterIsInstance<IntMetric>()
+        .firstOrNull { it == metric }
+        ?.let { it.value ?: default } ?: default
+
+operator fun MetricsSet.get(metric: StringMetric, default: String = ""): String = this
+        .filterIsInstance<StringMetric>()
+        .firstOrNull { it == metric }
+        ?.let { it.value ?: default } ?: default
+
+// FIXME
+fun MetricsSet.matches(that: MetricsSet) = this.all { i -> that.firstOrNull { it == i }?.value == i.value }
