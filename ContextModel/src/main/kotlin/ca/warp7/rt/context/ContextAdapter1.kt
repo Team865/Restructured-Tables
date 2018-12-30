@@ -7,6 +7,6 @@ package ca.warp7.rt.context
  * does not use Tables always has a delegated adapter to convert the format so that data
  * can be merged together
  */
-interface ContextAdapter {
+interface ContextAdapter1 {
     fun update(contextReference: ContextReference, pipeline: ContextPipeline)
 }

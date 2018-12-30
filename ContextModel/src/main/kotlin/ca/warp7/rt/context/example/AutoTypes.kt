@@ -3,7 +3,7 @@ package ca.warp7.rt.context.example
 import ca.warp7.rt.context.*
 
 
-class AutoTypes : ContextAdapter {
+class AutoTypes : ContextAdapter1 {
 
     private val entryMetrics: MetricsSet = teamNumber_ /
             scout_ / driverStation_ /

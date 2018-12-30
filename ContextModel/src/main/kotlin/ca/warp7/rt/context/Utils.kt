@@ -14,6 +14,7 @@ class IntMetric(name: String, validator: (Int) -> Boolean = { true }) : Metric<I
 class StringMetric(name: String, validator: (String) -> Boolean = { true }) : Metric<String>(name, validator)
 typealias AnyMetric = Metric<*>
 typealias MetricsSet = Set<Metric<*>>
+typealias ContextAdapter = PipelineScope.() -> Unit
 private typealias M = Map<String, *>
 
 operator fun MutableSet<AnyMetric>.div(that: AnyMetric): MutableSet<AnyMetric> = this.apply { add(that) }
