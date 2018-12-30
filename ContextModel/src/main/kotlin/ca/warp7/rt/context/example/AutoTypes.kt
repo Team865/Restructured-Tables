@@ -16,10 +16,18 @@ class AutoTypes : ContextAdapter {
                     it.data["Start position"]
                 },
                 "switch_plate" to {
-                    if (contextReference.lookup(it.matchNumber).str("game_data")[0] == 'L') "Left" else "Right"
+                    when (contextReference.lookup(it.matchNumber)["game_data", "???"][0]) {
+                        'L' -> "Left"
+                        'R' -> "Right"
+                        else -> ""
+                    }
                 },
                 "scale_plate" to {
-                    if (contextReference.lookup(it.matchNumber).str("game_data")[1] == 'L') "Left" else "Right"
+                    when (contextReference.lookup(it.matchNumber)["game_data", "???"][1]) {
+                        'L' -> "Left"
+                        'R' -> "Right"
+                        else -> ""
+                    }
                 },
                 "auto_scale" to { it.data.count("Auto scale success") },
                 "auto_switch" to { it.data.count("Auto switch success") },

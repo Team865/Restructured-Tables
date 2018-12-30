@@ -63,9 +63,12 @@ val V.scout get() = this.getMetric(scout_)
 val V.dataSource get() = this.getMetric(dataSource_)
 val V.user get() = this.getMetric(user_)
 
-fun M.int(s: String) = this[s].let { if (it is Int) it else 0 }
-fun M.str(s: String) = this[s].let { if (it is String) it else "" }
-fun M.double(s: String) = this[s].let { if (it is Double) it else 0.0 }
+fun M.int(s: String, default: Int = 0) = this[s].let { if (it is Number) it.toInt() else default }
+fun M.double(s: String, default: Double = 0.0) = this[s].let { if (it is Number) it.toDouble() else default }
+fun M.str(s: String, default: String = "") = this[s] as? String ?: default
+operator fun M.get(s: String, default: Int) = int(s, default)
+operator fun M.get(s: String, default: Double = 0.0) = double(s, default)
+operator fun M.get(s: String, default: String = "") = str(s, default)
 fun M.count(s: String) = this[s].let {
     when (it) {
         is Collection<*> -> it.count()
