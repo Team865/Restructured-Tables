@@ -15,6 +15,7 @@ package ca.warp7.rt.context
  */
 interface ContextLoader {
     fun loadContext(metricsSet: MetricsSet): Context
-    fun searchByMetrics(metricsSet: MetricsSet): Iterable<Context>
-    fun searchByContext(context: Context): Iterable<Context>
+    fun search(metricsSet: MetricsSet): Iterator<Context>
+    val contextIterator: Iterator<Context>
+    val default: Context
 }
