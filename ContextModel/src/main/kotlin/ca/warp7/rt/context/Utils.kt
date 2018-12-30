@@ -18,6 +18,7 @@ private typealias M = Map<String, *>
 
 operator fun MutableSet<AnyMetric>.div(that: AnyMetric): MutableSet<AnyMetric> = this.apply { add(that) }
 fun metricsOf(vararg metrics: AnyMetric): MetricsSet = metrics.toSet()
+
 infix fun String.to(that: (PipelineVector) -> Any?) = Pair(this, that)
 fun M.int(s: String, default: Int = 0) = this[s].let { if (it is Number) it.toInt() else default }
 fun M.double(s: String, default: Double = 0.0) = this[s].let { if (it is Number) it.toDouble() else default }
@@ -32,3 +33,5 @@ fun M.count(s: String) = this[s].let {
         else -> 0
     }
 }
+
+fun ContextPipeline.streamOf(vararg metrics: AnyMetric) = streamOf(metrics.toSet())
