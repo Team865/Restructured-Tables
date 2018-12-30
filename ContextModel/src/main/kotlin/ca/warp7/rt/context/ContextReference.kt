@@ -26,13 +26,8 @@ interface ContextReference {
     val inputPipeline: ContextPipeline
     val outputPipeline: ContextPipeline
     val loader: ContextLoader
-    val metricsMap: Map<String, String>
     val metrics: MetricsSet
-    val hasData: Boolean
-
-    fun canUpCast(metricsSet: MetricsSet): Boolean
     fun getUpCast(adapter: ContextAdapter): ContextReference
-    fun canDownCast(metricsSet: MetricsSet): Boolean
     fun metricOf(metric: IntMetric): Int
     fun metricOf(metric: StringMetric): String
     fun matches(other: ContextReference): Boolean

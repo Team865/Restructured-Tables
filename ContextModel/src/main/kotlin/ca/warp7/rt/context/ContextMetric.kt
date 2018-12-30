@@ -12,13 +12,6 @@ open class Metric<T>(val name: String, val validator: (T) -> Boolean, val value:
     operator fun div(that: Metric<*>): MutableSet<Metric<*>> = mutableSetOf(this, that)
 }
 
-typealias AnyMetric = Metric<*>
-typealias MetricsSet = Set<Metric<*>>
-
-operator fun MutableSet<AnyMetric>.div(that: AnyMetric): MutableSet<AnyMetric> = this.apply { add(that) }
-
-fun metricsOf(vararg metrics: AnyMetric): MetricsSet = metrics.toSet()
-
 class IntMetric(name: String, validator: (Int) -> Boolean = { true }) : Metric<Int>(name, validator)
 class StringMetric(name: String, validator: (String) -> Boolean = { true }) : Metric<String>(name, validator)
 
@@ -36,8 +29,16 @@ object Alliance {
     const val Blue = "blue"
 }
 
-private val currentYear = LocalDate.now().year
+typealias AnyMetric = Metric<*>
+typealias MetricsSet = Set<Metric<*>>
 
+private typealias V = PipelineVector
+private typealias M = Map<String, *>
+
+operator fun MutableSet<AnyMetric>.div(that: AnyMetric): MutableSet<AnyMetric> = this.apply { add(that) }
+fun metricsOf(vararg metrics: AnyMetric): MetricsSet = metrics.toSet()
+
+private val currentYear = LocalDate.now().year
 val teamNumber_ = IntMetric("Team") { it in 1..9999 }
 val matchNumber_ = IntMetric("Match") { it in 1..199 }
 val compLevel_ = StringMetric("Comp Level") { it in CompLevels.set }
@@ -51,20 +52,24 @@ val user_ = StringMetric("User")
 
 infix fun String.to(that: (PipelineVector) -> Any?) = Pair(this, that)
 
-private typealias PV = PipelineVector
+val V.teamNumber get() = this.getMetric(teamNumber_)
+val V.matchNumber get() = this.getMetric(matchNumber_)
+val V.compLevel get() = this.getMetric(compLevel_)
+val V.year get() = this.getMetric(year_)
+val V.driverStation get() = this.getMetric(driverStation_)
+val V.alliance get() = this.getMetric(alliance_)
+val V.event get() = this.getMetric(event_)
+val V.scout get() = this.getMetric(scout_)
+val V.dataSource get() = this.getMetric(dataSource_)
+val V.user get() = this.getMetric(user_)
 
-val PV.teamNumber get() = this.getMetric(teamNumber_)
-val PV.matchNumber get() = this.getMetric(matchNumber_)
-val PV.compLevel get() = this.getMetric(compLevel_)
-val PV.year get() = this.getMetric(year_)
-val PV.driverStation get() = this.getMetric(driverStation_)
-val PV.alliance get() = this.getMetric(alliance_)
-val PV.event get() = this.getMetric(event_)
-val PV.scout get() = this.getMetric(scout_)
-val PV.dataSource get() = this.getMetric(dataSource_)
-val PV.user get() = this.getMetric(user_)
-
-fun Map<String, *>.int(s: String) = 0
-fun Map<String, *>.str(s: String) = ""
-fun Map<String, *>.double(s: String) = 0.0
-fun Map<String, *>.count(s: String) = 0
+fun M.int(s: String) = this[s].let { if (it is Int) it else 0 }
+fun M.str(s: String) = this[s].let { if (it is String) it else "" }
+fun M.double(s: String) = this[s].let { if (it is Double) it else 0.0 }
+fun M.count(s: String) = this[s].let {
+    when (it) {
+        is Collection<*> -> it.count()
+        is Map<*, *> -> it.size
+        else -> 0
+    }
+}
