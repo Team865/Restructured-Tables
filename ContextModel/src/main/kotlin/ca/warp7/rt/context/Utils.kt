@@ -15,6 +15,7 @@ class StringMetric(name: String, validator: (String) -> Boolean = { true }) : Me
 typealias AnyMetric = Metric<*>
 typealias MetricsSet = Set<Metric<*>>
 typealias ContextAdapter = PipelineScope.() -> Unit
+typealias MappedColumn = Pair<String, PipelineMapScope.(PipelineVector) -> Any?>
 private typealias M = Map<String, *>
 
 operator fun MutableSet<AnyMetric>.div(that: AnyMetric): MutableSet<AnyMetric> = this.apply { add(that) }
