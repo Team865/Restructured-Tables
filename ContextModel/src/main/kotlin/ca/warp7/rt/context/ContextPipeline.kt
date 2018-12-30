@@ -13,5 +13,5 @@ package ca.warp7.rt.context
  */
 interface ContextPipeline {
     fun fetch()
-    fun streamOf(metrics: Set<Metric<*>>): PipelineStream
+    fun streamOf(metrics: MetricsSet): PipelineStream
 }

@@ -30,11 +30,11 @@ interface ContextReference {
     val metrics: MetricsSet
     val hasData: Boolean
 
-    fun canUpCast(vararg metrics: AnyMetric): Boolean
+    fun canUpCast(metricsSet: MetricsSet): Boolean
     fun getUpCast(adapter: ContextAdapter): ContextReference
-    fun canDownCast(vararg metrics: AnyMetric): Boolean
-    fun lookup(vararg metrics: AnyMetric): Map<String, Any?>
+    fun canDownCast(metricsSet: MetricsSet): Boolean
     fun metricOf(metric: IntMetric): Int
     fun metricOf(metric: StringMetric): String
     fun matches(other: ContextReference): Boolean
+    fun lookup(vararg metrics: AnyMetric): Map<String, Any?>
 }
