@@ -12,5 +12,11 @@ package ca.warp7.rt.context
  * the system to be decentralized
  */
 interface Pipeline {
+    fun didFinishFetchData()
+    fun save()
+    fun hasData(): Boolean
+    fun lookup(vararg metrics: AnyMetric): Map<String, Any?>
     fun addAdapter(name: String, adapter: ContextAdapter)
+    fun update(that: Pipeline)
+    fun updateNonBlocking(that: Pipeline, onFinished: () -> Unit, onProgress: (Double) -> Unit = {})
 }
