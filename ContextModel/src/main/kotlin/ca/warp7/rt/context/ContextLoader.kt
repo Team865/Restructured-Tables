@@ -14,7 +14,7 @@ package ca.warp7.rt.context
  * Be able to return a Pipeline based on the requested data
  */
 interface ContextLoader {
-    fun loadContext(metricsSet: MetricsSet): ContextReference
-    fun searchByMetrics(metricsSet: MetricsSet): Iterable<ContextReference>
-    fun searchByContext(contextReference: ContextReference): Iterable<ContextReference>
+    fun loadContext(metricsSet: MetricsSet): Context
+    fun searchByMetrics(metricsSet: MetricsSet): Iterable<Context>
+    fun searchByContext(context: Context): Iterable<Context>
 }

@@ -12,9 +12,9 @@ operator fun MutableSet<AnyMetric>.div(that: AnyMetric): MutableSet<AnyMetric> =
 fun metricsOf(vararg metrics: AnyMetric): MetricsSet = metrics.toSet()
 infix fun String.to(that: PipelineMapScope.(PipelineVector) -> Any?) = Pair(this, that)
 fun PipelineScope.stream(vararg metrics: AnyMetric) = stream(metrics.toSet())
-operator fun MetricsSet.get(metric: IntMetric): Int = 0
-operator fun MetricsSet.get(metric: StringMetric): String = ""
-fun MetricsSet.matches(other: MetricsSet) = true
+operator fun MetricsSet.get(metric: IntMetric): Int = 0 // TODO
+operator fun MetricsSet.get(metric: StringMetric): String = "" // TODO
+fun MetricsSet.matches(other: MetricsSet) = true // TODO
 fun M.int(s: String, default: Int = 0) = this[s].let { if (it is Number) it.toInt() else default }
 fun M.double(s: String, default: Double = 0.0) = this[s].let { if (it is Number) it.toDouble() else default }
 fun M.str(s: String, default: String = "") = this[s] as? String ?: default
