@@ -29,10 +29,7 @@ interface ContextReference {
     val metricsMap: Map<String, String>
     val metrics: MetricsSet
     val hasData: Boolean
-    val tableSet: Set<ContextTable>
 
-    fun hasTable(vararg metrics: AnyMetric): Boolean
-    fun tableOf(vararg metrics: AnyMetric): ContextTable?
     fun canUpCast(vararg metrics: AnyMetric): Boolean
     fun getUpCast(adapter: ContextAdapter): ContextReference
     fun canDownCast(vararg metrics: AnyMetric): Boolean
