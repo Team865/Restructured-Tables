@@ -35,6 +35,9 @@ val scout_ = StringMetric("Scout")
 val dataSource_ = StringMetric("Data Source")
 val user_ = StringMetric("User")
 
+val match_ = matchNumber_ / compLevel_
+val board_ = driverStation_ / alliance_
+
 val V.teamNumber get() = this.getMetric(teamNumber_)
 val V.matchNumber get() = this.getMetric(matchNumber_)
 val V.compLevel get() = this.getMetric(compLevel_)

@@ -11,6 +11,6 @@ package ca.warp7.rt.context
  * data from the upstream or push data to the downstream. Pipelines are essential for
  * the system to be decentralized
  */
-interface ContextPipeline {
+interface Pipeline {
     fun addAdapter(name: String, adapter: ContextAdapter)
 }

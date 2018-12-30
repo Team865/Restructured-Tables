@@ -7,8 +7,10 @@ typealias MetricsSet = Set<Metric<*>>
 typealias ContextAdapter = PipelineScope.() -> Unit
 typealias MappedColumn = Pair<String, PipelineMapScope.(PipelineVector) -> Any?>
 private typealias M = Map<String, *>
+private typealias MutableMetrics = MutableSet<AnyMetric>
 
-operator fun MutableSet<AnyMetric>.div(that: AnyMetric): MutableSet<AnyMetric> = this.apply { add(that) }
+operator fun MutableMetrics.div(that: AnyMetric): MutableMetrics = this.apply { add(that) }
+operator fun MutableMetrics.div(that: MetricsSet): MutableMetrics = this.apply { addAll(that) }
 fun metricsOf(vararg metrics: AnyMetric): MetricsSet = metrics.toSet()
 infix fun String.to(that: PipelineMapScope.(PipelineVector) -> Any?) = Pair(this, that)
 fun PipelineScope.stream(vararg metrics: AnyMetric) = stream(metrics.toSet())

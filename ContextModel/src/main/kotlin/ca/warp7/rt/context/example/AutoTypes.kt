@@ -5,8 +5,7 @@ package ca.warp7.rt.context.example
 import ca.warp7.rt.context.*
 
 val autoTypes: ContextAdapter = {
-    stream(metrics = teamNumber_ / scout_ / driverStation_ / matchNumber_ / compLevel_
-    ).mapPure(
+    stream(metrics = teamNumber_ / scout_ / board_ / match_).mapPure(
             "start_position" to { it.data["Start position"] },
             "auto_scale" to { it.data.count("Auto scale success") },
             "auto_switch" to { it.data.count("Auto switch success") }

@@ -23,7 +23,7 @@ package ca.warp7.rt.context
  * Manage a set of Context Loaders
  */
 data class Context(
-        val pipeline: ContextPipeline,
+        val pipeline: Pipeline,
         val loader: ContextLoader,
         val metrics: MetricsSet
 )
