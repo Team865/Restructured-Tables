@@ -5,11 +5,12 @@ package ca.warp7.rt.context.example
 import ca.warp7.rt.context.*
 
 val autoTypes: ContextAdapter = {
-    stream(teamNumber_ / scout_ / driverStation_ / matchNumber_ / compLevel_).mapPure(
+    stream(metrics = teamNumber_ / scout_ / driverStation_ / matchNumber_ / compLevel_
+    ).mapPure(
             "start_position" to { it.data["Start position"] },
             "auto_scale" to { it.data.count("Auto scale success") },
             "auto_switch" to { it.data.count("Auto switch success") }
-    ).mapFrom(stream = matchNumber_ / compLevel_)(
+    ).mapFrom(metrics = matchNumber_ / compLevel_).with(
             "switch_plate" to {
                 when (lookup(it.matchNumber)["game_data", "???"][0]) {
                     'L' -> "Left"
