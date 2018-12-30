@@ -27,8 +27,5 @@ interface ContextReference {
     val outputPipeline: ContextPipeline
     val loader: ContextLoader
     val metrics: MetricsSet
-    fun metricOf(metric: IntMetric): Int
-    fun metricOf(metric: StringMetric): String
-    fun matches(other: ContextReference): Boolean
-    fun lookup(vararg metrics: AnyMetric): Map<String, Any?>
+    val clients: List<ContextClient>
 }
