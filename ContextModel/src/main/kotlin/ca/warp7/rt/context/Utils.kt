@@ -7,7 +7,7 @@ typealias MetricsSet = Set<Metric<*>>
 typealias ContextAdapter = PipelineScope.() -> Unit
 typealias MappedColumn = Pair<String, PipelineMapScope.(PipelineVector) -> Any?>
 private typealias M = Map<String, *>
-private typealias MutableMetrics = MutableSet<AnyMetric>
+internal typealias MutableMetrics = MutableSet<AnyMetric>
 
 operator fun MutableMetrics.div(that: AnyMetric): MutableMetrics = this.apply { add(that) }
 operator fun MutableMetrics.div(that: MetricsSet): MutableMetrics = this.apply { addAll(that) }
@@ -23,6 +23,7 @@ fun M.str(s: String, default: String = "") = this[s] as? String ?: default
 operator fun M.get(s: String, default: Int) = int(s, default)
 operator fun M.get(s: String, default: Double = 0.0) = double(s, default)
 operator fun M.get(s: String, default: String = "") = str(s, default)
+
 fun M.count(s: String) = this[s].let {
     when (it) {
         is Collection<*> -> it.size
