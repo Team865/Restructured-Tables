@@ -12,23 +12,9 @@ class AutoTypes : ContextAdapter1 {
 
     override fun update(contextReference: ContextReference, pipeline: ContextPipeline) {
         pipeline.addAdapter("Auto Types") {
-            stream(entryMetrics).mapCols(
+            stream(entryMetrics).mapPure(
                     "start_position" to {
                         it.data["Start position"]
-                    },
-                    "switch_plate" to {
-                        when (contextReference.lookup(it.matchNumber)["game_data", "???"][0]) {
-                            'L' -> "Left"
-                            'R' -> "Right"
-                            else -> ""
-                        }
-                    },
-                    "scale_plate" to {
-                        when (contextReference.lookup(it.matchNumber)["game_data", "???"][1]) {
-                            'L' -> "Left"
-                            'R' -> "Right"
-                            else -> ""
-                        }
                     },
                     "auto_scale" to { it.data.count("Auto scale success") },
                     "auto_switch" to { it.data.count("Auto switch success") },
@@ -47,6 +33,22 @@ class AutoTypes : ContextAdapter1 {
                             else -> "Auto Line"
                         } else "None"
                     }
+            ).mapDependent(
+                    "switch_plate" to {
+                        when (lookup(it.matchNumber)["game_data", "???"][0]) {
+                            'L' -> "Left"
+                            'R' -> "Right"
+                            else -> ""
+                        }
+                    },
+                    "scale_plate" to {
+                        when (lookup(it.matchNumber)["game_data", "???"][1]) {
+                            'L' -> "Left"
+                            'R' -> "Right"
+                            else -> ""
+                        }
+                    },
+                    dependentMetrics = matchNumber_ / compLevel_
             )
         }
     }

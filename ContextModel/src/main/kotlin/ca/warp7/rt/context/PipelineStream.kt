@@ -1,5 +1,7 @@
 package ca.warp7.rt.context
 
 interface PipelineStream {
-    fun mapCols(vararg columns: Pair<String, (PipelineVector) -> Any?>) = this
+    fun mapPure(vararg columns: Pair<String, PipelineMapScope.(PipelineVector) -> Any?>) = this
+    fun mapDependent(
+            vararg columns: Pair<String, PipelineMapScope.(PipelineVector) -> Any?>, dependentMetrics: MetricsSet? = null) = this
 }
