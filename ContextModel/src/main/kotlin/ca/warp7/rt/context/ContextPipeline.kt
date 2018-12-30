@@ -12,5 +12,6 @@ package ca.warp7.rt.context
  * the system to be decentralized
  */
 interface ContextPipeline {
-    fun streamOf(metrics: MetricsSet): PipelineStream
+    fun stream(metrics: MetricsSet): PipelineStream
+    fun addAdapter(name: String, adapter: PipelineScope.() -> Unit)
 }

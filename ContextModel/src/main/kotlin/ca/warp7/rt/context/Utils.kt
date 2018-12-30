@@ -34,4 +34,4 @@ fun M.count(s: String) = this[s].let {
     }
 }
 
-fun ContextPipeline.streamOf(vararg metrics: AnyMetric) = streamOf(metrics.toSet())
+fun PipelineScope.stream(vararg metrics: AnyMetric) = stream(metrics.toSet())
