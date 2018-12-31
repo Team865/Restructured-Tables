@@ -17,6 +17,7 @@ package ca.warp7.rt.context
 interface Pipeline {
     val name: String
     val adapter: ContextAdapter
+    val monitor: ContextMonitor
     fun open()
     fun close()
     fun merge(other: Pipeline)

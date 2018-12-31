@@ -6,6 +6,7 @@ typealias AnyMetric = BaseMetric<*>
 typealias MetricsSet = Set<BaseMetric<*>>
 typealias ContextAdapter = PipelineAdapterScope.() -> Unit
 typealias ContextReceiver<T> = PipelineReceiverScope.() -> T
+typealias ContextMonitor = PipelineMonitorScope.() -> Unit
 typealias MappedColumn = Pair<String, PipelineMappingScope.(PipelineStreamVector) -> Any?>
 
 internal typealias M = Map<String, *>
