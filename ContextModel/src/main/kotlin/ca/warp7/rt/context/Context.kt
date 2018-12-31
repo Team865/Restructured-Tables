@@ -23,6 +23,9 @@ package ca.warp7.rt.context
  * Manage a set of Context Loaders
  */
 data class Context(
+        /**
+         * The Pipeline is responsible for retrieving, merging, and saving data
+         */
         val pipeline: Pipeline,
         val loader: ContextLoader,
         val metrics: MetricsSet

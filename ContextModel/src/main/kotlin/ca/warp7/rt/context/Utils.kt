@@ -2,11 +2,13 @@
 
 package ca.warp7.rt.context
 
-typealias AnyMetric = Metric<*>
-typealias MetricsSet = Set<Metric<*>>
+typealias AnyMetric = BaseMetric<*>
+typealias MetricsSet = Set<BaseMetric<*>>
 typealias ContextAdapter = PipelineAdapterScope.() -> Unit
+typealias ContextReceiver<T> = PipelineReceiverScope.() -> T
 typealias MappedColumn = Pair<String, PipelineMappingScope.(PipelineStreamVector) -> Any?>
-private typealias M = Map<String, *>
+
+internal typealias M = Map<String, *>
 internal typealias MutableMetrics = MutableSet<AnyMetric>
 
 operator fun MutableMetrics.div(that: AnyMetric): MutableMetrics = this.apply { add(that) }

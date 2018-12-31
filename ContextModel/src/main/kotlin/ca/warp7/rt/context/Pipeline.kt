@@ -10,13 +10,15 @@ package ca.warp7.rt.context
  * for an Adapter to use. A Pipeline is always single-directional. They can either fetch
  * data from the upstream or push data to the downstream. Pipelines are essential for
  * the system to be decentralized
+ *
+ * The Pipeline provides the data to the Context, adds adapters to merge data,
+ * and saves the data on close
  */
 interface Pipeline {
-    fun didFinishFetchData()
-    fun save()
-    fun hasData(): Boolean
-    fun lookup(vararg metrics: AnyMetric): Map<String, Any?>
-    fun addAdapter(name: String, adapter: ContextAdapter)
-    fun update(that: Pipeline)
-    fun updateNonBlocking(that: Pipeline, onFinished: () -> Unit, onProgress: (Double) -> Unit = {})
+    val name: String
+    val adapter: ContextAdapter
+    fun open()
+    fun close()
+    fun merge(other: Pipeline)
+    fun <T> convert(receiver: ContextReceiver<T>): T
 }
