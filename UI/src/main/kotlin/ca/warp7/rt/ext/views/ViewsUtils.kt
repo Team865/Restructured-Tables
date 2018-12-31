@@ -41,7 +41,7 @@ fun toGrid(df: DataFrame): Grid {
         val rowList = FXCollections.observableArrayList<SpreadsheetCell>()
         row.values.forEachIndexed { j, value ->
             rowList.add(when (value) {
-                null -> null
+                null -> SpreadsheetCellType.STRING.createCell(i, j, 1, 1, "")
                 is Double -> SpreadsheetCellType.DOUBLE.createCell(i, j, 1, 1, value)
                 is Int -> SpreadsheetCellType.INTEGER.createCell(i, j, 1, 1, value)
                 is LocalDate -> SpreadsheetCellType.DATE.createCell(i, j, 1, 1, value)
@@ -57,7 +57,11 @@ fun toGrid(df: DataFrame): Grid {
 
 fun DataFrame.comboSort(columns: List<SortColumn>) = if (columns.isEmpty()) this else (0 until nrow)
         .sortedWith(columns
-                .map { this[it.columnName].comparator() }
+                .map {
+                    this[it.columnName].comparator().run {
+                        if (it.sortType == SortType.Descending) reversed() else this
+                    }
+                }
                 .reduce { a, b -> a.then(b) }
         ).toIntArray().run {
             cols.map {
