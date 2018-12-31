@@ -18,6 +18,7 @@ interface Pipeline {
     val name: String
     val adapter: ContextAdapter
     val monitor: ContextMonitor
+    fun lastUpdated(): Long
     fun open()
     fun close()
     fun merge(other: Pipeline)
