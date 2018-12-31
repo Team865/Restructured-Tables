@@ -8,11 +8,15 @@ import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import javafx.scene.text.Text
 import krangl.DataFrame
+import krangl.eq
 
 class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(toGrid(frame)) {
 
-    @Suppress("unused")
-    private var df: DataFrame = frame
+    var frame=frame
+    var sorts: MutableList<Pair<String, Boolean>> = mutableListOf() // Column label, ascending
+    var filters: MutableSet<Triple<String, Any, Boolean>> = mutableSetOf() // Column label, value, whitelist
+
+    var dfSpreadsheet: DataFrame = frame
         set(value) {
             field = value
             grid = toGrid(field)
@@ -27,18 +31,30 @@ class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(toGrid(frame)) {
         isEditable = false
         contextMenu.items.addAll(
                 SeparatorMenuItem(),
-                menuItem("Sort Ascending", "fas-sort-amount-up:16:1e2e4a", Combo(KeyCode.EQUALS, ALT_DOWN)){
-                    println(getSelectedColumns().joinToString())
+                menuItem("Sort Ascending", "fas-sort-amount-up:16:1e2e4a", Combo(KeyCode.EQUALS, ALT_DOWN)) {
+                    addSort(getSelectedColumns(), false)
+                    dfSpreadsheet = applySort(sorts, dfSpreadsheet)
                 },
-                menuItem("Sort Descending", "fas-sort-amount-down:16:1e2e4a", Combo(KeyCode.MINUS, ALT_DOWN)){},
+                menuItem("Sort Descending", "fas-sort-amount-down:16:1e2e4a", Combo(KeyCode.MINUS, ALT_DOWN)) {
+                    addSort(getSelectedColumns(), true)
+                    dfSpreadsheet = applySort(sorts, dfSpreadsheet)
+                },
                 menuItem("Clear sort", null, Combo(KeyCode.DIGIT0, ALT_DOWN)) {
+                    sorts=mutableListOf()
+                    resetDisplay()
                 },
                 SeparatorMenuItem(),
                 menuItem("Filter By", "fas-filter:16:1e2e4a", Combo(KeyCode.I, SHORTCUT_DOWN)) {
+                    addFilter(getSelectedColumnsValues(), true)
+                    dfSpreadsheet = applyFilter(filters, dfSpreadsheet)
                 },
                 menuItem("Filter Out", null, Combo(KeyCode.I, SHORTCUT_DOWN, SHIFT_DOWN)) {
+                    addFilter(getSelectedColumnsValues(), false)
+                    dfSpreadsheet = applyFilter(filters, dfSpreadsheet)
                 },
                 menuItem("Clear Filters", null, Combo(KeyCode.U, SHORTCUT_DOWN)) {
+                    filters= mutableSetOf()
+                    resetDisplay()
                 },
                 SeparatorMenuItem(),
                 menuItem("Toggle Formatting", "fas-toggle-on:16:1e2e4a", Combo(KeyCode.SLASH, SHORTCUT_DOWN)) {
@@ -68,6 +84,45 @@ class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(toGrid(frame)) {
         )
     }
 
+    private fun addSort(columns: Set<String>, descending: Boolean) {
+        columns.forEach {
+            sorts.add(Pair(it, descending))
+        }
+    }
+
+    private fun applySort(listOfSorts: List<Pair<String, Boolean>>, df: DataFrame): DataFrame {
+        var df = df
+        listOfSorts.forEach {
+            when (it.second) {
+                //true -> df = df.sortedByDescending(it.first)
+                false -> df = df.sortedBy(it.first)
+            }
+        }
+        return df
+    }
+
+    private fun addFilter(valuesByColumn: Set<Pair<String, Any>>, whitelist: Boolean) {
+        valuesByColumn.forEach {
+            filters.add(Triple(it.first, it.second, whitelist))
+        }
+    }
+
+    private fun applyFilter(setOfFilters: Set<Triple<String, Any, Boolean>>, df: DataFrame): DataFrame {
+        var df = df
+        for (filter in setOfFilters) {
+            when (filter.third) {
+                true -> df = df.filter { it[filter.first] eq filter.second }
+                //false -> df = df.filter { it[filter.first] ne filter.second }
+            }
+        }
+        return df
+    }
+
+    private fun resetDisplay(){
+        dfSpreadsheet=frame
+        dfSpreadsheet=applySort(sorts,dfSpreadsheet)
+        dfSpreadsheet=applyFilter(filters,dfSpreadsheet)
+    }
     private fun updateNewData() {
         val text = Text()
         text.font = Font.font("sans-serif", FontWeight.BOLD, 14.0)
@@ -82,13 +137,21 @@ class DataFrameView(frame: DataFrame) : CopyableSpreadsheet(toGrid(frame)) {
         }
     }
 
-    private fun getSelectedColumns(): List<Int> {
-        var columns= mutableListOf<Int>()
-        for (cell in selectionModel.selectedCells) {
-            if (cell.column !in columns) {
-                columns.add(cell.column)
-            }
-        }
-        return columns
+    private fun getSelectedColumns(): Set<String> {
+        return selectionModel.selectedCells.map {
+            grid.columnHeaders[it.column]
+        }.toSet()
+    }
+
+    private fun getSelectedValues(): Set<Any> {
+        return selectionModel.selectedCells.map {
+            grid.rows[it.row][it.column].item
+        }.toSet()
+    }
+
+    private fun getSelectedColumnsValues(): Set<Pair<String, Any>> {
+        return selectionModel.selectedCells.map {
+            Pair(grid.columnHeaders[it.column], grid.rows[it.row][it.column].item)
+        }.toSet()
     }
 }
