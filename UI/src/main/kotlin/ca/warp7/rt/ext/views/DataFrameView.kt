@@ -14,7 +14,7 @@ import krangl.not
 class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(toGrid(initialFrame)) {
 
     private val sortColumns: MutableList<SortColumn> = mutableListOf()
-    private val filterRows: MutableSet<FilterRow> = mutableSetOf()
+    private val filterRows: MutableList<FilterRow> = mutableListOf()
 
     private var spreadsheetFrame: DataFrame = initialFrame
         set(value) {
@@ -86,6 +86,16 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
 
     private fun addSort(sortType: SortType, columns: Set<String>) {
         sortColumns.addAll(columns.map { SortColumn(sortType, it) })
+        columns.forEach {
+            var foundExisting = false
+            sortColumns.withIndex().forEach { (i, sortColumn) ->
+                if (sortColumn.columnName == it) {
+                    sortColumns[i] = SortColumn(sortType, sortColumn.columnName)
+                    foundExisting = true
+                }
+            }
+            if (!foundExisting) sortColumns.add(SortColumn(sortType, it))
+        }
     }
 
     private fun applySort() {
@@ -128,7 +138,6 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
     }
 
     private fun getSelectedColumns() = selectionModel.selectedCells.map { grid.columnHeaders[it.column] }.toSet()
-    private fun getSelectedValues() = selectionModel.selectedCells.map { grid.rows[it.row][it.column].item }.toSet()
     private fun getSelectedColumnsValues() = selectionModel.selectedCells.map {
         grid.columnHeaders[it.column] to grid.rows[it.row][it.column].item
     }.toSet()
