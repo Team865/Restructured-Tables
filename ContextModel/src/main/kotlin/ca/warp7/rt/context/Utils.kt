@@ -4,16 +4,16 @@ package ca.warp7.rt.context
 
 typealias AnyMetric = Metric<*>
 typealias MetricsSet = Set<Metric<*>>
-typealias ContextAdapter = PipelineScope.() -> Unit
-typealias MappedColumn = Pair<String, PipelineMapScope.(PipelineVector) -> Any?>
+typealias ContextAdapter = PipelineAdapterScope.() -> Unit
+typealias MappedColumn = Pair<String, PipelineMappingScope.(PipelineStreamVector) -> Any?>
 private typealias M = Map<String, *>
 internal typealias MutableMetrics = MutableSet<AnyMetric>
 
 operator fun MutableMetrics.div(that: AnyMetric): MutableMetrics = this.apply { add(that) }
 operator fun MutableMetrics.div(that: MetricsSet): MutableMetrics = this.apply { addAll(that) }
 fun metricsOf(vararg metrics: AnyMetric): MetricsSet = metrics.toSet()
-infix fun String.to(that: PipelineMapScope.(PipelineVector) -> Any?) = Pair(this, that)
-fun PipelineScope.stream(vararg metrics: AnyMetric) = stream(metrics.toSet())
+infix fun String.to(that: PipelineMappingScope.(PipelineStreamVector) -> Any?) = Pair(this, that)
+fun PipelineAdapterScope.stream(vararg metrics: AnyMetric) = stream(metrics.toSet())
 fun M.int(s: String, default: Int = 0) = this[s].let { if (it is Number) it.toInt() else default }
 fun M.double(s: String, default: Double = 0.0) = this[s].let { if (it is Number) it.toDouble() else default }
 fun M.str(s: String, default: String = "") = this[s] as? String ?: default

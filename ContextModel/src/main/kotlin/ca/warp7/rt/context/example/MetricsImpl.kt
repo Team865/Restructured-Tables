@@ -3,11 +3,11 @@
 package ca.warp7.rt.context.example
 
 import ca.warp7.rt.context.IntMetric
-import ca.warp7.rt.context.PipelineVector
+import ca.warp7.rt.context.PipelineStreamVector
 import ca.warp7.rt.context.StringMetric
 import java.time.LocalDate
 
-private typealias V = PipelineVector
+private typealias V = PipelineStreamVector
 
 object CompLevels {
     const val QualificationMatch = "qm"
