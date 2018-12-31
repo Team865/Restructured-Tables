@@ -100,6 +100,16 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
 
     private fun applySort() {
         spreadsheetFrame = initialFrame.comboSort(sortColumns)
+        for (sortColumn in sortColumns) {
+            for ((i, columnHeader) in grid.columnHeaders.withIndex()) {
+                if (columnHeader.startsWith(sortColumn.columnName)) {
+                    grid.columnHeaders[i] = sortColumn.columnName + when (sortColumn.sortType) {
+                        SortType.Ascending -> " \u25B4"
+                        SortType.Descending -> " \u25be"
+                    }
+                }
+            }
+        }
     }
 
     private fun addFilter(valuesByColumn: Set<Pair<String, Any>>, whitelist: Boolean) {
@@ -132,13 +142,14 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
             val name = grid.columnHeaders[modelCol].replace("[^A-Za-z0-9 ]".toRegex(), "")
             if (name in fixedMetrics) column.isFixed = true
             text.text = name
-            val width = text.layoutBounds.width + 20
+            val width = text.layoutBounds.width + 30
             column.minWidth = width
         }
     }
 
-    private fun getSelectedColumns() = selectionModel.selectedCells.map { grid.columnHeaders[it.column] }.toSet()
-    private fun getSelectedColumnsValues() = selectionModel.selectedCells.map {
-        grid.columnHeaders[it.column] to grid.rows[it.row][it.column].item
-    }.toSet()
+    private fun getSelectedColumns() = selectionModel.selectedCells
+            .map { spreadsheetFrame.cols[it.column].name }.toSet()
+
+    private fun getSelectedColumnsValues() = selectionModel.selectedCells
+            .map { grid.columnHeaders[it.column] to grid.rows[it.row][it.column].item }.toSet()
 }

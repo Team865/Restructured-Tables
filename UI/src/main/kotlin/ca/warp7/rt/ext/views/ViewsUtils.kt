@@ -76,8 +76,8 @@ fun DataFrame.comboSort(columns: List<SortColumn>) = if (columns.isEmpty()) this
                     is AnyCol -> AnyCol(it.name, Array(nrow) { i -> it.values[this[i]] })
                     else -> throw UnsupportedOperationException()
                 }
-            }.let { dataFrameOf(*it.toTypedArray()) }
-        }
+            }
+        }.let { dataFrameOf(*it.toTypedArray()) }
 
 private fun DataCol.ascendingComparator(): java.util.Comparator<Int> = when (this) {
     is DoubleCol -> {
