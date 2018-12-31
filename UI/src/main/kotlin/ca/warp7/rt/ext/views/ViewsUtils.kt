@@ -9,7 +9,7 @@ import krangl.*
 import org.controlsfx.control.spreadsheet.Grid
 import org.controlsfx.control.spreadsheet.GridBase
 import org.controlsfx.control.spreadsheet.SpreadsheetCell
-import org.controlsfx.control.spreadsheet.SpreadsheetCellType
+import org.controlsfx.control.spreadsheet.SpreadsheetCellType.*
 import org.kordamp.ikonli.javafx.FontIcon
 import java.time.LocalDate
 import java.util.*
@@ -41,12 +41,12 @@ fun toGrid(df: DataFrame): Grid {
         val rowList = FXCollections.observableArrayList<SpreadsheetCell>()
         row.values.forEachIndexed { j, value ->
             rowList.add(when (value) {
-                null -> SpreadsheetCellType.STRING.createCell(i, j, 1, 1, "")
-                is Double -> SpreadsheetCellType.DOUBLE.createCell(i, j, 1, 1, value)
-                is Int -> SpreadsheetCellType.INTEGER.createCell(i, j, 1, 1, value)
-                is LocalDate -> SpreadsheetCellType.DATE.createCell(i, j, 1, 1, value)
-                is String -> SpreadsheetCellType.STRING.createCell(i, j, 1, 1, value)
-                else -> SpreadsheetCellType.STRING.createCell(i, j, 1, 1, value.toString())
+                null -> STRING.createCell(i, j, 1, 1, "")
+                is Double -> DOUBLE.createCell(i, j, 1, 1, value)
+                is Int -> INTEGER.createCell(i, j, 1, 1, value)
+                is LocalDate -> DATE.createCell(i, j, 1, 1, value)
+                is String -> STRING.createCell(i, j, 1, 1, value)
+                else -> STRING.createCell(i, j, 1, 1, value.toString())
             })
         }
         grid.rows.add(rowList)
@@ -66,11 +66,11 @@ fun DataFrame.comboSort(columns: List<SortColumn>) = if (columns.isEmpty()) this
         ).toIntArray().run {
             cols.map {
                 when (it) {
-                    is DoubleCol -> DoubleCol(it.name, Array(nrow) { index -> it.values[this[index]] })
-                    is IntCol -> IntCol(it.name, Array(nrow) { index -> it.values[this[index]] })
-                    is BooleanCol -> BooleanCol(it.name, Array(nrow) { index -> it.values[this[index]] })
-                    is StringCol -> StringCol(it.name, Array(nrow) { index -> it.values[this[index]] })
-                    is AnyCol -> AnyCol(it.name, Array(nrow) { index -> it.values[this[index]] })
+                    is DoubleCol -> DoubleCol(it.name, Array(nrow) { i -> it.values[this[i]] })
+                    is IntCol -> IntCol(it.name, Array(nrow) { i -> it.values[this[i]] })
+                    is BooleanCol -> BooleanCol(it.name, Array(nrow) { i -> it.values[this[i]] })
+                    is StringCol -> StringCol(it.name, Array(nrow) { i -> it.values[this[i]] })
+                    is AnyCol -> AnyCol(it.name, Array(nrow) { i -> it.values[this[i]] })
                     else -> throw UnsupportedOperationException()
                 }
             }.let { dataFrameOf(*it.toTypedArray()) }
