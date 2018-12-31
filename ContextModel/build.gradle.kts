@@ -26,4 +26,5 @@ dependencies {
     implementation(group = "de.mpicbg.scicomp", name = "krangl", version = "0.10.3")
     implementation(group = "com.beust", name = "klaxon", version = "3.0.1")
     testImplementation(kotlin("test", kotlinVersion))
+    testImplementation(project)
 }
