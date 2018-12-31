@@ -13,17 +13,10 @@ import krangl.not
 
 class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(toGrid(initialFrame)) {
 
-    enum class SortType {
-        Ascending, Descending
-    }
+    private val sortColumns: MutableList<SortColumn> = mutableListOf()
+    private val filterRows: MutableSet<FilterRow> = mutableSetOf()
 
-    data class ColumnSort(val sortType: SortType, val columnName: String)
-    data class Filter(val label: String, val value: Any, val whitelist: Boolean)
-
-    private val sorts: MutableList<ColumnSort> = mutableListOf()
-    private val filters: MutableSet<Filter> = mutableSetOf()
-
-    private var dfSpreadsheet: DataFrame = initialFrame
+    private var spreadsheetFrame: DataFrame = initialFrame
         set(value) {
             field = value
             grid = toGrid(field)
@@ -47,7 +40,7 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
                     applySort()
                 },
                 menuItem("Clear sort", null, Combo(KeyCode.DIGIT0, ALT_DOWN)) {
-                    sorts.clear()
+                    sortColumns.clear()
                     resetDisplay()
                 },
                 SeparatorMenuItem(),
@@ -60,7 +53,7 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
                     applyFilter()
                 },
                 menuItem("Clear Filters", null, Combo(KeyCode.U, SHORTCUT_DOWN)) {
-                    filters.clear()
+                    filterRows.clear()
                     resetDisplay()
                 },
                 SeparatorMenuItem(),
@@ -92,37 +85,30 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
     }
 
     private fun addSort(sortType: SortType, columns: Set<String>) {
-        sorts.addAll(columns.map { ColumnSort(sortType, it) })
+        sortColumns.addAll(columns.map { SortColumn(sortType, it) })
     }
 
     private fun applySort() {
-        var df = dfSpreadsheet
-        sorts.forEach {
-            when (it.sortType) {
-                SortType.Descending -> df.sortedByDescending(it.columnName)
-                SortType.Ascending -> df = df.sortedBy(it.columnName)
-            }
-        }
-        dfSpreadsheet = df
+        spreadsheetFrame = initialFrame.comboSort(sortColumns)
     }
 
     private fun addFilter(valuesByColumn: Set<Pair<String, Any>>, whitelist: Boolean) {
-        filters.addAll(valuesByColumn.map { Filter(it.first, it.second, whitelist) })
+        filterRows.addAll(valuesByColumn.map { FilterRow(it.first, it.second, whitelist) })
     }
 
     private fun applyFilter() {
-        var df = dfSpreadsheet
-        for (filter in filters) {
+        var df = spreadsheetFrame
+        for (filter in filterRows) {
             df = when (filter.whitelist) {
                 true -> df.filter { it[filter.label] eq filter.value }
                 false -> df.filter { (it[filter.label] eq filter.value).not() }
             }
         }
-        dfSpreadsheet = df
+        spreadsheetFrame = df
     }
 
     private fun resetDisplay() {
-        dfSpreadsheet = initialFrame
+        spreadsheetFrame = initialFrame
         applySort()
         applyFilter()
     }
@@ -141,21 +127,9 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
         }
     }
 
-    private fun getSelectedColumns(): Set<String> {
-        return selectionModel.selectedCells.map {
-            grid.columnHeaders[it.column]
-        }.toSet()
-    }
-
-    private fun getSelectedValues(): Set<Any> {
-        return selectionModel.selectedCells.map {
-            grid.rows[it.row][it.column].item
-        }.toSet()
-    }
-
-    private fun getSelectedColumnsValues(): Set<Pair<String, Any>> {
-        return selectionModel.selectedCells.map {
-            Pair(grid.columnHeaders[it.column], grid.rows[it.row][it.column].item)
-        }.toSet()
-    }
+    private fun getSelectedColumns() = selectionModel.selectedCells.map { grid.columnHeaders[it.column] }.toSet()
+    private fun getSelectedValues() = selectionModel.selectedCells.map { grid.rows[it.row][it.column].item }.toSet()
+    private fun getSelectedColumnsValues() = selectionModel.selectedCells.map {
+        grid.columnHeaders[it.column] to grid.rows[it.row][it.column].item
+    }.toSet()
 }
