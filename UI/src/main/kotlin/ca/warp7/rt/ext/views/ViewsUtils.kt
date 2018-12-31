@@ -58,8 +58,11 @@ fun toGrid(df: DataFrame): Grid {
 fun DataFrame.comboSort(columns: List<SortColumn>) = if (columns.isEmpty()) this else (0 until nrow)
         .sortedWith(columns
                 .map {
-                    this[it.columnName].comparator().run {
-                        if (it.sortType == SortType.Descending) reversed() else this
+                    this[it.columnName].run {
+                        when (it.sortType) {
+                            SortType.Ascending -> ascendingComparator()
+                            SortType.Descending -> descendingComparator().reversed()
+                        }
                     }
                 }
                 .reduce { a, b -> a.then(b) }
@@ -76,12 +79,12 @@ fun DataFrame.comboSort(columns: List<SortColumn>) = if (columns.isEmpty()) this
             }.let { dataFrameOf(*it.toTypedArray()) }
         }
 
-private fun DataCol.comparator(): java.util.Comparator<Int> = when (this) {
+private fun DataCol.ascendingComparator(): java.util.Comparator<Int> = when (this) {
     is DoubleCol -> {
         Comparator { a, b -> nullsLast<Double>().compare(values[a], values[b]) }
     }
     is IntCol -> {
-        Comparator { a, b -> nullsFirst<Int>().compare(values[a], values[b]) }
+        Comparator { a, b -> nullsLast<Int>().compare(values[a], values[b]) }
     }
     is BooleanCol -> {
         Comparator { a, b -> nullsLast<Boolean>().compare(values[a], values[b]) }
@@ -93,6 +96,28 @@ private fun DataCol.comparator(): java.util.Comparator<Int> = when (this) {
         Comparator { l, r ->
             @Suppress("UNCHECKED_CAST")
             nullsLast<Comparable<Any>>().compare(values[l] as Comparable<Any>, values[r] as Comparable<Any>)
+        }
+    }
+    else -> throw UnsupportedOperationException()
+}
+
+private fun DataCol.descendingComparator(): java.util.Comparator<Int> = when (this) {
+    is DoubleCol -> {
+        Comparator { a, b -> nullsFirst<Double>().compare(values[a], values[b]) }
+    }
+    is IntCol -> {
+        Comparator { a, b -> nullsFirst<Int>().compare(values[a], values[b]) }
+    }
+    is BooleanCol -> {
+        Comparator { a, b -> nullsFirst<Boolean>().compare(values[a], values[b]) }
+    }
+    is StringCol -> {
+        Comparator { a, b -> nullsFirst<String>().compare(values[a], values[b]) }
+    }
+    is AnyCol -> {
+        Comparator { l, r ->
+            @Suppress("UNCHECKED_CAST")
+            nullsFirst<Comparable<Any>>().compare(values[l] as Comparable<Any>, values[r] as Comparable<Any>)
         }
     }
     else -> throw UnsupportedOperationException()
