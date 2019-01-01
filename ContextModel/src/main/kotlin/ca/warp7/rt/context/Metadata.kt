@@ -19,7 +19,7 @@ object Metadata {
     }
 
     fun save() {
-        data[MetadataKey.LastSaved.key] = SimpleDateFormat("dd/MM/yy hh:mm:ss").format(Date())
+        data[MetaKey.lastSaved] = SimpleDateFormat("dd/MM/yy hh:mm:ss").format(Date())
         userConfigFile.writeText(data.toJsonString(prettyPrint = true))
     }
 }

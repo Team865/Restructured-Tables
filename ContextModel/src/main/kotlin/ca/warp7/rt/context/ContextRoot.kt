@@ -13,9 +13,6 @@ package ca.warp7.rt.context
  * Check the availability of those data by converting the requested data in the target format
  * Be able to return a Pipeline based on the requested data
  */
-interface ContextLoader {
-    fun load(metricsSet: MetricsSet): Context?
-    fun search(metricsSet: MetricsSet): Iterator<Context>
-    val available: Iterator<Context>
-    val data: MutableMap<String, Any?>
+interface ContextRoot : ContextLoader {
+    val default: Context
 }
