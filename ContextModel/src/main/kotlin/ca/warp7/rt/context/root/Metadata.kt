@@ -1,25 +1,13 @@
-@file:Suppress("MemberVisibilityCanBePrivate", "unused")
+@file:Suppress("unused")
 
 package ca.warp7.rt.context.root
 
-import com.beust.klaxon.JsonObject
-import com.beust.klaxon.Parser
-import java.io.File
-import java.text.SimpleDateFormat
-import java.util.*
-
 object Metadata {
-
-    private val userConfigFile: File = File(System.getProperty("user.home"), "/warp7.meta.json")
-            .apply { createNewFile() }
-
-    val data: JsonObject = userConfigFile.readText().trim().run {
-        if (isNotEmpty()) Parser().parse(java.lang.StringBuilder(this)) as JsonObject
-        else JsonObject()
-    }
-
-    fun save() {
-        data[MetaKey.lastSaved] = SimpleDateFormat("dd/MM/yy hh:mm:ss").format(Date())
-        userConfigFile.writeText(data.toJsonString(prettyPrint = true))
-    }
+    const val lastSaved = "lastSaved"
+    const val appVersion = "appVersion"
+    const val plugins = "plugins"
+    const val contextPath = "contextPath"
+    const val userName = "userName"
+    const val deviceNAme = "deviceName"
+    const val lastOpenedPlugin = "lastOpenedPlugin"
 }

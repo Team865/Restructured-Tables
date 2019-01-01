@@ -18,4 +18,5 @@ interface ContextLoader {
     fun search(metricsSet: MetricsSet): Iterator<Context>
     val available: Iterator<Context>
     val data: MutableMap<String, Any?>
+    fun save()
 }

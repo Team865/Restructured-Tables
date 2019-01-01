@@ -11,4 +11,9 @@ object Contexts {
      * Loads the singleton Context Root for the application with command line arguments
      */
     fun loadRoot(args: Array<String>?) = root ?: loadRootImpl(args ?: arrayOf()).apply { root = this }
+
+    /**
+     * Holds the metadata of the root context
+     */
+    val metadata get() = loadRoot(null).data
 }
