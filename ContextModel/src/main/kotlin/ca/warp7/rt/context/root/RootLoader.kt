@@ -9,38 +9,41 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-internal fun loadRootImpl(args: Array<String>) = loadRootImpl(System.getProperty("os.name").toLowerCase(), args)
+internal fun loadRoot(args: Array<String>) = loadRootImpl(System.getProperty("os.name").toLowerCase(), args)
 
 internal fun loadRootImpl(os: String, args: Array<String>) = when {
     os.contains("win") -> System.getProperty("user.home")
-            .let { loadRootImpl("$it/warp7.meta.json", "$it/AppData/Local/", args) }
+            .let {
+                loadRootImpl("$it/warp7.meta.json", "$it/AppData/Local/Warp7/", args)
+            }
     os.contains("darwin") -> System.getProperty("user.home")
-            .let { loadRootImpl("$it/warp7.meta.json", "$it/Library/Application Support", args) }
-    else -> loadRootImpl()
-}
-
-internal fun loadRootImpl() = object : ContextRoot {
-    override fun load(metricsSet: MetricsSet): Context? = null
-    override fun search(metricsSet: MetricsSet): Iterator<Context> = emptyArray<Context>().iterator()
-    override val available: Iterator<Context> = emptyArray<Context>().iterator()
-    override val data: MutableMap<String, Any?> = mutableMapOf()
-    override val default: Context? = null
-    override fun save() = Unit
+            .let {
+                loadRootImpl("$it/warp7.meta.json", "$it/Library/Application Support/Warp7", args)
+            }
+    else -> rootImpl
 }
 
 internal fun loadRootImpl(config: String, contextPath: String, args: Array<String>) = if (args.isEmpty())
-    loadRootImpl(config, contextPath) else loadRootImpl()
+    loadRootImpl(config, contextPath) else rootImpl
 
 internal fun loadRootImpl(config: String, contextPath: String) = File(config)
         .apply { parentFile.mkdirs() }
         .apply { createNewFile() }
         .let { loadRootImpl(it, contextPath) }
 
-internal fun loadRootImpl(config: File, contextPath: String) = LocalRoot(config, contextPath)
+internal fun loadRootImpl(config: File, contextPath: String) = loadRootImpl(config, Parser()
+        .parse(StringBuilder(config.readText().trim())) as JsonObject, contextPath)
 
-internal class LocalRoot(private val config: File, private val contextPath: String) : ContextRoot {
+internal fun loadRootImpl(config: File, data: JsonObject, contextPath: String) = loadRootImpl(config, data,
+        data.string(Metadata.contextPath) ?: contextPath, "")
 
-    private val internalData = Parser().parse(StringBuilder(config.readText())) as JsonObject
+internal fun loadRootImpl(config: File, data: JsonObject, contextPath: String, pluginPath: String): ContextRoot {
+    return rootImpl
+}
+
+internal class RootImpl(private val config: File,
+                        private val contextPath: String,
+                        private val internalData: JsonObject) : ContextRoot {
 
     override val default: Context?
         get() = TODO("not implemented")
@@ -63,4 +66,13 @@ internal class LocalRoot(private val config: File, private val contextPath: Stri
         internalData[Metadata.lastSaved] = SimpleDateFormat("dd/MM/yy hh:mm:ss").format(Date())
         config.writeText(internalData.toJsonString(prettyPrint = true))
     }
+}
+
+internal val rootImpl = object : ContextRoot {
+    override fun load(metricsSet: MetricsSet): Context? = null
+    override fun search(metricsSet: MetricsSet): Iterator<Context> = emptyArray<Context>().iterator()
+    override val available: Iterator<Context> = emptyArray<Context>().iterator()
+    override val data: MutableMap<String, Any?> = mutableMapOf()
+    override val default: Context? = null
+    override fun save() = Unit
 }

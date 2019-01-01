@@ -6,7 +6,7 @@ import javafx.application.Application
 object Launcher {
     @JvmStatic
     fun main(args: Array<String>) {
-        Contexts.loadRoot(args)
+        Contexts.args = args
         Application.launch(Restructured::class.java)
     }
 }
