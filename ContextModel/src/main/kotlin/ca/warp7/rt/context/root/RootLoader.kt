@@ -9,35 +9,78 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-internal fun loadRoot(args: Array<String>) = loadRootImpl(System.getProperty("os.name").toLowerCase(), args)
+internal fun loadRoot(args: Array<String>) = loadRootImpl(
+        os = System.getProperty("os.name").toLowerCase(),
+        args = args)
 
-internal fun loadRootImpl(os: String, args: Array<String>) = when {
+
+internal fun loadRootImpl(os: String,
+                          args: Array<String>) = when {
     os.contains("win") -> System.getProperty("user.home")
             .let {
-                loadRootImpl("$it/warp7.meta.json", "$it/AppData/Local/Warp7/", args)
+                loadRootImpl(
+                        config = "$it/warp7.meta.json",
+                        contextPath = "$it/AppData/Local/Warp7/",
+                        args = args)
             }
     os.contains("darwin") -> System.getProperty("user.home")
             .let {
-                loadRootImpl("$it/warp7.meta.json", "$it/Library/Application Support/Warp7", args)
+                loadRootImpl(
+                        config = "$it/warp7.meta.json",
+                        contextPath = "$it/Library/Application Support/Warp7/",
+                        args = args)
             }
     else -> rootImpl
 }
 
-internal fun loadRootImpl(config: String, contextPath: String, args: Array<String>) = if (args.isEmpty())
-    loadRootImpl(config, contextPath) else rootImpl
 
-internal fun loadRootImpl(config: String, contextPath: String) = File(config)
+internal fun loadRootImpl(config: String,
+                          contextPath: String,
+                          args: Array<String>) = if (args.isEmpty())
+    loadRootImpl(
+            config = config,
+            contextPath = contextPath,
+            default = "") else rootImpl
+
+
+internal fun loadRootImpl(config: String,
+                          contextPath: String,
+                          default: String) = File(config)
         .apply { parentFile.mkdirs() }
         .apply { createNewFile() }
-        .let { loadRootImpl(it, contextPath) }
+        .let {
+            loadRootImpl(
+                    config = it,
+                    contextPath = contextPath,
+                    default = default)
+        }
 
-internal fun loadRootImpl(config: File, contextPath: String) = loadRootImpl(config, Parser()
-        .parse(StringBuilder(config.readText().trim())) as JsonObject, contextPath)
 
-internal fun loadRootImpl(config: File, data: JsonObject, contextPath: String) = loadRootImpl(config, data,
-        data.string(Metadata.contextPath) ?: contextPath, "")
+internal fun loadRootImpl(config: File,
+                          contextPath: String,
+                          default: String) = loadRootImpl(
+        config = config,
+        data = Parser().parse(StringBuilder(config.readText().trim())) as JsonObject,
+        contextPath = contextPath,
+        default = default)
 
-internal fun loadRootImpl(config: File, data: JsonObject, contextPath: String, pluginPath: String): ContextRoot {
+
+internal fun loadRootImpl(config: File,
+                          data: JsonObject,
+                          contextPath: String,
+                          default: String) = loadRootImpl(
+        config = config,
+        data = data,
+        contextPath = data.string(Metadata.contextPath) ?: contextPath,
+        pluginPath = data.string(Metadata.pluginPath) ?: "${System.getProperty("user.dir")}/plugins/",
+        default = default)
+
+
+internal fun loadRootImpl(config: File,
+                          data: JsonObject,
+                          contextPath: String,
+                          pluginPath: String,
+                          default: String): ContextRoot {
     return rootImpl
 }
 
