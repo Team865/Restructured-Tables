@@ -5,6 +5,7 @@ import javafx.scene.layout.BorderPane
 import krangl.DataFrame
 import krangl.readDelim
 import org.apache.commons.csv.CSVFormat
+import org.controlsfx.control.spreadsheet.SpreadsheetCell
 
 class TableController {
 
@@ -19,6 +20,7 @@ class TableController {
                     isCompressed = false,
                     colTypes = mapOf())
             val sheet = DataFrameView(df)
+
             Platform.runLater { tableContainer.center = sheet }
         }.start()
     }

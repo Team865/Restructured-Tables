@@ -13,6 +13,7 @@ import org.controlsfx.control.spreadsheet.SpreadsheetCellType.*
 import org.kordamp.ikonli.javafx.FontIcon
 import java.time.LocalDate
 import java.util.*
+import kotlin.math.roundToInt
 
 typealias Combo = KeyCodeCombination
 
@@ -121,4 +122,18 @@ private fun DataCol.descendingComparator(): java.util.Comparator<Int> = when (th
         }
     }
     else -> throw UnsupportedOperationException()
+}
+
+fun colorScale(k: Double): String {
+    var r = 0
+    var g = 255
+    var b = 0
+
+    var rHex = java.lang.Integer.toHexString(255-(k * (255 - r)).toInt())
+    var gHex = java.lang.Integer.toHexString(255-(k * (255 - g)).toInt())
+    var bHex = java.lang.Integer.toHexString(255-(k * (255 - b)).toInt())
+
+    return (if (rHex.length == 1) "0" + rHex else rHex) +
+            (if (gHex.length == 1) "0" + gHex else gHex) +
+            (if (bHex.length == 1) "0" + bHex else bHex)
 }

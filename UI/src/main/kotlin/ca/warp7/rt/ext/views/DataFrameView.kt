@@ -7,14 +7,13 @@ import javafx.scene.input.KeyCombination.*
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import javafx.scene.text.Text
-import krangl.DataFrame
-import krangl.eq
-import krangl.not
+import krangl.*
 
 class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(toGrid(initialFrame)) {
 
     private val sortColumns: MutableList<SortColumn> = mutableListOf()
     private val filterRows: MutableList<FilterRow> = mutableListOf()
+    private val colorScaleColumns: MutableList<colorScaleColumn> = mutableListOf()
 
     private var spreadsheetFrame: DataFrame = initialFrame
         set(value) {
@@ -32,12 +31,12 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
         contextMenu.items.addAll(
                 SeparatorMenuItem(),
                 menuItem("Sort Ascending", "fas-sort-amount-up:16:1e2e4a", Combo(KeyCode.EQUALS, ALT_DOWN)) {
-                    addSort(SortType.Ascending, getSelectedColumns())
-                    applySort()
+                    addSort( getSelectedColumns(),SortType.Ascending)
+                    resetDisplay()
                 },
                 menuItem("Sort Descending", "fas-sort-amount-down:16:1e2e4a", Combo(KeyCode.MINUS, ALT_DOWN)) {
-                    addSort(SortType.Descending, getSelectedColumns())
-                    applySort()
+                    addSort(getSelectedColumns(),SortType.Descending )
+                    resetDisplay()
                 },
                 menuItem("Clear sort", null, Combo(KeyCode.DIGIT0, ALT_DOWN)) {
                     sortColumns.clear()
@@ -46,11 +45,11 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
                 SeparatorMenuItem(),
                 menuItem("Filter By", "fas-filter:16:1e2e4a", Combo(KeyCode.I, SHORTCUT_DOWN)) {
                     addFilter(getSelectedColumnsValues(), true)
-                    applyFilter()
+                    resetDisplay()
                 },
                 menuItem("Filter Out", null, Combo(KeyCode.I, SHORTCUT_DOWN, SHIFT_DOWN)) {
                     addFilter(getSelectedColumnsValues(), false)
-                    applyFilter()
+                    resetDisplay()
                 },
                 menuItem("Clear Filters", null, Combo(KeyCode.U, SHORTCUT_DOWN)) {
                     filterRows.clear()
@@ -61,11 +60,17 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
                 },
                 menuItem("Colour Scale Up", "fas-caret-up:16:1e2e4a",
                         Combo(KeyCode.EQUALS, SHORTCUT_DOWN, ALT_DOWN)) {
+                    addColorScale(getSelectedColumns(),true)
+                    resetDisplay()
                 },
                 menuItem("Colour Scale Down", "fas-caret-down:16:1e2e4a",
                         Combo(KeyCode.MINUS, SHORTCUT_DOWN, ALT_DOWN)) {
+                    addColorScale(getSelectedColumns(),true)
+                    resetDisplay()
                 },
                 menuItem("Clear Colour Scales", null, Combo(KeyCode.DIGIT0, SHORTCUT_DOWN, ALT_DOWN)) {
+                    colorScaleColumns.clear()
+                    resetDisplay()
                 },
                 menuItem("Highlight Cells", "fas-adjust:16:1e2e4a", Combo(KeyCode.H, ALT_DOWN)) {
                 },
@@ -84,7 +89,7 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
         )
     }
 
-    private fun addSort(sortType: SortType, columns: Set<String>) {
+    private fun addSort(columns: Set<String>, sortType: SortType) {
         sortColumns.addAll(columns.map { SortColumn(sortType, it) })
         columns.forEach {
             var foundExisting = false
@@ -99,7 +104,7 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
     }
 
     private fun applySort() {
-        spreadsheetFrame = initialFrame.comboSort(sortColumns)
+        spreadsheetFrame = spreadsheetFrame.comboSort(sortColumns)
         for (sortColumn in sortColumns) {
             for ((i, columnHeader) in grid.columnHeaders.withIndex()) {
                 if (columnHeader.startsWith(sortColumn.columnName)) {
@@ -118,7 +123,7 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
 
     private fun applyFilter() {
         var df = spreadsheetFrame
-        for (filter in filterRows) {
+        filterRows.forEach { filter ->
             df = when (filter.whitelist) {
                 true -> df.filter { it[filter.label] eq filter.value }
                 false -> df.filter { (it[filter.label] eq filter.value).not() }
@@ -127,10 +132,44 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
         spreadsheetFrame = df
     }
 
+    private fun addColorScale(columns: Set<String>, isGood: Boolean) {
+        colorScaleColumns.addAll(columns.map { colorScaleColumn(it, isGood) })
+    }
+
+    private fun applyColorScale() {
+        var c: List<colorScaleColumnInput> = colorScaleColumns
+                .filter { s ->
+                    spreadsheetFrame[s.label][0] is Number
+                }
+                .map {
+                    colorScaleColumnInput(
+                            grid.columnHeaders.indexOf(it.label),
+                            spreadsheetFrame[it.label].max(true)!!,
+                            spreadsheetFrame[it.label].min(true)!!,
+                            it.isGood
+                    )
+                }
+
+        grid.rows.forEach { row ->
+            c.forEach {
+                var item = row[it.index].item
+                if (item is Number) {
+                    var scale = (item.toDouble() - it.minVal) / it.maxVal
+                    if (!it.isGood) {
+                        scale=1-scale
+                    }
+                    var color: String = colorScale(scale)
+                    row[it.index].style = "-fx-background-color: #$color"
+                }
+            }
+        }
+    }
+
     private fun resetDisplay() {
         spreadsheetFrame = initialFrame
         applySort()
         applyFilter()
+        applyColorScale()
     }
 
     private fun updateNewData() {
