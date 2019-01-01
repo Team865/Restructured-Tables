@@ -1,6 +1,6 @@
 @file:Suppress("MemberVisibilityCanBePrivate", "unused")
 
-package ca.warp7.rt.context
+package ca.warp7.rt.context.root
 
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
@@ -10,7 +10,7 @@ import java.util.*
 
 object Metadata {
 
-    private val userConfigFile: File = File(File(System.getProperty("user.home")), "/warp7.meta.json")
+    private val userConfigFile: File = File(System.getProperty("user.home"), "/warp7.meta.json")
             .apply { createNewFile() }
 
     val data: JsonObject = userConfigFile.readText().trim().run {

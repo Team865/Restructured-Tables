@@ -14,5 +14,5 @@ package ca.warp7.rt.context
  * Be able to return a Pipeline based on the requested data
  */
 interface ContextRoot : ContextLoader {
-    val default: Context
+    val default: Context?
 }
