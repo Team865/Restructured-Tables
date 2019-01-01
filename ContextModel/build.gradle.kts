@@ -10,6 +10,7 @@ plugins {
 repositories {
     mavenCentral()
     jcenter()
+    maven(url = "http://dl.bintray.com/kyonifer/maven")
 }
 
 val compileKotlin: KotlinCompile by tasks
