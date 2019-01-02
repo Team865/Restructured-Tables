@@ -1,31 +1,37 @@
 package ca.warp7.rt.context
 
-object SingletonPipeline : Pipeline {
-    override val name: String
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
-    override val adapter: ContextAdapter
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
-    override val monitor: ContextMonitor
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+import krangl.DataFrame
+import krangl.readDelim
+import org.apache.commons.csv.CSVFormat
 
-    override fun lastUpdated(): Long {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+object SingletonPipeline : Pipeline {
+    override val name: String get() = "Singleton"
+    override val adapter: ContextAdapter? = null
+    override val monitor: ContextMonitor? = null
+    override fun lastUpdated(): Long = System.currentTimeMillis() / 1000
+
+    private var df: DataFrame? = null
+    private var open = false
 
     override fun open() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Thread {
+            val inputStream = javaClass.getResourceAsStream("/ca/warp7/rt/res/test.csv")
+            df = DataFrame.readDelim(
+                    inStream = inputStream,
+                    format = CSVFormat.DEFAULT.withHeader(),
+                    isCompressed = false,
+                    colTypes = mapOf())
+            open = true
+        }.start()
     }
 
     override fun close() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun merge(other: Pipeline) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun <T> convert(receiver: ContextReceiver<T>): T {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return receiver.invoke(SingletonReceiverScope())
     }
-
 }

@@ -16,8 +16,8 @@ package ca.warp7.rt.context
  */
 interface Pipeline {
     val name: String
-    val adapter: ContextAdapter
-    val monitor: ContextMonitor
+    val adapter: ContextAdapter?
+    val monitor: ContextMonitor?
     fun lastUpdated(): Long
     fun open()
     fun close()
