@@ -7,10 +7,18 @@ object Contexts {
 
     var args: Array<String>? = null
 
+    /**
+     * Get the default context root
+     */
     private val root get() = root1 ?: loadRoot(args ?: arrayOf()).also { root1 = it }
 
     /**
      * Holds the metadata of the root context
      */
     val metadata get() = root.data
+
+    /**
+     * Get the current context
+     */
+    val current get() = root.active
 }
