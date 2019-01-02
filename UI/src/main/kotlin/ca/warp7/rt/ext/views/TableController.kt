@@ -5,7 +5,6 @@ import javafx.scene.layout.BorderPane
 import krangl.DataFrame
 import krangl.readDelim
 import org.apache.commons.csv.CSVFormat
-import org.controlsfx.control.spreadsheet.SpreadsheetCell
 
 class TableController {
 
@@ -13,7 +12,7 @@ class TableController {
 
     fun initialize() {
         Thread {
-            val inputStream = javaClass.getResourceAsStream("/ca/warp7/rt/res/test2.csv")
+            val inputStream = javaClass.getResourceAsStream("/ca/warp7/rt/res/test.csv")
             val df = DataFrame.readDelim(
                     inStream = inputStream,
                     format = CSVFormat.DEFAULT.withHeader().withNullString(""),
