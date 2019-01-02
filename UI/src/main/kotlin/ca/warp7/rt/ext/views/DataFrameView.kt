@@ -13,7 +13,7 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
 
     private var sortColumns: MutableList<SortColumn> = mutableListOf()
     private var filterRows: MutableList<FilterRow> = mutableListOf()
-    private var colorScaleColumns: MutableList<colorScaleColumn> = mutableListOf()
+    private var colorScaleColumns: MutableList<ColorScaleColumn> = mutableListOf()
 
     private var spreadsheetFrame: DataFrame = initialFrame
         set(value) {
@@ -129,16 +129,16 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
 
 
     private fun addColorScale(columns: Set<String>, isGood: Boolean) {
-        colorScaleColumns.addAll(columns.map { colorScaleColumn(it, isGood) })
+        colorScaleColumns.addAll(columns.map { ColorScaleColumn(it, isGood) })
     }
 
     private fun applyColorScale() {
-        var c: List<colorScaleColumnInput> = colorScaleColumns
+        var c: List<ColorScaleColumnInput> = colorScaleColumns
                 .filter { s ->
                     spreadsheetFrame[s.columnName][0] is Number
                 }
                 .map {
-                    colorScaleColumnInput(
+                    ColorScaleColumnInput(
                             grid.columnHeaders.indexOf(it.columnName),
                             initialFrame[it.columnName].max(true)!!,
                             initialFrame[it.columnName].min(true)!!,
@@ -148,17 +148,19 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
 
         grid.rows.forEach { row ->
             c.forEach {
-                var item = row[it.index].item
+                val item = row[it.index].item
                 if (item is Number) {
-                    var scale = (item.toDouble() - it.minVal) / it.maxVal
-                    var color: String
-                    if (it.isGood) {
-                        color = colorScale(scale, 0, 255, 0)
+                    val scale = (item.toDouble() - it.minVal) / it.maxVal
+                    val color: String
+                    color = if (it.isGood) {
+                        colorScale(scale, 0, 192, 0)
                     } else {
-                        //color = colorScale(1-scale, 0, 255, 0)
-                        color = colorScale(scale, 255, 0, 0)
+                        colorScale(scale, 255, 0, 0)
                     }
-                    row[it.index].style = "-fx-background-color: #$color"
+                    row[it.index].let { it0 ->
+                        it0.styleClass.add("reload-fix") // this reloads the style
+                        it0.style = "-fx-background-color: #$color"
+                    }
                 }
             }
         }
