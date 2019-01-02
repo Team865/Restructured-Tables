@@ -95,6 +95,9 @@ internal class RootImpl(private val config: File,
     override val data: MutableMap<String, Any?>
         get() = internalData
 
+    override val active: Context?
+        get() = TODO("not implemented")
+
     override fun load(metricsSet: MetricsSet): Context? {
         TODO("not implemented")
     }
@@ -115,5 +118,6 @@ internal val rootImpl = object : ContextRoot {
     override val available: Iterator<Context> = emptyArray<Context>().iterator()
     override val data: MutableMap<String, Any?> = mutableMapOf()
     override val default: Context? = null
+    override val active: Context? = null
     override fun save() = Unit
 }

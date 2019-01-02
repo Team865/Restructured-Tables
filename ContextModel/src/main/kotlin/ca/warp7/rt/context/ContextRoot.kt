@@ -15,4 +15,5 @@ package ca.warp7.rt.context
  */
 interface ContextRoot : ContextLoader {
     val default: Context?
+    val active: Context?
 }
