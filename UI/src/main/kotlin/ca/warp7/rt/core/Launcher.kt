@@ -1,6 +1,6 @@
 package ca.warp7.rt.core
 
-import ca.warp7.rt.context.root.Contexts
+import ca.warp7.rt.context.Contexts
 import javafx.application.Application
 
 object Launcher {

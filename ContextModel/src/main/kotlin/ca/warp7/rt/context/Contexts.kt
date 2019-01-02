@@ -1,6 +1,4 @@
-package ca.warp7.rt.context.root
-
-import ca.warp7.rt.context.ContextRoot
+package ca.warp7.rt.context
 
 @Suppress("unused")
 object Contexts {

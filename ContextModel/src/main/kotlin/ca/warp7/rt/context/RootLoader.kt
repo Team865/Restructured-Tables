@@ -1,9 +1,5 @@
-package ca.warp7.rt.context.root
+package ca.warp7.rt.context
 
-import ca.warp7.rt.context.Context
-import ca.warp7.rt.context.ContextPlugin
-import ca.warp7.rt.context.ContextRoot
-import ca.warp7.rt.context.MetricsSet
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import java.io.File

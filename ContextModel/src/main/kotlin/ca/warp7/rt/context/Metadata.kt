@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package ca.warp7.rt.context.root
+package ca.warp7.rt.context
 
 object Metadata {
     const val lastSaved = "lastSaved"
