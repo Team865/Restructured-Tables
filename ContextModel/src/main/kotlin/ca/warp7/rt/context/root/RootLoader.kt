@@ -1,6 +1,7 @@
 package ca.warp7.rt.context.root
 
 import ca.warp7.rt.context.Context
+import ca.warp7.rt.context.ContextPlugin
 import ca.warp7.rt.context.ContextRoot
 import ca.warp7.rt.context.MetricsSet
 import com.beust.klaxon.JsonObject
@@ -86,7 +87,8 @@ internal fun loadRootImpl(config: File,
 
 internal class RootImpl(private val config: File,
                         private val contextPath: String,
-                        private val internalData: JsonObject) : ContextRoot {
+                        private val internalData: JsonObject,
+                        private val plugins: Array<ContextPlugin>) : ContextRoot {
 
     override val default: Context?
         get() = TODO("not implemented")

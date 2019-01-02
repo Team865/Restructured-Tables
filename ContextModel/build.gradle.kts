@@ -20,6 +20,7 @@ val kotlinVersion = "1.3.11"
 
 dependencies {
     implementation(fileTree("${rootProject.projectDir}/libs"))
+    implementation(group = "org.kordamp.ikonli", name = "ikonli-javafx", version = "2.4.0")
     // Kotlin libraries
     implementation(kotlin("stdlib", kotlinVersion))
     implementation(kotlin("reflect", kotlinVersion))
