@@ -10,8 +10,6 @@ import java.nio.file.Path
 import java.nio.file.Paths
 import java.security.AccessController
 import java.security.PrivilegedAction
-import java.text.SimpleDateFormat
-import java.util.*
 import java.util.jar.JarFile
 
 internal fun loadRoot(args: Array<String>) = loadRootImpl(
@@ -37,7 +35,7 @@ internal fun loadRootImpl(os: String,
                         pluginPath = "$it/Warp7/plugins/",
                         args = args)
             }
-    else -> rootImpl
+    else -> NullableRoot
 }
 
 
@@ -49,7 +47,7 @@ internal fun loadRootImpl(config: String,
             config = config,
             contextPath = contextPath,
             pluginPath = pluginPath,
-            default = "") else rootImpl
+            default = "") else NullableRoot
 
 
 internal fun loadRootImpl(config: String,
@@ -72,7 +70,10 @@ internal fun loadRootImpl(config: File,
                           pluginPath: String,
                           default: String) = loadRootImpl(
         config = config,
-        data = Parser().parse(StringBuilder(config.readText().trim())) as JsonObject,
+        data = config.readText().trim().let {
+            if (it.isEmpty()) JsonObject()
+            else Parser().parse(StringBuilder(config.readText().trim())) as JsonObject
+        },
         contextPath = contextPath,
         pluginPath = pluginPath,
         default = default)
@@ -112,13 +113,6 @@ internal fun loadRootImpl(config: File,
         },
         default = default)
 
-internal fun loadRootImpl(config: File,
-                          data: JsonObject,
-                          contextPath: Path,
-                          plugins: Array<ContextPlugin>,
-                          default: String): ContextRoot {
-    return RootImpl(config, data, contextPath, plugins, default)
-}
 
 internal fun loadPlugin(uri: URI) = loadPlugin(uri, AccessController.doPrivileged(PrivilegedAction {
     URLClassLoader(arrayOf(uri.toURL()), ClassLoader.getSystemClassLoader());
@@ -138,45 +132,10 @@ internal fun loadPlugin(uri: URI, classLoader: ClassLoader) = JarFile(File(uri))
             .mapNotNull { it.newInstance() as? ContextPlugin }
 }
 
-
-internal class RootImpl(private val config: File,
-                        private val internalData: JsonObject,
-                        private val contextPath: Path,
-                        private val plugins: Array<ContextPlugin>,
-                        private val defaultContext: String) : ContextRoot {
-
-    override val default: Context?
-        get() = TODO("not implemented")
-
-    override val available: Iterator<Context>
-        get() = TODO("not implemented")
-
-    override val data: MutableMap<String, Any?>
-        get() = internalData
-
-    override val active: Context?
-        get() = TODO("not implemented")
-
-    override fun load(metricsSet: MetricsSet): Context? {
-        TODO("not implemented")
-    }
-
-    override fun search(metricsSet: MetricsSet): Iterator<Context> {
-        TODO("not implemented")
-    }
-
-    override fun save() {
-        internalData[Metadata.lastSaved] = SimpleDateFormat("dd/MM/yy hh:mm:ss").format(Date())
-        config.writeText(internalData.toJsonString(prettyPrint = true))
-    }
-}
-
-internal val rootImpl = object : ContextRoot {
-    override fun load(metricsSet: MetricsSet): Context? = null
-    override fun search(metricsSet: MetricsSet): Iterator<Context> = emptyArray<Context>().iterator()
-    override val available: Iterator<Context> = emptyArray<Context>().iterator()
-    override val data: MutableMap<String, Any?> = mutableMapOf()
-    override val default: Context? = null
-    override val active: Context? = null
-    override fun save() = Unit
+internal fun loadRootImpl(config: File,
+                          data: JsonObject,
+                          contextPath: Path,
+                          plugins: Array<ContextPlugin>,
+                          default: String): ContextRoot {
+    return SingletonRoot(config, data, contextPath, plugins, default)
 }

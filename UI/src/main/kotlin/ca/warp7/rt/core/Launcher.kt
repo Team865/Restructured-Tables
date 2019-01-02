@@ -7,6 +7,7 @@ object Launcher {
     @JvmStatic
     fun main(args: Array<String>) {
         Contexts.args = args
+        Contexts.root
         Application.launch(Restructured::class.java)
     }
 }
