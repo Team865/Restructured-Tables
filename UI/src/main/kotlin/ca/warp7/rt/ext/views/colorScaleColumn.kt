@@ -1,3 +1,3 @@
 package ca.warp7.rt.ext.views
 
-data class colorScaleColumn(val label: String, val isGood: Boolean)
+data class colorScaleColumn(val columnName: String, val isGood: Boolean)

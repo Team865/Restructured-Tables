@@ -124,11 +124,7 @@ private fun DataCol.descendingComparator(): java.util.Comparator<Int> = when (th
     else -> throw UnsupportedOperationException()
 }
 
-fun colorScale(k: Double): String {
-    var r = 0
-    var g = 255
-    var b = 0
-
+fun colorScale(k: Double,r:Int,g:Int,b:Int): String {
     var rHex = java.lang.Integer.toHexString(255-(k * (255 - r)).toInt())
     var gHex = java.lang.Integer.toHexString(255-(k * (255 - g)).toInt())
     var bHex = java.lang.Integer.toHexString(255-(k * (255 - b)).toInt())

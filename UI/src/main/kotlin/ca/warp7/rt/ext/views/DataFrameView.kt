@@ -11,9 +11,9 @@ import krangl.*
 
 class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(toGrid(initialFrame)) {
 
-    private val sortColumns: MutableList<SortColumn> = mutableListOf()
-    private val filterRows: MutableList<FilterRow> = mutableListOf()
-    private val colorScaleColumns: MutableList<colorScaleColumn> = mutableListOf()
+    private var sortColumns: MutableList<SortColumn> = mutableListOf()
+    private var filterRows: MutableList<FilterRow> = mutableListOf()
+    private var colorScaleColumns: MutableList<colorScaleColumn> = mutableListOf()
 
     private var spreadsheetFrame: DataFrame = initialFrame
         set(value) {
@@ -31,16 +31,17 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
         contextMenu.items.addAll(
                 SeparatorMenuItem(),
                 menuItem("Sort Ascending", "fas-sort-amount-up:16:1e2e4a", Combo(KeyCode.EQUALS, ALT_DOWN)) {
-                    addSort( getSelectedColumns(),SortType.Ascending)
+                    addSort(getSelectedColumns(), SortType.Ascending)
                     resetDisplay()
                 },
                 menuItem("Sort Descending", "fas-sort-amount-down:16:1e2e4a", Combo(KeyCode.MINUS, ALT_DOWN)) {
-                    addSort(getSelectedColumns(),SortType.Descending )
+                    addSort(getSelectedColumns(), SortType.Descending)
                     resetDisplay()
                 },
                 menuItem("Clear sort", null, Combo(KeyCode.DIGIT0, ALT_DOWN)) {
                     sortColumns.clear()
                     resetDisplay()
+
                 },
                 SeparatorMenuItem(),
                 menuItem("Filter By", "fas-filter:16:1e2e4a", Combo(KeyCode.I, SHORTCUT_DOWN)) {
@@ -56,38 +57,31 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
                     resetDisplay()
                 },
                 SeparatorMenuItem(),
-                menuItem("Toggle Formatting", "fas-toggle-on:16:1e2e4a", Combo(KeyCode.SLASH, SHORTCUT_DOWN)) {
-                },
                 menuItem("Colour Scale Up", "fas-caret-up:16:1e2e4a",
                         Combo(KeyCode.EQUALS, SHORTCUT_DOWN, ALT_DOWN)) {
-                    addColorScale(getSelectedColumns(),true)
+                    addColorScale(getSelectedColumns(), true)
                     resetDisplay()
                 },
                 menuItem("Colour Scale Down", "fas-caret-down:16:1e2e4a",
                         Combo(KeyCode.MINUS, SHORTCUT_DOWN, ALT_DOWN)) {
-                    addColorScale(getSelectedColumns(),true)
+                    addColorScale(getSelectedColumns(), false)
                     resetDisplay()
                 },
                 menuItem("Clear Colour Scales", null, Combo(KeyCode.DIGIT0, SHORTCUT_DOWN, ALT_DOWN)) {
                     colorScaleColumns.clear()
                     resetDisplay()
                 },
-                menuItem("Highlight Cells", "fas-adjust:16:1e2e4a", Combo(KeyCode.H, ALT_DOWN)) {
-                },
-                menuItem("Clear Highlighting", null, Combo(KeyCode.SLASH, ALT_DOWN)) {
-                },
+                menuItem("Highlight Cells", "fas-adjust:16:1e2e4a", Combo(KeyCode.H, ALT_DOWN)) {},
+                menuItem("Clear Highlighting", null, Combo(KeyCode.SLASH, ALT_DOWN)) {},
                 SeparatorMenuItem(),
-                menuItem("Data Summary", "fas-calculator:16:1e2e4a", Combo(KeyCode.C, ALT_DOWN)) {
-                },
-                menuItem("Configure", "fas-code:16:1e2e4a", Combo(KeyCode.S, ALT_DOWN)) {
-                },
+                menuItem("Data Summary", "fas-calculator:16:1e2e4a", Combo(KeyCode.C, ALT_DOWN)) {},
+                menuItem("Configure", "fas-code:16:1e2e4a", Combo(KeyCode.S, ALT_DOWN)) {},
                 SeparatorMenuItem(),
-                menuItem("Extract View", "fas-table:16:1e2e4a", Combo(KeyCode.V, SHORTCUT_DOWN, SHIFT_DOWN)) {
-                },
-                menuItem("Make Pivot Table", null, Combo(KeyCode.B, SHORTCUT_DOWN, SHIFT_DOWN)) {
-                }
+                menuItem("Extract View", "fas-table:16:1e2e4a", Combo(KeyCode.V, SHORTCUT_DOWN, SHIFT_DOWN)) {},
+                menuItem("Make Pivot Table", null, Combo(KeyCode.B, SHORTCUT_DOWN, SHIFT_DOWN)) { }
         )
     }
+
 
     private fun addSort(columns: Set<String>, sortType: SortType) {
         sortColumns.addAll(columns.map { SortColumn(sortType, it) })
@@ -117,6 +111,7 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
         }
     }
 
+
     private fun addFilter(valuesByColumn: Set<Pair<String, Any>>, whitelist: Boolean) {
         filterRows.addAll(valuesByColumn.map { FilterRow(it.first, it.second, whitelist) })
     }
@@ -125,12 +120,13 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
         var df = spreadsheetFrame
         filterRows.forEach { filter ->
             df = when (filter.whitelist) {
-                true -> df.filter { it[filter.label] eq filter.value }
-                false -> df.filter { (it[filter.label] eq filter.value).not() }
+                true -> df.filter { it[filter.columnName] eq filter.value }
+                false -> df.filter { (it[filter.columnName] eq filter.value).not() }
             }
         }
         spreadsheetFrame = df
     }
+
 
     private fun addColorScale(columns: Set<String>, isGood: Boolean) {
         colorScaleColumns.addAll(columns.map { colorScaleColumn(it, isGood) })
@@ -139,13 +135,13 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
     private fun applyColorScale() {
         var c: List<colorScaleColumnInput> = colorScaleColumns
                 .filter { s ->
-                    spreadsheetFrame[s.label][0] is Number
+                    spreadsheetFrame[s.columnName][0] is Number
                 }
                 .map {
                     colorScaleColumnInput(
-                            grid.columnHeaders.indexOf(it.label),
-                            spreadsheetFrame[it.label].max(true)!!,
-                            spreadsheetFrame[it.label].min(true)!!,
+                            grid.columnHeaders.indexOf(it.columnName),
+                            initialFrame[it.columnName].max(true)!!,
+                            initialFrame[it.columnName].min(true)!!,
                             it.isGood
                     )
                 }
@@ -155,15 +151,36 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
                 var item = row[it.index].item
                 if (item is Number) {
                     var scale = (item.toDouble() - it.minVal) / it.maxVal
-                    if (!it.isGood) {
-                        scale=1-scale
+                    var color: String
+                    if (it.isGood) {
+                        color = colorScale(scale, 0, 255, 0)
+                    } else {
+                        //color = colorScale(1-scale, 0, 255, 0)
+                        color = colorScale(scale, 255, 0, 0)
                     }
-                    var color: String = colorScale(scale)
                     row[it.index].style = "-fx-background-color: #$color"
                 }
             }
         }
     }
+
+
+    private fun selectView() {
+        spreadsheetFrame = spreadsheetFrame.select(getSelectedColumns())
+
+        sortColumns = sortColumns.filter { s ->
+            s.columnName in grid.columnHeaders
+        }.toMutableList()
+
+        filterRows = filterRows.filter { s ->
+            s.columnName in grid.columnHeaders
+        }.toMutableList()
+
+        colorScaleColumns = colorScaleColumns.filter { s ->
+            s.columnName in grid.columnHeaders
+        }.toMutableList()
+    }
+
 
     private fun resetDisplay() {
         spreadsheetFrame = initialFrame
@@ -185,6 +202,7 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
             column.minWidth = width
         }
     }
+
 
     private fun getSelectedColumns() = selectionModel.selectedCells
             .map { spreadsheetFrame.cols[it.column].name }.toSet()
