@@ -107,7 +107,7 @@ internal fun loadRootImpl(config: File,
                     .toList()
                     .filter { it.toString().endsWith(".jar") }
                     .map { it.toUri() }
-                    .sorted().map { loadPlugin(it).filterNotNull() }
+                    .sorted().map { loadPlugin(it) }
                     .flatten()
                     .toTypedArray()
         },
@@ -115,7 +115,7 @@ internal fun loadRootImpl(config: File,
 
 
 internal fun loadPlugin(uri: URI) = loadPlugin(uri, AccessController.doPrivileged(PrivilegedAction {
-    URLClassLoader(arrayOf(uri.toURL()), ClassLoader.getSystemClassLoader());
+    URLClassLoader(arrayOf(uri.toURL()), ClassLoader.getSystemClassLoader())
 }))
 
 internal fun loadPlugin(uri: URI, classLoader: ClassLoader) = JarFile(File(uri)).use { jar ->
@@ -136,6 +136,4 @@ internal fun loadRootImpl(config: File,
                           data: JsonObject,
                           contextPath: Path,
                           plugins: Array<ContextPlugin>,
-                          default: String): ContextRoot {
-    return SingletonRoot(config, data, contextPath, plugins, default)
-}
+                          default: String) = SingletonRoot(config, data, contextPath, plugins, default)

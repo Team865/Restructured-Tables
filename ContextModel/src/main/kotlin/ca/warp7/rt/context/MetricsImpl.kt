@@ -1,10 +1,7 @@
 @file:Suppress("MemberVisibilityCanBePrivate", "unused")
 
-package ca.warp7.rt.context.test
+package ca.warp7.rt.context
 
-import ca.warp7.rt.context.IntMetric
-import ca.warp7.rt.context.PipelineStreamVector
-import ca.warp7.rt.context.StringMetric
 import java.time.LocalDate
 
 private typealias V = PipelineStreamVector

@@ -15,8 +15,8 @@ package ca.warp7.rt.context
  */
 interface ContextLoader {
     fun load(metricsSet: MetricsSet): Context?
-    fun search(metricsSet: MetricsSet): Iterator<Context>
-    val available: Iterator<Context>
+    fun search(metricsSet: MetricsSet): Array<Context>
+    val available: Array<Context>
     val data: MutableMap<String, Any?>
     fun save()
 }
