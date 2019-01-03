@@ -7,13 +7,13 @@ import javafx.scene.input.KeyCombination.*
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import javafx.scene.text.Text
-import krangl.*
+import krangl.DataFrame
+import krangl.max
+import krangl.min
 
-class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(toGrid(initialFrame)) {
+class DataFrameView(initialFrame: DataFrame) : CopyableSpreadsheet(toGrid(initialFrame)) {
 
-    private var sortColumns: MutableList<SortColumn> = mutableListOf()
-    private var filterRows: MutableList<FilterRow> = mutableListOf()
-    private var colorScaleColumns: MutableList<ColorScaleColumn> = mutableListOf()
+    private val model = ViewsModel(initialFrame)
 
     private var spreadsheetFrame: DataFrame = initialFrame
         set(value) {
@@ -31,44 +31,44 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
         contextMenu.items.addAll(
                 SeparatorMenuItem(),
                 menuItem("Sort Ascending", "fas-sort-amount-up:16:1e2e4a", Combo(KeyCode.EQUALS, ALT_DOWN)) {
-                    addSort(getSelectedColumns(), SortType.Ascending)
+                    model.addSort(getSelectedColumns(), SortType.Ascending)
                     resetDisplay()
                 },
                 menuItem("Sort Descending", "fas-sort-amount-down:16:1e2e4a", Combo(KeyCode.MINUS, ALT_DOWN)) {
-                    addSort(getSelectedColumns(), SortType.Descending)
+                    model.addSort(getSelectedColumns(), SortType.Descending)
                     resetDisplay()
                 },
                 menuItem("Clear sort", null, Combo(KeyCode.DIGIT0, ALT_DOWN)) {
-                    sortColumns.clear()
+                    model.sortColumns.clear()
                     resetDisplay()
 
                 },
                 SeparatorMenuItem(),
                 menuItem("Filter By", "fas-filter:16:1e2e4a", Combo(KeyCode.I, SHORTCUT_DOWN)) {
-                    addFilter(getSelectedColumnsValues(), true)
+                    model.addFilter(getSelectedColumnsValues(), true)
                     resetDisplay()
                 },
                 menuItem("Filter Out", null, Combo(KeyCode.I, SHORTCUT_DOWN, SHIFT_DOWN)) {
-                    addFilter(getSelectedColumnsValues(), false)
+                    model.addFilter(getSelectedColumnsValues(), false)
                     resetDisplay()
                 },
                 menuItem("Clear Filters", null, Combo(KeyCode.U, SHORTCUT_DOWN)) {
-                    filterRows.clear()
+                    model.filterRows.clear()
                     resetDisplay()
                 },
                 SeparatorMenuItem(),
                 menuItem("Colour Scale Up", "fas-caret-up:16:1e2e4a",
                         Combo(KeyCode.EQUALS, SHORTCUT_DOWN, ALT_DOWN)) {
-                    addColorScale(getSelectedColumns(), true)
+                    model.addColorScale(getSelectedColumns(), true)
                     resetDisplay()
                 },
                 menuItem("Colour Scale Down", "fas-caret-down:16:1e2e4a",
                         Combo(KeyCode.MINUS, SHORTCUT_DOWN, ALT_DOWN)) {
-                    addColorScale(getSelectedColumns(), false)
+                    model.addColorScale(getSelectedColumns(), false)
                     resetDisplay()
                 },
                 menuItem("Clear Colour Scales", null, Combo(KeyCode.DIGIT0, SHORTCUT_DOWN, ALT_DOWN)) {
-                    colorScaleColumns.clear()
+                    model.colorScaleColumns.clear()
                     resetDisplay()
                 },
                 menuItem("Highlight Cells", "fas-adjust:16:1e2e4a", Combo(KeyCode.H, ALT_DOWN)) {},
@@ -82,66 +82,14 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
         )
     }
 
-
-    private fun addSort(columns: Set<String>, sortType: SortType) {
-        sortColumns.addAll(columns.map { SortColumn(sortType, it) })
-        columns.forEach {
-            var foundExisting = false
-            sortColumns.withIndex().forEach { (i, sortColumn) ->
-                if (sortColumn.columnName == it) {
-                    sortColumns[i] = SortColumn(sortType, sortColumn.columnName)
-                    foundExisting = true
-                }
-            }
-            if (!foundExisting) sortColumns.add(SortColumn(sortType, it))
-        }
-    }
-
-    private fun applySort() {
-        spreadsheetFrame = spreadsheetFrame.comboSort(sortColumns)
-        for (sortColumn in sortColumns) {
-            for ((i, columnHeader) in grid.columnHeaders.withIndex()) {
-                if (columnHeader.startsWith(sortColumn.columnName)) {
-                    grid.columnHeaders[i] = sortColumn.columnName + when (sortColumn.sortType) {
-                        SortType.Ascending -> " \u25B4"
-                        SortType.Descending -> " \u25be"
-                    }
-                }
-            }
-        }
-    }
-
-
-    private fun addFilter(valuesByColumn: Set<Pair<String, Any>>, whitelist: Boolean) {
-        filterRows.addAll(valuesByColumn.map { FilterRow(it.first, it.second, whitelist) })
-    }
-
-    private fun applyFilter() {
-        var df = spreadsheetFrame
-        filterRows.forEach { filter ->
-            df = when (filter.whitelist) {
-                true -> df.filter { it[filter.columnName] eq filter.value }
-                false -> df.filter { (it[filter.columnName] eq filter.value).not() }
-            }
-        }
-        spreadsheetFrame = df
-    }
-
-
-    private fun addColorScale(columns: Set<String>, isGood: Boolean) {
-        colorScaleColumns.addAll(columns.map { ColorScaleColumn(it, isGood) })
-    }
-
     private fun applyColorScale() {
-        var c: List<ColorScaleColumnInput> = colorScaleColumns
-                .filter { s ->
-                    spreadsheetFrame[s.columnName][0] is Number
-                }
+        val c = model.colorScaleColumns
+                .filter { spreadsheetFrame[it.columnName][0] is Number }
                 .map {
                     ColorScaleColumnInput(
-                            grid.columnHeaders.indexOf(it.columnName),
-                            initialFrame[it.columnName].max(true)!!,
-                            initialFrame[it.columnName].min(true)!!,
+                            model.columnHeaders.indexOf(it.columnName),
+                            model.initialFrame[it.columnName].max(true)!!,
+                            model.initialFrame[it.columnName].min(true)!!,
                             it.isGood
                     )
                 }
@@ -166,29 +114,30 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
         }
     }
 
-
     private fun selectView() {
         spreadsheetFrame = spreadsheetFrame.select(getSelectedColumns())
-
-        sortColumns = sortColumns.filter { s ->
-            s.columnName in grid.columnHeaders
-        }.toMutableList()
-
-        filterRows = filterRows.filter { s ->
-            s.columnName in grid.columnHeaders
-        }.toMutableList()
-
-        colorScaleColumns = colorScaleColumns.filter { s ->
-            s.columnName in grid.columnHeaders
-        }.toMutableList()
+        model.sortColumns.removeIf { it.columnName !in model.columnHeaders }
+        model.filterRows.removeIf { it.columnName !in model.columnHeaders }
+        model.colorScaleColumns.removeIf { it.columnName !in model.columnHeaders }
     }
 
-
     private fun resetDisplay() {
-        spreadsheetFrame = initialFrame
-        applySort()
-        applyFilter()
+        spreadsheetFrame = model.mutateFrame()
+        addSortArrows()
         applyColorScale()
+    }
+
+    private fun addSortArrows() {
+        for (sortColumn in model.sortColumns) {
+            for ((i, columnHeader) in model.columnHeaders.withIndex()) {
+                if (columnHeader == sortColumn.columnName) {
+                    grid.columnHeaders[i] = sortColumn.columnName + when (sortColumn.sortType) {
+                        SortType.Ascending -> " \u25B4"
+                        SortType.Descending -> " \u25be"
+                    }
+                }
+            }
+        }
     }
 
     private fun updateNewData() {
@@ -197,7 +146,7 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
         val fixedMetrics = listOf("Team", "Match", "Match Type", "Alliance", "Scout", "Event", "Year")
         columns.forEachIndexed { index, column ->
             val modelCol = getModelColumn(index)
-            val name = grid.columnHeaders[modelCol].replace("[^A-Za-z0-9 ]".toRegex(), "")
+            val name = model.initialFrame.cols[modelCol].name.replace("[^A-Za-z0-9 ]".toRegex(), "")
             if (name in fixedMetrics) column.isFixed = true
             text.text = name
             val width = text.layoutBounds.width + 30
@@ -205,10 +154,9 @@ class DataFrameView(private var initialFrame: DataFrame) : CopyableSpreadsheet(t
         }
     }
 
-
     private fun getSelectedColumns() = selectionModel.selectedCells
-            .map { spreadsheetFrame.cols[it.column].name }.toSet()
+            .map { model.columnHeaders[it.column] }.toSet()
 
     private fun getSelectedColumnsValues() = selectionModel.selectedCells
-            .map { grid.columnHeaders[it.column] to grid.rows[it.row][it.column].item }.toSet()
+            .map { model.columnHeaders[it.column] to grid.rows[it.row][it.column].item }.toSet()
 }
