@@ -4,12 +4,15 @@ import krangl.DataFrame
 import krangl.eq
 import krangl.not
 
-class ViewsModel(val initialFrame: DataFrame) {
+class ViewsModel(val initialFrame: DataFrame, selectedHeaders: List<String> = emptyList()) {
 
-    val columnHeaders: MutableList<String> = initialFrame.cols.map { it.name }.toMutableList()
+    var columnHeaders: MutableList<String> = when (selectedHeaders) {
+        emptyList<String>() -> initialFrame.cols.map { it.name }
+        else -> selectedHeaders
+    }.toMutableList()
     val sortColumns: MutableList<SortColumn> = mutableListOf()
     val filterRows: MutableList<FilterRow> = mutableListOf()
-    val colorScaleColumns: MutableList<ColorScaleColumn> = mutableListOf()
+    var colorScaleColumns: MutableList<ColorScaleColumn> = mutableListOf()
 
     fun mutateFrame(): DataFrame {
         var mutated = initialFrame.comboSort(sortColumns)
@@ -19,7 +22,7 @@ class ViewsModel(val initialFrame: DataFrame) {
                 false -> mutated.filter { (it[filter.columnName] eq filter.value).not() }
             }
         }
-        return mutated
+        return mutated.select(columnHeaders)
     }
 
     fun addSort(columns: Set<String>, sortType: SortType) {
@@ -41,6 +44,10 @@ class ViewsModel(val initialFrame: DataFrame) {
     }
 
     fun addColorScale(columns: Set<String>, isGood: Boolean) {
-        colorScaleColumns.addAll(columns.map { ColorScaleColumn(it, isGood) })
+        colorScaleColumns = (columns.map { ColorScaleColumn(it, isGood) } + colorScaleColumns)
+                .distinctBy { it.columnName }
+                .toMutableList()
     }
+
+
 }

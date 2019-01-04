@@ -11,9 +11,9 @@ import krangl.DataFrame
 import krangl.max
 import krangl.min
 
-class DataFrameView(initialFrame: DataFrame) : CopyableSpreadsheet(toGrid(initialFrame)) {
+class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyList()) : CopyableSpreadsheet(toGrid(initialFrame)) {
 
-    private val model = ViewsModel(initialFrame)
+    private val model = ViewsModel(initialFrame, viewColumns)
 
     private var spreadsheetFrame: DataFrame = initialFrame
         set(value) {
@@ -77,7 +77,14 @@ class DataFrameView(initialFrame: DataFrame) : CopyableSpreadsheet(toGrid(initia
                 menuItem("Data Summary", "fas-calculator:16:1e2e4a", Combo(KeyCode.C, ALT_DOWN)) {},
                 menuItem("Configure", "fas-code:16:1e2e4a", Combo(KeyCode.S, ALT_DOWN)) {},
                 SeparatorMenuItem(),
-                menuItem("Extract View", "fas-table:16:1e2e4a", Combo(KeyCode.V, SHORTCUT_DOWN, SHIFT_DOWN)) {},
+                menuItem("Select View", "fas-table:16:1e2e4a", Combo(KeyCode.V, SHORTCUT_DOWN, SHIFT_DOWN)) {
+                    selectView()
+                    resetDisplay()
+                },
+                menuItem("Deselect View", "fas-table:16:1e2e4a", Combo(KeyCode.V, SHORTCUT_DOWN, SHIFT_DOWN)) {
+                    model.columnHeaders = initialFrame.cols.map { col -> col.name }.toMutableList()
+                    resetDisplay()
+                },
                 menuItem("Make Pivot Table", null, Combo(KeyCode.B, SHORTCUT_DOWN, SHIFT_DOWN)) { }
         )
     }
@@ -115,7 +122,7 @@ class DataFrameView(initialFrame: DataFrame) : CopyableSpreadsheet(toGrid(initia
     }
 
     private fun selectView() {
-        spreadsheetFrame = spreadsheetFrame.select(getSelectedColumns())
+        model.columnHeaders = getSelectedColumns().toMutableList()
         model.sortColumns.removeIf { it.columnName !in model.columnHeaders }
         model.filterRows.removeIf { it.columnName !in model.columnHeaders }
         model.colorScaleColumns.removeIf { it.columnName !in model.columnHeaders }
