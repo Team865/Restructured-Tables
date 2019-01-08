@@ -39,6 +39,8 @@ class AppController : FeatureStage {
             appTabs.addAll(appFeatures)
             statusBarContainer.isVisible = true
             tabsAndContentContainer.isVisible = true
+            appTabListView.selectionModel.select(0)
+            handleFeatureLink(appTabs[0])
             Platform.runLater {
                 userName.text = UserEnv[UserConfig.appUserName, "Unknown user_"]
                 deviceName.text = UserEnv[UserConfig.appUserDevice, "Unknown device"]

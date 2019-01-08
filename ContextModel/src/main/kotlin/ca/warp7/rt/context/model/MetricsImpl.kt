@@ -1,6 +1,6 @@
 @file:Suppress("MemberVisibilityCanBePrivate", "unused")
 
-package ca.warp7.rt.context
+package ca.warp7.rt.context.model
 
 import ca.warp7.rt.context.api.IntMetric
 import ca.warp7.rt.context.api.PipelineStreamVector
