@@ -1,6 +1,6 @@
 @file:Suppress("unused", "MemberVisibilityCanBePrivate", "UNUSED_PARAMETER")
 
-package ca.warp7.rt.context
+package ca.warp7.rt.context.api
 
 typealias AnyMetric = BaseMetric<*>
 typealias MetricsSet = Set<BaseMetric<*>>

@@ -1,6 +1,6 @@
 @file:Suppress("MemberVisibilityCanBePrivate")
 
-package ca.warp7.rt.context
+package ca.warp7.rt.context.api
 
 open class BaseMetric<T>(val name: String, val validator: (T) -> Boolean, val value: T? = null) {
     override fun equals(other: Any?): Boolean = name == other

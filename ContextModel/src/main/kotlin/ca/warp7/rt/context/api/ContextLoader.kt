@@ -1,4 +1,4 @@
-package ca.warp7.rt.context
+package ca.warp7.rt.context.api
 
 /**
  *
@@ -13,7 +13,10 @@ package ca.warp7.rt.context
  * Check the availability of those data by converting the requested data in the target format
  * Be able to return a Pipeline based on the requested data
  */
-interface ContextRoot : ContextLoader {
-    val default: Context?
-    val active: Context?
+interface ContextLoader {
+    fun load(metricsSet: MetricsSet): Context?
+    fun search(metricsSet: MetricsSet): Array<Context>
+    val available: Array<Context>
+    val data: MutableMap<String, Any?>
+    fun save()
 }

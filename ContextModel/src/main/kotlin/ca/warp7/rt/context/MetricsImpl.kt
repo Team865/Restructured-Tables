@@ -2,6 +2,9 @@
 
 package ca.warp7.rt.context
 
+import ca.warp7.rt.context.api.IntMetric
+import ca.warp7.rt.context.api.PipelineStreamVector
+import ca.warp7.rt.context.api.StringMetric
 import java.time.LocalDate
 
 private typealias V = PipelineStreamVector
