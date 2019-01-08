@@ -20,8 +20,7 @@ val kotlinVersion = "1.3.11"
 
 dependencies {
     implementation(fileTree("${rootProject.projectDir}/libs"))
-    implementation(project(":ContextAPI"))
-    
+
     // Kotlin libraries
     implementation(kotlin("stdlib", kotlinVersion))
     implementation(kotlin("reflect", kotlinVersion))
