@@ -1,12 +1,14 @@
 @file:Suppress("unused")
 
-package ca.warp7.rt.context.example
+package ca.warp7.rt.context
 
-import ca.warp7.rt.context.*
+import ca.warp7.rt.context.api.ContextAdapter
+import ca.warp7.rt.context.api.count
+import ca.warp7.rt.context.api.div
+import ca.warp7.rt.context.api.to
 
 val autoTypes: ContextAdapter = {
-    stream(metrics = teamNumber_ / scout_ / driverStation_ / matchNumber_ / compLevel_
-    ).mapPure(
+    stream(metrics = teamNumber_ / scout_ / board_ / match_).mapPure(
             "start_position" to { it.data["Start position"] },
             "auto_scale" to { it.data.count("Auto scale success") },
             "auto_switch" to { it.data.count("Auto switch success") }

@@ -1,13 +1,13 @@
 @file:Suppress("MemberVisibilityCanBePrivate", "unused")
 
-package ca.warp7.rt.context.example
+package ca.warp7.rt.context
 
-import ca.warp7.rt.context.IntMetric
-import ca.warp7.rt.context.PipelineVector
-import ca.warp7.rt.context.StringMetric
+import ca.warp7.rt.context.api.IntMetric
+import ca.warp7.rt.context.api.PipelineStreamVector
+import ca.warp7.rt.context.api.StringMetric
 import java.time.LocalDate
 
-private typealias V = PipelineVector
+private typealias V = PipelineStreamVector
 
 object CompLevels {
     const val QualificationMatch = "qm"
@@ -34,6 +34,9 @@ val event_ = StringMetric("Event")
 val scout_ = StringMetric("Scout")
 val dataSource_ = StringMetric("Data Source")
 val user_ = StringMetric("User")
+
+val match_ = matchNumber_ / compLevel_
+val board_ = driverStation_ / alliance_
 
 val V.teamNumber get() = this.getMetric(teamNumber_)
 val V.matchNumber get() = this.getMetric(matchNumber_)

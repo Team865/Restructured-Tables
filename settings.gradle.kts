@@ -1,4 +1,6 @@
 rootProject.name = "RT"
-include(":UI")
+
 include(":CodeEditor")
-include("ContextModel")
+include("ContextAPI")
+include(":ContextModel")
+include(":UI")

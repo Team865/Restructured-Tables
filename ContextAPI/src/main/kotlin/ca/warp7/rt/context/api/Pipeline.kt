@@ -1,4 +1,4 @@
-package ca.warp7.rt.context
+package ca.warp7.rt.context.api
 
 /**
  * Context pipelines provide the ability to transfer data via some type of streaming.
@@ -10,7 +10,17 @@ package ca.warp7.rt.context
  * for an Adapter to use. A Pipeline is always single-directional. They can either fetch
  * data from the upstream or push data to the downstream. Pipelines are essential for
  * the system to be decentralized
+ *
+ * The Pipeline provides the data to the Context, adds adapters to merge data,
+ * and saves the data on close
  */
-interface ContextPipeline {
-    fun addAdapter(name: String, adapter: ContextAdapter)
+interface Pipeline {
+    val name: String
+    val adapter: ContextAdapter?
+    val monitor: ContextMonitor?
+    fun lastUpdated(): Long
+    fun open()
+    fun close()
+    fun merge(other: Pipeline)
+    fun <T> convert(receiver: ContextReceiver<T>): T
 }

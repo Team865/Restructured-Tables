@@ -1,4 +1,4 @@
-package ca.warp7.rt.context
+package ca.warp7.rt.context.api
 
 /**
  * The Context of a set of data is the scope and state in which the data is relevant for a
@@ -22,10 +22,25 @@ package ca.warp7.rt.context
  * Manage configurations for the Clients of this Context
  * Manage a set of Context Loaders
  */
-interface ContextReference {
-    val inputPipeline: ContextPipeline
-    val outputPipeline: ContextPipeline
-    val loader: ContextLoader
-    val metrics: MetricsSet
-    val clients: List<ContextClient>
-}
+data class Context(
+
+        /**
+         * An explicit name for the context
+         */
+        val name: String,
+
+        /**
+         * The set of metrics that define this context
+         */
+        val metrics: MetricsSet,
+
+        /**
+         * The Pipeline is responsible for retrieving, merging, and saving data
+         */
+        val pipeline: Pipeline,
+
+        /**
+         * The loader responsible for loading more contexts
+         */
+        val loader: ContextLoader
+)
