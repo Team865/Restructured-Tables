@@ -2,7 +2,11 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
-<HBox xmlns:fx="http://javafx.com/fxml"
-      xmlns="http://javafx.com/javafx">
-    <Label text="dash"/>
-</HBox>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx" style="-fx-padding: 10" spacing="10">
+    <HBox alignment="BOTTOM_CENTER" style="-fx-padding: 10">
+        <Label text="ONT District Humber College Event 2019" style="-fx-font-size: 36; -fx-font-weight: bold"/>
+    </HBox>
+    <HBox prefHeight="50" style=" -fx-border-color: #3c5c94; -fx-border-radius: 5; -fx-background-radius: 5"/>
+</VBox>
