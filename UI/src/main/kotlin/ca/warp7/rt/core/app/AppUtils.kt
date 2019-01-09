@@ -1,7 +1,6 @@
 package ca.warp7.rt.core.app
 
 import ca.warp7.rt.ext.ast.ASTFeature
-import ca.warp7.rt.ext.boards.BoardsFeature
 import ca.warp7.rt.ext.dash.DashboardFeature
 import ca.warp7.rt.ext.media.MediaFeature
 import ca.warp7.rt.ext.predictor.PredictorFeature
@@ -23,7 +22,6 @@ internal val appFeatures = listOf(
         ASTFeature(),
         PredictorFeature(),
         MediaFeature(),
-        BoardsFeature(),
         ScannerFeature(),
         VCFeature(),
         PythonFeature(),
