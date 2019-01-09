@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx" style="-fx-padding: 10 10 10 10" alignment="TOP_CENTER" spacing="10">
+
+    <Label style="-fx-font-style: italic">Current Context:</Label>
+
+    <Label text="ONT District Humber College Event 2019"
+           style="-fx-font-size: 20;
+               -fx-font-weight: bold;" wrapText="true"/>
+
+    <ListView VBox.vgrow="ALWAYS"/>
+
+</VBox>

@@ -7,9 +7,9 @@ import javafx.scene.Parent
 
 class DashboardFeature : Feature {
 
-    override val link = FeatureLink("Context Dashboard", "fas-code-branch", 20)
+    override val link = FeatureLink("Dashboard", "fas-code-branch", 20)
 
     override fun onOpen(): Pair<Parent?, Parent?> {
-        return null to loadParent("/ca/warp7/rt/ext/dash/Dashboard.fxml")
+        return loadParent("/ca/warp7/rt/ext/dash/Sidebar.fxml") to loadParent("/ca/warp7/rt/ext/dash/Dashboard.fxml")
     }
 }

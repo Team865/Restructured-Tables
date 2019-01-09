@@ -18,6 +18,7 @@ import org.kordamp.ikonli.javafx.FontIcon
 class AppController : FeatureStage {
 
     lateinit var tabContent: BorderPane
+    lateinit var customSidebar: BorderPane
     lateinit var tabsAndContentContainer: HBox
     lateinit var appTabListView: ListView<Feature>
     lateinit var listViewContainer: SplitPane
@@ -105,6 +106,7 @@ class AppController : FeatureStage {
             current = null
             appStage.title = "Restructured Tables "
             tabContent.center = null
+            customSidebar.center = null
         }
     }
 
@@ -135,10 +137,12 @@ class AppController : FeatureStage {
         if (ft === current) return
         if (current == null || current!!.onClose()) {
             tabContent.center = null
+            customSidebar.center = null
             current = ft
             val parent = current!!.onOpen()
             val title = ft.link.title
             appStage.title = title
+            customSidebar.center = parent.first
             tabContent.center = parent.second
         }
     }

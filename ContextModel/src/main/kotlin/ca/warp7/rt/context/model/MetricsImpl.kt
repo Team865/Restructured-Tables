@@ -29,7 +29,8 @@ val matchNumber_ = IntMetric("Match") { it in 1..199 }
 val compLevel_ = StringMetric("Comp Level") { it in CompLevels.set }
 val year_ = IntMetric("Year") { it in 1992..currentYear }
 val driverStation_ = IntMetric("Driver Station") { it in 1..3 }
-val alliance_ = StringMetric("alliance_") { it == Alliance.Red || it == Alliance.Blue }
+val alliance_ = StringMetric("Alliance") { it == Alliance.Red || it == Alliance.Blue }
+val district_ = StringMetric("District")
 val event_ = StringMetric("Event")
 val scout_ = StringMetric("Scout")
 val dataSource_ = StringMetric("Data Source")
@@ -44,6 +45,7 @@ val V.compLevel get() = this.getMetric(compLevel_)
 val V.year get() = this.getMetric(year_)
 val V.driverStation get() = this.getMetric(driverStation_)
 val V.alliance get() = this.getMetric(alliance_)
+val V.district get() = this.getMetric(district_)
 val V.event get() = this.getMetric(event_)
 val V.scout get() = this.getMetric(scout_)
 val V.dataSource get() = this.getMetric(dataSource_)
