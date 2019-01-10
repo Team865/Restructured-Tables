@@ -4,8 +4,6 @@ import ca.warp7.rt.core.feature.Feature
 import ca.warp7.rt.core.feature.FeatureLink
 import ca.warp7.rt.core.feature.loadParent
 import javafx.scene.Parent
-import javafx.scene.input.KeyCode
-import javafx.scene.input.KeyCodeCombination
 
 class ScannerFeature : Feature {
 
@@ -15,7 +13,6 @@ class ScannerFeature : Feature {
 
     private fun setController(controller: ScannerController) {
         this.controller = controller
-        KeyCodeCombination(KeyCode.SHIFT, KeyCodeCombination.SHIFT_DOWN)
     }
 
     override fun onClose(): Boolean {

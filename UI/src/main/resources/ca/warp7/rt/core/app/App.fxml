@@ -6,49 +6,55 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 <?import java.net.URL?>
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      prefWidth="1600" prefHeight="900" minWidth="800" minHeight="450"
-      fx:controller="ca.warp7.rt.core.app.AppController">
+<BorderPane xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx"
+            prefWidth="1600" prefHeight="900" minWidth="800" minHeight="450"
+            fx:controller="ca.warp7.rt.core.app.AppController" fx:id="appWindowBoarderPane">
 
     <stylesheets>
         <URL value="@/ca/warp7/rt/res/style.css"/>
     </stylesheets>
 
-    <HBox VBox.vgrow="ALWAYS" fx:id="tabsAndContentContainer" visible="false">
-        <SplitPane VBox.vgrow="ALWAYS" orientation="VERTICAL" minWidth="240" prefWidth="240" fx:id="listViewContainer">
+    <left>
+        <SplitPane VBox.vgrow="ALWAYS" orientation="VERTICAL" minWidth="240" prefWidth="240" fx:id="listViewSplitPane">
             <ImageView fitHeight="100" preserveRatio="true">
                 <Image url="@/ca/warp7/rt/res/warp7.png"/>
             </ImageView>
             <ListView fx:id="appTabListView"/>
-            <BorderPane style="-fx-background-color: white" fx:id="customSidebar"/>
+            <BorderPane style="-fx-background-color: white" fx:id="customSidebarBorderPane"/>
         </SplitPane>
-        <BorderPane fx:id="tabContent" HBox.hgrow="ALWAYS"/>
-    </HBox>
+    </left>
 
-    <HBox styleClass="status-bar" alignment="CENTER_LEFT" fx:id="statusBarContainer" visible="false">
-        <HBox styleClass="status-item" HBox.hgrow="ALWAYS" onMouseClicked="#showStatus">
-            <Label text="Loading" fx:id="statusMessageLabel"/>
-        </HBox>
-        <HBox styleClass="status-item">
-            <FontIcon iconLiteral="fas-sync:16:1e2e4a"/>
-        </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#closeCurrentTab">
-            <FontIcon iconLiteral="fas-times:16:1e2e4a"/>
-        </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#toggleFullScreen">
-            <FontIcon iconLiteral="fas-expand:16:1e2e4a"/>
-        </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#toggleFocused">
-            <FontIcon iconLiteral="fas-eye-slash:16:1e2e4a" fx:id="focusIcon"/>
-        </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#setUserName">
-            <FontIcon iconLiteral="fas-user:16:1e2e4a"/>
-            <Label fx:id="userName"/>
-        </HBox>
-        <HBox styleClass="status-item" onMouseClicked="#setUserDevice">
-            <FontIcon iconLiteral="fas-laptop:16:1e2e4a"/>
-            <Label fx:id="deviceName"/>
-        </HBox>
-    </HBox>
+    <center>
+        <BorderPane fx:id="tabContentBorderPane" HBox.hgrow="ALWAYS"/>
+    </center>
 
-</VBox>
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" fx:id="statusBarContainer" visible="false">
+            <HBox styleClass="status-item" HBox.hgrow="ALWAYS" onMouseClicked="#showStatus">
+                <Label text="Loading" fx:id="statusMessageLabel"/>
+            </HBox>
+            <HBox styleClass="status-item">
+                <FontIcon iconLiteral="fas-sync:16:1e2e4a"/>
+            </HBox>
+            <HBox styleClass="status-item" onMouseClicked="#closeCurrentTab">
+                <FontIcon iconLiteral="fas-times:16:1e2e4a"/>
+            </HBox>
+            <HBox styleClass="status-item" onMouseClicked="#toggleFullScreen">
+                <FontIcon iconLiteral="fas-expand:16:1e2e4a"/>
+            </HBox>
+            <HBox styleClass="status-item" onMouseClicked="#toggleFocused">
+                <FontIcon iconLiteral="fas-eye-slash:16:1e2e4a" fx:id="focusIcon"/>
+            </HBox>
+            <HBox styleClass="status-item" onMouseClicked="#setUserName">
+                <FontIcon iconLiteral="fas-user:16:1e2e4a"/>
+                <Label fx:id="userName"/>
+            </HBox>
+            <HBox styleClass="status-item" onMouseClicked="#setUserDevice">
+                <FontIcon iconLiteral="fas-laptop:16:1e2e4a"/>
+                <Label fx:id="deviceName"/>
+            </HBox>
+        </HBox>
+
+    </bottom>
+
+</BorderPane>

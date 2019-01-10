@@ -17,11 +17,11 @@ import org.kordamp.ikonli.javafx.FontIcon
 
 class AppController : FeatureStage {
 
-    lateinit var tabContent: BorderPane
-    lateinit var customSidebar: BorderPane
-    lateinit var tabsAndContentContainer: HBox
+    lateinit var appWindowBoarderPane: BorderPane
+    lateinit var tabContentBorderPane: BorderPane
+    lateinit var customSidebarBorderPane: BorderPane
     lateinit var appTabListView: ListView<Feature>
-    lateinit var listViewContainer: SplitPane
+    lateinit var listViewSplitPane: SplitPane
     lateinit var statusMessageLabel: Label
     lateinit var focusIcon: FontIcon
     lateinit var userName: Label
@@ -42,7 +42,6 @@ class AppController : FeatureStage {
             setupFocusedMode()
             appTabs.addAll(appFeatures)
             statusBarContainer.isVisible = true
-            tabsAndContentContainer.isVisible = true
             appTabListView.selectionModel.select(0)
             handleFeatureLink(appTabs[0])
             Platform.runLater {
@@ -128,8 +127,8 @@ class AppController : FeatureStage {
         if (current!!.onClose()) {
             current = null
             appStage.title = "Restructured Tables "
-            tabContent.center = null
-            customSidebar.center = null
+            tabContentBorderPane.center = null
+            customSidebarBorderPane.center = null
         }
     }
 
@@ -159,24 +158,24 @@ class AppController : FeatureStage {
     private fun handleFeatureLink(ft: Feature) {
         if (ft === current) return
         if (current == null || current!!.onClose()) {
-            tabContent.center = null
-            customSidebar.center = null
+            tabContentBorderPane.center = null
+            customSidebarBorderPane.center = null
             current = ft
             val parent = current!!.onOpen()
             val title = ft.link.title
             appStage.title = title
-            customSidebar.center = parent.first
-            tabContent.center = parent.second
+            customSidebarBorderPane.center = parent.first
+            tabContentBorderPane.center = parent.second
         }
     }
 
     private fun setupFocusedMode() {
         focusedMode.addListener { _, _, focused ->
             if (focused!!) {
-                tabsAndContentContainer.children.removeAt(0)
+                appWindowBoarderPane.left = null
                 focusIcon.iconCode = FontAwesomeSolid.EYE
             } else {
-                tabsAndContentContainer.children.add(0, listViewContainer)
+                appWindowBoarderPane.left = listViewSplitPane
                 focusIcon.iconCode = FontAwesomeSolid.EYE_SLASH
             }
             if (current != null) current!!.setFocused(focused)
