@@ -31,12 +31,14 @@ class AppController : FeatureStage {
     lateinit var deviceName: Label
     lateinit var statusBarContainer: HBox
     lateinit var appStage: Stage
+    lateinit var searchController: SearchController
 
-    private val searchPane = loadParent("/ca/warp7/rt/core/app/SearchPane.fxml")
     private val appTabs = FXCollections.observableArrayList<Feature>()
     private val focusedMode = SimpleBooleanProperty()
     private var current: Feature? = null
     private var searchPaneShown = false
+    private val searchPane = loadParent<SearchController>("/ca/warp7/rt/core/app/SearchPane.fxml")
+    { searchController = it }
 
     fun initialize() {
         utilsController = this
@@ -48,7 +50,8 @@ class AppController : FeatureStage {
             appTabListView.selectionModel.select(0)
             handleFeatureLink(appTabs[0])
             searchPaneShown = true
-            tabContentLayover.right = searchPane // FIXME
+            tabContentLayover.right = searchPane
+            searchController.focus()
             Platform.runLater {
                 userName.text = UserEnv[UserConfig.appUserName, "Unknown user_"]
                 deviceName.text = UserEnv[UserConfig.appUserDevice, "Unknown device"]
@@ -88,7 +91,10 @@ class AppController : FeatureStage {
 
         stage.scene.accelerators[KeyCodeCombination(KeyCode.BACK_QUOTE, KeyCodeCombination.SHORTCUT_DOWN)] = Runnable {
             searchPaneShown = !searchPaneShown
-            tabContentLayover.right = if (searchPaneShown) searchPane else null
+            tabContentLayover.right = if (searchPaneShown) {
+                searchController.focus()
+                searchPane
+            } else null
         }
         stage.setOnCloseRequest { event ->
             UserEnv.save()
