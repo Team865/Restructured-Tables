@@ -72,6 +72,7 @@
 .scroll-bar .increment-button {
     -fx-opacity: 0;
     -fx-pref-height: 0;
+    -fx-pref-width: 0;
 }
 
 .scroll-bar .decrement-button {
@@ -130,6 +131,14 @@
 .text-field {
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .thumb {
+    -fx-background-color: #3c5c94;
 }
 
 /* NORMAL CELL */

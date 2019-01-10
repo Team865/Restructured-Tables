@@ -25,9 +25,10 @@
     </left>
 
     <center>
-        <StackPane>
-            <BorderPane fx:id="tabContentBorderPane" HBox.hgrow="ALWAYS"/>
-            <BorderPane fx:id="tabContentLayover" HBox.hgrow="ALWAYS" style="-fx-background-color: transparent"/>
+        <StackPane pickOnBounds="false">
+            <BorderPane fx:id="tabContentBorderPane"/>
+            <BorderPane fx:id="tabContentLayover" maxWidth="0" style="-fx-background-color: rgba(0, 0, 0, 0.2)"
+                        StackPane.alignment="TOP_RIGHT"/>
         </StackPane>
     </center>
 

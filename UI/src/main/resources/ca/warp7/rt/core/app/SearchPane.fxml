@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<VBox minWidth="600" style="-fx-padding: 20" spacing="10">
-    <TextField style="
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<ScrollPane minWidth="600" style="-fx-background-color: transparent" vbarPolicy="ALWAYS" hbarPolicy="NEVER">
+
+    <VBox minWidth="600" style="-fx-padding: 30 30 10 10; -fx-background-color: transparent" spacing="10">
+        <HBox style="
     -fx-background-radius: 15;
-    -fx-text-fill: #ccc;
+    -fx-background-color: #404040; -fx-padding: 0 10 0 10" alignment="CENTER_LEFT">
+
+            <FontIcon iconLiteral="fas-search:18:ccc"/>
+
+            <TextField style="-fx-text-fill: #ff8000;
+-fx-font-weight: bold;
     -fx-background-color: #404040;
     -fx-font-size: 18;
-    -fx-prompt-text-fill: #5a8ade" prefHeight="40" promptText="Search Data + Actions"/>
-</VBox>
+    -fx-prompt-text-fill: #ccc" prefHeight="40" promptText="Search Data + Actions" HBox.hgrow="ALWAYS"/>
+            <HBox spacing="15" alignment="CENTER_RIGHT">
+
+                <Label text="No Results" style="-fx-text-fill: #888"/>
+
+                <FontIcon iconLiteral="fas-arrow-up:18:ccc"/>
+                <FontIcon iconLiteral="fas-arrow-down:18:ccc"/>
+            </HBox>
+        </HBox>
+
+    </VBox>
+</ScrollPane>

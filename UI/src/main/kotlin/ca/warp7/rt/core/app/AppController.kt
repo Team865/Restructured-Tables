@@ -47,6 +47,8 @@ class AppController : FeatureStage {
             statusBarContainer.isVisible = true
             appTabListView.selectionModel.select(0)
             handleFeatureLink(appTabs[0])
+            searchPaneShown = true
+            tabContentLayover.right = searchPane // FIXME
             Platform.runLater {
                 userName.text = UserEnv[UserConfig.appUserName, "Unknown user_"]
                 deviceName.text = UserEnv[UserConfig.appUserDevice, "Unknown device"]
