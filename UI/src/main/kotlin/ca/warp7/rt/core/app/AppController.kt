@@ -21,6 +21,7 @@ class AppController : FeatureStage {
 
     lateinit var appWindowBoarderPane: BorderPane
     lateinit var tabContentBorderPane: BorderPane
+    lateinit var tabContentLayover: BorderPane
     lateinit var customSidebarBorderPane: BorderPane
     lateinit var appTabListView: ListView<Feature>
     lateinit var listViewSplitPane: SplitPane
@@ -50,7 +51,7 @@ class AppController : FeatureStage {
                 userName.text = UserEnv[UserConfig.appUserName, "Unknown user_"]
                 deviceName.text = UserEnv[UserConfig.appUserDevice, "Unknown device"]
                 statusMessageLabel.text = "Finished loading app"
-                val totalHeight = (appTabs.size * 28).toDouble()
+                val totalHeight = (appTabs.size * 36).toDouble()
                 appTabListView.minHeight = totalHeight
                 appTabListView.setMaxHeight(totalHeight)
             }
@@ -85,7 +86,7 @@ class AppController : FeatureStage {
 
         stage.scene.accelerators[KeyCodeCombination(KeyCode.BACK_QUOTE, KeyCodeCombination.SHORTCUT_DOWN)] = Runnable {
             searchPaneShown = !searchPaneShown
-            appWindowBoarderPane.right = if (searchPaneShown) searchPane else null
+            tabContentLayover.right = if (searchPaneShown) searchPane else null
         }
         stage.setOnCloseRequest { event ->
             UserEnv.save()
@@ -132,7 +133,7 @@ class AppController : FeatureStage {
                         return
                     }
                     graphic = tabUIFromLink(item.link)
-                    prefHeight = 28.0
+                    prefHeight = 36.0
                     setOnMouseClicked { handleFeatureLink(item) }
                 }
             }

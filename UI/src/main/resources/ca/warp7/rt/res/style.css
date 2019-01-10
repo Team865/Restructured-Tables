@@ -127,6 +127,10 @@
     -fx-faint-focus-color: transparent;
 }
 
+.text-field {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
 
 /* NORMAL CELL */
 .spreadsheet-cell:filled:selected,

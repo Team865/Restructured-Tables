@@ -24,6 +24,7 @@ private val teamColor: Color = Color.valueOf("1e2e4a")
         outer.spacing = 10.0
         outer.children.add(inner)
         val label = Label(link.title)
+        label.style = "-fx-font-size:18"
         outer.children.add(label)
         return outer
     }
