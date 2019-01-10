@@ -16,16 +16,19 @@ import javafx.scene.control.Label
 import javafx.scene.control.TextField
 import javafx.scene.layout.VBox
 
+@Suppress("unused")
+fun unused() {
+    PythonFeature()
+    DashboardFeature()
+}
 
 internal val appFeatures = listOf(
-        DashboardFeature(),
+        ViewsFeature(),
         ASTFeature(),
         PredictorFeature(),
         MediaFeature(),
         ScannerFeature(),
-        VCFeature(),
-        PythonFeature(),
-        ViewsFeature()
+        VCFeature()
 )
 
 internal var utilsController: AppController? = null

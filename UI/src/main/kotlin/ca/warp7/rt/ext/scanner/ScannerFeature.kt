@@ -4,15 +4,18 @@ import ca.warp7.rt.core.feature.Feature
 import ca.warp7.rt.core.feature.FeatureLink
 import ca.warp7.rt.core.feature.loadParent
 import javafx.scene.Parent
+import javafx.scene.input.KeyCode
+import javafx.scene.input.KeyCodeCombination
 
 class ScannerFeature : Feature {
 
-    override val link = FeatureLink("QR Scanner", "fas-camera", 18)
+    override val link = FeatureLink("Android Scanner", "fas-camera", 18)
 
     private var controller: ScannerController? = null
 
     private fun setController(controller: ScannerController) {
         this.controller = controller
+        KeyCodeCombination(KeyCode.SHIFT, KeyCodeCombination.SHIFT_DOWN)
     }
 
     override fun onClose(): Boolean {

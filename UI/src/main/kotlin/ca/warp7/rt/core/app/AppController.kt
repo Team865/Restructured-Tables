@@ -28,9 +28,12 @@ class AppController : FeatureStage {
     lateinit var deviceName: Label
     lateinit var statusBarContainer: HBox
     lateinit var appStage: Stage
+
     private val appTabs = FXCollections.observableArrayList<Feature>()
     private val focusedMode = SimpleBooleanProperty()
     private var current: Feature? = null
+    private var shiftOnce = false
+    private var lastShiftedTime = 0L
 
     fun initialize() {
         utilsController = this
@@ -70,10 +73,30 @@ class AppController : FeatureStage {
     }
 
     override fun setStage(stage: Stage) {
-        stage.scene.setOnKeyPressed { event ->
-            if (event.code == KeyCode.F11)
-                stage.isFullScreen = true
-            else if (event.code == KeyCode.F9) toggleFocused()
+        stage.scene.apply {
+            setOnKeyPressed {
+                when {
+                    it.code == KeyCode.F11 -> stage.isFullScreen = true
+                    it.code == KeyCode.F9 -> toggleFocused()
+                }
+            }
+
+            setOnKeyReleased {
+                if (it.code == KeyCode.SHIFT) {
+                    if (shiftOnce) {
+                        shiftOnce = false
+                        if (System.currentTimeMillis() < lastShiftedTime + 1000) {
+                            lastShiftedTime = System.currentTimeMillis()
+                            userInputString("hi", "ho", "ha")
+                        }
+                    } else {
+                        shiftOnce = true
+                        lastShiftedTime = System.currentTimeMillis()
+                    }
+                } else {
+                    shiftOnce = false
+                }
+            }
         }
         stage.setOnCloseRequest { event ->
             UserEnv.save()
