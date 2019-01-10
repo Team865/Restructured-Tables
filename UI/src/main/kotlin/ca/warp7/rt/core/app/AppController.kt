@@ -4,11 +4,13 @@ import ca.warp7.rt.core.env.UserConfig
 import ca.warp7.rt.core.env.UserEnv
 import ca.warp7.rt.core.feature.Feature
 import ca.warp7.rt.core.feature.FeatureStage
+import ca.warp7.rt.core.feature.loadParent
 import javafx.application.Platform
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.collections.FXCollections
 import javafx.scene.control.*
 import javafx.scene.input.KeyCode
+import javafx.scene.input.KeyCodeCombination
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
 import javafx.stage.Stage
@@ -29,11 +31,11 @@ class AppController : FeatureStage {
     lateinit var statusBarContainer: HBox
     lateinit var appStage: Stage
 
+    private val searchPane = loadParent("/ca/warp7/rt/core/app/SearchPane.fxml")
     private val appTabs = FXCollections.observableArrayList<Feature>()
     private val focusedMode = SimpleBooleanProperty()
     private var current: Feature? = null
-    private var shiftOnce = false
-    private var lastShiftedTime = 0L
+    private var searchPaneShown = false
 
     fun initialize() {
         utilsController = this
@@ -79,23 +81,11 @@ class AppController : FeatureStage {
                     it.code == KeyCode.F9 -> toggleFocused()
                 }
             }
+        }
 
-            setOnKeyReleased {
-                if (it.code == KeyCode.SHIFT) {
-                    if (shiftOnce) {
-                        shiftOnce = false
-                        if (System.currentTimeMillis() < lastShiftedTime + 1000) {
-                            lastShiftedTime = System.currentTimeMillis()
-                            userInputString("hi", "ho", "ha")
-                        }
-                    } else {
-                        shiftOnce = true
-                        lastShiftedTime = System.currentTimeMillis()
-                    }
-                } else {
-                    shiftOnce = false
-                }
-            }
+        stage.scene.accelerators[KeyCodeCombination(KeyCode.BACK_QUOTE, KeyCodeCombination.SHORTCUT_DOWN)] = Runnable {
+            searchPaneShown = !searchPaneShown
+            appWindowBoarderPane.right = if (searchPaneShown) searchPane else null
         }
         stage.setOnCloseRequest { event ->
             UserEnv.save()
