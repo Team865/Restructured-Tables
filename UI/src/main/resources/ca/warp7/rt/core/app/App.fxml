@@ -27,7 +27,7 @@
     <center>
         <StackPane pickOnBounds="false">
             <BorderPane fx:id="tabContentBorderPane"/>
-            <BorderPane fx:id="tabContentLayover" maxWidth="0" style="-fx-background-color: rgba(0, 0, 0, 0.2)"
+            <BorderPane fx:id="tabContentLayover" maxWidth="0" style="-fx-background-color: rgba(128, 128, 128, 0.25)"
                         StackPane.alignment="TOP_RIGHT"/>
         </StackPane>
     </center>

@@ -43,10 +43,6 @@
     -fx-background-color: white;
 }
 
-.list-cell .label {
-    -fx-font-weight: lighter;
-}
-
 .list-cell:hover:filled {
     -fx-background-color: #ddd;
 }
@@ -65,8 +61,36 @@
     -fx-icon-color: white;
 }
 
+.tree-view {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent
+}
+
+.tree-cell {
+    -fx-background-color: white;
+}
+
+
+.tree-view:focused .tree-cell:filled:selected {
+    -fx-background-color: #3c5c94;
+    -fx-text-fill: white;
+}
+
+.tree-view:focused .tree-cell:filled:selected .ikonli-font-icon {
+    -fx-icon-color: white;
+}
+
 .table-view {
     -fx-background-color: transparent;
+}
+
+.tree-cell:hover:filled {
+    -fx-background-color: #ddd;
+}
+
+.tree-cell:selected:filled {
+    -fx-background-color: #ccc;
+    -fx-text-fill: black;
 }
 
 .scroll-bar .increment-button {
