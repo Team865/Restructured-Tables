@@ -1,35 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-<ScrollPane xmlns:fx="http://javafx.com/fxml" minWidth="620"
+<?import java.net.URL?>
+<ScrollPane xmlns:fx="http://javafx.com/fxml" minWidth="512"
             style="-fx-background-color: transparent"
             vbarPolicy="ALWAYS"
             hbarPolicy="NEVER" xmlns="http://javafx.com/javafx"
             fx:controller="ca.warp7.rt.core.app.SearchController">
 
-    <VBox minWidth="600" style="-fx-padding: 30 30 10 10; -fx-background-color: transparent" spacing="10">
-        <HBox style="
-    -fx-background-radius: 15;
-    -fx-background-color: #404040;
-    -fx-padding: 0 10 0 10" alignment="CENTER_LEFT">
+    <stylesheets>
+        <URL value="@/ca/warp7/rt/res/search.css"/>
+    </stylesheets>
+
+    <VBox minWidth="500" style="-fx-padding: 30 30 10 10; -fx-background-color: transparent" spacing="20">
+        <HBox styleClass="search-block-special" alignment="CENTER_LEFT">
 
             <FontIcon iconLiteral="fas-search:18:ccc"/>
 
-            <TextField style="-fx-text-fill: #ffbb00;
--fx-font-weight: bold;
-    -fx-background-color: #404040;
-    -fx-font-size: 18;
-    -fx-prompt-text-fill: #ccc" prefHeight="40" promptText="Search Data + Actions" HBox.hgrow="ALWAYS"
+            <TextField styleClass="search-text-field" prefHeight="40" promptText="Search Context, Data, and Actions"
+                       HBox.hgrow="ALWAYS"
                        fx:id="searchField"/>
             <HBox spacing="15" alignment="CENTER_RIGHT">
 
-                <Label text="No Results" style="-fx-text-fill: #ccc"/>
+                <Label text="No Results"/>
             </HBox>
+        </HBox>
+
+        <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Context" style="-fx-text-fill: #ccc; -fx-font-size: 18; -fx-font-weight: bold"/>
+                <Label text="ONT District Humber College Event 2019" style="-fx-text-fill: #ff8800; -fx-font-size: 16"
+                       wrapText="true"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+            </HBox>
+        </VBox>
+
+        <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="The Blue Alliance" style="-fx-text-fill: #ccc; -fx-font-size: 18; -fx-font-weight: bold"/>
+                <Label text="event/2019onto3" style="-fx-text-fill: #ff8800; -fx-font-size: 16"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button text="Open web page">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-wifi:16:white"/>
+                    </graphic>
+                </Button>
+                <Button text="Update data">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-sync:16:white"/>
+                    </graphic>
+                </Button>
+            </HBox>
+        </VBox>
+
+
+        <HBox styleClass="search-block">
+            <Label text="hi"/>
+        </HBox>
+
+        <HBox styleClass="search-block">
+            <Label text="hi"/>
+        </HBox>
+
+        <HBox styleClass="search-block">
+            <Label text="hi"/>
         </HBox>
 
     </VBox>

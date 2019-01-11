@@ -1,0 +1,29 @@
+.search-block {
+    -fx-background-radius: 10;
+    -fx-background-color: #404040;
+    -fx-padding: 10
+}
+
+.search-block-special {
+    -fx-background-radius: 10;
+    -fx-background-color: #404040;
+    -fx-padding: 0 10 0 10
+}
+
+.label {
+    -fx-text-fill: #ccc;
+}
+
+.search-text-field {
+    -fx-font-weight: bold;
+    -fx-background-color: #404040;
+    -fx-font-size: 18;
+    -fx-prompt-text-fill: #ccc;
+    -fx-text-fill: #ff8800;
+}
+
+.button {
+    -fx-background-color: #3c5c94;
+    -fx-text-fill: white;
+}
+
