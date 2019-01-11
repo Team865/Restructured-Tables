@@ -11,15 +11,15 @@
 }
 
 .label {
-    -fx-text-fill: #ccc;
+    -fx-text-fill: white;
 }
 
 .search-text-field {
     -fx-font-weight: bold;
     -fx-background-color: transparent;
     -fx-font-size: 18;
-    -fx-prompt-text-fill: #ccc;
-    -fx-text-fill: #ff8800;
+    -fx-prompt-text-fill: #aaa;
+    -fx-text-fill: white;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 }
@@ -37,13 +37,14 @@
 .clicker-label-box {
     -fx-background-color: transparent;
     -fx-background-radius: 5;
-    -fx-padding: 8
-}
-
-.clicker-label-box:hover {
-    -fx-background-color: #666;
+    -fx-padding: 0 10 0 10
 }
 
 .clicker-label-box .label {
-    -fx-text-fill: #f80;
+    -fx-text-fill: #fb0;
+    -fx-underline: true;
+}
+
+.clicker-label-box:hover .label {
+    -fx-text-fill: #ff0;
 }
