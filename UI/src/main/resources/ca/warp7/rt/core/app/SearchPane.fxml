@@ -2,9 +2,10 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import org.kordamp.ikonli.javafx.*?>
 <?import java.net.URL?>
-<ScrollPane xmlns:fx="http://javafx.com/fxml" minWidth="512"
+<ScrollPane xmlns:fx="http://javafx.com/fxml" minWidth="560"
+            maxWidth="560"
             style="-fx-background-color: transparent"
             vbarPolicy="ALWAYS"
             hbarPolicy="NEVER" xmlns="http://javafx.com/javafx"
@@ -14,61 +15,157 @@
         <URL value="@/ca/warp7/rt/res/search.css"/>
     </stylesheets>
 
-    <VBox minWidth="500" style="-fx-padding: 30 30 10 10; -fx-background-color: transparent" spacing="20">
+    <VBox minWidth="540" maxWidth="560" style="-fx-padding: 36 36 36 0; -fx-background-color: transparent" spacing="10">
         <HBox styleClass="search-block-special" alignment="CENTER_LEFT">
 
             <FontIcon iconLiteral="fas-search:18:ccc"/>
 
-            <TextField styleClass="search-text-field" prefHeight="40" promptText="Search Context, Data, and Actions"
+            <TextField styleClass="search-text-field" prefHeight="40" promptText="Search Contexts, Data, and Actions"
                        HBox.hgrow="ALWAYS"
                        fx:id="searchField"/>
-            <HBox spacing="15" alignment="CENTER_RIGHT">
-
-                <Label text="No Results"/>
-            </HBox>
+            <Button>
+                <graphic>
+                    <FontIcon iconLiteral="fas-sync:16:white"/>
+                </graphic>
+            </Button>
         </HBox>
 
         <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
-            <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label text="Context" style="-fx-text-fill: #ccc; -fx-font-size: 18; -fx-font-weight: bold"/>
-                <Label text="ONT District Humber College Event 2019" style="-fx-text-fill: #ff8800; -fx-font-size: 16"
+            <HBox alignment="BOTTOM_LEFT" spacing="10">
+                <Label text="Active Context" style="-fx-text-fill: #ccc; -fx-font-size: 18; -fx-font-weight: bold"/>
+                <Label text=" ONT District Humber College Event 2019  " style="-fx-text-fill: #ff8800"
                        wrapText="true"/>
             </HBox>
+            <VBox>
+                <HBox spacing="10">
+                    <Label text="Year" alignment="CENTER_RIGHT" minWidth="120"/>
+                    <Label text="2019" style="-fx-font-weight: bold"/>
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Event" alignment="CENTER_RIGHT" minWidth="120"/>
+                    <Label text="onto3" style="-fx-font-weight: bold"/>
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Data Source" alignment="CENTER_RIGHT" minWidth="120"/>
+                    <Label text="Team865" style="-fx-font-weight: bold"/>
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="App User" alignment="CENTER_RIGHT" minWidth="120"/>
+                    <Label text="Yu Liu" style="-fx-font-weight: bold"/>
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Version" alignment="CENTER_RIGHT" minWidth="120"/>
+                    <Label text="1.0" style="-fx-font-weight: bold"/>
+                </HBox>
+            </VBox>
             <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button text="New Version">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-plus:16:white"/>
+                    </graphic>
+                </Button>
+                <Button text="Revert">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-undo:16:white"/>
+                    </graphic>
+                </Button>
+
+                <Button text="Rename">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-font:16:white"/>
+                    </graphic>
+                </Button>
+                <Button text="Delete" style="-fx-background-color: #c00">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-trash:16:white"/>
+                    </graphic>
+                </Button>
             </HBox>
         </VBox>
 
         <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
-            <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label text="The Blue Alliance" style="-fx-text-fill: #ccc; -fx-font-size: 18; -fx-font-weight: bold"/>
-                <Label text="event/2019onto3" style="-fx-text-fill: #ff8800; -fx-font-size: 16"/>
+            <HBox alignment="BOTTOM_LEFT" spacing="10">
+                <Label text="The Blue Alliance Import"
+                       style="-fx-text-fill: #ccc; -fx-font-size: 18; -fx-font-weight: bold"/>
+                <Label text="/event/2019onto3" style="-fx-text-fill: #ff8800"/>
+            </HBox>
+            <Label text="Last Fetched at 9:00 AM"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <FontIcon iconLiteral="fas-history:16:0c0"/>
+                <Label text="All new data merged" style="-fx-text-fill: #0c0"/>
             </HBox>
             <HBox alignment="CENTER_RIGHT" spacing="10">
-                <Button text="Open web page">
+                <Button text="Source">
                     <graphic>
-                        <FontIcon iconLiteral="fas-wifi:16:white"/>
+                        <FontIcon iconLiteral="fas-plug:16:white"/>
                     </graphic>
                 </Button>
-                <Button text="Update data">
+                <Button text="Fetch">
                     <graphic>
-                        <FontIcon iconLiteral="fas-sync:16:white"/>
+                        <FontIcon iconLiteral="fas-download:16:white"/>
+                    </graphic>
+                </Button>
+                <Button text="Merge" style="-fx-background-color: #080">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-code-branch:16:white"/>
                     </graphic>
                 </Button>
             </HBox>
         </VBox>
 
 
-        <HBox styleClass="search-block">
-            <Label text="hi"/>
-        </HBox>
+        <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
+            <HBox alignment="BOTTOM_LEFT" spacing="10">
+                <Label text="External Import" style="-fx-text-fill: #ccc; -fx-font-size: 18; -fx-font-weight: bold"/>
+                <Label text="E:\warp7\external\Team865-2019-onto3" style="-fx-text-fill: #ff8800"/>
+            </HBox>
+            <Label text="Last Fetched at 9:20 AM"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <FontIcon iconLiteral="fas-history:16:f44"/>
+                <Label text="+50, -0 Data Entities in 3 Tables" style="-fx-text-fill: #f44"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button text="Source">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-plug:16:white"/>
+                    </graphic>
+                </Button>
+                <Button text="Fetch">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-download:16:white"/>
+                    </graphic>
+                </Button>
+                <Button text="Merge" style="-fx-background-color: #080">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-code-branch:16:white"/>
+                    </graphic>
+                </Button>
+            </HBox>
+        </VBox>
 
-        <HBox styleClass="search-block">
-            <Label text="hi"/>
-        </HBox>
-
-        <HBox styleClass="search-block">
-            <Label text="hi"/>
-        </HBox>
+        <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
+            <HBox alignment="BOTTOM_LEFT" spacing="10">
+                <Label text="External Export" style="-fx-text-fill: #ccc; -fx-font-size: 18; -fx-font-weight: bold"/>
+                <Label text="E:\warp7\external\Team865-2019-onto3" style="-fx-text-fill: #ff8800"/>
+            </HBox>
+            <Label text="Last Uploaded at 8:30 AM"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <FontIcon iconLiteral="fas-history:16:f44"/>
+                <Label text="+0, -50 Data Entities in 3 Tables" style="-fx-text-fill: #f44"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button text="Target">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-bullseye:16:white"/>
+                    </graphic>
+                </Button>
+                <Button text="Upload" style="-fx-background-color: #080">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-upload:16:white"/>
+                    </graphic>
+                </Button>
+            </HBox>
+        </VBox>
 
     </VBox>
 </ScrollPane>
