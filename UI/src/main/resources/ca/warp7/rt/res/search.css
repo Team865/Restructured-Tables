@@ -1,12 +1,12 @@
 .search-block {
     -fx-background-radius: 5;
-    -fx-background-color: #404040f0;
+    -fx-background-color: #404040ee;
     -fx-padding: 10
 }
 
 .search-block-special {
     -fx-background-radius: 5;
-    -fx-background-color: #404040f0;
+    -fx-background-color: #404040ee;
     -fx-padding: 0 5 0 10
 }
 
@@ -32,4 +32,18 @@
 .button:hover {
     -fx-background-color: #5a8ade;
     -fx-text-fill: white;
+}
+
+.clicker-label-box {
+    -fx-background-color: transparent;
+    -fx-background-radius: 5;
+    -fx-padding: 8
+}
+
+.clicker-label-box:hover {
+    -fx-background-color: #666;
+}
+
+.clicker-label-box .label {
+    -fx-text-fill: #f80;
 }
