@@ -1,6 +1,5 @@
 package ca.warp7.rt.core.app
 
-import ca.warp7.rt.core.env.UserConfig
 import ca.warp7.rt.core.env.UserEnv
 import ca.warp7.rt.core.feature.Feature
 import ca.warp7.rt.core.feature.FeatureStage
@@ -27,7 +26,6 @@ class AppController : FeatureStage {
     lateinit var listViewSplitPane: SplitPane
     lateinit var statusMessageLabel: Label
     lateinit var focusIcon: FontIcon
-    lateinit var userName: Label
     lateinit var statusBarContainer: HBox
     lateinit var appStage: Stage
 
@@ -48,15 +46,12 @@ class AppController : FeatureStage {
             statusBarContainer.isVisible = true
             appTabListView.selectionModel.select(0)
             handleFeatureLink(appTabs[0])
-            searchController.focus()
             Platform.runLater {
-                userName.text = UserEnv[UserConfig.appUserName, "Unknown user"]
                 statusMessageLabel.text = "Finished loading app"
                 val totalHeight = (appTabs.size * 36).toDouble()
                 appTabListView.minHeight = totalHeight
                 appTabListView.maxHeight = totalHeight
-                searchPaneShown = true
-                tabContentLayover.right = searchPane
+                toggleSearch()
             }
         }
     }
@@ -70,7 +65,7 @@ class AppController : FeatureStage {
     }
 
     fun setUserName() {
-        userName.text = getUserExplicitName()
+        getUserExplicitName()
     }
 
     override fun setStage(stage: Stage) {
@@ -83,13 +78,8 @@ class AppController : FeatureStage {
             }
         }
 
-        stage.scene.accelerators[KeyCodeCombination(KeyCode.BACK_QUOTE, KeyCodeCombination.SHORTCUT_DOWN)] = Runnable {
-            searchPaneShown = !searchPaneShown
-            tabContentLayover.right = if (searchPaneShown) {
-                searchController.focus()
-                searchPane
-            } else null
-        }
+        stage.scene.accelerators[KeyCodeCombination(KeyCode.BACK_QUOTE, KeyCodeCombination.SHORTCUT_DOWN)] =
+                Runnable { toggleSearch() }
         stage.setOnCloseRequest { event ->
             UserEnv.save()
             if (current != null && !current!!.onClose()) {
@@ -100,6 +90,14 @@ class AppController : FeatureStage {
         appStage.minWidth = 800.0
         appStage.minHeight = 450.0
         appStage.isMaximized = true
+    }
+
+    fun toggleSearch() {
+        searchPaneShown = !searchPaneShown
+        tabContentLayover.right = if (searchPaneShown) {
+            searchController.focus()
+            searchPane
+        } else null
     }
 
     fun showStatus() {

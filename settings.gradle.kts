@@ -1,6 +1,8 @@
 rootProject.name = "RT"
 
 include(":CodeEditor")
-include("ContextAPI")
+include(":CPI")
 include(":ContextModel")
 include(":UI")
+
+project(":CPI").name = "ContextAPI"

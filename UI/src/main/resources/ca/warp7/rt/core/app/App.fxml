@@ -51,8 +51,10 @@
                 <FontIcon iconLiteral="fas-eye-slash:16:1e2e4a" fx:id="focusIcon"/>
             </HBox>
             <HBox styleClass="status-item" onMouseClicked="#setUserName">
-                <FontIcon iconLiteral="fas-user:16:1e2e4a"/>
-                <Label fx:id="userName"/>
+                <FontIcon iconLiteral="fas-cog:16:1e2e4a"/>
+            </HBox>
+            <HBox styleClass="status-item" onMouseClicked="#toggleSearch">
+                <FontIcon iconLiteral="fas-bars:16:1e2e4a"/>
             </HBox>
         </HBox>
 
