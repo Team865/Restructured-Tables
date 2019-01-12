@@ -28,11 +28,10 @@ class AppController : FeatureStage {
     lateinit var statusMessageLabel: Label
     lateinit var focusIcon: FontIcon
     lateinit var userName: Label
-    lateinit var deviceName: Label
     lateinit var statusBarContainer: HBox
     lateinit var appStage: Stage
-    lateinit var searchController: SearchController
 
+    private lateinit var searchController: SearchController
     private val appTabs = FXCollections.observableArrayList<Feature>()
     private val focusedMode = SimpleBooleanProperty()
     private var current: Feature? = null
@@ -49,16 +48,15 @@ class AppController : FeatureStage {
             statusBarContainer.isVisible = true
             appTabListView.selectionModel.select(0)
             handleFeatureLink(appTabs[0])
-            searchPaneShown = true
-            tabContentLayover.right = searchPane
             searchController.focus()
             Platform.runLater {
-                userName.text = UserEnv[UserConfig.appUserName, "Unknown user_"]
-                deviceName.text = UserEnv[UserConfig.appUserDevice, "Unknown device"]
+                userName.text = UserEnv[UserConfig.appUserName, "Unknown user"]
                 statusMessageLabel.text = "Finished loading app"
                 val totalHeight = (appTabs.size * 36).toDouble()
                 appTabListView.minHeight = totalHeight
-                appTabListView.setMaxHeight(totalHeight)
+                appTabListView.maxHeight = totalHeight
+                searchPaneShown = true
+                tabContentLayover.right = searchPane
             }
         }
     }
@@ -73,10 +71,6 @@ class AppController : FeatureStage {
 
     fun setUserName() {
         userName.text = getUserExplicitName()
-    }
-
-    fun setUserDevice() {
-        deviceName.text = getUserExplicitDevice()
     }
 
     override fun setStage(stage: Stage) {

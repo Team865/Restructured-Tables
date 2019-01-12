@@ -1,6 +1,5 @@
 package ca.warp7.rt.core
 
-import ca.warp7.rt.core.app.getUserExplicitDevice
 import ca.warp7.rt.core.app.getUserExplicitName
 import ca.warp7.rt.core.env.UserConfig
 import ca.warp7.rt.core.env.UserEnv
@@ -13,7 +12,6 @@ class Restructured : Application() {
     override fun start(stage: Stage) {
         ensureWindowsOS()
         if (UserConfig.appUserName !in UserEnv) getUserExplicitName()
-        if (UserConfig.appUserDevice !in UserEnv) getUserExplicitDevice()
         showStage("/ca/warp7/rt/core/app/App.fxml", "Restructured Tables")
     }
 }

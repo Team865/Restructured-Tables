@@ -3,8 +3,6 @@ package ca.warp7.rt.core.env
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import java.io.File
-import java.text.SimpleDateFormat
-import java.util.*
 
 object UserEnv {
 
@@ -19,9 +17,10 @@ object UserEnv {
 
     init {
         val s = userConfigFile.readText().trim()
-        config = if (s.isNotEmpty()) {
-            Parser().parse(StringBuilder(s)) as JsonObject
-        } else JsonObject()
+        config = when {
+            s.isNotEmpty() -> Parser().parse(StringBuilder(s)) as JsonObject
+            else -> JsonObject()
+        }
     }
 
     operator fun get(name: String, defaultValue: String): String {
@@ -45,7 +44,6 @@ object UserEnv {
     }
 
     fun save() {
-        config["env.lastSaved"] = SimpleDateFormat("dd/MM/yy hh:mm:ss").format(Date())
         userConfigFile.writeText(config.toJsonString(prettyPrint = true))
     }
 }

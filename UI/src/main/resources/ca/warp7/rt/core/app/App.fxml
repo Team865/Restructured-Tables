@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
@@ -51,10 +53,6 @@
             <HBox styleClass="status-item" onMouseClicked="#setUserName">
                 <FontIcon iconLiteral="fas-user:16:1e2e4a"/>
                 <Label fx:id="userName"/>
-            </HBox>
-            <HBox styleClass="status-item" onMouseClicked="#setUserDevice">
-                <FontIcon iconLiteral="fas-laptop:16:1e2e4a"/>
-                <Label fx:id="deviceName"/>
             </HBox>
         </HBox>
 
