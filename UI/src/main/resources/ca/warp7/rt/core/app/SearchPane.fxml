@@ -75,7 +75,7 @@
                         <FontIcon iconLiteral="fas-font:16:white"/>
                     </graphic>
                 </Button>
-                <Button text="Delete" style="-fx-background-color: #c00">
+                <Button text="Delete" styleClass="red-button">
                     <graphic>
                         <FontIcon iconLiteral="fas-trash:16:white"/>
                     </graphic>
@@ -139,7 +139,7 @@
                         <FontIcon iconLiteral="fas-download:16:white"/>
                     </graphic>
                 </Button>
-                <Button text="Merge" style="-fx-background-color: #080">
+                <Button text="Merge" styleClass="green-button">
                     <graphic>
                         <FontIcon iconLiteral="fas-code-branch:16:white"/>
                     </graphic>
@@ -169,7 +169,7 @@
                         <FontIcon iconLiteral="fas-download:16:white"/>
                     </graphic>
                 </Button>
-                <Button text="Merge" style="-fx-background-color: #080">
+                <Button text="Merge" styleClass="green-button">
                     <graphic>
                         <FontIcon iconLiteral="fas-code-branch:16:white"/>
                     </graphic>
@@ -193,7 +193,7 @@
                         <FontIcon iconLiteral="fas-bullseye:16:white"/>
                     </graphic>
                 </Button>
-                <Button text="Upload" style="-fx-background-color: #080">
+                <Button text="Upload" styleClass="green-button">
                     <graphic>
                         <FontIcon iconLiteral="fas-upload:16:white"/>
                     </graphic>

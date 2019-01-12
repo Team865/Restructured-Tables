@@ -31,8 +31,27 @@
 
 .button:hover {
     -fx-background-color: #5a8ade;
+}
+
+.red-button {
+    -fx-background-color: #c00;
     -fx-text-fill: white;
 }
+
+.red-button:hover {
+    -fx-background-color: #f11;
+}
+
+
+.green-button {
+    -fx-background-color: #080;
+    -fx-text-fill: white;
+}
+
+.green-button:hover {
+    -fx-background-color: #0a0;
+}
+
 
 .clicker-label-box {
     -fx-background-color: transparent;
