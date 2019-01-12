@@ -9,13 +9,14 @@
             style="-fx-background-color: transparent"
             vbarPolicy="ALWAYS"
             hbarPolicy="NEVER" xmlns="http://javafx.com/javafx"
-            fx:controller="ca.warp7.rt.core.app.SearchController">
+            fx:controller="ca.warp7.rt.core.app.SearchController"
+            fx:id="scrollPane">
 
     <stylesheets>
         <URL value="@/ca/warp7/rt/res/search.css"/>
     </stylesheets>
 
-    <VBox minWidth="480" maxWidth="480" style="-fx-padding: 36 0 36 0; -fx-background-color: transparent" spacing="10">
+    <VBox minWidth="480" maxWidth="480" style="-fx-padding: 36 0 36 0" spacing="10" fx:id="vBox">
         <HBox styleClass="search-block-special" alignment="CENTER_LEFT">
 
             <FontIcon iconLiteral="fas-search:18:white"/>

@@ -72,8 +72,7 @@ fun userInputString(title: String, prompt: String, defVal: String,
     val dialog = Dialog<String>()
 
     dialog.title = title
-
-    if (utilsController != null) dialog.initOwner(utilsController!!.appStage)
+    dialog.initOwner(utilsController?.appStage)
 
     val vBox = VBox()
     vBox.spacing = 10.0
