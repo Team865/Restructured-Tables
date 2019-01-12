@@ -8,6 +8,7 @@ import javafx.application.Platform
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.collections.FXCollections
 import javafx.scene.control.*
+import javafx.scene.control.ButtonType
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyCodeCombination
 import javafx.scene.layout.BorderPane
@@ -15,6 +16,7 @@ import javafx.scene.layout.HBox
 import javafx.stage.Stage
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid
 import org.kordamp.ikonli.javafx.FontIcon
+
 
 class AppController : FeatureStage {
 
@@ -121,6 +123,25 @@ class AppController : FeatureStage {
             tabContentBorderPane.center = null
             customSidebarBorderPane.center = null
         }
+    }
+
+    fun doGarbageCollection() {
+        Thread {
+            val before = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())
+            System.gc()
+            Platform.runLater {
+                val now = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())
+                val mem = String.format("Memory: %.3f MB", now / 1000000.0)
+                val freedMemory = String.format("Freed: %.3f MB", (before - now) / 1000000.0)
+                val msg = "Garbage Collection Done\n\n$mem\n$freedMemory"
+                val dialog = Dialog<String>()
+                dialog.title = "App Status"
+                dialog.initOwner(appStage)
+                dialog.contentText = msg
+                dialog.dialogPane.buttonTypes.addAll(ButtonType.OK)
+                dialog.showAndWait()
+            }
+        }.start()
     }
 
     private fun setupAppTabListView() {

@@ -38,9 +38,6 @@
             <HBox styleClass="status-item" HBox.hgrow="ALWAYS" onMouseClicked="#showStatus">
                 <Label text="Loading" fx:id="statusMessageLabel"/>
             </HBox>
-            <HBox styleClass="status-item">
-                <FontIcon iconLiteral="fas-sync:16:1e2e4a"/>
-            </HBox>
             <HBox styleClass="status-item" onMouseClicked="#closeCurrentTab">
                 <FontIcon iconLiteral="fas-times:16:1e2e4a"/>
             </HBox>
@@ -49,6 +46,9 @@
             </HBox>
             <HBox styleClass="status-item" onMouseClicked="#toggleFocused">
                 <FontIcon iconLiteral="fas-eye-slash:16:1e2e4a" fx:id="focusIcon"/>
+            </HBox>
+            <HBox styleClass="status-item" onMouseClicked="#doGarbageCollection">
+                <FontIcon iconLiteral="fas-bolt:16:1e2e4a"/>
             </HBox>
             <HBox styleClass="status-item" onMouseClicked="#setUserName">
                 <FontIcon iconLiteral="fas-cog:16:1e2e4a"/>
