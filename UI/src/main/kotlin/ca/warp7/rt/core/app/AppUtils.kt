@@ -5,12 +5,10 @@ import ca.warp7.rt.core.env.UserConfig
 import ca.warp7.rt.core.env.UserEnv
 import ca.warp7.rt.core.feature.FeatureLink
 import ca.warp7.rt.ext.ast.ASTFeature
-import ca.warp7.rt.ext.dash.DashboardFeature
 import ca.warp7.rt.ext.media.MediaFeature
 import ca.warp7.rt.ext.predictor.PredictorFeature
 import ca.warp7.rt.ext.python.PythonFeature
 import ca.warp7.rt.ext.scanner.ScannerFeature
-import ca.warp7.rt.ext.vc.VCFeature
 import ca.warp7.rt.ext.views.ViewsFeature
 import javafx.application.Platform
 import javafx.geometry.Pos
@@ -25,7 +23,6 @@ import javafx.scene.paint.Color
 @Suppress("unused")
 fun unused() {
     PythonFeature()
-    DashboardFeature()
 }
 
 internal val appFeatures = listOf(
@@ -33,8 +30,7 @@ internal val appFeatures = listOf(
         ASTFeature(),
         PredictorFeature(),
         MediaFeature(),
-        ScannerFeature(),
-        VCFeature()
+        ScannerFeature()
 )
 
 internal var utilsController: AppController? = null
