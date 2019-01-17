@@ -50,7 +50,7 @@
             <HBox styleClass="status-item" onMouseClicked="#doGarbageCollection">
                 <FontIcon iconLiteral="fas-bolt:16:1e2e4a"/>
             </HBox>
-            <HBox styleClass="status-item" onMouseClicked="#setUserName">
+            <HBox styleClass="status-item" onMouseClicked="#showSettings">
                 <FontIcon iconLiteral="fas-cog:16:1e2e4a"/>
             </HBox>
             <HBox styleClass="status-item" onMouseClicked="#toggleSearch">

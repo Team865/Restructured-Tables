@@ -127,7 +127,7 @@
 }
 
 .status-item {
-    -fx-padding: 6 18 6 18;
+    -fx-padding: 5 15 5 15;
     -fx-spacing: 6;
     -fx-alignment: CENTER-LEFT;
 }

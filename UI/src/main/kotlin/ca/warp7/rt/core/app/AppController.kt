@@ -7,12 +7,14 @@ import ca.warp7.rt.core.feature.loadParent
 import javafx.application.Platform
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.collections.FXCollections
+import javafx.geometry.Pos
 import javafx.scene.control.*
 import javafx.scene.control.ButtonType
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyCodeCombination
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
+import javafx.scene.layout.VBox
 import javafx.stage.Stage
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid
 import org.kordamp.ikonli.javafx.FontIcon
@@ -66,8 +68,44 @@ class AppController : FeatureStage {
         focusedMode.value = !focusedMode.get()
     }
 
-    fun setUserName() {
-        getUserExplicitName()
+    fun showSettings() {
+        val dialog = Dialog<SettingsData>()
+
+        dialog.title = "Settings"
+        dialog.initOwner(appStage)
+
+        val vBox = VBox()
+        vBox.spacing = 10.0
+        vBox.alignment = Pos.TOP_LEFT
+        vBox.style = "-fx-padding: 10"
+
+        val label = Label("Name (First Last)")
+        label.isWrapText = true
+
+        val field = TextField()
+        field.text = ""
+
+        dialog.dialogPane.buttonTypes.addAll(ButtonType.OK, ButtonType.CANCEL)
+
+        vBox.children.addAll(label, field)
+
+        val label2 = Label("The Blue Alliance Key")
+        val field2 = TextField()
+
+        vBox.children.addAll(label2, field2)
+
+        vBox.minWidth = 500.0
+
+        dialog.dialogPane.content = vBox
+        //dialog.dialogPane.stylesheets.add("/ca/warp7/rt/res/style.css")
+
+        Platform.runLater { field.requestFocus() }
+
+        dialog.setResultConverter { buttonType ->
+            if (buttonType == ButtonType.OK) null else null
+        }
+
+        val result = dialog.showAndWait()
     }
 
     override fun setStage(stage: Stage) {
