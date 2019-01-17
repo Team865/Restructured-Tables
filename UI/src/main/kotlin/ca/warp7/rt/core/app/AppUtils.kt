@@ -3,7 +3,6 @@ package ca.warp7.rt.core.app
 import ca.warp7.rt.core.env.EnvUtils
 import ca.warp7.rt.core.env.UserConfig
 import ca.warp7.rt.core.env.UserEnv
-import ca.warp7.rt.core.feature.FeatureLink
 import ca.warp7.rt.ext.ast.ASTFeature
 import ca.warp7.rt.ext.predictor.PredictorFeature
 import ca.warp7.rt.ext.python.PythonFeature
@@ -35,18 +34,18 @@ internal var utilsController: AppController? = null
 
 private val teamColor: Color = Color.valueOf("1e2e4a")
 
-internal fun tabUIFromLink(link: FeatureLink): HBox {
+internal fun tabUIFromLink(wrapper: FeatureWrapper): HBox {
     val outer = HBox()
     val inner = HBox()
     inner.prefWidth = 16.0
     inner.alignment = Pos.CENTER
-    link.icon.iconColor = teamColor
-    link.icon.iconSize -= 2
-    inner.children.add(link.icon)
+    wrapper.icon.iconColor = teamColor
+    wrapper.icon.iconSize -= 2
+    inner.children.add(wrapper.icon)
     outer.alignment = Pos.CENTER_LEFT
     outer.spacing = 12.0
     outer.children.add(inner)
-    val label = Label(link.title)
+    val label = Label(wrapper.link.title)
     label.style = "-fx-font-size:16; -fx-font-weight:bold"
     outer.children.add(label)
     return outer

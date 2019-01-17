@@ -1,9 +1,6 @@
 package ca.warp7.rt.core.app
 
 import ca.warp7.rt.core.env.UserEnv
-import ca.warp7.rt.core.feature.Feature
-import ca.warp7.rt.core.feature.FeatureStage
-import ca.warp7.rt.core.feature.loadParent
 import javafx.application.Platform
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.collections.FXCollections
@@ -26,7 +23,7 @@ class AppController : FeatureStage {
     lateinit var tabContentBorderPane: BorderPane
     lateinit var tabContentLayover: BorderPane
     lateinit var customSidebarBorderPane: BorderPane
-    lateinit var appTabListView: ListView<Feature>
+    lateinit var appTabListView: ListView<FeatureWrapper>
     lateinit var listViewSplitPane: SplitPane
     lateinit var statusMessageLabel: Label
     lateinit var focusIcon: FontIcon
@@ -34,9 +31,9 @@ class AppController : FeatureStage {
     lateinit var appStage: Stage
 
     private lateinit var searchController: SearchController
-    private val appTabs = FXCollections.observableArrayList<Feature>()
+    private val appTabs = FXCollections.observableArrayList<FeatureWrapper>()
     private val focusedMode = SimpleBooleanProperty()
-    private var current: Feature? = null
+    private var current: FeatureWrapper? = null
     private var searchPaneShown = false
     private val searchPane = loadParent<SearchController>("/ca/warp7/rt/core/app/SearchPane.fxml")
     { searchController = it }
@@ -46,17 +43,15 @@ class AppController : FeatureStage {
         Platform.runLater {
             setupAppTabListView()
             setupFocusedMode()
-            appTabs.addAll(appFeatures)
+            appFeatures.forEach { appTabs.add(FeatureWrapper(it)) }
             statusBarContainer.isVisible = true
             appTabListView.selectionModel.select(0)
             handleFeatureLink(appTabs[0])
-            Platform.runLater {
-                statusMessageLabel.text = "Finished loading app"
-                val totalHeight = (appTabs.size * 36).toDouble()
-                appTabListView.minHeight = totalHeight
-                appTabListView.maxHeight = totalHeight
-                toggleSearch()
-            }
+            statusMessageLabel.text = "Finished loading app"
+            val totalHeight = (appTabs.size * 36).toDouble()
+            appTabListView.minHeight = totalHeight
+            appTabListView.maxHeight = totalHeight
+            toggleSearch()
         }
     }
 
@@ -105,7 +100,7 @@ class AppController : FeatureStage {
             if (buttonType == ButtonType.OK) null else null
         }
 
-        val result = dialog.showAndWait()
+        @Suppress("UNUSED_VARIABLE") val result = dialog.showAndWait()
     }
 
     override fun setStage(stage: Stage) {
@@ -185,14 +180,14 @@ class AppController : FeatureStage {
 
     private fun setupAppTabListView() {
         appTabListView.setCellFactory {
-            object : ListCell<Feature>() {
-                override fun updateItem(item: Feature?, empty: Boolean) {
+            object : ListCell<FeatureWrapper>() {
+                override fun updateItem(item: FeatureWrapper?, empty: Boolean) {
                     super.updateItem(item, empty)
                     if (empty || item == null) {
                         graphic = null
                         return
                     }
-                    graphic = tabUIFromLink(item.link)
+                    graphic = tabUIFromLink(item)
                     prefHeight = 36.0
                     setOnMouseClicked { handleFeatureLink(item) }
                 }
@@ -206,7 +201,7 @@ class AppController : FeatureStage {
         appTabListView.items = appTabs
     }
 
-    private fun handleFeatureLink(ft: Feature) {
+    private fun handleFeatureLink(ft: FeatureWrapper) {
         if (ft === current) return
         if (current == null || current!!.onClose()) {
             tabContentBorderPane.center = null

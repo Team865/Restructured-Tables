@@ -1,8 +1,8 @@
 package ca.warp7.rt.ext.views
 
-import ca.warp7.rt.core.feature.Feature
-import ca.warp7.rt.core.feature.FeatureLink
-import ca.warp7.rt.core.feature.loadParent
+import ca.warp7.rt.context.api.Feature
+import ca.warp7.rt.context.api.FeatureLink
+import ca.warp7.rt.core.app.loadParent
 import javafx.scene.Parent
 import javafx.scene.control.TreeItem
 import javafx.scene.control.TreeView
