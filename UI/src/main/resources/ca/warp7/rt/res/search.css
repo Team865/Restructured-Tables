@@ -15,6 +15,7 @@
 }
 
 .search-text-field {
+    -fx-padding: 0;
     -fx-font-weight: bold;
     -fx-background-color: transparent;
     -fx-font-size: 18;
@@ -31,6 +32,31 @@
 
 .button:hover {
     -fx-background-color: #5a8ade;
+}
+
+.special-button {
+    -fx-background-color: transparent;
+}
+
+.special-button:hover {
+    -fx-background-color: #5a8ade;
+}
+
+.expand-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.expand-button .ikonli-font-icon {
+    -fx-icon-color: transparent
+}
+
+.expand-button:hover {
+    -fx-background-color: transparent;
+}
+
+.expand-button:hover .ikonli-font-icon {
+    -fx-icon-color: #5a8ade
 }
 
 .red-button {

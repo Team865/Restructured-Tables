@@ -19,23 +19,28 @@
     <VBox minWidth="480" maxWidth="480" style="-fx-padding: 36 0 36 0" spacing="10" fx:id="vBox">
         <HBox styleClass="search-block-special" alignment="CENTER_LEFT">
 
-            <FontIcon iconLiteral="fas-search:18:white"/>
-
             <TextField styleClass="search-text-field" prefHeight="40" promptText="Search Data, Contexts, and Actions"
                        HBox.hgrow="ALWAYS"
                        fx:id="searchField"/>
-            <Button>
+            <Button styleClass="special-button">
                 <graphic>
-                    <FontIcon iconLiteral="fas-sync:16:white"/>
+                    <FontIcon iconLiteral="fas-search:18:white"/>
                 </graphic>
             </Button>
         </HBox>
 
         <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
-            <HBox alignment="BOTTOM_LEFT" spacing="10">
+            <HBox spacing="10">
                 <Label text="Active Context" style="-fx-font-size: 18; -fx-font-weight: bold"/>
-                <Label text=" ONT District Humber College Event 2019  " style="-fx-text-fill: #ff8800"
-                       wrapText="true"/>
+                <HBox HBox.hgrow="ALWAYS" alignment="BOTTOM_LEFT">
+                    <Label text=" ONT District Humber College Event 2019  " style="-fx-text-fill: #ff8800"
+                           wrapText="true"/>
+                </HBox>
+                <Button styleClass="expand-button">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-external-link-alt:16:white"/>
+                    </graphic>
+                </Button>
             </HBox>
             <VBox>
                 <HBox spacing="10">
@@ -96,7 +101,6 @@
 
         </VBox>
 
-
         <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
             <HBox alignment="BOTTOM_LEFT" spacing="10">
                 <Label text="Tables" style="-fx-font-size: 18; -fx-font-weight: bold"/>
@@ -146,7 +150,6 @@
                 </Button>
             </HBox>
         </VBox>
-
 
         <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
             <HBox alignment="BOTTOM_LEFT" spacing="10">
