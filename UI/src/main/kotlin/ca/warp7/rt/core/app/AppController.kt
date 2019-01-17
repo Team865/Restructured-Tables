@@ -79,7 +79,7 @@ class AppController : FeatureStage {
         vBox.alignment = Pos.TOP_LEFT
         vBox.style = "-fx-padding: 10"
 
-        val label = Label("Name (First Last)")
+        val label = Label("User Name (First Last)")
         label.isWrapText = true
 
         val field = TextField()
@@ -89,7 +89,7 @@ class AppController : FeatureStage {
 
         vBox.children.addAll(label, field)
 
-        val label2 = Label("The Blue Alliance Key")
+        val label2 = Label("The Blue Alliance API Key")
         val field2 = TextField()
 
         vBox.children.addAll(label2, field2)
@@ -134,10 +134,11 @@ class AppController : FeatureStage {
 
     fun toggleSearch() {
         searchPaneShown = !searchPaneShown
-        tabContentLayover.right = if (searchPaneShown) {
+        tabContentLayover.right = if (searchPaneShown) searchPane else null
+        if (searchPaneShown) {
+            searchPane.requestFocus()
             searchController.focus()
-            searchPane
-        } else null
+        }
     }
 
     fun showStatus() {
