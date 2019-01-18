@@ -1,7 +1,6 @@
 package ca.warp7.rt.core.app
 
 import ca.warp7.rt.context.model.Contexts
-import ca.warp7.rt.core.env.UserEnv
 import javafx.application.Platform
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.collections.FXCollections
@@ -80,7 +79,6 @@ class AppController : FeatureStage {
         stage.scene.accelerators[KeyCodeCombination(KeyCode.BACK_QUOTE, KeyCodeCombination.SHORTCUT_DOWN)] =
                 Runnable { toggleSearch() }
         stage.setOnCloseRequest { event ->
-            UserEnv.save()
             if (current != null && !current!!.onClose()) {
                 event.consume()
             }

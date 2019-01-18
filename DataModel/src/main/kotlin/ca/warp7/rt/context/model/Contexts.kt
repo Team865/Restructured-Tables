@@ -12,10 +12,7 @@ object Contexts {
     /**
      * Get the default context root
      */
-    val root
-        get() = root1
-                ?: loadRoot(args
-                        ?: arrayOf()).also { root1 = it }
+    val root get() = root1 ?: loadRoot(args ?: arrayOf()).also { root1 = it }
 
     /**
      * Holds the metadata of the root context

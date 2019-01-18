@@ -22,7 +22,7 @@ object SingletonPipeline : Pipeline {
             val inputStream = javaClass.getResourceAsStream("/ca/warp7/rt/res/test.csv")
             df = DataFrame.readDelim(
                     inStream = inputStream,
-                    format = CSVFormat.DEFAULT.withHeader(),
+                    format = CSVFormat.DEFAULT.withHeader().withNullString(""),
                     isCompressed = false,
                     colTypes = mapOf())
             open = true

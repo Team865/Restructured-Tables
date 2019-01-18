@@ -1,8 +1,5 @@
 package ca.warp7.rt.core.app
 
-import ca.warp7.rt.core.env.EnvUtils
-import ca.warp7.rt.core.env.UserConfig
-import ca.warp7.rt.core.env.UserEnv
 import ca.warp7.rt.ext.ast.ASTFeature
 import ca.warp7.rt.ext.predictor.PredictorFeature
 import ca.warp7.rt.ext.python.PythonFeature
@@ -51,14 +48,6 @@ internal fun tabUIFromLink(wrapper: FeatureWrapper): HBox {
     label.style = "-fx-font-size:16; -fx-font-weight:bold"
     outer.children.add(label)
     return outer
-}
-
-internal fun getUserExplicitName(): String {
-    val current = UserEnv["app.userName", EnvUtils.user]
-    val name = userInputString("Setup", "Enter name (First Last):",
-            current, String::isNotEmpty) ?: current
-    UserEnv[UserConfig.appUserName] = name
-    return name
 }
 
 fun userInputString(title: String, prompt: String, defVal: String,
@@ -125,7 +114,7 @@ fun getUserSettings(): SettingsData? {
     val userLabel = Label("User Name (First Last)")
 
     val userField = TextField()
-    userField.text = ""
+    userField.text = System.getProperty("user.name")
 
     dialog.dialogPane.buttonTypes.addAll(ButtonType.OK, ButtonType.CANCEL)
 
@@ -136,7 +125,7 @@ fun getUserSettings(): SettingsData? {
 
     vBox.children.addAll(tbaLabel, tbaField)
 
-    vBox.minWidth = 500.0
+    vBox.minWidth = 640.0
 
     dialog.dialogPane.content = vBox
 
