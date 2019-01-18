@@ -10,7 +10,7 @@
         <URL value="@/ca/warp7/rt/res/style.css"/>
     </stylesheets>
     <ToolBar fx:id="toolbar">
-        <Button text="New script" onAction="#newScript">
+        <Button text="New script">
             <graphic>
                 <FontIcon iconLiteral="fas-plus:16:gray"/>
             </graphic>

@@ -59,52 +59,6 @@ internal fun tabUIFromLink(wrapper: FeatureWrapper): HBox {
     return outer
 }
 
-fun userInputString(title: String, prompt: String, defVal: String,
-                    validator: ((value: String) -> Boolean)? = null): String? {
-
-    val dialog = Dialog<String>()
-
-    dialog.title = title
-    dialog.initOwner(utilsController?.appStage)
-
-    val vBox = VBox()
-    vBox.spacing = 10.0
-    vBox.alignment = Pos.TOP_LEFT
-    vBox.style = "-fx-padding: 10"
-
-    val label = Label(prompt)
-    label.isWrapText = true
-
-    val field = TextField()
-    field.text = defVal.trim { it <= ' ' }
-
-    dialog.dialogPane.buttonTypes.addAll(ButtonType.OK, ButtonType.CANCEL)
-
-    if (validator != null) {
-        val okButton = dialog.dialogPane.lookupButton(ButtonType.OK)
-        okButton.isDisable = true
-        field.textProperty().addListener { _, _, newValue ->
-            okButton.isDisable = !validator.invoke(newValue.trim { it <= ' ' })
-        }
-    }
-
-    vBox.children.addAll(label, field)
-    vBox.minWidth = 400.0
-
-    dialog.dialogPane.content = vBox
-    dialog.dialogPane.stylesheets.add("/ca/warp7/rt/res/style.css")
-
-    Platform.runLater { field.requestFocus() }
-
-    dialog.setResultConverter { buttonType ->
-        if (buttonType == ButtonType.OK) field.text else null
-    }
-
-    val result = dialog.showAndWait()
-
-    return result.orElse(null)
-}
-
 fun setAppStatus(statusMessage: String) {
     if (utilsController != null) utilsController!!.statusMessageLabel.text = statusMessage
 }
