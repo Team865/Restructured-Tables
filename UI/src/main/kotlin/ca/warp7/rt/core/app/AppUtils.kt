@@ -39,7 +39,7 @@ private val teamColor: Color = Color.valueOf("1e2e4a")
 internal fun tabUIFromLink(wrapper: FeatureWrapper): HBox {
     val outer = HBox()
     val inner = HBox()
-    inner.prefWidth = 16.0
+    inner.prefWidth = 20.0
     inner.alignment = Pos.CENTER
     wrapper.icon.iconColor = teamColor
     wrapper.icon.iconSize -= 2

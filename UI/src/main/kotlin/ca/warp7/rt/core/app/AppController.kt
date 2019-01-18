@@ -1,9 +1,11 @@
 package ca.warp7.rt.core.app
 
+import ca.warp7.rt.context.model.Contexts
 import ca.warp7.rt.core.env.UserEnv
 import javafx.application.Platform
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.collections.FXCollections
+import javafx.scene.Node
 import javafx.scene.control.*
 import javafx.scene.control.ButtonType
 import javafx.scene.input.KeyCode
@@ -22,7 +24,7 @@ class AppController : FeatureStage {
     lateinit var tabContentLayover: BorderPane
     lateinit var customSidebarBorderPane: BorderPane
     lateinit var appTabListView: ListView<FeatureWrapper>
-    lateinit var listViewSplitPane: SplitPane
+    lateinit var listViewSplitPane: Node
     lateinit var statusMessageLabel: Label
     lateinit var focusIcon: FontIcon
     lateinit var statusBarContainer: HBox
@@ -46,7 +48,7 @@ class AppController : FeatureStage {
             appTabListView.selectionModel.select(0)
             handleFeatureLink(appTabs[0])
             statusMessageLabel.text = "Finished loading app"
-            val totalHeight = (appTabs.size * 36).toDouble()
+            val totalHeight = (appTabs.size * 32).toDouble()
             appTabListView.minHeight = totalHeight
             appTabListView.maxHeight = totalHeight
             toggleSearch()
@@ -150,7 +152,7 @@ class AppController : FeatureStage {
                         return
                     }
                     graphic = tabUIFromLink(item)
-                    prefHeight = 36.0
+                    prefHeight = 32.0
                     setOnMouseClicked { handleFeatureLink(item) }
                 }
             }
@@ -171,7 +173,7 @@ class AppController : FeatureStage {
             current = ft
             val parent = current!!.onOpen()
             val title = ft.link.title
-            appStage.title = title
+            appStage.title = title + " | " + Contexts.version
             customSidebarBorderPane.center = parent.first
             tabContentBorderPane.center = parent.second
         }

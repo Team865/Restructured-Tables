@@ -63,13 +63,13 @@
 
 .tree-view {
     -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent
+    -fx-faint-focus-color: transparent;
+    -fx-border-width: 0;
 }
 
 .tree-cell {
     -fx-background-color: white;
 }
-
 
 .tree-view:focused .tree-cell:filled:selected {
     -fx-background-color: #3c5c94;
@@ -80,10 +80,6 @@
     -fx-icon-color: white;
 }
 
-.table-view {
-    -fx-background-color: transparent;
-}
-
 .tree-cell:hover:filled {
     -fx-background-color: #ddd;
 }
@@ -91,6 +87,10 @@
 .tree-cell:selected:filled {
     -fx-background-color: #ccc;
     -fx-text-fill: black;
+}
+
+.table-view {
+    -fx-background-color: transparent;
 }
 
 .scroll-bar .increment-button {

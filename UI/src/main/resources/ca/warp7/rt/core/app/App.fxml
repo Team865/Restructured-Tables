@@ -18,7 +18,7 @@
 
     <left>
         <SplitPane VBox.vgrow="ALWAYS" orientation="VERTICAL" minWidth="240" prefWidth="240" fx:id="listViewSplitPane">
-            <ImageView fitHeight="100" preserveRatio="true">
+            <ImageView fitHeight="80" preserveRatio="true">
                 <Image url="@/ca/warp7/rt/res/warp7.png"/>
             </ImageView>
             <ListView fx:id="appTabListView"/>
