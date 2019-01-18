@@ -42,7 +42,7 @@
                             </graphic>
                         </Button>
                     </HBox>
-                    <Label text="ONT District Humber College Event 2019  " style="-fx-text-fill: #ff8800"
+                    <Label text="ONT District Humber College Event 2019  " style="-fx-text-fill: #0ff"
                            wrapText="true"/>
                 </VBox>
                 <VBox>
@@ -121,19 +121,25 @@
                     <Label text="Team Number/Match Number/Match Type/Alliance/Scout/Driver Station"/>
                 </HBox>
 
-
             </VBox>
 
             <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
-                <HBox alignment="BOTTOM_LEFT" spacing="10">
-                    <Label text="The Blue Alliance Import"
-                           style="-fx-font-size: 18; -fx-font-weight: bold"/>
-                    <Label text="/event/2019onto3" style="-fx-text-fill: #ff8800"/>
-                </HBox>
-                <Label text="Last Fetched at 9:00 AM"/>
-                <HBox spacing="10" alignment="CENTER_LEFT">
+                <VBox>
+                    <HBox spacing="10">
+                        <HBox HBox.hgrow="ALWAYS">
+                            <Label text="The Blue Alliance Import" style="-fx-font-size: 18; -fx-font-weight: bold"/>
+                        </HBox>
+                        <Button styleClass="expand-button">
+                            <graphic>
+                                <FontIcon iconLiteral="fas-external-link-alt:16:white"/>
+                            </graphic>
+                        </Button>
+                    </HBox>
+                    <Label text="/event/2019onto3" style="-fx-text-fill: #0ff"/>
+                </VBox>
+                <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 5">
                     <FontIcon iconLiteral="fas-history:16:0c0"/>
-                    <Label text="All data up to date" style="-fx-text-fill: #0c0"/>
+                    <Label text="All data up to date. Last Fetched at 9:00 AM" style="-fx-text-fill: #0c0"/>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" spacing="10">
                     <Button text="Source">
@@ -155,14 +161,23 @@
             </VBox>
 
             <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
-                <HBox alignment="BOTTOM_LEFT" spacing="10">
-                    <Label text="External Import" style="-fx-font-size: 18; -fx-font-weight: bold"/>
-                    <Label text="E:\warp7\external\Team865-2019-onto3" style="-fx-text-fill: #ff8800"/>
-                </HBox>
-                <Label text="Last Fetched at 9:20 AM"/>
-                <HBox spacing="10" alignment="CENTER_LEFT">
+                <VBox>
+                    <HBox spacing="10">
+                        <HBox HBox.hgrow="ALWAYS">
+                            <Label text="External Import" style="-fx-font-size: 18; -fx-font-weight: bold"/>
+                        </HBox>
+                        <Button styleClass="expand-button">
+                            <graphic>
+                                <FontIcon iconLiteral="fas-external-link-alt:16:white"/>
+                            </graphic>
+                        </Button>
+                    </HBox>
+                    <Label text="E:\warp7\external\Team865-2019-onto3" style="-fx-text-fill: #0ff"/>
+                </VBox>
+                <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 5">
                     <FontIcon iconLiteral="fas-history:16:ff0"/>
-                    <Label text="+50, -0 Data Entities in 3 Tables" style="-fx-text-fill: #ff0"/>
+                    <Label text="+50, -0 Data Entities in 3 Tables. Last Fetched at 9:20 AM"
+                           style="-fx-text-fill: #ff0"/>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" spacing="10">
                     <Button text="Source">
