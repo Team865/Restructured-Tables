@@ -15,7 +15,6 @@ import javafx.stage.Stage
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid
 import org.kordamp.ikonli.javafx.FontIcon
 
-
 class AppController : FeatureStage {
 
     lateinit var appWindowBoarderPane: BorderPane
@@ -63,7 +62,7 @@ class AppController : FeatureStage {
     }
 
     fun showSettings() {
-        getUserSettings()
+        getAndSaveUserSettings()
     }
 
     override fun setStage(stage: Stage) {

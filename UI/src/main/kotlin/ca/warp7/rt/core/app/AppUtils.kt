@@ -1,5 +1,8 @@
 package ca.warp7.rt.core.app
 
+import ca.warp7.rt.context.api.get
+import ca.warp7.rt.context.model.Contexts
+import ca.warp7.rt.context.model.Metadata
 import ca.warp7.rt.ext.ast.ASTFeature
 import ca.warp7.rt.ext.predictor.PredictorFeature
 import ca.warp7.rt.ext.python.PythonFeature
@@ -100,7 +103,7 @@ fun setAppStatus(statusMessage: String) {
     if (utilsController != null) utilsController!!.statusMessageLabel.text = statusMessage
 }
 
-fun getUserSettings(): SettingsData? {
+fun getAndSaveUserSettings() {
     val dialog = Dialog<SettingsData>()
 
     dialog.title = "Settings"
@@ -111,23 +114,29 @@ fun getUserSettings(): SettingsData? {
     vBox.alignment = Pos.TOP_LEFT
     vBox.style = "-fx-padding: 10"
 
-    val userLabel = Label("User Name (First Last)")
+    val userLabel = Label("App User (First Last)")
 
     val userField = TextField()
-    userField.text = System.getProperty("user.name")
-
-    dialog.dialogPane.buttonTypes.addAll(ButtonType.OK, ButtonType.CANCEL)
+    userField.text = Contexts.metadata[Metadata.appUser, System.getProperty("user.name")]
 
     vBox.children.addAll(userLabel, userField)
 
+    val dsLabel = Label("Data Source (e.g. Team0000)")
+    val dsField = TextField()
+    dsField.text = Contexts.metadata[Metadata.dataSource, "Team865"]
+
+    vBox.children.addAll(dsLabel, dsField)
+
     val tbaLabel = Label("The Blue Alliance API Key")
     val tbaField = TextField()
+    tbaField.text = Contexts.metadata[Metadata.tbaKey, ""]
 
     vBox.children.addAll(tbaLabel, tbaField)
 
     vBox.minWidth = 640.0
 
     dialog.dialogPane.content = vBox
+    dialog.dialogPane.buttonTypes.addAll(ButtonType.OK, ButtonType.CANCEL)
 
     val window = dialog.dialogPane.scene.window
     window.addEventHandler(WindowEvent.WINDOW_SHOWN) {
@@ -142,9 +151,18 @@ fun getUserSettings(): SettingsData? {
 
     dialog.setResultConverter {
         if (it == ButtonType.OK) {
-            SettingsData(userField.text, tbaField.text)
+            SettingsData(userField.text, dsField.text, tbaField.text)
         } else null
     }
 
-    return dialog.showAndWait().orElse(null)
+    val settings = dialog.showAndWait().orElse(null)
+
+    settings?.apply {
+        Contexts.apply {
+            metadata["user"] = user
+            metadata[Metadata.dataSource] = dataSource
+            metadata["tbaKey"] = tbaKey
+            root.save()
+        }
+    }
 }
