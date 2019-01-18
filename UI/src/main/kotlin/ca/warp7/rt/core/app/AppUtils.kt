@@ -3,22 +3,28 @@ package ca.warp7.rt.core.app
 import ca.warp7.rt.context.api.get
 import ca.warp7.rt.context.model.Contexts
 import ca.warp7.rt.context.model.Metadata
+import ca.warp7.rt.core.Restructured
 import ca.warp7.rt.ext.ast.ASTFeature
 import ca.warp7.rt.ext.predictor.PredictorFeature
 import ca.warp7.rt.ext.python.PythonFeature
 import ca.warp7.rt.ext.scanner.ScannerFeature
 import ca.warp7.rt.ext.views.ViewsFeature
 import javafx.application.Platform
+import javafx.fxml.FXMLLoader
 import javafx.geometry.Pos
+import javafx.scene.Scene
 import javafx.scene.control.ButtonType
 import javafx.scene.control.Dialog
 import javafx.scene.control.Label
 import javafx.scene.control.TextField
+import javafx.scene.image.Image
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import javafx.stage.Screen
+import javafx.stage.Stage
 import javafx.stage.WindowEvent
+import java.io.IOException
 
 @Suppress("unused")
 fun unused() {
@@ -171,4 +177,22 @@ fun getAndSaveUserSettings() {
             root.save()
         }
     }
+}
+
+fun showStage(resFile: String, windowTitle: String) {
+    val stage = Stage()
+    val loader = FXMLLoader()
+    loader.location = Restructured::class.java.getResource(resFile)
+    stage.title = windowTitle
+    stage.icons.add(Image(Restructured::class.java.getResourceAsStream("/ca/warp7/rt/res/app-icon.png")))
+    try {
+        stage.scene = Scene(loader.load())
+        val controller = loader.getController<Any>()
+        if (controller is FeatureStage) {
+            controller.setStage(stage)
+        }
+    } catch (e: IOException) {
+        e.printStackTrace()
+    }
+    stage.show()
 }

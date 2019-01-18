@@ -1,12 +1,8 @@
-package ca.warp7.rt.core.app
+package ca.warp7.rt.context.api
 
-import ca.warp7.rt.context.api.Context
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
-import javafx.scene.Scene
-import javafx.scene.image.Image
 import javafx.scene.layout.HBox
-import javafx.stage.Stage
 import java.io.IOException
 
 fun loadParent(resFile: String): Parent {
@@ -43,20 +39,3 @@ fun <T> loadParent(resFile: String, controllerCallback: (controller: T) -> Unit)
     }
 }
 
-fun showStage(resFile: String, windowTitle: String) {
-    val stage = Stage()
-    val loader = FXMLLoader()
-    loader.location = caller.getResource(resFile)
-    stage.title = windowTitle
-    stage.icons.add(Image(caller.getResourceAsStream("/ca/warp7/rt/res/app-icon.png")))
-    try {
-        stage.scene = Scene(loader.load())
-        val controller = loader.getController<Any>()
-        if (controller is FeatureStage) {
-            controller.setStage(stage)
-        }
-    } catch (e: IOException) {
-        e.printStackTrace()
-    }
-    stage.show()
-}

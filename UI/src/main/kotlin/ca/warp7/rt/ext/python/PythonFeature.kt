@@ -2,7 +2,7 @@ package ca.warp7.rt.ext.python
 
 import ca.warp7.rt.context.api.Feature
 import ca.warp7.rt.context.api.FeatureLink
-import ca.warp7.rt.core.app.loadParent
+import ca.warp7.rt.context.api.loadParent
 import ca.warp7.rt.core.app.setAppStatus
 import ca.warp7.rt.core.app.userInputString
 import javafx.scene.Parent

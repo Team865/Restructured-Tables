@@ -2,7 +2,7 @@ package ca.warp7.rt.ext.scanner
 
 import ca.warp7.rt.context.api.Feature
 import ca.warp7.rt.context.api.FeatureLink
-import ca.warp7.rt.core.app.loadParent
+import ca.warp7.rt.context.api.loadParent
 import javafx.scene.Parent
 
 class ScannerFeature : Feature {
