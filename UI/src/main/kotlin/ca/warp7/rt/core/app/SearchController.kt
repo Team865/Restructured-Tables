@@ -12,12 +12,21 @@ class SearchController {
     lateinit var searchField: TextField
     lateinit var scrollPane: ScrollPane
     lateinit var vBox: VBox
+    lateinit var searchResults: VBox
 
     fun initialize() {
         vBox.onScroll = EventHandler<ScrollEvent> { event ->
             val deltaY = event.deltaY * 6
             val width = scrollPane.content.boundsInLocal.width
             scrollPane.vvalue += -deltaY / width
+        }
+        val children = searchResults.children.toList()
+        searchField.textProperty().addListener { _, _, newValue ->
+            if (newValue.isNotEmpty()) {
+                searchResults.children.clear()
+            } else {
+                searchResults.children.addAll(children)
+            }
         }
     }
 

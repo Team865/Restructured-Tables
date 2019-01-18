@@ -48,7 +48,7 @@
 }
 
 .expand-button .ikonli-font-icon {
-    -fx-icon-color: transparent
+    -fx-icon-color: white
 }
 
 .expand-button:hover {
@@ -56,7 +56,7 @@
 }
 
 .expand-button:hover .ikonli-font-icon {
-    -fx-icon-color: #5a8ade
+    -fx-icon-color: #0f0
 }
 
 .red-button {
