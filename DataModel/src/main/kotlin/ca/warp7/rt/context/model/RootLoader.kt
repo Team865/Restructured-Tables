@@ -106,7 +106,7 @@ internal fun loadRootImpl(config: File,
                     .iterator()
                     .asSequence()
                     .toList()
-                    .filter { it.toString().endsWith(".jar") }
+                    .filter { it.toString().endsWith(".rt.jar") }
                     .map { it.toUri() }
                     .sorted().map { loadPlugin(it) }
                     .flatten()

@@ -145,6 +145,12 @@ fun getAndSaveUserSettings() {
         window.y = (screenBounds.height - window.height) / 2
     }
 
+    val okButton = dialog.dialogPane.lookupButton(ButtonType.OK)
+    okButton.isDisable = true
+    userField.textProperty().addListener { _, _, newValue ->
+        okButton.isDisable = newValue.isEmpty()
+    }
+
     Platform.runLater {
         userField.requestFocus()
     }
@@ -159,9 +165,9 @@ fun getAndSaveUserSettings() {
 
     settings?.apply {
         Contexts.apply {
-            metadata["user"] = user
+            metadata[Metadata.appUser] = user
             metadata[Metadata.dataSource] = dataSource
-            metadata["tbaKey"] = tbaKey
+            metadata[Metadata.tbaKey] = tbaKey
             root.save()
         }
     }

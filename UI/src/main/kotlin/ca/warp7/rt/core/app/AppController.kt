@@ -1,6 +1,7 @@
 package ca.warp7.rt.core.app
 
 import ca.warp7.rt.context.model.Contexts
+import ca.warp7.rt.context.model.Metadata
 import javafx.application.Platform
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.collections.FXCollections
@@ -36,23 +37,6 @@ class AppController : FeatureStage {
     private val searchPane = loadParent<SearchController>("/ca/warp7/rt/core/app/SearchPane.fxml")
     { searchController = it }
 
-    fun initialize() {
-        utilsController = this
-        Platform.runLater {
-            setupAppTabListView()
-            setupFocusedMode()
-            appFeatures.forEach { appTabs.add(FeatureWrapper(it)) }
-            statusBarContainer.isVisible = true
-            appTabListView.selectionModel.select(0)
-            handleFeatureLink(appTabs[0])
-            statusMessageLabel.text = "Finished loading app"
-            val totalHeight = (appTabs.size * 32).toDouble()
-            appTabListView.minHeight = totalHeight
-            appTabListView.maxHeight = totalHeight
-            toggleSearch()
-        }
-    }
-
     fun toggleFullScreen() {
         appStage.isFullScreen = !appStage.isFullScreen
     }
@@ -82,10 +66,31 @@ class AppController : FeatureStage {
                 event.consume()
             }
         }
+
         appStage = stage
         appStage.minWidth = 800.0
         appStage.minHeight = 450.0
         appStage.isMaximized = true
+
+        initialize0()
+    }
+
+    private fun initialize0() {
+        utilsController = this
+        if (Metadata.appUser !in Contexts.metadata) getAndSaveUserSettings()
+        Platform.runLater {
+            setupAppTabListView()
+            setupFocusedMode()
+            appFeatures.forEach { appTabs.add(FeatureWrapper(it)) }
+            statusBarContainer.isVisible = true
+            appTabListView.selectionModel.select(0)
+            handleFeatureLink(appTabs[0])
+            statusMessageLabel.text = "Finished loading app"
+            val totalHeight = (appTabs.size * 32).toDouble()
+            appTabListView.minHeight = totalHeight
+            appTabListView.maxHeight = totalHeight
+            toggleSearch()
+        }
     }
 
     fun toggleSearch() {
