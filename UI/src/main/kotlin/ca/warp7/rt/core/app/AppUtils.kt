@@ -157,6 +157,25 @@ fun showStage(resFile: String, windowTitle: String) {
 private fun createResultBody(result: SearchResult): VBox {
     val bodyContainer = VBox().apply { spacing = 10.0 }
 
+    result.status?.apply {
+        bodyContainer.children.add(HBox().apply {
+            spacing = 10.0
+            alignment = Pos.CENTER_LEFT
+            style = "-fx-padding: 0 0 0 20"
+
+            when (flavour) {
+                SearchFlavour.Red -> styleClass.add("red-status")
+                SearchFlavour.Green -> styleClass.add("green-status")
+                SearchFlavour.Yellow -> styleClass.add("yellow-status")
+                else -> Unit
+            }
+
+            children.add(FontIcon().apply { iconLiteral = "fas-history:16:0c0" })
+            children.add(Label(message))
+        })
+
+    }
+
     if (result.summary.isNotEmpty()) {
         val itemsContainer = VBox()
         itemsContainer.style = "-fx-padding: 0 0 0 20"

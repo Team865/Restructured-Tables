@@ -115,3 +115,27 @@
 .clicker-label-box:hover .label {
     -fx-text-fill: #ff0;
 }
+
+.red-status .label {
+    -fx-text-fill: #f00;
+}
+
+.red-status .ikonli-font-icon {
+    -fx-icon-color: #f00;
+}
+
+.green-status .label {
+    -fx-text-fill: #0c0;
+}
+
+.green-status .ikonli-font-icon {
+    -fx-icon-color: #0c0;
+}
+
+.yellow-status .label {
+    -fx-text-fill: #ff0;
+}
+
+.yellow-status .ikonli-font-icon {
+    -fx-icon-color: #ff0;
+}

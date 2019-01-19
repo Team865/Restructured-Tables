@@ -8,5 +8,3 @@ data class SearchResult(
         val actionButtons: List<SearchActionButton>,
         val status: SearchStatus? = null
 )
-
-data class SearchStatus(val message: String, val flavour: SearchFlavour)

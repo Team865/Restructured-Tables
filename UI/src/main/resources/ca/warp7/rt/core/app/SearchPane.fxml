@@ -24,7 +24,7 @@
                        fx:id="searchField"/>
             <Button styleClass="special-button">
                 <graphic>
-                    <FontIcon iconLiteral="fas-search:18:white"/>
+                    <FontIcon iconLiteral="fas-search:16:white"/>
                 </graphic>
             </Button>
         </HBox>
