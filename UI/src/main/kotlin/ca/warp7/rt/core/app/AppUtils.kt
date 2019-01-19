@@ -183,7 +183,8 @@ private fun createResultBody(result: SearchResult): VBox {
             itemsContainer.children.add(HBox().apply {
                 spacing = 10.0
                 children.addAll(Label("$k:").apply {
-                    alignment = Pos.CENTER_RIGHT
+                    alignment = Pos.CENTER_LEFT
+                    minWidth = 100.0
                 }, Label(v).apply {
                     styleClass.add("summary-bold")
                 })
@@ -194,6 +195,7 @@ private fun createResultBody(result: SearchResult): VBox {
 
     if (result.actionItems.isNotEmpty()) {
         val actionItems = VBox()
+        actionItems.spacing = 10.0
         result.actionItems.forEach {
             actionItems.children.add(HBox().apply {
                 styleClass.add("clicker-label-box")

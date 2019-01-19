@@ -22,7 +22,6 @@ class SearchController {
             val width = scrollPane.content.boundsInLocal.width
             scrollPane.vvalue += -deltaY / width
         }
-        val children = searchResults.children.toList()
         searchField.textProperty().addListener { _, _, newValue ->
             if (newValue.isNotEmpty()) {
                 searchResults.children.clear()
@@ -30,7 +29,10 @@ class SearchController {
                         createResultUI(SearchResult(
                                 title = "Team 865",
                                 header = "WARP7",
-                                summary = mapOf("Location" to "Toronto", "Event Rank" to "5"),
+                                summary = mapOf(
+                                        "Location" to "Toronto",
+                                        "Event Rank" to "5"
+                                ),
                                 actionItems = listOf(
                                         SearchActionItem("Open in The Blue Alliance") { HBox() }
                                 ),
@@ -46,55 +48,51 @@ class SearchController {
 
             } else {
                 searchResults.children.clear()
-                searchResults.children.addAll(createResultUI(
-                        SearchResult(
-                                title = "Team 865",
-                                header = "WARP7",
-                                summary = mapOf("Location" to "Toronto", "Event Rank" to "5"),
-                                actionItems = listOf(
-                                        SearchActionItem("Open in The Blue Alliance") { HBox() }
+                searchResults.children.addAll(
+                        createResultUI(SearchResult(
+                                title = "Active Context",
+                                header = "ONT District Humber College Event 2019",
+
+                                summary = mapOf(
+                                        "Year" to "2019",
+                                        "Event" to "onto3",
+                                        "Data Source" to "Team 865",
+                                        "App User" to "Yu Liu",
+                                        "Version" to "6"
                                 ),
-                                status = SearchStatus("hi", SearchFlavour.Green),
                                 actionButtons = listOf(
                                         SearchActionButton(
-                                                name = "data",
+                                                name = "Next Version",
                                                 provider = { null },
-                                                flavour = SearchFlavour.Green,
-                                                iconCode = "fas-table",
-                                                iconSize = 18)
+                                                flavour = SearchFlavour.Normal,
+                                                iconCode = "fas-plus",
+                                                iconSize = 16),
+                                        SearchActionButton(
+                                                name = "Revert",
+                                                provider = { null },
+                                                flavour = SearchFlavour.Normal,
+                                                iconCode = "fas-undo",
+                                                iconSize = 16),
+                                        SearchActionButton(
+                                                name = "Rename",
+                                                provider = { null },
+                                                flavour = SearchFlavour.Normal,
+                                                iconCode = "fas-font",
+                                                iconSize = 16),
+                                        SearchActionButton(
+                                                name = "Delete",
+                                                provider = { null },
+                                                flavour = SearchFlavour.Red,
+                                                iconCode = "fas-trash",
+                                                iconSize = 16)
                                 ))),
                         createResultUI(SearchResult(
-                                title = "Team 865",
-                                header = "WARP7",
-                                summary = mapOf("Location" to "Toronto", "Event Rank" to "5"),
+                                title = "Recent Contexts",
                                 actionItems = listOf(
-                                        SearchActionItem("Open in The Blue Alliance") { HBox() }
-                                ),
-                                status = SearchStatus("hi", SearchFlavour.Green),
-                                actionButtons = listOf(
-                                        SearchActionButton(
-                                                name = "data",
-                                                provider = { null },
-                                                flavour = SearchFlavour.Green,
-                                                iconCode = "fas-table",
-                                                iconSize = 18)
-                                ))),
-                        createResultUI(SearchResult(
-                                title = "Team 865",
-                                header = "WARP7",
-                                summary = mapOf("Location" to "Toronto", "Event Rank" to "5"),
-                                actionItems = listOf(
-                                        SearchActionItem("Open in The Blue Alliance") { HBox() }
-                                ),
-                                status = SearchStatus("hi", SearchFlavour.Green),
-                                actionButtons = listOf(
-                                        SearchActionButton(
-                                                name = "data",
-                                                provider = { null },
-                                                flavour = SearchFlavour.Green,
-                                                iconCode = "fas-table",
-                                                iconSize = 18)
-                                )))
+                                        SearchActionItem(name = "2019 Overall, v4") { null },
+                                        SearchActionItem(name = "ONT District Windsor Essex Great Lakes Event 2019, v1") { null }
+                                )
+                        ))
                 )
             }
         }
