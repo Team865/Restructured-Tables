@@ -222,14 +222,6 @@
                 </HBox>
             </VBox>
 
-            <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
-                <HBox alignment="BOTTOM_LEFT" spacing="10">
-                    <Label text="Data Preview" style="-fx-font-size: 18; -fx-font-weight: bold"/>
-                </HBox>
-                <BorderPane style="-fx-padding: 10 100 10 100">
-                </BorderPane>
-            </VBox>
-
         </VBox>
     </VBox>
 </ScrollPane>

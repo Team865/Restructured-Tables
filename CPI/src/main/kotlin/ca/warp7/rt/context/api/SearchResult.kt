@@ -4,8 +4,9 @@ data class SearchResult(
         val title: String,
         val header: String,
         val summary: Map<String, String>,
-        val status: String,
-        val statusFlavour: SearchFlavour,
         val actionItems: List<SearchActionItem>,
-        val actionButtons: List<SearchActionButton>
+        val actionButtons: List<SearchActionButton>,
+        val status: SearchStatus? = null
 )
+
+data class SearchStatus(val message: String, val flavour: SearchFlavour)

@@ -154,18 +154,18 @@ fun showStage(resFile: String, windowTitle: String) {
 
 fun createResultUI(result: SearchResult): Parent {
     val container = VBox().apply {
+        stylesheets.add("/ca/warp7/rt/res/search.css")
         styleClass.add("search-block")
         spacing = 10.0
         alignment = Pos.CENTER_LEFT
     }
 
     val titleContainer = VBox()
-    val titleHBox = HBox()
 
+    val titleHBox = HBox()
     val growingTitle = HBox().also { HBox.setHgrow(it, Priority.ALWAYS) }
 
-    val titleLabel = Label().apply {
-        text = result.title
+    val titleLabel = Label(result.title).apply {
         styleClass.add("block-title")
     }
 
@@ -182,9 +182,10 @@ fun createResultUI(result: SearchResult): Parent {
     titleContainer.children.add(titleHBox)
 
     if (result.header.isNotEmpty()) {
-        val header = Label()
-        header.text = result.header
-        header.styleClass.add("block-header")
+        val header = Label(result.header).apply {
+            styleClass.add("block-header-text")
+            style = "-fx-text-fill: #0ff;"
+        }
         titleContainer.children.add(header)
     }
 
@@ -203,6 +204,7 @@ fun createResultUI(result: SearchResult): Parent {
                 })
             })
         }
+        container.children.add(itemsContainer)
     }
 
     return container

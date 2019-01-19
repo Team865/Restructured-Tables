@@ -1,5 +1,6 @@
 package ca.warp7.rt.core.app
 
+import ca.warp7.rt.context.api.SearchResult
 import javafx.application.Platform
 import javafx.event.EventHandler
 import javafx.scene.control.ScrollPane
@@ -24,7 +25,12 @@ class SearchController {
         searchField.textProperty().addListener { _, _, newValue ->
             if (newValue.isNotEmpty()) {
                 searchResults.children.clear()
+                searchResults.children.add(createResultUI(SearchResult(title = "Team 865",
+                        header = "WARP7", summary = mapOf("Location" to "Toronto"),
+                        actionItems = listOf(), actionButtons = listOf())))
+
             } else {
+                searchResults.children.clear()
                 searchResults.children.addAll(children)
             }
         }

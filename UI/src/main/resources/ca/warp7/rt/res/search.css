@@ -15,8 +15,8 @@
     -fx-font-weight: bold
 }
 
-.block-header {
-    -fx-text-fill: #0ff
+.block-header-text {
+    -fx-text-fill: #0ff;
 }
 
 .summary-bold {
