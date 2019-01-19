@@ -16,7 +16,7 @@
         <URL value="@/ca/warp7/rt/res/search.css"/>
     </stylesheets>
 
-    <VBox minWidth="480" maxWidth="480" style="-fx-padding: 36 0 36 0" spacing="10" fx:id="vBox">
+    <VBox minWidth="480" maxWidth="480" style="-fx-padding: 30 0 30 0" spacing="10" fx:id="vBox">
         <HBox styleClass="search-block-special" alignment="CENTER_LEFT">
 
             <TextField styleClass="search-text-field" prefHeight="40" promptText="Search Data, Contexts, and Actions"

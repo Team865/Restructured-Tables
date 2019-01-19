@@ -1,5 +1,6 @@
 package ca.warp7.rt.core.app
 
+import ca.warp7.rt.context.api.SearchResult
 import ca.warp7.rt.context.api.get
 import ca.warp7.rt.context.model.Contexts
 import ca.warp7.rt.context.model.Metadata
@@ -12,18 +13,18 @@ import ca.warp7.rt.ext.views.ViewsFeature
 import javafx.application.Platform
 import javafx.fxml.FXMLLoader
 import javafx.geometry.Pos
+import javafx.scene.Parent
 import javafx.scene.Scene
-import javafx.scene.control.ButtonType
-import javafx.scene.control.Dialog
-import javafx.scene.control.Label
-import javafx.scene.control.TextField
+import javafx.scene.control.*
 import javafx.scene.image.Image
 import javafx.scene.layout.HBox
+import javafx.scene.layout.Priority
 import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import javafx.stage.Screen
 import javafx.stage.Stage
 import javafx.stage.WindowEvent
+import org.kordamp.ikonli.javafx.FontIcon
 import java.io.IOException
 
 @Suppress("unused")
@@ -149,4 +150,60 @@ fun showStage(resFile: String, windowTitle: String) {
         e.printStackTrace()
     }
     stage.show()
+}
+
+fun createResultUI(result: SearchResult): Parent {
+    val container = VBox().apply {
+        styleClass.add("search-block")
+        spacing = 10.0
+        alignment = Pos.CENTER_LEFT
+    }
+
+    val titleContainer = VBox()
+    val titleHBox = HBox()
+
+    val growingTitle = HBox().also { HBox.setHgrow(it, Priority.ALWAYS) }
+
+    val titleLabel = Label().apply {
+        text = result.title
+        styleClass.add("block-title")
+    }
+
+    growingTitle.children.add(titleLabel)
+
+    val expandButton = Button().apply {
+        styleClass.add("expand-button")
+        graphic = FontIcon().apply {
+            iconLiteral = "fas-external-link-alt:16:white"
+        }
+    }
+
+    titleHBox.children.addAll(growingTitle, expandButton)
+    titleContainer.children.add(titleHBox)
+
+    if (result.header.isNotEmpty()) {
+        val header = Label()
+        header.text = result.header
+        header.styleClass.add("block-header")
+        titleContainer.children.add(header)
+    }
+
+    container.children.add(titleContainer)
+
+    if (result.summary.isNotEmpty()) {
+        val itemsContainer = VBox()
+        result.summary.forEach { k, v ->
+            itemsContainer.children.add(HBox().apply {
+                spacing = 10.0
+                children.addAll(Label(k).apply {
+                    alignment = Pos.CENTER_RIGHT
+                    minWidth = 120.0
+                }, Label(v).apply {
+                    styleClass.add("summary-bold")
+                })
+            })
+        }
+    }
+
+    return container
 }
