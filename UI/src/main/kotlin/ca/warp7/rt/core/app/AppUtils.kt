@@ -24,6 +24,7 @@ import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import javafx.stage.Screen
 import javafx.stage.Stage
+import javafx.stage.StageStyle
 import javafx.stage.WindowEvent
 import org.kordamp.ikonli.javafx.FontIcon
 import java.io.IOException
@@ -153,45 +154,7 @@ fun showStage(resFile: String, windowTitle: String) {
     stage.show()
 }
 
-fun createResultUI(result: SearchResult): Parent {
-    val container = VBox().apply {
-        stylesheets.add("/ca/warp7/rt/res/search.css")
-        styleClass.add("search-block")
-        spacing = 10.0
-        alignment = Pos.CENTER_LEFT
-    }
-
-    val titleContainer = VBox()
-
-    val titleHBox = HBox()
-    val growingTitle = HBox().also { HBox.setHgrow(it, Priority.ALWAYS) }
-
-    val titleLabel = Label(result.title).apply {
-        styleClass.add("block-title")
-    }
-
-    growingTitle.children.add(titleLabel)
-
-    val expandButton = Button().apply {
-        styleClass.add("expand-button")
-        graphic = FontIcon().apply {
-            iconLiteral = "fas-external-link-alt:16:white"
-        }
-    }
-
-    titleHBox.children.addAll(growingTitle, expandButton)
-    titleContainer.children.add(titleHBox)
-
-    if (result.header.isNotEmpty()) {
-        val header = Label(result.header).apply {
-            styleClass.add("block-header-text")
-            style = "-fx-text-fill: #0ff;"
-        }
-        titleContainer.children.add(header)
-    }
-
-    container.children.add(titleContainer)
-
+private fun createResultBody(result: SearchResult): VBox {
     val bodyContainer = VBox().apply { spacing = 10.0 }
 
     if (result.summary.isNotEmpty()) {
@@ -240,7 +203,65 @@ fun createResultUI(result: SearchResult): Parent {
         bodyContainer.children.add(actionButtons)
     }
 
-    container.children.add(bodyContainer)
+    return bodyContainer
+}
+
+fun createResultUI(result: SearchResult): Parent {
+    val container = VBox().apply {
+        stylesheets.add("/ca/warp7/rt/res/search.css")
+        styleClass.add("search-block")
+        spacing = 10.0
+        alignment = Pos.CENTER_LEFT
+    }
+
+    val titleContainer = VBox()
+
+    val titleHBox = HBox()
+    val growingTitle = HBox().also { HBox.setHgrow(it, Priority.ALWAYS) }
+
+    val titleLabel = Label(result.title).apply {
+        styleClass.add("block-title")
+    }
+
+    growingTitle.children.add(titleLabel)
+
+    val expandButton = Button().apply {
+        styleClass.add("expand-button")
+        graphic = FontIcon().apply {
+            iconLiteral = "fas-external-link-alt:16:white"
+        }
+        setOnMouseClicked {
+            Stage().apply {
+                title = "${result.title} | ${result.header}"
+                initStyle(StageStyle.UTILITY)
+                initOwner(utilsController?.appStage)
+                val cont = createResultBody(result)
+                val wrapper = VBox()
+                wrapper.styleClass.add("search-block-det")
+                wrapper.children.add(cont)
+                wrapper.minWidth = 500.0
+                scene = Scene(wrapper)
+                opacity = 0.95
+                scene.fill = Color.TRANSPARENT
+                scene.stylesheets.add("/ca/warp7/rt/res/search.css")
+                sizeToScene()
+                show()
+            }
+        }
+    }
+
+    titleHBox.children.addAll(growingTitle, expandButton)
+    titleContainer.children.add(titleHBox)
+
+    if (result.header.isNotEmpty()) {
+        val header = Label(result.header).apply {
+            styleClass.add("block-header-text")
+            style = "-fx-text-fill: #0ff;"
+        }
+        titleContainer.children.add(header)
+    }
+
+    container.children.addAll(titleContainer, createResultBody(result))
 
     return container
 }

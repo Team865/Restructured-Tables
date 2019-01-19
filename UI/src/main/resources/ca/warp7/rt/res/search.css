@@ -1,5 +1,14 @@
+.root {
+    -fx-background-color: transparent;
+}
+
 .search-block {
     -fx-background-radius: 5;
+    -fx-background-color: #404040ee;
+    -fx-padding: 10
+}
+
+.search-block-det {
     -fx-background-color: #404040ee;
     -fx-padding: 10
 }
