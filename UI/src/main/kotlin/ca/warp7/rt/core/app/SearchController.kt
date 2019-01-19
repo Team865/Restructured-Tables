@@ -26,15 +26,76 @@ class SearchController {
         searchField.textProperty().addListener { _, _, newValue ->
             if (newValue.isNotEmpty()) {
                 searchResults.children.clear()
-                searchResults.children.add(createResultUI(SearchResult(title = "Team 865",
-                        header = "WARP7", summary = mapOf("Location" to "Toronto", "Event Rank" to "5"),
-                        actionItems = listOf(SearchActionItem("Open in The Blue Alliance") { HBox() }),
-                        status = SearchStatus("hi", SearchFlavour.Green),
-                        actionButtons = listOf(SearchActionButton("data", { null }, SearchFlavour.Green, "fas-table", 18)))))
+                searchResults.children.add(
+                        createResultUI(SearchResult(
+                                title = "Team 865",
+                                header = "WARP7",
+                                summary = mapOf("Location" to "Toronto", "Event Rank" to "5"),
+                                actionItems = listOf(
+                                        SearchActionItem("Open in The Blue Alliance") { HBox() }
+                                ),
+                                status = SearchStatus("hi", SearchFlavour.Green),
+                                actionButtons = listOf(
+                                        SearchActionButton(
+                                                name = "data",
+                                                provider = { null },
+                                                flavour = SearchFlavour.Green,
+                                                iconCode = "fas-table",
+                                                iconSize = 18)
+                                ))))
 
             } else {
                 searchResults.children.clear()
-                searchResults.children.addAll(children)
+                searchResults.children.addAll(createResultUI(
+                        SearchResult(
+                                title = "Team 865",
+                                header = "WARP7",
+                                summary = mapOf("Location" to "Toronto", "Event Rank" to "5"),
+                                actionItems = listOf(
+                                        SearchActionItem("Open in The Blue Alliance") { HBox() }
+                                ),
+                                status = SearchStatus("hi", SearchFlavour.Green),
+                                actionButtons = listOf(
+                                        SearchActionButton(
+                                                name = "data",
+                                                provider = { null },
+                                                flavour = SearchFlavour.Green,
+                                                iconCode = "fas-table",
+                                                iconSize = 18)
+                                ))),
+                        createResultUI(SearchResult(
+                                title = "Team 865",
+                                header = "WARP7",
+                                summary = mapOf("Location" to "Toronto", "Event Rank" to "5"),
+                                actionItems = listOf(
+                                        SearchActionItem("Open in The Blue Alliance") { HBox() }
+                                ),
+                                status = SearchStatus("hi", SearchFlavour.Green),
+                                actionButtons = listOf(
+                                        SearchActionButton(
+                                                name = "data",
+                                                provider = { null },
+                                                flavour = SearchFlavour.Green,
+                                                iconCode = "fas-table",
+                                                iconSize = 18)
+                                ))),
+                        createResultUI(SearchResult(
+                                title = "Team 865",
+                                header = "WARP7",
+                                summary = mapOf("Location" to "Toronto", "Event Rank" to "5"),
+                                actionItems = listOf(
+                                        SearchActionItem("Open in The Blue Alliance") { HBox() }
+                                ),
+                                status = SearchStatus("hi", SearchFlavour.Green),
+                                actionButtons = listOf(
+                                        SearchActionButton(
+                                                name = "data",
+                                                provider = { null },
+                                                flavour = SearchFlavour.Green,
+                                                iconCode = "fas-table",
+                                                iconSize = 18)
+                                )))
+                )
             }
         }
     }
