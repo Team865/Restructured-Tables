@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import org.kordamp.ikonli.javafx.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import java.net.URL?>
 <ScrollPane xmlns:fx="http://javafx.com/fxml" minWidth="500"
             maxWidth="500"
@@ -30,7 +33,8 @@
         </HBox>
 
         <VBox spacing="10" fx:id="searchResults">
-            <VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
+
+            <!--<VBox styleClass="search-block" spacing="10" alignment="CENTER_LEFT">
                 <VBox>
                     <HBox spacing="10">
                         <HBox HBox.hgrow="ALWAYS">
@@ -220,7 +224,7 @@
                         </graphic>
                     </Button>
                 </HBox>
-            </VBox>
+            </VBox>-->
 
         </VBox>
     </VBox>
