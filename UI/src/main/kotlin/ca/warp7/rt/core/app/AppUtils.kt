@@ -1,5 +1,6 @@
 package ca.warp7.rt.core.app
 
+import ca.warp7.rt.context.api.SearchFlavour
 import ca.warp7.rt.context.api.SearchResult
 import ca.warp7.rt.context.api.get
 import ca.warp7.rt.context.model.Contexts
@@ -191,21 +192,55 @@ fun createResultUI(result: SearchResult): Parent {
 
     container.children.add(titleContainer)
 
+    val bodyContainer = VBox().apply { spacing = 10.0 }
+
     if (result.summary.isNotEmpty()) {
         val itemsContainer = VBox()
+        itemsContainer.style = "-fx-padding: 0 0 0 20"
         result.summary.forEach { k, v ->
             itemsContainer.children.add(HBox().apply {
                 spacing = 10.0
-                children.addAll(Label(k).apply {
+                children.addAll(Label("$k:").apply {
                     alignment = Pos.CENTER_RIGHT
-                    minWidth = 120.0
                 }, Label(v).apply {
                     styleClass.add("summary-bold")
                 })
             })
         }
-        container.children.add(itemsContainer)
+        bodyContainer.children.add(itemsContainer)
     }
+
+    if (result.actionItems.isNotEmpty()) {
+        val actionItems = VBox()
+        result.actionItems.forEach {
+            actionItems.children.add(HBox().apply {
+                styleClass.add("clicker-label-box")
+                children.add(Label(it.name))
+            })
+        }
+        bodyContainer.children.add(actionItems)
+    }
+
+    if (result.actionButtons.isNotEmpty()) {
+        val actionButtons = HBox().apply {
+            alignment = Pos.CENTER_RIGHT
+            spacing = 10.0
+        }
+        result.actionButtons.forEach {
+            actionButtons.children.add(Button().apply {
+                text = it.name
+                graphic = FontIcon().apply { iconLiteral = "${it.iconCode}:${it.iconSize}:white" }
+                when (it.flavour) {
+                    SearchFlavour.Red -> styleClass.add("red-button")
+                    SearchFlavour.Green -> styleClass.add("green-button")
+                    else -> Unit
+                }
+            })
+        }
+        bodyContainer.children.add(actionButtons)
+    }
+
+    container.children.add(bodyContainer)
 
     return container
 }

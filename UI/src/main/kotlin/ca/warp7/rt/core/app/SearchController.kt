@@ -1,11 +1,15 @@
 package ca.warp7.rt.core.app
 
+import ca.warp7.rt.context.api.SearchActionButton
+import ca.warp7.rt.context.api.SearchActionItem
+import ca.warp7.rt.context.api.SearchFlavour
 import ca.warp7.rt.context.api.SearchResult
 import javafx.application.Platform
 import javafx.event.EventHandler
 import javafx.scene.control.ScrollPane
 import javafx.scene.control.TextField
 import javafx.scene.input.ScrollEvent
+import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 
 
@@ -26,8 +30,9 @@ class SearchController {
             if (newValue.isNotEmpty()) {
                 searchResults.children.clear()
                 searchResults.children.add(createResultUI(SearchResult(title = "Team 865",
-                        header = "WARP7", summary = mapOf("Location" to "Toronto"),
-                        actionItems = listOf(), actionButtons = listOf())))
+                        header = "WARP7", summary = mapOf("Location" to "Toronto", "Event Rank" to "5"),
+                        actionItems = listOf(SearchActionItem("Open in The Blue Alliance") { HBox() }),
+                        actionButtons = listOf(SearchActionButton("data", { null }, SearchFlavour.Green, "fas-table", 18)))))
 
             } else {
                 searchResults.children.clear()
