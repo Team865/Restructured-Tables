@@ -253,7 +253,8 @@ fun createResultUI(result: SearchResult): Parent {
         }
         setOnMouseClicked {
             Stage().apply {
-                title = "${result.title} | ${result.header}"
+                title = result.title
+                if (result.header.isNotEmpty()) title += " | ${result.header}"
                 initStyle(StageStyle.UTILITY)
                 initOwner(utilsController?.appStage)
                 val cont = createResultBody(result)
