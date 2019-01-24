@@ -1,27 +1,38 @@
 package ca.warp7.rt.ext.predictor
 
+import org.ejml.equation.Variable
 import java.util.*
 
-open class Team(open val teamNumber: Int, open var data: Map<String, Any>) {
-    open val datapoints: List<String> = listOf()
+abstract class Team(open val teamNumber: Int, open var data: Map<String, Any>) {
+    abstract val datapoints: List<String>
 
     init {
         data = data.filterKeys { it in datapoints }
     }
 
+    fun sample(key: String): Double {
+        val value = data[key]
+        return when (value) {
+            is Datapoint -> value.sample()
+            is Number -> value.toDouble()
+            else -> throw Throwable("Unknown or unsupported type")
+        }
+    }
+
+    fun average(key: String): Double {
+        val value = data[key]
+        return when (value) {
+            is Datapoint -> value.average()
+            is Number -> value.toDouble()
+            else -> throw Throwable("Unknown or unsupported type")
+        }
+    }
+
     fun sampleAll(): Map<String, Double> {
         var results: MutableMap<String, Double> = mutableMapOf()
         data.forEach { key, value ->
-            when (value) {
-                is Probability -> results[key] = value.sample()
-                is Probabilities -> results[key] = value.sample()
-                is GaussianAverage -> results[key] = value.sample()
-                is GaussianCycle -> results[key] = value.sample()
-                is Number -> results[key] = value.toDouble()
-                else -> throw Throwable("Unknown type")
-            }
+            results[key] = sample(key)
         }
-
         return results
     }
 }
@@ -29,8 +40,8 @@ open class Team(open val teamNumber: Int, open var data: Map<String, Any>) {
 class Team2018(override val teamNumber: Int, override var data: Map<String, Any>) : Team(teamNumber, data) {
     override val datapoints = listOf(
             "autoLine", //Probability
-            "autoScale", //Probabilities
-            "autoSwitch", //Probabilities
+            "autoScale", //Discrete
+            "autoSwitch", //Discrete
 
             "scale", //Gaussian
             "nearSwitch", //Gaussian
@@ -43,28 +54,27 @@ class Team2018(override val teamNumber: Int, override var data: Map<String, Any>
 
 class Team2019(override val teamNumber: Int, override var data: Map<String, Any>) : Team(teamNumber, data) {
     override val datapoints = listOf(
-            "Auto points", //Probabilities
+            "Auto points", //Discrete
 
-            "Hatches L1", //Gaussian
-            "Hatches L2", //Gaussian
-            "Hatches L3", //Gaussian
+            "Panel L1", //Gaussian
+            "Panel L2", //Gaussian
+            "Panel L3", //Gaussian
 
             "Cargo L1", //Gaussian
             "Cargo L2", //Gaussian
             "Cargo L3", //Gaussian
 
-            "Climb points" //Probabilities
+            "Climb points" //Discrete
     )
 }
 
-class Probability(var p: Double) {
-    fun sample(): Double {
-        return if (p < Random().nextDouble()) 1.0 else 0.0
-    }
+abstract class Datapoint() {
+    abstract fun sample(): Double
+    abstract fun average(): Double
 }
 
-class Probabilities(var p: Map<Double, Double>) {
-    fun sample(): Double {
+class DiscreteProbabilities(var p: Map<Double, Double>) : Datapoint() {
+    override fun sample(): Double {
         val r = Random().nextDouble()
         var s: Double = 0.0
         p.forEach {
@@ -75,10 +85,15 @@ class Probabilities(var p: Map<Double, Double>) {
         }
         return 0.0
     }
+
+    override fun average(): Double {
+        return p.maxBy { it.value }!!.key
+    }
 }
 
-class GaussianAverage(var mu: Double, var sigma: Double) {
-    fun sample(): Double {
+class GaussianAverage(var mu: Double,
+                      var sigma: Double) : Datapoint() {
+    override fun sample(): Double {
         val k = (Random().nextGaussian() * sigma + mu)
 
         return when (k < 0) {
@@ -86,19 +101,24 @@ class GaussianAverage(var mu: Double, var sigma: Double) {
             false -> k
         }
     }
+
+    override fun average(): Double {
+        return mu
+    }
 }
 
 class GaussianCycle(var mu: Double,
-                    var sigma: Double,
-                    var time: Double,
-                    var focus: Double,
-                    var chance: Double) {
-    fun sample(): Double {
+                    var sigma: Double) : Datapoint() {
+    override fun sample(): Double {
         val k = (Random().nextGaussian() * sigma + mu) //cycle speed this sample
 
         return when (k < 0) {
             true -> sample()
-            false -> chance * focus * time / k
+            false -> 135 / k
         }
+    }
+
+    override fun average(): Double {
+        return mu
     }
 }
