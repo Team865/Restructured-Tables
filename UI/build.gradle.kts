@@ -7,7 +7,7 @@ plugins {
     id("application")
     id("com.github.johnrengelman.shadow")
     id("edu.sc.seis.launch4j")
-    kotlin(module = "jvm") version "1.3.11"
+    kotlin(module = "jvm") version "1.3.20"
 }
 
 repositories {
@@ -19,7 +19,7 @@ repositories {
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions.jvmTarget = "1.8"
 
-val kotlinVersion = "1.3.11"
+val kotlinVersion = "1.3.20"
 
 dependencies {
     implementation(dependencyNotation = project(":CodeEditor"))

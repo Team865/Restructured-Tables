@@ -31,7 +31,7 @@ class SearchController {
                     ),
                     actionButtons = listOf(
                             SearchActionButton(
-                                    name = "Next Version",
+                                    name = "Update Version",
                                     provider = { null },
                                     flavour = SearchFlavour.Normal,
                                     iconCode = "fas-plus",
