@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":ContextAPI" external.linked.project.path="$MODULE_DIR$/../../../CPI" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="RT" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../CPI">
+      <excludeFolder url="file://$MODULE_DIR$/../../../CPI/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../CPI/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../CPI/out" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../ContextAPI/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../ContextAPI/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
