@@ -8,7 +8,6 @@ import ca.warp7.rt.context.model.Metadata
 import ca.warp7.rt.core.Restructured
 import ca.warp7.rt.ext.ast.ASTFeature
 import ca.warp7.rt.ext.predictor.PredictorFeature
-import ca.warp7.rt.ext.python.PythonFeature
 import ca.warp7.rt.ext.scanner.ScannerFeature
 import ca.warp7.rt.ext.views.ViewsFeature
 import javafx.application.Platform
@@ -28,11 +27,6 @@ import javafx.stage.StageStyle
 import javafx.stage.WindowEvent
 import org.kordamp.ikonli.javafx.FontIcon
 import java.io.IOException
-
-@Suppress("unused")
-fun unused() {
-    PythonFeature()
-}
 
 internal val appFeatures = listOf(
         ViewsFeature(),

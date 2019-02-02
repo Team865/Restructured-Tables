@@ -22,7 +22,6 @@ compileKotlin.kotlinOptions.jvmTarget = "1.8"
 val kotlinVersion = "1.3.20"
 
 dependencies {
-    implementation(dependencyNotation = project(":CodeEditor"))
     implementation(dependencyNotation = project(":ContextAPI"))
     implementation(dependencyNotation = project(":DataModel"))
 
