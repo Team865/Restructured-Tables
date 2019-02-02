@@ -1,8 +1,8 @@
 package ca.warp7.rt.core.app
 
 import ca.warp7.rt.context.api.loadParent
-import ca.warp7.rt.context.model.Contexts
-import ca.warp7.rt.context.model.Metadata
+import ca.warp7.rt.core.model.Contexts
+import ca.warp7.rt.core.model.Metadata
 import javafx.application.Platform
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.collections.FXCollections

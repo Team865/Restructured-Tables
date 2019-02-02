@@ -1,4 +1,4 @@
-package ca.warp7.rt.context.model
+package ca.warp7.rt.core.model
 
 import ca.warp7.rt.context.api.ContextRoot
 
@@ -12,7 +12,10 @@ object Contexts {
     /**
      * Get the default context root
      */
-    val root get() = root1 ?: loadRoot(args ?: arrayOf()).also { root1 = it }
+    val root
+        get() = root1
+                ?: loadRoot(args
+                        ?: arrayOf()).also { root1 = it }
 
     /**
      * Holds the metadata of the root context

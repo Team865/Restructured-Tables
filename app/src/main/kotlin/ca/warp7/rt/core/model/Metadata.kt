@@ -1,4 +1,4 @@
-package ca.warp7.rt.context.model
+package ca.warp7.rt.core.model
 
 object Metadata {
     const val lastSaved = "lastSaved"

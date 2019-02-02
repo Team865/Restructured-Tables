@@ -23,7 +23,6 @@ val kotlinVersion = "1.3.20"
 
 dependencies {
     implementation(dependencyNotation = project(":ContextAPI"))
-    implementation(dependencyNotation = project(":DataModel"))
 
     // Java libraries
     implementation(group = "commons-io", name = "commons-io", version = "2.6")

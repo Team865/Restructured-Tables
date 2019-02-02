@@ -3,9 +3,9 @@ package ca.warp7.rt.core.app
 import ca.warp7.rt.context.api.SearchFlavour
 import ca.warp7.rt.context.api.SearchResult
 import ca.warp7.rt.context.api.get
-import ca.warp7.rt.context.model.Contexts
-import ca.warp7.rt.context.model.Metadata
 import ca.warp7.rt.core.Restructured
+import ca.warp7.rt.core.model.Contexts
+import ca.warp7.rt.core.model.Metadata
 import ca.warp7.rt.ext.ast.ASTFeature
 import ca.warp7.rt.ext.predictor.PredictorFeature
 import ca.warp7.rt.ext.scanner.ScannerFeature

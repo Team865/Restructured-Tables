@@ -5,9 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/RT.iml" filepath="$PROJECT_DIR$/.idea/modules/RT.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/api/RT.ContextAPI.main.iml" filepath="$PROJECT_DIR$/.idea/modules/api/RT.ContextAPI.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/api/RT.ContextAPI.test.iml" filepath="$PROJECT_DIR$/.idea/modules/api/RT.ContextAPI.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DataModel/RT.DataModel.iml" filepath="$PROJECT_DIR$/.idea/modules/DataModel/RT.DataModel.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DataModel/RT.DataModel.main.iml" filepath="$PROJECT_DIR$/.idea/modules/DataModel/RT.DataModel.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DataModel/RT.DataModel.test.iml" filepath="$PROJECT_DIR$/.idea/modules/DataModel/RT.DataModel.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/RT.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/RT.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/RT.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/RT.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/RT.app.test.iml" filepath="$PROJECT_DIR$/.idea/modules/app/RT.app.test.iml" />

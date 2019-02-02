@@ -1,4 +1,4 @@
-package ca.warp7.rt.context.model
+package ca.warp7.rt.core.model
 
 import ca.warp7.rt.context.api.ContextAdapter
 import ca.warp7.rt.context.api.ContextMonitor
