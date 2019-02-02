@@ -1,14 +1,16 @@
 package ca.warp7.rt.core.app
 
-import ca.warp7.rt.core.env.UserConfig
-import ca.warp7.rt.core.env.UserEnv
-import ca.warp7.rt.core.feature.Feature
-import ca.warp7.rt.core.feature.FeatureStage
+import ca.warp7.rt.context.api.loadParent
+import ca.warp7.rt.context.model.Contexts
+import ca.warp7.rt.context.model.Metadata
 import javafx.application.Platform
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.collections.FXCollections
+import javafx.scene.Node
 import javafx.scene.control.*
+import javafx.scene.control.ButtonType
 import javafx.scene.input.KeyCode
+import javafx.scene.input.KeyCodeCombination
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
 import javafx.stage.Stage
@@ -17,38 +19,24 @@ import org.kordamp.ikonli.javafx.FontIcon
 
 class AppController : FeatureStage {
 
-    lateinit var tabContent: BorderPane
-    lateinit var tabsAndContentContainer: HBox
-    lateinit var appTabListView: ListView<Feature>
-    lateinit var listViewContainer: SplitPane
+    lateinit var appWindowBoarderPane: BorderPane
+    lateinit var tabContentBorderPane: BorderPane
+    lateinit var tabContentLayover: BorderPane
+    lateinit var customSidebarBorderPane: BorderPane
+    lateinit var appTabListView: ListView<FeatureWrapper>
+    lateinit var listViewSplitPane: Node
     lateinit var statusMessageLabel: Label
     lateinit var focusIcon: FontIcon
-    lateinit var userName: Label
-    lateinit var deviceName: Label
     lateinit var statusBarContainer: HBox
     lateinit var appStage: Stage
-    private val appTabs = FXCollections.observableArrayList<Feature>()
-    private val focusedMode = SimpleBooleanProperty()
-    private var current: Feature? = null
 
-    fun initialize() {
-        utilsController = this
-        Platform.runLater {
-            setupAppTabListView()
-            setupFocusedMode()
-            appTabs.addAll(appFeatures)
-            statusBarContainer.isVisible = true
-            tabsAndContentContainer.isVisible = true
-            Platform.runLater {
-                userName.text = UserEnv[UserConfig.appUserName, "Unknown user_"]
-                deviceName.text = UserEnv[UserConfig.appUserDevice, "Unknown device"]
-                statusMessageLabel.text = "Finished loading app"
-                val totalHeight = (appTabs.size * 28).toDouble()
-                appTabListView.minHeight = totalHeight
-                appTabListView.setMaxHeight(totalHeight)
-            }
-        }
-    }
+    private lateinit var searchController: SearchController
+    private val appTabs = FXCollections.observableArrayList<FeatureWrapper>()
+    private val focusedMode = SimpleBooleanProperty()
+    private var current: FeatureWrapper? = null
+    private var searchPaneShown = false
+    private val searchPane = loadParent<SearchController>("/ca/warp7/rt/core/app/SearchPane.fxml")
+    { searchController = it }
 
     fun toggleFullScreen() {
         appStage.isFullScreen = !appStage.isFullScreen
@@ -58,30 +46,61 @@ class AppController : FeatureStage {
         focusedMode.value = !focusedMode.get()
     }
 
-    fun setUserName() {
-        userName.text = getUserExplicitName()
-    }
-
-    fun setUserDevice() {
-        deviceName.text = getUserExplicitDevice()
+    fun showSettings() {
+        getAndSaveUserSettings()
     }
 
     override fun setStage(stage: Stage) {
-        stage.scene.setOnKeyPressed { event ->
-            if (event.code == KeyCode.F11)
-                stage.isFullScreen = true
-            else if (event.code == KeyCode.F9) toggleFocused()
+        stage.scene.apply {
+            setOnKeyPressed {
+                when {
+                    it.code == KeyCode.F11 -> stage.isFullScreen = true
+                    it.code == KeyCode.F9 -> toggleFocused()
+                }
+            }
         }
+
+        stage.scene.accelerators[KeyCodeCombination(KeyCode.BACK_QUOTE, KeyCodeCombination.SHORTCUT_DOWN)] =
+                Runnable { toggleSearch() }
         stage.setOnCloseRequest { event ->
-            UserEnv.save()
             if (current != null && !current!!.onClose()) {
                 event.consume()
             }
         }
+
         appStage = stage
         appStage.minWidth = 800.0
         appStage.minHeight = 450.0
         appStage.isMaximized = true
+
+        initialize0()
+    }
+
+    private fun initialize0() {
+        utilsController = this
+        if (Metadata.appUser !in Contexts.metadata) getAndSaveUserSettings()
+        Platform.runLater {
+            setupAppTabListView()
+            setupFocusedMode()
+            appFeatures.forEach { appTabs.add(FeatureWrapper(it)) }
+            statusBarContainer.isVisible = true
+            appTabListView.selectionModel.select(0)
+            handleFeatureLink(appTabs[0])
+            statusMessageLabel.text = "Finished loading app"
+            val totalHeight = (appTabs.size * 32).toDouble()
+            appTabListView.minHeight = totalHeight
+            appTabListView.maxHeight = totalHeight
+            toggleSearch()
+        }
+    }
+
+    fun toggleSearch() {
+        searchPaneShown = !searchPaneShown
+        tabContentLayover.right = if (searchPaneShown) searchPane else null
+        if (searchPaneShown) {
+            searchPane.requestFocus()
+            searchController.focus()
+        }
     }
 
     fun showStatus() {
@@ -102,21 +121,41 @@ class AppController : FeatureStage {
         if (current!!.onClose()) {
             current = null
             appStage.title = "Restructured Tables "
-            tabContent.center = null
+            tabContentBorderPane.center = null
+            customSidebarBorderPane.center = null
         }
+    }
+
+    fun doGarbageCollection() {
+        Thread {
+            val before = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())
+            System.gc()
+            Platform.runLater {
+                val now = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())
+                val mem = String.format("Memory: %.3f MB", now / 1000000.0)
+                val freedMemory = String.format("Freed: %.3f MB", (before - now) / 1000000.0)
+                val msg = "Garbage Collection Done\n\n$mem\n$freedMemory"
+                val dialog = Dialog<String>()
+                dialog.title = "App Status"
+                dialog.initOwner(appStage)
+                dialog.contentText = msg
+                dialog.dialogPane.buttonTypes.addAll(ButtonType.OK)
+                dialog.showAndWait()
+            }
+        }.start()
     }
 
     private fun setupAppTabListView() {
         appTabListView.setCellFactory {
-            object : ListCell<Feature>() {
-                override fun updateItem(item: Feature?, empty: Boolean) {
+            object : ListCell<FeatureWrapper>() {
+                override fun updateItem(item: FeatureWrapper?, empty: Boolean) {
                     super.updateItem(item, empty)
                     if (empty || item == null) {
                         graphic = null
                         return
                     }
-                    graphic = tabUIFromLink(item.link)
-                    prefHeight = 28.0
+                    graphic = tabUIFromLink(item)
+                    prefHeight = 32.0
                     setOnMouseClicked { handleFeatureLink(item) }
                 }
             }
@@ -129,25 +168,27 @@ class AppController : FeatureStage {
         appTabListView.items = appTabs
     }
 
-    private fun handleFeatureLink(ft: Feature) {
+    private fun handleFeatureLink(ft: FeatureWrapper) {
         if (ft === current) return
         if (current == null || current!!.onClose()) {
-            tabContent.center = null
+            tabContentBorderPane.center = null
+            customSidebarBorderPane.center = null
             current = ft
             val parent = current!!.onOpen()
             val title = ft.link.title
-            appStage.title = title
-            tabContent.center = parent.second
+            appStage.title = title + " | " + Contexts.version
+            customSidebarBorderPane.center = parent.first
+            tabContentBorderPane.center = parent.second
         }
     }
 
     private fun setupFocusedMode() {
         focusedMode.addListener { _, _, focused ->
             if (focused!!) {
-                tabsAndContentContainer.children.removeAt(0)
+                appWindowBoarderPane.left = null
                 focusIcon.iconCode = FontAwesomeSolid.EYE
             } else {
-                tabsAndContentContainer.children.add(0, listViewContainer)
+                appWindowBoarderPane.left = listViewSplitPane
                 focusIcon.iconCode = FontAwesomeSolid.EYE_SLASH
             }
             if (current != null) current!!.setFocused(focused)

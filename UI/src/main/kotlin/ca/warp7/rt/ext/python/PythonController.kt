@@ -54,10 +54,6 @@ class PythonController {
         })
     }
 
-    fun newScript() {
-        feature.newScript()
-    }
-
     fun setFocused(focused: Boolean) {
         if (focused) container.children.remove(toolbar)
         else container.children.add(0, toolbar)

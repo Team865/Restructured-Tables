@@ -7,7 +7,7 @@ plugins {
     id("application")
     id("com.github.johnrengelman.shadow")
     id("edu.sc.seis.launch4j")
-    kotlin(module = "jvm") version "1.3.11"
+    kotlin(module = "jvm") version "1.3.20"
 }
 
 repositories {
@@ -19,12 +19,12 @@ repositories {
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions.jvmTarget = "1.8"
 
-val kotlinVersion = "1.3.11"
+val kotlinVersion = "1.3.20"
 
 dependencies {
     implementation(dependencyNotation = project(":CodeEditor"))
     implementation(dependencyNotation = project(":ContextAPI"))
-    implementation(dependencyNotation = project(":ContextModel"))
+    implementation(dependencyNotation = project(":DataModel"))
 
     // Java libraries
     implementation(group = "commons-io", name = "commons-io", version = "2.6")
@@ -52,5 +52,4 @@ launch4j {
     mainClassName = mainClassName0
     icon = "$projectDir/src/main/resources/ca/warp7/rt/res/app-icon.ico"
     jar = "$buildDir/libs/UI-all.jar"
-    outfile = "Restructured.exe"
 }

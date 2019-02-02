@@ -1,0 +1,141 @@
+.root {
+    -fx-background-color: transparent;
+}
+
+.search-block {
+    -fx-background-radius: 5;
+    -fx-background-color: #404040ee;
+    -fx-padding: 10
+}
+
+.search-block-det {
+    -fx-background-color: #404040ee;
+    -fx-padding: 10
+}
+
+.search-block-special {
+    -fx-background-radius: 5;
+    -fx-background-color: #404040ee;
+    -fx-padding: 0 5 0 10
+}
+
+.block-title {
+    -fx-font-size: 18;
+    -fx-font-weight: bold
+}
+
+.block-header-text {
+    -fx-text-fill: #0ff;
+}
+
+.summary-bold {
+    -fx-font-weight: bold;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.search-text-field {
+    -fx-padding: 0;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+    -fx-font-size: 18;
+    -fx-prompt-text-fill: #aaa;
+    -fx-text-fill: white;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.button {
+    -fx-background-color: #3c5c94;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #5a8ade;
+}
+
+.special-button {
+    -fx-background-color: transparent;
+}
+
+.special-button:hover {
+    -fx-background-color: #5a8ade;
+}
+
+.expand-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.expand-button .ikonli-font-icon {
+    -fx-icon-color: white
+}
+
+.expand-button:hover {
+    -fx-background-color: transparent;
+}
+
+.expand-button:hover .ikonli-font-icon {
+    -fx-icon-color: #0f0
+}
+
+.red-button {
+    -fx-background-color: #c00;
+    -fx-text-fill: white;
+}
+
+.red-button:hover {
+    -fx-background-color: #f11;
+}
+
+
+.green-button {
+    -fx-background-color: #080;
+    -fx-text-fill: white;
+}
+
+.green-button:hover {
+    -fx-background-color: #0a0;
+}
+
+
+.clicker-label-box {
+    -fx-background-color: transparent;
+    -fx-background-radius: 5;
+    -fx-padding: 0 0 0 20
+}
+
+.clicker-label-box .label {
+    -fx-text-fill: #fb0;
+    -fx-underline: true;
+}
+
+.clicker-label-box:hover .label {
+    -fx-text-fill: #ff0;
+}
+
+.red-status .label {
+    -fx-text-fill: #f00;
+}
+
+.red-status .ikonli-font-icon {
+    -fx-icon-color: #f00;
+}
+
+.green-status .label {
+    -fx-text-fill: #0c0;
+}
+
+.green-status .ikonli-font-icon {
+    -fx-icon-color: #0c0;
+}
+
+.yellow-status .label {
+    -fx-text-fill: #ff0;
+}
+
+.yellow-status .ikonli-font-icon {
+    -fx-icon-color: #ff0;
+}

@@ -1,10 +1,9 @@
 package ca.warp7.rt.ext.python
 
+import ca.warp7.rt.context.api.Feature
+import ca.warp7.rt.context.api.FeatureLink
+import ca.warp7.rt.context.api.loadParent
 import ca.warp7.rt.core.app.setAppStatus
-import ca.warp7.rt.core.app.userInputString
-import ca.warp7.rt.core.feature.Feature
-import ca.warp7.rt.core.feature.FeatureLink
-import ca.warp7.rt.core.feature.loadParent
 import javafx.scene.Parent
 
 class PythonFeature : Feature {
@@ -17,12 +16,6 @@ class PythonFeature : Feature {
     private fun setController(controller: PythonController) {
         this.controller = controller
         controller.feature = this
-    }
-
-    fun newScript() {
-        userInputString("New Python Script", "Script Name:", "") {
-            it.matches("^[\\w]+$".toRegex())
-        }
     }
 
     override fun setFocused(focused: Boolean) {

@@ -1,13 +1,13 @@
 package ca.warp7.rt.ext.scanner
 
-import ca.warp7.rt.core.feature.Feature
-import ca.warp7.rt.core.feature.FeatureLink
-import ca.warp7.rt.core.feature.loadParent
+import ca.warp7.rt.context.api.Feature
+import ca.warp7.rt.context.api.FeatureLink
+import ca.warp7.rt.context.api.loadParent
 import javafx.scene.Parent
 
 class ScannerFeature : Feature {
 
-    override val link = FeatureLink("QR Scanner", "fas-camera", 18)
+    override val link = FeatureLink("Android Scanner", "fas-camera", 18)
 
     private var controller: ScannerController? = null
 
