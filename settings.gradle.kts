@@ -1,7 +1,7 @@
 rootProject.name = "RT"
 
-include(":CPI")
+include(":api")
 include(":DataModel")
 include(":UI")
 
-project(":CPI").name = "ContextAPI"
+project(":api").name = "ContextAPI"

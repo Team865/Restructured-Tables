@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CPI/CPI.RT.ContextAPI.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CPI/CPI.RT.ContextAPI.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CPI/CPI.RT.ContextAPI.test.iml" filepath="$PROJECT_DIR$/.idea/modules/CPI/CPI.RT.ContextAPI.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/RT.iml" filepath="$PROJECT_DIR$/.idea/modules/RT.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ContextAPI/RT.ContextAPI.iml" filepath="$PROJECT_DIR$/.idea/modules/ContextAPI/RT.ContextAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/api/RT.ContextAPI.main.iml" filepath="$PROJECT_DIR$/.idea/modules/api/RT.ContextAPI.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/api/RT.ContextAPI.test.iml" filepath="$PROJECT_DIR$/.idea/modules/api/RT.ContextAPI.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DataModel/RT.DataModel.iml" filepath="$PROJECT_DIR$/.idea/modules/DataModel/RT.DataModel.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DataModel/RT.DataModel.main.iml" filepath="$PROJECT_DIR$/.idea/modules/DataModel/RT.DataModel.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DataModel/RT.DataModel.test.iml" filepath="$PROJECT_DIR$/.idea/modules/DataModel/RT.DataModel.test.iml" />
@@ -14,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/UI/RT.UI.test.iml" filepath="$PROJECT_DIR$/.idea/modules/UI/RT.UI.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/RT.main.iml" filepath="$PROJECT_DIR$/.idea/modules/RT.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/RT.test.iml" filepath="$PROJECT_DIR$/.idea/modules/RT.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/api/api.RT.ContextAPI.iml" filepath="$PROJECT_DIR$/.idea/modules/api/api.RT.ContextAPI.iml" />
     </modules>
   </component>
 </project>
