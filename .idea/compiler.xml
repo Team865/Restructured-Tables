@@ -10,6 +10,8 @@
       <module name="Restructured-Tables.test" target="1.8" />
       <module name="Restructured-Tables.UI.main" target="1.8" />
       <module name="Restructured-Tables.UI.test" target="1.8" />
+      <module name="RT.app.main" target="1.8" />
+      <module name="RT.app.test" target="1.8" />
       <module name="RT.CodeEditor.main" target="1.8" />
       <module name="RT.CodeEditor.test" target="1.8" />
       <module name="RT.ContextAPI.main" target="1.8" />

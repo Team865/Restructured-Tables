@@ -50,5 +50,5 @@ application.mainClassName = mainClassName0
 launch4j {
     mainClassName = mainClassName0
     icon = "$projectDir/src/main/resources/ca/warp7/rt/res/app-icon.ico"
-    jar = "$buildDir/libs/UI-all.jar"
+    jar = "$buildDir/libs/app-all.jar"
 }

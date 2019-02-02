@@ -5,8 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 <?import java.net.URL?>
-<HBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
+<HBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx"
       alignment="CENTER"
       prefWidth="1360"
       prefHeight="700"
@@ -16,7 +16,7 @@
         <URL value="@/ca/warp7/rt/res/style.css"/>
     </stylesheets>
 
-    <VBox HBox.hgrow="ALWAYS" alignment="CENTER" fx:id="imageContainer" >
+    <VBox HBox.hgrow="ALWAYS" alignment="CENTER" fx:id="imageContainer">
         <ImageView fx:id="streamImageView" preserveRatio="true"/>
     </VBox>
 

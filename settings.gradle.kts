@@ -2,6 +2,6 @@ rootProject.name = "RT"
 
 include(":api")
 include(":DataModel")
-include(":UI")
+include(":app")
 
 project(":api").name = "ContextAPI"

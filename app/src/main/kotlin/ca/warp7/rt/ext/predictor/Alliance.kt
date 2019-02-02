@@ -36,9 +36,9 @@ class Alliance2019(override val teams: List<Team2019>) : Alliance(teams) {
             teams.forEach { team ->
                 val teamData = team.sampleAll()
                 // what are you good at
-                val rL1Efficiency = Pair(2*teamData["Panel L1"]!!, 3*teamData["Cargo L1"]!!)
-                val rL2Efficiency = Pair(2*teamData["Panel L2"]!!, 3*teamData["Cargo L2"]!!)
-                val rL3Efficiency = Pair(2*teamData["Panel L3"]!!, 3*teamData["Cargo L3"]!!)
+                val rL1Efficiency = Pair(2 * teamData["Panel L1"]!!, 3 * teamData["Cargo L1"]!!)
+                val rL2Efficiency = Pair(2 * teamData["Panel L2"]!!, 3 * teamData["Cargo L2"]!!)
+                val rL3Efficiency = Pair(2 * teamData["Panel L3"]!!, 3 * teamData["Cargo L3"]!!)
                 // decide
 
             }

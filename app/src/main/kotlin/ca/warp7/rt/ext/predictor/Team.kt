@@ -1,6 +1,5 @@
 package ca.warp7.rt.ext.predictor
 
-import org.ejml.equation.Variable
 import java.util.*
 
 abstract class Team(open val teamNumber: Int, open var data: Map<String, Any>) {
