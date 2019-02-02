@@ -5,8 +5,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import java.net.URL?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            xmlns="http://javafx.com/javafx" prefWidth="220" HBox.hgrow="ALWAYS"
-            fx:controller="ca.warp7.rt.ext.views.TableController" fx:id="tableContainer" styleClass="no-border-pane">
+            xmlns="http://javafx.com/javafx"
+            prefWidth="220"
+            HBox.hgrow="ALWAYS"
+            fx:controller="ca.warp7.rt.ext.views.TableController"
+            fx:id="tableContainer"
+            styleClass="no-border-pane">
+
     <stylesheets>
         <URL value="@/ca/warp7/rt/res/style.css"/>
     </stylesheets>
