@@ -4,8 +4,12 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import java.net.URL?>
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" HBox.hgrow="ALWAYS"
-      fx:controller="ca.warp7.rt.ext.python.PythonController" fx:id="container">
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      HBox.hgrow="ALWAYS"
+      fx:controller="ca.warp7.rt.ext.python.PythonController"
+      fx:id="container">
+
     <stylesheets>
         <URL value="@/ca/warp7/rt/res/style.css"/>
     </stylesheets>
