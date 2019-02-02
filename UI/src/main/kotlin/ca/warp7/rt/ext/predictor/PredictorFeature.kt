@@ -2,8 +2,7 @@ package ca.warp7.rt.ext.predictor
 
 import ca.warp7.rt.context.api.Feature
 import ca.warp7.rt.context.api.FeatureLink
-import ca.warp7.rt.core.feature.loadParent
-import ca.warp7.rt.ext.scanner.ScannerController
+import ca.warp7.rt.context.api.loadParent
 import javafx.scene.Parent
 
 
