@@ -1,8 +1,6 @@
 rootProject.name = "RT"
 
-include(":CodeEditor")
-include(":CPI")
-include(":DataModel")
-include(":UI")
+include(":api")
+include(":app")
 
-project(":CPI").name = "ContextAPI"
+project(":api").name = "ContextAPI"

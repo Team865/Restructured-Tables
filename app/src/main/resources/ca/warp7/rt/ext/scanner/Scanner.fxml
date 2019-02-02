@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+<?import java.net.URL?>
+<HBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx"
+      alignment="CENTER"
+      prefWidth="1360"
+      prefHeight="700"
+      fx:controller="ca.warp7.rt.ext.scanner.ScannerController">
+
+    <stylesheets>
+        <URL value="@/ca/warp7/rt/res/style.css"/>
+    </stylesheets>
+
+    <VBox HBox.hgrow="ALWAYS" alignment="CENTER" fx:id="imageContainer">
+        <ImageView fx:id="streamImageView" preserveRatio="true"/>
+    </VBox>
+
+    <VBox spacing="10" alignment="TOP_CENTER" style="-fx-padding: 10">
+
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="Commit">
+                <graphic>
+                    <FontIcon iconLiteral="fas-check:16:gray"/>
+                </graphic>
+            </Button>
+            <Button text="Save as CSV">
+                <graphic>
+                    <FontIcon iconLiteral="fas-save:16:gray"/>
+                </graphic>
+            </Button>
+            <Button text="Pause" fx:id="cameraStateChanger" onAction="#onCameraStateChange">
+                <graphic>
+                    <FontIcon iconLiteral="fas-times:16:gray"/>
+                </graphic>
+            </Button>
+        </HBox>
+
+        <Label fx:id="resultLabel" text="No QR code found" prefHeight="200" prefWidth="360" wrapText="true"
+               alignment="TOP_LEFT" textAlignment="JUSTIFY">
+            <style>
+                -fx-border-color: gray;
+                -fx-border-width: 1;
+                -fx-padding: 5;
+            </style>
+        </Label>
+
+        <HBox spacing="10" alignment="CENTER">
+            <FontIcon iconLiteral="fas-chevron-left:16:gray"/>
+            <Label text="2018iri_qm36"
+                   fx:id="currentMatch"
+                   HBox.hgrow="ALWAYS"
+                   focusTraversable="true"
+                   minWidth="200"
+                   styleClass="highlight-blue"
+                   alignment="CENTER"/>
+            <FontIcon iconLiteral="fas-chevron-right:16:gray"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER">
+            <Label fx:id="red1Team" text="2771" styleClass="team-red"/>
+            <Label fx:id="red2Team" text="494" styleClass="team-red"/>
+            <Label fx:id="red3Team" text="4265" styleClass="team-red"/>
+            <Label fx:id="blue1Team" text="195" styleClass="team-blue"/>
+            <Label fx:id="blue2Team" text="245" styleClass="team-blue"/>
+            <Label fx:id="blue3Team" text="2680" styleClass="team-blue"/>
+        </HBox>
+
+        <Separator/>
+        <Label text="Expected Scouts:"/>
+        <HBox spacing="10" alignment="CENTER">
+            <VBox alignment="CENTER_RIGHT">
+                <Label fx:id="red1Scout" text="R1: Scout 1" styleClass="info-red"/>
+                <Label fx:id="red2Scout" text="R2: Scout 2" styleClass="info-red"/>
+                <Label fx:id="red3Scout" text="R3: Scout 3" styleClass="info-red"/>
+            </VBox>
+            <VBox alignment="CENTER_LEFT">
+                <Label fx:id="blue1Scout" text="B1: Scout 4" styleClass="info-blue"/>
+                <Label fx:id="blue2Scout" text="B2: Scout 5" styleClass="info-blue"/>
+                <Label fx:id="blue3Scout" text="B3: Scout 6" styleClass="info-blue"/>
+            </VBox>
+        </HBox>
+
+        <ListView fx:id="scanList" VBox.vgrow="ALWAYS"/>
+
+        <TextArea fx:id="comments" promptText="Add Comments" prefHeight="200" prefWidth="360"/>
+    </VBox>
+</HBox>
