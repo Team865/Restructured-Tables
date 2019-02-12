@@ -41,8 +41,8 @@
             </Button>
         </HBox>
 
-        <Label fx:id="resultLabel" text="No QR code found" prefHeight="200" prefWidth="360" wrapText="true"
-               alignment="TOP_LEFT" textAlignment="JUSTIFY" styleClass="qr-not-found"/>
+        <Label fx:id="resultLabel" text="No QR code found" prefHeight="360" prefWidth="360" wrapText="true"
+               alignment="TOP_LEFT" textAlignment="JUSTIFY"/>
 
         <Separator/>
 

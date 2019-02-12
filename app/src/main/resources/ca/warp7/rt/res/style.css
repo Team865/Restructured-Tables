@@ -218,15 +218,3 @@ HorizontalHeaderColumn > TableColumnHeader.column-header.table-column.selected >
     -fx-stroke: #3c5c94;
     -fx-stroke-width: 2;
 }
-
-.qr-not-found {
-    -fx-border-color: gray;
-    -fx-border-width: 1;
-    -fx-padding: 5;
-    -fx-background-color: transparent;
-}
-
-.qr-found {
-    -fx-background-color: lightgreen;
-    -fx-font-weight: bold;
-}
