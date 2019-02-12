@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("java")
-    kotlin(module = "jvm") version "1.3.11"
+    kotlin(module = "jvm") version "1.3.21"
 }
 
 repositories {
@@ -16,7 +16,9 @@ repositories {
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions.jvmTarget = "1.8"
 
-val kotlinVersion = "1.3.11"
+val kotlinVersion = "1.3.21"
+
+buildDir = File(rootProject.projectDir, "build/${project.name}")
 
 dependencies {
     // Kotlin libraries

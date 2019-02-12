@@ -5,8 +5,8 @@
       <configuration version="3" platform="JVM 1.6" useProjectSettings="false">
         <compilerSettings />
         <compilerArguments>
-          <option name="destination" value="$MODULE_DIR$/../../../api/build/classes/kotlin/test" />
-          <option name="classpath" value="$MODULE_DIR$/../../../api/build/classes/kotlin/main;C:/Users/Yu/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.3.11/aae7b33412715e9ed441934c4ffaad1bb80e9d36/kotlin-reflect-1.3.11.jar;C:/Users/Yu/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test/1.3.11/c68def89e3abacb012d020bd85dc685e2c7fd34d/kotlin-test-1.3.11.jar;C:/Users/Yu/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.11/4cbc5922a54376018307a731162ccaf3ef851a39/kotlin-stdlib-1.3.11.jar;C:/Users/Yu/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-common/1.3.11/42db8fc7cd17ec8278d06862d8cf3b4028675e84/kotlin-test-common-1.3.11.jar;C:/Users/Yu/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.11/d8b8e746e279f1c4f5e08bc14a96b82e6bb1de02/kotlin-stdlib-common-1.3.11.jar;C:/Users/Yu/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar" />
+          <option name="destination" value="$MODULE_DIR$/../../../build/api/classes/kotlin/test" />
+          <option name="classpath" value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.3.21/d0d5ff2ac2ebd8a42697af41e20fc225a23c5d3b/kotlin-reflect-1.3.21.jar;C:/Users/Yu/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test/1.3.21/38d09017c4e62144d76281b35e9b1c17c22ef056/kotlin-test-1.3.21.jar;C:/Users/Yu/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.21/4bcc2012b84840e19e1e28074284cac908be0295/kotlin-stdlib-1.3.21.jar;C:/Users/Yu/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-common/1.3.21/36470631bd1b5d7d78506e4dcb644e1b0d1708a8/kotlin-test-common-1.3.21.jar;C:/Users/Yu/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.21/f30e4a9897913e53d778f564110bafa1fef46643/kotlin-stdlib-common-1.3.21.jar;C:/Users/Yu/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar" />
           <option name="noStdlib" value="true" />
           <option name="noReflect" value="true" />
           <option name="moduleName" value="api" />
@@ -14,8 +14,8 @@
           <option name="loadBuiltInsFromDependencies" value="true" />
           <option name="friendPaths">
             <array>
-              <option value="$MODULE_DIR$/../../../api/build/classes/kotlin/main" />
-              <option value="$MODULE_DIR$/../../../api/build/classes/java/main" />
+              <option value="$MODULE_DIR$/../../../build/api/classes/kotlin/main" />
+              <option value="$MODULE_DIR$/../../../build/api/classes/java/main" />
             </array>
           </option>
           <option name="languageVersion" value="1.3" />
@@ -40,11 +40,11 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="RT.api.main" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.3.11" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test:1.3.11" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.3.11" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test-common:1.3.11" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.3.11" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.3.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test:1.3.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.3.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test-common:1.3.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.3.21" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="RT.api.main" />

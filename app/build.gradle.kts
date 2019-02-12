@@ -10,6 +10,10 @@ plugins {
     kotlin(module = "jvm") version "1.3.21"
 }
 
+val versionName = "2019.1.0-alpha"
+
+version = versionName
+
 repositories {
     mavenCentral()
     jcenter()
@@ -20,6 +24,8 @@ val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions.jvmTarget = "1.8"
 
 val kotlinVersion = "1.3.21"
+
+buildDir = File(rootProject.projectDir, "build/${project.name}")
 
 dependencies {
     implementation(dependencyNotation = project(":api"))
@@ -37,7 +43,6 @@ dependencies {
     // Kotlin libraries
     implementation(kotlin("stdlib", kotlinVersion))
     implementation(kotlin("reflect", kotlinVersion))
-    implementation(group = "com.kyonifer", name = "koma-core-ejml", version = "0.12")
     implementation(group = "de.mpicbg.scicomp", name = "krangl", version = "0.10.3")
     implementation(group = "com.beust", name = "klaxon", version = "3.0.1")
     testImplementation(kotlin("test", kotlinVersion))
@@ -49,5 +54,5 @@ application.mainClassName = mainClassName0
 launch4j {
     mainClassName = mainClassName0
     icon = "$projectDir/src/main/resources/ca/warp7/rt/res/app-icon.ico"
-    jar = "$buildDir/libs/app-all.jar"
+    jar = "$buildDir/libs/app-$versionName.jar"
 }
