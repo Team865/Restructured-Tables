@@ -7,7 +7,7 @@ plugins {
     id("application")
     id("com.github.johnrengelman.shadow")
     id("edu.sc.seis.launch4j")
-    kotlin(module = "jvm") version "1.3.20"
+    kotlin(module = "jvm") version "1.3.21"
 }
 
 repositories {
@@ -19,10 +19,10 @@ repositories {
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions.jvmTarget = "1.8"
 
-val kotlinVersion = "1.3.20"
+val kotlinVersion = "1.3.21"
 
 dependencies {
-    implementation(dependencyNotation = project(":ContextAPI"))
+    implementation(dependencyNotation = project(":api"))
 
     // Java libraries
     implementation(group = "commons-io", name = "commons-io", version = "2.6")
