@@ -26,9 +26,4 @@ object Contexts {
      * Get the current context
      */
     val current get() = root.active
-
-    /**
-     * Version of the app
-     */
-    var version = ""
 }

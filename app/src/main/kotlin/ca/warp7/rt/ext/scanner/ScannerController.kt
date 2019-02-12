@@ -24,20 +24,6 @@ import java.util.concurrent.atomic.AtomicReference
 
 class ScannerController {
 
-    lateinit var red1Team: Label
-    lateinit var red2Team: Label
-    lateinit var red3Team: Label
-    lateinit var blue1Team: Label
-    lateinit var blue2Team: Label
-    lateinit var blue3Team: Label
-    lateinit var red1Scout: Label
-    lateinit var red2Scout: Label
-    lateinit var red3Scout: Label
-    lateinit var blue1Scout: Label
-    lateinit var blue2Scout: Label
-    lateinit var blue3Scout: Label
-    lateinit var currentMatch: Label
-
     lateinit var streamImageView: ImageView
     lateinit var imageContainer: VBox
     lateinit var resultLabel: Label

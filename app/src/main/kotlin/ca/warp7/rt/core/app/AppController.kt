@@ -90,7 +90,6 @@ class AppController : FeatureStage {
             val totalHeight = (appTabs.size * 32).toDouble()
             appTabListView.minHeight = totalHeight
             appTabListView.maxHeight = totalHeight
-            toggleSearch()
         }
     }
 
@@ -175,8 +174,7 @@ class AppController : FeatureStage {
             customSidebarBorderPane.center = null
             current = ft
             val parent = current!!.onOpen()
-            val title = ft.link.title
-            appStage.title = title + " | " + Contexts.version
+            appStage.title = ft.link.title
             customSidebarBorderPane.center = parent.first
             tabContentBorderPane.center = parent.second
         }
