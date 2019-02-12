@@ -41,10 +41,10 @@
             </Button>
         </HBox>
 
-        <Label fx:id="resultLabel" text="No QR code found" prefHeight="360" prefWidth="360" wrapText="true"
-               alignment="TOP_LEFT" textAlignment="JUSTIFY"/>
-
-        <Separator/>
+        <HBox prefHeight="240" prefWidth="360" style="-fx-border-color: gray; -fx-border-width: 1">
+            <Label fx:id="resultLabel" text="No QR code found" prefWidth="360" wrapText="true"
+                   alignment="TOP_LEFT" textAlignment="JUSTIFY"/>
+        </HBox>
 
         <ListView fx:id="scanList" VBox.vgrow="ALWAYS"/>
 

@@ -40,6 +40,7 @@ class ScannerController {
 
     fun initialize() {
         resultProperty = resultLabel.textProperty()
+        resultLabel.lineSpacing = 5.0
         startCameraStream()
         scanList.items = scannerEntries
         initializeListFactory()
@@ -86,6 +87,7 @@ class ScannerController {
             val imgRef = AtomicReference<WritableImage>()
             var image: BufferedImage?
             var notFoundCount = 0
+            var lastEntry = ""
             while (isStreaming) {
                 image = webcam.image
                 if (image != null) {
@@ -94,11 +96,15 @@ class ScannerController {
                                 HybridBinarizer(BufferedImageLuminanceSource(image))))
                         notFoundCount = 0
                         val resultText = result.text
-                        Platform.runLater { onQRCodeResult(resultText) }
+                        if (resultText != lastEntry) {
+                            Platform.runLater { onQRCodeResult(resultText) }
+                            lastEntry = resultText
+                        }
                     } catch (ignored: NotFoundException) {
                         notFoundCount++
-                        if (notFoundCount > 10) {
+                        if (notFoundCount > 3) {
                             Platform.runLater { onNoQRCodeFound() }
+                            lastEntry = ""
                             notFoundCount = 0
                         }
                     }
@@ -116,28 +122,27 @@ class ScannerController {
     }
 
     private fun onQRCodeResult(result: String) {
-        resultProperty.set(result)
-        resultLabel.style = "-fx-background-color: lightgreen;\n" +
-                "-fx-border-color: gray;\n" +
-                "-fx-border-width: 1;\n" +
-                "-fx-padding: 5;\n" +
-                "-fx-font-weight: bold;"
-        val split = result.split("_".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-        if (split.size > 5) {
-            val sdfDate = SimpleDateFormat("HH:mm:ss")
-            val now = Date()
-            val timestamp = sdfDate.format(now)
-            scannerEntries.add(ScannerEntry(true, split[1], split[4] + ":" + split[2], timestamp))
+        resultLabel.style = "\n-fx-background-color: lightgreen;-fx-padding: 5;-fx-font-weight: bold;"
+        val split = result.split(":".toRegex()).toTypedArray()
+        val sdfDate = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+        val time = Date(split[4].toLong(16) * 1000)
+        val timestamp = sdfDate.format(time)
+        if (split.size > 7) {
+            resultProperty.set("""
+Match: ${split[0]}
+Team: ${split[1]}
+Scout: ${split[2]}
+Board: ${split[3]}
+Time: $timestamp
+Comments: ${split[7]}""".trim())
+            scannerEntries.add(ScannerEntry(true, split[1], split[4] + ":" + split[2], ""))
         }
     }
 
     private fun onNoQRCodeFound() {
         resultLabel.style = "\n" +
-                "-fx-border-color: gray;\n" +
-                "-fx-border-width: 1;\n" +
                 "-fx-padding: 5;\n" +
                 "-fx-background-color: transparent;\n" +
                 "-fx-font-weight: bold;"
-        resultProperty.set("No QR code found")
     }
 }
