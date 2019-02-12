@@ -1,3 +1,3 @@
-package ca.warp7.rt.context.api
+package ca.warp7.rt.api
 
 data class SearchStatus(val message: String, val flavour: SearchFlavour)

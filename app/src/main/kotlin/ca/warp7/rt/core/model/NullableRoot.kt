@@ -1,8 +1,8 @@
 package ca.warp7.rt.core.model
 
-import ca.warp7.rt.context.api.Context
-import ca.warp7.rt.context.api.ContextRoot
-import ca.warp7.rt.context.api.MetricsSet
+import ca.warp7.rt.api.Context
+import ca.warp7.rt.api.ContextRoot
+import ca.warp7.rt.api.MetricsSet
 
 object NullableRoot : ContextRoot {
     override fun load(metricsSet: MetricsSet): Context? = null

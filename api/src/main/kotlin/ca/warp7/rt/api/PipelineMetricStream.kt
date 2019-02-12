@@ -1,4 +1,4 @@
-package ca.warp7.rt.context.api
+package ca.warp7.rt.api
 
 interface PipelineMetricStream {
     fun mapPure(vararg mappedColumns: MappedColumn) = this

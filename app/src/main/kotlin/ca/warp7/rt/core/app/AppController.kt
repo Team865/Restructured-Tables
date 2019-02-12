@@ -1,6 +1,6 @@
 package ca.warp7.rt.core.app
 
-import ca.warp7.rt.context.api.loadParent
+import ca.warp7.rt.api.loadParent
 import ca.warp7.rt.core.model.Contexts
 import ca.warp7.rt.core.model.Metadata
 import javafx.application.Platform

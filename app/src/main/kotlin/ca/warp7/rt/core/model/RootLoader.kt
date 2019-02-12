@@ -1,6 +1,6 @@
 package ca.warp7.rt.core.model
 
-import ca.warp7.rt.context.api.ContextPlugin
+import ca.warp7.rt.api.ContextPlugin
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import java.io.File

@@ -1,4 +1,4 @@
-package ca.warp7.rt.context.api
+package ca.warp7.rt.api
 
 interface PipelineStreamVector : Map<String, Any?> {
     val data: Map<String, Any?>

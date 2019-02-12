@@ -1,8 +1,8 @@
 package ca.warp7.rt.core.app
 
-import ca.warp7.rt.context.api.SearchFlavour
-import ca.warp7.rt.context.api.SearchResult
-import ca.warp7.rt.context.api.get
+import ca.warp7.rt.api.SearchFlavour
+import ca.warp7.rt.api.SearchResult
+import ca.warp7.rt.api.get
 import ca.warp7.rt.core.Restructured
 import ca.warp7.rt.core.model.Contexts
 import ca.warp7.rt.core.model.Metadata

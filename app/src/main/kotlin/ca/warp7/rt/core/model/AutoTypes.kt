@@ -2,7 +2,7 @@
 
 package ca.warp7.rt.core.model
 
-import ca.warp7.rt.context.api.*
+import ca.warp7.rt.api.*
 
 val autoTypes: ContextAdapter = {
     stream(metrics = teamNumber_ / scout_ / board_ / match_).mapPure(
