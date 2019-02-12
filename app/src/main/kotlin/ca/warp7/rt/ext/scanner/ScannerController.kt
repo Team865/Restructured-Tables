@@ -100,8 +100,11 @@ class ScannerController {
                         }
                     } catch (ignored: NotFoundException) {
                         notFoundCount++
-                        if (notFoundCount > 15) {
-                            Platform.runLater { resultProperty.set("No QR code found") }
+                        if (notFoundCount > 10) {
+                            Platform.runLater {
+                                resultLabel.styleClass.remove("qr-found")
+                                resultProperty.set("No QR code found")
+                            }
                             notFoundCount = 0
                         }
                     }
@@ -120,6 +123,7 @@ class ScannerController {
 
     private fun onQRCodeResult(result: String) {
         resultProperty.set(result)
+        resultLabel.styleClass.add("qr-found")
         val split = result.split("_".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         if (split.size > 5) {
             val sdfDate = SimpleDateFormat("HH:mm:ss")

@@ -37,7 +37,7 @@ open class CopyableSpreadsheet(grid: Grid?) : SpreadsheetView(grid) {
                 menuItem("Zoom _Out", "fas-search-minus:16:1e2e4a", Combo(KeyCode.MINUS)) {
                     decrementZoom()
                 },
-                menuItem("_Reset Zoom", null, Combo(KeyCode.DIGIT0, SHORTCUT_DOWN)) {
+                menuItem("_Reset Zoom", null, Combo(KeyCode.DIGIT0)) {
                     zoomFactor = 1.0
                 }
         )

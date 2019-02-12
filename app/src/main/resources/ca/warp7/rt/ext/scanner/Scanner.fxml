@@ -42,13 +42,7 @@
         </HBox>
 
         <Label fx:id="resultLabel" text="No QR code found" prefHeight="200" prefWidth="360" wrapText="true"
-               alignment="TOP_LEFT" textAlignment="JUSTIFY">
-            <style>
-                -fx-border-color: gray;
-                -fx-border-width: 1;
-                -fx-padding: 5;
-            </style>
-        </Label>
+               alignment="TOP_LEFT" textAlignment="JUSTIFY" styleClass="qr-not-found"/>
 
         <Separator/>
 
