@@ -28,6 +28,7 @@ buildDir = File(rootProject.projectDir, "build/${project.name}")
 
 dependencies {
     implementation(dependencyNotation = project(":api"))
+    implementation(dependencyNotation = project(":android-v5"))
 
     // Java libraries
     implementation(group = "commons-io", name = "commons-io", version = "2.6")

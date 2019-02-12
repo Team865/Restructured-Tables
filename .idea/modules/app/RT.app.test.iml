@@ -41,6 +41,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="RT.app.main" />
     <orderEntry type="module" module-name="RT.api.main" />
+    <orderEntry type="module" module-name="RT.android-v5.main" />
     <orderEntry type="library" name="Gradle: commons-io:commons-io:2.6" level="project" />
     <orderEntry type="library" name="Gradle: com.github.sarxos:webcam-capture:0.3.12" level="project" />
     <orderEntry type="library" name="Gradle: com.google.zxing:javase:3.3.3" level="project" />
