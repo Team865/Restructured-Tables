@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import java.net.URL?>
 <HBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
@@ -23,11 +23,32 @@
 
     <VBox spacing="10" alignment="TOP_CENTER" style="-fx-padding: 10">
 
-        <HBox prefHeight="240" prefWidth="360" style="-fx-border-color: gray; -fx-border-width: 1">
+        <HBox prefHeight="240" prefWidth="360" maxWidth="360" style="-fx-border-color: gray; -fx-border-width: 1">
             <Label fx:id="resultLabel" text="No QR code found" prefWidth="360" wrapText="true"
                    alignment="TOP_LEFT" textAlignment="JUSTIFY" prefHeight="240"/>
         </HBox>
 
         <ListView fx:id="scanList" VBox.vgrow="ALWAYS"/>
+
+        <HBox spacing="5" maxWidth="360">
+            <Button text="Pause" prefWidth="400" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <FontIcon iconLiteral="fas-times:16:1e2e4a"/>
+                </graphic>
+            </Button>
+            <Button text="From Text" prefWidth="400" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <FontIcon iconLiteral="fas-plus:16:1e2e4a"/>
+                </graphic>
+            </Button>
+            <Button text="Save CSV" prefWidth="400" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <FontIcon iconLiteral="fas-save:16:1e2e4a"/>
+                </graphic>
+            </Button>
+        </HBox>
+
     </VBox>
+
+
 </HBox>

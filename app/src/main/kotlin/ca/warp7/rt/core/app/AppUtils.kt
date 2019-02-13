@@ -29,10 +29,10 @@ import org.kordamp.ikonli.javafx.FontIcon
 import java.io.IOException
 
 internal val appFeatures = listOf(
+        ScannerFeature(),
         ViewsFeature(),
         ASTFeature(),
-        PredictorFeature(),
-        ScannerFeature()
+        PredictorFeature()
 )
 
 internal var utilsController: AppController? = null

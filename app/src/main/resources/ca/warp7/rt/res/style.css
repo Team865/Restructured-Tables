@@ -218,3 +218,16 @@ HorizontalHeaderColumn > TableColumnHeader.column-header.table-column.selected >
     -fx-stroke: #3c5c94;
     -fx-stroke-width: 2;
 }
+
+.button {
+    -fx-background-color: #3c5c94;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #5a8ade;
+}
+
+.button .ikonli-font-icon {
+    -fx-icon-color: white
+}
