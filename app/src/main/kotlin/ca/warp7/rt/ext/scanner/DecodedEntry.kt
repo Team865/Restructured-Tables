@@ -2,10 +2,10 @@ package ca.warp7.rt.ext.scanner
 
 import ca.warp7.android.scouting.v5.entry.Board
 import ca.warp7.android.scouting.v5.entry.DataPoint
-import ca.warp7.android.scouting.v5.entry.Entry
+import ca.warp7.android.scouting.v5.entry.V5Entry
 import ca.warp7.android.scouting.v5.entry.toBoard
 
-data class DecodedEntry(override val encoded: String) : Entry {
+data class DecodedEntry(override val encoded: String) : V5Entry {
     private val split = encoded.split(":")
     override val match: String = split[0]
     override val team: String = split[1]

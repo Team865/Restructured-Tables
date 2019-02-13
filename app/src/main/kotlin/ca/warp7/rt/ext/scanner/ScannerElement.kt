@@ -1,10 +1,11 @@
 package ca.warp7.rt.ext.scanner
 
+import ca.warp7.android.scouting.v5.entry.V5Entry
 import javafx.geometry.Pos
 import javafx.scene.control.Label
 import javafx.scene.layout.HBox
 
-fun cellFromEntry(item: DecodedEntry): HBox {
+fun cellFromEntry(item: V5Entry): HBox {
     val hBox = HBox()
     hBox.spacing = 10.0
     hBox.alignment = Pos.CENTER_LEFT

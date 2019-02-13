@@ -1,5 +1,6 @@
 package ca.warp7.rt.ext.scanner
 
+import ca.warp7.android.scouting.v5.entry.V5Entry
 import com.github.sarxos.webcam.Webcam
 import com.github.sarxos.webcam.WebcamResolution
 import com.google.zxing.BinaryBitmap
@@ -29,14 +30,14 @@ class ScannerController {
     lateinit var streamImageView: ImageView
     lateinit var imageContainer: VBox
     lateinit var resultLabel: Label
-    lateinit var scanList: ListView<DecodedEntry>
+    lateinit var scanList: ListView<V5Entry>
 
     private lateinit var resultProperty: StringProperty
 
     private var isStreaming: Boolean = false
     private val webcam = Webcam.getDefault()
     private val imageProperty = SimpleObjectProperty<Image>()
-    private val scannerEntries = FXCollections.observableArrayList<DecodedEntry>()
+    private val scannerEntries = FXCollections.observableArrayList<V5Entry>()
 
     fun initialize() {
         resultProperty = resultLabel.textProperty()
@@ -61,8 +62,8 @@ class ScannerController {
 
     private fun initializeListFactory() {
         scanList.setCellFactory {
-            object : ListCell<DecodedEntry>() {
-                override fun updateItem(item: DecodedEntry?, empty: Boolean) {
+            object : ListCell<V5Entry>() {
+                override fun updateItem(item: V5Entry?, empty: Boolean) {
                     super.updateItem(item, empty)
                     prefHeight = 50.0
                     if (empty || item == null) {
@@ -142,6 +143,6 @@ Comments: ${split[7]}""".trim())
     private fun onNoQRCodeFound() {
         resultLabel.style = "\n" +
                 "-fx-padding: 10;\n" +
-                "-fx-background-color: #ddd;\n";
+                "-fx-background-color: #ddd;\n"
     }
 }

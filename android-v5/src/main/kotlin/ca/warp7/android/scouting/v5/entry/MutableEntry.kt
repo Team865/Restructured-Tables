@@ -1,6 +1,6 @@
 package ca.warp7.android.scouting.v5.entry
 
-interface MutableEntry : Entry {
+interface MutableEntry : V5Entry {
     /**
      * Adds a data point to the entry
      */
