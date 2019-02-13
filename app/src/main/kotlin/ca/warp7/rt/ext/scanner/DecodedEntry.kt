@@ -4,29 +4,22 @@ import ca.warp7.android.scouting.v5.entry.Board
 import ca.warp7.android.scouting.v5.entry.DataPoint
 import ca.warp7.android.scouting.v5.entry.V5Entry
 import ca.warp7.android.scouting.v5.entry.toBoard
+import java.util.*
 
 data class DecodedEntry(override val encoded: String) : V5Entry {
     private val split = encoded.split(":")
-    override val match: String = split[0]
-    override val team: String = split[1]
-    override val board: Board = split[3].toBoard() ?: Board.R1
-    override val timestamp: Int = split[4].toInt(16)
-    override val undone: Int = split[5].toInt()
-    override val scout: String = split[2]
-    override val dataPoints: List<DataPoint>
-        get() = TODO("not implemented")
-    override val comments: String
-        get() = ""
+    override val match = split[0]
+    override val team = split[1]
+    override val scout = split[2]
+    override val board = split[3].toBoard() ?: Board.R1
+    override val timestamp = split[4].toInt(16)
+    override val undone = split[5].toInt()
+    override val comments = split[7]
+    override val dataPoints = Base64.getDecoder().decode(split[6])
+            .run { (0 until size / 3).map { DataPoint(get(it).toInt(), get(it + 1).toInt(), get(it + 2).toInt()) } }
+    private val length = dataPoints.size
 
-    override fun count(type: Int): Int {
-        TODO("not implemented")
-    }
-
-    override fun lastValue(type: Int): DataPoint? {
-        TODO("not implemented")
-    }
-
-    override fun focused(type: Int): Boolean {
-        TODO("not implemented")
-    }
+    override fun count(type: Int) = dataPoints.subList(0, length).filter { it.type == type }.size
+    override fun lastValue(type: Int) = dataPoints.subList(0, length).lastOrNull { it.type == type }
+    override fun focused(type: Int) = false
 }
