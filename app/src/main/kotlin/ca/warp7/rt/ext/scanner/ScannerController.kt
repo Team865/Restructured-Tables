@@ -29,14 +29,14 @@ class ScannerController {
     lateinit var streamImageView: ImageView
     lateinit var imageContainer: VBox
     lateinit var resultLabel: Label
-    lateinit var scanList: ListView<ScannerEntry>
+    lateinit var scanList: ListView<DecodedEntry>
 
     private lateinit var resultProperty: StringProperty
 
     private var isStreaming: Boolean = false
     private val webcam = Webcam.getDefault()
     private val imageProperty = SimpleObjectProperty<Image>()
-    private val scannerEntries = FXCollections.observableArrayList<ScannerEntry>()
+    private val scannerEntries = FXCollections.observableArrayList<DecodedEntry>()
 
     fun initialize() {
         resultProperty = resultLabel.textProperty()
@@ -61,8 +61,8 @@ class ScannerController {
 
     private fun initializeListFactory() {
         scanList.setCellFactory {
-            object : ListCell<ScannerEntry>() {
-                override fun updateItem(item: ScannerEntry?, empty: Boolean) {
+            object : ListCell<DecodedEntry>() {
+                override fun updateItem(item: DecodedEntry?, empty: Boolean) {
                     super.updateItem(item, empty)
                     prefHeight = 50.0
                     if (empty || item == null) {
@@ -121,7 +121,7 @@ class ScannerController {
     }
 
     private fun onQRCodeResult(result: String) {
-        resultLabel.style = "\n-fx-background-color: lightgreen;-fx-padding: 5;"
+        resultLabel.style = "-fx-background-color: lightgreen;-fx-padding: 10;"
         val split = result.split(":".toRegex()).toTypedArray()
         val sdfDate = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
         val time = Date(split[4].toLong(16) * 1000)
@@ -135,13 +135,13 @@ Board: ${split[3]}
 Time: $timestamp
 Data Points: ${split[6].length / 4}
 Comments: ${split[7]}""".trim())
-            scannerEntries.add(ScannerEntry(split[1], split[4] + ":" + split[2], ""))
+            scannerEntries.add(DecodedEntry(result))
         }
     }
 
     private fun onNoQRCodeFound() {
         resultLabel.style = "\n" +
-                "-fx-padding: 5;\n" +
+                "-fx-padding: 10;\n" +
                 "-fx-background-color: #ddd;\n";
     }
 }

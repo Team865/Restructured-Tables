@@ -14,9 +14,7 @@ interface MutableEntry : Entry {
      */
     fun undo(): DataPoint?
 
-    var undone: Int
-
+    override var undone: Int
     override var comments: String
-
     override var timestamp: Int
 }
