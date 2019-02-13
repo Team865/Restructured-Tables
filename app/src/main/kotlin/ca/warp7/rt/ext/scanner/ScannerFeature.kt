@@ -20,8 +20,8 @@ class ScannerFeature : Feature {
         return true
     }
 
-    override fun onOpen(): Pair<Parent?, Parent?> =
-            null to loadParent<ScannerController>("/ca/warp7/rt/ext/scanner/Scanner.fxml") {
+    override fun onOpen(): Pair<Parent?, Parent?> = loadParent("/ca/warp7/rt/ext/scanner/ScannerSidebar.fxml") to
+            loadParent<ScannerController>("/ca/warp7/rt/ext/scanner/Scanner.fxml") {
                 this.setController(it)
             }
 }

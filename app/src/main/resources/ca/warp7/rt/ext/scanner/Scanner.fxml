@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import java.net.URL?>
 <HBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
@@ -23,31 +23,11 @@
 
     <VBox spacing="10" alignment="TOP_CENTER" style="-fx-padding: 10">
 
-        <HBox spacing="10" alignment="CENTER">
-            <Button text="Commit">
-                <graphic>
-                    <FontIcon iconLiteral="fas-check:16:1e2e4a"/>
-                </graphic>
-            </Button>
-            <Button text="Save as CSV">
-                <graphic>
-                    <FontIcon iconLiteral="fas-save:16:1e2e4a"/>
-                </graphic>
-            </Button>
-            <Button text="Pause" fx:id="cameraStateChanger" onAction="#onCameraStateChange">
-                <graphic>
-                    <FontIcon iconLiteral="fas-times:16:1e2e4a"/>
-                </graphic>
-            </Button>
-        </HBox>
-
         <HBox prefHeight="240" prefWidth="360" style="-fx-border-color: gray; -fx-border-width: 1">
             <Label fx:id="resultLabel" text="No QR code found" prefWidth="360" wrapText="true"
-                   alignment="TOP_LEFT" textAlignment="JUSTIFY"/>
+                   alignment="TOP_LEFT" textAlignment="JUSTIFY" prefHeight="240"/>
         </HBox>
 
         <ListView fx:id="scanList" VBox.vgrow="ALWAYS"/>
-
-        <TextArea fx:id="comments" promptText="Add Comments" prefHeight="200" prefWidth="360"/>
     </VBox>
 </HBox>

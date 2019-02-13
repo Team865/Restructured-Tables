@@ -12,7 +12,9 @@ import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.StringProperty
 import javafx.collections.FXCollections
 import javafx.embed.swing.SwingFXUtils
-import javafx.scene.control.*
+import javafx.scene.control.Label
+import javafx.scene.control.ListCell
+import javafx.scene.control.ListView
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.image.WritableImage
@@ -27,9 +29,7 @@ class ScannerController {
     lateinit var streamImageView: ImageView
     lateinit var imageContainer: VBox
     lateinit var resultLabel: Label
-    lateinit var comments: TextArea
     lateinit var scanList: ListView<ScannerEntry>
-    lateinit var cameraStateChanger: Button
 
     private lateinit var resultProperty: StringProperty
 
@@ -51,9 +51,9 @@ class ScannerController {
 
     internal fun stopCameraStream() {
         isStreaming = false
-        cameraStateChanger.text = "Start"
     }
 
+    @Suppress("unused")
     fun onCameraStateChange() {
         if (isStreaming) stopCameraStream()
         else startCameraStream()
@@ -77,7 +77,6 @@ class ScannerController {
     }
 
     private fun startCameraStream() {
-        cameraStateChanger.text = "Pause"
         if (webcam.isOpen) webcam.close()
         webcam.viewSize = WebcamResolution.VGA.size
         webcam.setCustomViewSizes(WebcamResolution.VGA.size)
