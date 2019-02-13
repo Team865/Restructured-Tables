@@ -123,20 +123,23 @@ class ScannerController {
 
     private fun onQRCodeResult(result: String) {
         resultLabel.style = "-fx-background-color: lightgreen;-fx-padding: 10;"
-        val split = result.split(":".toRegex()).toTypedArray()
-        val sdfDate = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
-        val time = Date(split[4].toLong(16) * 1000)
-        val timestamp = sdfDate.format(time)
-        if (split.size > 7) {
+        try {
+            val entry: V5Entry = DecodedEntry(result)
+            val sdfDate = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+            val time = Date(entry.timestamp * 1000L)
+            val timestamp = sdfDate.format(time)
             resultProperty.set("""
-Match: ${split[0]}
-Team: ${split[1]}
-Scout: ${split[2]}
-Board: ${split[3]}
+Match: ${entry.match}
+Team: ${entry.team}
+Scout: ${entry.scout}
+Board: ${entry.board}
 Time: $timestamp
-Data Points: ${split[6].length / 4}
-Comments: ${split[7]}""".trim())
+Data Points: ${entry.dataPoints.size}
+Comments: ${entry.comments}""".trim())
             scannerEntries.add(DecodedEntry(result))
+        } catch (e: Exception) {
+            e.printStackTrace()
+            resultProperty.set("Error in decoding entry: ${e.message}")
         }
     }
 
