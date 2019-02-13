@@ -13,9 +13,7 @@ import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.StringProperty
 import javafx.collections.FXCollections
 import javafx.embed.swing.SwingFXUtils
-import javafx.scene.control.Label
-import javafx.scene.control.ListCell
-import javafx.scene.control.ListView
+import javafx.scene.control.*
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.image.WritableImage
@@ -38,6 +36,7 @@ class ScannerController {
     private val webcam = Webcam.getDefault()
     private val imageProperty = SimpleObjectProperty<Image>()
     private val scannerEntries = FXCollections.observableArrayList<V5Entry>()
+    private var previousEntry = ""
 
     fun initialize() {
         resultProperty = resultLabel.textProperty()
@@ -136,7 +135,23 @@ Board: ${entry.board}
 Time: $timestamp
 Data Points: ${entry.dataPoints.size}
 Comments: ${entry.comments}""".trim())
-            scannerEntries.add(DecodedEntry(result))
+            if (result == previousEntry) {
+                val alert = Alert(Alert.AlertType.NONE,
+                        "You scanned the same thing as the last entry. Continue?",
+                        ButtonType.YES,
+                        ButtonType.NO)
+                alert.title = "Duplicate Warning"
+                val clicked = alert.showAndWait()
+                clicked.ifPresent {
+                    if (it == ButtonType.YES) {
+                        scannerEntries.add(DecodedEntry(result))
+                        previousEntry = result
+                    }
+                }
+            } else {
+                scannerEntries.add(DecodedEntry(result))
+                previousEntry = result
+            }
         } catch (e: Exception) {
             e.printStackTrace()
             resultProperty.set("Error in decoding entry: ${e.message}")
