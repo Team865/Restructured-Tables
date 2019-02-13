@@ -121,7 +121,7 @@ class ScannerController {
     }
 
     private fun onQRCodeResult(result: String) {
-        resultLabel.style = "\n-fx-background-color: lightgreen;-fx-padding: 5;-fx-font-weight: bold;"
+        resultLabel.style = "\n-fx-background-color: lightgreen;-fx-padding: 5;"
         val split = result.split(":".toRegex()).toTypedArray()
         val sdfDate = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
         val time = Date(split[4].toLong(16) * 1000)
@@ -133,15 +133,15 @@ Team: ${split[1]}
 Scout: ${split[2]}
 Board: ${split[3]}
 Time: $timestamp
+Data Points: ${split[6].length / 4}
 Comments: ${split[7]}""".trim())
-            scannerEntries.add(ScannerEntry(true, split[1], split[4] + ":" + split[2], ""))
+            scannerEntries.add(ScannerEntry(split[1], split[4] + ":" + split[2], ""))
         }
     }
 
     private fun onNoQRCodeFound() {
         resultLabel.style = "\n" +
                 "-fx-padding: 5;\n" +
-                "-fx-background-color: transparent;\n" +
-                "-fx-font-weight: bold;"
+                "-fx-background-color: #ddd;\n";
     }
 }

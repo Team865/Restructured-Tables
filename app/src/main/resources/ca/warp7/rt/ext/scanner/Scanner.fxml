@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import org.kordamp.ikonli.javafx.*?>
 <?import java.net.URL?>
 <HBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
@@ -23,12 +23,9 @@
 
     <VBox spacing="10" alignment="TOP_CENTER" style="-fx-padding: 10">
 
-        <HBox prefHeight="240" prefWidth="360" maxWidth="360" style="-fx-border-color: gray; -fx-border-width: 1">
-            <Label fx:id="resultLabel" text="No QR code found" prefWidth="360" wrapText="true"
-                   alignment="TOP_LEFT" textAlignment="JUSTIFY" prefHeight="240"/>
-        </HBox>
+        <Label fx:id="resultLabel" text="No QR code found" prefWidth="360" wrapText="true"
+               alignment="TOP_LEFT" textAlignment="JUSTIFY" prefHeight="240"/>
 
-        <ListView fx:id="scanList" VBox.vgrow="ALWAYS"/>
 
         <HBox spacing="5" maxWidth="360">
             <Button text="Pause" prefWidth="400" HBox.hgrow="ALWAYS">
@@ -36,14 +33,36 @@
                     <FontIcon iconLiteral="fas-times:16:1e2e4a"/>
                 </graphic>
             </Button>
-            <Button text="From Text" prefWidth="400" HBox.hgrow="ALWAYS">
+            <Button text="Text" prefWidth="400" HBox.hgrow="ALWAYS">
                 <graphic>
                     <FontIcon iconLiteral="fas-plus:16:1e2e4a"/>
                 </graphic>
             </Button>
-            <Button text="Save CSV" prefWidth="400" HBox.hgrow="ALWAYS">
+
+            <Button text="Clear" prefWidth="400" HBox.hgrow="ALWAYS">
                 <graphic>
-                    <FontIcon iconLiteral="fas-save:16:1e2e4a"/>
+                    <FontIcon iconLiteral="fas-trash:16:1e2e4a"/>
+                </graphic>
+            </Button>
+        </HBox>
+
+        <ListView fx:id="scanList" VBox.vgrow="ALWAYS"/>
+
+
+        <HBox spacing="5" maxWidth="360">
+            <Button text="Commit" prefWidth="400" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <FontIcon iconLiteral="fas-check:16:1e2e4a"/>
+                </graphic>
+            </Button>
+            <Button text="CSV" prefWidth="400" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <FontIcon iconLiteral="fas-file-excel:16:1e2e4a"/>
+                </graphic>
+            </Button>
+            <Button text="JSON" prefWidth="400" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <FontIcon iconLiteral="fas-file-code:16:1e2e4a"/>
                 </graphic>
             </Button>
         </HBox>

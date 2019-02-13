@@ -1,7 +1,6 @@
 package ca.warp7.rt.ext.scanner
 
 import javafx.geometry.Pos
-import javafx.scene.control.CheckBox
 import javafx.scene.control.Label
 import javafx.scene.layout.HBox
 
@@ -9,9 +8,6 @@ fun cellFromEntry(item: ScannerEntry): HBox {
     val hBox = HBox()
     hBox.spacing = 10.0
     hBox.alignment = Pos.CENTER_LEFT
-
-    val checkBox = CheckBox()
-    checkBox.selectedProperty().bindBidirectional(item.commitProperty)
 
     val team = Label()
     team.textProperty().bind(item.teamProperty)
@@ -25,7 +21,6 @@ fun cellFromEntry(item: ScannerEntry): HBox {
     val timestamp = Label()
     timestamp.textProperty().bind(item.timestampProperty)
 
-    hBox.children.add(checkBox)
     hBox.children.add(timestamp)
     hBox.children.add(team)
     hBox.children.add(scout)

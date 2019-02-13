@@ -51,11 +51,12 @@ internal fun tabUIFromLink(wrapper: FeatureWrapper): HBox {
     outer.spacing = 12.0
     outer.children.add(inner)
     val label = Label(wrapper.link.title)
-    label.style = "-fx-font-size:16; -fx-font-weight:bold"
+    label.style = "-fx-font-size:16"
     outer.children.add(label)
     return outer
 }
 
+@Suppress("unused")
 fun setAppStatus(statusMessage: String) {
     if (utilsController != null) utilsController!!.statusMessageLabel.text = statusMessage
 }
