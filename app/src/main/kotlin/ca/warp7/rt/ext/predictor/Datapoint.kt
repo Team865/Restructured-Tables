@@ -12,13 +12,14 @@ class Discrete(var p: Map<Double, Double>) : Datapoint() {
         val r = Random().nextDouble()
         var s = 0.0
         p.forEach {
-            s += it.value
+            s += it.key
             if (s > r) {
-                return it.key
+                return it.value
             }
         }
         return 0.0
     }
+
 
     override val average: Double
         get() = p.maxBy { it.value }!!.key
@@ -39,3 +40,6 @@ class Gaussian(var mu: Double,
     override val average: Double
         get() = mu
 }
+
+fun emptyDiscrete() = Discrete(mapOf())
+fun emptyCycle() = Gaussian(136.0, 0.0)

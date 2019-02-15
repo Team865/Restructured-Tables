@@ -9,36 +9,37 @@ class Alliance2019(override val teams: List<Team2019>) : Alliance(teams) {
                             cargoL1: Double, cargoL2: Double, cargoL3: Double,
                             l1State: Pair<Boolean, Boolean>, l2State: Pair<Boolean, Boolean>, l3State: Pair<Boolean, Boolean>)
             : Pair<Int, Pair<Boolean, Boolean>> {
-        val efficiencies: MutableList<Double> = mutableListOf(
-                2 / panelL1, 2 / panelL2, 2 / panelL3,
-                3 / cargoL1, 3 / cargoL2, 3 / cargoL3,
-                5 / (panelL1 + cargoL1), 5 / (panelL2 + cargoL2), 5 / (panelL3 + cargoL3)
+
+        val efficiencies: MutableList<MutableList<Double>> = mutableListOf(
+                mutableListOf(2 / panelL1, 2 / panelL2, 2 / panelL3),
+                mutableListOf(3 / cargoL1, 3 / cargoL2, 3 / cargoL3),
+                mutableListOf(5 / (panelL1 + cargoL1), 5 / (panelL2 + cargoL2), 5 / (panelL3 + cargoL3))
         )
+
         listOf(l1State, l2State, l3State).forEachIndexed { i, it ->
             when (it) {
                 Pair(false, false) -> {
-                    efficiencies[0 + i] = 0.0
-                    efficiencies[3 + i] = 0.0
-                    efficiencies[6 + i] = 0.0
+                    efficiencies[0][i] = 0.0
+                    efficiencies[1][i] = 0.0
+                    efficiencies[2][i] = 0.0
                 }
                 Pair(false, true) -> {
-                    efficiencies[0 + i] = 0.0
-                    efficiencies[6 + i] = 0.0
+                    efficiencies[0][i] = 0.0
+                    efficiencies[2][i] = 0.0
                 }
                 Pair(true, false) -> {
-                    efficiencies[3 + i] = 0.0
+                    efficiencies[1][i] = 0.0
                 }
             }
         }
-
-        val strategy = efficiencies.indexOf(efficiencies.max())
-
-        return Pair(strategy % 3, Pair((strategy / 3).toInt() != 1, (strategy / 3).toInt() != 0))
-    }
+        val m = efficiencies.flatten().indexOf(efficiencies.flatten().max())
+        val strategy = Pair(m%3,(m-m%3)/3)
+        return Pair(strategy.first, Pair(strategy.second in listOf(0,2), strategy.second in listOf(1,2)))
+   }
 
 
     fun simMatch(): Pair<Double, List<TeamStats>> {
-        var score = teams.map { team -> team.autoPoints.sample() + team.climbPoints.sample() }.sum()
+        var score = teams.map { team -> team.climbPoints.sample() }.sum()
         val stats = teams.map { TeamStats(0, 0) }
 
         val teamLocalTimes: MutableList<Double> = teams.map { Math.random() }.toMutableList()
@@ -47,6 +48,18 @@ class Alliance2019(override val teams: List<Team2019>) : Alliance(teams) {
         val cargoPoints = 3
 
         val l = mutableListOf(Pair(12, 12), Pair(4, 4), Pair(4, 4))
+
+        teams.forEach { team ->
+            val panel = team.autoPanel.sample().toInt()
+            val cargo = team.autoCargo.sample().toInt()
+
+            l[0] = Pair(l[0].first - panel, l[0].second)
+            l[0] = Pair(l[0].first - cargo, l[0].second - cargo)
+
+            score += panel * (panelPoints + cargoPoints)
+            score += cargo * (cargoPoints)
+        }
+
 
         var curTeam: Team2019
         while (true in teamLocalTimes.map { it < 135 }) {
@@ -87,48 +100,51 @@ class Alliance2019(override val teams: List<Team2019>) : Alliance(teams) {
 fun main() {
     val t865 = Team2019(
             865,
-            Discrete(mapOf()),
+            Discrete(mapOf(Pair(0.6, 2.0))),
+            emptyDiscrete(),
             Gaussian(16.0, 4.0),
             Gaussian(16.0, 5.0),
             Gaussian(16.0, 5.0),
             Gaussian(13.0, 4.0),
             Gaussian(14.0, 3.0),
             Gaussian(14.0, 3.0),
-            Discrete(mapOf())
+            emptyDiscrete()
     )
     val t1114 = Team2019(
             1114,
-            Discrete(mapOf()),
+            Discrete(mapOf(Pair(0.8, 2.0))),
+            emptyDiscrete(),
             Gaussian(12.0, 3.0),
             Gaussian(12.0, 3.0),
             Gaussian(12.0, 4.0),
             Gaussian(13.0, 2.0),
             Gaussian(13.0, 2.0),
             Gaussian(13.0, 2.0),
-            Discrete(mapOf())
+            emptyDiscrete()
     )
     val t4039 = Team2019(
             4039,
-            Discrete(mapOf()),
-            Gaussian(12.0, 3.0),
-            Gaussian(136.0, 0.0),
-            Gaussian(136.0, 0.0),
-            Gaussian(12.0, 5.0),
-            Gaussian(136.0, 0.0),
-            Gaussian(136.0, 0.0),
-            Discrete(mapOf())
+            emptyDiscrete(),
+            emptyDiscrete(),
+            Gaussian(20.0, 3.0),
+            emptyCycle(),
+            emptyCycle(),
+            Gaussian(20.0, 5.0),
+            emptyCycle(),
+            emptyCycle(),
+            emptyDiscrete()
     )
 
-    val r = Alliance2019(listOf(t4039,t865))
+    val r = Alliance2019(listOf(t1114, t865, t4039))
 
     var s: MutableList<Double> = mutableListOf()
-    val n = 100
-    val stats: MutableList<List<Int>> = mutableListOf()
+    val n = 1000
+    val stats: MutableList<List<Any>> = mutableListOf()
     for (i in 1..n) {
         val (m, stat) = r.simMatch()
         //println(m)
         s.add(m)
-        stats.add(stat.map{listOf(it.hatch,it.cargo)}.flatten())
+        stats.add(listOf(stat))//stat.map{listOf(it.hatch,it.cargo)}.flatten())
     }
     println(s.sum() / n)
 
