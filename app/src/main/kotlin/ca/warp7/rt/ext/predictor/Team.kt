@@ -10,8 +10,8 @@ class Team2018(override val teamNumber: Int,
 class Team2019(override val teamNumber: Int,
                var autoPanel: Discrete,
                var autoCargo: Discrete,
-               var panelL1: Gaussian, var panelL2: Gaussian, var panelL3: Gaussian,
-               var cargoL1: Gaussian, var cargoL2: Gaussian, var cargoL3: Gaussian,
+               panelL1: Gaussian, panelL2: Gaussian, panelL3: Gaussian,
+               cargoL1: Gaussian, cargoL2: Gaussian, cargoL3: Gaussian,
                var climbPoints: Discrete) : Team(teamNumber) {
     var tele = Pair(
             listOf(panelL1, panelL2, panelL3),

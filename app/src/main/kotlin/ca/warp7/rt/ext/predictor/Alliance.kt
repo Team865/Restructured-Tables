@@ -92,7 +92,7 @@ class Alliance2019(override val teams: List<Team2019>) : Alliance(teams) {
             }
         }
 
-        println(score.toString() + " " + stats.toString())
+        println("$score $stats")
         return Pair(score, stats)
     }
 }
@@ -125,7 +125,7 @@ fun main() {
     val t4039 = Team2019(
             4039,
             emptyDiscrete(),
-            emptyDiscrete(),
+            Discrete(mapOf(Pair(0.4, 1.0))),
             Gaussian(20.0, 3.0),
             emptyCycle(),
             emptyCycle(),
@@ -137,8 +137,8 @@ fun main() {
 
     val r = Alliance2019(listOf(t1114, t865, t4039))
 
-    var s: MutableList<Double> = mutableListOf()
-    val n = 1000
+    val s: MutableList<Double> = mutableListOf()
+    val n = 10
     val stats: MutableList<List<Any>> = mutableListOf()
     for (i in 1..n) {
         val (m, stat) = r.simMatch()

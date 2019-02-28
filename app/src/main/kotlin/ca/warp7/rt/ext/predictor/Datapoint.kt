@@ -11,7 +11,7 @@ class Discrete(var p: Map<Double, Double>) : Datapoint() {
     override fun sample(): Double {
         val r = Random().nextDouble()
         var s = 0.0
-        p.forEach {
+        this.p.forEach {
             s += it.key
             if (s > r) {
                 return it.value
@@ -29,7 +29,7 @@ class Gaussian(var mu: Double,
                var sigma: Double) : Datapoint() {
 
     override fun sample(): Double {
-        val x = (Random().nextGaussian() * sigma + mu)
+        val x = Random().nextGaussian() * sigma + mu
 
         return when (x < 0) {
             true -> sample()
