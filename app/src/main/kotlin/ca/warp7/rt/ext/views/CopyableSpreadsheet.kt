@@ -31,13 +31,13 @@ open class CopyableSpreadsheet(grid: Grid?) : SpreadsheetView(grid) {
                     copyClipboardWithHeaders()
                 },
                 SeparatorMenuItem(),
-                menuItem("Zoom _In", "fas-search-plus:16:1e2e4a", Combo(KeyCode.EQUALS, SHORTCUT_DOWN)) {
+                menuItem("Zoom _In", "fas-search-plus:16:1e2e4a", Combo(KeyCode.EQUALS)) {
                     incrementZoom()
                 },
-                menuItem("Zoom _Out", "fas-search-minus:16:1e2e4a", Combo(KeyCode.MINUS, SHORTCUT_DOWN)) {
+                menuItem("Zoom _Out", "fas-search-minus:16:1e2e4a", Combo(KeyCode.MINUS)) {
                     decrementZoom()
                 },
-                menuItem("_Reset Zoom", null, Combo(KeyCode.DIGIT0, SHORTCUT_DOWN)) {
+                menuItem("_Reset Zoom", null, Combo(KeyCode.DIGIT0)) {
                     zoomFactor = 1.0
                 }
         )

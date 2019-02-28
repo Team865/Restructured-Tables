@@ -1,9 +1,9 @@
 package ca.warp7.rt.core.model
 
-import ca.warp7.rt.context.api.MetricsSet
-import ca.warp7.rt.context.api.PipelineMetricStream
-import ca.warp7.rt.context.api.PipelineReceiverScope
-import ca.warp7.rt.context.api.div
+import ca.warp7.rt.api.MetricsSet
+import ca.warp7.rt.api.PipelineMetricStream
+import ca.warp7.rt.api.PipelineReceiverScope
+import ca.warp7.rt.api.div
 
 @Suppress("unused")
 internal class SingletonReceiverScope : PipelineReceiverScope {

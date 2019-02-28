@@ -7,22 +7,28 @@ plugins {
     id("application")
     id("com.github.johnrengelman.shadow")
     id("edu.sc.seis.launch4j")
-    kotlin(module = "jvm") version "1.3.20"
+    kotlin(module = "jvm") version "1.3.21"
 }
+
+val versionName = "2019.1.0-alpha"
+
+version = versionName
 
 repositories {
     mavenCentral()
     jcenter()
-    maven(url = "http://dl.bintray.com/kyonifer/maven")
 }
 
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions.jvmTarget = "1.8"
 
-val kotlinVersion = "1.3.20"
+val kotlinVersion = "1.3.21"
+
+buildDir = File(rootProject.projectDir, "build/${project.name}")
 
 dependencies {
-    implementation(dependencyNotation = project(":ContextAPI"))
+    implementation(dependencyNotation = project(":api"))
+    implementation(dependencyNotation = project(":android-v5"))
 
     // Java libraries
     implementation(group = "commons-io", name = "commons-io", version = "2.6")
@@ -37,7 +43,6 @@ dependencies {
     // Kotlin libraries
     implementation(kotlin("stdlib", kotlinVersion))
     implementation(kotlin("reflect", kotlinVersion))
-    implementation(group = "com.kyonifer", name = "koma-core-ejml", version = "0.12")
     implementation(group = "de.mpicbg.scicomp", name = "krangl", version = "0.10.3")
     implementation(group = "com.beust", name = "klaxon", version = "3.0.1")
     testImplementation(kotlin("test", kotlinVersion))
@@ -49,5 +54,5 @@ application.mainClassName = mainClassName0
 launch4j {
     mainClassName = mainClassName0
     icon = "$projectDir/src/main/resources/ca/warp7/rt/res/app-icon.ico"
-    jar = "$buildDir/libs/app-all.jar"
+    jar = "$buildDir/libs/app-$versionName.jar"
 }

@@ -1,8 +1,8 @@
 package ca.warp7.rt.core.app
 
-import ca.warp7.rt.context.api.SearchFlavour
-import ca.warp7.rt.context.api.SearchResult
-import ca.warp7.rt.context.api.get
+import ca.warp7.rt.api.SearchFlavour
+import ca.warp7.rt.api.SearchResult
+import ca.warp7.rt.api.get
 import ca.warp7.rt.core.Restructured
 import ca.warp7.rt.core.model.Contexts
 import ca.warp7.rt.core.model.Metadata
@@ -29,10 +29,10 @@ import org.kordamp.ikonli.javafx.FontIcon
 import java.io.IOException
 
 internal val appFeatures = listOf(
+        ScannerFeature(),
         ViewsFeature(),
         ASTFeature(),
-        PredictorFeature(),
-        ScannerFeature()
+        PredictorFeature()
 )
 
 internal var utilsController: AppController? = null
@@ -51,11 +51,12 @@ internal fun tabUIFromLink(wrapper: FeatureWrapper): HBox {
     outer.spacing = 12.0
     outer.children.add(inner)
     val label = Label(wrapper.link.title)
-    label.style = "-fx-font-size:16; -fx-font-weight:bold"
+    label.style = "-fx-font-size:16"
     outer.children.add(label)
     return outer
 }
 
+@Suppress("unused")
 fun setAppStatus(statusMessage: String) {
     if (utilsController != null) utilsController!!.statusMessageLabel.text = statusMessage
 }

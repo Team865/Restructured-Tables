@@ -1,5 +1,6 @@
 package ca.warp7.rt.ext.scanner
 
+import ca.warp7.android.scouting.v5.entry.V5Entry
 import com.github.sarxos.webcam.Webcam
 import com.github.sarxos.webcam.WebcamResolution
 import com.google.zxing.BinaryBitmap
@@ -24,48 +25,35 @@ import java.util.concurrent.atomic.AtomicReference
 
 class ScannerController {
 
-    lateinit var red1Team: Label
-    lateinit var red2Team: Label
-    lateinit var red3Team: Label
-    lateinit var blue1Team: Label
-    lateinit var blue2Team: Label
-    lateinit var blue3Team: Label
-    lateinit var red1Scout: Label
-    lateinit var red2Scout: Label
-    lateinit var red3Scout: Label
-    lateinit var blue1Scout: Label
-    lateinit var blue2Scout: Label
-    lateinit var blue3Scout: Label
-    lateinit var currentMatch: Label
-
     lateinit var streamImageView: ImageView
     lateinit var imageContainer: VBox
     lateinit var resultLabel: Label
-    lateinit var comments: TextArea
-    lateinit var scanList: ListView<ScannerEntry>
-    lateinit var cameraStateChanger: Button
+    lateinit var scanList: ListView<V5Entry>
 
     private lateinit var resultProperty: StringProperty
 
     private var isStreaming: Boolean = false
     private val webcam = Webcam.getDefault()
     private val imageProperty = SimpleObjectProperty<Image>()
-    private val scannerEntries = FXCollections.observableArrayList<ScannerEntry>()
+    private val scannerEntries = FXCollections.observableArrayList<V5Entry>()
+    private var previousEntry = ""
 
     fun initialize() {
         resultProperty = resultLabel.textProperty()
+        resultLabel.lineSpacing = 5.0
         startCameraStream()
         scanList.items = scannerEntries
         initializeListFactory()
         streamImageView.fitWidthProperty().bind(imageContainer.widthProperty())
         streamImageView.fitHeightProperty().bind(imageContainer.heightProperty())
+        onNoQRCodeFound()
     }
 
     internal fun stopCameraStream() {
         isStreaming = false
-        cameraStateChanger.text = "Start"
     }
 
+    @Suppress("unused")
     fun onCameraStateChange() {
         if (isStreaming) stopCameraStream()
         else startCameraStream()
@@ -73,8 +61,8 @@ class ScannerController {
 
     private fun initializeListFactory() {
         scanList.setCellFactory {
-            object : ListCell<ScannerEntry>() {
-                override fun updateItem(item: ScannerEntry?, empty: Boolean) {
+            object : ListCell<V5Entry>() {
+                override fun updateItem(item: V5Entry?, empty: Boolean) {
                     super.updateItem(item, empty)
                     prefHeight = 50.0
                     if (empty || item == null) {
@@ -82,14 +70,13 @@ class ScannerController {
                         graphic = null
                         return
                     }
-                    graphic = ScannerElement.cellFromEntry(item)
+                    graphic = cellFromEntry(item)
                 }
             }
         }
     }
 
     private fun startCameraStream() {
-        cameraStateChanger.text = "Pause"
         if (webcam.isOpen) webcam.close()
         webcam.viewSize = WebcamResolution.VGA.size
         webcam.setCustomViewSizes(WebcamResolution.VGA.size)
@@ -99,7 +86,7 @@ class ScannerController {
             val imgRef = AtomicReference<WritableImage>()
             var image: BufferedImage?
             var notFoundCount = 0
-            var previousResultText = ""
+            var lastEntry = ""
             while (isStreaming) {
                 image = webcam.image
                 if (image != null) {
@@ -108,14 +95,15 @@ class ScannerController {
                                 HybridBinarizer(BufferedImageLuminanceSource(image))))
                         notFoundCount = 0
                         val resultText = result.text
-                        if (previousResultText != resultText) {
-                            previousResultText = resultText
+                        if (resultText != lastEntry) {
                             Platform.runLater { onQRCodeResult(resultText) }
+                            lastEntry = resultText
                         }
                     } catch (ignored: NotFoundException) {
                         notFoundCount++
-                        if (notFoundCount > 15) {
-                            Platform.runLater { resultProperty.set("No QR code found") }
+                        if (notFoundCount > 3) {
+                            Platform.runLater { onNoQRCodeFound() }
+                            lastEntry = ""
                             notFoundCount = 0
                         }
                     }
@@ -133,13 +121,46 @@ class ScannerController {
     }
 
     private fun onQRCodeResult(result: String) {
-        resultProperty.set(result)
-        val split = result.split("_".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-        if (split.size > 5) {
-            val sdfDate = SimpleDateFormat("HH:mm:ss")
-            val now = Date()
-            val timestamp = sdfDate.format(now)
-            scannerEntries.add(ScannerEntry(true, split[1], split[4] + ":" + split[2], timestamp))
+        resultLabel.style = "-fx-background-color: lightgreen;-fx-padding: 10;"
+        try {
+            val entry: V5Entry = DecodedEntry(result)
+            val sdfDate = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+            val time = Date(entry.timestamp * 1000L)
+            val timestamp = sdfDate.format(time)
+            resultProperty.set("""
+Match: ${entry.match}
+Team: ${entry.team}
+Scout: ${entry.scout}
+Board: ${entry.board}
+Time: $timestamp
+Data Points: ${entry.dataPoints.size}
+Comments: ${entry.comments}""".trim())
+            if (result == previousEntry) {
+                val alert = Alert(Alert.AlertType.NONE,
+                        "You scanned the same thing as the last entry. Continue?",
+                        ButtonType.YES,
+                        ButtonType.NO)
+                alert.title = "Duplicate Warning"
+                val clicked = alert.showAndWait()
+                clicked.ifPresent {
+                    if (it == ButtonType.YES) {
+                        scannerEntries.add(DecodedEntry(result))
+                        previousEntry = result
+                    }
+                }
+            } else {
+                scannerEntries.add(DecodedEntry(result))
+                previousEntry = result
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            resultProperty.set("Error in decoding entry: ${e.message}")
         }
+    }
+
+    private fun onNoQRCodeFound() {
+        resultLabel.style = "\n" +
+                "-fx-padding: 10;\n" +
+                "-fx-background-color: #ddd;\n"
     }
 }
