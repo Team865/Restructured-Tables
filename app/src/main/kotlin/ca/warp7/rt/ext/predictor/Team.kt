@@ -28,7 +28,7 @@ abstract class Team(open val teamNumber: Int, open var data: Map<String, Any>) {
     }
 
     fun sampleAll(): Map<String, Double> {
-        var results: MutableMap<String, Double> = mutableMapOf()
+        val results: MutableMap<String, Double> = mutableMapOf()
         data.forEach { key, value ->
             results[key] = sample(key)
         }

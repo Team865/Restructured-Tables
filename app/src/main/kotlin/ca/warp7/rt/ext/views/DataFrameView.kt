@@ -1,15 +1,22 @@
 package ca.warp7.rt.ext.views
 
+import ca.warp7.rt.core.app.utilsController
+import javafx.scene.Scene
 import javafx.scene.control.SelectionMode
 import javafx.scene.control.SeparatorMenuItem
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyCombination.*
+import javafx.scene.layout.VBox
+import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.scene.text.FontWeight
 import javafx.scene.text.Text
+import javafx.stage.Stage
+import javafx.stage.StageStyle
 import krangl.DataFrame
 import krangl.max
 import krangl.min
+import java.util.Collections.emptyList
 
 class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyList()) : CopyableSpreadsheet(toGrid(initialFrame)) {
 
@@ -41,7 +48,6 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                 menuItem("Clear sort", null, Combo(KeyCode.DIGIT0, ALT_DOWN)) {
                     model.sortColumns.clear()
                     resetDisplay()
-
                 },
                 SeparatorMenuItem(),
                 menuItem("Filter By", "fas-filter:16:1e2e4a", Combo(KeyCode.I, SHORTCUT_DOWN)) {
@@ -74,7 +80,40 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                 menuItem("Highlight Cells", "fas-adjust:16:1e2e4a", Combo(KeyCode.H, ALT_DOWN)) {},
                 menuItem("Clear Highlighting", null, Combo(KeyCode.SLASH, ALT_DOWN)) {},
                 SeparatorMenuItem(),
-                menuItem("Data Summary", "fas-calculator:16:1e2e4a", Combo(KeyCode.C, ALT_DOWN)) {},
+                menuItem("Data Summary", "fas-calculator:16:1e2e4a", Combo(KeyCode.C, ALT_DOWN)) {
+                    Stage().apply {
+                        title = "Data Summary"
+                        initStyle(StageStyle.UTILITY)
+                        initOwner(utilsController?.appStage)
+
+                        val values = selectionModel.selectedCells.map { grid.rows[it.row][it.column].item }
+
+                        val wrapper = VBox(
+                                Text("Count ${values.size}"),
+                                Text("Sum ${
+                                values.map {
+                                    when (it) {
+                                        is Number -> it.toDouble()
+                                        else -> 0.0
+                                    }
+                                }.sum()}"),
+                                Text("Mean ${
+                                values.map {
+                                    when (it) {
+                                        is Number -> it.toDouble()
+                                        else -> 0.0
+                                    }
+                                }.sum() / values.size}")
+                        )
+                        wrapper.minWidth = 150.0
+                        wrapper.minHeight = 100.0
+                        scene = Scene(wrapper)
+                        opacity = 0.95
+                        scene.fill = Color.TRANSPARENT
+                        show()
+                    }
+                    println("Dataa")
+                },
                 menuItem("Configure", "fas-code:16:1e2e4a", Combo(KeyCode.S, ALT_DOWN)) {},
                 SeparatorMenuItem(),
                 menuItem("Select View", "fas-table:16:1e2e4a", Combo(KeyCode.V, SHORTCUT_DOWN, SHIFT_DOWN)) {
