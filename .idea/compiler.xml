@@ -10,22 +10,18 @@
       <module name="Restructured-Tables.test" target="1.8" />
       <module name="Restructured-Tables.UI.main" target="1.8" />
       <module name="Restructured-Tables.UI.test" target="1.8" />
-      <module name="RT.android-v5.main" target="1.8" />
-      <module name="RT.android-v5.test" target="1.8" />
-      <module name="RT.api.main" target="1.8" />
-      <module name="RT.api.test" target="1.8" />
-      <module name="RT.app.main" target="1.8" />
-      <module name="RT.app.test" target="1.8" />
+      <module name="RT.app.main" target="11" />
+      <module name="RT.app.test" target="11" />
       <module name="RT.CodeEditor.main" target="1.8" />
       <module name="RT.CodeEditor.test" target="1.8" />
-      <module name="RT.ContextAPI.main" target="1.8" />
-      <module name="RT.ContextAPI.test" target="1.8" />
+      <module name="RT.ContextAPI.main" target="11" />
+      <module name="RT.ContextAPI.test" target="11" />
       <module name="RT.ContextModel.main" target="1.8" />
       <module name="RT.ContextModel.test" target="1.8" />
       <module name="RT.DataModel.main" target="1.8" />
       <module name="RT.DataModel.test" target="1.8" />
-      <module name="RT.main" target="1.8" />
-      <module name="RT.test" target="1.8" />
+      <module name="RT.main" target="11" />
+      <module name="RT.test" target="11" />
       <module name="RT.UI.main" target="1.8" />
       <module name="RT.UI.test" target="1.8" />
     </bytecodeTargetLevel>
