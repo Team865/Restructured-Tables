@@ -17,7 +17,7 @@
     </stylesheets>
 
     <left>
-        <SplitPane VBox.vgrow="ALWAYS" orientation="VERTICAL" minWidth="240" prefWidth="240" fx:id="listViewSplitPane">
+        <SplitPane VBox.vgrow="ALWAYS" orientation="VERTICAL" minWidth="200" prefWidth="200" fx:id="listViewSplitPane">
             <ImageView fitHeight="80" preserveRatio="true">
                 <Image url="@/ca/warp7/rt/res/warp7.png"/>
             </ImageView>

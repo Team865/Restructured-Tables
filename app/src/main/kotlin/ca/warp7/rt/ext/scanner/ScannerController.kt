@@ -13,7 +13,9 @@ import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.StringProperty
 import javafx.collections.FXCollections
 import javafx.embed.swing.SwingFXUtils
-import javafx.scene.control.*
+import javafx.scene.control.Label
+import javafx.scene.control.ListCell
+import javafx.scene.control.ListView
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.image.WritableImage
@@ -64,7 +66,7 @@ class ScannerController {
             object : ListCell<V5Entry>() {
                 override fun updateItem(item: V5Entry?, empty: Boolean) {
                     super.updateItem(item, empty)
-                    prefHeight = 50.0
+//                    prefHeight = 50.0
                     if (empty || item == null) {
                         text = null
                         graphic = null
@@ -135,20 +137,7 @@ Board: ${entry.board}
 Time: $timestamp
 Data Points: ${entry.dataPoints.size}
 Comments: ${entry.comments}""".trim())
-            if (result == previousEntry) {
-                val alert = Alert(Alert.AlertType.NONE,
-                        "You scanned the same thing as the last entry. Continue?",
-                        ButtonType.YES,
-                        ButtonType.NO)
-                alert.title = "Duplicate Warning"
-                val clicked = alert.showAndWait()
-                clicked.ifPresent {
-                    if (it == ButtonType.YES) {
-                        scannerEntries.add(DecodedEntry(result))
-                        previousEntry = result
-                    }
-                }
-            } else {
+            if (result != previousEntry) {
                 scannerEntries.add(DecodedEntry(result))
                 previousEntry = result
             }

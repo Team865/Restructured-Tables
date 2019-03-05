@@ -37,6 +37,7 @@ dependencies {
     implementation(group = "com.google.zxing", name = "javase", version = "3.3.3")
     implementation(group = "org.kordamp.ikonli", name = "ikonli-javafx", version = "2.4.0")
     implementation(group = "org.kordamp.ikonli", name = "ikonli-fontawesome5-pack", version = "2.4.0")
+    implementation(group = "org.kordamp.ikonli", name = "ikonli-material-pack", version = "2.4.0")
     implementation(group = "org.slf4j", name = "slf4j-simple", version = "1.7.6")
     implementation(group = "org.controlsfx", name = "controlsfx", version = "8.40.14")
 
