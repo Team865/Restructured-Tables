@@ -45,7 +45,8 @@ class ScannerController {
     private val scannerEntries = FXCollections.observableArrayList<V5Entry>()
     private var previousEntries = mutableListOf<String>()
 
-    private val formatter = SimpleDateFormat("yyyy-dd-MM-HH-mm-ss")
+    private val longFormatter = SimpleDateFormat("yyyy-dd-MM HH.mm.ss")
+    private val shortFormatter = SimpleDateFormat("HH.mm.ss")
 
     fun initialize() {
         resultProperty = resultLabel.textProperty()
@@ -77,8 +78,15 @@ class ScannerController {
 
     fun onSave() {
         if (scannerEntries.isEmpty()) return
-        File(Humber.raw, "${formatter.format(Date())}.txt")
-                .writeText(previousEntries.joinToString("\n"))
+        val match = scannerEntries[0].match
+        var uniformMatch = true
+        for (i in 1 until scannerEntries.size) {
+            if (match != scannerEntries[i].match) {
+                uniformMatch = false
+            }
+        }
+        val fileName = if (uniformMatch) "$match ${shortFormatter.format(Date())}" else longFormatter.format(Date())
+        File(Humber.raw, "$fileName.txt").writeText(previousEntries.joinToString("\n"))
         scannerEntries.clear()
         previousEntries.clear()
     }
