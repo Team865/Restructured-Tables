@@ -60,8 +60,8 @@ class AppController : FeatureStage {
             }
         }
 
-        stage.scene.accelerators[KeyCodeCombination(KeyCode.BACK_QUOTE, KeyCodeCombination.SHORTCUT_DOWN)] =
-                Runnable { toggleSearch() }
+        stage.scene.accelerators[KeyCodeCombination(KeyCode.BACK_QUOTE,
+                KeyCodeCombination.SHORTCUT_DOWN)] = Runnable { toggleSearch() }
         stage.setOnCloseRequest { event ->
             if (current != null && !current!!.onClose()) {
                 event.consume()

@@ -13,6 +13,7 @@ import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.StringProperty
 import javafx.collections.FXCollections
 import javafx.embed.swing.SwingFXUtils
+import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.control.ListCell
 import javafx.scene.control.ListView
@@ -20,6 +21,7 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.image.WritableImage
 import javafx.scene.layout.VBox
+import org.kordamp.ikonli.javafx.FontIcon
 import java.awt.image.BufferedImage
 import java.text.SimpleDateFormat
 import java.util.*
@@ -30,6 +32,7 @@ class ScannerController {
     lateinit var streamImageView: ImageView
     lateinit var imageContainer: VBox
     lateinit var resultLabel: Label
+    lateinit var pauseResume: Button
     lateinit var scanList: ListView<V5Entry>
 
     private lateinit var resultProperty: StringProperty
@@ -38,7 +41,7 @@ class ScannerController {
     private val webcam = Webcam.getDefault()
     private val imageProperty = SimpleObjectProperty<Image>()
     private val scannerEntries = FXCollections.observableArrayList<V5Entry>()
-    private var previousEntry = ""
+    private var previousEntries = mutableListOf<String>()
 
     fun initialize() {
         resultProperty = resultLabel.textProperty()
@@ -55,13 +58,27 @@ class ScannerController {
         isStreaming = false
     }
 
-    @Suppress("unused")
     fun onCameraStateChange() {
-        if (isStreaming) stopCameraStream()
-        else startCameraStream()
+        if (isStreaming) {
+            pauseResume.text = "Resume"
+            pauseResume.graphic = FontIcon().apply { iconLiteral = "fas-play:16:white" }
+            stopCameraStream()
+        } else {
+            pauseResume.text = "Pause"
+            pauseResume.graphic = FontIcon().apply { iconLiteral = "fas-pause:16:white" }
+            pauseResume.requestLayout()
+            Platform.runLater { startCameraStream() }
+        }
+    }
+
+    fun onSaveAndClear() {
+        scannerEntries.clear()
+        previousEntries.clear()
     }
 
     private fun initializeListFactory() {
+        scanList.isMouseTransparent = true
+        scanList.isFocusTraversable = false
         scanList.setCellFactory {
             object : ListCell<V5Entry>() {
                 override fun updateItem(item: V5Entry?, empty: Boolean) {
@@ -137,9 +154,9 @@ Board: ${entry.board}
 Time: $timestamp
 Data Points: ${entry.dataPoints.size}
 Comments: ${entry.comments}""".trim())
-            if (result != previousEntry) {
+            if (result !in previousEntries) {
                 scannerEntries.add(DecodedEntry(result))
-                previousEntry = result
+                previousEntries.add(result)
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -148,8 +165,6 @@ Comments: ${entry.comments}""".trim())
     }
 
     private fun onNoQRCodeFound() {
-        resultLabel.style = "\n" +
-                "-fx-padding: 10;\n" +
-                "-fx-background-color: #ddd;\n"
+        resultLabel.style = "\n-fx-padding: 10;\n-fx-background-color: #ddd;\n"
     }
 }
