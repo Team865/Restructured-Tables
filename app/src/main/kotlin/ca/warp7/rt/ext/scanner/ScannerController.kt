@@ -1,6 +1,7 @@
 package ca.warp7.rt.ext.scanner
 
 import ca.warp7.android.scouting.v5.entry.V5Entry
+import ca.warp7.rt.ext.humber.Humber
 import com.github.sarxos.webcam.Webcam
 import com.github.sarxos.webcam.WebcamResolution
 import com.google.zxing.BinaryBitmap
@@ -23,6 +24,7 @@ import javafx.scene.image.WritableImage
 import javafx.scene.layout.VBox
 import org.kordamp.ikonli.javafx.FontIcon
 import java.awt.image.BufferedImage
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.atomic.AtomicReference
@@ -42,6 +44,8 @@ class ScannerController {
     private val imageProperty = SimpleObjectProperty<Image>()
     private val scannerEntries = FXCollections.observableArrayList<V5Entry>()
     private var previousEntries = mutableListOf<String>()
+
+    private val formatter = SimpleDateFormat("yyyy-dd-MM-HH-mm-ss")
 
     fun initialize() {
         resultProperty = resultLabel.textProperty()
@@ -72,6 +76,9 @@ class ScannerController {
     }
 
     fun onSave() {
+        if (scannerEntries.isEmpty()) return
+        File(Humber.raw, "${formatter.format(Date())}.txt")
+                .writeText(previousEntries.joinToString("\n"))
         scannerEntries.clear()
         previousEntries.clear()
     }
