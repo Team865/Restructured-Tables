@@ -29,12 +29,12 @@
                     <FontIcon iconLiteral="fas-pause:16:1e2e4a"/>
                 </graphic>
             </Button>
-            <Button text="Undo" prefWidth="400" HBox.hgrow="ALWAYS" onMouseClicked="#onSaveAndClear">
+            <Button text="Undo" prefWidth="400" HBox.hgrow="ALWAYS" onMouseClicked="#onUndo">
                 <graphic>
                     <FontIcon iconLiteral="fas-undo:16:1e2e4a"/>
                 </graphic>
             </Button>
-            <Button text="Save" prefWidth="400" HBox.hgrow="ALWAYS" onMouseClicked="#onSaveAndClear">
+            <Button text="Save" prefWidth="400" HBox.hgrow="ALWAYS" onMouseClicked="#onSave">
                 <graphic>
                     <FontIcon iconLiteral="fas-save:16:1e2e4a"/>
                 </graphic>

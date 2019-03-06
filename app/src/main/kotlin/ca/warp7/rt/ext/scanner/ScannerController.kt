@@ -71,9 +71,16 @@ class ScannerController {
         }
     }
 
-    fun onSaveAndClear() {
+    fun onSave() {
         scannerEntries.clear()
         previousEntries.clear()
+    }
+
+    fun onUndo() {
+        if (scannerEntries.isNotEmpty()) {
+            scannerEntries.removeAt(scannerEntries.size - 1)
+            previousEntries.removeAt(previousEntries.size - 1)
+        }
     }
 
     private fun initializeListFactory() {

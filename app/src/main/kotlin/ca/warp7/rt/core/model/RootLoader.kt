@@ -105,11 +105,12 @@ internal fun loadRootImpl(config: File,
                     .list(this)
                     .iterator()
                     .asSequence()
-                    .toList()
                     .filter { it.toString().endsWith(".rt.jar") }
                     .map { it.toUri() }
-                    .sorted().map { loadPlugin(it) }
+                    .sorted()
+                    .map { loadPlugin(it) }
                     .flatten()
+                    .toList()
                     .toTypedArray()
         },
         default = default)
@@ -124,7 +125,6 @@ internal fun loadPlugin(uri: URI, classLoader: ClassLoader) = JarFile(File(uri))
             .stream()
             .iterator()
             .asSequence()
-            .toList()
             .filter { it.name.endsWith(".class") }
             .map { it.name.replace('/', '.') }
             .map { it.substring(0, it.length - 6) }
