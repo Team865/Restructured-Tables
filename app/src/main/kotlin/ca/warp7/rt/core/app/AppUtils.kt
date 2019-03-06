@@ -43,12 +43,12 @@ internal fun tabUIFromLink(wrapper: FeatureWrapper): HBox {
     val outer = HBox()
     val inner = HBox()
     inner.prefWidth = 20.0
-    inner.alignment = Pos.CENTER
+    inner.alignment = Pos.CENTER_LEFT
     wrapper.icon.iconColor = teamColor
     wrapper.icon.iconSize -= 2
     inner.children.add(wrapper.icon)
     outer.alignment = Pos.CENTER_LEFT
-    outer.spacing = 12.0
+    outer.spacing = 6.0
     outer.children.add(inner)
     val label = Label(wrapper.link.title)
     label.style = "-fx-font-size:16"
