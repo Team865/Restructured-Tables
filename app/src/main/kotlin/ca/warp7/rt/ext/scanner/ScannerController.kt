@@ -86,7 +86,7 @@ class ScannerController {
             }
         }
         val fileName = if (uniformMatch) "$match ${shortFormatter.format(Date())}" else longFormatter.format(Date())
-        File(Humber.raw, "$fileName.txt").writeText(previousEntries.joinToString("\n"))
+        File(Humber.root, "$fileName.txt").writeText(previousEntries.joinToString("\n"))
         scannerEntries.clear()
         previousEntries.clear()
     }
