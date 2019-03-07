@@ -20,7 +20,7 @@
     </VBox>
     <VBox spacing="10" alignment="TOP_CENTER" style="-fx-padding: 10">
         <Label fx:id="resultLabel" text="No QR code found" prefWidth="280" wrapText="true"
-               alignment="TOP_LEFT" textAlignment="JUSTIFY" prefHeight="240"/>
+               alignment="TOP_LEFT" textAlignment="JUSTIFY" prefHeight="175"/>
         <HBox spacing="5" maxWidth="280">
             <Button text="Pause" prefWidth="400" HBox.hgrow="ALWAYS" fx:id="pauseResume"
                     onMouseClicked="#onCameraStateChange"/>

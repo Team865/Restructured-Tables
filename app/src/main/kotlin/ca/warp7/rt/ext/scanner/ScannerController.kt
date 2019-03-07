@@ -162,17 +162,11 @@ class ScannerController {
         resultLabel.style = "-fx-background-color: lightgreen;-fx-padding: 10;"
         try {
             val entry: V5Entry = DecodedEntry(result)
-            val sdfDate = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
-            val time = Date(entry.timestamp * 1000L)
-            val timestamp = sdfDate.format(time)
             resultProperty.set("""
 Match: ${entry.match}
 Team: ${entry.team}
 Scout: ${entry.scout}
-Board: ${entry.board}
-Time: $timestamp
-Data Points: ${entry.dataPoints.size}
-Comments: ${entry.comments}""".trim())
+Board: ${entry.board}""".trim())
             if (result !in previousEntries) {
                 scannerEntries.add(DecodedEntry(result))
                 previousEntries.add(result)
