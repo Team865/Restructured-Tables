@@ -112,7 +112,6 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                         scene.fill = Color.TRANSPARENT
                         show()
                     }
-                    println("Dataa")
                 },
                 menuItem("Configure", "fas-code:16:1e2e4a", Combo(KeyCode.S, ALT_DOWN)) {},
                 SeparatorMenuItem(),

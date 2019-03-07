@@ -124,9 +124,9 @@ private fun DataCol.descendingComparator(): java.util.Comparator<Int> = when (th
 }
 
 fun colorScale(k: Double, r: Int, g: Int, b: Int): String {
-    var rHex = java.lang.Integer.toHexString(255 - (k * (255 - r)).toInt())
-    var gHex = java.lang.Integer.toHexString(255 - (k * (255 - g)).toInt())
-    var bHex = java.lang.Integer.toHexString(255 - (k * (255 - b)).toInt())
+    val rHex = java.lang.Integer.toHexString(255 - (k * (255 - r)).toInt())
+    val gHex = java.lang.Integer.toHexString(255 - (k * (255 - g)).toInt())
+    val bHex = java.lang.Integer.toHexString(255 - (k * (255 - b)).toInt())
 
     return (if (rHex.length == 1) "0" + rHex else rHex) +
             (if (gHex.length == 1) "0" + gHex else gHex) +
