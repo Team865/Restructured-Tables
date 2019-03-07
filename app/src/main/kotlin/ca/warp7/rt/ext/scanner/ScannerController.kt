@@ -14,14 +14,12 @@ import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.StringProperty
 import javafx.collections.FXCollections
 import javafx.embed.swing.SwingFXUtils
-import javafx.scene.control.Button
-import javafx.scene.control.Label
-import javafx.scene.control.ListCell
-import javafx.scene.control.ListView
+import javafx.scene.control.*
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.image.WritableImage
 import javafx.scene.layout.VBox
+import javafx.stage.StageStyle
 import java.awt.image.BufferedImage
 import java.io.File
 import java.text.SimpleDateFormat
@@ -83,7 +81,13 @@ class ScannerController {
             }
         }
         val fileName = if (uniformMatch) "$match ${shortFormatter.format(Date())}" else longFormatter.format(Date())
-        File(Humber.root, "$fileName.txt").writeText(previousEntries.joinToString("\n"))
+        val f = File(Humber.root, "$fileName.txt")
+        f.writeText(previousEntries.joinToString("\n"))
+        Alert(Alert.AlertType.NONE, "File Path: ${f.absolutePath}", ButtonType.OK).apply {
+            title = "Saved Data"
+            initStyle(StageStyle.UTILITY)
+            showAndWait()
+        }
         scannerEntries.clear()
         previousEntries.clear()
     }
