@@ -144,7 +144,7 @@ fun main() {
         val (m, stat) = r.simMatch()
         //println(m)
         s.add(m)
-        stats.add(listOf(stat))//stat.map{listOf(it.hatch,it.cargo)}.flatten())
+        stats.add(listOf(stat))//stat.map{listOf(it.hatch,it.Cargo)}.flatten())
     }
     println(s.sum() / n)
 

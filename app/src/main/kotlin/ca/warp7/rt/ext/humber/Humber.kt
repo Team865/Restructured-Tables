@@ -47,6 +47,12 @@ object Endgame {
     val liftingRobot2 = template.lookup("lifting_robot_2")
 }
 
+object GamePieces {
+    const val Cargo = 0
+    const val None = 1
+    const val Hatch = 2
+}
+
 val startPositions = arrayOf("None", "L2", "L1", "C1", "R1", "R2")
 val climbLevels = arrayOf("None", "1", "2", "3")
 val liftingLevels = arrayOf("None", "2", "3")
@@ -78,14 +84,66 @@ fun V5Entry.toRow(): Map<String, Any> {
     var rocket2Cargo = 0
     var rocket3Hatch = 0
     var rocket3Cargo = 0
-    var droppedHatch = 0
-    var droppedCargo = 0
+    var hatchAcquired = 0
+    var cargoAcquired = 0
     var defendingCount = 0
     var totalDefendingTime = 0
     var defendedCount = 0
     var totalDefendedTime = 0
     var outtakeWhileDefending = 0
     var outtakeNoGamePiece = 0
+    var illegalGamePiece = 0
+
+    var currentGamePiece: Int
+    var gamePieceInSandstorm = false
+    dataPoints.forEach {
+        when (it.type) {
+            Sandstorm.gamePiece -> {
+                if (!gamePieceInSandstorm) {
+                    gamePieceInSandstorm = true
+                    currentGamePiece = GamePieces.None
+                }
+                when (it.value) {
+                    GamePieces.Hatch -> {
+                        hatchAcquired++
+                        currentGamePiece = GamePieces.Hatch
+                        if (currentGamePiece != GamePieces.None) {
+                            illegalGamePiece++
+                        }
+                    }
+                    GamePieces.Cargo -> {
+                        cargoAcquired++
+                        currentGamePiece = GamePieces.Cargo
+                        if (currentGamePiece != GamePieces.None) {
+                            illegalGamePiece++
+                        }
+                    }
+                }
+            }
+            Teleop.gamePiece -> {
+                if (gamePieceInSandstorm) {
+                    gamePieceInSandstorm = false
+                    currentGamePiece = GamePieces.None
+                }
+                when (it.value) {
+                    GamePieces.Hatch -> {
+                        hatchAcquired++
+                        currentGamePiece = GamePieces.Hatch
+                        if (currentGamePiece != GamePieces.None) {
+                            illegalGamePiece++
+                        }
+                    }
+                    GamePieces.Cargo -> {
+                        cargoAcquired++
+                        currentGamePiece = GamePieces.Cargo
+                        if (currentGamePiece != GamePieces.None) {
+                            illegalGamePiece++
+                        }
+                    }
+                }
+            }
+        }
+    }
     return mapOf(
             "Match" to match,
             "Team" to team,
@@ -94,8 +152,9 @@ fun V5Entry.toRow(): Map<String, Any> {
             "Board" to board.toString(),
             "Starting Position" to startPositions[lastValue(Sandstorm.startPosition)?.value ?: 0],
             "Starting Game Piece" to gamePieces[dataPoints
-                    .lastOrNull { it.type == Sandstorm.gamePiece && it.time == 0 }?.value ?: 0],
+                    .lastOrNull { it.type == Sandstorm.gamePiece && it.time == 0 }?.value ?: 1],
             "Hab Line" to (lastValue(Sandstorm.habLine)?.value ?: 0),
+            "Total Hatch Acquired" to hatchAcquired,
             "Total Hatch Placed" to
                     ssLeftRocketHatch
                     + ssRightRocketHatch
@@ -106,6 +165,7 @@ fun V5Entry.toRow(): Map<String, Any> {
                     + rocket1Hatch
                     + rocket2Hatch
                     + rocket3Hatch,
+            "Total Cargo Acquired" to cargoAcquired,
             "Total Cargo Placed" to
                     ssLeftRocketCargo
                     + ssRightRocketCargo
@@ -116,8 +176,6 @@ fun V5Entry.toRow(): Map<String, Any> {
                     + rocket1Cargo
                     + rocket2Cargo
                     + rocket3Cargo,
-            "Dropped Hatch" to droppedHatch,
-            "Dropped Cargo" to droppedCargo,
             "Camera Controlled" to dataPoints.count { it.type == Sandstorm.cameraControl && it.value == 1 },
             "SS Crossed Mid-line" to dataPoints.any { it.time == Sandstorm.fieldArea && it.time != 0 }.toInt(),
             "SS Left Rocket Hatch" to ssLeftRocketHatch,
@@ -150,6 +208,7 @@ fun V5Entry.toRow(): Map<String, Any> {
             "Undo" to undone,
             "Outtake While Defending" to outtakeWhileDefending,
             "Outtake No Game Piece" to outtakeNoGamePiece,
+            "Illegal Game Piece" to illegalGamePiece,
             "Comments" to comments
     )
 }
