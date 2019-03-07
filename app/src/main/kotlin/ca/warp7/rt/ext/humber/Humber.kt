@@ -57,13 +57,37 @@ val longFormatter = SimpleDateFormat("yyyy-dd-MM HH:mm:ss")
 
 fun Boolean.toInt() = if (this) 1 else 0
 
-@Suppress("unused")
+@Suppress("unused", "CanBeVal")
 fun process(data: List<V5Entry>): DataFrame {
     val rows = mutableListOf<Map<String, Any>>()
     for (entry in data) {
         var gamePiece = 0
         var opponentField = 0
         var defended = 0
+        var ssLeftRocketHatch = 0
+        var ssLeftRocketCargo = 0
+        var ssRightRocketHatch = 0
+        var ssRightRocketCargo = 0
+        var ssLeftSideHatch = 0
+        var ssLeftSideCargo = 0
+        var ssRightSideHatch = 0
+        var ssRightSideCargo = 0
+        var ssFrontHatch = 0
+        var ssFrontCargo = 0
+        var cargoShipCargo = 0
+        var cargoShipHatch = 0
+        var rocket1Hatch = 0
+        var rocket1Cargo = 0
+        var rocket2Hatch = 0
+        var rocket2Cargo = 0
+        var rocket3Hatch = 0
+        var rocket3Cargo = 0
+        var droppedHatch = 0
+        var droppedCargo = 0
+        var defendingCount = 0
+        var totalDefendingTime = 0
+        var defendedCount = 0
+        var totalDefendedTime = 0
 
         rows.add(mapOf(
                 "Match" to entry.match,
@@ -74,35 +98,35 @@ fun process(data: List<V5Entry>): DataFrame {
                 "Starting Position" to startPositions[entry.lastValue(Sandstorm.startPosition)?.value ?: 0],
                 "Starting Game Piece" to gamePieces[entry.dataPoints
                         .lastOrNull { it.type == Sandstorm.gamePiece && it.time == 0 }?.value ?: 0],
-                "Total Cargo Placed" to 0,
-                "Total Hatch Placed" to 0,
                 "Hab Line" to (entry.lastValue(Sandstorm.habLine)?.value ?: 0),
+                "Total Hatch Placed" to 0,
+                "Total Cargo Placed" to 0,
                 "Camera Controlled" to entry.dataPoints.count { it.type == Sandstorm.cameraControl && it.value == 1 },
                 "SS Crossed Mid-line" to entry.dataPoints.any { it.time == Sandstorm.fieldArea && it.time != 0 }.toInt(),
-                "SS Left Rocket Hatch" to 0,
-                "SS Left Rocket Cargo" to 0,
-                "SS Right Rocket Hatch" to 0,
-                "SS Right Rocket Cargo" to 0,
-                "SS Left Side Cargo" to 0,
-                "SS Left Side Hatch" to 0,
-                "SS Right Side Cargo" to 0,
-                "SS Right Side Hatch" to 0,
-                "SS Front Cargo" to 0,
-                "SS Front Hatch" to 0,
-                "Cargo Ship Cargo" to 0,
-                "Cargo Ship Hatch" to 0,
-                "Rocket 1 Cargo" to 0,
-                "Rocket 2 Cargo" to 0,
-                "Rocket 3 Cargo" to 0,
-                "Rocket 1 Hatch" to 0,
-                "Rocket 2 Hatch" to 0,
-                "Rocket 3 Hatch" to 0,
-                "Dropped Cargo" to 0,
-                "Dropped Hatch" to 0,
-                "Defending Count" to 0,
-                "Total Defending Time" to 0,
-                "Defended Count" to 0,
-                "Total Defended Time" to 0,
+                "SS Left Rocket Hatch" to ssLeftRocketHatch,
+                "SS Left Rocket Cargo" to ssLeftRocketCargo,
+                "SS Right Rocket Hatch" to ssRightRocketHatch,
+                "SS Right Rocket Cargo" to ssRightRocketCargo,
+                "SS Left Side Cargo" to ssLeftSideCargo,
+                "SS Left Side Hatch" to ssLeftSideHatch,
+                "SS Right Side Cargo" to ssRightSideCargo,
+                "SS Right Side Hatch" to ssRightSideHatch,
+                "SS Front Cargo" to ssFrontCargo,
+                "SS Front Hatch" to ssFrontHatch,
+                "Cargo Ship Cargo" to cargoShipCargo,
+                "Cargo Ship Hatch" to cargoShipHatch,
+                "Rocket 1 Hatch" to rocket1Hatch,
+                "Rocket 1 Cargo" to rocket1Cargo,
+                "Rocket 2 Hatch" to rocket2Hatch,
+                "Rocket 2 Cargo" to rocket2Cargo,
+                "Rocket 3 Hatch" to rocket3Hatch,
+                "Rocket 3 Cargo" to rocket3Cargo,
+                "Dropped Hatch" to droppedHatch,
+                "Dropped Cargo" to droppedCargo,
+                "Defending Count" to defendingCount,
+                "Total Defending Time" to totalDefendingTime,
+                "Defended Count" to defendedCount,
+                "Total Defended Time" to totalDefendedTime,
                 "Climb Level" to climbLevels[entry.lastValue(Endgame.climbLevel)?.value ?: 0],
                 "Assisted Climb" to (entry.lastValue(Endgame.assistedClimb)?.value ?: 0),
                 "Lifting 1" to liftingLevels[entry.lastValue(Endgame.liftingRobot1)?.value ?: 0],
