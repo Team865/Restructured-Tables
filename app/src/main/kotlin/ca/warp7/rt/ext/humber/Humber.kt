@@ -55,6 +55,8 @@ val gamePieces = listOf("Cargo", "None", "Hatch")
 
 val longFormatter = SimpleDateFormat("yyyy-dd-MM HH:mm:ss")
 
+fun Boolean.toInt() = if (this) 1 else 0
+
 @Suppress("unused")
 fun process(data: List<V5Entry>): DataFrame {
     val rows = mutableListOf<Map<String, Any>>()
@@ -71,12 +73,12 @@ fun process(data: List<V5Entry>): DataFrame {
                 "Board" to entry.board.toString(),
                 "Starting Position" to startPositions[entry.lastValue(Sandstorm.startPosition)?.value ?: 0],
                 "Starting Game Piece" to gamePieces[entry.dataPoints
-                        .firstOrNull { it.type == Sandstorm.gamePiece && it.time == 0 }?.value ?: 0],
+                        .lastOrNull { it.type == Sandstorm.gamePiece && it.time == 0 }?.value ?: 0],
+                "Total Cargo Placed" to 0,
+                "Total Hatch Placed" to 0,
                 "Hab Line" to (entry.lastValue(Sandstorm.habLine)?.value ?: 0),
                 "Camera Controlled" to entry.dataPoints.count { it.type == Sandstorm.cameraControl && it.value == 1 },
-                "Total Cargo" to 0,
-                "Total Hatch" to 0,
-                "SS Crossed Mid-line" to 0,
+                "SS Crossed Mid-line" to entry.dataPoints.any { it.time == Sandstorm.fieldArea && it.time != 0 }.toInt(),
                 "SS Left Rocket Hatch" to 0,
                 "SS Left Rocket Cargo" to 0,
                 "SS Right Rocket Hatch" to 0,
@@ -95,7 +97,9 @@ fun process(data: List<V5Entry>): DataFrame {
                 "Rocket 1 Hatch" to 0,
                 "Rocket 2 Hatch" to 0,
                 "Rocket 3 Hatch" to 0,
-                "Crossed Center Line" to 0,
+                "Dropped Cargo" to 0,
+                "Dropped Hatch" to 0,
+                "Defending Count" to 0,
                 "Total Defending Time" to 0,
                 "Defended Count" to 0,
                 "Total Defended Time" to 0,
@@ -105,6 +109,7 @@ fun process(data: List<V5Entry>): DataFrame {
                 "Lifting 2" to liftingLevels[entry.lastValue(Endgame.liftingRobot2)?.value ?: 0],
                 "Start Time" to longFormatter.format(Date(entry.timestamp * 1000L)),
                 "Undo" to entry.undone,
+                "Outtake While Defending" to 0,
                 "Outtake No Game Piece" to 0,
                 "Comments" to entry.comments
         ))
