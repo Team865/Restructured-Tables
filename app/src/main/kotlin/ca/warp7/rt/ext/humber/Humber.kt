@@ -5,7 +5,6 @@ package ca.warp7.rt.ext.humber
 import ca.warp7.android.scouting.v5.boardfile.exampleBoardfile
 import ca.warp7.android.scouting.v5.entry.V5Entry
 import ca.warp7.rt.ext.scanner.DecodedEntry
-import krangl.DataFrame
 import krangl.dataFrameOf
 import java.io.File
 import java.text.SimpleDateFormat
@@ -57,106 +56,100 @@ val longFormatter = SimpleDateFormat("yyyy-dd-MM HH:mm:ss")
 
 fun Boolean.toInt() = if (this) 1 else 0
 
-@Suppress("unused", "CanBeVal")
-fun process(data: List<V5Entry>): DataFrame {
-    val rows = mutableListOf<Map<String, Any>>()
-    for (entry in data) {
-        var gamePiece = 0
-        var opponentField = 0
-        var defended = 0
-        var ssLeftRocketHatch = 0
-        var ssLeftRocketCargo = 0
-        var ssRightRocketHatch = 0
-        var ssRightRocketCargo = 0
-        var ssLeftSideHatch = 0
-        var ssLeftSideCargo = 0
-        var ssRightSideHatch = 0
-        var ssRightSideCargo = 0
-        var ssFrontHatch = 0
-        var ssFrontCargo = 0
-        var cargoShipCargo = 0
-        var cargoShipHatch = 0
-        var rocket1Hatch = 0
-        var rocket1Cargo = 0
-        var rocket2Hatch = 0
-        var rocket2Cargo = 0
-        var rocket3Hatch = 0
-        var rocket3Cargo = 0
-        var droppedHatch = 0
-        var droppedCargo = 0
-        var defendingCount = 0
-        var totalDefendingTime = 0
-        var defendedCount = 0
-        var totalDefendedTime = 0
-        var outtakeWhileDefending = 0
-        var outtakeNoGamePiece = 0
+fun process(data: List<V5Entry>) = dataFrameOf(data.map { it.toRow() })
 
-        rows.add(mapOf(
-                "Match" to entry.match,
-                "Team" to entry.team,
-                "Alliance" to entry.board.alliance.toString(),
-                "Scout" to entry.scout,
-                "Board" to entry.board.toString(),
-                "Starting Position" to startPositions[entry.lastValue(Sandstorm.startPosition)?.value ?: 0],
-                "Starting Game Piece" to gamePieces[entry.dataPoints
-                        .lastOrNull { it.type == Sandstorm.gamePiece && it.time == 0 }?.value ?: 0],
-                "Hab Line" to (entry.lastValue(Sandstorm.habLine)?.value ?: 0),
-                "Total Hatch Placed" to
-                        +ssLeftRocketHatch
-                        + ssRightRocketHatch
-                        + ssLeftSideHatch
-                        + ssRightSideHatch
-                        + ssFrontHatch
-                        + cargoShipHatch
-                        + rocket1Hatch
-                        + rocket2Hatch
-                        + rocket3Hatch,
-                "Total Cargo Placed" to
-                        +ssLeftRocketCargo
-                        + ssRightRocketCargo
-                        + ssLeftSideCargo
-                        + ssRightSideCargo
-                        + ssFrontCargo
-                        + cargoShipCargo
-                        + rocket1Cargo
-                        + rocket2Cargo
-                        + rocket3Cargo,
-                "Dropped Hatch" to droppedHatch,
-                "Dropped Cargo" to droppedCargo,
-                "Camera Controlled" to entry.dataPoints.count { it.type == Sandstorm.cameraControl && it.value == 1 },
-                "SS Crossed Mid-line" to entry.dataPoints.any { it.time == Sandstorm.fieldArea && it.time != 0 }.toInt(),
-                "SS Left Rocket Hatch" to ssLeftRocketHatch,
-                "SS Left Rocket Cargo" to ssLeftRocketCargo,
-                "SS Right Rocket Hatch" to ssRightRocketHatch,
-                "SS Right Rocket Cargo" to ssRightRocketCargo,
-                "SS Left Side Hatch" to ssLeftSideHatch,
-                "SS Left Side Cargo" to ssLeftSideCargo,
-                "SS Right Side Hatch" to ssRightSideHatch,
-                "SS Right Side Cargo" to ssRightSideCargo,
-                "SS Front Hatch" to ssFrontHatch,
-                "SS Front Cargo" to ssFrontCargo,
-                "Cargo Ship Hatch" to cargoShipHatch,
-                "Cargo Ship Cargo" to cargoShipCargo,
-                "Rocket 1 Hatch" to rocket1Hatch,
-                "Rocket 1 Cargo" to rocket1Cargo,
-                "Rocket 2 Hatch" to rocket2Hatch,
-                "Rocket 2 Cargo" to rocket2Cargo,
-                "Rocket 3 Hatch" to rocket3Hatch,
-                "Rocket 3 Cargo" to rocket3Cargo,
-                "Defending Count" to defendingCount,
-                "Total Defending Time" to totalDefendingTime,
-                "Defended Count" to defendedCount,
-                "Total Defended Time" to totalDefendedTime,
-                "Climb Level" to climbLevels[entry.lastValue(Endgame.climbLevel)?.value ?: 0],
-                "Assisted Climb" to (entry.lastValue(Endgame.assistedClimb)?.value ?: 0),
-                "Lifting 1" to liftingLevels[entry.lastValue(Endgame.liftingRobot1)?.value ?: 0],
-                "Lifting 2" to liftingLevels[entry.lastValue(Endgame.liftingRobot2)?.value ?: 0],
-                "Start Time" to longFormatter.format(Date(entry.timestamp * 1000L)),
-                "Undo" to entry.undone,
-                "Outtake While Defending" to outtakeWhileDefending,
-                "Outtake No Game Piece" to outtakeNoGamePiece,
-                "Comments" to entry.comments
-        ))
-    }
-    return dataFrameOf(rows)
+@Suppress("unused", "CanBeVal")
+fun V5Entry.toRow(): Map<String, Any> {
+    var ssLeftRocketHatch = 0
+    var ssLeftRocketCargo = 0
+    var ssRightRocketHatch = 0
+    var ssRightRocketCargo = 0
+    var ssLeftSideHatch = 0
+    var ssLeftSideCargo = 0
+    var ssRightSideHatch = 0
+    var ssRightSideCargo = 0
+    var ssFrontHatch = 0
+    var ssFrontCargo = 0
+    var cargoShipCargo = 0
+    var cargoShipHatch = 0
+    var rocket1Hatch = 0
+    var rocket1Cargo = 0
+    var rocket2Hatch = 0
+    var rocket2Cargo = 0
+    var rocket3Hatch = 0
+    var rocket3Cargo = 0
+    var droppedHatch = 0
+    var droppedCargo = 0
+    var defendingCount = 0
+    var totalDefendingTime = 0
+    var defendedCount = 0
+    var totalDefendedTime = 0
+    var outtakeWhileDefending = 0
+    var outtakeNoGamePiece = 0
+    return mapOf(
+            "Match" to match,
+            "Team" to team,
+            "Alliance" to board.alliance.toString(),
+            "Scout" to scout,
+            "Board" to board.toString(),
+            "Starting Position" to startPositions[lastValue(Sandstorm.startPosition)?.value ?: 0],
+            "Starting Game Piece" to gamePieces[dataPoints
+                    .lastOrNull { it.type == Sandstorm.gamePiece && it.time == 0 }?.value ?: 0],
+            "Hab Line" to (lastValue(Sandstorm.habLine)?.value ?: 0),
+            "Total Hatch Placed" to
+                    +ssLeftRocketHatch
+                    + ssRightRocketHatch
+                    + ssLeftSideHatch
+                    + ssRightSideHatch
+                    + ssFrontHatch
+                    + cargoShipHatch
+                    + rocket1Hatch
+                    + rocket2Hatch
+                    + rocket3Hatch,
+            "Total Cargo Placed" to
+                    +ssLeftRocketCargo
+                    + ssRightRocketCargo
+                    + ssLeftSideCargo
+                    + ssRightSideCargo
+                    + ssFrontCargo
+                    + cargoShipCargo
+                    + rocket1Cargo
+                    + rocket2Cargo
+                    + rocket3Cargo,
+            "Dropped Hatch" to droppedHatch,
+            "Dropped Cargo" to droppedCargo,
+            "Camera Controlled" to dataPoints.count { it.type == Sandstorm.cameraControl && it.value == 1 },
+            "SS Crossed Mid-line" to dataPoints.any { it.time == Sandstorm.fieldArea && it.time != 0 }.toInt(),
+            "SS Left Rocket Hatch" to ssLeftRocketHatch,
+            "SS Left Rocket Cargo" to ssLeftRocketCargo,
+            "SS Right Rocket Hatch" to ssRightRocketHatch,
+            "SS Right Rocket Cargo" to ssRightRocketCargo,
+            "SS Left Side Hatch" to ssLeftSideHatch,
+            "SS Left Side Cargo" to ssLeftSideCargo,
+            "SS Right Side Hatch" to ssRightSideHatch,
+            "SS Right Side Cargo" to ssRightSideCargo,
+            "SS Front Hatch" to ssFrontHatch,
+            "SS Front Cargo" to ssFrontCargo,
+            "Cargo Ship Hatch" to cargoShipHatch,
+            "Cargo Ship Cargo" to cargoShipCargo,
+            "Rocket 1 Hatch" to rocket1Hatch,
+            "Rocket 1 Cargo" to rocket1Cargo,
+            "Rocket 2 Hatch" to rocket2Hatch,
+            "Rocket 2 Cargo" to rocket2Cargo,
+            "Rocket 3 Hatch" to rocket3Hatch,
+            "Rocket 3 Cargo" to rocket3Cargo,
+            "Defending Count" to defendingCount,
+            "Total Defending Time" to totalDefendingTime,
+            "Defended Count" to defendedCount,
+            "Total Defended Time" to totalDefendedTime,
+            "Climb Level" to climbLevels[lastValue(Endgame.climbLevel)?.value ?: 0],
+            "Assisted Climb" to (lastValue(Endgame.assistedClimb)?.value ?: 0),
+            "Lifting 1" to liftingLevels[lastValue(Endgame.liftingRobot1)?.value ?: 0],
+            "Lifting 2" to liftingLevels[lastValue(Endgame.liftingRobot2)?.value ?: 0],
+            "Start Time" to longFormatter.format(Date(timestamp * 1000L)),
+            "Undo" to undone,
+            "Outtake While Defending" to outtakeWhileDefending,
+            "Outtake No Game Piece" to outtakeNoGamePiece,
+            "Comments" to comments
+    )
 }
