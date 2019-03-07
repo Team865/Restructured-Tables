@@ -51,7 +51,6 @@ internal fun tabUIFromLink(wrapper: FeatureWrapper): HBox {
     outer.spacing = 6.0
     outer.children.add(inner)
     val label = Label(wrapper.link.title)
-    label.style = "-fx-font-size:16"
     outer.children.add(label)
     return outer
 }

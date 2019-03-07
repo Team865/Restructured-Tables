@@ -22,7 +22,6 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.image.WritableImage
 import javafx.scene.layout.VBox
-import org.kordamp.ikonli.javafx.FontIcon
 import java.awt.image.BufferedImage
 import java.io.File
 import java.text.SimpleDateFormat
@@ -66,11 +65,9 @@ class ScannerController {
     fun onCameraStateChange() {
         if (isStreaming) {
             pauseResume.text = "Resume"
-            pauseResume.graphic = FontIcon().apply { iconLiteral = "fas-play:16:white" }
             stopCameraStream()
         } else {
             pauseResume.text = "Pause"
-            pauseResume.graphic = FontIcon().apply { iconLiteral = "fas-pause:16:white" }
             pauseResume.requestLayout()
             Platform.runLater { startCameraStream() }
         }

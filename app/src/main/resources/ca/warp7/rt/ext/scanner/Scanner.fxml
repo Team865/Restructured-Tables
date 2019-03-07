@@ -3,7 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import java.net.URL?>
 <HBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
@@ -20,25 +19,13 @@
         <ImageView fx:id="streamImageView" preserveRatio="true"/>
     </VBox>
     <VBox spacing="10" alignment="TOP_CENTER" style="-fx-padding: 10">
-        <Label fx:id="resultLabel" text="No QR code found" prefWidth="360" wrapText="true"
+        <Label fx:id="resultLabel" text="No QR code found" prefWidth="280" wrapText="true"
                alignment="TOP_LEFT" textAlignment="JUSTIFY" prefHeight="240"/>
-        <HBox spacing="5" maxWidth="360">
+        <HBox spacing="5" maxWidth="280">
             <Button text="Pause" prefWidth="400" HBox.hgrow="ALWAYS" fx:id="pauseResume"
-                    onMouseClicked="#onCameraStateChange">
-                <graphic>
-                    <FontIcon iconLiteral="fas-pause:16:1e2e4a"/>
-                </graphic>
-            </Button>
-            <Button text="Undo" prefWidth="400" HBox.hgrow="ALWAYS" onMouseClicked="#onUndo">
-                <graphic>
-                    <FontIcon iconLiteral="fas-undo:16:1e2e4a"/>
-                </graphic>
-            </Button>
-            <Button text="Save" prefWidth="400" HBox.hgrow="ALWAYS" onMouseClicked="#onSave">
-                <graphic>
-                    <FontIcon iconLiteral="fas-save:16:1e2e4a"/>
-                </graphic>
-            </Button>
+                    onMouseClicked="#onCameraStateChange"/>
+            <Button text="Undo" prefWidth="400" HBox.hgrow="ALWAYS" onMouseClicked="#onUndo"/>
+            <Button text="Save" prefWidth="400" HBox.hgrow="ALWAYS" onMouseClicked="#onSave"/>
         </HBox>
         <ListView fx:id="scanList" VBox.vgrow="ALWAYS"/>
     </VBox>

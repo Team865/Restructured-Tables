@@ -23,28 +23,28 @@ fun cellFromEntry(entry: V5Entry): Parent {
     val match = Label()
     match.minWidth = 72.0
     match.text = entry.match.split("_").last()
-    match.graphic = FontIcon().apply { iconLiteral = "gmi-layers:20:404040" }
+    match.graphic = FontIcon().apply { iconLiteral = "fas-rocket:16:404040" }
 
     val board = Label()
     board.text = entry.board.name
-    board.minWidth = 48.0
+    board.minWidth = 36.0
     board.styleClass.add(when (entry.board.alliance) {
         Alliance.Red -> "team-red"
         Alliance.Blue -> "team-blue"
     })
 
-    board.graphic = FontIcon().apply { iconLiteral = "gmi-book:20:404040" }
+    board.graphic = FontIcon().apply { iconLiteral = "far-clipboard:16:404040" }
 
     val team = Label()
     team.text = entry.team
     team.style = "-fx-font-weight: bold"
-    team.minWidth = 64.0
+    team.minWidth = 54.0
 
-    team.graphic = FontIcon().apply { iconLiteral = "gmi-people:20:404040" }
+    team.graphic = FontIcon().apply { iconLiteral = "far-user:16:404040" }
 
     val startTime = Label()
     startTime.text = formatter.format(Date(entry.timestamp * 1000L))
-    startTime.graphic = FontIcon().apply { iconLiteral = "gmi-timer:20:404040" }
+    startTime.graphic = FontIcon().apply { iconLiteral = "far-clock:16:404040" }
 
     hBox.children.addAll(match, board, team, startTime)
 
@@ -55,7 +55,6 @@ fun cellFromEntry(entry: V5Entry): Parent {
 
     val scoutAndComments = Label()
     scoutAndComments.text = entry.scout + " - " + if (entry.comments.isNotEmpty()) entry.comments else "No Comments"
-    scoutAndComments.padding = Insets(0.0, 5.0, 0.0, 5.0)
     scoutAndComments.style = "-fx-text-fill: #404040"
 
     vBox.children.addAll(hBox, scoutAndComments)
