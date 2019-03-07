@@ -48,10 +48,10 @@ object Endgame {
     val liftingRobot2 = template.lookup("lifting_robot_2")
 }
 
-val startPositions = listOf("None", "L2", "L1", "C1", "R1", "R2")
-val climbLevels = listOf("None", "1", "2", "3")
-val liftingLevels = listOf("None", "2", "3")
-val gamePieces = listOf("Cargo", "None", "Hatch")
+val startPositions = arrayOf("None", "L2", "L1", "C1", "R1", "R2")
+val climbLevels = arrayOf("None", "1", "2", "3")
+val liftingLevels = arrayOf("None", "2", "3")
+val gamePieces = arrayOf("Cargo", "None", "Hatch")
 
 val longFormatter = SimpleDateFormat("yyyy-dd-MM HH:mm:ss")
 
@@ -88,6 +88,8 @@ fun process(data: List<V5Entry>): DataFrame {
         var totalDefendingTime = 0
         var defendedCount = 0
         var totalDefendedTime = 0
+        var outtakeWhileDefending = 0
+        var outtakeNoGamePiece = 0
 
         rows.add(mapOf(
                 "Match" to entry.match,
@@ -99,30 +101,48 @@ fun process(data: List<V5Entry>): DataFrame {
                 "Starting Game Piece" to gamePieces[entry.dataPoints
                         .lastOrNull { it.type == Sandstorm.gamePiece && it.time == 0 }?.value ?: 0],
                 "Hab Line" to (entry.lastValue(Sandstorm.habLine)?.value ?: 0),
-                "Total Hatch Placed" to 0,
-                "Total Cargo Placed" to 0,
+                "Total Hatch Placed" to
+                        +ssLeftRocketHatch
+                        + ssRightRocketHatch
+                        + ssLeftSideHatch
+                        + ssRightSideHatch
+                        + ssFrontHatch
+                        + cargoShipHatch
+                        + rocket1Hatch
+                        + rocket2Hatch
+                        + rocket3Hatch,
+                "Total Cargo Placed" to
+                        +ssLeftRocketCargo
+                        + ssRightRocketCargo
+                        + ssLeftSideCargo
+                        + ssRightSideCargo
+                        + ssFrontCargo
+                        + cargoShipCargo
+                        + rocket1Cargo
+                        + rocket2Cargo
+                        + rocket3Cargo,
+                "Dropped Hatch" to droppedHatch,
+                "Dropped Cargo" to droppedCargo,
                 "Camera Controlled" to entry.dataPoints.count { it.type == Sandstorm.cameraControl && it.value == 1 },
                 "SS Crossed Mid-line" to entry.dataPoints.any { it.time == Sandstorm.fieldArea && it.time != 0 }.toInt(),
                 "SS Left Rocket Hatch" to ssLeftRocketHatch,
                 "SS Left Rocket Cargo" to ssLeftRocketCargo,
                 "SS Right Rocket Hatch" to ssRightRocketHatch,
                 "SS Right Rocket Cargo" to ssRightRocketCargo,
-                "SS Left Side Cargo" to ssLeftSideCargo,
                 "SS Left Side Hatch" to ssLeftSideHatch,
-                "SS Right Side Cargo" to ssRightSideCargo,
+                "SS Left Side Cargo" to ssLeftSideCargo,
                 "SS Right Side Hatch" to ssRightSideHatch,
-                "SS Front Cargo" to ssFrontCargo,
+                "SS Right Side Cargo" to ssRightSideCargo,
                 "SS Front Hatch" to ssFrontHatch,
-                "Cargo Ship Cargo" to cargoShipCargo,
+                "SS Front Cargo" to ssFrontCargo,
                 "Cargo Ship Hatch" to cargoShipHatch,
+                "Cargo Ship Cargo" to cargoShipCargo,
                 "Rocket 1 Hatch" to rocket1Hatch,
                 "Rocket 1 Cargo" to rocket1Cargo,
                 "Rocket 2 Hatch" to rocket2Hatch,
                 "Rocket 2 Cargo" to rocket2Cargo,
                 "Rocket 3 Hatch" to rocket3Hatch,
                 "Rocket 3 Cargo" to rocket3Cargo,
-                "Dropped Hatch" to droppedHatch,
-                "Dropped Cargo" to droppedCargo,
                 "Defending Count" to defendingCount,
                 "Total Defending Time" to totalDefendingTime,
                 "Defended Count" to defendedCount,
@@ -133,8 +153,8 @@ fun process(data: List<V5Entry>): DataFrame {
                 "Lifting 2" to liftingLevels[entry.lastValue(Endgame.liftingRobot2)?.value ?: 0],
                 "Start Time" to longFormatter.format(Date(entry.timestamp * 1000L)),
                 "Undo" to entry.undone,
-                "Outtake While Defending" to 0,
-                "Outtake No Game Piece" to 0,
+                "Outtake While Defending" to outtakeWhileDefending,
+                "Outtake No Game Piece" to outtakeNoGamePiece,
                 "Comments" to entry.comments
         ))
     }
