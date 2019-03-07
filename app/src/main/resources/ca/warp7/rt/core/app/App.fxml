@@ -39,7 +39,7 @@
                 <Label text="Loading" fx:id="statusMessageLabel"/>
             </HBox>
             <HBox styleClass="status-item" onMouseClicked="#closeCurrentTab">
-                <FontIcon iconLiteral="gmi-close:18:1e2e4a"/>
+                <FontIcon iconLiteral="fas-times:18:1e2e4a"/>
             </HBox>
             <HBox styleClass="status-item" onMouseClicked="#toggleFullScreen">
                 <FontIcon iconLiteral="fas-expand:16:1e2e4a"/>

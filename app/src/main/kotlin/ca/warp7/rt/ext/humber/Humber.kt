@@ -12,7 +12,7 @@ import java.util.*
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 object Humber {
-    val root: File = File(System.getProperty("user.home") + "/Desktop/HumberScouting").apply { mkdirs() }
+    val root: File = File(System.getProperty("user.home") + "/Desktop/HumberRawData").apply { mkdirs() }
 
     fun getData(): List<V5Entry> = root.listFiles().map { it.readLines() }.flatten().toSet().map { DecodedEntry(it) }
 }
@@ -97,7 +97,7 @@ fun V5Entry.toRow(): Map<String, Any> {
                     .lastOrNull { it.type == Sandstorm.gamePiece && it.time == 0 }?.value ?: 0],
             "Hab Line" to (lastValue(Sandstorm.habLine)?.value ?: 0),
             "Total Hatch Placed" to
-                    +ssLeftRocketHatch
+                    ssLeftRocketHatch
                     + ssRightRocketHatch
                     + ssLeftSideHatch
                     + ssRightSideHatch
@@ -107,7 +107,7 @@ fun V5Entry.toRow(): Map<String, Any> {
                     + rocket2Hatch
                     + rocket3Hatch,
             "Total Cargo Placed" to
-                    +ssLeftRocketCargo
+                    ssLeftRocketCargo
                     + ssRightRocketCargo
                     + ssLeftSideCargo
                     + ssRightSideCargo
