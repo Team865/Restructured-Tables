@@ -94,8 +94,9 @@ fun V5Entry.toRow(): Map<String, Any> {
     var outtakeNoGamePiece = 0
     var illegalGamePiece = 0
 
-    var currentGamePiece: Int
+    var currentGamePiece = GamePieces.None
     var gamePieceInSandstorm = false
+    var isLeftFieldArea = true
     dataPoints.forEach {
         when (it.type) {
             Sandstorm.gamePiece -> {
@@ -140,6 +141,42 @@ fun V5Entry.toRow(): Map<String, Any> {
                             illegalGamePiece++
                         }
                     }
+                }
+            }
+            Sandstorm.fieldArea -> {
+                isLeftFieldArea = !isLeftFieldArea
+            }
+            Sandstorm.rocket -> {
+                when (currentGamePiece) {
+                    GamePieces.Cargo -> {
+                        if (isLeftFieldArea) ssLeftRocketCargo++
+                        else ssRightRocketCargo++
+                    }
+                    GamePieces.Hatch -> {
+                        if (isLeftFieldArea) ssLeftRocketHatch++
+                        else ssRightRocketHatch++
+                    }
+                    GamePieces.None -> outtakeNoGamePiece++
+                }
+            }
+            Sandstorm.frontCargoShip -> {
+                when (currentGamePiece) {
+                    GamePieces.Cargo -> ssFrontCargo++
+                    GamePieces.Hatch -> ssFrontHatch++
+                    GamePieces.None -> outtakeNoGamePiece++
+                }
+            }
+            Sandstorm.sideCargoShip -> {
+                when (currentGamePiece) {
+                    GamePieces.Cargo -> {
+                        if (isLeftFieldArea) ssLeftSideCargo++
+                        else ssRightSideCargo++
+                    }
+                    GamePieces.Hatch -> {
+                        if (isLeftFieldArea) ssLeftSideHatch++
+                        else ssRightSideHatch++
+                    }
+                    GamePieces.None -> outtakeNoGamePiece++
                 }
             }
         }
