@@ -93,10 +93,13 @@ fun V5Entry.toRow(): Map<String, Any> {
     var outtakeWhileDefending = 0
     var outtakeNoGamePiece = 0
     var illegalGamePiece = 0
-
     var currentGamePiece = GamePieces.None
     var gamePieceInSandstorm = false
     var isLeftFieldArea = true
+    var isOnOpponentField = false
+    var lastOpponentFieldTime = 0
+    var isDefended = false
+    var lastDefendedTime = 0
     dataPoints.forEach {
         when (it.type) {
             Sandstorm.gamePiece -> {
@@ -177,6 +180,24 @@ fun V5Entry.toRow(): Map<String, Any> {
                         else ssRightSideHatch++
                     }
                     GamePieces.None -> outtakeNoGamePiece++
+                }
+            }
+            Teleop.opponentField -> {
+                isOnOpponentField = !isOnOpponentField
+                if (isOnOpponentField) {
+                    lastOpponentFieldTime = it.time
+                } else {
+                    defendingCount++
+                    totalDefendingTime += it.time - lastOpponentFieldTime
+                }
+            }
+            Teleop.defended -> {
+                isDefended = !isDefended
+                if (isDefended) {
+                    lastDefendedTime = it.time
+                } else {
+                    defendedCount++
+                    totalDefendedTime += it.time - lastDefendedTime
                 }
             }
             Teleop.rocket1 -> {
