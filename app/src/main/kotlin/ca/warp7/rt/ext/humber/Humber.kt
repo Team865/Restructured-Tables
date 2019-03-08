@@ -92,7 +92,6 @@ fun V5Entry.toRow(): Map<String, Any> {
     var totalDefendedTime = 0
     var outtakeWhileDefending = 0
     var outtakeNoGamePiece = 0
-    var illegalGamePiece = 0
     var currentGamePiece = GamePieces.None
     var gamePieceInSandstorm = false
     var isLeftFieldArea = true
@@ -111,16 +110,10 @@ fun V5Entry.toRow(): Map<String, Any> {
                     GamePieces.Hatch -> {
                         hatchAcquired++
                         currentGamePiece = GamePieces.Hatch
-                        if (currentGamePiece != GamePieces.None) {
-                            illegalGamePiece++
-                        }
                     }
                     GamePieces.Cargo -> {
                         cargoAcquired++
                         currentGamePiece = GamePieces.Cargo
-                        if (currentGamePiece != GamePieces.None) {
-                            illegalGamePiece++
-                        }
                     }
                 }
             }
@@ -133,16 +126,10 @@ fun V5Entry.toRow(): Map<String, Any> {
                     GamePieces.Hatch -> {
                         hatchAcquired++
                         currentGamePiece = GamePieces.Hatch
-                        if (currentGamePiece != GamePieces.None) {
-                            illegalGamePiece++
-                        }
                     }
                     GamePieces.Cargo -> {
                         cargoAcquired++
                         currentGamePiece = GamePieces.Cargo
-                        if (currentGamePiece != GamePieces.None) {
-                            illegalGamePiece++
-                        }
                     }
                 }
             }
@@ -297,8 +284,8 @@ fun V5Entry.toRow(): Map<String, Any> {
             "Defended Count" to defendedCount,
             "Total Defended Time" to totalDefendedTime,
             "Climb Level" to climbLevels[lastValue(Endgame.climbLevel)?.value ?: 0],
-            "Climb 2" to (climbLevels[lastValue(Endgame.climbLevel)?.value ?: 0] == "2"),
-            "Climb 3" to (climbLevels[lastValue(Endgame.climbLevel)?.value ?: 0] == "3"),
+            "Climb 2" to (climbLevels[lastValue(Endgame.climbLevel)?.value ?: 0] == "2").toInt(),
+            "Climb 3" to (climbLevels[lastValue(Endgame.climbLevel)?.value ?: 0] == "3").toInt(),
             "Assisted Climb" to (lastValue(Endgame.assistedClimb)?.value ?: 0),
             "Lifting 1" to liftingLevels[lastValue(Endgame.liftingRobot1)?.value ?: 0],
             "Lifting 2" to liftingLevels[lastValue(Endgame.liftingRobot2)?.value ?: 0],
@@ -306,7 +293,6 @@ fun V5Entry.toRow(): Map<String, Any> {
             "Undo Count" to undone,
             "Outtake While Defending" to outtakeWhileDefending,
             "Outtake No Game Piece" to outtakeNoGamePiece,
-            "Illegal Game Piece" to illegalGamePiece,
             "Comments" to comments,
             "Camera Controlled" to dataPoints.count { it.type == Sandstorm.cameraControl && it.value == 1 }
     )
