@@ -86,27 +86,31 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                         initStyle(StageStyle.UTILITY)
                         initOwner(utilsController?.appStage)
 
-                        val values = selectionModel.selectedCells.map { grid.rows[it.row][it.column].item }
+                        val pureValues = selectionModel.selectedCells.map { grid.rows[it.row][it.column].item }
+                        var values: List<Double> = mutableListOf()
+                        var blanks: Int = 0
+                        pureValues.forEachIndexed<Any?> { i, it ->
+                            when (it) {
+                                is Number -> values += it.toDouble()
+                                else -> blanks++
+                            }
+                        }
+
+                        val valSum = values.sum()
+                        val valMean = values.sum() / values.size
+                        val valMax = values.max()
+                        val valMin = values.min()
 
                         val wrapper = VBox(
-                                Text("Count ${values.size}"),
-                                Text("Sum ${
-                                values.map {
-                                    when (it) {
-                                        is Number -> it.toDouble()
-                                        else -> 0.0
-                                    }
-                                }.sum()}"),
-                                Text("Mean ${
-                                values.map {
-                                    when (it) {
-                                        is Number -> it.toDouble()
-                                        else -> 0.0
-                                    }
-                                }.sum() / values.size}")
+                                Text("Count: ${values.size}"),
+                                Text("Non-numbers: $blanks"),
+                                Text("Sum: $valSum"),
+                                Text("Mean: $valMean"),
+                                Text("Max: $valMax"),
+                                Text("Min: $valMin")
                         )
-                        wrapper.minWidth = 150.0
-                        wrapper.minHeight = 100.0
+                        wrapper.minWidth = 175.0
+                        wrapper.minHeight = 125.0
                         scene = Scene(wrapper)
                         opacity = 0.95
                         scene.fill = Color.TRANSPARENT
