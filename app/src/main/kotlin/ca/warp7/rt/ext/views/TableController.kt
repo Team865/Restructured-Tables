@@ -10,7 +10,7 @@ class TableController {
 
     fun initialize() {
         Thread {
-            val inputStream = javaClass.getResourceAsStream("/ca/warp7/rt/res/test.csv")
+            //            val inputStream = javaClass.getResourceAsStream("/ca/warp7/rt/res/test.csv")
 //            val df = DataFrame.readDelim(
 //                    inStream = inputStream,
 //                    format = CSVFormat.DEFAULT.withHeader().withNullString(""),

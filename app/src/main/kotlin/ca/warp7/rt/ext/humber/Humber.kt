@@ -270,7 +270,6 @@ fun V5Entry.toRow(): Map<String, Any> {
                     + rocket1Cargo
                     + rocket2Cargo
                     + rocket3Cargo,
-            "Camera Controlled" to dataPoints.count { it.type == Sandstorm.cameraControl && it.value == 1 },
             "SS Left Rocket Hatch" to ssLeftRocketHatch,
             "SS Left Rocket Cargo" to ssLeftRocketCargo,
             "SS Right Rocket Hatch" to ssRightRocketHatch,
@@ -304,10 +303,11 @@ fun V5Entry.toRow(): Map<String, Any> {
             "Lifting 1" to liftingLevels[lastValue(Endgame.liftingRobot1)?.value ?: 0],
             "Lifting 2" to liftingLevels[lastValue(Endgame.liftingRobot2)?.value ?: 0],
             "Start Time" to longFormatter.format(Date(timestamp * 1000L)),
-            "Undo" to undone,
+            "Undo Count" to undone,
             "Outtake While Defending" to outtakeWhileDefending,
             "Outtake No Game Piece" to outtakeNoGamePiece,
             "Illegal Game Piece" to illegalGamePiece,
-            "Comments" to comments
+            "Comments" to comments,
+            "Camera Controlled" to dataPoints.count { it.type == Sandstorm.cameraControl && it.value == 1 }
     )
 }
