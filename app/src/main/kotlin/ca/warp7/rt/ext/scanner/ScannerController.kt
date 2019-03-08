@@ -1,6 +1,7 @@
 package ca.warp7.rt.ext.scanner
 
 import ca.warp7.android.scouting.v5.entry.V5Entry
+import ca.warp7.rt.ext.humber.Humber
 import com.github.sarxos.webcam.Webcam
 import com.github.sarxos.webcam.WebcamResolution
 import com.google.zxing.BinaryBitmap
@@ -18,7 +19,9 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.image.WritableImage
 import javafx.scene.layout.VBox
+import javafx.stage.StageStyle
 import java.awt.image.BufferedImage
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.atomic.AtomicReference
@@ -28,6 +31,7 @@ class ScannerController {
     lateinit var streamImageView: ImageView
     lateinit var imageContainer: VBox
     lateinit var resultLabel: Label
+    lateinit var pauseResume: Button
     lateinit var scanList: ListView<V5Entry>
 
     private lateinit var resultProperty: StringProperty
@@ -36,7 +40,10 @@ class ScannerController {
     private val webcam = Webcam.getDefault()
     private val imageProperty = SimpleObjectProperty<Image>()
     private val scannerEntries = FXCollections.observableArrayList<V5Entry>()
-    private var previousEntry = ""
+    private var previousEntries = mutableListOf<String>()
+
+    private val longFormatter = SimpleDateFormat("yyyy-dd-MM HH.mm.ss")
+    private val shortFormatter = SimpleDateFormat("HH.mm.ss")
 
     fun initialize() {
         resultProperty = resultLabel.textProperty()
@@ -53,18 +60,53 @@ class ScannerController {
         isStreaming = false
     }
 
-    @Suppress("unused")
     fun onCameraStateChange() {
-        if (isStreaming) stopCameraStream()
-        else startCameraStream()
+        if (isStreaming) {
+            pauseResume.text = "Resume"
+            stopCameraStream()
+        } else {
+            pauseResume.text = "Pause"
+            pauseResume.requestLayout()
+            Platform.runLater { startCameraStream() }
+        }
+    }
+
+    fun onSave() {
+        if (scannerEntries.isEmpty()) return
+        val match = scannerEntries[0].match
+        var uniformMatch = true
+        for (i in 1 until scannerEntries.size) {
+            if (match != scannerEntries[i].match) {
+                uniformMatch = false
+            }
+        }
+        val fileName = if (uniformMatch) "$match ${shortFormatter.format(Date())}" else longFormatter.format(Date())
+        val f = File(Humber.root, "$fileName.txt")
+        f.writeText(previousEntries.joinToString("\n"))
+        Alert(Alert.AlertType.NONE, "File Path: ${f.absolutePath}", ButtonType.OK).apply {
+            title = "Saved Data"
+            initStyle(StageStyle.UTILITY)
+            showAndWait()
+        }
+        scannerEntries.clear()
+        previousEntries.clear()
+    }
+
+    fun onUndo() {
+        if (scannerEntries.isNotEmpty()) {
+            scannerEntries.removeAt(scannerEntries.size - 1)
+            previousEntries.removeAt(previousEntries.size - 1)
+        }
     }
 
     private fun initializeListFactory() {
+        scanList.isMouseTransparent = true
+        scanList.isFocusTraversable = false
         scanList.setCellFactory {
             object : ListCell<V5Entry>() {
                 override fun updateItem(item: V5Entry?, empty: Boolean) {
                     super.updateItem(item, empty)
-                    prefHeight = 50.0
+//                    prefHeight = 50.0
                     if (empty || item == null) {
                         text = null
                         graphic = null
@@ -124,33 +166,14 @@ class ScannerController {
         resultLabel.style = "-fx-background-color: lightgreen;-fx-padding: 10;"
         try {
             val entry: V5Entry = DecodedEntry(result)
-            val sdfDate = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
-            val time = Date(entry.timestamp * 1000L)
-            val timestamp = sdfDate.format(time)
             resultProperty.set("""
 Match: ${entry.match}
 Team: ${entry.team}
 Scout: ${entry.scout}
-Board: ${entry.board}
-Time: $timestamp
-Data Points: ${entry.dataPoints.size}
-Comments: ${entry.comments}""".trim())
-            if (result == previousEntry) {
-                val alert = Alert(Alert.AlertType.NONE,
-                        "You scanned the same thing as the last entry. Continue?",
-                        ButtonType.YES,
-                        ButtonType.NO)
-                alert.title = "Duplicate Warning"
-                val clicked = alert.showAndWait()
-                clicked.ifPresent {
-                    if (it == ButtonType.YES) {
-                        scannerEntries.add(DecodedEntry(result))
-                        previousEntry = result
-                    }
-                }
-            } else {
+Board: ${entry.board}""".trim())
+            if (result !in previousEntries) {
                 scannerEntries.add(DecodedEntry(result))
-                previousEntry = result
+                previousEntries.add(result)
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -159,8 +182,6 @@ Comments: ${entry.comments}""".trim())
     }
 
     private fun onNoQRCodeFound() {
-        resultLabel.style = "\n" +
-                "-fx-padding: 10;\n" +
-                "-fx-background-color: #ddd;\n"
+        resultLabel.style = "\n-fx-padding: 10;\n-fx-background-color: #ddd;\n"
     }
 }

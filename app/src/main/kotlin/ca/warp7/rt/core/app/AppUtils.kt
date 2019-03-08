@@ -6,8 +6,6 @@ import ca.warp7.rt.api.get
 import ca.warp7.rt.core.Restructured
 import ca.warp7.rt.core.model.Contexts
 import ca.warp7.rt.core.model.Metadata
-import ca.warp7.rt.ext.ast.ASTFeature
-import ca.warp7.rt.ext.predictor.PredictorFeature
 import ca.warp7.rt.ext.scanner.ScannerFeature
 import ca.warp7.rt.ext.views.ViewsFeature
 import javafx.application.Platform
@@ -30,9 +28,9 @@ import java.io.IOException
 
 internal val appFeatures = listOf(
         ScannerFeature(),
-        ViewsFeature(),
-        ASTFeature(),
-        PredictorFeature()
+        ViewsFeature()//,
+        //ASTFeature(),
+        //PredictorFeature()
 )
 
 internal var utilsController: AppController? = null
@@ -43,15 +41,14 @@ internal fun tabUIFromLink(wrapper: FeatureWrapper): HBox {
     val outer = HBox()
     val inner = HBox()
     inner.prefWidth = 20.0
-    inner.alignment = Pos.CENTER
+    inner.alignment = Pos.CENTER_LEFT
     wrapper.icon.iconColor = teamColor
     wrapper.icon.iconSize -= 2
     inner.children.add(wrapper.icon)
     outer.alignment = Pos.CENTER_LEFT
-    outer.spacing = 12.0
+    outer.spacing = 6.0
     outer.children.add(inner)
     val label = Label(wrapper.link.title)
-    label.style = "-fx-font-size:16"
     outer.children.add(label)
     return outer
 }

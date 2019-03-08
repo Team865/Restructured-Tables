@@ -60,8 +60,8 @@ class AppController : FeatureStage {
             }
         }
 
-        stage.scene.accelerators[KeyCodeCombination(KeyCode.BACK_QUOTE, KeyCodeCombination.SHORTCUT_DOWN)] =
-                Runnable { toggleSearch() }
+        stage.scene.accelerators[KeyCodeCombination(KeyCode.BACK_QUOTE,
+                KeyCodeCombination.SHORTCUT_DOWN)] = Runnable { toggleSearch() }
         stage.setOnCloseRequest { event ->
             if (current != null && !current!!.onClose()) {
                 event.consume()
@@ -87,7 +87,7 @@ class AppController : FeatureStage {
             appTabListView.selectionModel.select(0)
             handleFeatureLink(appTabs[0])
             statusMessageLabel.text = "Finished loading app"
-            val totalHeight = (appTabs.size * 32).toDouble()
+            val totalHeight = (appTabs.size * 36).toDouble()
             appTabListView.minHeight = totalHeight
             appTabListView.maxHeight = totalHeight
         }
@@ -154,7 +154,7 @@ class AppController : FeatureStage {
                         return
                     }
                     graphic = tabUIFromLink(item)
-                    prefHeight = 32.0
+                    prefHeight = 36.0
                     setOnMouseClicked { handleFeatureLink(item) }
                 }
             }

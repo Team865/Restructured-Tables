@@ -120,7 +120,7 @@
 }
 
 .status-item:hover {
-    -fx-background-color: #5a8ade;
+    -fx-background-color: #3c5c94;
 }
 
 .status-item:hover .label {

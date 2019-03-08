@@ -26,6 +26,6 @@ class ViewsFeature : Feature {
             rootItem.children.add(item)
         }
         val tree = TreeView(rootItem)
-        return tree to preLoaded
+        return tree to loadParent("/ca/warp7/rt/ext/views/Table.fxml")//preLoaded
     }
 }

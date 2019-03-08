@@ -17,6 +17,7 @@ data class DecodedEntry(override val encoded: String) : V5Entry {
     override val comments = split[7]
     override val dataPoints = DatatypeConverter.parseBase64Binary(split[6]).map { it.toInt() }
             .run { (0 until size / 3).map { DataPoint(get(it * 3), get(it * 3 + 1), get(it * 3 + 2)) } }
+            .sortedBy { it.time }
 
     override fun count(type: Int) = dataPoints.count { it.type == type }
     override fun lastValue(type: Int) = dataPoints.lastOrNull { it.type == type }

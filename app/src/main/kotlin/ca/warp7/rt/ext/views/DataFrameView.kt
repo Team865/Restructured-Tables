@@ -123,11 +123,11 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                     selectView()
                     resetDisplay()
                 },
-                menuItem("Deselect View", "fas-table:16:1e2e4a", Combo(KeyCode.V, SHORTCUT_DOWN, SHIFT_DOWN)) {
+                menuItem("Deselect View", null, Combo(KeyCode.B, SHORTCUT_DOWN, SHIFT_DOWN)) {
                     model.columnHeaders = initialFrame.cols.map { col -> col.name }.toMutableList()
                     resetDisplay()
                 },
-                menuItem("Make Pivot Table", null, Combo(KeyCode.B, SHORTCUT_DOWN, SHIFT_DOWN)) { }
+                menuItem("Make Pivot Table", null, Combo(KeyCode.N, SHORTCUT_DOWN, SHIFT_DOWN)) { }
         )
     }
 
