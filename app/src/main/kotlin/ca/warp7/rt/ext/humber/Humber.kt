@@ -179,6 +179,34 @@ fun V5Entry.toRow(): Map<String, Any> {
                     GamePieces.None -> outtakeNoGamePiece++
                 }
             }
+            Teleop.rocket1 -> {
+                when (currentGamePiece) {
+                    GamePieces.Cargo -> rocket1Cargo++
+                    GamePieces.Hatch -> rocket1Hatch++
+                    GamePieces.None -> outtakeNoGamePiece++
+                }
+            }
+            Teleop.rocket2 -> {
+                when (currentGamePiece) {
+                    GamePieces.Cargo -> rocket2Cargo++
+                    GamePieces.Hatch -> rocket2Hatch++
+                    GamePieces.None -> outtakeNoGamePiece++
+                }
+            }
+            Teleop.rocket3 -> {
+                when (currentGamePiece) {
+                    GamePieces.Cargo -> rocket3Cargo++
+                    GamePieces.Hatch -> rocket3Hatch++
+                    GamePieces.None -> outtakeNoGamePiece++
+                }
+            }
+            Teleop.cargoShip -> {
+                when (currentGamePiece) {
+                    GamePieces.Cargo -> cargoShipCargo++
+                    GamePieces.Hatch -> cargoShipHatch++
+                    GamePieces.None -> outtakeNoGamePiece++
+                }
+            }
         }
     }
     return mapOf(
