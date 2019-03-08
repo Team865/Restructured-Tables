@@ -15,6 +15,7 @@ import javafx.stage.Stage
 import javafx.stage.StageStyle
 import krangl.DataFrame
 import krangl.max
+import krangl.mean
 import krangl.min
 import java.util.Collections.emptyList
 
@@ -96,18 +97,13 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                             }
                         }
 
-                        val valSum = values.sum()
-                        val valMean = values.sum() / values.size
-                        val valMax = values.max()
-                        val valMin = values.min()
-
                         val wrapper = VBox(
                                 Text("Count: ${values.size}"),
                                 Text("Non-numbers: $blanks"),
-                                Text("Sum: $valSum"),
-                                Text("Mean: $valMean"),
-                                Text("Max: $valMax"),
-                                Text("Min: $valMin")
+                                Text("Sum: ${values.sum()}"),
+                                Text("Mean: ${values.mean()}"),
+                                Text("Max: ${values.max()}"),
+                                Text("Min: ${values.min()}")
                         )
                         wrapper.minWidth = 175.0
                         wrapper.minHeight = 125.0

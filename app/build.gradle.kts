@@ -17,6 +17,7 @@ version = versionName
 repositories {
     mavenCentral()
     jcenter()
+    maven("http://dl.bintray.com/kyonifer/maven")
 }
 
 val compileKotlin: KotlinCompile by tasks
@@ -45,6 +46,7 @@ dependencies {
     implementation(kotlin("reflect", kotlinVersion))
     implementation(group = "de.mpicbg.scicomp", name = "krangl", version = "0.10.3")
     implementation(group = "com.beust", name = "klaxon", version = "3.0.1")
+    implementation(group = "com.kyonifer", name = "koma-core-ejml", version = "0.12")
     testImplementation(kotlin("test", kotlinVersion))
 }
 
