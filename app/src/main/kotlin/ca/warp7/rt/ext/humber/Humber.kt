@@ -15,6 +15,8 @@ object Humber {
     val root: File = File(System.getProperty("user.home") + "/Desktop/HumberRawData").apply { mkdirs() }
 
     fun getData(): List<V5Entry> = root.listFiles().map { it.readLines() }.flatten().toSet().map { DecodedEntry(it) }
+
+    fun process(data: List<V5Entry>) = dataFrameOf(data.map { it.toRow() })
 }
 
 val template = exampleBoardfile.robotScoutTemplate
@@ -61,8 +63,6 @@ val gamePieces = arrayOf("Cargo", "None", "Hatch")
 val longFormatter = SimpleDateFormat("yyyy-dd-MM HH:mm:ss")
 
 fun Boolean.toInt() = if (this) 1 else 0
-
-fun process(data: List<V5Entry>) = dataFrameOf(data.map { it.toRow() })
 
 @Suppress("unused", "CanBeVal")
 fun V5Entry.toRow(): Map<String, Any> {
@@ -271,7 +271,6 @@ fun V5Entry.toRow(): Map<String, Any> {
                     + rocket2Cargo
                     + rocket3Cargo,
             "Camera Controlled" to dataPoints.count { it.type == Sandstorm.cameraControl && it.value == 1 },
-            "SS Crossed Mid-line" to dataPoints.any { it.time == Sandstorm.fieldArea && it.time != 0 }.toInt(),
             "SS Left Rocket Hatch" to ssLeftRocketHatch,
             "SS Left Rocket Cargo" to ssLeftRocketCargo,
             "SS Right Rocket Hatch" to ssRightRocketHatch,
