@@ -201,6 +201,7 @@ fun V5Entry.toRow(): Map<String, Any> {
                 }
             }
             Teleop.rocket1 -> {
+                if (isOnOpponentField) outtakeWhileDefending++
                 when (currentGamePiece) {
                     GamePieces.Cargo -> rocket1Cargo++
                     GamePieces.Hatch -> rocket1Hatch++
@@ -208,6 +209,7 @@ fun V5Entry.toRow(): Map<String, Any> {
                 }
             }
             Teleop.rocket2 -> {
+                if (isOnOpponentField) outtakeWhileDefending++
                 when (currentGamePiece) {
                     GamePieces.Cargo -> rocket2Cargo++
                     GamePieces.Hatch -> rocket2Hatch++
@@ -215,6 +217,7 @@ fun V5Entry.toRow(): Map<String, Any> {
                 }
             }
             Teleop.rocket3 -> {
+                if (isOnOpponentField) outtakeWhileDefending++
                 when (currentGamePiece) {
                     GamePieces.Cargo -> rocket3Cargo++
                     GamePieces.Hatch -> rocket3Hatch++
@@ -222,6 +225,7 @@ fun V5Entry.toRow(): Map<String, Any> {
                 }
             }
             Teleop.cargoShip -> {
+                if (isOnOpponentField) outtakeWhileDefending++
                 when (currentGamePiece) {
                     GamePieces.Cargo -> cargoShipCargo++
                     GamePieces.Hatch -> cargoShipHatch++
@@ -229,6 +233,10 @@ fun V5Entry.toRow(): Map<String, Any> {
                 }
             }
         }
+    }
+    if (isDefended) {
+        defendedCount++
+        totalDefendedTime += 150 - lastDefendedTime
     }
     return mapOf(
             "Match" to match,
