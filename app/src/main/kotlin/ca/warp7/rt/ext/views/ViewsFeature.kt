@@ -4,8 +4,6 @@ import ca.warp7.rt.api.Feature
 import ca.warp7.rt.api.FeatureLink
 import ca.warp7.rt.api.loadParent
 import javafx.scene.Parent
-import javafx.scene.control.TreeItem
-import javafx.scene.control.TreeView
 
 
 class ViewsFeature : Feature {
@@ -15,17 +13,9 @@ class ViewsFeature : Feature {
     override val link = FeatureLink("Restructured Tables", "fas-database", 18)
 
     override fun onOpen(): Pair<Parent?, Parent?> {
-        if (preLoaded == null) {
-            preLoaded = loadParent("/ca/warp7/rt/ext/views/Table.fxml")
-        }
-
-        val rootItem = TreeItem("Tables")
-        rootItem.isExpanded = true
-        for (i in 1..5) {
-            val item = TreeItem("Table $i")
-            rootItem.children.add(item)
-        }
-        val tree = TreeView(rootItem)
-        return tree to loadParent("/ca/warp7/rt/ext/views/Table.fxml")//preLoaded
+//        if (preLoaded == null) {
+//            preLoaded = loadParent("/ca/warp7/rt/ext/views/Table.fxml")
+//        }
+        return null to loadParent("/ca/warp7/rt/ext/views/Table.fxml")//preLoaded
     }
 }
