@@ -47,6 +47,7 @@ dependencies {
     implementation(group = "de.mpicbg.scicomp", name = "krangl", version = "0.10.3")
     implementation(group = "com.beust", name = "klaxon", version = "3.0.1")
     implementation(group = "com.kyonifer", name = "koma-core-ejml", version = "0.12")
+    implementation(group = "org.apache.commons", name = "commons-math3", version = "3.0")
     testImplementation(kotlin("test", kotlinVersion))
 }
 

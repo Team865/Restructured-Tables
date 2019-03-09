@@ -1,6 +1,7 @@
 package ca.warp7.rt.ext.views
 
 import ca.warp7.rt.core.app.utilsController
+import calcCycles
 import javafx.scene.Scene
 import javafx.scene.control.SelectionMode
 import javafx.scene.control.SeparatorMenuItem
@@ -88,9 +89,9 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                         initOwner(utilsController?.appStage)
 
                         val pureValues = selectionModel.selectedCells.map { grid.rows[it.row][it.column].item }
-                        var values: List<Double> = mutableListOf()
-                        var blanks: Int = 0
-                        pureValues.forEachIndexed<Any?> { i, it ->
+                        val values: MutableList<Double> = mutableListOf()
+                        var blanks = 0
+                        pureValues.forEach {
                             when (it) {
                                 is Number -> values += it.toDouble()
                                 else -> blanks++
@@ -123,7 +124,46 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                     model.columnHeaders = initialFrame.cols.map { col -> col.name }.toMutableList()
                     resetDisplay()
                 },
-                menuItem("Make Pivot Table", null, Combo(KeyCode.N, SHORTCUT_DOWN, SHIFT_DOWN)) { }
+                menuItem("Averages", null, Combo(KeyCode.A, ALT_DOWN)) {
+                    Stage().apply {
+                        title = "Averages"
+                        initStyle(StageStyle.UTILITY)
+                        initOwner(utilsController?.appStage)
+
+                        val df = spreadsheetFrame.averageBy("Team", getSelectedColumns().toList())
+
+                        val wrapper = DataFrameView(df, df.names)
+                        wrapper.minWidth = 100.0
+                        wrapper.minHeight = 100.0
+
+                        scene = Scene(wrapper).apply {
+                            stylesheets.add("/ca/warp7/rt/res/style.css")
+                        }
+                        opacity = 0.95
+                        scene.fill = Color.TRANSPARENT
+                        show()
+                    }
+                },
+                menuItem("Cycle matrix", null, Combo(KeyCode.X, ALT_DOWN)) {
+                    Stage().apply {
+                        title = "Averages"
+                        initStyle(StageStyle.UTILITY)
+                        initOwner(utilsController?.appStage)
+
+                        val df = spreadsheetFrame.calcCycles("Team", getSelectedColumns().toList())
+
+                        val wrapper = DataFrameView(df, df.names)
+                        wrapper.minWidth = 100.0
+                        wrapper.minHeight = 100.0
+
+                        scene = Scene(wrapper).apply {
+                            stylesheets.add("/ca/warp7/rt/res/style.css")
+                        }
+                        opacity = 0.95
+                        scene.fill = Color.TRANSPARENT
+                        show()
+                    }
+                }
         )
     }
 

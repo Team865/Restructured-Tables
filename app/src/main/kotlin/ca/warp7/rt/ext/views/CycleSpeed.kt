@@ -1,32 +1,84 @@
-
-import koma.matrix.Matrix
 import krangl.DataFrame
 import krangl.dataFrameOf
 import krangl.eq
+import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression
+
+fun DataFrame.calcCycles(by: String, colNames: List<String>): DataFrame {
+    val teams = this[by].values().toSet().toList()
+
+    val values = teams
+            .map { team -> this.filter { it[by] eq team!! }.selectIf { it.name != by && it.name in colNames } }
+            .map { df ->
+                df.rows.map { row ->
+                    row.values.map {
+                        when (it) {
+                            is Number -> it.toDouble()
+                            is String -> if (it.matches("-?\\d+(\\.\\d+)?".toRegex())) {
+                                it.toDouble()
+                            } else {
+                                0.0
+                            }
+                            else -> 0.0
+                        }
+                    }.toDoubleArray()
+                }.toTypedArray()
+            }
+    println(values)
+    val results = values.mapIndexed { i, x ->
+        listOf(teams[i]) + when {
+            x[0].size + 1 <= x.size -> {
+                val y = x.map { 135.0 }.toDoubleArray()
+
+                val reg = OLSMultipleLinearRegression()
+                reg.isNoIntercept = true
+                reg.newSampleData(y, x)
+
+                reg.estimateRegressionParameters().toList() + reg.estimateRegressionParametersStandardErrors().toList()
+            }
+            else -> List(colNames.size * 2) { -1.0 }
+        }
+    }
+    return dataFrameOf(listOf(by) + colNames.map { it + " times" } + colNames.map { "+-" + it })(results.flatten())
+}
 
 fun main() {
     val df: DataFrame = dataFrameOf(
-            "Team", "Cargo", "Hatch")(
-            "865", "1", "2",
-            "865", "2", "2",
-            "865", "3", "1",
-            "2056", "2", "3",
-            "2056", "2", "4"
+            "Team", "Cargo", "Hatch", "Climb")(
+            "865", "1", 2.0, 3.0,
+            "865", "0.0", 2.0, 5.0,
+            "865", "3.0", 1.0, 0.0,
+            "865", "2.0", 3.0, 1.0,
+            "2056", "2.0", 4.0, 1.0
     )
-
+    println(df.calcCycles("Team", listOf("Cargo", "Hatch")))
+/*
     val by = "Team"
-    val colNames: List<String> = listOf("Cargo", "Hatch")
 
-    println(df[by].values().toSet().map { team -> colNames.map { colName -> df.filter { it[by] eq team!! } } })
+    val values = df[by].values().toSet()
+            .map { team -> df.filter { it[by] eq team!! }.selectIf { it.name != by } }
+            .map { df ->
+                df.rows.map { row ->
+                    row.values.map {
+                        when (it) {
+                            is Number -> it.toDouble()
+                            else -> 0.0
+                        }
+                    }.toDoubleArray()
+                }.toTypedArray()
+            }
 
+    println(values.map { x ->
+        if (x[0].size + 1 <= x.size) {
+            val y = x.map { 135.0 }.toDoubleArray()
 
-    val data: List<List<Double>> = listOf(
-            listOf(0.0, 0.0, 6.0),
-            listOf(2.0, 2.0, 3.0)
-    )
+            val reg = OLSMultipleLinearRegression()
+            reg.isNoIntercept = true
+            reg.newSampleData(y, x)
 
-    val x: Matrix<Double> = Matrix.doubleFactory.create(data.map { it.toDoubleArray() }.toTypedArray())
-    val y: Matrix<Double> = Matrix.doubleFactory.create(data.map { doubleArrayOf(135.0) }.toTypedArray())
-
-    println((x.T * x).pinv() * x.T * y)
+            listOf(reg.estimateRegressionParameters().toList(),
+                    reg.estimateRegressionParametersStandardErrors().toList())
+        } else {
+            listOf(emptyList())
+        }
+    })*/
 }
