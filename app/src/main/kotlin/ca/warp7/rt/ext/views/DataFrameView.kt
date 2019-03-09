@@ -14,10 +14,7 @@ import javafx.scene.text.FontWeight
 import javafx.scene.text.Text
 import javafx.stage.Stage
 import javafx.stage.StageStyle
-import krangl.DataFrame
-import krangl.max
-import krangl.mean
-import krangl.min
+import krangl.*
 import java.util.Collections.emptyList
 
 class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyList()) : CopyableSpreadsheet(toGrid(initialFrame)) {
@@ -130,7 +127,11 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                         initStyle(StageStyle.UTILITY)
                         initOwner(utilsController?.appStage)
 
-                        val df = spreadsheetFrame.averageBy("Team", getSelectedColumns().toList())
+                        val df = try {
+                            spreadsheetFrame.averageBy("Team", getSelectedColumns().toList())
+                        } catch (e: Exception) {
+                            emptyDataFrame()
+                        }
 
                         val wrapper = DataFrameView(df, df.names)
                         wrapper.minWidth = 100.0
@@ -150,7 +151,11 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                         initStyle(StageStyle.UTILITY)
                         initOwner(utilsController?.appStage)
 
-                        val df = spreadsheetFrame.calcCycles("Team", getSelectedColumns().toList())
+                        val df: DataFrame = try {
+                            spreadsheetFrame.calcCycles("Team", getSelectedColumns().toList())
+                        } catch (e: Exception) {
+                            emptyDataFrame()
+                        }
 
                         val wrapper = DataFrameView(df, df.names)
                         wrapper.minWidth = 100.0
