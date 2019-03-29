@@ -1,6 +1,7 @@
 import krangl.DataFrame
 import krangl.dataFrameOf
 import krangl.eq
+import org.apache.commons.math3.exception.MathIllegalArgumentException
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression
 
 fun DataFrame.calcCycles(by: String, colNames: List<String>): DataFrame {
@@ -10,47 +11,85 @@ fun DataFrame.calcCycles(by: String, colNames: List<String>): DataFrame {
             .map { team -> this.filter { it[by] eq team!! }.selectIf { it.name != by && it.name in colNames } }
             .map { df ->
                 df.rows.map { row ->
-                    row.values.map {
-                        when (it) {
-                            is Number -> it.toDouble()
-                            is String -> if (it.matches("-?\\d+(\\.\\d+)?".toRegex())) {
-                                it.toDouble()
-                            } else {
-                                0.0
+                    row.values
+                            .map {
+                                when (it) {
+                                    is Number -> it.toDouble()
+                                    is String -> when {
+                                        it matches Regex("-?\\d+(\\.\\d+)?") -> it.toDouble()
+                                        else -> 0.0
+                                    }
+                                    else -> 0.0
+                                }
                             }
-                            else -> 0.0
-                        }
-                    }.toDoubleArray()
-                }.toTypedArray()
+                            .toDoubleArray()
+                }
+                        .filter { row -> !row.all { value -> value == 0.0 } }
+                        .toTypedArray()
             }
-    println(values)
+
+//    val a = values.map { it.map { false !in it.map { it == 0.0 } } }
+
     val results = values.mapIndexed { i, x ->
         listOf(teams[i]) + when {
-            x[0].size + 1 <= x.size -> {
+            (if (x.isEmpty()) 0 else x[0].size + 1) <= x.size -> {
+//                val x = x.mapIndexedNotNull { j, value ->
+//                    if (a[i][j]) value else null
+//                }.toTypedArray()
+
                 val y = x.map { 135.0 }.toDoubleArray()
-
-                val reg = OLSMultipleLinearRegression()
-                reg.isNoIntercept = true
-                reg.newSampleData(y, x)
-
-                reg.estimateRegressionParameters().toList() + reg.estimateRegressionParametersStandardErrors().toList()
+                var res: List<Any>
+                try {
+                    val reg = OLSMultipleLinearRegression()
+                    reg.isNoIntercept = true
+                    reg.newSampleData(y, x)
+                    res = reg.estimateRegressionParameters()!!.toList() + reg.estimateRegressionParametersStandardErrors()!!.toList()
+                } catch (e: MathIllegalArgumentException) {
+                    res = List(colNames.size * 2) { "" }
+                }
+                res
+//                a.mapIndexed { j, value ->
+//                    if (value[i]) res[j] else 9998.0
+//                }
             }
-            else -> List(colNames.size * 2) { -1.0 }
+            else -> List(colNames.size * 2) { "" }
         }
     }
-    return dataFrameOf(listOf(by) + colNames.map { it + " times" } + colNames.map { "+-" + it })(results.flatten())
+    results.forEach { println(it.size) }
+    return dataFrameOf(listOf(by) + colNames.map { "$it times" } + colNames.map { "+-$it" })(results.flatten().map {
+        when (it) {
+            is Number -> {
+                println("num $it")
+                it.toDouble()
+            }
+            is String -> {
+                println("str $it")
+                when (it.toDoubleOrNull()) {
+                    null -> 9999.0
+                    else -> it.toDoubleOrNull()
+                }
+            }
+            else -> 9999.0
+        }
+    })
 }
 
 fun main() {
     val df: DataFrame = dataFrameOf(
             "Team", "Cargo", "Hatch", "Climb")(
-            "865", "1", 2.0, 3.0,
-            "865", "0.0", 2.0, 5.0,
-            "865", "3.0", 1.0, 0.0,
-            "865", "2.0", 3.0, 1.0,
-            "2056", "2.0", 4.0, 1.0
+            "865", 1.0, 2.0, 3.0,
+            "865", 0.0, 2.0, 5.0,
+            "865", 3.0, 1.0, 0.0,
+            "865", 4.0, 0.0, 1.0,
+            "865", 2.0, 1.0, 2.0,
+            "865", 1.0, 2.0, 3.0,
+            "2056", 0.0, 2.0, 5.0,
+            "2056", 3.0, 1.0, 0.0,
+            "2056", 4.0, 0.0, 1.0,
+            "2056", 2.0, 1.0, 2.0
     )
     println(df.calcCycles("Team", listOf("Cargo", "Hatch")))
+    println(df.calcCycles("Team", listOf("Cargo", "Hatch", "Climb")))
 /*
     val by = "Team"
 

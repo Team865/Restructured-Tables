@@ -147,15 +147,40 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                 },
                 menuItem("Cycle matrix", null, Combo(KeyCode.X, ALT_DOWN)) {
                     Stage().apply {
-                        title = "Averages"
+                        title = "Cycle matrix"
                         initStyle(StageStyle.UTILITY)
                         initOwner(utilsController?.appStage)
 
-                        val df: DataFrame = try {
-                            spreadsheetFrame.calcCycles("Team", getSelectedColumns().toList())
-                        } catch (e: Exception) {
-                            emptyDataFrame()
+                        val df: DataFrame = spreadsheetFrame.calcCycles("Team", getSelectedColumns().toList())
+
+                        val wrapper = DataFrameView(df, df.names)
+                        wrapper.minWidth = 100.0
+                        wrapper.minHeight = 100.0
+
+                        scene = Scene(wrapper).apply {
+                            stylesheets.add("/ca/warp7/rt/res/style.css")
                         }
+                        opacity = 0.95
+                        scene.fill = Color.TRANSPARENT
+                        show()
+                    }
+                },
+                menuItem("Good matrix", null, Combo(KeyCode.Z, ALT_DOWN)) {
+                    Stage().apply {
+                        title = "Cycle matrix"
+                        initStyle(StageStyle.UTILITY)
+                        initOwner(utilsController?.appStage)
+
+                        val columns = listOf(
+                                "Total Hatch Acquired",
+                                "Total Cargo Acquired",
+                                "Total Defended Time"
+                        )
+                        val df: DataFrame = spreadsheetFrame.calcCycles("Team", columns)
+//                        df.rows.forEachIndexed { i,it ->
+//                            df[i]["Total Hatch Acquired times"]
+//                        }
+                        //TODO divide hatch and cargo by their success rates
 
                         val wrapper = DataFrameView(df, df.names)
                         wrapper.minWidth = 100.0
@@ -178,8 +203,8 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                 .map {
                     ColorScaleColumnInput(
                             model.columnHeaders.indexOf(it.columnName),
-                            model.initialFrame[it.columnName].max(true)!!,
-                            model.initialFrame[it.columnName].min(true)!!,
+                            spreadsheetFrame[it.columnName].max(true)!!,
+                            spreadsheetFrame[it.columnName].min(true)!!,
                             it.isGood
                     )
                 }
