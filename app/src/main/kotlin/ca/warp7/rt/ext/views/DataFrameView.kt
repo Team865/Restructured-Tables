@@ -37,11 +37,11 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
         contextMenu.items.addAll(
                 SeparatorMenuItem(),
                 menuItem("Sort Ascending", "fas-sort-amount-up:16:1e2e4a", Combo(KeyCode.EQUALS, ALT_DOWN)) {
-                    model.addSort(getSelectedColumns(), SortType.Ascending)
+                    model.addSort(selectedColumns, SortType.Ascending)
                     resetDisplay()
                 },
                 menuItem("Sort Descending", "fas-sort-amount-down:16:1e2e4a", Combo(KeyCode.MINUS, ALT_DOWN)) {
-                    model.addSort(getSelectedColumns(), SortType.Descending)
+                    model.addSort(selectedColumns, SortType.Descending)
                     resetDisplay()
                 },
                 menuItem("Clear sort", null, Combo(KeyCode.DIGIT0, ALT_DOWN)) {
@@ -50,11 +50,11 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                 },
                 SeparatorMenuItem(),
                 menuItem("Filter By", "fas-filter:16:1e2e4a", Combo(KeyCode.I, SHORTCUT_DOWN)) {
-                    model.addFilter(getSelectedColumnsValues(), true)
+                    model.addFilter(selectedColumnsValues, true)
                     resetDisplay()
                 },
                 menuItem("Filter Out", null, Combo(KeyCode.I, SHORTCUT_DOWN, SHIFT_DOWN)) {
-                    model.addFilter(getSelectedColumnsValues(), false)
+                    model.addFilter(selectedColumnsValues, false)
                     resetDisplay()
                 },
                 menuItem("Clear Filters", null, Combo(KeyCode.U, SHORTCUT_DOWN)) {
@@ -64,12 +64,12 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                 SeparatorMenuItem(),
                 menuItem("Colour Scale Up", "fas-caret-up:16:1e2e4a",
                         Combo(KeyCode.EQUALS, SHORTCUT_DOWN, ALT_DOWN)) {
-                    model.addColorScale(getSelectedColumns(), true)
+                    model.addColorScale(selectedColumns, true)
                     resetDisplay()
                 },
                 menuItem("Colour Scale Down", "fas-caret-down:16:1e2e4a",
                         Combo(KeyCode.MINUS, SHORTCUT_DOWN, ALT_DOWN)) {
-                    model.addColorScale(getSelectedColumns(), false)
+                    model.addColorScale(selectedColumns, false)
                     resetDisplay()
                 },
                 menuItem("Clear Colour Scales", null, Combo(KeyCode.DIGIT0, SHORTCUT_DOWN, ALT_DOWN)) {
@@ -128,7 +128,7 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                         initOwner(utilsController?.appStage)
 
                         val df = try {
-                            spreadsheetFrame.averageBy("Team", getSelectedColumns().toList())
+                            spreadsheetFrame.averageBy("Team", selectedColumns.toList())
                         } catch (e: Exception) {
                             emptyDataFrame()
                         }
@@ -151,7 +151,7 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
                         initStyle(StageStyle.UTILITY)
                         initOwner(utilsController?.appStage)
 
-                        val df: DataFrame = spreadsheetFrame.calcCycles("Team", getSelectedColumns().toList())
+                        val df: DataFrame = spreadsheetFrame.calcCycles("Team", selectedColumns.toList())
 
                         val wrapper = DataFrameView(df, df.names)
                         wrapper.minWidth = 100.0
@@ -230,10 +230,10 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
     }
 
     private fun selectView() {
-        model.columnHeaders = getSelectedColumns().toMutableList()
-        model.sortColumns.removeIf { it.columnName !in model.columnHeaders }
-        model.filterRows.removeIf { it.columnName !in model.columnHeaders }
-        model.colorScaleColumns.removeIf { it.columnName !in model.columnHeaders }
+        model.sortColumns.removeIf { it.columnName !in selectedColumns }
+        model.filterRows.removeIf { it.columnName !in selectedColumns }
+        model.colorScaleColumns.removeIf { it.columnName !in selectedColumns }
+        model.columnHeaders = selectedColumns.toMutableList()
     }
 
     private fun resetDisplay() {
@@ -269,9 +269,11 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
         }
     }
 
-    private fun getSelectedColumns() = selectionModel.selectedCells
-            .map { model.columnHeaders[it.column] }.toSet()
+    private val selectedColumns
+        get() = selectionModel.selectedCells
+                .map { model.columnHeaders[it.column] }.toSet()
 
-    private fun getSelectedColumnsValues() = selectionModel.selectedCells
-            .map { model.columnHeaders[it.column] to grid.rows[it.row][it.column].item }.toSet()
+    private val selectedColumnsValues
+        get() = selectionModel.selectedCells
+                .map { model.columnHeaders[it.column] to grid.rows[it.row][it.column].item }.toSet()
 }

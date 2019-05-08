@@ -1,5 +1,3 @@
-@file:Suppress("unused")
-
 package ca.warp7.rt.ext.humber
 
 import ca.warp7.android.scouting.v5.boardfile.exampleBoardfile
@@ -24,7 +22,6 @@ val template = exampleBoardfile.robotScoutTemplate
 object Sandstorm {
     val startPosition = template.lookup("start_position")
     val habLine = template.lookup("hab_line")
-    val cameraControl = template.lookup("camera_control")
     val fieldArea = template.lookup("sandstorm_field_area")
     val rocket = template.lookup("rocket")
     val frontCargoShip = template.lookup("front_cargo_ship")
@@ -64,34 +61,66 @@ val longFormatter = SimpleDateFormat("yyyy-dd-MM HH:mm:ss")
 
 fun Boolean.toInt() = if (this) 1 else 0
 
-@Suppress("unused", "CanBeVal")
+
+private fun <K> MutableMap<K, Int>.inc(k: K) = plus(k, 1)
+
+private fun <K> MutableMap<K, Int>.plus(k: K, n: Int) {
+    this[k] = n + this[k]!!
+}
+
 fun V5Entry.toRow(): Map<String, Any> {
-    var ssLeftRocketHatch = 0
-    var ssLeftRocketCargo = 0
-    var ssRightRocketHatch = 0
-    var ssRightRocketCargo = 0
-    var ssLeftSideHatch = 0
-    var ssLeftSideCargo = 0
-    var ssRightSideHatch = 0
-    var ssRightSideCargo = 0
-    var ssFrontHatch = 0
-    var ssFrontCargo = 0
-    var cargoShipCargo = 0
-    var cargoShipHatch = 0
-    var rocket1Hatch = 0
-    var rocket1Cargo = 0
-    var rocket2Hatch = 0
-    var rocket2Cargo = 0
-    var rocket3Hatch = 0
-    var rocket3Cargo = 0
-    var hatchAcquired = 0
-    var cargoAcquired = 0
-    var defendingCount = 0
-    var totalDefendingTime = 0
-    var defendedCount = 0
-    var totalDefendedTime = 0
-    var outtakeWhileDefending = 0
-    var outtakeNoGamePiece = 0
+    val defining = mapOf(
+            "Match" to match,
+            "Team" to team,
+            "Alliance" to board.alliance.toString(),
+            "Scout" to scout,
+            "Board" to board.toString(),
+            "Start Time" to longFormatter.format(Date(timestamp * 1000L))
+    )
+    val gamepieces = mutableMapOf<String, Int>()
+    val defence = mutableMapOf(
+            "Defending count" to 0, "Defending time" to 0,
+            "Defended count" to 0, "Defending time" to 0
+    )
+    val errors = mutableMapOf(
+            "ERROR outtake no gamepiece" to 0,
+            "ERROR outtake while on opponent field" to 0
+    )
+    val climb = mutableMapOf(
+            "Climb Level" to ca.warp7.rt.ext.humber.climbLevels[lastValue(Endgame.climbLevel)?.value ?: 0],
+            "Climb 2" to (ca.warp7.rt.ext.humber.climbLevels[lastValue(Endgame.climbLevel)?.value ?: 0] == "2").toInt(),
+            "Climb 3" to (ca.warp7.rt.ext.humber.climbLevels[lastValue(Endgame.climbLevel)?.value ?: 0] == "3").toInt(),
+            "Assisted Climb" to (lastValue(Endgame.assistedClimb)?.value ?: 0),
+            "Lifting 1" to ca.warp7.rt.ext.humber.liftingLevels[lastValue(Endgame.liftingRobot1)?.value ?: 0],
+            "Lifting 2" to ca.warp7.rt.ext.humber.liftingLevels[lastValue(Endgame.liftingRobot2)?.value ?: 0]
+    )
+    val autonActions  = emptyList<String>().toMutableList()
+    val misc = mutableMapOf(
+            "Comments" to comments,
+            "Start position" to "None",
+            "Starting Position" to startPositions[lastValue(Sandstorm.startPosition)?.value ?: 0],
+            "Starting Game Piece" to gamePieces[dataPoints.lastOrNull {
+                it.type == Sandstorm.gamePiece && it.time == 0
+            }?.value ?: 1],
+            "Hab Line" to (lastValue(Sandstorm.habLine)?.value ?: 0)
+    )
+
+    listOf("Hatch", "Cargo").forEach { gamepiece ->
+        // SS
+        gamepieces["SS, $gamepiece, Acquired"] = 0
+        gamepieces["SS, $gamepiece, Front cargo ship"] = 0
+        listOf("Left", "Right").forEach { side ->
+            gamepieces["SS, $gamepiece, $side cargo ship"] = 0
+            gamepieces["SS, $gamepiece, $side rocket"] = 0
+        }
+        // Tele
+        gamepieces["Tele, $gamepiece, Acquired"] = 0
+        gamepieces["Tele, $gamepiece, Cargo ship"] = 0
+        (1 until 3).forEach { level ->
+            gamepieces["Tele, $gamepiece, Rocket $level"] = 0
+        }
+    }
+
     var currentGamePiece = GamePieces.None
     var gamePieceInSandstorm = false
     var isLeftFieldArea = true
@@ -108,27 +137,13 @@ fun V5Entry.toRow(): Map<String, Any> {
                 }
                 when (it.value) {
                     GamePieces.Hatch -> {
-                        hatchAcquired++
+                        autonActions += "Acquired, Hatch"
+                        gamepieces.inc("SS, Hatch, Acquired")
                         currentGamePiece = GamePieces.Hatch
                     }
                     GamePieces.Cargo -> {
-                        cargoAcquired++
-                        currentGamePiece = GamePieces.Cargo
-                    }
-                }
-            }
-            Teleop.gamePiece -> {
-                if (gamePieceInSandstorm) {
-                    gamePieceInSandstorm = false
-                    currentGamePiece = GamePieces.None
-                }
-                when (it.value) {
-                    GamePieces.Hatch -> {
-                        hatchAcquired++
-                        currentGamePiece = GamePieces.Hatch
-                    }
-                    GamePieces.Cargo -> {
-                        cargoAcquired++
+                        autonActions += "Acquired, Cargo"
+                        gamepieces.inc("SS, Cargo, Acquired")
                         currentGamePiece = GamePieces.Cargo
                     }
                 }
@@ -139,34 +154,112 @@ fun V5Entry.toRow(): Map<String, Any> {
             Sandstorm.rocket -> {
                 when (currentGamePiece) {
                     GamePieces.Cargo -> {
-                        if (isLeftFieldArea) ssLeftRocketCargo++
-                        else ssRightRocketCargo++
+                        if (isLeftFieldArea) {
+                            autonActions += "Left rocket, Cargo"
+                            gamepieces.inc("SS, Cargo, Left rocket")
+                        }
+                        else {
+                            autonActions += "Right rocket, Cargo"
+                            gamepieces.inc("SS, Cargo, Right rocket")
+                        }
                     }
                     GamePieces.Hatch -> {
-                        if (isLeftFieldArea) ssLeftRocketHatch++
-                        else ssRightRocketHatch++
+                        if (isLeftFieldArea) {
+                            autonActions += "Left rocket, Hatch"
+                            gamepieces.inc("SS, Hatch, Left rocket")
+                        }
+                        else {
+                            autonActions += "Right rocket, Hatch"
+                            gamepieces.inc("SS, Hatch, Right rocket")
+                        }
                     }
-                    GamePieces.None -> outtakeNoGamePiece++
+                    GamePieces.None -> errors.inc("ERROR outtake no gamepiece")
                 }
             }
             Sandstorm.frontCargoShip -> {
                 when (currentGamePiece) {
-                    GamePieces.Cargo -> ssFrontCargo++
-                    GamePieces.Hatch -> ssFrontHatch++
-                    GamePieces.None -> outtakeNoGamePiece++
+                    GamePieces.Cargo -> {
+                        autonActions += "Front cargo ship, Cargo"
+                        gamepieces.inc("SS, Cargo, Front cargo ship")
+                    }
+                    GamePieces.Hatch -> {
+                        autonActions += "Front cargo ship, Hatch"
+                        gamepieces.inc("SS, Hatch, Front cargo ship")
+                    }
+                    GamePieces.None -> errors.inc("ERROR outtake no gamepiece")
                 }
             }
             Sandstorm.sideCargoShip -> {
                 when (currentGamePiece) {
                     GamePieces.Cargo -> {
-                        if (isLeftFieldArea) ssLeftSideCargo++
-                        else ssRightSideCargo++
+                        if (isLeftFieldArea) {
+                            autonActions += "Left cargo ship, Cargo"
+                            gamepieces.inc("SS, Cargo, Left cargo ship")
+                        }
+                        else {
+                            autonActions += "Right cargo ship, Cargo"
+                            gamepieces.inc("SS, Cargo, Right cargo ship")
+                        }
                     }
                     GamePieces.Hatch -> {
-                        if (isLeftFieldArea) ssLeftSideHatch++
-                        else ssRightSideHatch++
+                        if (isLeftFieldArea){
+                            autonActions += "Left cargo ship, Hatch"
+                            gamepieces.inc("SS, Hatch, Left cargo ship")
+                        }
+                        else {
+                            autonActions += "Right cargo ship, Hatch"
+                            gamepieces.inc("SS, Hatch, Right cargo ship")
+                        }
                     }
-                    GamePieces.None -> outtakeNoGamePiece++
+                    GamePieces.None -> errors.inc("ERROR outtake no gamepiece")
+                }
+            }
+            Teleop.gamePiece -> {
+                if (gamePieceInSandstorm) {
+                    gamePieceInSandstorm = false
+                    currentGamePiece = GamePieces.None
+                }
+                when (it.value) {
+                    GamePieces.Hatch -> {
+                        gamepieces.inc("Tele, Hatch, Acquired")
+                        currentGamePiece = GamePieces.Hatch
+                    }
+                    GamePieces.Cargo -> {
+                        gamepieces.inc("Tele, Cargo, Acquired")
+                        currentGamePiece = GamePieces.Cargo
+                    }
+                }
+            }
+            Teleop.rocket1 -> {
+                if (isOnOpponentField) errors.inc("ERROR outtake while on opponent field")
+                when (currentGamePiece) {
+                    GamePieces.Cargo -> gamepieces.inc("Tele, Cargo, Rocket 1")
+                    GamePieces.Hatch -> gamepieces.inc("Tele, Hatch, Rocket 1")
+                    GamePieces.None -> errors.inc("ERROR outtake no gamepiece")
+                }
+            }
+            Teleop.rocket2 -> {
+                if (isOnOpponentField) errors.inc("ERROR outtake while on opponent field")
+                when (currentGamePiece) {
+                    GamePieces.Cargo -> gamepieces.inc("Tele, Cargo, Rocket 2")
+                    GamePieces.Hatch -> gamepieces.inc("Tele, Hatch, Rocket 2")
+                    GamePieces.None -> errors.inc("ERROR outtake no gamepiece")
+                }
+            }
+            Teleop.rocket3 -> {
+                if (isOnOpponentField) errors.inc("ERROR outtake while on opponent field")
+                when (currentGamePiece) {
+                    GamePieces.Cargo -> gamepieces.inc("Tele, Cargo, Rocket 3")
+                    GamePieces.Hatch -> gamepieces.inc("Tele, Hatch, Rocket 3")
+                    GamePieces.None -> errors.inc("ERROR outtake no gamepiece")
+                }
+            }
+            Teleop.cargoShip -> {
+                if (isOnOpponentField) errors.inc("ERROR outtake while on opponent field")
+                when (currentGamePiece) {
+                    GamePieces.Cargo -> gamepieces.inc("Tele, Cargo, Cargo ship")
+                    GamePieces.Hatch -> gamepieces.inc("Tele, Hatch, Cargo ship")
+                    GamePieces.None -> errors.inc("ERROR outtake no gamepiece")
                 }
             }
             Teleop.opponentField -> {
@@ -174,8 +267,8 @@ fun V5Entry.toRow(): Map<String, Any> {
                 if (isOnOpponentField) {
                     lastOpponentFieldTime = it.time
                 } else {
-                    defendingCount++
-                    totalDefendingTime += it.time - lastOpponentFieldTime
+                    defence.inc("Defending count")
+                    defence.plus("Defending time", it.time - lastOpponentFieldTime)
                 }
             }
             Teleop.defended -> {
@@ -183,117 +276,30 @@ fun V5Entry.toRow(): Map<String, Any> {
                 if (isDefended) {
                     lastDefendedTime = it.time
                 } else {
-                    defendedCount++
-                    totalDefendedTime += it.time - lastDefendedTime
-                }
-            }
-            Teleop.rocket1 -> {
-                if (isOnOpponentField) outtakeWhileDefending++
-                when (currentGamePiece) {
-                    GamePieces.Cargo -> rocket1Cargo++
-                    GamePieces.Hatch -> rocket1Hatch++
-                    GamePieces.None -> outtakeNoGamePiece++
-                }
-            }
-            Teleop.rocket2 -> {
-                if (isOnOpponentField) outtakeWhileDefending++
-                when (currentGamePiece) {
-                    GamePieces.Cargo -> rocket2Cargo++
-                    GamePieces.Hatch -> rocket2Hatch++
-                    GamePieces.None -> outtakeNoGamePiece++
-                }
-            }
-            Teleop.rocket3 -> {
-                if (isOnOpponentField) outtakeWhileDefending++
-                when (currentGamePiece) {
-                    GamePieces.Cargo -> rocket3Cargo++
-                    GamePieces.Hatch -> rocket3Hatch++
-                    GamePieces.None -> outtakeNoGamePiece++
-                }
-            }
-            Teleop.cargoShip -> {
-                if (isOnOpponentField) outtakeWhileDefending++
-                when (currentGamePiece) {
-                    GamePieces.Cargo -> cargoShipCargo++
-                    GamePieces.Hatch -> cargoShipHatch++
-                    GamePieces.None -> outtakeNoGamePiece++
+                    defence.inc("Defended count")
+                    defence.plus("Defended time", it.time - lastDefendedTime)
                 }
             }
         }
     }
     if (isDefended) {
-        defendedCount++
-        totalDefendedTime += 150 - lastDefendedTime
+        defence.inc("Defended count")
+        defence.plus("Defended time", 150 - lastDefendedTime)
     }
-    return mapOf(
-            "Match" to match,
-            "Team" to team,
-            "Alliance" to board.alliance.toString(),
-            "Scout" to scout,
-            "Board" to board.toString(),
-            "Starting Position" to startPositions[lastValue(Sandstorm.startPosition)?.value ?: 0],
-            "Starting Game Piece" to gamePieces[dataPoints
-                    .lastOrNull { it.type == Sandstorm.gamePiece && it.time == 0 }?.value ?: 1],
-            "Hab Line" to (lastValue(Sandstorm.habLine)?.value ?: 0),
-            "Total Hatch Acquired" to hatchAcquired,
-            "Total Hatch Placed" to
-                    ssLeftRocketHatch
-                    + ssRightRocketHatch
-                    + ssLeftSideHatch
-                    + ssRightSideHatch
-                    + ssFrontHatch
-                    + cargoShipHatch
-                    + rocket1Hatch
-                    + rocket2Hatch
-                    + rocket3Hatch,
-            "Total Cargo Acquired" to cargoAcquired,
-            "Total Cargo Placed" to
-                    ssLeftRocketCargo
-                    + ssRightRocketCargo
-                    + ssLeftSideCargo
-                    + ssRightSideCargo
-                    + ssFrontCargo
-                    + cargoShipCargo
-                    + rocket1Cargo
-                    + rocket2Cargo
-                    + rocket3Cargo,
-            "SS Left Rocket Hatch" to ssLeftRocketHatch,
-            "SS Left Rocket Cargo" to ssLeftRocketCargo,
-            "SS Right Rocket Hatch" to ssRightRocketHatch,
-            "SS Right Rocket Cargo" to ssRightRocketCargo,
-            "SS Left Side Hatch" to ssLeftSideHatch,
-            "SS Left Side Cargo" to ssLeftSideCargo,
-            "SS Right Side Hatch" to ssRightSideHatch,
-            "SS Right Side Cargo" to ssRightSideCargo,
-            "SS Front Hatch" to ssFrontHatch,
-            "SS Front Cargo" to ssFrontCargo,
-            "SS Hatch" to ssLeftRocketHatch + ssRightRocketHatch + ssLeftSideHatch + ssFrontHatch,
-            "SS Cargo" to ssLeftRocketCargo + ssRightRocketCargo + ssLeftSideCargo + ssFrontCargo,
-            "Cargo Ship Hatch" to cargoShipHatch,
-            "Cargo Ship Cargo" to cargoShipCargo,
-            "Rocket 1 Hatch" to rocket1Hatch,
-            "Rocket 1 Cargo" to rocket1Cargo,
-            "Rocket 2 Hatch" to rocket2Hatch,
-            "Rocket 2 Cargo" to rocket2Cargo,
-            "Rocket 3 Hatch" to rocket3Hatch,
-            "Rocket 3 Cargo" to rocket3Cargo,
-            "Rocket Cargo" to rocket1Cargo + rocket2Cargo + rocket3Cargo,
-            "Rocket Hatch" to rocket1Hatch + rocket2Hatch + rocket3Hatch,
-            "Defending Count" to defendingCount,
-            "Total Defending Time" to totalDefendingTime,
-            "Defended Count" to defendedCount,
-            "Total Defended Time" to totalDefendedTime,
-            "Climb Level" to climbLevels[lastValue(Endgame.climbLevel)?.value ?: 0],
-            "Climb 2" to (climbLevels[lastValue(Endgame.climbLevel)?.value ?: 0] == "2").toInt(),
-            "Climb 3" to (climbLevels[lastValue(Endgame.climbLevel)?.value ?: 0] == "3").toInt(),
-            "Assisted Climb" to (lastValue(Endgame.assistedClimb)?.value ?: 0),
-            "Lifting 1" to liftingLevels[lastValue(Endgame.liftingRobot1)?.value ?: 0],
-            "Lifting 2" to liftingLevels[lastValue(Endgame.liftingRobot2)?.value ?: 0],
-            "Start Time" to longFormatter.format(Date(timestamp * 1000L)),
-            "Undo Count" to undone,
-            "Outtake While Defending" to outtakeWhileDefending,
-            "Outtake No Game Piece" to outtakeNoGamePiece,
-            "Comments" to comments,
-            "Camera Controlled" to dataPoints.count { it.type == Sandstorm.cameraControl && it.value == 1 }
+
+    val actions5 = (1 until 5).map{"Action $it" to ""}.toMutableList()
+    actions5.forEachIndexed{ i, it ->
+        if (i+1 <= autonActions.size) actions5[i] = it.first to autonActions[i]
+    }
+
+    return defining + gamepieces.toSortedMap() + actions5 + defence + climb + errors + misc
+}
+
+fun main() {
+    val a = listOf(
+            mapOf("one" to 1, "too" to 1),
+            mapOf("one" to 2, "two" to 2)
     )
+
+    println(dataFrameOf(a))
 }

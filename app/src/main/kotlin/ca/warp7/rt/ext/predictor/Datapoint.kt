@@ -22,7 +22,7 @@ class Discrete(var p: Map<Double, Double>) : Datapoint() {
 
 
     override val average: Double
-        get() = p.maxBy { it.value }!!.key
+        get() = p.map{it.key*it.value}.sum()
 }
 
 class Gaussian(var mu: Double,

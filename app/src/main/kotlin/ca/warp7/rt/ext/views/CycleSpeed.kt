@@ -28,13 +28,18 @@ fun DataFrame.calcCycles(by: String, colNames: List<String>): DataFrame {
                         .toTypedArray()
             }
 
-//    val a = values.map { it.map { false !in it.map { it == 0.0 } } }
-
     val results = values.mapIndexed { i, x ->
         listOf(teams[i]) + when {
             (if (x.isEmpty()) 0 else x[0].size + 1) <= x.size -> {
+//                val trans = Array(x[0].size) { DoubleArray(x.size) }
+//                for (k in 0 until x[0].size) {
+//                    for (j in 0 until x.size) trans[k][j] = x[j][k]
+//                }
+//                val a = trans.map { false !in it.map { it == 0.0 } }
+//                println(a)
+
 //                val x = x.mapIndexedNotNull { j, value ->
-//                    if (a[i][j]) value else null
+//                    if (a[j]) value else null
 //                }.toTypedArray()
 
                 val y = x.map { 135.0 }.toDoubleArray()
@@ -48,8 +53,8 @@ fun DataFrame.calcCycles(by: String, colNames: List<String>): DataFrame {
                     res = List(colNames.size * 2) { "" }
                 }
                 res
-//                a.mapIndexed { j, value ->
-//                    if (value[i]) res[j] else 9998.0
+//                x.mapIndexed { j, value ->
+//                    if (a[j]) res[j] else 9998.0
 //                }
             }
             else -> List(colNames.size * 2) { "" }
