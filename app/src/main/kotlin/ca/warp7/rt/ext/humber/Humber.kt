@@ -79,8 +79,8 @@ fun V5Entry.toRow(): Map<String, Any> {
     )
     val gamepieces = mutableMapOf<String, Int>()
     val defence = mutableMapOf(
-            "Defending count" to 0, "Defending time" to 0,
-            "Defended count" to 0, "Defending time" to 0
+            "Defending count" to 0, "Defending time" to 0, "Did defence" to 0,
+            "Defended count" to 0, "Defended time" to 0, "Was defended" to 0
     )
     val errors = mutableMapOf(
             "ERROR outtake no gamepiece" to 0,
@@ -94,7 +94,7 @@ fun V5Entry.toRow(): Map<String, Any> {
             "Lifting 1" to ca.warp7.rt.ext.humber.liftingLevels[lastValue(Endgame.liftingRobot1)?.value ?: 0],
             "Lifting 2" to ca.warp7.rt.ext.humber.liftingLevels[lastValue(Endgame.liftingRobot2)?.value ?: 0]
     )
-    val autonActions  = emptyList<String>().toMutableList()
+    val autonActions = emptyList<String>().toMutableList()
     val misc = mutableMapOf(
             "Comments" to comments,
             "Start position" to "None",
@@ -116,7 +116,7 @@ fun V5Entry.toRow(): Map<String, Any> {
         // Tele
         gamepieces["Tele, $gamepiece, Acquired"] = 0
         gamepieces["Tele, $gamepiece, Cargo ship"] = 0
-        (1 until 3).forEach { level ->
+        (1..3).forEach { level ->
             gamepieces["Tele, $gamepiece, Rocket $level"] = 0
         }
     }
@@ -157,8 +157,7 @@ fun V5Entry.toRow(): Map<String, Any> {
                         if (isLeftFieldArea) {
                             autonActions += "Left rocket, Cargo"
                             gamepieces.inc("SS, Cargo, Left rocket")
-                        }
-                        else {
+                        } else {
                             autonActions += "Right rocket, Cargo"
                             gamepieces.inc("SS, Cargo, Right rocket")
                         }
@@ -167,8 +166,7 @@ fun V5Entry.toRow(): Map<String, Any> {
                         if (isLeftFieldArea) {
                             autonActions += "Left rocket, Hatch"
                             gamepieces.inc("SS, Hatch, Left rocket")
-                        }
-                        else {
+                        } else {
                             autonActions += "Right rocket, Hatch"
                             gamepieces.inc("SS, Hatch, Right rocket")
                         }
@@ -195,18 +193,16 @@ fun V5Entry.toRow(): Map<String, Any> {
                         if (isLeftFieldArea) {
                             autonActions += "Left cargo ship, Cargo"
                             gamepieces.inc("SS, Cargo, Left cargo ship")
-                        }
-                        else {
+                        } else {
                             autonActions += "Right cargo ship, Cargo"
                             gamepieces.inc("SS, Cargo, Right cargo ship")
                         }
                     }
                     GamePieces.Hatch -> {
-                        if (isLeftFieldArea){
+                        if (isLeftFieldArea) {
                             autonActions += "Left cargo ship, Hatch"
                             gamepieces.inc("SS, Hatch, Left cargo ship")
-                        }
-                        else {
+                        } else {
                             autonActions += "Right cargo ship, Hatch"
                             gamepieces.inc("SS, Hatch, Right cargo ship")
                         }
@@ -287,19 +283,22 @@ fun V5Entry.toRow(): Map<String, Any> {
         defence.plus("Defended time", 150 - lastDefendedTime)
     }
 
-    val actions5 = (1 until 5).map{"Action $it" to ""}.toMutableList()
-    actions5.forEachIndexed{ i, it ->
-        if (i+1 <= autonActions.size) actions5[i] = it.first to autonActions[i]
+
+    defence["Did defence"] = (defence["Defending time"]!! > 0).toInt()
+    defence["Was defended"] = (defence["Defended time"]!! > 0).toInt()
+
+    val teleLocations = listOf("Cargo ship", "Rocket 1","Rocket 2", "Rocket 3")
+    gamepieces["Tele, Hatch"] = teleLocations.map{gamepieces["Tele, Hatch, $it"]!!}.sum()
+    gamepieces["Tele, Cargo"] = teleLocations.map{gamepieces["Tele, Cargo, $it"]!!}.sum()
+
+    val ssLocations = listOf("Front cargo ship", "Left cargo ship","Right cargo ship", "Left rocket", "Right rocket")
+    gamepieces["SS, Hatch"] = ssLocations.map{gamepieces["Tele, Hatch, $it"]!!}.sum()
+    gamepieces["SS, Cargo"] = ssLocations.map{gamepieces["Tele, Cargo, $it"]!!}.sum()
+
+    val actions5 = (1..5).map { "Action $it" to "" }.toMutableList()
+    actions5.forEachIndexed { i, it ->
+        if (i + 1 <= autonActions.size) actions5[i] = it.first to autonActions[i]
     }
 
     return defining + gamepieces.toSortedMap() + actions5 + defence + climb + errors + misc
-}
-
-fun main() {
-    val a = listOf(
-            mapOf("one" to 1, "too" to 1),
-            mapOf("one" to 2, "two" to 2)
-    )
-
-    println(dataFrameOf(a))
 }

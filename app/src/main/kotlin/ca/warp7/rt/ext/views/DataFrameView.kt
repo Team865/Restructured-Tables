@@ -36,6 +36,9 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
         isEditable = false
         contextMenu.items.addAll(
                 SeparatorMenuItem(),
+                menuItem("Auto list", null, Combo(KeyCode.DIGIT1)) {
+                    selectView(setOf("Match", "Team", "Alliance", "Action 1", "Action 2", "Action 3", "Action 4", "Action 5"))
+                },
                 menuItem("Sort Ascending", "fas-sort-amount-up:16:1e2e4a", Combo(KeyCode.EQUALS, ALT_DOWN)) {
                     model.addSort(selectedColumns, SortType.Ascending)
                     resetDisplay()
@@ -229,11 +232,13 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
         }
     }
 
-    private fun selectView() {
-        model.sortColumns.removeIf { it.columnName !in selectedColumns }
-        model.filterRows.removeIf { it.columnName !in selectedColumns }
-        model.colorScaleColumns.removeIf { it.columnName !in selectedColumns }
-        model.columnHeaders = selectedColumns.toMutableList()
+    private fun selectView(columns: Set<String> = selectedColumns) {
+        model.sortColumns.removeIf { it.columnName !in columns }
+        model.filterRows.removeIf { it.columnName !in columns }
+        model.colorScaleColumns.removeIf { it.columnName !in columns }
+        model.columnHeaders = columns.toMutableList()
+        updateNewData()
+        resetDisplay()
     }
 
     private fun resetDisplay() {
@@ -258,7 +263,7 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
     private fun updateNewData() {
         val text = Text()
         text.font = Font.font("sans-serif", FontWeight.BOLD, 14.0)
-        val fixedMetrics = listOf("Team", "Match", "Match Type", "Alliance", "Scout", "Event", "Year")
+        val fixedMetrics = listOf("Team", "Alliance", "Match")//, "Match Type", "Alliance", "Scout", "Event", "Year")
         columns.forEachIndexed { index, column ->
             val modelCol = getModelColumn(index)
             val name = model.initialFrame.cols[modelCol].name.replace("[^A-Za-z0-9 ]".toRegex(), "")
