@@ -36,7 +36,11 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
         isEditable = false
         contextMenu.items.addAll(
                 SeparatorMenuItem(),
-                menuItem("Auto list", null, Combo(KeyCode.DIGIT1)) {
+                menuItem("Everything", null, Combo(KeyCode.DIGIT1)) {
+                    model.columnHeaders = initialFrame.cols.map { col -> col.name }.toMutableList()
+                    resetDisplay()
+                },
+                menuItem("Auto list", null, Combo(KeyCode.DIGIT2) ){
                     selectView(setOf("Match", "Team", "Alliance", "Action 1", "Action 2", "Action 3", "Action 4", "Action 5"))
                 },
                 menuItem("Sort Ascending", "fas-sort-amount-up:16:1e2e4a", Combo(KeyCode.EQUALS, ALT_DOWN)) {

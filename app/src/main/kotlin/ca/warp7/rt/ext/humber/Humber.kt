@@ -287,13 +287,13 @@ fun V5Entry.toRow(): Map<String, Any> {
     defence["Did defence"] = (defence["Defending time"]!! > 0).toInt()
     defence["Was defended"] = (defence["Defended time"]!! > 0).toInt()
 
-    val teleLocations = listOf("Cargo ship", "Rocket 1","Rocket 2", "Rocket 3")
-    gamepieces["Tele, Hatch"] = teleLocations.map{gamepieces["Tele, Hatch, $it"]!!}.sum()
-    gamepieces["Tele, Cargo"] = teleLocations.map{gamepieces["Tele, Cargo, $it"]!!}.sum()
+    val teleLocations = listOf("Cargo ship", "Rocket 1", "Rocket 2", "Rocket 3")
+    gamepieces["Tele, Hatch"] = teleLocations.map { gamepieces["Tele, Hatch, $it"]!! }.sum()
+    gamepieces["Tele, Cargo"] = teleLocations.map { gamepieces["Tele, Cargo, $it"]!! }.sum()
 
-    val ssLocations = listOf("Front cargo ship", "Left cargo ship","Right cargo ship", "Left rocket", "Right rocket")
-    gamepieces["SS, Hatch"] = ssLocations.map{gamepieces["Tele, Hatch, $it"]!!}.sum()
-    gamepieces["SS, Cargo"] = ssLocations.map{gamepieces["Tele, Cargo, $it"]!!}.sum()
+    val ssLocations = listOf("Front cargo ship", "Left cargo ship", "Right cargo ship", "Left rocket", "Right rocket")
+    gamepieces["SS, Hatch"] = ssLocations.map { gamepieces["SS, Hatch, $it"]!! }.sum()
+    gamepieces["SS, Cargo"] = ssLocations.map { gamepieces["SS, Cargo, $it"]!! }.sum()
 
     val actions5 = (1..5).map { "Action $it" to "" }.toMutableList()
     actions5.forEachIndexed { i, it ->
