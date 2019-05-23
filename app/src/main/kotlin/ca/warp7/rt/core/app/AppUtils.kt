@@ -6,7 +6,6 @@ import ca.warp7.rt.api.get
 import ca.warp7.rt.core.Restructured
 import ca.warp7.rt.core.model.Contexts
 import ca.warp7.rt.core.model.Metadata
-import ca.warp7.rt.ext.scanner.ScannerFeature
 import ca.warp7.rt.ext.views.ViewsFeature
 import javafx.application.Platform
 import javafx.fxml.FXMLLoader
@@ -27,7 +26,7 @@ import org.kordamp.ikonli.javafx.FontIcon
 import java.io.IOException
 
 internal val appFeatures = listOf(
-        ScannerFeature(),
+//        ScannerFeature(),
         ViewsFeature()//,
         //ASTFeature(),
         //PredictorFeature()

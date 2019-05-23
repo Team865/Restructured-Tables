@@ -1,8 +1,10 @@
 package ca.warp7.rt.ext.formulas
 
 import ca.warp7.rt.ext.formulas.function.Formula
-import ca.warp7.rt.ext.formulas.function.def
+import ca.warp7.rt.ext.formulas.function.FunctionFormula
+import ca.warp7.rt.ext.formulas.function.toDouble
 import ca.warp7.rt.ext.formulas.token.*
+import krangl.DataCol
 import krangl.DataFrame
 import krangl.dataFrameOf
 import replaceAt
@@ -10,12 +12,21 @@ import replaceRange
 import resolveBEDMAS
 import split
 
-
-@Suppress("unused")
 class ExpressionEnvironment(val curDf: String, var dfs: MutableMap<String, DataFrame>) {
     private val vars: MutableMap<String, Any> = mutableMapOf()
     private val funcs: MutableMap<String, Formula> = mapOf(
-            def("max(a, b): a*(a>b | a=b) + b*(b>a)")
+            "len" to FunctionFormula { it.size.toDouble() },
+            "sum" to FunctionFormula { it.sum() },
+            "max" to FunctionFormula { it.max() ?: 0.0 },
+            "min" to FunctionFormula { it.min() ?: 0.0 },
+            "ave" to FunctionFormula { it.average() },
+            // TODO median
+            // TODO mode
+            "bool" to FunctionFormula { (it[0] > 0.0).toDouble() },
+            "true" to FunctionFormula { (it[0] > 0.0).toDouble() },
+            "false" to FunctionFormula { (it[0] <= 0.0).toDouble() },
+            "if" to FunctionFormula { if (it[0] > 0.0) it[1] else it[2] },
+            "get" to FunctionFormula { it[1 + it[0].toInt()] }
     ).toMutableMap()
 
     private fun resolve(initExpr: Expr): Any {
@@ -109,5 +120,8 @@ fun main() {
     println(env.dfs["this"])
 }
 
-private operator fun DataFrame.plus(that: DataFrame): DataFrame =
+operator fun DataFrame.plus(that: DataFrame): DataFrame =
         dataFrameOf(*(this.cols + that.cols).toTypedArray())
+
+operator fun DataFrame.plus(that: DataCol): DataFrame =
+        dataFrameOf(*(this.cols + that).toTypedArray())

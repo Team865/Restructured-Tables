@@ -8,7 +8,7 @@ import replaceAll
 import solve
 
 
-data class CustomFormula(val expr: Expr, override val inputArgs: List<Name>) : Formula(inputArgs) {
+data class ExpressionFormula(val expr: Expr, val inputArgs: List<Name>) : Formula() {
     override fun solve(args: List<Expr>): Expr {
         if (inputArgs.size != args.size) throw IllegalArgumentException("Incorrect number of arguments")
 

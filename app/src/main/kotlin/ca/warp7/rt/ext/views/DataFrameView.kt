@@ -1,10 +1,13 @@
 package ca.warp7.rt.ext.views
 
 import ca.warp7.rt.core.app.utilsController
+import ca.warp7.rt.ext.formulas.ExpressionEnvironment
+import ca.warp7.rt.ext.formulas.plus
 import calcCycles
 import javafx.scene.Scene
 import javafx.scene.control.SelectionMode
 import javafx.scene.control.SeparatorMenuItem
+import javafx.scene.control.TextInputDialog
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyCombination.*
 import javafx.scene.layout.VBox
@@ -28,6 +31,7 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
             updateNewData()
         }
 
+    val exprEnv = ExpressionEnvironment("raw", mapOf("raw" to spreadsheetFrame).toMutableMap())
     init {
         updateNewData()
         selectionModel.selectionMode = SelectionMode.MULTIPLE
@@ -36,11 +40,21 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
         isEditable = false
         contextMenu.items.addAll(
                 SeparatorMenuItem(),
-                menuItem("Everything", null, Combo(KeyCode.DIGIT1)) {
+                menuItem("", null, Combo(KeyCode.T, CONTROL_DOWN)) {
+                    val dialog = TextInputDialog();
+
+                    dialog.title = "Formula maker"
+                    dialog.headerText = "Enter a formula: "
+                    dialog.contentText = "Formula:"
+
+                    val result = dialog.showAndWait()
+                    result.ifPresent { addFormula(it) }
+                },
+                menuItem("Everything", null, Combo(KeyCode.DIGIT1)){
                     model.columnHeaders = initialFrame.cols.map { col -> col.name }.toMutableList()
                     resetDisplay()
                 },
-                menuItem("Auto list", null, Combo(KeyCode.DIGIT2) ){
+                menuItem("Auto list", null, Combo(KeyCode.DIGIT2)) {
                     selectView(setOf("Match", "Team", "Alliance", "Action 1", "Action 2", "Action 3", "Action 4", "Action 5"))
                 },
                 menuItem("Sort Ascending", "fas-sort-amount-up:16:1e2e4a", Combo(KeyCode.EQUALS, ALT_DOWN)) {
@@ -285,4 +299,13 @@ class DataFrameView(initialFrame: DataFrame, viewColumns: List<String> = emptyLi
     private val selectedColumnsValues
         get() = selectionModel.selectedCells
                 .map { model.columnHeaders[it.column] to grid.rows[it.row][it.column].item }.toSet()
+
+    private fun addFormula(formula: String, name: String? =  null){
+        exprEnv.dfs["raw"] = spreadsheetFrame
+        spreadsheetFrame += dataFrameOf(name ?: formula.replace("'",""))(*exprEnv.resolveCol(formula).toTypedArray())
+        val a =spreadsheetFrame.cols.toMutableList()
+        updateNewData()
+        resetDisplay()
+    }
+
 }

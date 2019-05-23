@@ -17,7 +17,6 @@ class TableController {
 //                    isCompressed = false,
 //                    colTypes = mapOf())
             val sheet = DataFrameView(Humber.process(Humber.getData()))
-
             Platform.runLater { tableContainer.center = sheet }
         }.start()
     }

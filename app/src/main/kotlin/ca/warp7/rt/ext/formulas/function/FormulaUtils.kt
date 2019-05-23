@@ -14,9 +14,10 @@ fun def(rawExpr: String): Pair<String, Formula> {
             .split(Ch(','))
             .map { it[0] as Name }
 
-    return funcName to CustomFormula(expr.slice((end + 2) until expr.size), funcVars)
+    return funcName to ExpressionFormula(expr.slice((end + 2) until expr.size), funcVars)
 }
 
-fun main(){
+
+fun main() {
     println(def("max(a, b): a*(a>b | a=b) + b*(b>a)"))
 }

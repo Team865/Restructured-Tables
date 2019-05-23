@@ -1,6 +1,6 @@
 import ca.warp7.rt.ext.formulas.token.*
 
-fun Expr.solve(): Double? {
+fun Expr.solve(): Double {
     var expr = this
 
     while (expr.size > 1) {
