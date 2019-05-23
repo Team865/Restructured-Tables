@@ -2,7 +2,6 @@ package ca.warp7.rt.ext.formulas
 
 import ca.warp7.rt.ext.formulas.function.Formula
 import ca.warp7.rt.ext.formulas.function.FunctionFormula
-import ca.warp7.rt.ext.formulas.function.toDouble
 import ca.warp7.rt.ext.formulas.token.*
 import krangl.DataCol
 import krangl.DataFrame
@@ -11,6 +10,7 @@ import replaceAt
 import replaceRange
 import resolveBEDMAS
 import split
+import toDouble
 
 class ExpressionEnvironment(val curDf: String, var dfs: MutableMap<String, DataFrame>) {
     private val vars: MutableMap<String, Any> = mutableMapOf()
@@ -20,8 +20,11 @@ class ExpressionEnvironment(val curDf: String, var dfs: MutableMap<String, DataF
             "max" to FunctionFormula { it.max() ?: 0.0 },
             "min" to FunctionFormula { it.min() ?: 0.0 },
             "ave" to FunctionFormula { it.average() },
-            // TODO median
-            // TODO mode
+            "mode" to FunctionFormula { args -> args.maxBy { by -> args.filter { it == by }.size } ?: 0.0 },
+            "median" to FunctionFormula { args -> args.sorted().let{
+                if (it.size % 2 == 1) it[it.size/2]
+                else (it[it.size/2] +it[(it.size-1)/2])/2}
+            },
             "bool" to FunctionFormula { (it[0] > 0.0).toDouble() },
             "true" to FunctionFormula { (it[0] > 0.0).toDouble() },
             "false" to FunctionFormula { (it[0] <= 0.0).toDouble() },

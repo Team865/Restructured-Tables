@@ -25,3 +25,8 @@ fun <E> List<E>.replaceAll(e: E, that: List<E>): List<E> {
 
     return l
 }
+
+fun Boolean.toDouble() = when (this) {
+    true -> 1.0
+    false -> 0.0
+}

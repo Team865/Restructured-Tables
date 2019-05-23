@@ -9,8 +9,3 @@ class FunctionFormula(val f: (List<Double>) -> Double) : Formula() {
         return listOf(Num(f(args.map { it.solve() })))
     }
 }
-
-fun Boolean.toDouble() = when (this) {
-    true -> 1.0
-    false -> 0.0
-}
