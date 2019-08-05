@@ -73,7 +73,7 @@ internal fun loadRootImpl(config: File,
         config = config,
         data = config.readText().trim().let {
             if (it.isEmpty()) JsonObject()
-            else Parser().parse(StringBuilder(config.readText().trim())) as JsonObject
+            else Parser.default().parse(StringBuilder(config.readText().trim())) as JsonObject
         },
         contextPath = contextPath,
         pluginPath = pluginPath,

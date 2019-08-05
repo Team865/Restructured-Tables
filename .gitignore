@@ -1,6 +1,7 @@
 .gradle/
 build/
 
+*.iml
 
 # For Mac users
 

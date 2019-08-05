@@ -4,18 +4,18 @@
 
 .search-block {
     -fx-background-radius: 5;
-    -fx-background-color: #404040ee;
+    -fx-background-color: #404040;
     -fx-padding: 10
 }
 
 .search-block-det {
-    -fx-background-color: #404040ee;
+    -fx-background-color: #404040;
     -fx-padding: 10
 }
 
 .search-block-special {
     -fx-background-radius: 5;
-    -fx-background-color: #404040ee;
+    -fx-background-color: #404040;
     -fx-padding: 0 5 0 10
 }
 
@@ -45,6 +45,7 @@
     -fx-text-fill: white;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
+    -fx-font-family: 'Roboto Mono', 'Courier New', monospace;
 }
 
 .button {
